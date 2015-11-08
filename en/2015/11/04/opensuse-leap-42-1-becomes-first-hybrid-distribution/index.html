@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" prefix="
+    
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    
+
+    <title>
+        
+            openSUSE Leap 42.1 Becomes First Hybrid Distribution
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="The wait is over and a new era begins for openSUSE releases. Contributors, friends and fans can now download the first Linux hybrid distro openSUSE Leap 42.1...">
+    <link rel="canonical" href="/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="/en/feed.xml" />
+
+    
+    
+        
+            <link rel="alternate" hreflang="pt" href="/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2015-11-04 08:00:00 -0200"/>
+    
+    
+    
+    
+        <meta property="og:author" content="Antônio Vinícius" />
+    
+    <meta property="og:description" content="The wait is over and a new era begins for openSUSE releases. Contributors, friends and fans can now download the first Linux hybrid distro openSUSE Leap 42.1..." />
+    
+        <meta property="og:email" content="vinyanalista@gmail.com" />
+    
+    
+        <meta property="og:image" content="/files/2015/11/Leap-green.png" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="openSUSE Leap 42.1 Becomes First Hybrid Distribution" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@jekyllrb" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-touch-icon-57x57.png?v=1">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-touch-icon-60x60.png?v=1">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72.png?v=1">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicons/apple-touch-icon-76x76.png?v=1">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114.png?v=1">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicons/apple-touch-icon-120x120.png?v=1">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144.png?v=1">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicons/apple-touch-icon-152x152.png?v=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon-180x180.png?v=1">
+    <link rel="icon" type="image/png" href="/assets/favicons/favicon-32x32.png?v=1" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicons/android-chrome-192x192.png?v=1" sizes="192x192">
+    <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png?v=1" sizes="96x96">
+    <link rel="icon" type="image/png" href="/assets/favicons/favicon-16x16.png?v=1" sizes="16x16">
+    <link rel="manifest" href="/assets/favicons/manifest.json?v=1">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico?v=1">
+    <meta name="msapplication-TileColor" content="#4caf50">
+    <meta name="msapplication-TileImage" content="/assets/favicons/mstile-144x144.png?v=1">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml?v=1">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">-->
+    <link rel="stylesheet" href="/libs/bootstrap-material-design/0.3.0/custom/green-500.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+
+    <!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                
+                    Linux Kamarada
+                
+            </a>
+        </div>
+        <!--<div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li>
+                                <a href="/archive/">Archive</a>
+                            <li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+            </ul>
+        </div>--><!-- #navbar -->
+        <form action="https://www.google.com/search" class="navbar-form" id="search-form" method="get" role="search">
+            
+                <input type="hidden" name="as_sitesearch" value="" />
+                <input type="hidden" name="ie" value="utf-8" />
+                <input type="hidden" name="oe" value="utf-8" />
+                
+                    <input type="hidden" name="hl" value="en" />
+                    <input type="hidden" name="image_lr" value="lang_en" />
+                    <input type="hidden" name="lr" value="lang_en" />
+                
+            
+            <input type="text" class="form-control" id="search-input" name="q" placeholder="Search" />
+            <a class="mdi-action-search" id="search-button"></a>
+        </form>
+    </div><!-- .container-fluid -->
+</nav>
+
+
+    <div class="container">
+        <div class='col-sm-8'>
+            <div class="blog-post panel panel-default">
+    <header class="panel-heading">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/" itemprop="url">
+                openSUSE Leap 42.1 Becomes First Hybrid Distribution
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2015-11-04">
+                    <a href="/2015/11/04/">
+                        
+    Nov 4, 2015
+
+
+                    </a>
+                </p>
+            </div>
+            <div class='col-sm-6'>
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content panel-body" itemprop="articleBody">
+        
+            <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="content_ad_unit_1"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="8945658251"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+        
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Bridging Community and Enterprise</h2>
+
+<p>The wait is over and a new era begins for openSUSE releases. Contributors, friends and fans can now download the first Linux hybrid distro openSUSE Leap 42.1. Since the last release, exactly one year ago, openSUSE transformed its development process to create an entirely new type of hybrid Linux distribution called openSUSE Leap.</p>
+
+<p class='text-center'>
+    <a href='/files/2015/11/Leap-green.png' title=''>
+        <img src='/files/2015/11/Leap-green.png' alt='' class='img-responsive img-thumbnail' style="max-width: 150px;">
+    </a>
+    
+</p>
+
+<p>Version 42.1 is the first version of openSUSE Leap that uses source from SUSE Linux Enterprise (SLE) providing a level of stability that will prove to be unmatched by other Linux distributions. Bonding community development and enterprise reliability provides more cohesion for the project and its contributor’s maintenance updates. openSUSE Leap will benefit from the enterprise maintenance effort and will have some of the same packages and updates as SLE, which is different from previous openSUSE versions that created separate maintenance streams.</p>
+
+<p>Community developers provide an equal level of contribution to Leap and upstream projects to the release, which bridges a gap between matured packages and newer packages found in openSUSE’s other distribution Tumbleweed.</p>
+
+<p>Since the move was such a shift from previous versions, a new version number and version naming strategy was adapted to reflect the change. The SLE sources come from SUSE’s soon to be released SLE 12 Service Pack 1 (SP1). The naming strategy is SLE 12 SP1 or 12.1 + 30 = openSUSE Leap 42.1. Many have asked why 42, but SUSE and openSUSE have a tradition of starting big ideas with a four and two, a reference to The Hitchhiker’s Guide to the Galaxy.</p>
+
+<p>Every minor version of openSUSE Leap users can expect a new KDE and GNOME, but today is all about openSUSE Leap 42.1, so if you are tired of a brown desktop, try a green one.</p>
+
+<p>Have a lot of fun!</p>
+
+<h2>openSUSE Leap 42.1 is…</h2>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/places/favorites.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/places/favorites.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Purposeful</h3>
+        <p>
+            Leap provides a balance between new and innovative and mature and downgraded.. Leap offers that enterprise feel, provides modern hardware support and has intentional downgraded packages to reinforce the Long-Term-Support vision of Leap.Newer releases like KDE Plasma 5 and Libreoffice 5 are in Leap while other mature releases like GNOME 3.16 and GNU Compiler Collection 4.8.5 with the option of GCC 5.2 are in Leap as well.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/places/start-here-branding.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/places/start-here-branding.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Dependable</h3>
+        <p>
+            Leap has a further developed Btrfs filesystem as the default option and an XFS data file system for performance, but there are several other options to choose from. The benefit of Btrfs allows users to take advantage of Snapper. Users can recover the previous status of the system using snapshots. Snapper will automatically create hourly snapshots of the system, as well as pre- and post-snapshots for YaST and zypper transactions, which can be disabled. This new version adds the ability to boot right into a snapshot to recover from corruption of important files on the system (like bash). A powerful system and a powerful tool.
+        </p>
+    </div>
+</div>
+
+<h2>Get Leap!</h2>
+
+<p>Downloads of openSUSE Leap 42.1 can be found at <a href="http://software.opensuse.org/">software.opensuse.org</a>. We recommend checking out the <a href="http://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.1/RELEASE-NOTES.en_GB.html">Release Notes</a> before upgrade or installation.</p>
+
+<p>Users currently running openSUSE 13.2 can <a href="http://en.opensuse.org/Upgrade">upgrade to openSUSE Leap 42.1 via the instructions at this link</a>.</p>
+
+<p>Check out ARM images at <a href="https://en.opensuse.org/Portal:ARM">the ARM wiki</a>. Stable Leap based images for ARMv7 and ARMv8 (AArch64) are there and will receive full maintenance alongside Leap. ARMv6 port is experimental and offers no guarantee.</p>
+
+<h2>Thanks!</h2>
+
+<p>openSUSE Leap 42.1 represents the combined effort of thousands of developers who participate in our distributions and projects shipped with it. The contributors, inside and outside the openSUSE Project, should be proud of this release, and they deserve a major <strong>&quot;thank you&quot;</strong> for all of the hard work and care that have gone into it. We believe Leap is a great release and will be a Linux distribution developers, sysadmins and users can depend upon! We hope you have a lot of fun using it, and we look forward to working with you on the next release!</p>
+
+<h2>For Developers</h2>
+
+<div class='row'>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/gnome-builder.png' title='GNOME Builder'>
+        <img src='/files/2015/11/gnome-builder.png' alt='GNOME Builder' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        GNOME Builder
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/kde-anjunta.png' title='KDE Anjunta'>
+        <img src='/files/2015/11/kde-anjunta.png' alt='KDE Anjunta' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        KDE Anjunta
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/kde-qt5-designer.png' title='KDE Qt5 designer'>
+        <img src='/files/2015/11/kde-qt5-designer.png' alt='KDE Qt5 designer' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        KDE Qt5 designer
+    </em>
+    
+</p>
+
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/categories/applications-development.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/categories/applications-development.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>IDEs and tooling</h3>
+        <p>
+            Leap carries the latest version of the Qt 5 GUI toolkit (5.5). Qt5.5 brings multiple features and enhancements for developers, but also for normal users, who will benefit from a large improvement in multi-screen handling and in QML (which is heavily used by Plasma). Builder is a brand new IDE, which is intended to make it easy to create GNOME applications. This initial 3.16 release is an early preview, which shows editing features, such as split view, snippets, auto-indentation and a VIM engine. Builder was backed by a successful crowdfunding campaign early in 2015, and there are big plans for the future. These include project management functionality, global search, version tracking, debugging, Glade integration, and much more.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/categories/applications-engineering.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/categories/applications-engineering.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Languages and Libraries</h3>
+        <p>
+            The KDE Frameworks 5 development libraries are at the latest stable version at the time of release (5.15), bringing in many bugfixes which affect the many KDE applications that are using them. In particular, the Baloo file indexing framework has been the subject of much changes, from bugfixes to performance improvements.
+        </p>
+    </div>
+</div>
+
+<h2>For Sysadmins</h2>
+
+<div class='row'>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/yast-app-folder.png' title='YaST App Folder'>
+        <img src='/files/2015/11/yast-app-folder.png' alt='YaST App Folder' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        YaST App Folder
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/installation-overview.png' title='Installation overview'>
+        <img src='/files/2015/11/installation-overview.png' alt='Installation overview' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        Installation overview
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/yast.png' title='YaST'>
+        <img src='/files/2015/11/yast.png' alt='YaST' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        YaST
+    </em>
+    
+</p>
+
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/hicolor/64x64/apps/yast-virtualisation.png' title=''>
+        <img src='/assets/icons/hicolor/64x64/apps/yast-virtualisation.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Virtualization</h3>
+        <p>
+            openSUSE Leap 42.1 is full of virtualization solutions. QEMU 2.3.1, VirtualBox 5.0.6 and Docker 1.8.2 makes openSUSE Leap 42.1 a perfect base system to distribute applications. Set up is easy with YaST, so you’ll be able deploy solutions quickly and easily. GNOME boxes, virt-manager, and virsh are also useful to sysadmins using openSUSE.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/hicolor/48x48/apps/yast.png' title=''>
+        <img src='/assets/icons/hicolor/48x48/apps/yast.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Improved YaST</h3>
+        <p>
+            Being a completely open source project, the YaST versions and features shipped with SLE and openSUSE has always being in pretty close sync. With Leap that trends goes one step further, since 42.1 it will include exactly the same version of YaST, AutoYaST and Linuxrc that will be shipped in SLE12-SP1. When compared to the versions shipped in openSUSE 13.2, that means more than 600 fixes including corrections of errors, new features and enhancements in the already existing ones. Users and sysadmins will benefit from the improved YaST included in Leap 42.1. YaST is now more developer friendly than ever, with more polished code (although there is still a lot of autoconverted code from YCP), better development tools and documentation and a much better integration into the Ruby ecosystem including RSpec helpers, Rake tasks and other goodies. Although the YaST2-lxc module was dropped, the YaST family has grown with the addition of three new modules. Read more about the <a href='https://news.opensuse.org/2015/02/25/openness-brings-fresh-air-to-yast/'>new modules</a>.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/files/2015/11/machinery.png' title=''>
+        <img src='/files/2015/11/machinery.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Machinery</h3>
+        <p>
+            Available for use with openSUSE Leap 42.1 is <a href='http://machinery-project.org/'>Machinery</a>. Machinery is a command line application sysadmins can use for creating descriptions of Linux systems and working with them. You can use it to get insight into existing systems, to store and track their state, or to create new systems based on existing ones. Machinery provides powerful views of individual and comparisons between systems. It can also export descriptions to other tools for installation, migration, image building, containerization, or cloud deployment, and provides defined interfaces to work with system descriptions from your custom tools.
+        </p>
+    </div>
+</div>
+
+<h2>For Users</h2>
+
+<div class='row'>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/libreoffice5.png' title='GNOME LibreOffice 5'>
+        <img src='/files/2015/11/libreoffice5.png' alt='GNOME LibreOffice 5' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        GNOME LibreOffice 5
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/gnome-weather.png' title='GNOME Weather'>
+        <img src='/files/2015/11/gnome-weather.png' alt='GNOME Weather' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        GNOME Weather
+    </em>
+    
+</p>
+
+    </div>
+    <div class='col-sm-4'>
+        <p class='text-center'>
+    <a href='/files/2015/11/gimp.png' title='GIMP in Plasma 5'>
+        <img src='/files/2015/11/gimp.png' alt='GIMP in Plasma 5' class='img-responsive img-thumbnail'>
+    </a>
+    
+    <em class='caption'>
+        GIMP in Plasma 5
+    </em>
+    
+</p>
+
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/apps/kde.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/apps/kde.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>KDE</h3>
+        <p>
+            openSUSE Leap 42.1 is the first stable openSUSE release to include KDE Plasma 5 (version 5.4.2) as the default desktop environment. Plasma 5 is now mature enough for a wide audience to enjoy this beautiful, feature rich, innovative and performant desktop. The 5.4 version of the workspace introduces a new audio volume applet, a full-screen dashboard menu, many new icons (more than 1600 added) and improved High DPI support. Some minor “papercuts” from the previous releases have also been fixed, for example additional date formats in the clock or improvements in Folder View behavior and visuals.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/hicolor/48x48/apps/pattern-gnome.png' title=''>
+        <img src='/assets/icons/hicolor/48x48/apps/pattern-gnome.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>GNOME</h3>
+        <p>
+            openSUSE Leap 42.1 ships with GNOME 3.16.2. The GNOME 3.16.x branch has been released in April 2015 and received multiple bug fix iterations, making it a well tested and stable version to supplement the rock-solid SLE12 base system. GNOME 3’s visuals have been updated for 3.16. The Activities Overview, login screen, system menus and other system components have been given a new, more contemporary look. The new visuals are designed to integrate with the visual style of GNOME applications, for a more seamless experience. 3.16 has a new style of scrollbar for GNOME 3. Instead of being shown all the time, these new overlay scrollbars are only shown when needed: a small scroll indicator is shown when the pointer is moved, and a larger bar appears when control is wanted.
+        </p>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-sm-2'>
+        <p class='text-center'>
+    <a href='/assets/icons/oxygen/48x48/places/user-desktop.png' title=''>
+        <img src='/assets/icons/oxygen/48x48/places/user-desktop.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+    </div>
+    <div class='col-sm-10'>
+        <h3>Other desktop environments</h3>
+        <p>
+            openSUSE Leap 42.1 includes MATE (1.10), which provides support for both GTK2 and GTK3 toolkits, added support for 3.x GUI toolkits and improvements in Audio Mixer Library. openSUSE Leap 42.1 also ships with XFCE (4.12.1). The XFCE panel can now intelligently hide itself, supports GTK3 plugins, and saw lots of its third-party plugins updated to take full advantage of the features added in 4.10. Enlightenment 19 (0.19.12) ships in openSUSE Leap 42.1 and can now unshade clients when they’re activated, updates the X11 compositor to use damage events, and updates the icon theme search list for the wizard.
+        </p>
+    </div>
+</div>
+
+<p>Details about Power 8 (ppc64le), and ARM (AArch64) in openSUSE Leap 42.1 will be released at a later date.</p>
+
+<h2>About the openSUSE Project</h2>
+
+<p>The openSUSE Project is a worldwide community that promotes the use of Linux everywhere. It creates one of the world’s best Linux distributions, working together in an open, transparent and friendly manner as part of the worldwide Free and Open Source Software community. The project is controlled by its community and relies on the contributions of individuals, working as testers, writers, translators, usability experts, artists and ambassadors or developers. The project embraces a wide variety of technology, people with different levels of expertise, speaking different languages and having different cultural backgrounds. Learn more about it on <a href="http://www.opensuse.org/">opensuse.org</a>.</p>
+
+<p><em>This news was originally published by <a href="https://news.opensuse.org/author/ddemaio/">Douglas DeMaio</a> at <a href="https://news.opensuse.org/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/">news.opensuse.org</a>.</em></p>
+
+            </div>
+        </div>
+
+        
+    </article>
+</div><!-- .blog-post -->
+
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-default" id="about">
+    <div class="panel-heading">
+        <h3>
+            <a name="about"></a>
+            
+                About
+            
+        </h3>
+    </div>
+    <div class="panel-body">
+        <p class='text-center'>
+    <a href='/assets/img/TuxKamarada.png' title=''>
+        <img src='/assets/img/TuxKamarada.png' alt='' class='img-responsive img-thumbnail'>
+    </a>
+    
+</p>
+
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+    </div><!-- .panel-body -->
+</div><!-- .panel -->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+                <p class="text-center">
+                    <a href="https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b" title="Antônio Vinícius">
+                        <img src="https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b" alt="Antônio Vinícius" class="img-circle img-responsive img-thumbnail">
+                    </a>
+                </p>
+            
+            
+                <p class="lead text-center" itemprop="name">
+                    
+                        Antônio Vinícius
+                    
+                </p>
+            
+            <ul class="contact-list list-unstyled">
+                
+                    <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fa fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+                
+            </ul>
+        </div>
+
+        
+            <!--<ul class="social-media-list list-unstyled">
+                
+                
+                    <li>
+                        <a href="https://twitter.com/jekyllrb" itemprop="sameAs">
+                            <i class="fa fa-twitter"></i> jekyllrb
+                        </a>
+                    </li>
+                
+                
+                
+                
+                
+                
+                    <li>
+                        <a href="https://github.com/jekyll" itemprop="sameAs">
+                            <i class="fa fa-github"></i> jekyll
+                        </a>
+                    </li>
+                
+                <li>
+                    <a href="/en/feed.xml">
+                        <i class="fa fa-rss-square"></i> subscribe via RSS
+                    </a>
+                </li>
+            </ul>-->
+        
+    </div><!-- .panel-body -->
+</div><!-- .panel -->
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="sidebar_ad_unit"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="7329324255"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-center">
+                    Copyright &copy; 2015 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <meta itemprop="description" content="The wait is over and a new era begins for openSUSE releases. Contributors, friends and fans can now download the first Linux hybrid distro openSUSE Leap 42.1. Since the last release, exactly one year ago, openSUSE transformed its development process to create an entirely new type of hybrid Linux distribution called openSUSE Leap.">
+
+
+
+    <meta itemprop="image" content="/files/2015/11/Leap-green.png">
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+
+
+    <!-- Google AdSense -->
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+</body>
+</html>
