@@ -376,6 +376,26 @@
 
             
         </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style center-block">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
     </div><!-- .panel-body -->
 </div><!-- .panel -->
 
@@ -410,27 +430,6 @@
                 
             </ul>
         </div>
-
-        
-            <!-- AddThis Follow Buttons -->
-            <!--<div class="addthis_toolbox addthis_32x32_style addthis_default_style center-block">
-                
-                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="" itemprop="sameAs"></a>
-                
-                
-                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
-                
-                
-                
-                
-                
-                
-                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
-                
-                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
-            </div>-->
-            <!-- AddThis Follow Buttons End -->
-        
     </div><!-- .panel-body -->
 </div><!-- .panel -->
 
@@ -502,11 +501,52 @@
 
     <!-- Google AdSense -->
     
+        <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="content_ad_unit_2"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="4375857858"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+    
 
     <script type="text/javascript">
         adsbygoogle = window.adsbygoogle || [];
 
         $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                if (($('.blog-post').length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var $posts = $('.blog-post');
+                    if ($posts.length < 2) {
+                        return;
+                    }
+                    var post;
+                    if ($posts.length > 1) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p');
+                    if ($paragraphs.length == 0) {
+                        return;
+                    }
+                    var paragraph;
+                    if ($paragraphs.length > 1) {
+                        paragraph = random_number(1, $paragraphs.length);
+                    } else {
+                        paragraph = 1;
+                    }
+                    $paragraphs.eq(paragraph - 1).after($ad);
+                }
             
             $('.adsbygoogle').each(function(index, element){
                 adsbygoogle.push({});
