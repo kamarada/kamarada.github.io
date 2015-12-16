@@ -182,6 +182,10 @@
             <ul class="nav navbar-nav navbar-right">
                 
                     
+                
+
+                
+                    
                         <li>
                             <a href="/pt/download/">Download</a>
                         <li>
@@ -233,8 +237,9 @@
 
 
     <div class="container">
-        <div class='col-sm-8'>
-            <meta itemprop="headline name" content=" Linux Kamarada">
+        <div class="row">
+            <div class='col-sm-8'>
+                <meta itemprop="headline name" content=" Linux Kamarada">
 <link href="https://kamarada.github.io/pt/" itemprop="url">
 
 
@@ -314,7 +319,11 @@
                 
                     <p itemprop="description">Um LiveCD (do inglês live, vivo, e CD, o disco ótico) é um CD que contém um sistema operacional pronto para uso. Esse sistema não precisa ser instalado no computador, pois pode ser executado diretamente a partir do CD: você insere o CD, liga o computador e utiliza o sistema, que já está pronto. Ele...</p>
                     
-                        <a class='btn btn-primary pull-left' href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/#disqus_thread">Comments</a>
+                        <a class='btn btn-primary pull-left' href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/#disqus_thread">
+                            
+                                Comentários
+                            
+                        </a>
                     
                     <a class='btn btn-primary pull-right' href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">
                         Leia mais &rsaquo;
@@ -410,7 +419,11 @@
                 
                     <p itemprop="description">A espera acabou e uma nova era começa para o openSUSE. Colaboradores, amigos e fãs agora podem baixar a primeira distribuição Linux híbrida: o openSUSE Leap 42.1. Desde o lançamento da última versão, há exatamente um ano, o openSUSE transformou seu processo de desenvolvimento para criar um tipo completamente novo de distribuição Linux híbrida, batizada...</p>
                     
-                        <a class='btn btn-primary pull-left' href="/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/#disqus_thread">Comments</a>
+                        <a class='btn btn-primary pull-left' href="/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/#disqus_thread">
+                            
+                                Comentários
+                            
+                        </a>
                     
                     <a class='btn btn-primary pull-right' href="/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/">
                         Leia mais &rsaquo;
@@ -426,9 +439,9 @@
 
 
 
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-default" id="about">
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default" id="about">
     <div class="panel-heading">
         <h3>
             <a name="about"></a>
@@ -526,6 +539,7 @@
     </div><!-- .row -->
 
 
+            </div>
         </div>
     </div>
 
@@ -541,10 +555,11 @@
     </div>
 </footer>
 
+<meta itemprop="description" content="The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+">
 
 
-
-    <meta itemprop="image" content="/assets/favicons/favicon.png">
+    <meta itemprop="image" content="https://kamarada.github.io/assets/favicons/favicon.png">
 
 
 
@@ -594,7 +609,7 @@
 
         $(document).ready(function(){
             
-                var $ad = $('#content_ad_unit_2');
+                var $ad = $('#content_ad_unit_2').closest('.row');
                 if (($('.blog-post').length > 1) || ($('.blog-archive-title').length > 0)) {
                     // Post listing
                     var $posts = $('.blog-post');

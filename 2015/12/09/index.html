@@ -213,6 +213,8 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 
+
+                
                     
                         
                     
@@ -301,8 +303,9 @@
 
 
     <div class="container">
-        <div class='col-sm-8'>
-            <div class="panel panel-primary">
+        <div class="row">
+            <div class='col-sm-8'>
+                <div class="panel panel-primary">
     <div class="panel-heading">
         <h2 class="blog-archive-title" itemprop="headline name">
             <a href="/2015/12/09/" itemprop="url">
@@ -380,7 +383,11 @@
                 
                     <p itemprop="description">{% include image.html src="/files/2015/11/livecd.png" %}A **LiveCD** is a CD medium which brings a ready-to-use operating system. That system does not need to be installed on the computer's hard drive to run, it can run directly from the CD: you insert the disk into the drive, turn the computer on and use the system, which comes...</p>
                     
-                        <a class='btn btn-primary pull-left' href="/en/2015/12/09/what-is-a-livecd-dvd-usb/#disqus_thread">Comments</a>
+                        <a class='btn btn-primary pull-left' href="/en/2015/12/09/what-is-a-livecd-dvd-usb/#disqus_thread">
+                            
+                                Comments
+                            
+                        </a>
                     
                     <a class='btn btn-primary pull-right' href="/en/2015/12/09/what-is-a-livecd-dvd-usb/">
                         Read more &rsaquo;
@@ -406,9 +413,9 @@
     </div><!-- .blog-post -->
 
 
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-default" id="about">
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default" id="about">
     <div class="panel-heading">
         <h3>
             <a name="about"></a>
@@ -506,6 +513,7 @@
     </div><!-- .row -->
 
 
+            </div>
         </div>
     </div>
 
@@ -521,7 +529,8 @@
     </div>
 </footer>
 
-
+<meta itemprop="description" content="The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+">
 
 
 
@@ -572,7 +581,7 @@
 
         $(document).ready(function(){
             
-                var $ad = $('#content_ad_unit_2');
+                var $ad = $('#content_ad_unit_2').closest('.row');
                 if (($('.blog-post').length > 1) || ($('.blog-archive-title').length > 0)) {
                     // Post listing
                     var $posts = $('.blog-post');
