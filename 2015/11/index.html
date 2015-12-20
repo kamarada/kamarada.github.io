@@ -39,15 +39,11 @@
         
     
         
-            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/feed.xml" />
-        
-    
-        
             <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/feed.xml" />
         
     
         
-            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/" />
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/feed.xml" />
         
     
         
@@ -55,11 +51,15 @@
         
     
         
-            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/opensearch.xml" />
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/" />
         
     
         
             <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/opensearch.xml" />
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/opensearch.xml" />
         
     
         
@@ -223,16 +223,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                            <li>
-                                <a href="/en/download/">Download</a>
-                            <li>
-                        
-                    
-                        
                             <li>
                                 <a href="/archive/">Archive</a>
                             <li>
@@ -242,6 +232,16 @@
                             <li>
                                 <a href="/pt/download/">Download</a>
                             <li>
+                        
+                    
+                        
+                            <li>
+                                <a href="/en/download/">Download</a>
+                            <li>
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -782,14 +782,11 @@
         $(document).ready(function(){
             
                 var $ad = $('#content_ad_unit_2').closest('.row');
-                if (($('.blog-post').length > 1) || ($('.blog-archive-title').length > 0)) {
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
                     // Post listing
-                    var $posts = $('.blog-post');
-                    if ($posts.length < 2) {
-                        return;
-                    }
                     var post;
-                    if ($posts.length > 1) {
+                    if ($posts.length > 2) {
                         post = random_number(2, $posts.length);
                     } else {
                         post = 2;
@@ -797,17 +794,20 @@
                     $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
                 } else {
                     // Page or post
-                    var $paragraphs = $('.blog-post-content p');
-                    if ($paragraphs.length == 0) {
-                        return;
-                    }
-                    var paragraph;
-                    if ($paragraphs.length > 1) {
-                        paragraph = random_number(1, $paragraphs.length);
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });;
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
                     } else {
-                        paragraph = 1;
+                        $ad.remove();
                     }
-                    $paragraphs.eq(paragraph - 1).after($ad);
                 }
             
             $('.adsbygoogle').each(function(index, element){
