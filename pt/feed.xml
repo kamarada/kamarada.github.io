@@ -9,10 +9,386 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 27 Dec 2015 20:02:20 -0200</pubDate>
-        <lastBuildDate>Sun, 27 Dec 2015 20:02:20 -0200</lastBuildDate>
+        <pubDate>Sun, 21 Feb 2016 20:34:10 -0300</pubDate>
+        <lastBuildDate>Sun, 21 Feb 2016 20:34:10 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como preparar um LiveUSB</title>
+                <description>&lt;p class=&#39;no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+    &lt;a href=&#39;/files/2016/02/liveusb.jpg&#39; title=&#39;&#39;&gt;
+        &lt;img src=&#39;/files/2016/02/liveusb.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Um &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveUSB&lt;/a&gt; permite que você leve o Linux consigo de forma prática para usar em qualquer computador que ofereça a possibilidade de iniciar o sistema operacional (&amp;quot;dar o &lt;em&gt;boot&lt;/em&gt;&amp;quot;, na gíria técnica) a partir de dispositivos USB, como &lt;em&gt;pendrives&lt;/em&gt;, discos rígidos ou cartões de memória.&lt;/p&gt;
+
+&lt;p&gt;Em tese, qualquer dispositivo de armazenamento em massa USB pode ser transformado em um LiveUSB. Como fazer isso é o que veremos nesse &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você não sabe o que é um LiveUSB, já apresentamos ele em &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Antes de criar um LiveUSB, você deve &lt;a href=&quot;/pt/download/&quot;&gt;baixar o Linux&lt;/a&gt;. Caso precise de ajuda com o &lt;em&gt;download&lt;/em&gt;, consulte esse &lt;a href=&quot;/pt/2015/12/20/como-baixar-o-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As instruções para criar um LiveUSB variam de acordo com o sistema operacional que você usa. Isso porque os programas utilizados são diferentes.&lt;/p&gt;
+
+&lt;p&gt;Identifique abaixo o sistema operacional que você está usando agora e clique nele para ver as instruções de como preparar um LiveUSB usando o seu sistema.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+Antes de continuar, observe que &lt;strong&gt;os dados presentes no dispositivo USB serão perdidos!&lt;/strong&gt; Depois, &lt;strong&gt;o dispositivo USB só poderá ser utilizado para armazenar o Linux&lt;/strong&gt;. Certifique-se de reservar o dispositivo para apenas essa finalidade.
+&lt;/div&gt;
+
+&lt;p&gt;Por precaução, antes de começar, recomendo remover todos os dispositivos de armazenamento em massa USB (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, cartões de memória, etc.) conectados ao computador, se houver algum.&lt;/p&gt;
+
+&lt;div class=&quot;no-ads-here panel-group&quot; id=&quot;help-accordion&quot; role=&quot;tablist&quot; aria-multiselectable=&quot;true&quot;&gt;
+    &lt;div class=&quot;panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;help-windows&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;
+                &lt;a role=&quot;button&quot; data-toggle=&quot;collapse&quot; data-parent=&quot;#help-accordion&quot; href=&quot;#help-windows-collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;help-windows-collapse&quot;&gt;
+                    &lt;i class=&quot;fa fa-windows&quot;&gt;&lt;/i&gt; Windows
+                &lt;/a&gt;
+            &lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;help-windows-collapse&quot; class=&quot;panel-collapse collapse&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;help-windows&quot;&gt;
+            &lt;div class=&quot;panel-body&quot;&gt;
+
+&lt;p&gt;No &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, a ferramenta que usaremos para preparar o LiveUSB é o &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;Rufus&lt;/a&gt;. Ele é pequeno, leve, gratuito, fácil de usar e dispensa instalação: ao baixar o Rufus, ele já vem pronto para uso.&lt;/p&gt;
+
+&lt;p&gt;Baixe o Rufus do seu &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;&lt;em&gt;site&lt;/em&gt; oficial&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus01.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus01.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Conecte ao computador o dispositivo USB que será utilizado e inicie o Rufus. Possivelmente, ele solicitará permissão de administrador, que você deve conceder:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus02.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus02.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O Rufus pergunta se deseja procurar atualizações na Internet. Você pode clicar em &lt;strong&gt;Não&lt;/strong&gt; e prosseguir:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus03.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus03.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Em &lt;strong&gt;Dispositivo&lt;/strong&gt;, selecione o dispositivo USB que receberá o Linux (confira o nome e a capacidade para se certificar de que selecionou o dispositivo correto):&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus04.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus04.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;É muito importante que o dispositivo USB que será utilizado seja identificado corretamente. Do contrário, danos irreparáveis podem ser causados ao sistema.&lt;/p&gt;
+
+&lt;p&gt;Certifique-se de que a opção &lt;strong&gt;Criar disco bootável com&lt;/strong&gt; está marcada, e selecione &lt;strong&gt;Imagem ISO&lt;/strong&gt;. Depois, clique no ícone do disco que aparece ao lado dessas opções:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus05.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus05.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Abra a imagem ISO do Linux:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus06.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus06.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Iniciar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus07.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus07.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O Rufus exibirá um aviso. Esse aviso aparece porque a imagem ISO do Linux openSUSE é uma &lt;strong&gt;imagem ISO híbrida&lt;/strong&gt; (&lt;a href=&quot;http://www.syslinux.org/wiki/index.php/Isohybrid&quot;&gt;&lt;em&gt;hybrid ISO&lt;/em&gt;&lt;/a&gt;), que serve tanto para criar LiveDVDs como para criar LiveUSBs. Selecione a opção &lt;strong&gt;Gravar no modo Imagem DD&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt; para continuar:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus08.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus08.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O Rufus exibirá mais um aviso. Esse é o último. &lt;strong&gt;Leia-o atentamente&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt; para iniciar a preparação do LiveUSB:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus09.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus09.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O Rufus exibe o progresso na parte inferior da janela:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus10.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus10.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Gravar dados em um dispositivo USB geralmente é um processo lento, então não se preocupe se a preparação do LiveUSB demorar.&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/rufus11.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/rufus11.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Ao final, você terá um dispositivo USB que o permitirá utilizar o Linux em qualquer computador que ofereça a possibilidade de iniciar o sistema operacional por um dispositivo USB. Então, poderá fechar o Rufus e remover o dispositivo.&lt;/p&gt;
+
+&lt;p&gt;Se seu dispositivo USB tem uma luz que pisca quando dados são gravados nele, aguarde essa luz parar de piscar antes de removê-lo.&lt;/p&gt;
+
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;help-suse&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;
+                &lt;a role=&quot;button&quot; data-toggle=&quot;collapse&quot; data-parent=&quot;#help-accordion&quot; href=&quot;#help-suse-collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;help-suse-collapse&quot;&gt;
+                    &lt;i class=&quot;fl-opensuse&quot;&gt;&lt;/i&gt; Linux (distribuição openSUSE)
+                &lt;/a&gt;
+            &lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;help-suse-collapse&quot; class=&quot;panel-collapse collapse&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;help-suse&quot;&gt;
+            &lt;div class=&quot;panel-body&quot;&gt;
+
+&lt;p&gt;No Linux openSUSE, a ferramenta que usaremos para preparar o LiveUSB é o Gravador de imagens do SUSE Studio (&lt;a href=&quot;http://github.com/mbarringer/imagewriter&quot;&gt;SUSE Studio Imagewriter&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Você pode obter o Gravador de imagens do SUSE Studio do repositório oficial do openSUSE utilizando a facilidade da Instalação Em Um Clique (&lt;a href=&quot;https://en.opensuse.org/openSUSE:One_Click_Install&quot;&gt;One Click Install&lt;/a&gt;), que é o que recomendamos: &lt;a href=&quot;/downloads/imagewriter.ymp&quot;&gt;clique aqui&lt;/a&gt; para iniciar o processo de instalação.&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter01.png&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter01.png&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Alternativamente, se preferir, você pode instalar o pacote &lt;strong&gt;imagewriter&lt;/strong&gt; usando a ferramenta de sua preferência. Para instalar o Gravador de imagens do SUSE Studio pelo terminal usando o aplicativo de linha de comando &lt;strong&gt;zypper&lt;/strong&gt;, por exemplo, o comando a ser executado é:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo zypper in imagewriter&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Uma vez instalado o Gravador de imagens do SUSE Studio, conecte ao computador o dispositivo USB que será utilizado e inicie o programa clicando no &lt;strong&gt;ícone do Kicker&lt;/strong&gt;, apontando para &lt;strong&gt;Sistema&lt;/strong&gt; e, por fim, clicando em &lt;strong&gt;Gravador de imagens do SUSE Studio&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter02.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter02.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Clique onde se lê &lt;strong&gt;Drag disk image here or click to select&lt;/strong&gt; (traduzindo, arraste a imagem do disco até aqui ou clique para selecionar):&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter03.png&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter03.png&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Abra a imagem ISO do Linux:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter04.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter04.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Na parte inferior da janela, selecione o dispositivo USB que receberá o Linux (confira o nome e a capacidade para se certificar de que selecionou o dispositivo correto):&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter05.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter05.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;É muito importante que o dispositivo USB que será utilizado seja identificado corretamente. Do contrário, danos irreparáveis podem ser causados ao sistema.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Write&lt;/strong&gt; (gravar):&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter06.png&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter06.png&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O Gravador de imagens do SUSE Studio alerta que ao continuar todos os dados presentes no dispositivo USB serão perdidos, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter07.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter07.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Possivelmente, o Gravador de imagens do SUSE Studio solicitará permissão de administrador. Se isso acontecer, digite a senha do superusuário (&lt;em&gt;root&lt;/em&gt;) e clique em &lt;strong&gt;OK&lt;/strong&gt; para começar:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter08.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter08.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;O progresso da preparação do LiveUSB é exibido:&lt;/p&gt;
+
+&lt;p class=&quot;no-ads-here text-center&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+    &lt;a href=&quot;/files/2016/02/imagewriter09.jpg&quot; title=&quot;&quot;&gt;
+        &lt;img src=&quot;/files/2016/02/imagewriter09.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Gravar dados em um dispositivo USB geralmente é um processo lento, então não se preocupe se a preparação do LiveUSB demorar.&lt;/p&gt;
+
+&lt;p&gt;Ao final, quando essa janela de progresso desaparecer, você terá um dispositivo USB que o permitirá utilizar o Linux em qualquer computador que ofereça a possibilidade de iniciar o sistema operacional por um dispositivo USB. Então, você poderá fechar o Gravador de imagens do SUSE Studio e remover o dispositivo.&lt;/p&gt;
+
+&lt;p&gt;Se seu dispositivo USB tem uma luz que pisca quando dados são gravados nele, aguarde essa luz parar de piscar antes de removê-lo.&lt;/p&gt;
+
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;help-linux&quot;&gt;
+            &lt;h4 class=&quot;panel-title&quot;&gt;
+                &lt;a role=&quot;button&quot; data-toggle=&quot;collapse&quot; data-parent=&quot;#help-accordion&quot; href=&quot;#help-linux-collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;help-linux-collapse&quot;&gt;
+                    &lt;i class=&quot;fa fa-linux&quot;&gt;&lt;/i&gt; Linux (qualquer distribuição)
+                &lt;/a&gt;
+            &lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;help-linux-collapse&quot; class=&quot;panel-collapse collapse&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;help-linux&quot;&gt;
+            &lt;div class=&quot;panel-body&quot;&gt;
+
+&lt;p&gt;As instruções a seguir devem funcionar para qualquer distribuição Linux (inclusive para o openSUSE). Vamos utilizar o terminal para preparar o LiveUSB. Certifique-se de que os aplicativos de linha de comando &lt;strong&gt;df&lt;/strong&gt;, &lt;strong&gt;dd&lt;/strong&gt; e &lt;strong&gt;fdisk&lt;/strong&gt; encontram-se instalados.&lt;/p&gt;
+
+&lt;p&gt;No openSUSE, eles já devem vir instalados por padrão, pois são fornecidos pelos pacotes &lt;strong&gt;coreutils&lt;/strong&gt; e &lt;strong&gt;util-linux&lt;/strong&gt;, que são básicos. Caso queira se assegurar de que estejam instalados, o seguinte comando deve instalá-los, caso ainda não estejam:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo zypper in coreutils util-linux&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Primeiro, vamos verificar o caminho para o dispositivo USB que receberá o Linux. Conecte ao computador o dispositivo USB e execute o seguinte comando no terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ df&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ele deve produzir uma saída parecida com essa:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Sist. Arq.     1K-blocos     Usado Disponível Uso% Montado em
+devtmpfs         1013820         0    1013820   0% /dev
+tmpfs            1019636     21448     998188   3% /dev/shm
+tmpfs            1019636      2076    1017560   1% /run
+tmpfs            1019636         0    1019636   0% /sys/fs/cgroup
+/dev/sda1       30832636  11853476   17924688  40% /
+/dev/sda2       73502716  35866924   37635792  49% /run/media/vinicius/SISTEMA
+/dev/sda5      104857596 101940936    2916660  98% /run/media/vinicius/PESSOAL
+/dev/sda3       97920668  50306056   47100156  52% /home
+/dev/sdb1        7816192        12    7816180   1% /run/media/vinicius/VINICIUS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A última linha deve mostrar o dispositivo USB que você acabou de conectar. Se estiver em dúvida, remova-o, execute o comando &lt;code&gt;df&lt;/code&gt; e verifique que a linha referente a ele desaparece. Então, conecte-o novamente e execute o comando &lt;code&gt;df&lt;/code&gt; mais uma vez. Perceba que a linha referente a ele reaparece:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/dev/sdb1        7816192        12    7816180   1% /run/media/vinicius/VINICIUS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A coluna mais à esquerda na saída produzida pelo comando &lt;code&gt;df&lt;/code&gt; mostra uma partição (nesse exemplo, &lt;strong&gt;/dev/sdb1&lt;/strong&gt;, no seu computador pode ser diferente). O caminho antes do número é o caminho do dispositivo (&lt;strong&gt;/dev/sdb&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Você pode comparar a saída do comando &lt;code&gt;df&lt;/code&gt; com a saída do comando &lt;code&gt;fdisk -l&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# fdisk -l
+
+Disk /dev/sda: 298.1 GiB, 320072933376 bytes, 625142448 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x9b5a4cc6
+
+Device     Boot     Start       End   Sectors  Size Id Type
+/dev/sda1  *         2048  62916607  62914560   30G 83 Linux
+/dev/sda2        62916608 209922047 147005440 70.1G  7 HPFS/NTFS/exFAT
+/dev/sda3       209922048 409151487 199229440   95G 83 Linux
+/dev/sda4       409151488 625141759 215990272  103G  5 Extended
+/dev/sda5       409153536 618868735 209715200  100G  7 HPFS/NTFS/exFAT
+/dev/sda6       618870784 625141759   6270976    3G 82 Linux swap / Solaris
+
+Disk /dev/sdb: 7.5 GiB, 8022654976 bytes, 15669248 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc54fbc17
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        2048 15667199 15665152  7.5G  b W95 FAT32&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O aplicativo &lt;strong&gt;fdisk&lt;/strong&gt; informa que existe um dispositivo &lt;strong&gt;/dev/sdb&lt;/strong&gt; de 7,5GB com apenas uma partição &lt;strong&gt;/dev/sdb1&lt;/strong&gt; que ocupa todo o seu espaço e apresenta sistema de arquivos FAT32. Esse dispositivo eu reconheço corretamente como o meu &lt;em&gt;pendrive&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;É muito importante que o dispositivo USB que será utilizado seja identificado corretamente. Do contrário, danos irreparáveis podem ser causados ao sistema.&lt;/p&gt;
+
+&lt;p&gt;Após identificar e ter certeza do caminho do dispositivo, use o comando &lt;code&gt;dd&lt;/code&gt; para preparar o LiveUSB. Esse comando precisa de dois argumentos: o caminho da imagem ISO (nesse exemplo, &lt;strong&gt;/home/vinicius/Downloads/openSUSE-Leap-42.1-KDE-Live.x86_64-20160214.iso&lt;/strong&gt;) e o caminho do dispositivo (nesse exemplo, &lt;strong&gt;/dev/sdb&lt;/strong&gt;). Execute-o no terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo dd if=/home/vinicius/Downloads/openSUSE-Leap-42.1-KDE-Live.x86_64-20160214.iso of=/dev/sdb bs=4k&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O último argumento passado (&lt;code&gt;bs=4k&lt;/code&gt;) é opcional, mas a adição dele deve acelerar o processo de gravação no dispositivo USB. Esse processo geralmente é um processo lento, então não se preocupe se demorar.&lt;/p&gt;
+
+&lt;p&gt;Quando o programa &lt;strong&gt;dd&lt;/strong&gt; termina, ele informa algumas estatísticas sobre a quantidade de dados que ele gravou no dispositivo USB:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;425216+0 registros de entrada
+425216+0 registros de saída
+1741684736 bytes (1,7 GB) copiados, 366,236 s, 4,8 MB/s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse momento, seu dispositivo USB já é capaz de iniciar o Linux em qualquer computador que ofereça a possibilidade de iniciar o sistema operacional por um dispositivo USB.&lt;/p&gt;
+
+&lt;p&gt;Pode remover seu dispositivo USB. Se ele tem uma luz que pisca quando dados são gravados nele, aguarde essa luz parar de piscar antes de removê-lo.&lt;/p&gt;
+
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://vinyanalista.github.io/blog/2015/10/08/rufus/&quot;&gt;Rufus: o canivete suíço do boot pelo pendrive (ou cartão de memória) - Antônio Vinícius&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Live_USB_stick&quot;&gt;SDB:Live USB stick - openSUSE wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://susestudio.com/help/use/disk-image.html&quot;&gt;Disk images - SUSE Studio Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;link href=&quot;//cdn.rawgit.com/Lukas-W/font-linux/v0.2/assets/font-linux.css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/p&gt;
+</description>
+                <pubDate>Sun, 21 Feb 2016 20:20:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2016/02/21/como-preparar-um-liveusb/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2016/02/21/como-preparar-um-liveusb/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como baixar o Linux</title>
@@ -23,7 +399,7 @@
 &lt;/div&gt;
 
 &lt;div class=&quot;no-ads-here panel-group&quot; id=&quot;help-accordion&quot; role=&quot;tablist&quot; aria-multiselectable=&quot;true&quot;&gt;
-    &lt;div class=&quot;no-ads-here panel panel-default&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
         &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;help-google-chrome&quot;&gt;
             &lt;h4 class=&quot;panel-title&quot;&gt;
                 &lt;a role=&quot;button&quot; data-toggle=&quot;collapse&quot; data-parent=&quot;#help-accordion&quot; href=&quot;#help-google-chrome-collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;help-google-chrome-collapse&quot;&gt;
@@ -96,7 +472,7 @@
         &lt;/div&gt;
     &lt;/div&gt;
     
-    &lt;div class=&quot;no-ads-here panel panel-default&quot;&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
         &lt;div class=&quot;panel-heading&quot; role=&quot;tab&quot; id=&quot;help-microsoft-edge&quot;&gt;
             &lt;h4 class=&quot;panel-title&quot;&gt;
                 &lt;a role=&quot;button&quot; data-toggle=&quot;collapse&quot; data-parent=&quot;#help-accordion&quot; href=&quot;#help-microsoft-edge-collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;help-microsoft-edge-collapse&quot;&gt;
@@ -265,7 +641,7 @@
     &lt;/div&gt;
 &lt;/div&gt;
 </description>
-                <pubDate>Sun, 20 Dec 2015 22:00:00 -0200</pubDate>
+                <pubDate>Sun, 20 Dec 2015 22:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2015/12/20/como-baixar-o-linux/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2015/12/20/como-baixar-o-linux/</guid>
                 
@@ -318,7 +694,7 @@
 
 &lt;p&gt;Portanto, de maneira geral, os LiveCDs, assim como LiveDVDs e LiveUSBs, &lt;strong&gt;não são recomendados para uso diário&lt;/strong&gt;. Se você pretende usar o Linux todos os dias, considere instalá-lo em seu computador ou em uma máquina virtual.&lt;/p&gt;
 </description>
-                <pubDate>Wed, 25 Nov 2015 23:00:00 -0200</pubDate>
+                <pubDate>Wed, 25 Nov 2015 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/</guid>
                 
@@ -684,7 +1060,7 @@
 
 &lt;p&gt;&lt;em&gt;Essa é uma tradução não oficial da notícia originalmente publicada por &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; em &lt;a href=&quot;https://news.opensuse.org/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </description>
-                <pubDate>Wed, 04 Nov 2015 08:00:00 -0200</pubDate>
+                <pubDate>Wed, 04 Nov 2015 07:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/</guid>
                 
