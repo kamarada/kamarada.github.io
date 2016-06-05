@@ -9,10 +9,111 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 22 Apr 2016 10:55:45 -0300</pubDate>
-        <lastBuildDate>Fri, 22 Apr 2016 10:55:45 -0300</lastBuildDate>
+        <pubDate>Sun, 05 Jun 2016 14:34:32 -0300</pubDate>
+        <lastBuildDate>Sun, 05 Jun 2016 14:34:32 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como agendar o desligamento do computador</title>
+                <description>&lt;p class=&#39;no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+    &lt;a href=&#39;/files/2016/06/tux-asleep.png&#39; title=&#39;&#39;&gt;
+        &lt;img src=&#39;/files/2016/06/tux-asleep.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39; style=&quot;max-height: 240px;&quot;&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Está com sono e não quer esperar o computador terminar uma tarefa para desligá-lo e ir dormir? Aquele arquivo parece estar levando uma eternidade para baixar... no Linux, você não precisa esperar: você pode programar o desligamento do computador e ir dormir sossegado com a certeza de que acordará com o computador desligado e a tarefa concluída!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;Como desligar o computador no Linux&lt;/h2&gt;
+
+&lt;p&gt;No Linux, podemos desligar o computador tanto pela interface gráfica quanto pela linha de comando (terminal).&lt;/p&gt;
+
+&lt;p&gt;Pela interface gráfica, desligar o computador é bastante intuitivo: no &lt;strong&gt;Menu de aplicativos&lt;/strong&gt; do KDE, há um botão &lt;strong&gt;Desligar&lt;/strong&gt;, assim como um menu &lt;strong&gt;Desligar / Sessão&lt;/strong&gt;, que oferece a opção &lt;strong&gt;Desligar&lt;/strong&gt;. Esse menu também oferece outras opções relacionadas, como &lt;strong&gt;Reiniciar&lt;/strong&gt;, &lt;strong&gt;Hibernar&lt;/strong&gt; e &lt;strong&gt;Suspender&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p class=&#39;no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+    &lt;a href=&#39;/files/2016/06/shutdown-kde-pt.jpg&#39; title=&#39;&#39;&gt;
+        &lt;img src=&#39;/files/2016/06/shutdown-kde-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+    &lt;/a&gt;
+    
+&lt;/p&gt;
+
+&lt;p&gt;Via linha de comando, podemos desligar o computador utilizando o comando &lt;strong&gt;shutdown&lt;/strong&gt; (desligar, em inglês). Ele precisa ser executado com permissões de administrador:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Sem fornecer informação adicional para o comando, ele desligará o computador em 1 minuto. Podemos passar o argumento &lt;strong&gt;-h&lt;/strong&gt; (do inglês &lt;em&gt;halt&lt;/em&gt;, parar) para que o computador seja desligado imediatamente:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se você não quiser fazer &lt;em&gt;login&lt;/em&gt; como superusuário (&lt;em&gt;root&lt;/em&gt;) apenas para invocar o comando &lt;strong&gt;shutdown&lt;/strong&gt;, você pode invocá-lo por meio do comando &lt;strong&gt;sudo&lt;/strong&gt;. Para desligar o computador, por exemplo, seria assim:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo shutdown -h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pela interface gráfica, a princípio, não temos como agendar ou programar o desligamento do computador, mas pela linha de comando temos algumas opções interessantes.&lt;/p&gt;
+
+&lt;h2&gt;Desligando em determinado horário&lt;/h2&gt;
+
+&lt;p&gt;Como vimos, o comando &lt;strong&gt;shutdown&lt;/strong&gt; faz com que o computador seja desligado em instantes ou imediatamente. Podemos passar para ele &lt;strong&gt;quando&lt;/strong&gt; o computador deve ser desligado.&lt;/p&gt;
+
+&lt;p&gt;Podemos ser enfáticos e dizer que o computador deve ser desligado agora (&lt;em&gt;now&lt;/em&gt; em inglês):&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -h now
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ou podemos agendar o desligamento do computador para ocorrer às 10 da noite:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -h 22:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ou podemos agendar o desligamento para daqui a &lt;strong&gt;m&lt;/strong&gt; minutos, passando o argumento &lt;strong&gt;+m&lt;/strong&gt; para o comando &lt;strong&gt;shutdown&lt;/strong&gt;. Se queremos que o computador seja desligado daqui a 5 minutos, por exemplo, invocamos o comando &lt;strong&gt;shutdown&lt;/strong&gt; assim:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -h +5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Podemos agendar o desligamento do computador para daqui a algumas horas, mas aí temos que fazer uma pequena conta. Por exemplo, para desligar o computador daqui a 2 horas (120 minutos), invocamos o comando &lt;strong&gt;shutdown&lt;/strong&gt; assim:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -h +120
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Como isso pode ser útil? Se você está baixando um arquivo e seu navegador prevê que o &lt;em&gt;download&lt;/em&gt; será concluído daqui a 40 minutos, você pode agendar o computador para desligar daqui a 1 ou 2 horas. É bom dar um espaço de tempo porque a previsão pode não se confirmar, devido à velocidade da conexão oscilar, ora estando mais rápida, ora estando mais lenta.&lt;/p&gt;
+
+&lt;h2&gt;Desligando após a conclusão de um comando&lt;/h2&gt;
+
+&lt;p&gt;Antes de iniciar a execução de um comando demorado, você pode programar o computador para desligar após a execução desse comando.&lt;/p&gt;
+
+&lt;p&gt;Sigamos com o exemplo do &lt;em&gt;download&lt;/em&gt; de um arquivo grande. Vamos tomar como exemplo a imagem ISO do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; mais recente produzida pelo &lt;a href=&quot;https://kamarada.github.io/&quot;&gt;Projeto Linux Kamarada&lt;/a&gt; (que pode ser encontrada &lt;a href=&quot;https://kamarada.github.io/pt/download/&quot;&gt;aqui&lt;/a&gt;). Pelo terminal, podemos baixar esse arquivo usando o comando &lt;strong&gt;wget&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ wget http://iweb.dl.sourceforge.net/project/kamarada/distribution/leap/42.1/iso/openSUSE-Leap-42.1-KDE-Live.x86_64-20160604.iso
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Em vez de apenas baixá-lo, podemos ordenar que o computador seja desligado após o fim do &lt;em&gt;download&lt;/em&gt;. Para isso, unimos os dois comandos usando o operador &lt;strong&gt;&amp;amp;&amp;amp;&lt;/strong&gt;, fazendo com que os dois comandos sejam executados um após o outro:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# wget http://iweb.dl.sourceforge.net/project/kamarada/distribution/leap/42.1/iso/openSUSE-Leap-42.1-KDE-Live.x86_64-20160604.iso &amp;amp;&amp;amp; shutdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Observe que, nesse caso, precisamos executar os dois comandos como administrador, visto que não desejamos estar presentes na hora em que o &lt;em&gt;download&lt;/em&gt; terminar para fornecer a senha do superusuário para que o comando &lt;strong&gt;shutdown&lt;/strong&gt; seja executado.&lt;/p&gt;
+
+&lt;p&gt;Também é importante observar que, no exemplo acima, o computador só será desligado caso o &lt;em&gt;download&lt;/em&gt; seja concluído com sucesso. O operador &lt;strong&gt;&amp;amp;&amp;amp;&lt;/strong&gt; garante que caso o primeiro comando falhe, o segundo não seja executado.&lt;/p&gt;
+
+&lt;p&gt;Para desligar o computador independente de o &lt;em&gt;download&lt;/em&gt; concluir ou não, podemos modificar um pouco esse comando:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# wget http://iweb.dl.sourceforge.net/project/kamarada/distribution/leap/42.1/iso/openSUSE-Leap-42.1-KDE-Live.x86_64-20160604.iso &amp;amp; shutdown -h +180
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O operador &lt;strong&gt;&amp;amp;&lt;/strong&gt; une os dois comandos de modo que os dois são executados imediatamente. Em ordem, mas imediatamente. Assim, o computador não espera o fim do comando &lt;strong&gt;wget&lt;/strong&gt; para executar o comando &lt;strong&gt;shutdown&lt;/strong&gt;. Por isso, precisamos agendar o desligamento, senão o computador será desligado imediatamente.&lt;/p&gt;
+
+&lt;p&gt;Interpretando o comando, é como se estivéssemos dizendo para o computador: &amp;quot;inicie o &lt;em&gt;download&lt;/em&gt; agora e desligue o computador daqui a 3 horas&amp;quot;. Estipulei esse prazo dada uma previsão inicial de 2 horas para concluir o &lt;em&gt;download&lt;/em&gt;. Note que o computador será desligado independente de o &lt;em&gt;download&lt;/em&gt; ter sido concluído ou não.&lt;/p&gt;
+
+&lt;h2&gt;Cancelando um desligamento agendado&lt;/h2&gt;
+
+&lt;p&gt;Se você agendou o computador para desligar daqui a algum tempo e por algum motivo desistiu desse agendamento, é possível cancelá-lo invocando o comando &lt;strong&gt;shutdown&lt;/strong&gt; com o argumento &lt;strong&gt;-c&lt;/strong&gt; (do inglês &lt;em&gt;cancel&lt;/em&gt;, cancelar):&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# shutdown -c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Espero que essas dicas possam ser úteis, da mesma forma como executo esses comandos na minha casa com alguma frequência. Caso surja alguma dúvida, não deixe de comentar!&lt;/p&gt;
+
+&lt;p&gt;Até a próxima!&lt;/p&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://man7.org/linux/man-pages/man8/shutdown.8.html&quot;&gt;shutdown(8) - Linux manual page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/a/30508672/1657502&quot;&gt;bash - command-line - what is the purpose of &amp;quot;&amp;amp;&amp;amp;&amp;quot;? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Sun, 05 Jun 2016 14:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2016/06/05/como-agendar-o-desligamento-do-computador/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2016/06/05/como-agendar-o-desligamento-do-computador/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como gravar um LiveDVD</title>
@@ -930,7 +1031,7 @@ Device     Boot Start      End  Sectors  Size Id Type
 
 &lt;p class=&#39;no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
     &lt;a href=&#39;/files/2015/11/Leap-green.png&#39; title=&#39;&#39;&gt;
-        &lt;img src=&#39;/files/2015/11/Leap-green.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+        &lt;img src=&#39;/files/2015/11/Leap-green.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39; style=&quot;max-width: 150px;&quot;&gt;
     &lt;/a&gt;
     
 &lt;/p&gt;
