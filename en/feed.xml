@@ -9,10 +9,385 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 01 Nov 2016 11:51:48 -0200</pubDate>
-        <lastBuildDate>Tue, 01 Nov 2016 11:51:48 -0200</lastBuildDate>
+        <pubDate>Wed, 02 Nov 2016 19:14:59 -0200</pubDate>
+        <lastBuildDate>Wed, 02 Nov 2016 19:14:59 -0200</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>How to upgrade from openSUSE Leap 42.1 to 42.2</title>
+                <description>&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade.png&#39; title=&#39;Source: [openSUSE News](https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/)&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade.png&#39; alt=&#39;Source: [openSUSE News](https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Source: &lt;a href=&quot;https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/&quot;&gt;openSUSE News&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Being able to upgrade from one release to another is a certainty &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; users have. For 3 years now I use openSUSE Linux and I always upgraded without an issue. I started to use openSUSE when it was 12.2, shortly before the &lt;a href=&quot;https://news.opensuse.org/2013/03/13/opensuse-12-3-free-open-and-awesome/&quot;&gt;12.3 release in May 2013&lt;/a&gt;. Since then I went through 5 upgrades: from 12.2 to 12.3, to 13.1, to 13.2, to Leap 42.1 (in fact, there was a leap, as we have seen on &lt;a href=&quot;/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/&quot;&gt;that release&amp;#39;s announcement&lt;/a&gt;) and this week to 42.2, even before it was officially launched.&lt;/p&gt;
+
+&lt;p&gt;The next openSUSE Leap release, 42.2, already passed alfa and beta phases and had its first release candidate (RC) launched on &lt;a href=&quot;https://news.opensuse.org/2016/10/18/release-candidate-available-for-opensuse-leap-42-2/&quot;&gt;October 18&lt;/a&gt;. That means most of the tests have ended. That release is very close to the final one, scheduled to &lt;a href=&quot;https://en.opensuse.org/openSUSE:Roadmap&quot;&gt;November 16&lt;/a&gt;. Until then, openSUSE Leap should receive no more than a few finishing touches.&lt;/p&gt;
+
+&lt;p&gt;Checkout this post to know beforehand how to upgrade your openSUSE Leap installation from 42.1 to 42.2. If you are the kind of person who prefers safety to adventure, here you are going to see what you will do on November 16, after the official release of openSUSE Leap 42.2. If you prefer adventure, like me, you are going to see what you can do to get the coming 42.2 right now. At least both the computers I use at home and work are now working well with openSUSE Leap 42.2 RC 1.&lt;/p&gt;
+
+&lt;p&gt;To better organize the text, I split the upgrade process in 6 steps.&lt;/p&gt;
+
+&lt;h2&gt;A few notes&lt;/h2&gt;
+
+&lt;p&gt;The how-to I present here is based on the openSUSE wiki&amp;#39;s &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;SDB:System upgrade&lt;/a&gt; page, whose instructions I followed to upgrade my system. That page has changed little since I started using openSUSE. It presents a safe upgrade procedure, which should work for most cases, but requires some things be observed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You must be using the immediately previous openSUSE release.&lt;/strong&gt; It means that if you want to upgrade to 42.2, now you must be using 42.1. Hopping over one or more releases is not supported and probably will not work. So if you use openSUSE 13.2, for example, you must first upgrade to Leap 42.1, and then to Leap 42.2 (note that the leap here is just in numbers, &lt;a href=&quot;/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/&quot;&gt;the Leap 42.1 release is indeed the successor of 13.2&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Your openSUSE installation must be up to date&lt;/strong&gt; with the latest updates for the release you are currently running. To learn how to update your system, read the &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You should read about the openSUSE release you are going to install.&lt;/strong&gt; Read the &lt;a href=&quot;https://en.opensuse.org/openSUSE:Most_annoying_bugs&quot;&gt;list of annoying bugs&lt;/a&gt; to be prepared for upcoming problems, how to prevent and/or solve them. Also, read the &lt;a href=&quot;https://en.opensuse.org/openSUSE:Release_Notes&quot;&gt;release notes&lt;/a&gt;, which list changes and glitches in the new release.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You must backup all important data.&lt;/strong&gt; Even though upgrading openSUSE is a safe procedure, that resembles upgrading &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;, it is not perfect. Winning the lottery is difficult, but eventually someone wins. Something may go wrong during upgrade, but it is difficult, even more if you do things cautiously. Anyway, it never hurts to make a backup of your personal files as a precaution, especially if the &lt;code&gt;/home&lt;/code&gt; directory is not on a dedicated partition. If the computer is one that should not be down for long (a server, for example), consider backing up the entire system, so you will be able to restore it immediately if something does not work as expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You should not use third party repositories during upgrade.&lt;/strong&gt; Before upgrading, we are going to remove all third party repositories. Doing that may cause third party software to be removed during upgrade. If that happens, you may try to reinstall it later. It does not mean that you cannot upgrade with third party repositories enabled, but using only the official repositories is more guaranteed. That way, the base system will be upgraded to a new stable, solid and reliable base. Then, on top of that base, you can install whatever you want. Do different only if you know what you are doing.&lt;/p&gt;
+
+&lt;p&gt;I also recommend that you read this entire page before you actually upgrade. Once you know the whole process, you will be able to better schedule it. You can even use your computer while downloading packages, but after you start upgrading, your computer will become usable again only after upgrading is completed.&lt;/p&gt;
+
+&lt;p&gt;Before we begin, I would like to make one more note, for those who want to upgrade to openSUSE Leap 42.2 before the final release date. If that is your case, please note that you will need to repeat the steps &amp;quot;download packages&amp;quot; and &amp;quot;upgrade your system&amp;quot;, the last two steps in this tutorial (5 and 6), for each new release of this version. So, you will repeat those steps on November 2, when Leap 42.2 RC 2 is scheduled to be released, and on November 16, after the final release of Leap 42.2.&lt;/p&gt;
+
+&lt;h2&gt;1) Update your current system&lt;/h2&gt;
+
+&lt;p&gt;Before beginning, make sure your openSUSE installation is up to date.&lt;/p&gt;
+
+&lt;p&gt;As we have seen in the &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;previous post&lt;/a&gt;, if your system is up to date, the &lt;strong&gt;Software Updates&lt;/strong&gt; icon informs that to you:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/sw-updates-05-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/sw-updates-05-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Or, if you prefer using the command line interface (CLI), you can check if your system is up to date running &lt;code&gt;zypper up&lt;/code&gt; as root. If that is the case, it returns &amp;quot;Nothing to do&amp;quot;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/sw-updates-cmd-05-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/sw-updates-cmd-05-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Take a look at &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;that post&lt;/a&gt; to see how to update your openSUSE.&lt;/p&gt;
+
+&lt;p&gt;Let me clarify something, in case it sounds confusing: by &lt;strong&gt;update&lt;/strong&gt; we mean update just a few packages without actually moving from one release to another (e.g. from 42.1 to 42.2). By &lt;strong&gt;upgrade&lt;/strong&gt; we mean update the whole system to move to the next release.&lt;/p&gt;
+
+&lt;p&gt;I use the graphical user interface (GUI) whenever possible, but using the CLI brings us some advantages: &lt;strong&gt;zypper&lt;/strong&gt; allows us to only download updates in a first moment and then install them later. If you are not familiar with the CLI, you will realize that it is not difficult to use.&lt;/p&gt;
+
+&lt;p&gt;Note that, almost always, you can use the CLI without actually leaving the desktop environment through the &lt;a href=&quot;https://www.kde.org/applications/system/konsole/&quot;&gt;&lt;strong&gt;Konsole&lt;/strong&gt;&lt;/a&gt; application. To start it, open the &lt;strong&gt;Application Menu&lt;/strong&gt;, point to &lt;strong&gt;System&lt;/strong&gt;, and then click &lt;strong&gt;Konsole&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-01-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you are familiar with &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;, perhaps you think Konsole resembles Windows&amp;#39; &lt;strong&gt;Command Prompt&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2&gt;2) Backup your current repositories&lt;/h2&gt;
+
+&lt;p&gt;Actually, this step is optional.&lt;/p&gt;
+
+&lt;p&gt;You may want to back up your current list of repositories to return them after upgrading. openSUSE saves repository settings in the &lt;code&gt;/etc/zypp/repos.d&lt;/code&gt; folder. It has some text files, one for each repository. Let&amp;#39;s backup that folder using the CLI.&lt;/p&gt;
+
+&lt;p&gt;Get root privileges running &lt;code&gt;su&lt;/code&gt; (if you are not familiar with the CLI, by &amp;quot;running &lt;code&gt;su&lt;/code&gt;&amp;quot;, we mean &amp;quot;type &lt;code&gt;su&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;&amp;quot;). You will be asked the root password, which you must provide to continue (type the root password and hit &lt;strong&gt;Enter&lt;/strong&gt;, note that the password is not displayed, not even masked as ******, this is normal).&lt;/p&gt;
+
+&lt;p&gt;Then, order the copy running &lt;code&gt;cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.old&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-02-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-02-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That command copies the &lt;code&gt;repos.d&lt;/code&gt; folder, in &lt;code&gt;/etc/zypp&lt;/code&gt;, to another folder in the same place, called &lt;code&gt;repos.d.old&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have not made a backup of your data yet, consider doing that now.&lt;/p&gt;
+
+&lt;h2&gt;3) Clean up repositories&lt;/h2&gt;
+
+&lt;p&gt;As already mentioned, for upgrade we use only the &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;official repositories&lt;/a&gt;. To be more precise, just two of them:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.2-OSS&lt;/strong&gt;: the main repository, contains &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source software&lt;/a&gt; only.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/distribution/leap/42.2/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/42.2/repo/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.2-Update&lt;/strong&gt;: contains official updates for OSS packages.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/update/leap/42.2/oss/&quot;&gt;http://download.opensuse.org/update/leap/42.2/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s clean up our repositories removing any repository we won&amp;#39;t need (including any &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;third party repositories&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Start the YaST Control Center by opening the &lt;strong&gt;Application Menu&lt;/strong&gt;, pointing to &lt;strong&gt;System&lt;/strong&gt;, and then clicking on &lt;strong&gt;YaST&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/linux-ntp-01.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/linux-ntp-01.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked the root password.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Software&lt;/strong&gt; category, then click on &lt;strong&gt;Software Repositories&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-03-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-03-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to your system&amp;#39;s repository list:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-04-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-04-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;For each repository that is neither &lt;strong&gt;openSUSE-Leap-42.1-OSS&lt;/strong&gt; nor &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt;, select it in the list and click on &lt;strong&gt;Delete&lt;/strong&gt; (no typo, we are managing old repositories, the 42.1 ones, we are going to switch to the new ones soon).&lt;/p&gt;
+
+&lt;p&gt;YaST will ask you for confirmation. Click on &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-05-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-05-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Do that with all repositories, until the list has only &lt;strong&gt;openSUSE-Leap-42.1-OSS&lt;/strong&gt; and &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-06-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-06-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Maybe those repositories are named differently on your system. If that is the case, try to recognize them by their &lt;a href=&quot;https://en.wikipedia.org/wiki/Uniform_Resource_Locator&quot;&gt;URL&lt;/a&gt; instead of their name. If you don&amp;#39;t find them, there is no problem: delete all repositories and add just the new ones.&lt;/p&gt;
+
+&lt;h2&gt;4) Switch to the new repositories&lt;/h2&gt;
+
+&lt;p&gt;Now let&amp;#39;s move to the new release&amp;#39;s repositories.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;openSUSE-42.1-Leap-OSS&lt;/strong&gt; repository and click on &lt;strong&gt;Edit&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Replace &lt;code&gt;42.1&lt;/code&gt; by &lt;code&gt;42.2&lt;/code&gt; where necessary and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-07-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-07-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to the &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;openSUSE Leap 42.2 license&lt;/a&gt;. You can read it to know your rights as an openSUSE user. When you are finished, click on &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-08-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-08-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Do the same for the &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt; repository.&lt;/p&gt;
+
+&lt;p&gt;At the end, your system&amp;#39;s repository list should look like this:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-09-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-09-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; to save changes. You can close YaST.&lt;/p&gt;
+
+&lt;h2&gt;5) Download packages&lt;/h2&gt;
+
+&lt;p&gt;We can start downloading the packages of the new openSUSE release.&lt;/p&gt;
+
+&lt;p&gt;Back to CLI, run &lt;code&gt;zypper ref&lt;/code&gt; to retrieve the list of available packages from the new repositories. Then, run &lt;code&gt;zypper dup --download-only&lt;/code&gt; (&lt;code&gt;dup&lt;/code&gt; is an acronym for &lt;em&gt;distribution upgrade&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-10-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-10-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; spends some time &amp;quot;thinking&amp;quot;. Soon after, it shows what it needs to do in order to upgrade openSUSE to the next release and asks if you want to continue:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-11-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-11-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That list of actions is similar to that produced by &lt;code&gt;zypper up&lt;/code&gt;, presented in the &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;previous post&lt;/a&gt;. However, as we are now doing a distribution upgrade, and not an ordinary update, the list of what needs to be done is much bigger.&lt;/p&gt;
+
+&lt;p&gt;Review that list carefully. You can go up or down using the scrollbar at the right of the window or the mouse wheel (scroll wheel) if you are using Konsole, or the &lt;strong&gt;Shift + Page Up&lt;/strong&gt; / &lt;strong&gt;Shift + Page Down&lt;/strong&gt; key combinations if you are using a purely textual interface (they also work in Konsole).&lt;/p&gt;
+
+&lt;p&gt;The default option is to continue (&lt;strong&gt;s&lt;/strong&gt;). If you agree, you can just hit &lt;strong&gt;Enter&lt;/strong&gt; and downloading of the new packages will start. Meanwhile, you can use your computer normally. The upgrade itself has not started yet.&lt;/p&gt;
+
+&lt;p&gt;Note that &lt;strong&gt;zypper&lt;/strong&gt; only downloads packages, it does not start upgrading:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-12-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-12-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That&amp;#39;s because we invoked it with the &lt;code&gt;--download-only&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Finish what you are doing and save any open files so we can start upgrading. Note that upgrading may take several minutes and you will be able to continue using your computer only after it is complete.&lt;/p&gt;
+
+&lt;h2&gt;6) Upgrade your system&lt;/h2&gt;
+
+&lt;p&gt;Now that we have already downloaded all the packages needed to update our openSUSE Leap 42.1 to 42.2, we need to leave the desktop environment and use the pure textual interface to perform the upgrade. Here on, you cannot use Konsole.&lt;/p&gt;
+
+&lt;p&gt;That is necessary because the desktop itself will be upgraded. If we run the upgrade while still using the desktop, it may stop/crash, causing the upgrade to abort, which in turn left the system in an inconsistent, unpredictable state.&lt;/p&gt;
+
+&lt;p&gt;Consider open this page on another computer (or on a mobile device), print it or take note of the next actions.&lt;/p&gt;
+
+&lt;p&gt;If you are upgrading a laptop system, make sure its battery is fully charged and its AC adapter is plugged in. Do not remove the battery or unplug the AC adapter during the upgrade. We want to prevent any possibility of problem.&lt;/p&gt;
+
+&lt;p&gt;Logout by by opening the &lt;strong&gt;Application Menu&lt;/strong&gt;, pointing to &lt;strong&gt;Power / Session&lt;/strong&gt; and clicking on &lt;strong&gt;Logout&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/logout-kde-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/logout-kde-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to the login screen where you could enter your username and password to start a new desktop session:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-13-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-13-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;But that&amp;#39;s not what we want. Press the &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; key combination to switch to a purely textual interface:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-14.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-14.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If that was new to you, know that Linux provides six &lt;a href=&quot;http://opensuse-guide.org/command.php&quot;&gt;consoles&lt;/a&gt; besides the graphical interface. You can use the keys F1 to F6 in that same combination (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; and so on) to switch between consoles, pressing &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; you can return to the graphical interface.&lt;/p&gt;
+
+&lt;p&gt;But let&amp;#39;s stand on the first console.&lt;/p&gt;
+
+&lt;p&gt;Login as root (to do that, type &lt;code&gt;root&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;, then enter the root password and press &lt;strong&gt;Enter&lt;/strong&gt; again).&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s switch from &lt;a href=&quot;https://en.wikipedia.org/wiki/Runlevel&quot;&gt;runlevel&lt;/a&gt; 5, the default runlevel, in which the system provides the GUI, to the runlevel 3, in which we have only the CLI and network connection.&lt;/p&gt;
+
+&lt;p&gt;To &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;change to runlevel&lt;/a&gt; 3, run &lt;code&gt;init 3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, we are going to start the distribution upgrade itself. Run &lt;code&gt;zypper --no-refresh dup&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-15.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-15.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;--no-refresh&lt;/code&gt; option makes &lt;strong&gt;zypper&lt;/strong&gt; not retrieve the list of packages from repositories. Using that option, we ensure that &lt;strong&gt;zypper&lt;/strong&gt; won&amp;#39;t try to download any package in addition to those we have already downloaded. That can be useful especially for laptops, which may lose the Wi-Fi connection when leaving the GUI.&lt;/p&gt;
+
+&lt;p&gt;As before, &lt;strong&gt;zipper&lt;/strong&gt; will compute the upgrade and show what it will do:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-16.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-16.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that all the needed packages have already been downloaded: at the end, &lt;strong&gt;zypper&lt;/strong&gt;&amp;#39;s report shows &amp;quot;Overall download size: 0 B. Already cached: 1.62 GiB&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Just press &lt;strong&gt;Enter&lt;/strong&gt; to start upgrading.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; skips downloading packages and goes straight to upgrading:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-17.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-17.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Distribution upgrade may take several minutes.&lt;/p&gt;
+
+&lt;p&gt;When it finishes, as happened in the &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;previous post&lt;/a&gt;, &lt;strong&gt;zypper&lt;/strong&gt; suggests to restart. Let&amp;#39;s do that by running &lt;code&gt;reboot&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-18.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-18.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Have a lot of fun!&lt;/h2&gt;
+
+&lt;p&gt;If you did everything up to here, now your computer is running openSUSE 42.2 Leap.&lt;/p&gt;
+
+&lt;p&gt;You can see the &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; menu, the one that allows you to choose which operating system to boot when the computer turns on (useful especially if you have Windows and Linux installed on the same machine), is already different:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-19.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-19.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;And &lt;em&gt;voilà&lt;/em&gt;! openSUSE Leap 42.2 is installed and ready for use!&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-20-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-20-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure everything is in place. Now you may return any repositories you removed. Remember to make the appropriate adjustments with respect to the openSUSE version, changing from &lt;code&gt;42.1&lt;/code&gt; to &lt;code&gt;42.2&lt;/code&gt; where necessary. You may also try to install any program that perhaps has been removed during the upgrade.&lt;/p&gt;
+
+&lt;p&gt;Remember to regularly &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;check for updates&lt;/a&gt; for your new distribution.&lt;/p&gt;
+
+&lt;p&gt;If you find any difficulty during the upgrade or have any questions, don&amp;#39;t hesitate to comment!&lt;/p&gt;
+</description>
+                <pubDate>Mon, 31 Oct 2016 23:59:59 -0200</pubDate>
+                <link>https://kamarada.github.io/en/2016/10/31/how-to-upgrade-from-opensuse-leap-421-to-422/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2016/10/31/how-to-upgrade-from-opensuse-leap-421-to-422/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Keep your system always up to date</title>
