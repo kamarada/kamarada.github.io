@@ -36,6 +36,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -202,7 +206,7 @@
                         
                         
                             <li>
-                                <a href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/">This page in English</a>
+                                <a class="translation-en" href="https://kamarada.github.io/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">This page in English</a>
                             </li>
                         
                         <li><a href="https://kamarada.github.io/en/">English home page</a></li>
@@ -262,7 +266,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2017-01-15" />
+                <meta itemprop="dateModified" content="2017-01-25" />
             </div>
             <div class='col-sm-6'>
                 
@@ -315,7 +319,7 @@
 
 <p>Antes de começar, aqui vão algumas coisas às quais você deve se atentar.</p>
 
-<p>O openSUSE Leap pode ser instalado nos mais diversos tipos de <em>hardware</em> existentes. Processadores de 32 <em>bits</em> são uma exceção à regra: eles <a href="https://www.reddit.com/r/openSUSE/comments/3d711c/will_leap_42_support_32bit_machines_given_that/">não são mais suportados</a>, mas servidores com processadores de 64 <em>bits</em> já são bastante comuns.</p>
+<p>O openSUSE Leap pode ser instalado nos mais diversos tipos de <em>hardware</em> existentes. Processadores de 32 <em>bits</em> são uma exceção à regra: <a href="https://www.reddit.com/r/openSUSE/comments/3d711c/will_leap_42_support_32bit_machines_given_that/">eles não são mais suportados</a>, mas servidores com processadores de 64 <em>bits</em> já são bastante comuns.</p>
 
 <p>Eu poderia falar dos <a href="https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/art.opensuse.installquick.html#sec.osuse.installquick.sysreqs">requisitos mínimos</a> para utilização do openSUSE. Porém, se ele já roda com tranquilidade em <em>desktops</em>, o que dirá em servidores, cujos números (frequência ou <em>clock</em> do processador, quantidade de núcleos ou <em>cores</em>, memória RAM e disco rigido, etc.) são geralmente bem maiores. Linux, em geral, é um sistema leve.</p>
 
@@ -379,7 +383,7 @@
 
 </div>
 
-<p>Não deve demorar muito, visto que essa mídia contém apenas um sistema mínimo, que serve somente para ligar o servidor, baixar o instalador e baixar os pacotes.</p>
+<p>Não deve demorar muito, visto que essa mídia contém apenas um sistema mínimo, que serve somente para ligar o servidor, baixar e iniciar o instalador.</p>
 
 <p>Quando o <em>download</em> terminar, vamos verificar a integridade da mídia: ainda na <a href="https://software.opensuse.org/422/pt_BR">página de <em>downloads</em> do openSUSE Leap 42.2</a>, onde há <strong>Rede</strong>, clique em <strong>Soma de verificação SHA256</strong>. O arquivo contendo a soma de verificação deve ser baixado na mesma pasta onde foi baixada a mídia.</p>
 
@@ -402,7 +406,7 @@
 
 </div>
 
-<p>Tecle <strong>F2</strong> para mudar o Idioma (<em>Language</em>). No menu que aparece, use as <strong>teclas de setas para cima e para baixo</strong> para selecionar <strong>Português (Brasil)</strong> e tecle <strong>Enter</strong>:</p>
+<p>Tecle <strong>F2</strong> para mudar o Idioma (<em>Language</em>). No menu que aparece, use as teclas de <strong>setas</strong> para selecionar <strong>Português (Brasil)</strong> e tecle <strong>Enter</strong>:</p>
 
 <div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
 <a href='/files/2017/01/opensuse-server-07-pt.jpg' title=''>
@@ -452,11 +456,11 @@
 
 <p>Observe que cada campo possui em seu nome uma letra destacada (<strong>I</strong>dioma, <strong>L</strong>ayout de teclado, <strong>T</strong>este de teclado, Pró<strong>x</strong>imo, etc.). Você também pode selecionar um campo pressionando a tecla <strong>Alt</strong> junto da letra destacada em seu nome. Por exemplo, você pode pressionar <strong>Alt + I</strong> para acessar o campo <strong>I</strong>dioma.</p>
 
-<p>Para ver as opções de um menu <em>dropdown</em> (como <strong>Idioma</strong> e <strong>Layout de Teclado</strong>), passe para esse menu e use a tecla <strong>seta para baixo</strong>. Utilize as <strong>teclas de setas</strong> para selecionar uma opção e a tecla <strong>Enter</strong> para confirmar.</p>
+<p>Para ver as opções de um menu <em>dropdown</em> (como <strong>Idioma</strong> e <strong>Layout de Teclado</strong>), passe para esse menu e use a tecla <strong>seta para baixo</strong>. Utilize as teclas de <strong>setas para cima e para baixo</strong> para selecionar uma opção e a tecla <strong>Enter</strong> para confirmar.</p>
 
 <p>Há um campo de texto em que você pode digitar qualquer coisa para testar a configuração do teclado. Eu recomendo digitar uma palavra como <strong>acentuação</strong>, com caracteres especiais (note a presença do til e da cê-cedilha). Para utilizar esse campo, é só acessá-lo e começar a digitar.</p>
 
-<p>Você não precisa se preocupar com a licença de uso: uma vez que o openSUSE é um <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a>, ela não limita a forma como você pode utilizá-lo. Você pode lê-la para conhecer seus direitos ao usar o openSUSE. Para isso, tecle <strong>Tab</strong> até selecionar <strong>Contrato de Licença</strong> e use as <strong>teclas de setas</strong> para cima ou para baixo ou as teclas <strong>Page Down</strong> ou <strong>Page Up</strong> para mover o texto para cima ou para baixo, respectivamente.</p>
+<p>Você não precisa se preocupar com a licença de uso: uma vez que o openSUSE é um <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a>, ela não limita a forma como você pode utilizá-lo. Você pode lê-la para conhecer seus direitos ao usar o openSUSE. Para isso, tecle <strong>Tab</strong> até selecionar <strong>Contrato de Licença</strong> e use as teclas de <strong>setas para cima e para baixo</strong> ou as teclas <strong>Page Down</strong> ou <strong>Page Up</strong> para mover o texto para cima ou para baixo, respectivamente.</p>
 
 <p>Quando terminar, selecione <strong>Próximo</strong> e tecle <strong>Enter</strong>.</p>
 
@@ -492,7 +496,7 @@
 <ul>
 <li><code>/</code> (raiz ou <em>root</em>), para os arquivos do sistema;</li>
 <li><code>/home</code>, para os arquivos pessoais do(s) usuário(s); e</li>
-<li><a href="https://www.vivaolinux.com.br/artigo/Funcionamento-da-memoria-virtual"><em>swap</em></a>, que é um espaço do disco rígido utilizado em complemento à memória RAM, semelhante ao <a href="https://support.microsoft.com/kb/2160852">arquivo de paginação</a> do Windows.</li>
+<li><a href="https://www.vivaolinux.com.br/artigo/Funcionamento-da-memoria-virtual"><em>swap</em></a>, que é um espaço do disco rígido utilizado em complemento à memória RAM, semelhante ao <a href="https://support.microsoft.com/kb/2160852">arquivo de paginação</a> do <a href="https://www.microsoft.com/pt-br/windows/">Windows</a>.</li>
 </ul>
 
 <p>Não falarei muito sobre particionamento aqui, pois isso seria assunto para um <em>post</em> inteiro (e extenso). Se precisar de mais informações, sugiro que consulte a <a href="https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.inst.html#sec.i.yast2.inst_mode.partitioning">documentação oficial do openSUSE</a>.</p>
@@ -700,7 +704,7 @@
 <li><p><strong>Repositório principal de atualização</strong>: contém atualizações (<em>updates</em>) oficiais para os pacotes do repositório principal.</p></li>
 </ul>
 
-<p>Para desabilitar um repositório nessa lista, selecione-o usando as <strong>teclas de setas</strong> e aperte a <strong>barra de espaço</strong>.</p>
+<p>Para desabilitar um repositório nessa lista, selecione-o usando as teclas de <strong>setas para cima e para baixo</strong> e aperte a <strong>barra de espaço</strong>.</p>
 
 <p>Quando terminar, selecione <strong>Próximo</strong>.</p>
 
@@ -772,7 +776,7 @@
 
 <p>Essa tela exibe um resumo das configurações que serão utilizadas na instalação. Verifique se tudo está conforme o desejado. Utilize as <strong>teclas de setas para cima e para baixo</strong> para ler o resumo. Uma vez passada essa tela, não haverá volta.</p>
 
-<p>Se precisar alterar alguma configuração, selecione o <em>link</em> da configuração desejada usando as <strong>teclas de setas</strong> e tecle <strong>Enter</strong> para ir para a tela correspondente.</p>
+<p>Se precisar alterar alguma configuração, selecione o <em>link</em> da configuração desejada usando as teclas de <strong>setas para cima e para baixo</strong> e tecle <strong>Enter</strong> para ir para a tela correspondente.</p>
 
 <p>Observe que por padrão o <em>firewall</em> e o acesso remoto via SSH são desabilitados:</p>
 
@@ -842,7 +846,7 @@
 
 <p>A instalação foi concluída. O sistema operacional já se encontra no disco rígido. Mas ainda faltam algumas configurações básicas antes de começar a usar o servidor.</p>
 
-<p>Como percebi que o <em>post</em> ficaria muito grande, decidi dividi-lo em duas partes. Deixei alguns detalhes para o próximo <em>post</em>.</p>
+<p>Como percebi que o <em>post</em> já está muito grande, decidi dividi-lo em duas partes. Deixei alguns detalhes para o próximo <em>post</em>.</p>
 
 <p>Siga o Projeto Linux Kamarada para ler a segunda parte assim que ela for publicada!</p>
 
