@@ -9,10 +9,280 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 18 Feb 2017 20:23:13 -0200</pubDate>
-        <lastBuildDate>Sat, 18 Feb 2017 20:23:13 -0200</lastBuildDate>
+        <pubDate>Sat, 25 Feb 2017 18:27:28 -0300</pubDate>
+        <lastBuildDate>Sat, 25 Feb 2017 18:27:28 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Sync your system time with NTP</title>
+                <description>&lt;p&gt;Last Sunday, the &lt;a href=&quot;https://en.wikipedia.org/wiki/Daylight_saving_time&quot;&gt;daylight saving time (DST)&lt;/a&gt; ended in Brazil. When Brazilian clocks were about to reach Sun, Feb 19 2017, 00:00 &lt;a href=&quot;https://en.wikipedia.org/wiki/Daylight_saving_time_in_Brazil&quot;&gt;Brasília summer time&lt;/a&gt;, they were turned backward 1 hour to Sat, Feb 18 2017, 23:00 &lt;a href=&quot;https://en.wikipedia.org/wiki/Time_in_Brazil&quot;&gt;Brasília standard time&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;DST clock shifts occur every year, &lt;a href=&quot;https://en.wikipedia.org/wiki/Daylight_saving_time_by_country&quot;&gt;not only in Brazil&lt;/a&gt;. Many people may feel confusing to set their clocks forward and then backward a few months later.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, computers are able to automatically adjust their time by syncing with &lt;a href=&quot;http://support.ntp.org/servers&quot;&gt;public time servers&lt;/a&gt; available on the Internet. In this post you are going to see how to set up that synchronization using the NTP protocol.&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/tux-time.png&#39; title=&#39;Source of the image: [PCLinuxOS](http://pclosmag.com/html/Issues/201503/page06.html)&#39;&gt;
+&lt;img src=&#39;/files/2016/10/tux-time.png&#39; alt=&#39;Source of the image: [PCLinuxOS](http://pclosmag.com/html/Issues/201503/page06.html)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39; style=&quot;max-height: 240px;&quot;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Source of the image: &lt;a href=&quot;http://pclosmag.com/html/Issues/201503/page06.html&quot;&gt;PCLinuxOS&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Network_Time_Protocol&quot;&gt;&lt;strong&gt;Network Time Protocol (NTP)&lt;/strong&gt;&lt;/a&gt; is a networking protocol for synchronizing the system time of all machines within a network (desktops, servers, switches, routers, etc.) from a reliable time source. It can be used to sync home desktops too, as long as they are connected to the biggest of all networks - the Internet.&lt;/p&gt;
+
+&lt;p&gt;To use that protocol to sync our system time, first we need to choose a time server to be our reference time source.&lt;/p&gt;
+
+&lt;h2&gt;Pick up a time server&lt;/h2&gt;
+
+&lt;p&gt;Where possible, you should try to use time servers that are close to your network location. This will help reduce variations in latency that may reduce your accuracy. If your network does not have a local NTP server, talk to your &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_service_provider&quot;&gt;Internet service provider (ISP)&lt;/a&gt; to see if they have an NTP server available for use.&lt;/p&gt;
+
+&lt;p&gt;If your ISP does not provide an NTP server, don&amp;#39;t worry: there are plenty of public time servers available out there, many of them are listed at &lt;a href=&quot;http://support.ntp.org/servers&quot;&gt;the NTP project official website&lt;/a&gt;. For instance, in Brazil we have the official time server provided by the &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br project&lt;/a&gt;. &lt;a href=&quot;http://www.time.gov/&quot;&gt;Official time in the United States&lt;/a&gt; is provided by two time agencies: the &lt;a href=&quot;http://tf.nist.gov/tf-cgi/servers.cgi&quot;&gt;NIST&lt;/a&gt; and the &lt;a href=&quot;http://tycho.usno.navy.mil/NTP/&quot;&gt;USNO&lt;/a&gt;. Open &lt;a href=&quot;http://support.ntp.org/servers&quot;&gt;the NTP project servers list&lt;/a&gt; and choose the closest server to you.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;#39;t want to decide by yourself which time server you are going to sync with, a good choice is to pick one of the &lt;a href=&quot;http://www.pool.ntp.org/en/&quot;&gt;NTP Pool project&lt;/a&gt;, which is a big virtual cluster of time servers providing NTP synchronization for millions of people around the world. Just set &lt;code&gt;pool.ntp.org&lt;/code&gt; as your NTP server. That name is resolved by &lt;a href=&quot;https://en.wikipedia.org/wiki/Domain_Name_System&quot;&gt;DNS&lt;/a&gt; to IP addresses for servers in or close to your country. For most people, that will give the best results. You can be more specific and prefix that name with your &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains&quot;&gt;country code&lt;/a&gt;, for instance &lt;code&gt;br.pool.ntp.org&lt;/code&gt; or &lt;code&gt;us.pool.ntp.org&lt;/code&gt;. The NTP Pool project has &lt;a href=&quot;http://www.pool.ntp.org/zone/@&quot;&gt;a comprehensive list of available time servers&lt;/a&gt; grouped by zones.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.theregister.co.uk/2016/12/02/google_public_ntp_servers/&quot;&gt;Recently&lt;/a&gt;, Google has launched &lt;a href=&quot;https://developers.google.com/time/&quot;&gt;its own public NTP servers&lt;/a&gt;. To use them, configure your network settings to use &lt;code&gt;time.google.com&lt;/code&gt; as your NTP server. Maybe they will &lt;a href=&quot;https://googleblog.blogspot.com.br/2012/02/google-public-dns-70-billion-requests.html&quot;&gt;succeed as the Google Public DNS did&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Set up your computer&lt;/h2&gt;
+
+&lt;p&gt;How you are going to setup your computer to sync its time with the NTP server you chose depends on which operating systems are installed on the computer.&lt;/p&gt;
+
+&lt;p&gt;If you use only the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; Linux, or have more than one Linux distribution installed (e.g. openSUSE and &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;), I recommend that you setup only the distribution you use more often to sync your computer time. But you can have all of your Linuxes syncing time if you prefer, there is no problem.&lt;/p&gt;
+
+&lt;p&gt;If you use Linux and &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;, I recommend you to setup Linux to sync your computer time and adjust Windows default settings so they can talk. That setup, although recommended, is a little bit trickier. If you use Windows more often, it may be easier to let Windows sync your computer time and setup Linux to &amp;quot;just watch&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;You are going to see here all the possible scenarios.&lt;/p&gt;
+
+&lt;h2&gt;Time syncing on Linux&lt;/h2&gt;
+
+&lt;p&gt;Here I&amp;#39;m going to show how to setup time syncing via NTP on openSUSE. For other Linux distributions, please refer to their documentation.&lt;/p&gt;
+
+&lt;p&gt;Start the &lt;a href=&quot;https://en.opensuse.org/Portal:YaST&quot;&gt;YaST Control Center&lt;/a&gt; by opening the &lt;strong&gt;Application Menu&lt;/strong&gt;, pointing to &lt;strong&gt;System&lt;/strong&gt;, and then clicking on &lt;strong&gt;YaST&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/linux-ntp-01-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/linux-ntp-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked the root password.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;System&lt;/strong&gt; category, then click on &lt;strong&gt;Date and Time&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/linux-ntp-02-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/linux-ntp-02-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to the system date and time settings screen:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/linux-ntp-03-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/linux-ntp-03-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Check that your time zone is correct. If you need to change it, click on the map closest to your current location or use the &lt;strong&gt;Region&lt;/strong&gt; and &lt;strong&gt;Time Zone&lt;/strong&gt; dropdown menus below the map. On my machine, for instance, those fields are filled with &lt;strong&gt;Brazil&lt;/strong&gt; and &lt;strong&gt;São Paulo&lt;/strong&gt; (curiously, &lt;a href=&quot;https://en.wikipedia.org/wiki/Time_in_Brazil&quot;&gt;Brasília&lt;/a&gt; is not a time zone option, but &lt;strong&gt;São Paulo&lt;/strong&gt; is in the same time zone).&lt;/p&gt;
+
+&lt;p&gt;Keep the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option checked. Without it, time syncing in Linux does not work (I will explain soon).&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Other Settings&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;You go to the &lt;strong&gt;Change Date and Time&lt;/strong&gt; screen:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/linux-ntp-04-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/linux-ntp-04-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Check the &lt;strong&gt;Synchronize with NTP Server&lt;/strong&gt; option.&lt;/p&gt;
+
+&lt;p&gt;On &lt;strong&gt;NTP Server Address&lt;/strong&gt;, type the name or IP address of the NTP server you decided to use (e.g. &lt;code&gt;br.pool.ntp.org&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Synchronize now&lt;/strong&gt; to sync your computer date and time right now.&lt;/p&gt;
+
+&lt;p&gt;Check the &lt;strong&gt;Run NTP as daemon&lt;/strong&gt; and &lt;strong&gt;Save NTP Configuration&lt;/strong&gt; options. They ensure that time will be constantly synced in background (&amp;quot;behind the scenes&amp;quot;). You won&amp;#39;t be notified about time syncing: you will know it&amp;#39;s always being done just because your computer time will always be right.&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Accept&lt;/strong&gt; to return to the previous screen and then &lt;strong&gt;OK&lt;/strong&gt; to leave date and time settings. You can also exit the YaST Control Center.&lt;/p&gt;
+
+&lt;h2&gt;Time syncing on Windows&lt;/h2&gt;
+
+&lt;p&gt;If you prefer to sync the system time with Windows, let&amp;#39;s first turn off time syncing on Linux.&lt;/p&gt;
+
+&lt;p&gt;Go to the date and time settings as explained above: open the &lt;strong&gt;Application Menu&lt;/strong&gt;, point to &lt;strong&gt;System&lt;/strong&gt; and click on &lt;strong&gt;YaST&lt;/strong&gt;. You will be asked the root password. Once on YaST Control Center, select the &lt;strong&gt;System&lt;/strong&gt; category and click on &lt;strong&gt;Date and Time&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Clock and Time Zone&lt;/strong&gt; screen, click on &lt;strong&gt;Other Settings&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Change Date and Time&lt;/strong&gt; screen, check the &lt;strong&gt;Manually&lt;/strong&gt; option. Uncheck the &lt;strong&gt;Change the Time Now&lt;/strong&gt; option and click on &lt;strong&gt;Accept&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/linux-localtime-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/linux-localtime-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the previous screen, uncheck the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; to apply the new settings and leave that screen.&lt;/p&gt;
+
+&lt;p&gt;Reboot the computer.&lt;/p&gt;
+
+&lt;p&gt;On Windows, right click on the &lt;strong&gt;Clock&lt;/strong&gt;, on the bottom right corner of the screen, then click on &lt;strong&gt;Adjust date/time&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/win-ntp-01-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/win-ntp-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Date and time&lt;/strong&gt; screen, check if the &lt;strong&gt;Time zone&lt;/strong&gt; is correct. Mine, for instance, is &lt;strong&gt;(UTC-03:00) Brasília&lt;/strong&gt;. If you need to change it, select one of the time zones listed on that dropdown menu. After that, click on &lt;strong&gt;Additional date, time, &amp;amp; regional settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/win-ntp-02-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/win-ntp-02-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Date and Time&lt;/strong&gt; dialog box, switch to the &lt;strong&gt;Internet Time&lt;/strong&gt; tab and click on &lt;strong&gt;Change settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/win-ntp-03-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/win-ntp-03-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure the &lt;strong&gt;Synchronize with an Internet time server&lt;/strong&gt; option is checked:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/win-ntp-04-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/win-ntp-04-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On &lt;strong&gt;Server&lt;/strong&gt;, type the name or IP address of the NTP server you decided to use (e.g. &lt;code&gt;br.pool.ntp.org&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Update now&lt;/strong&gt; to sync your computer date and time right now.&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; to leave the &lt;strong&gt;Internet Time Settings&lt;/strong&gt; dialog box. Then, click on &lt;strong&gt;OK&lt;/strong&gt; to leave the &lt;strong&gt;Date and Time&lt;/strong&gt; dialog box. You can also close the remaining windows.&lt;/p&gt;
+
+&lt;h2&gt;A little more detail&lt;/h2&gt;
+
+&lt;p&gt;Let me explain what is going on to the curious ones.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Time_zone&quot;&gt;Time zones&lt;/a&gt; worldwide are defined in relation to &lt;a href=&quot;https://en.wikipedia.org/wiki/Coordinated_Universal_Time&quot;&gt;UTC (Universal Coordinated Time)&lt;/a&gt;. For most purposes, UTC is considered interchangeable with &lt;a href=&quot;https://en.wikipedia.org/wiki/Greenwich_Mean_Time&quot;&gt;GMT (Greenwich Mean Time)&lt;/a&gt;, which is the time zone of London when it is not in &lt;a href=&quot;https://en.wikipedia.org/wiki/Daylight_saving_time&quot;&gt;DST (daylight saving time)&lt;/a&gt;. Being a time reference, UTC does not observe DST.&lt;/p&gt;
+
+&lt;p&gt;For instance, let&amp;#39;s take a look at the &lt;a href=&quot;https://en.wikipedia.org/wiki/Time_in_Brazil&quot;&gt;Brasília time&lt;/a&gt;. Outside of DST, it is 3 hours behind UTC (that&amp;#39;s why it is denoted UTC-03:00). During DST, it changes to 2 hours behind UTC (UTC−02:00). Let&amp;#39;s suppose you are reading this text in Brasília at 19:00 standard local time (not in DST). So, in London, it is 22:00 standard local time.&lt;/p&gt;
+
+&lt;p&gt;Computers have two clocks:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a hardware clock, which works similarly to a wristwatch. If you open your computer, you will notice there is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Nonvolatile_BIOS_memory#CMOS_battery&quot;&gt;clock battery&lt;/a&gt; there. You can check the hardware clock time by restarting your computer and accessing its motherboard setup (also known as &lt;a href=&quot;https://en.wikipedia.org/wiki/BIOS&quot;&gt;BIOS&lt;/a&gt; or &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface&quot;&gt;UEFI&lt;/a&gt;; refer to your motherboard&amp;#39;s or computer&amp;#39;s manual for more information); and&lt;/li&gt;
+&lt;li&gt;a software clock, which is the one you actually see while using the operating system. Usually, it is shown in one of the screen corners. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; do not open your computer or change your motherboard settings if you do not have enough technical knowledge or you may damage your machine!&lt;/p&gt;
+
+
+&lt;/div&gt;
+
+&lt;p&gt;By default, Windows and Linux manage those two clocks in different ways.&lt;/p&gt;
+
+&lt;p&gt;By default, Windows uses local time as reference and stores it directly on the hardware clock. Windows&amp;#39; software clock displays the time informed by the hardware clock. Then, following our example (that we are in Brasília and it is 19:00 local time), if you set up Windows to manage your computer time as I explained above, you will notice both of your computer&amp;#39;s clocks will be at local time (19:00).&lt;/p&gt;
+
+&lt;p&gt;By default, Linux uses UTC as reference and stores the UTC time on the hardware clock. Linux&amp;#39;s software clock displays the calculated local time. To calculate local time, it takes into account the UTC time informed by the hardware clock, the time zone the system is set up to use and whether or not that time zone is in DST. Then, following our example, if you set up Linux to manage your computer time as I explained above, you will notice that your computer&amp;#39;s hardware clock shows UTC time (22:00), while its software clock shows local time (19:00).&lt;/p&gt;
+
+&lt;p&gt;The advantage of having the hardware clock as UTC is that you don&amp;#39;t need to adjust it when moving between timezones (if you travel around the world) or when DST begins or ends. The downside is that it may be confusing to access the motherboard setup and see a time different than local time, but we rarely need to access that setup, so we can let the operating system take care of the hardware clock.&lt;/p&gt;
+
+&lt;p&gt;It is possible to setup either of those systems to work differently.&lt;/p&gt;
+
+&lt;p&gt;In fact, I already showed how to setup Linux to work differently: hardware clock set to local time and managed by Windows, Linux must not touch it, just show its time on the screen. Let&amp;#39;s take a look into another (more interesting) possibility.&lt;/p&gt;
+
+&lt;h2&gt;UTC on Windows&lt;/h2&gt;
+
+&lt;p&gt;Now I&amp;#39;m going to show how to setup Windows to work differently: hardware clock set to UTC and software clock showing calculated local time, as Linux does. Although it&amp;#39;s not the easier setup, it&amp;#39;s the recommended one if you have both Linux and Windows installed on your computer.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;The following procedure works only on Windows Vista SP2, Windows Server 2008, Windows 7 and newer versions of Windows. On earlier versions, working with hardware clock set to UTC was not documented nor officially supported by &lt;a href=&quot;https://www.microsoft.com/&quot;&gt;Microsoft&lt;/a&gt;. More information can be found &lt;a href=&quot;https://support.microsoft.com/kb/2687252&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;http://www.cl.cam.ac.uk/~mgk25/mswish/ut-rtc.html&quot;&gt;here&lt;/a&gt;. If you use a newer version of Windows, you can safely disregard this warning. Just make sure your Windows installation is up-to-date.&lt;/p&gt;
+
+
+&lt;/div&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Start menu&lt;/strong&gt;, type &lt;strong&gt;regedit&lt;/strong&gt; on the search box, then right click on &lt;strong&gt;regedit&lt;/strong&gt; and click on &lt;strong&gt;Run as administrator&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/utc-win-01-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/utc-win-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the tree structure by the left, browse to the &lt;strong&gt;HKEY&lt;em&gt;LOCAL&lt;/em&gt;MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation&lt;/strong&gt; registry key. Right click a free area of the window by the right, point to &lt;strong&gt;New&lt;/strong&gt; and then click on &lt;strong&gt;DWORD (32-bit) Value&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/utc-win-02-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/utc-win-02-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Type &lt;code&gt;RealTimeIsUniversal&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;. Then, double click the value you just created, give it a value of &lt;code&gt;1&lt;/code&gt; and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/utc-win-03-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/utc-win-03-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Close the &lt;strong&gt;Registry Editor&lt;/strong&gt; and reboot the computer.&lt;/p&gt;
+
+&lt;p&gt;Go back to Linux and set it up to sync the computer time as I explained above.&lt;/p&gt;
+
+&lt;p&gt;Note that Windows is able to sync the time even if the hardware clock is set to UTC. Therefore, you can keep both Linux and Windows syncing your computer&amp;#39;s time.&lt;/p&gt;
+
+&lt;p&gt;I hope those tips can be useful to you, just as they have been useful to me. If you have any questions, don&amp;#39;t hesitate to comment!&lt;/p&gt;
+
+&lt;p&gt;Until next time!&lt;/p&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Configuring_the_clock&quot;&gt;SDB:Configuring the clock - openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.netz.xntp.html&quot;&gt;Time Synchronization with NTP | Reference | openSUSE Leap 42.2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/UbuntuTime&quot;&gt;UbuntuTime - Community Help Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Time&quot;&gt;Time - ArchWiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/oldnewthing/20040902-00/?p=37983/&quot;&gt;Why does Windows keep your BIOS clock on local time? - The Old New Thing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/%7Emgk25/mswish/ut-rtc.html&quot;&gt;IBM PC Real Time Clock should run in UT&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Sat, 25 Feb 2017 18:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2017/02/25/sync-your-system-time-with-ntp/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2017/02/25/sync-your-system-time-with-ntp/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>How to install openSUSE Leap Linux on a server</title>
@@ -385,7 +655,7 @@
 
 &lt;p&gt;If you need to change the time zone, first select a &lt;strong&gt;Region&lt;/strong&gt; (e.g. &lt;strong&gt;Brazil&lt;/strong&gt;), then select a &lt;strong&gt;Time Zone&lt;/strong&gt; (e.g. &lt;strong&gt;São Paulo&lt;/strong&gt;).&lt;/p&gt;
 
-&lt;p&gt;As your server is going to run Linux only, keep the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option checked (it is already checked by default). If you need further information about that option, please refer to the &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.inst.html#sec.i.yast2.timezone&quot;&gt;openSUSE Leap official documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As your server is going to run Linux only, keep the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option checked (it is already checked by default). If you need further information about that option, please refer to the &lt;a href=&quot;/en/2017/02/25/sync-your-system-time-with-ntp/&quot;&gt;Sync your system time with NTP&lt;/a&gt; post.&lt;/p&gt;
 
 &lt;p&gt;When you finish, choose &lt;strong&gt;Next&lt;/strong&gt; (&lt;strong&gt;Alt + N&lt;/strong&gt;).&lt;/p&gt;
 
@@ -1113,7 +1383,7 @@
 
 &lt;p&gt;If your computer will have only Linux installed, it&amp;#39;s recommended to keep the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option checked. If you are installing Linux alongside Windows or other operating system, make sure you unckeck that box.&lt;/p&gt;
 
-&lt;p&gt;If you need further information about that screen, please refer to the &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.inst.html#sec.i.yast2.timezone&quot;&gt;openSUSE Leap official documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you need further information about that screen, please refer to the &lt;a href=&quot;/en/2017/02/25/sync-your-system-time-with-ntp/&quot;&gt;Sync your system time with NTP&lt;/a&gt; post.&lt;/p&gt;
 
 &lt;p&gt;When you finish, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
 
