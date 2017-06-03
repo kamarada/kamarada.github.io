@@ -9,10 +9,160 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 16 May 2017 01:22:37 -0300</pubDate>
-        <lastBuildDate>Tue, 16 May 2017 01:22:37 -0300</lastBuildDate>
+        <pubDate>Sat, 03 Jun 2017 18:03:15 -0300</pubDate>
+        <lastBuildDate>Sat, 03 Jun 2017 18:03:15 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como acessar o netbanking do Banco do Brasil no openSUSE</title>
+                <description>&lt;p&gt;Usuários de &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; podem ter a impressão de que são esquecidos pelos seus bancos, ou que não recebem a mesma atenção que usuários de &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, ou mesmo acabar concluindo que acessar o &lt;em&gt;netbanking&lt;/em&gt; no Linux é impossível. Na verdade, é possível sim, o problema é que informações sobre Linux muitas vezes não são amplamente divulgadas ou não aparecem nos momentos em que seus usuários precisam. Tudo é uma questão de encontrar as informações corretas nos lugares certos.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você vai ver como acessar o &lt;em&gt;netbanking&lt;/em&gt; do &lt;a href=&quot;http://www.bb.com.br/&quot;&gt;Banco do Brasil&lt;/a&gt; no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; e onde encontrar informações quando tiver dúvidas.&lt;/p&gt;
+
+&lt;p&gt;Para referência, estou usando a distribuição &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap 42.2&lt;/a&gt; e o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; versão 52.1.1, a última disponível para essa distribuição até então.&lt;/p&gt;
+
+&lt;p&gt;Em se tratando de acesso ao banco, toda segurança é pouco. Por isso, recomendo que você &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;mantenha seu sistema sempre atualizado&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Embora aqui eu utilize o navegador Mozilla Firefox, em outros navegadores, a exemplo do &lt;a href=&quot;https://www.google.com.br/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, o procedimento deve ser parecido e funcionar.&lt;/p&gt;
+
+&lt;h2&gt;Como acessar o netbanking&lt;/h2&gt;
+
+&lt;p&gt;Abra o navegador, acesse o &lt;em&gt;site&lt;/em&gt; do Banco do Brasil (&lt;a href=&quot;http://www.bb.com.br/&quot;&gt;www.bb.com.br&lt;/a&gt;) e clique em &lt;strong&gt;Acesse sua conta&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-01.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-01.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;É comum que no primeiro acesso você se depare com essa mensagem de erro:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-02.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-02.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso acontece porque os bancos necessitam de segurança adicional àquela oferecida pelos navegadores. Por isso, eles solicitam que o usuário instale em seu computador um módulo de segurança.&lt;/p&gt;
+
+&lt;h2&gt;Como instalar o módulo de segurança&lt;/h2&gt;
+
+&lt;p&gt;Se você clicar no primeiro &lt;em&gt;link&lt;/em&gt; daquela mensagem (&lt;a href=&quot;https://seg.bb.com.br/&quot;&gt;seg.bb.com.br&lt;/a&gt;), será redirecionado para uma página que sugere instalar um pacote &lt;a href=&quot;https://pt.wikipedia.org/wiki/.deb&quot;&gt;DEB&lt;/a&gt;, utilizado pelas &lt;a href=&quot;http://distrowatch.com/dwres.php?resource=popularity&quot;&gt;distribuições mais populares&lt;/a&gt; como &lt;a href=&quot;https://linuxmint.com/&quot;&gt;Mint&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;. O openSUSE utiliza outro formato de empacotamento, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/RPM_(Linux)&quot;&gt;RPM&lt;/a&gt;, também utilizado pelo &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Em vez de clicar no primeiro &lt;em&gt;link&lt;/em&gt;, clique no segundo, onde se lê &amp;quot;Tire suas dúvidas...&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;Na página &lt;strong&gt;Dúvidas sobre o Módulo de Segurança&lt;/strong&gt;, clique no &lt;em&gt;link&lt;/em&gt; referente às distribuições que utilizam pacotes RPM:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-03.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-03.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na página seguinte, clique no ícone referente ao pacote para o openSUSE Leap 42.2:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-04.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-04.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça o &lt;em&gt;download&lt;/em&gt; do pacote:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-05.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-05.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, clique no pacote baixado:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-06.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-06.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O navegador pode advertir sobre a possível existência de vírus. Não é um problema nesse caso. Clique em &lt;strong&gt;OK&lt;/strong&gt; para continuar:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-07.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-07.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A instalação do módulo de segurança, assim como a instalação de qualquer programa, requer privilégios de administrador. Informe a senha do superusuário (&lt;em&gt;root&lt;/em&gt;) e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-08.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-08.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://pt.opensuse.org/Portal:YaST&quot;&gt;Centro de Controle do YaST&lt;/a&gt; mostra informações sobre a instalação:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-09.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-09.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se for necessário instalar pacotes adicionais dos quais o módulo de segurança dependa, esses pacotes também serão mostrados nessa tela.&lt;/p&gt;
+
+&lt;p&gt;É recomendável fechar todos os navegadores abertos antes de continuar.&lt;/p&gt;
+
+&lt;p&gt;Quando estiver pronto para começar a instalação, volte ao YaST e clique em &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Após o fim da instalação, clique em &lt;strong&gt;Concluir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-10.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-10.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por último, reinicie o computador.&lt;/p&gt;
+
+&lt;h2&gt;Agora sim&lt;/h2&gt;
+
+&lt;p&gt;Agora, com o módulo de segurança instalado, se você acessar o &lt;em&gt;netbanking&lt;/em&gt; do Banco do Brasil, ele permitirá que você insira as informações da sua conta e continue:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-bb-11.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-bb-11.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De tempos em tempos, o banco atualiza o módulo de segurança, o que faz com que aquela mensagem de erro volte a aparecer. Quando isso acontecer, você já sabe como proceder.&lt;/p&gt;
+
+&lt;p&gt;Faça bom proveito!&lt;/p&gt;
+
+&lt;h2&gt;Referência&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://seg.bb.com.br/duvidas.html?question=8&quot;&gt;Seg.BB - Distribuições baseadas em pacotes .RPM - Como instalar o Módulo de Segurança?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Sat, 03 Jun 2017 18:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>TP-Link Archer T4U no Linux openSUSE</title>
@@ -3040,166 +3190,6 @@ kamarada@desktop:~&amp;gt;
                 <pubDate>Mon, 31 Oct 2016 23:59:59 -0200</pubDate>
                 <link>https://kamarada.github.io/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Mantenha seu sistema sempre atualizado</title>
-                <description>&lt;p&gt;Os programas de computador, por mais incríveis que sejam, não são perfeitos: são feitos por nós, seres humanos. Com o tempo, eles vão sendo aperfeiçoados, seja por otimizações, adição de novas funcionalidades ou correções de falhas (também conhecidas como &lt;em&gt;bugs&lt;/em&gt;, insetos em inglês). Existem falhas dos mais diversos tipos, que vão desde um erro de digitação, passando por um mau funcionamento, até uma brecha de segurança que possa ser usada por pessoas mal intencionadas para acessar seus arquivos pessoais. Por isso, é importante manter o computador sempre atualizado, utilizando as versões mais novas dos programas.&lt;/p&gt;
-
-&lt;p&gt;Felizmente, manter seu sistema Linux sempre atualizado é fácil quando se utiliza o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Ele permite que você obtenha atualizações pela interface gráfica ou, para quem prefere, pela interface de linha de comando, como veremos.&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates.jpg&#39; title=&#39;Imagem obtida no [site OMG! Ubuntu!](http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words)&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates.jpg&#39; alt=&#39;Imagem obtida no [site OMG! Ubuntu!](http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;Imagem obtida no &lt;a href=&quot;http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words&quot;&gt;site OMG! Ubuntu!&lt;/a&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Pela interface gráfica&lt;/h2&gt;
-
-&lt;p&gt;Quando você liga o computador e/ou se conecta à Internet, o Linux openSUSE já busca atualizações para o seu sistema.&lt;/p&gt;
-
-&lt;p&gt;Caso ele encontre atualizações para serem instaladas, ele te notifica:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-01-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-01-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ele apenas notifica, deixando você livre para escolher quando instalá-las.&lt;/p&gt;
-
-&lt;p&gt;Quando você achar um momento oportuno para baixar e instalar as atualizações, clique no ícone da &lt;strong&gt;Atualização de aplicativos&lt;/strong&gt; (&lt;em&gt;Software Updates&lt;/em&gt;). Ele estará com um X vermelho, indicando que seu sistema não está totalmente atualizado (ou seja, há atualizações que precisam ser instaladas):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-02-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-02-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Instalar atualizações&lt;/strong&gt;. O openSUSE começará a baixar as atualizações.&lt;/p&gt;
-
-&lt;p&gt;Você pode conferir o andamento do processo de atualização:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-03-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-03-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Mas não precisa ficar acompanhando: enquanto as atualizações são baixadas e instaladas, você pode continuar usando o computador normalmente.&lt;/p&gt;
-
-&lt;p&gt;Você será notificado quando a atualização terminar. Normalmente, quando o processo de atualização acaba, não é necessário fazer mais nada, nem mesmo reiniciar o computador. As atualizações já passam a valer e você já as perceberá se abrir algum programa que foi atualizado.&lt;/p&gt;
-
-&lt;p&gt;Quando alguma atualização precisa que o computador seja reiniciado, o sistema pede a você que o reinicie assim que possível. Apesar de essa ser a recomendação, você pode reiniciá-lo quando achar conveniente.&lt;/p&gt;
-
-&lt;p&gt;Para reiniciar seu computador, abra o &lt;strong&gt;Menu de aplicativos&lt;/strong&gt;, aponte para &lt;strong&gt;Desligar / Sessão&lt;/strong&gt; e clique em &lt;strong&gt;Reiniciar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/restart-kde-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/restart-kde-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pode acontecer de o sistema instalar várias atualizações e no final, em vez de avisar que acabou, avisar que há ainda mais atualizações disponíveis:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-04-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-04-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso raramente ocorre, mas pode acontecer se um programa depende de outro e a versão mais nova desse programa só se torna disponível depois que a versão mais nova do outro estiver instalada.&lt;/p&gt;
-
-&lt;p&gt;Siga instalando as atualizações disponíveis até que o sistema informe que está totalmente atualizado:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Outro motivo que pode levar o sistema a informar que ainda há atualizações para serem instaladas é ter ocorrido falha na instalação de algumas atualizações. Nesse caso, as atualizações que falharam voltam para a lista de atualizações disponíveis. Caso você tente instalá-las novamente e mais uma vez não consiga, investigue o que aconteceu de errado antes de tentar de novo.&lt;/p&gt;
-
-&lt;h2&gt;Pela linha de comando&lt;/h2&gt;
-
-&lt;p&gt;Se você prefere a linha de comando, pode utilizar o gerenciador de pacotes &lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt; para verificar se há atualizações para o openSUSE, baixá-las e instalá-las.&lt;/p&gt;
-
-&lt;p&gt;Para isso, você deve primeiro acessar a linha de comando como superusuário (&lt;em&gt;root&lt;/em&gt;) executando o comando &lt;code&gt;su&lt;/code&gt;. Ele pedirá a senha do superusuário, que você deve fornecer para continuar.&lt;/p&gt;
-
-&lt;p&gt;Então, invoque o &lt;strong&gt;zypper&lt;/strong&gt; com o comando &lt;code&gt;zypper ref&lt;/code&gt; (do inglês &lt;em&gt;refresh&lt;/em&gt;, atualizar), que fará ele atualizar a lista de pacotes disponíveis na Internet:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-01-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-01-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que ele indica o progresso. Quando estiver tudo concluído, execute o comando &lt;code&gt;zypper up&lt;/code&gt;, que fará com que o &lt;strong&gt;zypper&lt;/strong&gt; baixe e instale atualizações disponíveis se houver (esse &lt;em&gt;up&lt;/em&gt; vem do inglês &lt;em&gt;update&lt;/em&gt;, atualizar também, mas aqui foi usado com outro significado, como você pode ver):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-02-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-02-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ele mostra o que precisa fazer para deixar o sistema atualizado e pergunta se você deseja continuar. A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se é isso o que deseja, você pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e a atualização começará. Ele indica o andamento do processo:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-03-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-03-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que é possível que programas tenham que ser removidos para que o sistema como um todo possa ser atualizado. Na imagem acima, vemos que o &lt;strong&gt;zypper&lt;/strong&gt; propôs a instalação do &lt;a href=&quot;https://www.kde.org/applications/graphics/spectacle/&quot;&gt;Spectacle&lt;/a&gt; e a desinstalação do &lt;a href=&quot;https://www.kde.org/applications/graphics/ksnapshot/&quot;&gt;KSnapshot&lt;/a&gt;. Se você pesquisar o que são esses programas, verá que ambos tem a função de capturar a tela (para produzir imagens como essas acima), e que de fato &lt;a href=&quot;https://www.kde.org/announcements/announce-applications-15.12.0.php&quot;&gt;o KSnapshot foi aposentado e o Spectacle assumiu o seu lugar&lt;/a&gt;. Então, nesse caso, não precisamos nos preocupar.&lt;/p&gt;
-
-&lt;p&gt;Caso note que o &lt;strong&gt;zypper&lt;/strong&gt; pretende fazer alguma alteração com que não concorda, você pode não continuar teclando &lt;strong&gt;n&lt;/strong&gt; e depois &lt;strong&gt;Enter&lt;/strong&gt;. Você pode investigar o que houve e tentar de novo depois.&lt;/p&gt;
-
-&lt;p&gt;Normalmente, quando a atualização acaba, não é necessário fazer mais nada, nem reiniciar o computador. Mas note que ao final dessa atualização o &lt;strong&gt;zypper&lt;/strong&gt; cogitou reiniciar programas, porque arquivos que estavam sendo usados foram apagados:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-04-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-04-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, mesmo que o &lt;strong&gt;zypper&lt;/strong&gt; não tenha dito para reiniciar o computador, como ele falou em &amp;quot;reiniciar&amp;quot;, recomendo que você reinicie o computador. Quando voltar, seu sistema estará novo e limpo, sem risco de mau funcionamento.&lt;/p&gt;
-
-&lt;p&gt;Para se certificar de que instalou realmente todas as atualizações disponíveis até o momento, recomendo que execute o comando &lt;code&gt;zypper up&lt;/code&gt; repetidas vezes até que ele diga que não há o que fazer:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ou seja, não é possível atualizar ainda mais o sistema, porque não há mais atualizações disponíveis: todas as que havia já foram instaladas.&lt;/p&gt;
-
-&lt;p&gt;Se lembre de verificar de tempos em tempos se há atualizações usando os comandos &lt;code&gt;zypper ref&lt;/code&gt; e &lt;code&gt;zypper up&lt;/code&gt;, já que utilizando a linha de comando o sistema não avisa a você quando há atualizações.&lt;/p&gt;
-</description>
-                <pubDate>Fri, 21 Oct 2016 23:40:00 -0200</pubDate>
-                <link>https://kamarada.github.io/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/</guid>
                 
                 
                     <category>pt</category>
