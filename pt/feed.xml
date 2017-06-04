@@ -9,10 +9,141 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 03 Jun 2017 18:03:15 -0300</pubDate>
-        <lastBuildDate>Sat, 03 Jun 2017 18:03:15 -0300</lastBuildDate>
+        <pubDate>Sun, 04 Jun 2017 09:56:19 -0300</pubDate>
+        <lastBuildDate>Sun, 04 Jun 2017 09:56:19 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como acessar o netbanking da Caixa no openSUSE</title>
+                <description>&lt;p&gt;&lt;a href=&quot;http://www.caixa.gov.br/atendimento/internet-banking/perguntas-frequentes/Paginas/default.aspx&quot;&gt;Oficialmente&lt;/a&gt;, a &lt;a href=&quot;http://www.caixa.gov.br/&quot;&gt;Caixa&lt;/a&gt; suporta apenas as distribuições &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; e &lt;a href=&quot;https://linuxmint.com/&quot;&gt;Mint&lt;/a&gt;. No entanto, não é segredo que &lt;a href=&quot;http://www.dieboldnixdorf.com.br/warsaw&quot;&gt;a Caixa e o Banco do Brasil utilizam a mesma tecnologia&lt;/a&gt; para garantir o acesso seguro aos seus &lt;em&gt;netbankings&lt;/em&gt;: o &lt;a href=&quot;http://www.dieboldnixdorf.com.br/gas-antifraude&quot;&gt;Warsaw&lt;/a&gt;, &lt;em&gt;software&lt;/em&gt; de segurança contra fraudes eletrônicas da &lt;a href=&quot;http://www.dieboldnixdorf.com.br/&quot;&gt;Diebold Nixdorf/GAS&lt;/a&gt;. Na tentativa e erro, eu, que tenho conta nos dois bancos, descobri que, uma vez instalado o módulo de segurança do &lt;a href=&quot;http://www.bb.com.br/&quot;&gt;Banco do Brasil&lt;/a&gt;, é possível acessar o &lt;em&gt;netbanking&lt;/em&gt; da Caixa no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você vai ver como conseguir essa façanha.&lt;/p&gt;
+
+&lt;p&gt;Para referência, estou usando a distribuição &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap 42.2&lt;/a&gt; e o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; versão 52.1.1, a última disponível para essa distribuição até então.&lt;/p&gt;
+
+&lt;p&gt;Em se tratando de acesso ao banco, toda segurança é pouco. Por isso, recomendo que você &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;mantenha seu sistema sempre atualizado&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Embora aqui eu utilize o navegador Mozilla Firefox, em outros navegadores, a exemplo do &lt;a href=&quot;https://www.google.com.br/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, o procedimento deve ser parecido e funcionar.&lt;/p&gt;
+
+&lt;h2&gt;Como acessar o netbanking&lt;/h2&gt;
+
+&lt;p&gt;Abra o navegador, acesse o &lt;em&gt;site&lt;/em&gt; da Caixa (&lt;a href=&quot;http://www.caixa.gov.br/&quot;&gt;www.caixa.gov.br&lt;/a&gt;) e clique em &lt;strong&gt;Acessar minha conta&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-01.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-01.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite seu &lt;a href=&quot;http://www.caixa.gov.br/atendimento/canais-digitais/banking-caixa/primeiro-acesso/usuario-senha/Paginas/default.aspx&quot;&gt;nome de usuário&lt;/a&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-02.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-02.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;É comum que no primeiro acesso você se depare com a mensagem &amp;quot;Baixe o Adicional de Segurança CAIXA&amp;quot;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-03.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-03.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso acontece porque os bancos necessitam de segurança adicional àquela oferecida pelos navegadores. Por isso, eles solicitam que o usuário instale em seu computador um módulo adicional de segurança.&lt;/p&gt;
+
+&lt;h2&gt;Como instalar o módulo de segurança&lt;/h2&gt;
+
+&lt;p&gt;Se você clicar em &lt;strong&gt;Concordo&lt;/strong&gt;, será redirecionado para uma página que oferece o &lt;em&gt;download&lt;/em&gt; de um pacote &lt;a href=&quot;https://pt.wikipedia.org/wiki/.deb&quot;&gt;DEB&lt;/a&gt;, utilizado pelas distribuições Ubuntu e Mint. O openSUSE utiliza outro formato de empacotamento, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/RPM_(Linux)&quot;&gt;RPM&lt;/a&gt;, também utilizado pelo &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;. A Caixa não fornece seu módulo de segurança nesse formato.&lt;/p&gt;
+
+&lt;p&gt;No entanto, sabemos que o módulo de segurança do Banco do Brasil utiliza nos bastidores a mesma tecnologia do módulo de segurança da Caixa. Sabemos também, do &lt;a href=&quot;/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, que o Banco do Brasil oferece seu módulo de segurança para &lt;em&gt;download&lt;/em&gt; no formato RPM, próprio para instalação no openSUSE.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/&quot;&gt;Naquele &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;, vimos como instalar o módulo de segurança do Banco do Brasil no openSUSE. Siga as instruções daquele &lt;em&gt;post&lt;/em&gt; até chegar na última tela, em que o &lt;em&gt;netbanking&lt;/em&gt; solicita informações da sua conta para continuar. Isso é sinal de que o módulo de segurança do Banco do Brasil foi instalado com sucesso.&lt;/p&gt;
+
+&lt;p&gt;Você não precisa ter uma conta e de fato acessar o &lt;em&gt;netbanking&lt;/em&gt; do Banco do Brasil, apenas certifique-se de que seu módulo de segurança foi instalado.&lt;/p&gt;
+
+&lt;p&gt;Agora, de volta ao &lt;em&gt;site&lt;/em&gt; da Caixa, repita os passos anteriores: clique em &lt;strong&gt;Acessar minha conta&lt;/strong&gt;, na tela seguinte digite seu nome de usuário e clique em &lt;strong&gt;Continuar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Perceba que agora a mensagem exibida é diferente:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-04.jpg&#39; title=&#39;Adicional instalado incorretamente. Aguarde enquanto configuramos seu computador...&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-04.jpg&#39; alt=&#39;Adicional instalado incorretamente. Aguarde enquanto configuramos seu computador...&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Adicional instalado incorretamente. Aguarde enquanto configuramos seu computador...&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa mensagem indica que o &lt;em&gt;netbanking&lt;/em&gt; da Caixa percebeu que o Warsaw está instalado no computador, apenas não possui as configurações específicas da Caixa. Nesse momento, o &lt;em&gt;netbanking&lt;/em&gt; da Caixa está configurando o Warsaw.&lt;/p&gt;
+
+&lt;p&gt;Esse procedimento demora pouco, logo o acesso ao &lt;em&gt;netbanking&lt;/em&gt; é liberado:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-05.jpg&#39; title=&#39;Adicional de Segurança CAIXA instalado. Acesse a sua conta.&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-05.jpg&#39; alt=&#39;Adicional de Segurança CAIXA instalado. Acesse a sua conta.&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Adicional de Segurança CAIXA instalado. Acesse a sua conta.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Siga a orientação na tela: clique em &lt;strong&gt;Acessar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Agora sim&lt;/h2&gt;
+
+&lt;p&gt;Agora que o Warsaw possui as configurações do &lt;em&gt;netbanking&lt;/em&gt; da Caixa, você pode acessar o &lt;em&gt;netbanking&lt;/em&gt; normalmente.&lt;/p&gt;
+
+&lt;p&gt;Digite seu nome de usuário e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-02.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-02.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique nas iniciais do seu nome:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-06.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-06.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite a &lt;a href=&quot;http://www.caixa.gov.br/atendimento/canais-digitais/banking-caixa/primeiro-acesso/usuario-senha/Paginas/default.aspx&quot;&gt;senha Internet&lt;/a&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/06/netbanking-caixa-07.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/06/netbanking-caixa-07.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça bom proveito!&lt;/p&gt;
+
+&lt;p&gt;Vale observar que o procedimento que fizemos não remove do Warsaw as configurações do &lt;em&gt;netbanking&lt;/em&gt; do Banco do Brasil. Ou seja, agora você pode acessar os dois bancos do seu computador com openSUSE, caso precise.&lt;/p&gt;
+</description>
+                <pubDate>Sun, 04 Jun 2017 10:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como acessar o netbanking do Banco do Brasil no openSUSE</title>
@@ -2811,385 +2942,6 @@ kamarada@desktop:~&amp;gt;
                 <pubDate>Tue, 15 Nov 2016 23:59:59 -0200</pubDate>
                 <link>https://kamarada.github.io/pt/2016/11/15/como-instalar-o-linux-opensuse-leap/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2016/11/15/como-instalar-o-linux-opensuse-leap/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como atualizar do openSUSE Leap 42.1 para o 42.2</title>
-                <description>&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade.png&#39; title=&#39;Imagem obtida no site [openSUSE News](https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/)&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade.png&#39; alt=&#39;Imagem obtida no site [openSUSE News](https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;Imagem obtida no site &lt;a href=&quot;https://news.opensuse.org/2016/09/22/new-leap-beta-adds-plasma-5-8-beta/&quot;&gt;openSUSE News&lt;/a&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Atualizar de uma versão para outra para quem usa &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; é uma tranquilidade. Há mais de 3 anos utilizo o Linux openSUSE e sempre consegui atualizar de uma versão para outra. Comecei a usá-lo na versão 12.2, pouco antes do &lt;a href=&quot;https://news.opensuse.org/2013/03/13/opensuse-12-3-free-open-and-awesome/&quot;&gt;lançamento da 12.3, em maio de 2013&lt;/a&gt;. Desde então já foram 5 atualizações: da versão 12.2 para a 12.3, para a 13.1, para a 13.2, para a Leap 42.1 (realmente, houve um salto, como falamos em &lt;a href=&quot;/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;) e essa semana para a 42.2, mesmo antes de ter sido lançada.&lt;/p&gt;
-
-&lt;p&gt;A próxima versão do openSUSE Leap, a 42.2, já passou pelas fases alfa e beta e teve a primeira versão candidata a lançamento (&lt;em&gt;release candidate&lt;/em&gt; ou RC) liberada dia &lt;a href=&quot;https://news.opensuse.org/2016/10/18/release-candidate-available-for-opensuse-leap-42-2/&quot;&gt;18 de outubro&lt;/a&gt;. Isso quer dizer que boa parte dos testes já terminaram. Essa versão já é bem próxima da final, cujo lançamento está previsto para &lt;a href=&quot;https://en.opensuse.org/openSUSE:Roadmap&quot;&gt;16 de novembro&lt;/a&gt;. Daqui para lá, o openSUSE Leap deve receber apenas alguns retoques finais.&lt;/p&gt;
-
-&lt;p&gt;Confira nesse &lt;em&gt;post&lt;/em&gt; de antemão como atualizar seu openSUSE Leap da versão 42.1 para a 42.2. Se você é o tipo de pessoa mais segura e menos entusiasmada, aqui você verá o que fazer no dia 16, quando o openSUSE Leap 42.2 for lançado oficialmente. Se você é do tipo mais ansioso, como eu, verá o que pode fazer para obter a nova versão já agora. Ao menos nos computadores que eu uso em casa e no trabalho, ambos agora com openSUSE Leap 42.2 RC 1, está tudo funcionando.&lt;/p&gt;
-
-&lt;p&gt;Para organizar melhor, vou dividir a atualização em 6 etapas.&lt;/p&gt;
-
-&lt;h2&gt;Algumas observações&lt;/h2&gt;
-
-&lt;p&gt;O roteiro para atualização que apresento aqui é o que utilizei no meu computador e que aprendi lendo a &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do openSUSE&lt;/a&gt;. Ele é praticamente o mesmo desde que comecei a utilizar o openSUSE. É um procedimento seguro, que deve funcionar para a maioria dos casos, mas que requer que alguns cuidados sejam observados.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve estar utilizando a versão imediatamente anterior do openSUSE.&lt;/strong&gt; Isso quer dizer que se você pretende atualizar para a versão 42.2, deve estar usando agora a 42.1. Saltos de versões não são suportados e é possível que não funcionem. Portanto, se você utiliza a versão 13.2, por exemplo, deve primeiro atualizar para a versão 42.1, para então atualizar para a versão 42.2 (note que o salto aqui é apenas nos números, &lt;a href=&quot;/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/&quot;&gt;a versão 42.1 é de fato a versão seguinte à 13.2&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sua instalação do openSUSE deve estar atualizada&lt;/strong&gt; com as versões mais recentes dos pacotes lançadas até o momento. Para saber como obtê-las, leia o &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve se informar sobre a versão do openSUSE que vai instalar.&lt;/strong&gt; Consulte a &lt;a href=&quot;https://en.opensuse.org/openSUSE:Most_annoying_bugs&quot;&gt;lista de &lt;em&gt;bugs&lt;/em&gt; mais chatos&lt;/a&gt; para ter ciência deles, como preveni-los e/ou solucioná-los, assim como as &lt;a href=&quot;https://en.opensuse.org/openSUSE:Release_Notes&quot;&gt;notas de lançamento&lt;/a&gt;, que descrevem o que muda na nova versão.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve fazer uma cópia de segurança (&lt;em&gt;backup&lt;/em&gt;) de arquivos importantes.&lt;/strong&gt; Apesar de a atualização do openSUSE ser um procedimento seguro, fazendo lembrar, para quem conhece, a atualização do &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;, não quer dizer que seja perfeito. Ganhar na loteria é difícil, mas eventualmente alguém ganha. Algo dar errado nessa atualização é difícil, especialmente se você toma todos os cuidados, mas pode acontecer. Eu, particularmente, atualizei 5 vezes sem problemas. Nunca é demais fazer uma cópia dos seus arquivos pessoais por precaução, especialmente se a pasta &lt;code&gt;/home&lt;/code&gt; não tem uma partição só para ela. Se o computador não pode ficar parado por muito tempo (um servidor, por exemplo), considere fazer uma cópia de todo o sistema, a fim de restaurá-la imediatamente caso algo não funcione como esperado.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você não deve utilizar repositórios não oficiais (de terceiros) durante a atualização.&lt;/strong&gt; Antes de começar a atualização, removeremos os repositórios de terceiros. É possível que isso ocasione a remoção também de programas de terceiros. Você pode devolvê-los depois. Isso não quer dizer que não seja possível atualizar com esses repositórios presentes, mas usar apenas os repositórios oficiais é mais garantido. A base do sistema será atualizada para uma nova base estável, sólida, confiável. Depois, sobre essa base, você poderá instalar o que quiser. Faça diferente dessa recomendação apenas se souber o que está fazendo.&lt;/p&gt;
-
-&lt;p&gt;Recomendo também que você leia toda essa página antes de começar de fato a atualização. Conhecendo todo o processo, você terá condição de agendá-lo melhor. Você pode até usar o computador enquanto baixa os novos pacotes, mas depois que começar a atualização, só poderá voltar a usá-lo quando ela for concluída.&lt;/p&gt;
-
-&lt;p&gt;Antes de começar, gostaria de fazer só mais uma observação, para quem deseja atualizar para o openSUSE Leap 42.2 antes do lançamento oficial. Se esse é o seu caso, observe que você deverá repetir as etapas &amp;quot;&lt;em&gt;download&lt;/em&gt; dos pacotes&amp;quot; e &amp;quot;atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;)&amp;quot;, as últimas duas etapas desse tutorial (5 e 6), para cada novo lançamento dessa versão. Então, você repetirá essas etapas nos dias &lt;a href=&quot;https://en.opensuse.org/openSUSE:Roadmap&quot;&gt;02 de novembro&lt;/a&gt;, data prevista para o lançamento da versão 42.2 RC 2, e &lt;a href=&quot;https://en.opensuse.org/openSUSE:Roadmap&quot;&gt;16 de novembro&lt;/a&gt;, data prevista para o lançamento da versão 42.2 final.&lt;/p&gt;
-
-&lt;h2&gt;1) Atualização dos pacotes da distribuição (&lt;em&gt;update&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Antes de começar, certifique-se de que a instalação do openSUSE que está no seu computador esteja atualizada.&lt;/p&gt;
-
-&lt;p&gt;Como vimos no &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, o ícone da &lt;strong&gt;Atualização de aplicativos&lt;/strong&gt; (&lt;em&gt;Software Updates&lt;/em&gt;) deve informar que seu sistema está totalmente atualizado:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ou, se você prefere utilizar a interface de linha de comando, o &lt;strong&gt;zypper&lt;/strong&gt; deve informar que não há o que fazer, ou seja, todas as atualizações disponíveis para o sistema até o momento foram instaladas:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Consulte &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;aquele &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; para saber como atualizar seu openSUSE.&lt;/p&gt;
-
-&lt;p&gt;É importante esclarecer algo: a atualização de que falei naquele &lt;em&gt;post&lt;/em&gt; foi uma atualização dos pacotes, sem mudança de distribuição (&lt;em&gt;update&lt;/em&gt;). Aqui, vamos ver como atualizar todo o sistema e passar para uma distribuição mais nova (&lt;em&gt;upgrade&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Utilizarei sempre que possível a interface gráfica, mas a interface textual nos permite vantagens como apenas baixar as atualizações e depois apenas instalá-las. Se você não está acostumado à linha de comando, perceberá que não é difícil utilizá-la.&lt;/p&gt;
-
-&lt;p&gt;Note que, quase sempre, você pode utilizar a interface de linha de comando sem abandonar a interface gráfica por meio do aplicativo &lt;a href=&quot;https://www.kde.org/applications/system/konsole/&quot;&gt;&lt;strong&gt;Konsole&lt;/strong&gt;&lt;/a&gt;. Para iniciá-lo, clique no &lt;strong&gt;Menu de aplicativos&lt;/strong&gt;, aponte para &lt;strong&gt;Sistema&lt;/strong&gt; e em seguida clique em &lt;strong&gt;Konsole&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-01-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-01-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você está habituado a utilizar &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, talvez encontre alguma semelhança do Konsole com o &lt;strong&gt;Prompt de Comando&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2&gt;2) &lt;em&gt;Backup&lt;/em&gt; dos repositórios atuais&lt;/h2&gt;
-
-&lt;p&gt;Essa etapa, na verdade, é opcional.&lt;/p&gt;
-
-&lt;p&gt;Talvez você queira fazer &lt;em&gt;backup&lt;/em&gt; da sua lista atual de repositórios para devolvê-la depois da atualização. O openSUSE guarda as configurações de repositórios na pasta &lt;code&gt;/etc/zypp/repos.d&lt;/code&gt;, sendo um arquivo de texto para cada repositório. Vamos fazer uma cópia dessa pasta. Para isso, utilizaremos a interface de linha de comando.&lt;/p&gt;
-
-&lt;p&gt;Adquira privilégios de superusuário (&lt;em&gt;root&lt;/em&gt;) executando o comando &lt;code&gt;su&lt;/code&gt; (para isso, na linha de comando, digite &lt;code&gt;su&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;). Será solicitada a senha do superusuário, que você deve fornecer para continuar (digite a senha e tecle &lt;strong&gt;Enter&lt;/strong&gt;, observe que a senha não é exibida, nem mesmo mascarada como ******, isso é normal).&lt;/p&gt;
-
-&lt;p&gt;Então, ordene a cópia propriamente dita, executando o comando &lt;code&gt;cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.antigos&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-02-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-02-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse comando copiará a pasta &lt;code&gt;repos.d&lt;/code&gt;, em &lt;code&gt;/etc/zypp&lt;/code&gt;, para outra no mesmo lugar, chamada &lt;code&gt;repos.d.antigos&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se você ainda não fez &lt;em&gt;backup&lt;/em&gt; dos seus arquivos pessoais e/ou do seu sistema, considere fazê-lo agora.&lt;/p&gt;
-
-&lt;h2&gt;3) Faxina dos repositórios&lt;/h2&gt;
-
-&lt;p&gt;Como expliquei antes, durante a atualização utilizaremos apenas os &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;repositórios oficiais&lt;/a&gt;. Mais especificamente, apenas dois deles:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.2-OSS&lt;/strong&gt;: o repositório principal da distribuição, contém apenas &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; de código aberto&lt;/a&gt; (do inglês &lt;em&gt;open source sofware&lt;/em&gt;, OSS).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/distribution/leap/42.2/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/42.2/repo/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.2-Update&lt;/strong&gt;: contém atualizações (&lt;em&gt;updates&lt;/em&gt;) oficiais para os pacotes do repositório OSS.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/update/leap/42.2/oss/&quot;&gt;http://download.opensuse.org/update/leap/42.2/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Vamos fazer uma faxina nos repositórios, excluindo quaisquer outros repositórios configurados (vamos excluir inclusive quaisquer &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Acesse o Centro de Controle do YaST. Para isso, clique no &lt;strong&gt;Menu de aplicativos&lt;/strong&gt;, aponte para &lt;strong&gt;Configurações&lt;/strong&gt; e em seguida clique em &lt;strong&gt;YaST&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/linux-ntp-01.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/linux-ntp-01.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Será solicitada a você a senha do superusuário (&lt;em&gt;root&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Na categoria &lt;strong&gt;Software&lt;/strong&gt;, clique em &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-03-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-03-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à lista de repositórios do seu sistema:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-04-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-04-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para cada repositório que não seja o &lt;strong&gt;openSUSE-Leap-42.1-OSS&lt;/strong&gt; ou o &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt; , selecione o repositório na lista e clique em &lt;strong&gt;Apagar&lt;/strong&gt; (não é erro de digitação, estamos falando dos repositórios que já existem, que são os da versão 42.1, vamos mudar para os novos da versão 42.2 já já).&lt;/p&gt;
-
-&lt;p&gt;Aparecerá uma mensagem de confirmação. Clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça isso com todos os repositórios até que só sobrem os repositórios &lt;strong&gt;openSUSE-Leap-42.1-OSS&lt;/strong&gt; e &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-06-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-06-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esses repositórios podem estar com nomes diferentes no seu computador. Se esse for o caso, você pode se orientar pela &lt;a href=&quot;https://pt.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; em vez do nome. Se não encontrá-los, não tem problema: apague todos os repositórios e já adicione os novos.&lt;/p&gt;
-
-&lt;h2&gt;4) Repositórios da nova versão&lt;/h2&gt;
-
-&lt;p&gt;Vamos agora mudar para os repositórios da nova versão.&lt;/p&gt;
-
-&lt;p&gt;Selecione o repositório &lt;strong&gt;openSUSE-Leap-42.1-OSS&lt;/strong&gt; e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Substitua &lt;code&gt;42.1&lt;/code&gt;por &lt;code&gt;42.2&lt;/code&gt; onde houver e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-07-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-07-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;licença de uso do openSUSE Leap 42.2&lt;/a&gt;. Você pode lê-la para conhecer seus direitos ao usar o openSUSE. Quando terminar, clique em &lt;strong&gt;Avançar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-08-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-08-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça o mesmo procedimento para o repositório &lt;strong&gt;openSUSE-Leap-42.1-Update&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ao final, sua lista de repositórios deve estar assim:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-09-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-09-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para gravar as alterações. Pode fechar o YaST.&lt;/p&gt;
-
-&lt;h2&gt;5) &lt;em&gt;Download&lt;/em&gt; dos pacotes&lt;/h2&gt;
-
-&lt;p&gt;Já podemos começar a baixar os pacotes da nova versão do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;De volta à interface de linha de comando, execute o comando &lt;code&gt;zypper ref&lt;/code&gt; para obter a lista de pacotes dos novos repositórios.&lt;/p&gt;
-
-&lt;p&gt;Depois, execute o comando &lt;code&gt;zypper dup --download-only&lt;/code&gt; (&lt;em&gt;distribution upgrade&lt;/em&gt;, atualização da distribuição, &lt;em&gt;download only&lt;/em&gt;, apenas baixar):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-10-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-10-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ele passa um tempo &amp;quot;pensando&amp;quot; e logo depois mostra o que precisa fazer para atualizar o openSUSE para a próxima versão e pergunta se você deseja continuar:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-11-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-11-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que essa lista de ações é semelhante à produzida pelo comando &lt;code&gt;zypper up&lt;/code&gt;, apresentado no &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;. No entanto, como agora estamos fazendo uma atualização de distribuição (&lt;em&gt;upgrade&lt;/em&gt;), e não uma simples e cotidiana atualização de pacotes (&lt;em&gt;update&lt;/em&gt;), a lista do que precisa ser feito é bem maior.&lt;/p&gt;
-
-&lt;p&gt;Confira essa lista com cuidado. Você pode ir para cima ou para baixo utilizando a barra de rolagem à direita da tela ou a roda (&lt;em&gt;scroll&lt;/em&gt;) do &lt;em&gt;mouse&lt;/em&gt;, se utiliza o Konsole, ou as combinações de teclas &lt;strong&gt;Shift + Page Up&lt;/strong&gt; ou &lt;strong&gt;Shift + Page Down&lt;/strong&gt;, se está em uma interface puramente textual (elas também funcionam no Konsole).&lt;/p&gt;
-
-&lt;p&gt;A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se você concorda, pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e o &lt;em&gt;download&lt;/em&gt; dos novos pacotes começará. Enquanto isso, você pode utilizar seu computador normalmente. A atualização propriamente dita ainda não começou.&lt;/p&gt;
-
-&lt;p&gt;Observe que o &lt;strong&gt;zypper&lt;/strong&gt; apenas baixa os pacotes, ele não inicia a atualização:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-12-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-12-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso porque solicitamos a ele por ora apenas baixar os pacotes.&lt;/p&gt;
-
-&lt;p&gt;Termine o que está fazendo e salve os arquivos abertos para iniciarmos a atualização da distribuição. Note que ela pode levar alguns (vários) minutos e você só poderá voltar a usar o computador quando ela for concluída.&lt;/p&gt;
-
-&lt;h2&gt;6) Atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Agora que já baixamos os pacotes necessários para atualizar nosso openSUSE Leap da versão 42.1 para a 42.2, vamos sair da interface gráfica e utilizar a linha de comando para realizar a instalação. Aqui, você não poderá utilizar o Konsole.&lt;/p&gt;
-
-&lt;p&gt;Isso é necessário porque inclusive a própria interface gráfica será atualizada. Se estivermos utilizando a interface gráfica durante a atualização, pode ser que o sistema trave no meio da processo e as consequências disso são imprevisíveis.&lt;/p&gt;
-
-&lt;p&gt;Considere abrir essa página em outro computador, em um &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt;, imprimi-la ou anotar o que vai fazer.&lt;/p&gt;
-
-&lt;p&gt;Se o openSUSE que você vai atualizar está em um &lt;em&gt;notebook&lt;/em&gt;, certifique-se de que ele esteja com a bateria completamente carregada e conectado à fonte de alimentação. Não desconecte a bateria ou a fonte durante a atualização. Vamos prevenir qualquer possibilidade de problema.&lt;/p&gt;
-
-&lt;p&gt;Encerre sua sessão (&lt;em&gt;logout&lt;/em&gt;) abrindo o &lt;strong&gt;Menu de aplicativos&lt;/strong&gt;, apontando para &lt;strong&gt;Desligar / Sessão&lt;/strong&gt; e clicando em &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/logout-kde-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/logout-kde-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à tela de &lt;em&gt;login&lt;/em&gt;, onde você poderia informar seu usuário e senha para iniciar uma nova sessão na interface gráfica:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-13-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-13-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Mas não é ela que queremos. Aperte a combinação de teclas &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; para alternar para uma interface puramente textual:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-14.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-14.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Caso isso seja novidade para você, saiba que o Linux disponibiliza seis &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;consoles&lt;/a&gt; além da interface gráfica. Você pode usar as teclas de &lt;strong&gt;F1&lt;/strong&gt; a &lt;strong&gt;F6&lt;/strong&gt; naquela mesma combinação (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; e assim por diante) para alternar entre os consoles, assim como pressionar &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; para retornar à interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Vamos permanecer no primeiro console.&lt;/p&gt;
-
-&lt;p&gt;Entre como superusuário (&lt;em&gt;root&lt;/em&gt;). Para isso, digite &lt;code&gt;root&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Depois, digite a senha do superusuário e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Vamos alternar do nível de execução (&lt;a href=&quot;http://www.hardware.com.br/termos/runlevel&quot;&gt;&lt;em&gt;runlevel&lt;/em&gt;&lt;/a&gt;) 5, nível padrão, no qual o sistema nos provê interface gráfica, para o nível de execução 3, no qual temos apenas a interface de linha de comando e conexão de rede.&lt;/p&gt;
-
-&lt;p&gt;Para &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;alterar o nível de execução&lt;/a&gt; para 3, execute o comando &lt;code&gt;init 3&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Finalmente, vamos realizar a atualização de distribuição propriamente dita. Para isso, execute o comando &lt;code&gt;zypper --no-refresh dup&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-15.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-15.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O argumento &lt;code&gt;--no-refresh&lt;/code&gt; faz com que o &lt;strong&gt;zypper&lt;/strong&gt; não atualize a lista de pacotes dos repositórios. Com isso, garantimos que ele não tente baixar mais algum pacote além dos que nós já baixamos. Isso pode ser útil especialmente em &lt;em&gt;notebooks&lt;/em&gt;, que podem perder a conexão com a rede Wi-Fi ao sair da interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Como antes, o &lt;strong&gt;zypper&lt;/strong&gt; vai processar a atualização e mostrar o que vai fazer:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-16.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-16.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que todos os pacotes que ele precisa já foram baixados: ao final ele mostra &amp;quot;&lt;em&gt;Overall download size: 0 B. Already cached: 1.62 GiB.&lt;/em&gt;&amp;quot; (Tamanho geral do &lt;em&gt;download&lt;/em&gt;: 0 B. Já em cache: 1.62 GiB).&lt;/p&gt;
-
-&lt;p&gt;Apenas pressione &lt;strong&gt;Enter&lt;/strong&gt; para que a atualização comece.&lt;/p&gt;
-
-&lt;p&gt;Ele pula o &lt;em&gt;download&lt;/em&gt; dos pacotes e já vai direto para a instalação:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-17.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-17.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A atualização da distribuição pode demorar alguns (vários) minutos.&lt;/p&gt;
-
-&lt;p&gt;Quando ela terminar, assim como aconteceu no &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, o &lt;strong&gt;zypper&lt;/strong&gt; vai sugerir para reiniciar. É o que vamos fazer executando &lt;code&gt;reboot&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-18.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-18.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Pronto&lt;/h2&gt;
-
-&lt;p&gt;Se você conseguiu fazer tudo até aqui, agora seu computador já está com o openSUSE Leap 42.2.&lt;/p&gt;
-
-&lt;p&gt;Observe que o menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt;, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui Windows e Linux instalados na mesma máquina), já está diferente:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-19.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-19.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;E &lt;em&gt;voilà&lt;/em&gt;! O openSUSE Leap 42.2 está instalado e pronto para uso!&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-20-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-20-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique se está tudo no lugar. Agora você pode devolver os repositórios que excluiu, lembrando de fazer os devidos ajustes em relação à versão do openSUSE, mudando de &lt;code&gt;42.1&lt;/code&gt; para &lt;code&gt;42.2&lt;/code&gt; onde for necessário. Pode também tentar instalar qualquer programa que por ventura tenha sido removido durante a atualização.&lt;/p&gt;
-
-&lt;p&gt;Se lembre de regularmente &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;verificar se há atualizações&lt;/a&gt; para sua nova distribuição.&lt;/p&gt;
-
-&lt;p&gt;Se você encontrou alguma dificuldade durante a atualização ou possui alguma dúvida, não deixe de comentar!&lt;/p&gt;
-
-&lt;p&gt;Até a próxima!&lt;/p&gt;
-</description>
-                <pubDate>Mon, 31 Oct 2016 23:59:59 -0200</pubDate>
-                <link>https://kamarada.github.io/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/</guid>
                 
                 
                     <category>pt</category>
