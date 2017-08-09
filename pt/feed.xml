@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 07 Aug 2017 16:07:56 -0300</pubDate>
-        <lastBuildDate>Mon, 07 Aug 2017 16:07:56 -0300</lastBuildDate>
+        <pubDate>Wed, 09 Aug 2017 14:50:45 -0300</pubDate>
+        <lastBuildDate>Wed, 09 Aug 2017 14:50:45 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
         
@@ -1759,6 +1759,12 @@ origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (push)
 
 &lt;p&gt;Vejamos como instalar a versão mais recente da máquina virtual Java da &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt; no Linux &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt;. Para referência futura, no momento da escrita deste &lt;em&gt;post&lt;/em&gt;, ela está na versão &lt;strong&gt;8 Update 121&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u121-relnotes-3315208.html&quot;&gt;17 de janeiro de 2017&lt;/a&gt;.&lt;/p&gt;
 
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;span class=&quot;glyphicon glyphicon-refresh&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &lt;strong&gt;Atualização (09 de agosto de 2017):&lt;/strong&gt;
+    &lt;p&gt;Hoje, a versão mais recente da máquina virtual Java da Oracle é a &lt;strong&gt;8 Update 144&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u144-relnotes-3838694.html&quot;&gt;26 de julho de 2017&lt;/a&gt;. Esse passo deve funcionar com pequenas alterações tanto para essa nova versão quanto para versões futuras. Se você seguiu as instruções dessa página para instalar o Java da Oracle e voltou aqui para saber como atualizar, consulte a seção que foi incluída no final da página.&lt;/p&gt;
+
+&lt;/div&gt;
+
 &lt;h2&gt;Java &amp;quot;da Oracle&amp;quot;? Existe outra?&lt;/h2&gt;
 
 &lt;p&gt;A linguagem e a máquina virtual Java foram projetadas originalmente pela empresa &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sun_Microsystems&quot;&gt;Sun Microsystems&lt;/a&gt;. Até 2006, elas eram gratuitas, mas proprietárias (ou seja, o código-fonte delas era de propriedade da Sun, não estando disponível para quem tivesse interesse em obtê-lo). Nesse ano, a Sun liberou o código-fonte de grande parte da máquina virtual Java, dando origem ao projeto &lt;a href=&quot;http://openjdk.java.net/&quot;&gt;OpenJDK&lt;/a&gt;, que é &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;.&lt;/p&gt;
@@ -1973,7 +1979,34 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 &lt;/div&gt;
 
 &lt;p&gt;Pronto! Instalamos, configuramos e testamos o Java da Oracle, agora é só utilizá-lo.&lt;/p&gt;
-</description>
+
+&lt;h2&gt;Como atualizar o Java da Oracle&lt;/h2&gt;
+
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;span class=&quot;glyphicon glyphicon-refresh&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &lt;strong&gt;Atualização (09 de agosto de 2017):&lt;/strong&gt;
+    &lt;p&gt;Essa seção foi incluída para explicar como atualizar a máquina virtual Java da Oracle para a versão mais recente. As instruções a seguir também devem funcionar para versões futuras com pequenas alterações.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você seguiu o passo a passo dessa página para instalar e agora deseja atualizar a máquina virtual do Java para a versão mais atual, execute o procedimento a seguir. Como exemplo, vamos atualizar da versão &lt;strong&gt;8 Update 121&lt;/strong&gt; para a versão &lt;strong&gt;8 Update 144&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Acesse o &lt;em&gt;site&lt;/em&gt; do Java em &lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;java.com&lt;/a&gt; e baixe e instale o pacote RPM para o openSUSE, assim como você fez na instalação da versão anterior. Aproveite a instalação da nova versão para remover a antiga: na tela do YaST, alterne para a aba &lt;strong&gt;Pesquisar&lt;/strong&gt;, procure por &lt;code&gt;jre&lt;/code&gt; e marque o pacote &lt;strong&gt;jre1.8.0_121&lt;/strong&gt; para remoção. Se você voltar para a aba &lt;strong&gt;Resumo da instalação&lt;/strong&gt;, ela deve estar assim:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/update-oracle-jre-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/update-oracle-jre-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Aceitar&lt;/strong&gt; e aguarde o YaST terminar. Depois, clique em &lt;strong&gt;Concluir&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Agora é só utilizar a nova versão do Java. Você pode testá-la pela linha de comando ou pelo navegador, conforme expliquei anteriormente:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ java -version
+java version &amp;quot;1.8.0_144&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
+Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <pubDate>Tue, 28 Feb 2017 17:35:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</guid>
