@@ -163,76 +163,59 @@
 
 <body itemscope itemtype="http://schema.org/BlogPosting">
 
-    <nav class="navbar navbar-fixed-top navbar-bootsnipp" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-with-search" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="brand">
-                <a class="navbar-brand" href="/">
-                    
-                        Linux Kamarada
-                    
-                </a>
-            </div>
-        </div>
+            <a class="navbar-brand" href="/">
+                
+                    Linux Kamarada
+                
+            </a>
+        </div><!--.navbar-header-->
 
-        <form class="navbar-form" id="language-form">
+        <form class="navbar-form">
             <div class="dropdown pull-left">
                 <a class="mdi-action-language dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="language-button">
                     
+                        
                     
                     
+                        <li class="dropdown-header">English</li>
+                        
+                        
+                            <li>
+                                <a class="translation-en" href="https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/">This page in English</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/en/">English home page</a></li>
+                        <li role="separator" class="divider"></li>
                     
-                    <li class="dropdown-header">English</li>
-                    
-                    
-                    <li>
-                        <a class="translation-en" href="https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/">This page in English</a>
-                    </li>
-                    
-                    <li><a href="https://kamarada.github.io/en/">English home page</a></li>
-                    <li role="separator" class="divider"></li>
-                    
-                    <li class="dropdown-header">Português</li>
-                    
-                    
-                    <li>
-                        <a class="translation-pt" href="https://kamarada.github.io/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/">Esta página em Português</a>
-                    </li>
-                    
-                    <li><a href="https://kamarada.github.io/pt/">Página inicial em Português</a></li>
-                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Português</li>
+                        
+                        
+                            <li>
+                                <a class="translation-pt" href="https://kamarada.github.io/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/">Esta página em Português</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/pt/">Página inicial em Português</a></li>
+                        <li role="separator" class="divider"></li>
                     
                     <li class="dropdown-header">Other languages (by Google Translate)</li>
                     <li><a href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/">Translate this page</a></li>
                 </ul>
-            </div>
-            <a class="mdi-action-search pull-left" id="search-button" href="#toggle-search" title="Pesquisar"></a>
-        </form>
+            </div><!--.dropdown-->
+            <a class="mdi-action-search pull-left" id="search-button" title="Pesquisar"></a>
+        </form><!--.navbar-form-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <!--<li class="visible-xs">
-                    <form action="/pt/buscar/" method="get" role="search">
-                        
-                        
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="q" placeholder="Pesquisar">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                                <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                            </span>
-                        </div>
-                    </form>
-                </li>-->
                 
                     
                 
@@ -242,26 +225,25 @@
                         <li><a href="/pt/download/">Download</a></li>
                     
                 
-                <!--<li class="hidden-xs"><a href="#toggle-search" title="Pesquisar"><span class="glyphicon glyphicon-search"></span></a></li>-->
             </ul>
-        </div>
+        </div><!--#navbar -->
+    </div><!--.container-->
 
-    </div>
-    <div class="bootsnipp-search animate">
+    <div class="search-bar">
         <div class="container">
-            <form action="/pt/buscar/" method="get" role="search">
+            <form action="/pt/buscar/" id="search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
                     <input class="form-control" id="search-input" type="text" name="q" placeholder="Pesquisar">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                        <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="submit" class="btn btn-primary" id="submit-search-button"><span class="glyphicon glyphicon-search"></span></button>
+                        <button type="reset" class="btn btn-danger" id="reset-search-button"><span class="glyphicon glyphicon-remove"></span></button>
                     </span>
                 </div>
             </form>
         </div>
-    </div>
+    </div><!--.search-bar-->
 </nav>
 
 

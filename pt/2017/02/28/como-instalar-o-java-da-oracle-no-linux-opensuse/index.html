@@ -159,76 +159,59 @@
 
 <body itemscope itemtype="http://schema.org/BlogPosting">
 
-    <nav class="navbar navbar-fixed-top navbar-bootsnipp" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-with-search" role="navigation">
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="brand">
-                <a class="navbar-brand" href="/">
-                    
-                        Linux Kamarada
-                    
-                </a>
-            </div>
-        </div>
+            <a class="navbar-brand" href="/">
+                
+                    Linux Kamarada
+                
+            </a>
+        </div><!--.navbar-header-->
 
-        <form class="navbar-form" id="language-form">
+        <form class="navbar-form">
             <div class="dropdown pull-left">
                 <a class="mdi-action-language dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="language-button">
                     
+                        
                     
                     
+                        <li class="dropdown-header">English</li>
+                        
+                        
+                            <li>
+                                <a href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">This page in English</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/en/">English home page</a></li>
+                        <li role="separator" class="divider"></li>
                     
-                    <li class="dropdown-header">English</li>
-                    
-                    
-                    <li>
-                        <a href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">This page in English</a>
-                    </li>
-                    
-                    <li><a href="https://kamarada.github.io/en/">English home page</a></li>
-                    <li role="separator" class="divider"></li>
-                    
-                    <li class="dropdown-header">Português</li>
-                    
-                    
-                    <li>
-                        <a class="translation-pt" href="https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">Esta página em Português</a>
-                    </li>
-                    
-                    <li><a href="https://kamarada.github.io/pt/">Página inicial em Português</a></li>
-                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Português</li>
+                        
+                        
+                            <li>
+                                <a class="translation-pt" href="https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">Esta página em Português</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/pt/">Página inicial em Português</a></li>
+                        <li role="separator" class="divider"></li>
                     
                     <li class="dropdown-header">Other languages (by Google Translate)</li>
                     <li><a href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">Translate this page</a></li>
                 </ul>
-            </div>
-            <a class="mdi-action-search pull-left" id="search-button" href="#toggle-search" title="Pesquisar"></a>
-        </form>
+            </div><!--.dropdown-->
+            <a class="mdi-action-search pull-left" id="search-button" title="Pesquisar"></a>
+        </form><!--.navbar-form-->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <!--<li class="visible-xs">
-                    <form action="/pt/buscar/" method="get" role="search">
-                        
-                        
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="q" placeholder="Pesquisar">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                                <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-                            </span>
-                        </div>
-                    </form>
-                </li>-->
                 
                     
                 
@@ -238,26 +221,25 @@
                         <li><a href="/pt/download/">Download</a></li>
                     
                 
-                <!--<li class="hidden-xs"><a href="#toggle-search" title="Pesquisar"><span class="glyphicon glyphicon-search"></span></a></li>-->
             </ul>
-        </div>
+        </div><!--#navbar -->
+    </div><!--.container-->
 
-    </div>
-    <div class="bootsnipp-search animate">
+    <div class="search-bar">
         <div class="container">
-            <form action="/pt/buscar/" method="get" role="search">
+            <form action="/pt/buscar/" id="search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
                     <input class="form-control" id="search-input" type="text" name="q" placeholder="Pesquisar">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-                        <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="submit" class="btn btn-primary" id="submit-search-button"><span class="glyphicon glyphicon-search"></span></button>
+                        <button type="reset" class="btn btn-danger" id="reset-search-button"><span class="glyphicon glyphicon-remove"></span></button>
                     </span>
                 </div>
             </form>
         </div>
-    </div>
+    </div><!--.search-bar-->
 </nav>
 
 
@@ -290,7 +272,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2017-02-28" />
+                <meta itemprop="dateModified" content="2017-08-09" />
             </div>
             <div class='col-sm-6'>
                 
@@ -345,6 +327,12 @@
 </div>
 
 <p>Vejamos como instalar a versão mais recente da máquina virtual Java da <a href="https://www.oracle.com/br/">Oracle</a> no Linux <a href="https://www.opensuse.org">openSUSE</a>. Para referência futura, no momento da escrita deste <em>post</em>, ela está na versão <strong>8 Update 121</strong>, lançada em <a href="http://www.oracle.com/technetwork/java/javase/8u121-relnotes-3315208.html">17 de janeiro de 2017</a>.</p>
+
+<div class="alert alert-success atualizacao" role="alert">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> <strong>Atualização (09 de agosto de 2017):</strong>
+    <p>Hoje, a versão mais recente da máquina virtual Java da Oracle é a <strong>8 Update 144</strong>, lançada em <a href="http://www.oracle.com/technetwork/java/javase/8u144-relnotes-3838694.html">26 de julho de 2017</a>. Esse passo deve funcionar com pequenas alterações tanto para essa nova versão quanto para versões futuras. Se você seguiu as instruções dessa página para instalar o Java da Oracle e voltou aqui para saber como atualizar, consulte a seção que foi incluída no final da página.</p>
+
+</div>
 
 <h2>Java &quot;da Oracle&quot;? Existe outra?</h2>
 
@@ -561,6 +549,33 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
 
 <p>Pronto! Instalamos, configuramos e testamos o Java da Oracle, agora é só utilizá-lo.</p>
 
+<h2>Como atualizar o Java da Oracle</h2>
+
+<div class="alert alert-success atualizacao" role="alert">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> <strong>Atualização (09 de agosto de 2017):</strong>
+    <p>Essa seção foi incluída para explicar como atualizar a máquina virtual Java da Oracle para a versão mais recente. As instruções a seguir também devem funcionar para versões futuras com pequenas alterações.</p>
+
+</div>
+
+<p>Se você seguiu o passo a passo dessa página para instalar e agora deseja atualizar a máquina virtual do Java para a versão mais atual, execute o procedimento a seguir. Como exemplo, vamos atualizar da versão <strong>8 Update 121</strong> para a versão <strong>8 Update 144</strong>.</p>
+
+<p>Acesse o <em>site</em> do Java em <a href="https://www.java.com/pt_BR/">java.com</a> e baixe e instale o pacote RPM para o openSUSE, assim como você fez na instalação da versão anterior. Aproveite a instalação da nova versão para remover a antiga: na tela do YaST, alterne para a aba <strong>Pesquisar</strong>, procure por <code>jre</code> e marque o pacote <strong>jre1.8.0_121</strong> para remoção. Se você voltar para a aba <strong>Resumo da instalação</strong>, ela deve estar assim:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2017/08/update-oracle-jre-pt.jpg' title=''>
+<img src='/files/2017/08/update-oracle-jre-pt.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Clique em <strong>Aceitar</strong> e aguarde o YaST terminar. Depois, clique em <strong>Concluir</strong>.</p>
+
+<p>Pronto! Agora é só utilizar a nova versão do Java. Você pode testá-la pela linha de comando ou pelo navegador, conforme expliquei anteriormente:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ java -version
+java version &quot;1.8.0_144&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
+Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
+</code></pre></div>
             </div>
         </div>
 
