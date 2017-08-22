@@ -27,13 +27,17 @@
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma RouterBOARD hAP, comprei dessa vez uma antena para conectar meu noteboo...">
+    <meta name="description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma MikroTik hAP ac lite tower, comprei dessa vez uma antena para conectar ...">
     <link rel="canonical" href="https://kamarada.github.io/pt/2017/05/16/tp-link-archer-t4u-no-linux-opensuse/">
     <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
 
     
         
     
+    
+        
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2017/08/21/tp-link-archer-t4u-on-opensuse-linux/" />
+        
     
         
     
@@ -52,7 +56,7 @@
     
         <meta property="og:author" content="Antônio Vinícius" />
     
-    <meta property="og:description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma RouterBOARD hAP, comprei dessa vez uma antena para conectar meu noteboo..." />
+    <meta property="og:description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma MikroTik hAP ac lite tower, comprei dessa vez uma antena para conectar ..." />
     
         <meta property="og:image" content="https://kamarada.github.io/files/2017/05/tp-link-archer-t4u.jpg" />
     
@@ -137,7 +141,7 @@
             var addthis_share = {
                 url: 'https://kamarada.github.io/pt/2017/05/16/tp-link-archer-t4u-no-linux-opensuse/',
                 title: document.title,
-                description: 'Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma RouterBOARD hAP, comprei dessa vez uma antena para conectar meu noteboo...'
+                description: 'Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma MikroTik hAP ac lite tower, comprei dessa vez uma antena para conectar ...'
             };
         </script>
         <!-- End AddThis -->
@@ -175,7 +179,7 @@
                         
                         
                             <li>
-                                <a href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2017/05/16/tp-link-archer-t4u-no-linux-opensuse/">This page in English</a>
+                                <a class="translation-en" href="https://kamarada.github.io/en/2017/08/21/tp-link-archer-t4u-on-opensuse-linux/">This page in English</a>
                             </li>
                         
                         <li><a href="https://kamarada.github.io/en/">English home page</a></li>
@@ -260,7 +264,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2017-05-16" />
+                <meta itemprop="dateModified" content="2017-08-21" />
             </div>
             <div class='col-sm-6'>
                 
@@ -298,7 +302,7 @@
 
         <div class="row" itemprop="articleBody mainEntity">
             <div class="col-xs-12">
-                <p>Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma <a href="https://routerboard.com/RB952Ui-5ac2nD-TC">RouterBOARD hAP</a>, comprei dessa vez uma antena para conectar meu <em>notebook</em> à frequência de 5GHz do padrão <a href="http://www.techtudo.com.br/noticias/noticia/2016/09/80211ac-e-80211n-veja-diferencas-entre-padroes-da-performance-wi-fi.html">802.11ac</a>: a <a href="http://www.tp-link.com.br/products/details/cat-11_Archer-T4U.html">TP-Link Archer T4U</a>.</p>
+                <p>Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma <a href="https://mikrotik.com/product/RB952Ui-5ac2nD-TC">MikroTik hAP ac lite tower</a>, comprei dessa vez uma antena para conectar meu <em>notebook</em> à frequência de 5GHz do padrão <a href="http://www.techtudo.com.br/noticias/noticia/2016/09/80211ac-e-80211n-veja-diferencas-entre-padroes-da-performance-wi-fi.html">802.11ac</a>: a <a href="http://www.tp-link.com.br/products/details/cat-11_Archer-T4U.html">TP-Link Archer T4U</a>.</p>
 
 <div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
 <a href='/files/2017/05/tp-link-archer-t4u.jpg' title=''>
@@ -332,7 +336,7 @@ $ cd rtl8812AU_8821AU_linux/
 
 <p>Todos os arquivos que compõem o código-fonte são baixados na forma de um arquivo compactado ZIP. Extraia o conteúdo desse arquivo:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ unzip rtl8812AU_8821AU_linux-master.zip
-$ cd unzip rtl8812AU_8821AU_linux-master
+$ cd rtl8812AU_8821AU_linux-master
 </code></pre></div>
 <p>Para compilar o código-fonte do <em>driver</em>, instale os pacotes <strong>gcc</strong>, <strong>make</strong>, <strong>dkms</strong> e <strong>kernel-default-devel</strong> (supondo que você utiliza o <em>kernel</em> padrão, que é o <strong>kernel-default</strong>):</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text"># zypper ref
@@ -360,8 +364,8 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
 <p>Feito isso, o sistema já mostra seu novo adaptador Wi-Fi:</p>
 
 <div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
-<a href='/files/2017/05/tp-link-archer-t4u-2.jpg' title=''>
-<img src='/files/2017/05/tp-link-archer-t4u-2.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+<a href='/files/2017/05/tp-link-archer-t4u-2-pt.jpg' title=''>
+<img src='/files/2017/05/tp-link-archer-t4u-2-pt.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
 </a>
 
 </div>
@@ -369,8 +373,8 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
 <p>Você já pode se conectar à sua rede Wi-Fi 802.11ac de 5GHz:</p>
 
 <div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
-<a href='/files/2017/05/tp-link-archer-t4u-3.png' title=''>
-<img src='/files/2017/05/tp-link-archer-t4u-3.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+<a href='/files/2017/05/tp-link-archer-t4u-3-pt.png' title=''>
+<img src='/files/2017/05/tp-link-archer-t4u-3-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
 </a>
 
 </div>
@@ -571,7 +575,7 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
     </div>
 </footer>
 
-<meta itemprop="description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma RouterBOARD hAP, comprei dessa vez uma antena para conectar meu notebook à frequência de 5GHz do padrão 802.11ac: a TP-Link Archer T4U. O novo padrão de Wi-Fi 802.11ac visa ao desempenho. Além de maior velocidade, a frequência maior também...">
+<meta itemprop="description" content="Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma MikroTik hAP ac lite tower, comprei dessa vez uma antena para conectar meu notebook à frequência de 5GHz do padrão 802.11ac: a TP-Link Archer T4U. O novo padrão de Wi-Fi 802.11ac visa ao desempenho. Além de maior velocidade, a...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
