@@ -9,10 +9,134 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 21 Aug 2017 23:42:54 -0300</pubDate>
-        <lastBuildDate>Mon, 21 Aug 2017 23:42:54 -0300</lastBuildDate>
+        <pubDate>Tue, 29 Aug 2017 22:43:50 -0300</pubDate>
+        <lastBuildDate>Tue, 29 Aug 2017 22:43:50 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como instalar certificados de segurança no Linux</title>
+                <description>&lt;p&gt;Já foi pego de surpresa ao acessar um &lt;em&gt;site&lt;/em&gt; e ser alertado pelo navegador de que não é seguro? O que fazer se você é servidor público federal, acessa o &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt;, sistema do governo que o próprio departamento de pessoal te orientou acessar para consultar seu contracheque, e se depara com uma mensagem dessas?&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-firefox-1.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-firefox-1.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-1.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-1.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Será que seu departamento de pessoal cadastrou seus dados em um sistema inseguro e agora você corre perigo?&lt;/p&gt;
+
+&lt;p&gt;Ao menos nesse caso em particular, felizmente, a resposta é &lt;strong&gt;não&lt;/strong&gt; (calma, seus dados estão seguros). Nesse caso, o que ocorre é que o certificado de segurança desse sistema do governo foi emitido pela &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;Autoridade Certificadora Raiz brasileira&lt;/a&gt;, que não é conhecida por muitos navegadores.&lt;/p&gt;
+
+&lt;h2&gt;Entenda o que se passa&lt;/h2&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://support.mozilla.org/pt-BR/kb/certificado-de-seguranca&quot;&gt;&lt;strong&gt;certificado de segurança&lt;/strong&gt;&lt;/a&gt; do &lt;em&gt;site&lt;/em&gt; ajuda seu navegador a verificar a autenticidade do &lt;em&gt;site&lt;/em&gt; que você visita, ou seja, se ele é realmente o &lt;em&gt;site&lt;/em&gt; que afirma ser. Certificados de segurança são emitidos por &lt;a href=&quot;https://pt.wikipedia.org/wiki/Autoridade_de_certifica%C3%A7%C3%A3o&quot;&gt;&lt;strong&gt;autoridades certificadoras&lt;/strong&gt;&lt;/a&gt;. Elas também possuem seus próprios certificados, muitos deles já conhecidos pelos navegadores.&lt;/p&gt;
+
+&lt;p&gt;Quando um &lt;em&gt;site&lt;/em&gt; apresenta um certificado que o navegador consegue verificar, o cadeado verde é exibido, indicando que o &lt;em&gt;site&lt;/em&gt; é autêntico e é seguro permanecer nele. Sempre se atente a isso quando acessar um &lt;em&gt;netbanking&lt;/em&gt; ou um &lt;em&gt;site&lt;/em&gt; de compras.&lt;/p&gt;
+
+&lt;p&gt;Quando o navegador não consegue verificar o certificado do &lt;em&gt;site&lt;/em&gt;, ele apresenta um alerta informando que a conexão não é segura. Pode ser que um &lt;em&gt;site&lt;/em&gt; malicioso esteja tentando se passar pelo &lt;em&gt;site&lt;/em&gt; que você pediu para acessar. Se isso acontecer, a menos que saiba o que está fazendo, o mais seguro é não continuar.&lt;/p&gt;
+
+&lt;p&gt;Como eu disse, no exemplo, o alerta foi mostrado apenas porque o navegador não conhece o certificado da Autoridade Certificadora Raiz brasileira. Por tabela, ele não confia no certificado do SIGEPE, que foi emitido por essa autoridade certificadora. Finalmente, o navegador entende que a conexão é insegura e alerta o usuário.&lt;/p&gt;
+
+&lt;h2&gt;Instale o certificado de segurança&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o certificado de segurança da Autoridade Certificadora Raiz brasileira nos navegadores &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; e &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; para que eles parem de exibir esse alerta para &lt;em&gt;sites&lt;/em&gt; brasileiros, principalmente os do governo. Os passos para o Google Chrome também valem para seu equivalente &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto&quot;&gt;aberto&lt;/a&gt;, o &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv2.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
+
+&lt;h3&gt;Mozilla Firefox&lt;/h3&gt;
+
+&lt;p&gt;O Mozilla Firefox é inteligente e percebe que baixou um certificado de segurança. Assim que conclui o &lt;em&gt;download&lt;/em&gt;, já oferece para instalar o certificado:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-firefox-2.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-firefox-2.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Agora, se você voltar ao &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt;, perceberá na barra de endereço o cadeado verde, que indica que o navegador considera a conexão segura:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-firefox-3.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-firefox-3.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3&gt;Google Chrome&lt;/h3&gt;
+
+&lt;p&gt;Quando terminar de baixar o certificado de segurança (o arquivo não é grande, o &lt;em&gt;download&lt;/em&gt; não deve demorar), clique no &lt;strong&gt;botão de opções do Google Chrome&lt;/strong&gt;, na parte superior direita da janela, e clique em &lt;strong&gt;Configurações&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-2.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-2.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No campo &lt;strong&gt;Pesquisar nas configurações&lt;/strong&gt;, digite &lt;code&gt;certificados&lt;/code&gt;. O Google Chrome filtra as opções relacionadas. Clique em &lt;strong&gt;Gerenciar certificados&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-3.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-3.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique na guia &lt;strong&gt;Autoridades&lt;/strong&gt; e depois no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-4.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-4.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Procure pelo certificado de segurança que você baixou. Marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-5.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-5.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Pronto! Agora, se você voltar ao &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt;, perceberá na barra de endereço o cadeado verde, que indica que o navegador considera a conexão segura:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/08/certificados-chrome-6.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/08/certificados-chrome-6.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Certificado de segurança | Ajuda do Firefox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://antigo.iti.gov.br/noticias/ascom/188-atualizacao/4526-mozilla&quot;&gt;MOZILLA FIREFOX - ITI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://antigo.iti.gov.br/noticias/ascom/188-atualizacao/4532-chrome-linux&quot;&gt;GOOGLE CHROMIUM - LINUX - ITI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Tue, 29 Aug 2017 19:40:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Atualização de distribuição Linux continua empoderando a comunidade, e as empresas se beneficiam</title>
@@ -2010,536 +2134,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
                 <pubDate>Tue, 28 Feb 2017 17:35:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Levante um servidor com o Linux openSUSE Leap (parte 2)</title>
-                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, você viu como instalar o &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap&lt;/a&gt; em um servidor. Agora, você percorrerá um &lt;em&gt;checklist&lt;/em&gt; com as principais configurações que deve ajustar no novo servidor para que ele possa ser considerado efetivamente pronto para uso.&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-01.jpg&#39; title=&#39;Deixe o Geeko tomar conta dos seus servidores! (imagem extraída do clipe [Uptime Funk](https://www.youtube.com/watch?v=zbABy9ul11I))&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-01.jpg&#39; alt=&#39;Deixe o Geeko tomar conta dos seus servidores! (imagem extraída do clipe [Uptime Funk](https://www.youtube.com/watch?v=zbABy9ul11I))&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;Deixe o Geeko tomar conta dos seus servidores! (imagem extraída do clipe &lt;a href=&quot;https://www.youtube.com/watch?v=zbABy9ul11I&quot;&gt;Uptime Funk&lt;/a&gt;)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você chegou aqui sem ter passado pelo &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, recomendo que comece sua leitura por ele. A menos que o openSUSE já esteja instalado no seu servidor.&lt;/p&gt;
-
-&lt;h2&gt;Retomando...&lt;/h2&gt;
-
-&lt;p&gt;Paramos na tela de &lt;em&gt;login&lt;/em&gt;, que aparece logo após o servidor reiniciar:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/01/opensuse-server-39.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/01/opensuse-server-39.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Entre com o usuário &lt;em&gt;root&lt;/em&gt;. Para isso, digite &lt;code&gt;root&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;, então digite a senha que você definiu durante a instalação para o usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt; mais uma vez:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-02.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-02.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Estava esperando que apareceriam asteriscos (&lt;code&gt;*&lt;/code&gt;) enquanto você digitava a senha? Não se preocupe, na interface textual do Linux é assim mesmo: a senha não aparece enquanto é digitada, de forma alguma, nem mesmo camuflada com asteriscos.&lt;/p&gt;
-
-&lt;h2&gt;O Centro de controle YaST&lt;/h2&gt;
-
-&lt;p&gt;Um dos motivos de eu indicar o openSUSE para quem me pergunta por uma distribuição Linux é que ele tem o &lt;a href=&quot;https://pt.opensuse.org/Portal:YaST&quot;&gt;&lt;strong&gt;YaST&lt;/strong&gt;&lt;/a&gt;. Sigla do inglês &lt;em&gt;Yet another Setup Tool&lt;/em&gt; (&amp;quot;apenas mais uma ferramenta de configuração&amp;quot;, em uma tradução livre), o YaST é a ferramenta central do openSUSE para administrar o sistema.&lt;/p&gt;
-
-&lt;p&gt;Muitas das configurações possíveis (e com certeza todas as principais) podem ser modificadas pelo YaST, incluindo &lt;em&gt;hardware&lt;/em&gt;, rede, instalação e remoção de programas, serviços do sistema, usuários, segurança, data e hora, idiomas e outras.&lt;/p&gt;
-
-&lt;p&gt;O YaST fornece uma interface amigável até mesmo para quem usa a interface de texto. Para iniciá-lo, execute o comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Se você não está acostumado com essa notação, isso significa digitar &lt;code&gt;yast&lt;/code&gt; e teclar &lt;strong&gt;Enter&lt;/strong&gt;. O jogo da velha (&lt;code&gt;#&lt;/code&gt;) não deve ser digitado, ele apenas indica que o comando deve ser executado com permissões elevadas (do usuário &lt;em&gt;root&lt;/em&gt;). Ao contrário, um cifrão (&lt;code&gt;$&lt;/code&gt;) indicaria que o comando poderia ser executado por qualquer usuário.&lt;/p&gt;
-
-&lt;p&gt;Feito isso, aparecerá a tela principal do YaST:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-03.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-03.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As configurações são listadas à direita e agrupadas em categorias à esquerda.&lt;/p&gt;
-
-&lt;p&gt;Se você utiliza o openSUSE no &lt;em&gt;desktop&lt;/em&gt;, talvez já conheça o YaST:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/upgrade-03-pt.png&#39; title=&#39;A tela inicial do YaST na interface gráfica&#39;&gt;
-&lt;img src=&#39;/files/2016/10/upgrade-03-pt.png&#39; alt=&#39;A tela inicial do YaST na interface gráfica&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;A tela inicial do YaST na interface gráfica&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na verdade, você já conhece o YaST do &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;: além de centro de controle, ele também é o próprio instalador do openSUSE (você pode voltar àquele &lt;em&gt;post&lt;/em&gt; e reparar que o nome YaST aparece no canto superior esquerdo de todas as telas).&lt;/p&gt;
-
-&lt;p&gt;Quem está acostumado com o &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; deve achar o YaST parecido com o &lt;a href=&quot;http://www.techtudo.com.br/dicas-e-tutoriais/noticia/2015/06/como-acessar-o-painel-de-controle-antigo-no-windows-10.html&quot;&gt;Painel de Controle&lt;/a&gt;. Ambos centralizam as configurações de seus respectivos sistemas.&lt;/p&gt;
-
-&lt;h2&gt;Configurações de idioma&lt;/h2&gt;
-
-&lt;p&gt;Durante a &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;instalação do openSUSE&lt;/a&gt;, selecionamos como idioma o português brasileiro. Note que, apesar disso, a tela do YaST está em inglês. Isso acontece porque, por padrão, o openSUSE traduz a interface apenas para os usuários comuns, deixando a interface do usuário &lt;em&gt;root&lt;/em&gt; em inglês. Vamos alterar essa configuração.&lt;/p&gt;
-
-&lt;p&gt;À esquerda selecione a categoria &lt;strong&gt;System&lt;/strong&gt; (Sistema) e à direita selecione a configuração &lt;strong&gt;Language&lt;/strong&gt; (Idioma):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-04.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-04.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que essa tela é traduzida e que o português brasileiro de fato está configurado como idioma primário do sistema:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-05-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-05-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Detalhes&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na tela &lt;strong&gt;Detalhes do idioma&lt;/strong&gt;, em &lt;strong&gt;Configurações locais para usuário root&lt;/strong&gt;, mude de &lt;strong&gt;Somente ctype&lt;/strong&gt; (configuração padrão) para &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-06-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-06-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com isso, o usuário &lt;em&gt;root&lt;/em&gt; será tratado como os demais usuários em relação à tradução. Note que essa configuração só surtirá efeito da próxima vez em que você fizer &lt;em&gt;login&lt;/em&gt; com o usuário &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;OK&lt;/strong&gt; e depois &lt;strong&gt;OK&lt;/strong&gt; novamente. Você volta para a tela principal do YaST.&lt;/p&gt;
-
-&lt;p&gt;Vamos sair do YaST, fazer &lt;em&gt;logout&lt;/em&gt; do usuário &lt;em&gt;root&lt;/em&gt;, fazer &lt;em&gt;login&lt;/em&gt; com o usuário &lt;em&gt;root&lt;/em&gt; e iniciar o YaST novamente, para vermos sua interface em português.&lt;/p&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Quit&lt;/strong&gt; (Sair). Você volta para a linha de comando.&lt;/p&gt;
-
-&lt;p&gt;Para fazer &lt;em&gt;logout&lt;/em&gt; do usuário &lt;em&gt;root&lt;/em&gt;, execute:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ exit
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;(&lt;em&gt;exit&lt;/em&gt;, do inglês &amp;quot;sair&amp;quot;)&lt;/p&gt;
-
-&lt;p&gt;Então, faça &lt;em&gt;login&lt;/em&gt; com o usuário &lt;em&gt;root&lt;/em&gt; e inicie novamente o YaST:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Perceba que agora o YaST aparece traduzido:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-07-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-07-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Configurações básicas de rede&lt;/h2&gt;
-
-&lt;p&gt;No &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, optamos por realizar a configuração da rede de forma automática via &lt;a href=&quot;https://pt.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol&quot;&gt;DHCP&lt;/a&gt;. Em servidores, é mais comum que a rede seja configurada manualmente.&lt;/p&gt;
-
-&lt;p&gt;Vamos definir manualmente as configurações de rede do nosso servidor.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; não está no escopo deste &lt;em&gt;post&lt;/em&gt; explicar noções básicas de redes de computadores. Como você está configurando um servidor, suponho que possua esse conhecimento. Caso surja alguma dúvida, consulte a &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.basicnet.html&quot;&gt;documentação oficial do openSUSE&lt;/a&gt;, que é rica em informação tanto para iniciantes quanto mais experientes.&lt;/p&gt;
-
-&lt;p&gt;À esquerda selecione a categoria &lt;strong&gt;Sistema&lt;/strong&gt; e à direita selecione &lt;strong&gt;Configurações da rede&lt;/strong&gt;. Após verificar as configurações de rede do servidor, o YaST listará as interfaces de rede configuradas:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-08-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-08-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na lista, selecione a interface de rede e depois, &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na tela &lt;strong&gt;Configuração da placa de rede&lt;/strong&gt;, selecione &lt;strong&gt;Endereço IP atribuído estaticamente&lt;/strong&gt; e então forneça:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;o &lt;strong&gt;Endereço IP&lt;/strong&gt; (vou usar como exemplo &lt;code&gt;192.168.25.100&lt;/code&gt;, note que esse é um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Rede_privada&quot;&gt;endereço IP de rede privada&lt;/a&gt; em conformidade com a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Rede_privada&quot;&gt;RFC 1918&lt;/a&gt;),&lt;/li&gt;
-&lt;li&gt;a &lt;strong&gt;Máscara de subrede&lt;/strong&gt; (&lt;code&gt;255.255.255.0&lt;/code&gt; ou &lt;code&gt;/24&lt;/code&gt; ou simplesmente &lt;code&gt;24&lt;/code&gt;, o YaST é inteligente e entende tanto o formato mais tradicional de máscara de rede quanto o mais recente &lt;a href=&quot;http://www.hardware.com.br/livros/redes/cidr-mascaras-tamanho-variavel.html&quot;&gt;CIDR&lt;/a&gt;) e&lt;/li&gt;
-&lt;li&gt;o &lt;strong&gt;Nome de máquina&lt;/strong&gt; completo, ou seja, acompanhado do domínio (como &lt;code&gt;novoservidor.minhacasa.net&lt;/code&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Quando estiver pronto, selecione &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-09-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-09-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela &lt;strong&gt;Configurações da rede&lt;/strong&gt;, passe para a aba &lt;strong&gt;Nome de máquina/DNS&lt;/strong&gt;, forneça novamente o &lt;strong&gt;Nome de máquina&lt;/strong&gt; (&lt;code&gt;novoservidor&lt;/code&gt;), o &lt;strong&gt;Nome de domínio&lt;/strong&gt; (&lt;code&gt;minhacasa.net&lt;/code&gt;) e os endereços IP dos servidores de nomes:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-10-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-10-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se sua rede possui servidores de nomes locais, dê preferência a utilizá-los. Senão, utilize os informados pelo seu provedor. Você também pode utilizar uma ferramenta como o &lt;a href=&quot;https://www.grc.com/dns/benchmark.htm&quot;&gt;DNS Benchmark&lt;/a&gt; para comparar o desempenho de diversos servidores de nomes e escolher o melhor. Nesse exemplo, usei os servidores brasileiros do &lt;a href=&quot;https://www.gigadns.com.br&quot;&gt;GigaDNS&lt;/a&gt;: &lt;code&gt;189.38.95.95&lt;/code&gt; e &lt;code&gt;189.38.95.96&lt;/code&gt;. &lt;a href=&quot;https://tecnoblog.net/91521/google-dns/&quot;&gt;Muitas pessoas&lt;/a&gt; utilizam os &lt;a href=&quot;https://developers.google.com/speed/public-dns/&quot;&gt;servidores DNS públicos do Google&lt;/a&gt;: &lt;code&gt;8.8.8.8&lt;/code&gt; e &lt;code&gt;8.8.4.4&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;No campo &lt;strong&gt;Pesquisa de domínio&lt;/strong&gt;, informe nomes de domínio que devem ser utilizados para resolver nomes de máquina quando um domínio não for especificado. Aqui você deve informar pelo menos o nome de domínio do seu servidor (&lt;code&gt;minhacasa.net&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Pergunta: em que isso é útil? Suponha que sua rede possui um servidor chamado &lt;code&gt;www.minhacasa.net&lt;/code&gt;. Se no servidor &lt;code&gt;novoservidor&lt;/code&gt; você executar o comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping www
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Ele produzirá o mesmo efeito que o comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping www.minhacasa.net
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;O comando &lt;strong&gt;ping&lt;/strong&gt; é utilizado para testar se uma máquina consegue se comunicar com outra na rede. Ele envia um pequeno pacote à máquina de destino, que responde imediatamente. Se tudo funciona conforme o esperado, uma mensagem é exibida na tela, indicando que há comunicação.&lt;/p&gt;
-
-&lt;p&gt;Nos exemplos acima, o comando &lt;strong&gt;ping&lt;/strong&gt; alcançaria o mesmo servidor.&lt;/p&gt;
-
-&lt;p&gt;Voltemos à tela &lt;strong&gt;Configurações da rede&lt;/strong&gt;. Mude para a aba &lt;strong&gt;Roteamento&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Em &lt;strong&gt;Gateway padrão IPv4&lt;/strong&gt;, informe o endereço IP do seu roteador:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-11-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-11-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se seu novo servidor atuará como &lt;em&gt;firewall&lt;/em&gt; e/ou roteador, marque também a opção &lt;strong&gt;Habilitar o encaminhamento IPv4&lt;/strong&gt;. Se esse é o caso, você também deve trabalhar (agora ou mais tarde) na &lt;strong&gt;Tabela de roteamento&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar, selecione &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O YaST aplicará as configurações de rede e retornará para o menu inicial.&lt;/p&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Sair&lt;/strong&gt;. Vamos testar a rede usando o comando &lt;strong&gt;ping&lt;/strong&gt;. Execute os comandos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ping 192.168.25.10&lt;/code&gt; (uma máquina na mesma rede que o servidor),&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ping 8.8.8.8&lt;/code&gt; (uma máquina em outra rede que não a do servidor, pode ser um servidor na Internet, nesse caso usei um servidor DNS do Google) e&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ping www.google.com&lt;/code&gt; (um nome qualquer para testar o DNS).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping 192.168.25.10
-
-PING 192.168.25.10 (192.168.25.10) 56(84) bytes of data.
-64 bytes from 192.168.25.10: icmp_seq=1 ttl=64 time=0.259 ms
-64 bytes from 192.168.25.10: icmp_seq=2 ttl=64 time=0.189 ms
-64 bytes from 192.168.25.10: icmp_seq=3 ttl=64 time=0.189 ms
-64 bytes from 192.168.25.10: icmp_seq=4 ttl=64 time=0.186 ms
-^C
---- 192.168.25.10 ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 2999ms
-rtt min/avg/max/mdev = 0.186/0.205/0.259/0.035 ms
-
-$ ping 8.8.8.8
-
-PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
-64 bytes from 8.8.8.8: icmp_seq=1 ttl=48 time=137 ms
-64 bytes from 8.8.8.8: icmp_seq=2 ttl=48 time=77.0 ms
-64 bytes from 8.8.8.8: icmp_seq=3 ttl=48 time=77.5 ms
-64 bytes from 8.8.8.8: icmp_seq=4 ttl=48 time=76.6 ms
-^C
---- 8.8.8.8 ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3001ms
-rtt min/avg/max/mdev = 76.684/92.244/137.753/26.278 ms
-
-$ ping www.google.com
-
-PING www.google.com (172.217.29.228) 56(84) bytes of data.
-64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=1 ttl=56 time=28.1 ms
-64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=2 ttl=56 time=32.1 ms
-64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=3 ttl=56 time=28.4 ms
-64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=4 ttl=56 time=30.3 ms
-^C
---- www.google.com ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3005ms
-rtt min/avg/max/mdev = 28.123/29.784/32.183/1.630 ms
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Se você está acostumado a utilizar o &lt;strong&gt;ping&lt;/strong&gt; em outros sistemas operacionais, observe que no Linux, por padrão, ele é executado indefinidamente. Para interrompê-lo (assim como para interromper a execução de qualquer comando no Linux), tecle &lt;strong&gt;Ctrl + C&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se algum dos comandos acima não funcionou conforme o esperado, volte e verifique as configurações de rede.&lt;/p&gt;
-
-&lt;h2&gt;Acesso remoto via SSH&lt;/h2&gt;
-
-&lt;p&gt;Se você seguiu o tutorial do &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt; à risca, durante a instalação, você habilitou o acesso remoto via &lt;a href=&quot;https://pt.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt;. Sendo assim, ele já está funcionando no seu servidor.&lt;/p&gt;
-
-&lt;p&gt;Vejamos como acessar a linha de comando do nosso servidor remotamente.&lt;/p&gt;
-
-&lt;p&gt;De um computador na mesma rede que o servidor (pode ser um &lt;em&gt;desktop&lt;/em&gt; ou mesmo outro servidor Linux), abra o terminal e invoque o comando &lt;strong&gt;ssh&lt;/strong&gt;, passando como argumentos um nome de usuário (por exemplo, &lt;code&gt;kamarada&lt;/code&gt;) e o endereço IP ou o nome do servidor (&lt;code&gt;192.168.25.100&lt;/code&gt;):&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ssh kamarada@192.168.25.100
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Como essa é a primeira conexão com o servidor, o computador pergunta se deve confiar na chave de criptografia enviada pelo servidor:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The authenticity of host &amp;#39;192.168.25.100 (192.168.25.100)&amp;#39; can&amp;#39;t be established.
-ECDSA key fingerprint is SHA256:GFiBtsouaZSU4HuTOuzYyDJrxq+AD4coYZBESbl6tzE.
-Are you sure you want to continue connecting (yes/no)? 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Digite &lt;code&gt;yes&lt;/code&gt; (&amp;quot;sim&amp;quot;, em inglês) e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Das próximas vezes em que você acessar esse servidor via SSH, essa verificação não será mais feita.&lt;/p&gt;
-
-&lt;p&gt;Na sequência, você deve informar a senha do usuário e teclar &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Warning: Permanently added &amp;#39;192.168.25.100&amp;#39; (ECDSA) to the list of known hosts.
-Password: 
-Have a lot of fun...
-kamarada@novoservidor:~&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Pronto! Você ganhou acesso à linha de comando do servidor. Qualquer comando invocado nesse terminal será executado, na verdade, no servidor:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@novoservidor:~&amp;gt; hostname
-novoservidor
-kamarada@novoservidor:~&amp;gt; whoami
-kamarada
-kamarada@novoservidor:~&amp;gt; pwd
-/home/kamarada
-kamarada@novoservidor:~&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Vamos seguir utilizando essa sessão SSH para configurar nosso servidor.&lt;/p&gt;
-
-&lt;p&gt;Para alternar do usuário &lt;code&gt;kamarada&lt;/code&gt; para o usuário &lt;code&gt;root&lt;/code&gt;, invoque o comando &lt;strong&gt;su&lt;/strong&gt; (de &lt;em&gt;superuser&lt;/em&gt;, ou superusuário). Digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@novoservidor:~&amp;gt; su
-Senha:
-novoservidor:/home/kamarada #
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-12-pt.png&#39; title=&#39;Com o acesso remoto via SSH, você pode gerenciar seu servidor usando seu *desktop*&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-12-pt.png&#39; alt=&#39;Com o acesso remoto via SSH, você pode gerenciar seu servidor usando seu *desktop*&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;Com o acesso remoto via SSH, você pode gerenciar seu servidor usando seu &lt;em&gt;desktop&lt;/em&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Usuários&lt;/h2&gt;
-
-&lt;p&gt;Se além de você outras pessoas vão acessar o servidor, você deve criar uma conta de usuário para cada uma delas, para que cada uma acesse o servidor com sua própria conta de usuário.&lt;/p&gt;
-
-&lt;p&gt;O gerenciamento de usuários no openSUSE pode ser feito de maneira fácil pelo YaST.&lt;/p&gt;
-
-&lt;p&gt;Na sessão de SSH, inicie o YaST:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;À esquerda selecione a categoria &lt;strong&gt;Segurança e usuários&lt;/strong&gt; e à direita selecione &lt;strong&gt;Gerenciamento de usuários e grupos&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-13-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-13-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Após verificar as configurações do sistema, o YaST lista os usuários existentes (por enquanto, temos apenas o usuário &lt;code&gt;kamarada&lt;/code&gt;, criado &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;durante a instalação&lt;/a&gt;):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-14-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-14-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Adicionar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;A seguir, informe os dados do novo usuário e quando terminar selecione &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-15-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-15-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela anterior, o novo usuário agora aparece na lista de usuários.&lt;/p&gt;
-
-&lt;p&gt;Cadastre quantos usuários precisar. Quando terminar, selecione &lt;strong&gt;OK&lt;/strong&gt; para aplicar as configurações. As novas contas de usuário serão criadas e você voltará à tela principal do YaST.&lt;/p&gt;
-
-&lt;h2&gt;Sincronização de data e hora via NTP&lt;/h2&gt;
-
-&lt;p&gt;Durante a &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;instalação do openSUSE&lt;/a&gt;, selecionamos o fuso horário do servidor. Já dediquei um &lt;em&gt;post&lt;/em&gt; inteiro a explicar como podemos &lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;manter a hora do computador sempre certa com o NTP&lt;/a&gt;. Recomendo a leitura daquele &lt;em&gt;post&lt;/em&gt;, já que o procedimento nele descrito também pode ser feito em servidores. Mas como já configuramos o fuso horário, não precisamos rever todas as configurações de data e hora. Aqui, vou sucintamente explicar como configurar apenas o cliente NTP.&lt;/p&gt;
-
-&lt;p&gt;Na tela principal do YaST, à esquerda selecione a categoria &lt;strong&gt;Serviços de rede&lt;/strong&gt; e à direita selecione &lt;strong&gt;Configuração do NTP&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O openSUSE já vem pré-configurado para sincronizar com alguns servidores de hora:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-16-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-16-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Recomendo que você remova todos esses servidores e adicione o servidor de hora interno da sua rede (por exemplo, &lt;code&gt;192.168.25.1&lt;/code&gt;) ou do seu provedor, se houver. Senão, adicione o servidor de hora oficial brasileiro do &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;: &lt;code&gt;pool.ntp.br&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para remover um servidor de hora, selecione o servidor na lista e então use &lt;strong&gt;Remover&lt;/strong&gt; (&lt;strong&gt;Alt + E&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Para adicionar um servidor de hora, selecione &lt;strong&gt;Adicionar&lt;/strong&gt; (&lt;strong&gt;Alt + D&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Na tela seguinte, selecione &lt;strong&gt;Servidor&lt;/strong&gt; (na verdade, essa opção já vem selecionada por padrão) e então, &lt;strong&gt;Próximo&lt;/strong&gt; (&lt;strong&gt;Alt + X&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-17-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-17-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em &lt;strong&gt;Endereço&lt;/strong&gt; informe o endereço do servidor de hora (aqui, usei &lt;code&gt;pool.ntp.br&lt;/code&gt;) e depois selecione &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-18-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-18-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando terminar de configurar o cliente NTP, selecione &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-19-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-19-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O YaST salva as configurações, reinicia o cliente NTP (o que deve fazer com que a hora seja sincronizada) e retorna à tela principal.&lt;/p&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Sair&lt;/strong&gt;. De volta à linha de comando, execute o comando &lt;strong&gt;date&lt;/strong&gt; para verificar se a data e a hora do servidor estão corretas:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# date -R
-Sat, 18 Feb 2017 18:22:28 -0200
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Repositórios&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;Durante a instalação&lt;/a&gt;, nós já selecionamos os repositórios de &lt;em&gt;software&lt;/em&gt;. Porém, para agilizar a instalação, utilizamos apenas os que já vinham pré-configurados. Agora, podemos optar por utilizar os espelhos brasileiros, dos quais podemos baixar programas e atualizações mais rapidamente, por estarem mais próximos.&lt;/p&gt;
-
-&lt;p&gt;Volte para o YaST:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Na tela principal, à esquerda selecione a categoria &lt;strong&gt;Software&lt;/strong&gt; e à direita selecione &lt;strong&gt;Repositórios de software&lt;/strong&gt;. O YaST lista os repositórios configurados:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-20-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-20-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pelo visto, aquela configuração que fizemos durante a instalação se aplicou apenas à instalação. Vou reportar isso à equipe do openSUSE, acredito que o sistema deveria manter aquelas configurações.&lt;/p&gt;
-
-&lt;p&gt;Por ora, repita aquela configuração, deixando habilitados apenas os repositórios:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Repositório principal (OSS)&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Repositório principal de atualização&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para desabilitar um repositório nessa lista, selecione-o usando as teclas de &lt;strong&gt;setas para cima e para baixo&lt;/strong&gt; e selecione &lt;strong&gt;Habilitado&lt;/strong&gt; com &lt;strong&gt;Alt + D&lt;/strong&gt;. Caso a atualização automática também esteja habilitada para o repositório, desabilite-a com &lt;strong&gt;Alt + U&lt;/strong&gt;. Volte para a lista usando &lt;strong&gt;Shift + Tab&lt;/strong&gt;. Repita o processo até desabilitar todos os repositórios que não são do interesse.&lt;/p&gt;
-
-&lt;p&gt;Sua lista de repositórios deve ficar assim:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-21-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-21-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para configurar a cópia brasileira do repositório principal, selecione-o na lista e depois selecione &lt;strong&gt;Editar&lt;/strong&gt; (&lt;strong&gt;Alt + I&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;No campo &lt;strong&gt;URL do repositório&lt;/strong&gt;, substitua o servidor &lt;code&gt;download.opensuse.org&lt;/code&gt; por &lt;code&gt;opensuse.c3sl.ufpr.br&lt;/code&gt;, de modo que a URL completa do repositório mude de:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://download.opensuse.org/distribution/leap/42.2/repo/oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;para:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://opensuse.c3sl.ufpr.br/distribution/leap/42.2/repo/oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Quando terminar, selecione &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-22-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-22-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Após baixar os metadados do repositório, o YaST apresentará a licença para uso do repositório, que é a &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;licença de uso do openSUSE Leap&lt;/a&gt; traduzida para o português brasileiro. Selecione &lt;strong&gt;Próximo&lt;/strong&gt;. Você voltará para a lista de repositórios configurados.&lt;/p&gt;
-
-&lt;p&gt;Faça o mesmo para o repositório principal de atualização, de modo que a URL completa do repositório mude de:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://download.opensuse.org/update/leap/42.2/oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;para:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://opensuse.c3sl.ufpr.br/update/leap/42.2/oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Caso queira utilizar os repositórios que contêm &lt;em&gt;softwares&lt;/em&gt; não &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;livres&lt;/a&gt; (a exemplo do &lt;a href=&quot;http://www.rarlab.com&quot;&gt;unrar&lt;/a&gt;, do &lt;a href=&quot;http://www.opera.com/pt-br&quot;&gt;Opera&lt;/a&gt; e da &lt;a href=&quot;http://store.steampowered.com/&quot;&gt;Steam&lt;/a&gt;), saiba que também há espelhos brasileiros deles:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Repositório principal (Non-OSS)&lt;/strong&gt;: contém &lt;em&gt;softwares&lt;/em&gt; que, apesar de serem gratuitos para baixar, instalar e usar, não são &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; de código aberto&lt;/a&gt; (a sigla Non-OSS vem do inglês &lt;em&gt;non open source sofware&lt;/em&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://opensuse.c3sl.ufpr.br/distribution/leap/42.2/repo/non-oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Repositório de atualização (Non-OSS)&lt;/strong&gt;: contém atualizações (&lt;em&gt;updates&lt;/em&gt;) para os pacotes do repositório Non-OSS.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://opensuse.c3sl.ufpr.br/update/leap/42.2/non-oss/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Aproveite para adicionar quaisquer &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Semi_official_repositories&quot;&gt;repositórios semi oficiais&lt;/a&gt; ou &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt; que você queira utilizar.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar, selecione &lt;strong&gt;OK&lt;/strong&gt; para aplicar as configurações e voltar para a tela principal do YaST.&lt;/p&gt;
-
-&lt;h2&gt;Atualizações&lt;/h2&gt;
-
-&lt;p&gt;Durante a &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;instalação do openSUSE&lt;/a&gt;, habilitamos o repositório de atualizações, de modo que o sistema já foi instalado com todas as atualizações disponíveis até aquele momento. Também já expliquei em outro &lt;em&gt;post&lt;/em&gt; &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;como podemos atualizar o openSUSE&lt;/a&gt;. Como no servidor não dispomos da interface gráfica, apenas da linha de comando, vamos usar o comando &lt;strong&gt;zypper&lt;/strong&gt; para buscar atualizações.&lt;/p&gt;
-
-&lt;p&gt;Aqui, vou apenas relembrar os comandos que apresentei &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;naquele &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para atualizar a lista de pacotes disponíveis nos repositórios &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper ref
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para baixar e instalar atualizações disponíveis, se houver:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper up
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/opensuse-server-config-23-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/opensuse-server-config-23-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que pode ser necessário reiniciar o servidor após o fim da atualização.&lt;/p&gt;
-
-&lt;h2&gt;Pronto&lt;/h2&gt;
-
-&lt;p&gt;Agora sim, feitas as configurações básicas, nosso servidor está pronto para uso.&lt;/p&gt;
-
-&lt;p&gt;Se não for mais utilizar o servidor, você pode encerrar a sessão SSH com o comando &lt;strong&gt;exit&lt;/strong&gt;. Fazendo isso, você voltará à linha de comando do seu computador:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@novoservidor:~&amp;gt; exit
-logout
-Connection to 192.168.25.100 closed.
-kamarada@desktop:~&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Se lembre de verificar de tempos em tempos se há atualizações para o seu servidor.&lt;/p&gt;
-
-&lt;p&gt;Siga o Projeto Linux Kamarada para descobrir coisas interessantes que você pode fazer com o openSUSE em servidores.&lt;/p&gt;
-
-&lt;p&gt;E... &lt;em&gt;have a lot a fun&lt;/em&gt;! (divirta-se bastante)&lt;/p&gt;
-</description>
-                <pubDate>Sat, 18 Feb 2017 18:00:00 -0200</pubDate>
-                <link>https://kamarada.github.io/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/</guid>
                 
                 
                     <category>pt</category>
