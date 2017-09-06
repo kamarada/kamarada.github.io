@@ -9,10 +9,140 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 29 Aug 2017 22:43:50 -0300</pubDate>
-        <lastBuildDate>Tue, 29 Aug 2017 22:43:50 -0300</lastBuildDate>
+        <pubDate>Wed, 06 Sep 2017 00:24:17 -0300</pubDate>
+        <lastBuildDate>Wed, 06 Sep 2017 00:24:17 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Conecte o Evolution ao Office 365</title>
+                <description>&lt;p&gt;Se você trabalha em uma empresa cujo &lt;em&gt;e-mail&lt;/em&gt; é servido localmente pelo &lt;a href=&quot;https://products.office.com/pt-BR/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; ou na nuvem pelo &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, você pode gerenciar seus &lt;em&gt;e-mails&lt;/em&gt; pelo computador utilizando os tradicionais protocolos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt;. No entanto, alguns recursos adicionais como gerenciar agendas e contatos estão disponíveis apenas para quem utiliza o protocolo proprietário &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; da &lt;a href=&quot;https://www.microsoft.com/pt-br&quot;&gt;Microsoft&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pois saiba que nesse cenário usuários de &lt;a href=&quot;https://www.vivaolinux.com.br/linux&quot;&gt;Linux&lt;/a&gt; não precisam deixar seu sistema favorito para poder se comunicar com seus colegas: veja neste &lt;em&gt;post&lt;/em&gt; como conectar o &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; ao Microsoft Exchange ou ao Office 365 com as &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;contas &lt;em&gt;online&lt;/em&gt; do GNOME&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;strong&gt;Evolution&lt;/strong&gt; é um dos mais completos clientes de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_colaborativo&quot;&gt;&lt;em&gt;groupware&lt;/em&gt;&lt;/a&gt; (sistema colaborativo) de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_c%C3%B3digo_aberto&quot;&gt;código aberto&lt;/a&gt; existentes. Ele é o cliente de &lt;em&gt;groupware&lt;/em&gt; que acompanha o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; por padrão e pode ser considerado, no sistema Linux, o equivalente ao &lt;a href=&quot;https://products.office.com/pt-br/outlook&quot;&gt;Outlook&lt;/a&gt; para o sistema &lt;a href=&quot;https://www.microsoft.com/pt-br/windows&quot;&gt;Windows&lt;/a&gt;. No GNOME, as contas &lt;em&gt;online&lt;/em&gt; (a exemplo da conta do Office 365) são adicionadas pelo aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e podem então ser usadas pelos demais aplicativos (a exemplo do Evolution).&lt;/p&gt;
+
+&lt;p&gt;Para que o Evolution seja capaz de gerenciar seu &lt;em&gt;e-mail&lt;/em&gt; do Office 365, certifique-se de que seu sistema possua instalados os pacotes &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (deve vir instalado por padrão se você utiliza o &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; com GNOME) e &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper in gnome-online-accounts evolution-ews
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para adicionar a conta, abra o aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e clique em &lt;strong&gt;Contas on-line&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-1-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-1-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;À esquerda são listadas as contas &lt;em&gt;online&lt;/em&gt;. Clique no &lt;strong&gt;botão de adicionar&lt;/strong&gt;, abaixo:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-2-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-2-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Adicionar conta&lt;/strong&gt;, selecione &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-3-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-3-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Expanda a seção &lt;strong&gt;Personalizado&lt;/strong&gt; para exibir todos os campos e os preencha com as informações da conta:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; seu endereço de &lt;em&gt;e-mail&lt;/em&gt; (por exemplo, &lt;code&gt;nome.sobrenome@empresa.com.br&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Senha:&lt;/strong&gt; a senha da sua conta de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nome de usuário:&lt;/strong&gt; mais uma vez, seu endereço de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Servidor:&lt;/strong&gt; &lt;code&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Essas informações podem ser diferentes a depender de como está configurado o &lt;em&gt;e-mail&lt;/em&gt; da sua empresa. Caso você não consiga adicionar sua conta, entre em contato com o administrador da rede.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-4-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-4-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Perceba que sua conta é adicionada, selecione o que deseja sincronizar (por padrão, todas as opções estão ativadas):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-5-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-5-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora você pode fechar a caixa de diálogo &lt;strong&gt;Contas on-line&lt;/strong&gt; e abrir o aplicativo &lt;strong&gt;Evolution&lt;/strong&gt;. Perceba que lá estão:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-6-pt.jpg&#39; title=&#39;Seu correio&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-6-pt.jpg&#39; alt=&#39;Seu correio&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Seu correio&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-7-pt.jpg&#39; title=&#39;Seus contatos&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-7-pt.jpg&#39; alt=&#39;Seus contatos&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Seus contatos&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-8-pt.jpg&#39; title=&#39;Sua agenda&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-8-pt.jpg&#39; alt=&#39;Sua agenda&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Sua agenda&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça bom proveito!&lt;/p&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;Use Evolution to Connect to Microsoft Exchange on Linux | Linux.com | The source for Linux information&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Tue, 05 Sep 2017 20:45:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como instalar certificados de segurança no Linux</title>
@@ -1857,283 +1987,6 @@ origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (push)
                 <pubDate>Tue, 28 Feb 2017 21:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como instalar o Java da Oracle no Linux openSUSE</title>
-                <description>&lt;p&gt;Quando falamos em &lt;a href=&quot;https://java.com/pt_BR/about/whatis_java.jsp&quot;&gt;Java&lt;/a&gt;, podemos estar falando da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Java_(linguagem_de_programa%C3%A7%C3%A3o)&quot;&gt;linguagem de programação Java&lt;/a&gt; ou da &lt;a href=&quot;https://pt.wikipedia.org/wiki/M%C3%A1quina_virtual_Java&quot;&gt;máquina virtual Java&lt;/a&gt;. A segunda é necessária para executar programas feitos com a primeira. E o que torna a tecnologia Java tão especial? Os programas que são desenvolvidos em Java rodam sobre a máquina virtual, que está disponível diversos sistemas, como &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e &lt;a href=&quot;http://www.apple.com/br/macosx/&quot;&gt;Mac OS X&lt;/a&gt;. Então, os programas desenvolvidos em Java podem, a princípio, ser usados em qualquer sistema.&lt;/p&gt;
-
-&lt;p&gt;Além disso, a linguagem Java inovou ao permitir que pequenos programas sejam executados em páginas da Internet, diretamente dentro do navegador, na forma de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Applet_Java&quot;&gt;&lt;em&gt;applets&lt;/em&gt;&lt;/a&gt;. Para que isso seja possível, o &lt;em&gt;plugin&lt;/em&gt; do Java deve ser instalado.&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/DukeNTux.jpg&#39; title=&#39;[Duke](http://www.oracle.com/us/technologies/java/duke-424174.html), o mascote do Java, ao lado do [Tux](https://pt.wikipedia.org/wiki/Tux), o mascote do Linux&#39;&gt;
-&lt;img src=&#39;/files/2017/02/DukeNTux.jpg&#39; alt=&#39;[Duke](http://www.oracle.com/us/technologies/java/duke-424174.html), o mascote do Java, ao lado do [Tux](https://pt.wikipedia.org/wiki/Tux), o mascote do Linux&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.oracle.com/us/technologies/java/duke-424174.html&quot;&gt;Duke&lt;/a&gt;, o mascote do Java, ao lado do &lt;a href=&quot;https://pt.wikipedia.org/wiki/Tux&quot;&gt;Tux&lt;/a&gt;, o mascote do Linux&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Vejamos como instalar a versão mais recente da máquina virtual Java da &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt; no Linux &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt;. Para referência futura, no momento da escrita deste &lt;em&gt;post&lt;/em&gt;, ela está na versão &lt;strong&gt;8 Update 121&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u121-relnotes-3315208.html&quot;&gt;17 de janeiro de 2017&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
-    &lt;span class=&quot;glyphicon glyphicon-refresh&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &lt;strong&gt;Atualização (09 de agosto de 2017):&lt;/strong&gt;
-    &lt;p&gt;Hoje, a versão mais recente da máquina virtual Java da Oracle é a &lt;strong&gt;8 Update 144&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u144-relnotes-3838694.html&quot;&gt;26 de julho de 2017&lt;/a&gt;. Esse passo deve funcionar com pequenas alterações tanto para essa nova versão quanto para versões futuras. Se você seguiu as instruções dessa página para instalar o Java da Oracle e voltou aqui para saber como atualizar, consulte a seção que foi incluída no final da página.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Java &amp;quot;da Oracle&amp;quot;? Existe outra?&lt;/h2&gt;
-
-&lt;p&gt;A linguagem e a máquina virtual Java foram projetadas originalmente pela empresa &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sun_Microsystems&quot;&gt;Sun Microsystems&lt;/a&gt;. Até 2006, elas eram gratuitas, mas proprietárias (ou seja, o código-fonte delas era de propriedade da Sun, não estando disponível para quem tivesse interesse em obtê-lo). Nesse ano, a Sun liberou o código-fonte de grande parte da máquina virtual Java, dando origem ao projeto &lt;a href=&quot;http://openjdk.java.net/&quot;&gt;OpenJDK&lt;/a&gt;, que é &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Em 2009, a Sun foi comprada pela Oracle, que deu continuidade ao projeto OpenJDK.&lt;/p&gt;
-
-&lt;p&gt;A máquina virtual Java do OpenJDK pode ser facilmente instalada em várias distribuições Linux, dentre as quais o openSUSE, no qual já vem instalada por padrão.&lt;/p&gt;
-
-&lt;p&gt;Tanto a máquina virtual do OpenJDK quanto a da Oracle são gratuitas, a diferença entre elas é que a implementação da Oracle adiciona alguns componentes proprietários e, por isso, não tem seu código aberto. Também por isso a máquina virtual da Oracle não pode ser distribuída, devendo ser obtida do seu &lt;em&gt;site&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Infelizmente, alguns programas como o &lt;em&gt;netbanking&lt;/em&gt; do &lt;a href=&quot;http://www.bb.com.br/&quot;&gt;Banco do Brasil&lt;/a&gt; (e de outros bancos) e o &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2017&quot;&gt;Imposto de Renda&lt;/a&gt; exigem que o Java da Oracle esteja instalado no computador, o que obriga os usuários de Linux a instalarem em suas máquinas o Java da Oracle, mesmo que o OpenJDK já esteja instalado.&lt;/p&gt;
-
-&lt;p&gt;A instalação do Java da Oracle é um pouco trabalhosa. Mas nesse &lt;em&gt;post&lt;/em&gt;, você será acompanhado passo a passo nessa tarefa. Uma vez concluída a instalação, você poderá utilizar o Java com tranquilidade.&lt;/p&gt;
-
-&lt;h2&gt;1) Download da máquina virtual Java da Oracle&lt;/h2&gt;
-
-&lt;p&gt;Para obter a máquina virtual Java da Oracle, acesse seu &lt;em&gt;site&lt;/em&gt; em &lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;java.com&lt;/a&gt; e clique em &lt;strong&gt;Download Gratuito do Java&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-01-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-01-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Depois, clique em &lt;strong&gt;Linux x64 RPM&lt;/strong&gt; para obter o pacote para instalação no openSUSE:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-02-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-02-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;em&gt;download&lt;/em&gt; do pacote vai começar.&lt;/p&gt;
-
-&lt;h2&gt;2) Instalação da Java da Oracle e remoção do plugin do OpenJDK&lt;/h2&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, abra a pasta &lt;strong&gt;Downloads&lt;/strong&gt;, localize o pacote baixado, clique nele com o botão direito do &lt;em&gt;mouse&lt;/em&gt; e vá em &lt;strong&gt;Abrir com&lt;/strong&gt;, &lt;strong&gt;Install/Remove Software&lt;/strong&gt; (Instalar/Remover Programas):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-03-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-03-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você deve fornecer a senha do usuário &lt;em&gt;root&lt;/em&gt; para continuar.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.opensuse.org/Portal:YaST&quot;&gt;Centro de Controle YaST&lt;/a&gt; é iniciado e mostra informações sobre o pacote que será instalado:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-04-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-04-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Aproveitando a ocasião, vamos remover o &lt;em&gt;plugin&lt;/em&gt; do Java do OpenJDK, para que ele não conflite com o &lt;em&gt;plugin&lt;/em&gt; do Java da Oracle. Para isso, mude para a aba &lt;strong&gt;Pesquisar&lt;/strong&gt;, pesquise por &lt;strong&gt;java&lt;/strong&gt;, clique com o botão direito do &lt;em&gt;mouse&lt;/em&gt; no pacote &lt;strong&gt;java-1_7_0-openjdk-plugin&lt;/strong&gt; e clique em &lt;strong&gt;Remover&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-05-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça o mesmo para o pacote &lt;strong&gt;java-1_8_0-openjdk-plugin&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Volte para a aba &lt;strong&gt;Resumo da instalação&lt;/strong&gt;, verifique se as ações a serem executadas estão de acordo e clique em &lt;strong&gt;Aceitar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-06-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-06-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O YaST mostra o progresso da instalação.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Concluir&lt;/strong&gt; para sair do YaST:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-07-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-07-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;3) Variáveis de ambiente JAVA_HOME e PATH&lt;/h2&gt;
-
-&lt;p&gt;Acesse sua &lt;strong&gt;Pasta Pessoal&lt;/strong&gt; (geralmente, &lt;code&gt;/home/seunomedeusuario&lt;/code&gt;) e ative a exibição de &lt;strong&gt;Arquivos ocultos&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-08-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-08-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Abra o arquivo &lt;code&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-09-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-09-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Acrescente ao final as linhas:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/usr/java/latest&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;$JAVA_HOME/bin:$PATH&amp;quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;E clique em &lt;strong&gt;Salvar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-10-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-10-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;4) Teste do Java na linha de comando&lt;/h2&gt;
-
-&lt;p&gt;Abra uma nova janela do terminal (caso já esteja com o terminal aberto, feche-o e abra outro, para que o arquivo &lt;code&gt;.bashrc&lt;/code&gt; seja lido novamente) e execute o comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ java -version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Ele deve retornar algo como:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;java version &amp;quot;1.8.0_121&amp;quot;
-Java(TM) SE Runtime Environment (build 1.8.0_121-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.121-b13, mixed mode)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Isso indica que a versão mais recente do Java da Oracle está instalada.&lt;/p&gt;
-
-&lt;h2&gt;5) Plugin do Java&lt;/h2&gt;
-
-&lt;p&gt;Diferente do que ocorre com o OpenJDK, em que o &lt;em&gt;plugin&lt;/em&gt; do Java é instalado em um pacote à parte, o pacote do Java da Oracle inclui o &lt;em&gt;plugin&lt;/em&gt; do Java.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, navegador padrão do openSUSE, reconhece os &lt;em&gt;plugins&lt;/em&gt; que estão na pasta &lt;code&gt;/usr/lib64/browser-plugins/&lt;/code&gt;. Para que o Firefox reconheça o &lt;em&gt;plugin&lt;/em&gt; do Java da Oracle, que está na pasta em que o Java foi instalado, vamos criar um &lt;em&gt;link&lt;/em&gt; simbólico para o &lt;em&gt;plugin&lt;/em&gt;. Para isso, execute o comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# ln -s /usr/java/latest/lib/amd64/libnpjp2.so /usr/lib64/browser-plugins/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Se não quiser entrar com o usuário &lt;em&gt;root&lt;/em&gt; só para isso, utilize o comando &lt;strong&gt;sudo&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ sudo ln -s /usr/java/latest/lib/amd64/libnpjp2.so /usr/lib64/browser-plugins/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Você deve fornecer a senha do usuário &lt;em&gt;root&lt;/em&gt; para que o comando seja executado:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-11-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-11-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;6) Teste do plugin do Java no navegador&lt;/h2&gt;
-
-&lt;p&gt;Abra o Firefox (caso já esteja com o Firefox aberto, é importante que você feche-o e abra-o de novo, para que ele reconheça o &lt;em&gt;plugin&lt;/em&gt; do Java) e acesse a página &lt;code&gt;about:plugins&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-12-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-12-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que o &lt;em&gt;plugin&lt;/em&gt; do Java aparece na lista de &lt;em&gt;plugins&lt;/em&gt; instalados.&lt;/p&gt;
-
-&lt;p&gt;Agora vamos testar o &lt;em&gt;plugin&lt;/em&gt; do Java com o &lt;em&gt;applet&lt;/em&gt; oficial que verifica se você possui a versão mais recente do Java instalada.&lt;/p&gt;
-
-&lt;p&gt;Acesse a &lt;a href=&quot;https://www.java.com/verify/&quot;&gt;página de teste do Java&lt;/a&gt; (se preferir, pesquise por &lt;code&gt;java test&lt;/code&gt; no &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt; e clique no primeiro resultado) e clique no botão &lt;strong&gt;Verify Java version&lt;/strong&gt; (verificar versão do Java):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-13.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-13.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Por padrão, o Firefox bloqueia a execução do &lt;em&gt;plugin&lt;/em&gt; do Java. Clique em &lt;strong&gt;Ativar o Java&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-14-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-14-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Firefox pergunta se você deseja permitir que o &lt;em&gt;plugin&lt;/em&gt; do Java seja executado no &lt;em&gt;site&lt;/em&gt; do Java. Você pode clicar em &lt;strong&gt;Permitir e memorizar&lt;/strong&gt; para que ele não faça mais essa pergunta para esse &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-15-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-15-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;em&gt;plugin&lt;/em&gt; do Java, por sua vez, pede permissão para executar o &lt;em&gt;applet&lt;/em&gt; (nossa, é muita burocracia, né?). Clique em &lt;strong&gt;Executar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-16-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-16-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Após um tempo carregando o &lt;em&gt;applet&lt;/em&gt; e verificando a instalação do Java no computador, a página deve parabenizá-lo por estar usando a versão mais recente:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/02/oracle-jre-17.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/02/oracle-jre-17.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pronto! Instalamos, configuramos e testamos o Java da Oracle, agora é só utilizá-lo.&lt;/p&gt;
-
-&lt;h2&gt;Como atualizar o Java da Oracle&lt;/h2&gt;
-
-&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
-    &lt;span class=&quot;glyphicon glyphicon-refresh&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &lt;strong&gt;Atualização (09 de agosto de 2017):&lt;/strong&gt;
-    &lt;p&gt;Essa seção foi incluída para explicar como atualizar a máquina virtual Java da Oracle para a versão mais recente. As instruções a seguir também devem funcionar para versões futuras com pequenas alterações.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você seguiu o passo a passo dessa página para instalar e agora deseja atualizar a máquina virtual do Java para a versão mais atual, execute o procedimento a seguir. Como exemplo, vamos atualizar da versão &lt;strong&gt;8 Update 121&lt;/strong&gt; para a versão &lt;strong&gt;8 Update 144&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Acesse o &lt;em&gt;site&lt;/em&gt; do Java em &lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;java.com&lt;/a&gt; e baixe e instale o pacote RPM para o openSUSE, assim como você fez na instalação da versão anterior. Aproveite a instalação da nova versão para remover a antiga: na tela do YaST, alterne para a aba &lt;strong&gt;Pesquisar&lt;/strong&gt;, procure por &lt;code&gt;jre&lt;/code&gt; e marque o pacote &lt;strong&gt;jre1.8.0_121&lt;/strong&gt; para remoção. Se você voltar para a aba &lt;strong&gt;Resumo da instalação&lt;/strong&gt;, ela deve estar assim:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/08/update-oracle-jre-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/08/update-oracle-jre-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Aceitar&lt;/strong&gt; e aguarde o YaST terminar. Depois, clique em &lt;strong&gt;Concluir&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pronto! Agora é só utilizar a nova versão do Java. Você pode testá-la pela linha de comando ou pelo navegador, conforme expliquei anteriormente:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ java -version
-java version &amp;quot;1.8.0_144&amp;quot;
-Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
-Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-                <pubDate>Tue, 28 Feb 2017 17:35:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/</guid>
                 
                 
                     <category>pt</category>
