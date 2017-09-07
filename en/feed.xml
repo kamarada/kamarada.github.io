@@ -9,10 +9,140 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 06 Sep 2017 00:24:17 -0300</pubDate>
-        <lastBuildDate>Wed, 06 Sep 2017 00:24:17 -0300</lastBuildDate>
+        <pubDate>Thu, 07 Sep 2017 09:23:48 -0300</pubDate>
+        <lastBuildDate>Thu, 07 Sep 2017 09:23:48 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Use Evolution to connect to Office 365 on Linux</title>
+                <description>&lt;p&gt;If you work at a company whose email is locally hosted on a &lt;a href=&quot;https://products.office.com/en-us/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; server or cloud hosted on &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, you can use traditional &lt;a href=&quot;https://en.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the &lt;a href=&quot;https://www.microsoft.com/en-us&quot;&gt;Microsoft&lt;/a&gt;&amp;#39;s proprietary &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; protocol.&lt;/p&gt;
+
+&lt;p&gt;The good news is that in an Exchange company &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users don&amp;#39;t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; to Exchange or Office 365 using &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;GNOME Online Accounts&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Evolution&lt;/strong&gt; is one of the most powerful &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Collaborative_software&quot;&gt;groupware&lt;/a&gt; clients out there. It is the default groupware client of the &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; desktop environment and can be considered the Linux counterpart to &lt;a href=&quot;https://products.office.com/en-us/outlook&quot;&gt;Outlook&lt;/a&gt; for &lt;a href=&quot;https://www.microsoft.com/en-us/windows&quot;&gt;Windows&lt;/a&gt;. GNOME users setup their online accounts (such as Office 365) using the &lt;strong&gt;Settings&lt;/strong&gt; app and then can access them using GNOME integrated apps (like Evolution).&lt;/p&gt;
+
+&lt;p&gt;To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (it should have been installed by default if you use &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; with GNOME) and &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper in gnome-online-accounts evolution-ews
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To add your Exchange account, open the &lt;strong&gt;Settings&lt;/strong&gt; app and click on &lt;strong&gt;Online Accounts&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-1-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-1-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Online accounts are listed on the left. Click the &lt;strong&gt;add button&lt;/strong&gt; below:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-2-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-2-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Add Account&lt;/strong&gt; dialog box, choose &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-3-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-3-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Expand the &lt;strong&gt;Custom&lt;/strong&gt; section so all fields are shown. Fill them with your account information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; your e-mail address (e.g. &lt;code&gt;your.name@example.com&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Password:&lt;/strong&gt; your e-mail account password&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Username:&lt;/strong&gt; your e-mail address once more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; &lt;code&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company&amp;#39;s network administrator.&lt;/p&gt;
+
+&lt;p&gt;When you are ready, click on &lt;strong&gt;Connect&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-4-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-4-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-5-en.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-5-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now you can close the &lt;strong&gt;Online Accounts&lt;/strong&gt; dialog box and open the &lt;strong&gt;Evolution&lt;/strong&gt; app. Note that now it shows:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-6-en.jpg&#39; title=&#39;Your mail&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-6-en.jpg&#39; alt=&#39;Your mail&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Your mail&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-7-en.jpg&#39; title=&#39;Your contacts&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-7-en.jpg&#39; alt=&#39;Your contacts&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Your contacts&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/09/evolution-office-365-8-en.jpg&#39; title=&#39;Your calendar&#39;&gt;
+&lt;img src=&#39;/files/2017/09/evolution-office-365-8-en.jpg&#39; alt=&#39;Your calendar&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Your calendar&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;h2&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;Use Evolution to Connect to Microsoft Exchange on Linux | Linux.com | The source for Linux information&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Wed, 06 Sep 2017 20:45:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>TP-Link Archer T4U on openSUSE Linux</title>
@@ -2784,59 +2914,6 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
                 <pubDate>Sat, 22 Oct 2016 23:40:00 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>What is a LiveCD/DVD/USB?</title>
-                <description>&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2015/11/livecd.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2015/11/livecd.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A &lt;strong&gt;LiveCD&lt;/strong&gt; is a CD medium which brings a ready-to-use operating system. That system does not need to be installed on the computer&amp;#39;s hard drive to run, it can run directly from the CD: you insert the disk into the drive, turn the computer on and use the system, which comes ready-to-use. It is very similar to the system that is run from the hard drive, which is the most common kind of installation.&lt;/p&gt;
-
-&lt;p&gt;There are also the more recent &lt;strong&gt;LiveDVDs&lt;/strong&gt; and &lt;strong&gt;LiveUSBs&lt;/strong&gt;, which follow the same idea: they are, respectively, DVDs and USB sticks (or memory cards) which bring ready-to-use operating systems. All the explanations here also apply to both LiveDVDs and LiveUSBs.&lt;/p&gt;
-
-&lt;p&gt;The main advantage of a LiveCD is the unconcern with installation: the system comes ready-to-use on the CD, and using it makes no change to your computer&amp;#39;s hard disk operating system. When you finish using a LiveCD, turn the computer off and eject the disk. The next time you turn your computer on, its main operating system (&lt;a href=&quot;http://www.microsoft.com/en-us/windows&quot;&gt;Windows&lt;/a&gt;, &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; or other) will start as usual, as if it was the last one to be used.&lt;/p&gt;
-
-&lt;p&gt;That makes LiveCDs ideal for people who want to &lt;strong&gt;get to know, try or occasionally use Linux&lt;/strong&gt;, but are unsure about installing it on their computers (or even do not want to install). It is also possible to use LiveCDs to &lt;strong&gt;install Linux&lt;/strong&gt;. Most Linux distributions offer LiveCDs.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; Linux distribution is awesome, but &lt;a href=&quot;https://www.linux.com/news/software/applications/865760-opensuse-leap-421-review-the-most-mature-linux-distribution&quot;&gt;it does not offer official LiveCDs anymore&lt;/a&gt;. Thinking about that, the Linux Kamarada Project built a LiveDVD containing a ready-to-use openSUSE system, which can be downloaded &lt;a href=&quot;/en/download/&quot;&gt;here&lt;/a&gt;. Using an &lt;a href=&quot;https://en.opensuse.org/SDB:Live_USB_stick&quot;&gt;appropriate software&lt;/a&gt;, it can also be installed on a flash drive and used as a LiveUSB.&lt;/p&gt;
-
-&lt;p&gt;LiveCDs (and their peers LiveDVDs and LiveUSBs) are good to:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Get to know Linux&lt;/strong&gt;: you can occasionally use Linux to get to know it and learn more about it without the commitment to install it on your computer and use it every day;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Try Linux before installing it on your computer&lt;/strong&gt;: you can check if everything is going to work fine after installation;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Repair your computer&lt;/strong&gt;: since you are not using the operating system installed on your computer, it is easier to perform maintenance actions, such as finding and removing viruses, recovering files deleted by accident, finding hidden or restricted files, resetting the administrator password, testing memory, creating or modifying partitions, solving problems that prevent the computer from turning on, among others (in fact, here I listed many situations in which LiveCDs are useful);&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Use a familiar desktop on an unfamiliar machine&lt;/strong&gt; (especially if you already use Linux on your computer and have a LiveCD from the distribution you use);&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Use the same desktop on many machines&lt;/strong&gt;: useful for those who use many computers and do not want to install the software they need on each computer one by one;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Use with some more freedom a restricted computer&lt;/strong&gt; (from university or work, for example): while using a LiveCD system, you can install programs and change settings (note that some restrictions may still apply, such as blocked websites);&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Safely use a computer which in principle is not safe or lacks privacy&lt;/strong&gt;: the LiveCD system does not leave data on the computer (there are even &lt;a href=&quot;https://tails.boum.org/index.en.html&quot;&gt;distributions focused on privacy&lt;/a&gt;);&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Show off Linux&lt;/strong&gt;: if you enjoy Linux, you can use LiveCDs to show it to people on their own machines without installing.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A LiveUSB has one advantage over a LiveCD or LiveDVD: it stores changes to the system (software installed by the user, for example) on the USB stick, so they remain the next time the system is started from the USB stick. That makes LiveUSBs a little closer to traditional systems installed on hard disks. Note that storing system changes is not possible using a CD or DVD, because there is no way to write changes to those media.&lt;/p&gt;
-
-&lt;p&gt;Certainly there are other situations in which a LiveCD can be a very powerful tool. Even if you do not want to know Linux deeply or install it on your computer, I recommend that you always have a LiveCD by near: one day, it can be a good troubleshooter!&lt;/p&gt;
-
-&lt;h2&gt;Disadvantages&lt;/h2&gt;
-
-&lt;p&gt;LiveCDs, as well as LiveDVDs, allow making changes to the system (installing software, for example) because they use part of the RAM memory to store those changes while the system is being used. Therefore, it is not possible to install many software packages. On a LiveUSB, it is possible to install more packages, according to the USB stick capacity.&lt;/p&gt;
-
-&lt;p&gt;Also it is important to note that systems run from CDs, DVDs and flash drives are slower than the traditional hard disk systems, because hard disks are faster than those media.&lt;/p&gt;
-
-&lt;p&gt;So, in general, Live media (LiveCDs, LiveDVDs and LiveUSBs) are &lt;strong&gt;not recommended for everyday use&lt;/strong&gt;. If you want to use Linux every day, consider installing it on your computer or on a virtual machine.&lt;/p&gt;
-</description>
-                <pubDate>Wed, 09 Dec 2015 19:00:00 -0200</pubDate>
-                <link>https://kamarada.github.io/en/2015/12/09/what-is-a-livecd-dvd-usb/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2015/12/09/what-is-a-livecd-dvd-usb/</guid>
                 
                 
                     <category>en</category>
