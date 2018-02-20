@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Citrix Receiver no Linux - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que p...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+
+    
+        
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2018-02-20 02:40:00 -0300"/>
+    
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    
+        <meta property="og:author" content="Antônio Vinícius" />
+    
+    <meta property="og:description" content="A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que p..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2018/02/citrix-receiver.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Citrix Receiver no Linux" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=2">
+    <link rel="manifest" href="https://kamarada.github.io/manifest.json?v=2">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=2">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">-->
+    <link rel="stylesheet" href="/libs/bootstrap-material-design/0.5.10/custom/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/ripples.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-65333685-3', 'auto');
+        ga('send', 'pageview', {
+            'page': 'https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/',
+            'title': 'Citrix Receiver no Linux'
+        });
+
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        <!-- AddThis -->
+        <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+        <script type="text/javascript">
+            var addthis_config = {
+                data_track_clickback: true,
+                data_track_addressbar: true,
+                
+                    ui_language: 'pt'
+                
+            };
+            var addthis_share = {
+                url: 'https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/',
+                title: document.title,
+                description: 'A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que p...'
+            };
+        </script>
+        <!-- End AddThis -->
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-with-search" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                
+                    Linux Kamarada
+                
+            </a>
+        </div><!--.navbar-header-->
+
+        <form class="navbar-form">
+            <div class="dropdown pull-left">
+                <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Traduções"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="language-button">
+                    
+                        
+                    
+                    
+                        <li class="dropdown-header">English</li>
+                        
+                        
+                            <li>
+                                <a href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/">This page in English</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/en/">English home page</a></li>
+                        <li role="separator" class="divider"></li>
+                    
+                        <li class="dropdown-header">Português</li>
+                        
+                        
+                            <li>
+                                <a class="translation-pt" href="https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/">Esta página em Português</a>
+                            </li>
+                        
+                        <li><a href="https://kamarada.github.io/pt/">Página inicial em Português</a></li>
+                        <li role="separator" class="divider"></li>
+                    
+                    <li class="dropdown-header">Other languages (by Google Translate)</li>
+                    <li><a href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/">Translate this page</a></li>
+                </ul>
+            </div><!--.dropdown-->
+            <a class="pull-left" id="search-button" title="Pesquisar"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+        </form><!--.navbar-form-->
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                
+
+                
+                    
+                        <li><a href="/pt/download/leap/42.2/">Download</a></li>
+                    
+                
+            </ul>
+        </div><!--#navbar-->
+    </div><!--.container-->
+
+    <div id="search-bar">
+        <div class="container">
+            <form action="/pt/buscar/" id="search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control" id="search-input" type="text" name="q" placeholder="Pesquisar">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary" id="submit-search-button"><span class="glyphicon glyphicon-search"></span></button>
+                        <button type="reset" class="btn btn-danger" id="reset-search-button"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div><!--#search-bar-->
+</nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-8'>
+                <!--<div class='gap-small'>
+                    <a class='gap-small' href='http://en.opensuse.org/Portal:42.2'>
+                        <img class='img-responsive' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                    </a>
+                </div>-->
+                <div class="blog-post panel panel-default">
+    <header class="panel-heading">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2018/02/20/citrix-receiver-no-linux/" itemprop="mainEntityOfPage url">
+                Citrix Receiver no Linux
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2018-02-20">
+                    <a href="/2018/02/20/">
+                        
+    20 de
+    
+    Fevereiro
+        
+    de 2018
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2018-02-20" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content panel-body">
+        
+            <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="content_ad_unit_1"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="8945658251"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+        
+
+        <div class="row" itemprop="articleBody mainEntity">
+            <div class="col-xs-12">
+                <div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver.jpg' title=''>
+<img src='/files/2018/02/citrix-receiver.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>A <a href="https://www.citrix.com.br">Citrix</a> é uma empresa de <em>software</em> focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o <a href="https://www.citrix.com.br/products/xenserver/">XenServer</a>, o <a href="https://www.citrix.com.br/products/xenapp-xendesktop/">XenApp</a> e o <a href="https://www.citrix.com.br/products/xenapp-xendesktop/">XenDesktop</a>, que permitem virtualizar servidores, aplicativos e ambientes de trabalho, respectivamente.</p>
+
+<p>Uma possibilidade interessante é, de um lado, a empresa instalar em um servidor o XenApp ou o XenDesktop, para disponibilizar aplicativos, e de outro lado, o funcionário instalar em seu computador o <a href="https://www.citrix.com.br/products/receiver/">Citrix Receiver</a>, que é o <em>software</em> cliente dessas soluções. Com isso, o funcionário pode executar em seu computador um aplicativo da empresa como se estivesse dentro da empresa, ainda que na verdade esteja, por exemplo, em casa. Isso porque, embora a tela do aplicativo apareça em seu computador, o processamento ocorre na verdade no servidor. A empresa pode permitir que o funcionário leve seu próprio dispositivo (<a href="https://pt.wikipedia.org/wiki/Bring_your_own_device"><em>bring your own device</em>, BYOD</a>) e/ou trabalhe em casa, flexibilizando a carga horária e reduzindo custos.</p>
+
+<p>Se você trabalha em um lugar que utiliza o Citrix Receiver, verá neste <em>post</em> como instalá-lo no <a href="/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/">openSUSE Leap</a>.</p>
+
+<h2>Obtendo o Citrix Receiver para Linux</h2>
+
+<p>Por algum <em>bug</em> do <em>site</em> da Citrix, eu não consegui baixar o Citrix Receiver para Linux do <em>site</em> em português brasileiro, apenas do <em>site</em> em inglês. Espero que se resolvam logo.</p>
+
+<p>Acesse a <a href="https://www.citrix.com/downloads/citrix-receiver/">página de <em>downloads</em> do Citrix Receiver</a>, expanda a seção <strong>Receiver for Linux</strong> e clique no <em>link</em> para a versão mais recente do Citrix Receiver (no momento em que escrevo, a 13.8, lançada em dezembro de 2017).</p>
+
+<p>Na página seguinte, expanda a seção <strong>RPM Packages</strong> e depois a seção <strong>SuSE Full Package (Self-Service Support)</strong>. Clique no botão <strong>Download File</strong> abaixo de <strong>Receiver for Linux (x86_64)</strong>:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-01.png' title=''>
+<img src='/files/2018/02/citrix-receiver-01.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Leia a licença e clique em <strong>Yes, I accept</strong> (<em>sim, eu aceito</em>) para iniciar o <em>download</em>.</p>
+
+<p>Você vai baixar um <a href="https://pt.wikipedia.org/wiki/RPM_(Linux)">pacote RPM</a>, que resumidamente é um arquivo compactado contendo todos os arquivos do programa a ser instalado, assim como informações sobre o programa e rotinas para instalá-lo, atualizá-lo e removê-lo.</p>
+
+<h2>Instalando o Citrix Receiver para Linux</h2>
+
+<p>Quando o <em>download</em> terminar, abra o pacote RPM baixado. Você pode fazer isso clicando nele no seu navegador:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-02-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-02-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>O sistema pede a senha do usuário administrador (usuário <em>root</em>), porque apenas ele pode fazer a instalação de programas. Você deve fornecê-la e clicar em <strong>Continuar</strong>:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-03-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-03-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>É carregado o <a href="https://pt.opensuse.org/Portal:YaST">YaST</a>, a ferramenta de configuração central do openSUSE:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-04-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-04-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Se o pacote a ser instalado depende de mais algum outro pacote para funcionar, o YaST já seleciona também as dependências para instalação.</p>
+
+<p>Clique em <strong>Aceitar</strong>. O YaST é enfático quanto aos pacotes que foram selecionados automaticamente. Clique em <strong>Continuar</strong>.</p>
+
+<p>O YaST começa a baixar os pacotes necessários e em seguida inicia a instalação. Pode ser que ele implique com o fato de o pacote do Citrix Receiver não estar assinado, você deve clicar em <strong>Ignorar</strong> para continuar:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-05-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-05-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Ao final, o YaST informa que a instalação foi concluída com sucesso:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-06-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-06-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Clique em <strong>Concluir</strong> para sair do YaST.</p>
+
+<p>Feito isso, o Citrix Receiver já está instalado no seu computador.</p>
+
+<h2>Iniciando o Citrix Receiver para Linux</h2>
+
+<p>Para iniciar o Citrix Receiver, abra o menu <strong>Atividades</strong> no canto superior esquerdo da tela, comece a digitar <code>citrix</code> (ou <code>receiver</code>, ou <code>citrix receiver</code>, basta começar a digitar) até que apareça no menu o ícone do <strong>Citrix Receiver</strong> e clique nele:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-07-pt.jpg' title=''>
+<img src='/files/2018/02/citrix-receiver-07-pt.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<h2>Primeira execução</h2>
+
+<p>Na primeira vez que você usa o Citrix Receiver, ele faz algumas configurações iniciais.</p>
+
+<p>Você deve ler a licença do Citrix Receiver e aceitá-la clicando em <strong>Accept</strong>:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-08.jpg' title=''>
+<img src='/files/2018/02/citrix-receiver-08.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Informe o endereço do <em>e-mail</em> ou do servidor que você usará para se conectar:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-09.png' title=''>
+<img src='/files/2018/02/citrix-receiver-09.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>O que informar nesse campo você deve perguntar ao departamento de TI da empresa onde você trabalha. Quando terminar, clique em <strong>Add</strong>.</p>
+
+<p>É possível que o Citrix Receiver não consiga estabelecer uma conexão segura com o servidor por não confiar (leia-se &quot;não conhecer&quot;) o certificado do servidor. Nesse caso, ele apresenta essa mensagem de erro:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-10.png' title=''>
+<img src='/files/2018/02/citrix-receiver-10.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Já escrevi sobre <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">certificados de segurança</a> e como instalá-los nos navegadores <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a> e <a href="https://www.google.com/chrome/">Google Chrome</a>. No caso do Citrix Receiver, instalar um certificado não é um processo gráfico, ou seja, não temos uma tela que nos auxilie a fazê-lo. Temos então que recorrer à interface de linha de comando. Vejamos como fazer isso.</p>
+
+<p>Como medida de segurança, por padrão o Citrix Receiver conhece poucos certificados. O Mozilla Firefox conhece muito mais certificados. Podemos começar então copiando os certificados conhecidos pelo Mozilla Firefox para o Citrix Receiver.</p>
+
+<p>Acesse a interface de linha de comando abrindo o menu <strong>Atividades</strong> e iniciando o aplicativo <strong>Terminal</strong>:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-11-pt.jpg' title=''>
+<img src='/files/2018/02/citrix-receiver-11-pt.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Alterne do seu usuário para o usuário administrador (<em>root</em>) executando o comando:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ su
+</code></pre></div>
+<p>Digite a senha do usuário <em>root</em> e tecle <strong>Enter</strong> para continuar.</p>
+
+<p>Como usuário <em>root</em>, efetue a cópia dos certificados:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># cp /etc/ssl/certs/* /opt/Citrix/ICAClient/keystore/cacerts/
+</code></pre></div>
+<p>A título de informação, <code>/etc/ssl/certs/</code> é a pasta onde o Mozilla Firefox armazena seus certificados conhecidos.</p>
+
+<p>Já <code>/opt/Citrix/ICAClient/keystore/cacerts/</code> é a pasta onde o Citrix Receiver armazena seus certificados conhecidos.</p>
+
+<p>Por fim, é necessário recalcular os <em>hashs</em> dos certificados do Citrix Receiver:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+</code></pre></div>
+<p>Inicie o Citrix Receiver e tente se conectar novamente.</p>
+
+<p>Se você se esbarrar na mesma mensagem de erro, peça o certificado do servidor ao departamento de TI e adicione-o ao Citrix Receiver. Supondo que o arquivo se chama <code>certificado.crt</code> e foi baixado em <code>/home/kamarada/Downloads</code>:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"># cp /home/kamarada/Downloads/certificado.crt /opt/Citrix/ICAClient/keystore/cacerts/
+# c_rehash /opt/Citrix/ICAClient/keystore/cacerts/
+</code></pre></div>
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-12-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-12-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Agora sim você deve conseguir passar daquela tela em que você informou o endereço de <em>e-mail</em> ou do servidor.</p>
+
+<p>O próximo passo é informar o nome de usuário e senha para se conectar (essas informações também devem ser obtidas do departamento de TI) e clicar em <strong>Log On</strong>:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-13.png' title=''>
+<img src='/files/2018/02/citrix-receiver-13.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<h2>Usando o Citrix Receiver para Linux</h2>
+
+<p>A tela principal do Citrix Receiver mostra os aplicativos que você pode utilizar:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-14.jpg' title=''>
+<img src='/files/2018/02/citrix-receiver-14.jpg' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Pode ser que nem todos os aplicativos estejam listados. Você pode adicionar mais aplicativos, se houver disponíveis, clicando no ícone de adicionar à esquerda.</p>
+
+<p>Clique em um aplicativo para iniciá-lo:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-15.png' title=''>
+<img src='/files/2018/02/citrix-receiver-15.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<p>Durante o uso, lembre-se que embora as telas dos aplicativos iniciados pelo Citrix Receiver apareçam em seu computador, o processamento ocorre na verdade no servidor. Na prática, é como se você estivesse dentro da empresa utilizando esses aplicativos em um computador da empresa.</p>
+
+<h2>Integração com o Mozilla Firefox</h2>
+
+<p>O departamento de TI do seu trabalho pode te orientar a iniciar aplicativos por meio de algum <em>site</em> ou <em>link</em>, em vez do programa Citrix Receiver. Para possibilitar isso, o Citrix Receiver acrescenta um <em>plugin</em> ao navegador Mozilla Firefox.</p>
+
+<p>Para verificar se o Mozilla Firefox está devidamente integrado ao Citrix Receiver, acesse <code>about:plugins</code> e veja se o <em>plugin</em> foi carregado:</p>
+
+<div class='image no-ads-here text-center' itemscope itemtype='http://schema.org/ImageObject'>
+<a href='/files/2018/02/citrix-receiver-16-pt.png' title=''>
+<img src='/files/2018/02/citrix-receiver-16-pt.png' alt='' class='img-responsive img-thumbnail' itemprop='contentUrl'>
+</a>
+
+</div>
+
+<h2>Referências</h2>
+
+<ul>
+<li><a href="https://help.ubuntu.com/community/CitrixICAClientHowTo">CitrixICAClientHowTo - Community Help Wiki</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/citrix">Citrix - ArchWiki</a></li>
+</ul>
+
+            </div>
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        
+            <!-- Disqus -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Comentários
+                
+            </h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES * * */
+                        
+                            var disqus_config = function () {
+                                this.language = "pt";
+                            };
+                        
+                        var disqus_shortname = 'kamarada';
+                        var disqus_url = 'https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/';
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>
+                        <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                    </noscript>
+                </div><!-- .col-xs-12 -->
+            </div><!-- .row -->
+            <!-- Disqus End -->
+        
+    </article>
+</div><!-- .blog-post -->
+
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default" id="about">
+    <div class="panel-heading">
+        <h3>
+            <a name="about"></a>
+            
+                Sobre
+            
+        </h3>
+    </div>
+    <div class="panel-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-responsive img-thumbnail'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada é um projeto novo que visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style center-block">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamarada" class="addthis_button_twitter_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/pt/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .panel-body -->
+</div><!-- .panel -->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+                <p class="text-center">
+                    <a href="https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b" title="Antônio Vinícius">
+                        <img src="https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b" alt="Antônio Vinícius" class="img-circle img-responsive img-thumbnail">
+                    </a>
+                </p>
+            
+            
+                <p class="lead text-center" itemprop="name">
+                    
+                        Antônio Vinícius
+                    
+                </p>
+            
+            <ul class="contact-list list-unstyled">
+                
+                    <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fa fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+                
+            </ul>
+        </div>
+    </div><!-- .panel-body -->
+</div><!-- .panel -->
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="sidebar_ad_unit"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="7329324255"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-center">
+                    Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<meta itemprop="description" content="A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que permitem virtualizar servidores, aplicativos e ambientes de trabalho, respectivamente. Uma possibilidade interessante é, de um lado, a empresa instalar em um servidor o XenApp ou o XenDesktop, para...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2018/02/citrix-receiver.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div> 
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        
+            var disqus_config = function () {
+                this.language = "pt";
+            };
+        
+        var disqus_shortname = 'kamarada';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- Disqus End -->
+
+
+
+    <!-- Google AdSense -->
+    
+        <!-- Google AdSense -->
+<div class="row">
+    <div class="col-xs-12">
+        <ins class="adsbygoogle" id="content_ad_unit_2"
+            data-ad-client="ca-pub-5193467168351289"
+            data-ad-format="auto"
+            data-ad-slot="4375857858"></ins>
+    </div><!-- .col-xs-12 -->
+</div><!-- .row -->
+<!-- End Google AdSense -->
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2').closest('.row');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                    } else {
+                        $ad.remove();
+                    }
+                }
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+</body>
+</html>
