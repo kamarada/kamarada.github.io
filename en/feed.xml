@@ -9,10 +9,480 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 20 Feb 2018 02:43:43 -0300</pubDate>
-        <lastBuildDate>Tue, 20 Feb 2018 02:43:43 -0300</lastBuildDate>
+        <pubDate>Thu, 15 Mar 2018 23:53:47 -0300</pubDate>
+        <lastBuildDate>Thu, 15 Mar 2018 23:53:47 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>How to install openSUSE Leap Linux on a server (part 2)</title>
+                <description>&lt;p&gt;We have already seen &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;on a previous post&lt;/a&gt; how to install &lt;a href=&quot;/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/&quot;&gt;openSUSE Leap&lt;/a&gt; on a server. Now, you are going to walk through a checklist with the first things to set up on the new server so that it can be considered effectively ready to use.&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/opensuse-server-config-01.jpg&#39; title=&#39;Let the Geeko take care of your servers! (picture taken from the [Uptime Funk](https://www.youtube.com/watch?v=zbABy9ul11I) clip)&#39;&gt;
+&lt;img src=&#39;/files/2017/02/opensuse-server-config-01.jpg&#39; alt=&#39;Let the Geeko take care of your servers! (picture taken from the [Uptime Funk](https://www.youtube.com/watch?v=zbABy9ul11I) clip)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Let the Geeko take care of your servers! (picture taken from the &lt;a href=&quot;https://www.youtube.com/watch?v=zbABy9ul11I&quot;&gt;Uptime Funk&lt;/a&gt; clip)&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you landed here without passing by the previous post on &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;how to install openSUSE on a server&lt;/a&gt;, I recommend you to start your reading by that post (unless you already have openSUSE on your server).&lt;/p&gt;
+
+&lt;h2&gt;Resuming...&lt;/h2&gt;
+
+&lt;p&gt;We finished that post at the login screen, right after the server rebooted.&lt;/p&gt;
+
+&lt;p&gt;Log in as root. To do that, type &lt;code&gt;root&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;, then enter the root password you set up during installation and press &lt;strong&gt;Enter&lt;/strong&gt; again (nothing will appear on screen as you type the root password, this is intended):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-02-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-02-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By the time I wrote &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;the first part of this tutorial&lt;/a&gt; 42.2 was the latest openSUSE Leap release. We are now at &lt;a href=&quot;/en/2017/07/26/refresh-of-linux-distribution-continues-leveraging-community-enterprise-benefits/&quot;&gt;42.3&lt;/a&gt;, which is the release I use on this second part. The whole procedure haven&amp;#39;t changed between 42.x releases. If you followed the first part and now you have a 42.2 server, you can safely follow.&lt;/p&gt;
+
+&lt;p&gt;Also note that the next release &lt;a href=&quot;https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/&quot;&gt;openSUSE Leap 15.0 is already on the way&lt;/a&gt;. If the change from the current version number of 42.x to 15.x &lt;a href=&quot;https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/#comment-181994&quot;&gt;sounds confusing&lt;/a&gt;, you can find more information about that change on the &lt;a href=&quot;https://lists.opensuse.org/opensuse-project/2017-04/msg00014.html&quot;&gt;openSUSE mailing list archive&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;YaST Control Center&lt;/h2&gt;
+
+&lt;p&gt;One of the reasons I recommend openSUSE to anyone who looks for a Linux distribution is  &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;&lt;strong&gt;YaST&lt;/strong&gt;&lt;/a&gt;, the configuration tool for openSUSE. YaST stands for &lt;em&gt;Yet another Setup Tool&lt;/em&gt;. It can be used to configure the entire system, including hardware, software, networking, system services, users and groups, security, date and time, languages and many other settings.&lt;/p&gt;
+
+&lt;p&gt;YaST provides an attractive interface even on the command line. Start it by running:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are not used to that notation, it means type &lt;code&gt;yast&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;. The hash sign (&lt;code&gt;#&lt;/code&gt;) is not part of the command and should not be typed. It only indicates the command needs elevated privileges to be run (i.e. it needs to be run by the root user). Soon you are going to see commands that can be run by any user (both elevated and ordinary users), these are indicated by the dollar sign (&lt;code&gt;$&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;That done, YaST&amp;#39;s main screen is shown:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/opensuse-server-config-03.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/opensuse-server-config-03.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Settings are listed by the right, grouped by categories listed by the left.&lt;/p&gt;
+
+&lt;p&gt;If you already use openSUSE on your desktop, maybe you already know YaST:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2016/10/upgrade-03-en.png&#39; title=&#39;YaST&#39;s graphical user interface&#39;&gt;
+&lt;img src=&#39;/files/2016/10/upgrade-03-en.png&#39; alt=&#39;YaST&#39;s graphical user interface&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;YaST&amp;#39;s graphical user interface&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Actually, you already know YaST from the &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;previous post&lt;/a&gt;: besides being an openSUSE configuration tool, YaST is also the openSUSE installer itself (you can revisit that post and see that the name &amp;quot;YaST&amp;quot; appears on the upper-left corner of all screens).&lt;/p&gt;
+
+&lt;p&gt;Who is used to &lt;a href=&quot;https://www.microsoft.com/en-us/windows&quot;&gt;Windows&lt;/a&gt; may think YaST resembles &lt;a href=&quot;https://www.lifewire.com/how-to-open-control-panel-2625782&quot;&gt;Control Panel&lt;/a&gt;. Indeed, both are configuration tools for their respective systems.&lt;/p&gt;
+
+&lt;h2&gt;Language settings&lt;/h2&gt;
+
+&lt;p&gt;This post presents openSUSE in English and assumes you are going to use it that way. But you may want to translate it to your language.&lt;/p&gt;
+
+&lt;p&gt;If that is the case, select the &lt;strong&gt;System&lt;/strong&gt; category by the left and the &lt;strong&gt;Language&lt;/strong&gt; setting by the right:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/opensuse-server-config-04.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/opensuse-server-config-04.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Set the &lt;strong&gt;Primary Language&lt;/strong&gt; as desired:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-05-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-05-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Then choose &lt;strong&gt;Details&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Language Details&lt;/strong&gt; dialog, change &lt;strong&gt;Locale Settings for User root&lt;/strong&gt; from &lt;strong&gt;ctype Only&lt;/strong&gt; to &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-06-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-06-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That is needed because by default interfaces are translated only for ordinary users, while the root user interfaces are kept in English. That change makes interfaces be translated for the root user as well.&lt;/p&gt;
+
+&lt;p&gt;Language settings for the root user are applied only on the next login. So, choose &lt;strong&gt;OK&lt;/strong&gt; and &lt;strong&gt;OK&lt;/strong&gt; again. You will be back to the YaST main screen. Choose &lt;strong&gt;Quit&lt;/strong&gt; and you will be back to the command line interface. To log out, run:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then, log in as root and start YaST:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that now YaST is translated into the language you selected.&lt;/p&gt;
+
+&lt;h2&gt;Basic network settings&lt;/h2&gt;
+
+&lt;p&gt;We simplified &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;installation&lt;/a&gt; by using &lt;a href=&quot;https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol&quot;&gt;DHCP&lt;/a&gt; to automatically set up networking. But servers usually have their networking manually set up. So let&amp;#39;s roll up our sleeves.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; it is beyond the scope of this post to explain basic networking concepts. Just in case you need, the &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.basicnet.html&quot;&gt;official openSUSE documentation&lt;/a&gt; is rich in information for both beginner and experienced network administrators.&lt;/p&gt;
+
+&lt;p&gt;By the left select &lt;strong&gt;System&lt;/strong&gt; and by the right choose &lt;strong&gt;Network Settings&lt;/strong&gt;. YaST spends some time verifying current network settings and lists network interfaces:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-08-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-08-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On that list, select the network interface and choose &lt;strong&gt;Edit&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Network Card Setup&lt;/strong&gt; screen, choose &lt;strong&gt;Statically Assigned IP Address&lt;/strong&gt; and enter:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the &lt;strong&gt;IP Address&lt;/strong&gt; (for instance, &lt;code&gt;10.0.0.100&lt;/code&gt;, note that is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Private_network&quot;&gt;private network&lt;/a&gt; address, following the standards set by &lt;a href=&quot;https://en.wikipedia.org/wiki/Private_network&quot;&gt;RFC 1918&lt;/a&gt;),&lt;/li&gt;
+&lt;li&gt;the &lt;strong&gt;Subnet Mask&lt;/strong&gt; (&lt;code&gt;255.255.255.0&lt;/code&gt; or &lt;code&gt;/24&lt;/code&gt; or simply &lt;code&gt;24&lt;/code&gt;, YaST is smart enough to understand both traditional and &lt;a href=&quot;https://doc.m0n0.ch/quickstartpc/intro-CIDR.html&quot;&gt;CIDR&lt;/a&gt; subnet mask notations), and&lt;/li&gt;
+&lt;li&gt;the &lt;strong&gt;Hostname&lt;/strong&gt; along with the domain name, that is the fully qualified domain name (&lt;code&gt;newserver.myhome.net&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you are ready, choose &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-09-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-09-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Network Settings&lt;/strong&gt; screen, switch to the &lt;strong&gt;Hostname/DNS&lt;/strong&gt; tab, enter the &lt;strong&gt;Hostname&lt;/strong&gt; (&lt;code&gt;newserver&lt;/code&gt;), the &lt;strong&gt;Domain Name&lt;/strong&gt; (&lt;code&gt;myhome.net&lt;/code&gt;) and the name servers IP addresses (not their host names):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-10-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-10-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If your network has local name servers, you should prefer them. If not, ask your Internet Service Provider (ISP) which ones to use. Alternatively, you may use a tool such as &lt;a href=&quot;https://www.grc.com/dns/benchmark.htm&quot;&gt;DNS Benchmark&lt;/a&gt; to compare the performance of many well known publicly available name servers and pick the best ones. For instance, I used Brazilian name servers from &lt;a href=&quot;https://www.gigadns.com.br&quot;&gt;GigaDNS&lt;/a&gt;: &lt;code&gt;189.38.95.95&lt;/code&gt; e &lt;code&gt;189.38.95.96&lt;/code&gt;. &lt;a href=&quot;https://webmasters.googleblog.com/2014/12/google-public-dns-and-location.html&quot;&gt;Many people&lt;/a&gt; use &lt;a href=&quot;https://developers.google.com/speed/public-dns/&quot;&gt;Google Public DNS servers&lt;/a&gt;: &lt;code&gt;8.8.8.8&lt;/code&gt; e &lt;code&gt;8.8.4.4&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fill in the &lt;strong&gt;Domain Search&lt;/strong&gt; list with domain names used for resolving host names without a specified domain. You should use at least your server domain (&lt;code&gt;myhome.net&lt;/code&gt;). If you want to inform more than one domain, separate domains with commas or white space.&lt;/p&gt;
+
+&lt;p&gt;Question: when is that useful? Suppose your network has a server &lt;code&gt;www.myhome.net&lt;/code&gt;. If you are on &lt;code&gt;newserver&lt;/code&gt; and run:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping www
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That command is going to produce the same result as this one:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping www.myhome.net
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;strong&gt;ping&lt;/strong&gt; command is used to verify that a computer can communicate with another on a network. It sends a small packet to the destination computer, which responds immediately. If everything goes as expected, a message is presented on screen, indicating there is communication.&lt;/p&gt;
+
+&lt;p&gt;On the above examples, the &lt;strong&gt;ping&lt;/strong&gt; command would try to reach the same server.&lt;/p&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Network Settings&lt;/strong&gt; screen, switch to the &lt;strong&gt;Routing&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;Enter the &lt;strong&gt;Default IPv4 Gateway&lt;/strong&gt; address:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-11-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-11-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If your new server is going to act as a firewall and/or router, also check the option &lt;strong&gt;Enable IPv4 Forwarding&lt;/strong&gt;. You may need to fill (now or later) the &lt;strong&gt;Routing Table&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;When you are ready, choose &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Network settings are applied and YaST takes us back to its main screen.&lt;/p&gt;
+
+&lt;p&gt;Choose &lt;strong&gt;Quit&lt;/strong&gt;. Let&amp;#39;s do some basic networking tests using the &lt;strong&gt;ping&lt;/strong&gt; command. Run:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ping 10.0.0.5&lt;/code&gt; (a computer on the same network as your server),&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ping 8.8.8.8&lt;/code&gt; (a computer on an external network, it can be a server on the Internet, for instance a Google Public DNS server) and&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ping www.google.com&lt;/code&gt; (a name to test DNS).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ping 10.0.0.5
+
+PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.259 ms
+64 bytes from 10.0.0.5: icmp_seq=2 ttl=64 time=0.189 ms
+64 bytes from 10.0.0.5: icmp_seq=3 ttl=64 time=0.189 ms
+64 bytes from 10.0.0.5: icmp_seq=4 ttl=64 time=0.186 ms
+^C
+--- 10.0.0.5 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.186/0.205/0.259/0.035 ms
+
+$ ping 8.8.8.8
+
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=48 time=137 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=48 time=77.0 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=48 time=77.5 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=48 time=76.6 ms
+^C
+--- 8.8.8.8 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3001ms
+rtt min/avg/max/mdev = 76.684/92.244/137.753/26.278 ms
+
+$ ping www.google.com
+
+PING www.google.com (172.217.29.228) 56(84) bytes of data.
+64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=1 ttl=56 time=28.1 ms
+64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=2 ttl=56 time=32.1 ms
+64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=3 ttl=56 time=28.4 ms
+64 bytes from gru06s28-in-f228.1e100.net (172.217.29.228): icmp_seq=4 ttl=56 time=30.3 ms
+^C
+--- www.google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 28.123/29.784/32.183/1.630 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you have already used a variation of the &lt;strong&gt;ping&lt;/strong&gt; command on another operating system, note that on Linux by default it runs indefinitely. To terminate it (as weel as to terminate any command on Linux), press &lt;strong&gt;Ctrl + C&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If any of the above commands have not worked as expected, you should go back and double check your network settings.&lt;/p&gt;
+
+&lt;h2&gt;Remote access using SSH&lt;/h2&gt;
+
+&lt;p&gt;If you followed the &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;previous post&lt;/a&gt; to the letter, during installation you enabled remote access via &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/security/html/book.security/cha.ssh.html&quot;&gt;SSH&lt;/a&gt;. So it is already working on your server.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s see how we can access our server command line remotely.&lt;/p&gt;
+
+&lt;p&gt;Using a computer on the same network as your server (it can be a desktop or even another Linux server), open a terminal and invoke the &lt;strong&gt;ssh&lt;/strong&gt; command, passing an username (e.g. &lt;code&gt;kamarada&lt;/code&gt;) and the IP address (&lt;code&gt;10.0.0.100&lt;/code&gt;) or hostname of the server as arguments:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ ssh kamarada@10.0.0.100
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As this is the first time you connect to the server, the computer asks if it should trust the SSH key sent by the server and continue connecting:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;The authenticity of host &amp;#39;10.0.0.100 (10.0.0.100)&amp;#39; can&amp;#39;t be established.
+ECDSA key fingerprint is SHA256:fre/0oHSwsVILlX+t3fH0NRfsYJ74cvhWSbVzCWW8YQ.
+Are you sure you want to continue connecting (yes/no)?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Type &lt;code&gt;yes&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next you must inform the user password and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;Warning: Permanently added &amp;#39;10.0.0.100&amp;#39; (ECDSA) to the list of known hosts.
+Password:
+Last login: Sun Sep   3 23:17:32 2017 from 10.0.0.10
+Have a lot of fun...
+kamarada@newserver:~&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That&amp;#39;s it! Now you have access to your server command line interface. Any command run on that terminal will be actually run on your server:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@newserver:~&amp;gt; hostname
+newserver
+kamarada@newserver:~&amp;gt; whoami
+kamarada
+kamarada@newserver:~&amp;gt; pwd
+/home/kamarada
+kamarada@newserver:~&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Let&amp;#39;s use that SSH session to go on setting up our server.&lt;/p&gt;
+
+&lt;p&gt;To switch from the &lt;code&gt;kamarada&lt;/code&gt; user to the root user, run the command &lt;strong&gt;su&lt;/strong&gt; (which stands for &lt;em&gt;superuser&lt;/em&gt;). Type the root password and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@newserver:~&amp;gt; su
+Password:
+newserver:/home/kamarada #
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-12-en.png&#39; title=&#39;With remote access via SSH, you can manage your server using your desktop&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-12-en.png&#39; alt=&#39;With remote access via SSH, you can manage your server using your desktop&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;With remote access via SSH, you can manage your server using your desktop&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Users&lt;/h2&gt;
+
+&lt;p&gt;If more people besides you are going to access the server, you should create an user account for each of them, so each one can access the server using their own user accounts. Managing users on openSUSE is an easy task using YaST.&lt;/p&gt;
+
+&lt;p&gt;Within the SSH session, start YaST:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Select &lt;strong&gt;Security and Users&lt;/strong&gt; by the left and &lt;strong&gt;User and Group Management&lt;/strong&gt; by the right:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-13-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-13-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;YaST shows the list of system users (by now, we have only the &lt;code&gt;kamarada&lt;/code&gt; user created during &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;installation&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-14-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-14-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Choose &lt;strong&gt;Add&lt;/strong&gt;. Enter the new user data and choose &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-15-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-15-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the previous screen, you can see the new user on the list.&lt;/p&gt;
+
+&lt;p&gt;Create as many user accounts as you need. When you finish, choose &lt;strong&gt;OK&lt;/strong&gt; to apply changes. YaST creates the new user accounts and take you back to its main screen.&lt;/p&gt;
+
+&lt;h2&gt;Sync date and time using NTP&lt;/h2&gt;
+
+&lt;p&gt;During &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;installation&lt;/a&gt;, we&amp;#39;ve set up our server time zone. I&amp;#39;ve already wrote an entire post on &lt;a href=&quot;/en/2017/02/25/sync-your-system-time-with-ntp/&quot;&gt;how to sync the system time with NTP&lt;/a&gt;. You may want to read that post, as that procedure can be run on servers as well. But since our server time zone is already setup, we don&amp;#39;t need to review all of the date and time settings. Here, I&amp;#39;m going to shortly explain how to set up just the NTP client.&lt;/p&gt;
+
+&lt;p&gt;On YaST&amp;#39;s main screen, select &lt;strong&gt;Network Services&lt;/strong&gt; by the left and &lt;strong&gt;NTP Configuration&lt;/strong&gt; by the right. By default openSUSE already syncs system time with some time servers:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-16-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-16-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You should remove all of those servers and add your local network time server (e.g. &lt;code&gt;10.0.0.1&lt;/code&gt;) or your ISP time server, if there are any. If not, you can add the &lt;a href=&quot;http://support.ntp.org/servers&quot;&gt;public NTP server&lt;/a&gt; nearest to you. For more info on that, visit &lt;a href=&quot;http://support.ntp.org/servers&quot;&gt;the NTP project official website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m going to use the official time server provided by the Brazilian project &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To remove a time server, select it on the list and choose &lt;strong&gt;Delete&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;To add a time server, choose &lt;strong&gt;Add&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the next screen, keep the default &lt;strong&gt;Server&lt;/strong&gt; option selected and choose &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-17-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-17-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter the time server &lt;strong&gt;Address&lt;/strong&gt; (e.g. &lt;code&gt;pool.ntp.br&lt;/code&gt;) and choose &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-18-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-18-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When you are finished setting up the NTP client, choose &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-19-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-19-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;YaST saves NTP settings, restarts the NTP client (that should sync your system time) and returns to the main screen. Choose &lt;strong&gt;Quit&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Back to the command line, run the &lt;strong&gt;date&lt;/strong&gt; command to check system time:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# date -R
+Thu, 15 Mar 2018 23:40:12 -0300
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Software repositories&lt;/h2&gt;
+
+&lt;p&gt;During &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;installation&lt;/a&gt;, we&amp;#39;ve already set up software repositories, but we used only &lt;a href=&quot;https://en.opensuse.org/Package_repositories&quot;&gt;the official ones&lt;/a&gt;. Now, you have the opportunity of adding any &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Semi_official_repositories&quot;&gt;semi official&lt;/a&gt; or &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;third-party repositories&lt;/a&gt; you want, as well as switching from the official repositories to &lt;a href=&quot;https://mirrors.opensuse.org/&quot;&gt;mirrors&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Start YaST again:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# yast
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;On the main screen, chose &lt;strong&gt;Software&lt;/strong&gt; by the left and &lt;strong&gt;Software Repositories&lt;/strong&gt; by the right. YaST lists configured repositories:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-20-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-20-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It seems that repository selection we&amp;#39;ve made during installation has been applied only during installation... I recommend you to repeat that configuration by enabling only the repositories:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Main Repository (OSS)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Main Update Repository&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To disable a repository on that list, select it using the &lt;strong&gt;up and down arrow&lt;/strong&gt; keys and uncheck &lt;strong&gt;Enabled&lt;/strong&gt; with &lt;strong&gt;Alt + E&lt;/strong&gt;. If auto-refresh is also enabled for the repository, disable it with &lt;strong&gt;Alt + R&lt;/strong&gt;. Go back to the list using &lt;strong&gt;Shift + Tab&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Repeat that until all unwanted repositories are disabled.&lt;/p&gt;
+
+&lt;p&gt;Your repository list should end this way:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-21-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-21-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You may want to retrieve packages not from &lt;code&gt;download.opensuse.org&lt;/code&gt;, but from a closer mirror. Visit &lt;a href=&quot;https://mirrors.opensuse.org/&quot;&gt;mirrors.opensuse.org&lt;/a&gt; to see a complete list of all mirrors you could use. Pick the one which is closest to you (for instance, I&amp;#39;m in Brazil, I chose &lt;a href=&quot;http://www.c3sl.ufpr.br/espelhos/&quot;&gt;C3SL&lt;/a&gt;). Copy its URL from that page (e.g. &lt;code&gt;opensuse.c3sl.ufpr.br&lt;/code&gt;), &lt;strong&gt;Edit&lt;/strong&gt; your repositories and make the move. To illustrate, I changed the &lt;strong&gt;URL of the Repository&lt;/strong&gt; OSS from:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://download.opensuse.org/distribution/leap/42.3/repo/oss/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;http://opensuse.c3sl.ufpr.br/distribution/leap/42.3/repo/oss/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When you finish, choose &lt;strong&gt;OK&lt;/strong&gt;. YaST applies changes, refreshes the repositories metadata and takes you back to its main screen.&lt;/p&gt;
+
+&lt;h2&gt;Updates&lt;/h2&gt;
+
+&lt;p&gt;During &lt;a href=&quot;/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/&quot;&gt;installation&lt;/a&gt;, we enabled the update repository, so the system was installed with all updates available to that moment. I already explained on another post &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;how to update openSUSE&lt;/a&gt;. As we don&amp;#39;t have a graphical interface on our server, only the command line, let&amp;#39;s use the &lt;strong&gt;zypper&lt;/strong&gt; command to check for updates.&lt;/p&gt;
+
+&lt;p&gt;Here I&amp;#39;m going to shortly remember the commands I presented on &lt;a href=&quot;/en/2016/10/22/keep-your-system-always-up-to-date/&quot;&gt;that post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To refresh the list of packages available on the online repositories:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper ref
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To download and install available updates if there are any:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper up
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/03/opensuse-server-config-23-en.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/03/opensuse-server-config-23-en.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that you may need to reboot the server after updating.&lt;/p&gt;
+
+&lt;h2&gt;Ready to launch&lt;/h2&gt;
+
+&lt;p&gt;First things first, now our server is minimally setup and ready to install services.&lt;/p&gt;
+
+&lt;p&gt;If you are not going to use it by now, you can finish your SSH session with the &lt;strong&gt;exit&lt;/strong&gt; command. You will be back to your computer&amp;#39;s command line interface:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;kamarada@newserver:~&amp;gt; exit
+logout
+Connection to 10.0.0.100 closed.
+kamarada@desktop:~&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Remember to check for software updates from time to time.&lt;/p&gt;
+
+&lt;p&gt;Follow the Linux Kamarada Project to discover interesting things you can do with openSUSE servers.&lt;/p&gt;
+
+&lt;p&gt;And... have a lot a fun!&lt;/p&gt;
+</description>
+                <pubDate>Thu, 15 Mar 2018 23:40:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Use Evolution to connect to Office 365 on Linux</title>
@@ -1699,6 +2169,12 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
 &lt;p&gt;As I realized that this post is already very long, I decided to split it into two parts. I left some details for the next post.&lt;/p&gt;
 
 &lt;p&gt;Follow the Linux Kamarada Project to read the second part as soon as it&amp;#39;s published!&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;span class=&quot;glyphicon glyphicon-refresh&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; &lt;strong&gt;Update (15/03/2018):&lt;/strong&gt;
+    &lt;p&gt;&lt;a href=&quot;/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/&quot;&gt;Sorry for the long wait, the second part of this tutorial is here. (click)&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
 </description>
                 <pubDate>Wed, 25 Jan 2017 06:20:00 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/</link>
@@ -2754,166 +3230,6 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
                 <pubDate>Mon, 31 Oct 2016 23:59:59 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2016/10/31/how-to-upgrade-from-opensuse-leap-421-to-422/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2016/10/31/how-to-upgrade-from-opensuse-leap-421-to-422/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Keep your system always up to date</title>
-                <description>&lt;p&gt;Computer programs, the more amazing they are, are not perfect: they are made by us, mere humans. As time passes, they are improved, be by optimizations, new features or bug fixes. Bugs can be of many kinds, varying from a simple typo or malfunctioning to a security hole that can be used by malicious people to get unauthorized access to your personal files. Therefore, it is important to keep your computer always up to date, using the latest software versions.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, keeping your Linux system always up to date is easy if you are using &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. You can get software updates using the graphical user interface (GUI) or the command line interface (CLI).&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates.jpg&#39; title=&#39;Source: [OMG! Ubuntu!](http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words)&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates.jpg&#39; alt=&#39;Source: [OMG! Ubuntu!](http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words)&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
-&lt;p&gt;Source: &lt;a href=&quot;http://www.omgubuntu.co.uk/2016/10/why-use-linux-answer-three-short-words&quot;&gt;OMG! Ubuntu!&lt;/a&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2&gt;Getting updates using the GUI&lt;/h2&gt;
-
-&lt;p&gt;When you turn on your computer and/or connect it to the Internet, openSUSE Linux automatically looks for software updates.&lt;/p&gt;
-
-&lt;p&gt;If it finds updates to be installed, it notifies you:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-01-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It just notifies you, leaving you free to decide when to actually update.&lt;/p&gt;
-
-&lt;p&gt;When you find an opportune time to download and install updates, click on the &lt;strong&gt;Software Updates&lt;/strong&gt; icon. It will be showing a red X, indicating that your system is not fully updated (that is, there are updates that need to be installed):&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-02-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-02-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click on &lt;strong&gt;Install Updates&lt;/strong&gt;. openSUSE will start to fetch updates.&lt;/p&gt;
-
-&lt;p&gt;You can check the update progress:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-03-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-03-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;But you don&amp;#39;t need to monitor it: while updates are being downloaded and installed, you can continue to use your computer as usual.&lt;/p&gt;
-
-&lt;p&gt;You are notified when the update process finishes. Normally, you don&amp;#39;t need to do anything else, not even restart your computer. Updates are already applied and you can notice them if you open any program that has been updated.&lt;/p&gt;
-
-&lt;p&gt;When it happens that some update needs the computer to be restarted, the system asks you to restart it as soon as possible. Although that&amp;#39;s recommended, you can restart it at your convenience.&lt;/p&gt;
-
-&lt;p&gt;To restart your computer, open the &lt;strong&gt;Application Menu&lt;/strong&gt;, mouse over &lt;strong&gt;Power / Session&lt;/strong&gt; and click on &lt;strong&gt;Restart&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/restart-kde-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/restart-kde-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It could happen that the system has installed many updates and at the end, instead of notifying it has finished, it asks you to install further updates:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-04-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-04-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That&amp;#39;s rare, but it can occur if a package depends on another, and its latest version only becomes available after the latest version of its dependency is installed.&lt;/p&gt;
-
-&lt;p&gt;Keep updating your system until it informs you it is completely up to date:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-05-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-05-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Another reason that can cause the system to inform you there are further updates available is the occurrence of failure during any update. In that case, updates that failed to be installed return to the list of available updates. If you try to install them again and once more they fail, try to find out what is wrong before trying again.&lt;/p&gt;
-
-&lt;h2&gt;Getting updates using the CLI&lt;/h2&gt;
-
-&lt;p&gt;If you prefer the command line interface, you can use the &lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt; package manager to check for, download and install software updates.&lt;/p&gt;
-
-&lt;p&gt;First, you need to log in as root (superuser) issuing the command &lt;code&gt;su&lt;/code&gt;. It asks you the root password, which you must provide to go on.&lt;/p&gt;
-
-&lt;p&gt;Then, call &lt;strong&gt;zypper&lt;/strong&gt; with &lt;code&gt;zypper ref&lt;/code&gt; (you can think of that command as &lt;em&gt;refresh&lt;/em&gt;). It will retrieve the list of packages available on the Internet:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-01-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-01-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that it shows the progress. When it finishes, run &lt;code&gt;zypper up&lt;/code&gt; (&lt;em&gt;update&lt;/em&gt;). &lt;strong&gt;zypper&lt;/strong&gt; will download and install available updates if there are any:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-02-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-02-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It shows what needs to be done to update the system and asks if you agree. The default option is to continue (&lt;strong&gt;y&lt;/strong&gt;). If that&amp;#39;s what you want, you can just hit &lt;strong&gt;Enter&lt;/strong&gt;. Update will begin and &lt;strong&gt;zypper&lt;/strong&gt; will show the update progress:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-03-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-03-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It is possible that packages need to be removed for the system to be updated as a whole. If you notice in the picture above, &lt;strong&gt;zypper&lt;/strong&gt; proposed installing &lt;a href=&quot;https://www.kde.org/applications/graphics/spectacle/&quot;&gt;Spectacle&lt;/a&gt; and removing &lt;a href=&quot;https://www.kde.org/applications/graphics/ksnapshot/&quot;&gt;KSnapshot&lt;/a&gt;. If you google what are those apps, you will find that both can be used to take screen shots (pictures like the above ones) and that indeed &lt;a href=&quot;https://www.kde.org/announcements/announce-applications-15.12.0.php&quot;&gt;KSnapshot was replaced by Spectacle&lt;/a&gt;. So, in that case, we don&amp;#39;t need to worry.&lt;/p&gt;
-
-&lt;p&gt;If you don&amp;#39;t agree with the changes suggested by &lt;strong&gt;zypper&lt;/strong&gt;, you can cancel the update process by pressing &lt;strong&gt;n&lt;/strong&gt; and then &lt;strong&gt;Enter&lt;/strong&gt;. You can investigate why it is proposing those changes and try again later.&lt;/p&gt;
-
-&lt;p&gt;Usually, when the update process finishes, you don&amp;#39;t need to do anything else, not even restart your computer. But note that at the end of this update &lt;strong&gt;zypper&lt;/strong&gt; considered restarting programs that were using files deleted during the update process:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-04-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-04-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In that case, even if &lt;strong&gt;zypper&lt;/strong&gt; has not asked you to restart your computer, as it said the word &amp;quot;restart&amp;quot;, I recommend you to do so. When the system comes back, it will be fresh new and clear, without risk of malfunction.&lt;/p&gt;
-
-&lt;p&gt;Make sure you have installed really all the updates available up to now by repeatedly running &lt;code&gt;zypper up&lt;/code&gt; until it says there is nothing to do:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2016/10/sw-updates-cmd-05-en.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2016/10/sw-updates-cmd-05-en.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That is, it is not possible to update the system further, because there are no more updates available: your system is really up to date.&lt;/p&gt;
-
-&lt;p&gt;Remember to check for software updates from time to time using the &lt;code&gt;zypper ref&lt;/code&gt; and &lt;code&gt;zypper up&lt;/code&gt; commands, as the command line interface does not notify you when there are updates available.&lt;/p&gt;
-</description>
-                <pubDate>Sat, 22 Oct 2016 23:40:00 -0200</pubDate>
-                <link>https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2016/10/22/keep-your-system-always-up-to-date/</guid>
                 
                 
                     <category>en</category>
