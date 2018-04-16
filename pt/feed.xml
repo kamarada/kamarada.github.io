@@ -9,10 +9,360 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 16 Mar 2018 01:24:35 -0300</pubDate>
-        <lastBuildDate>Fri, 16 Mar 2018 01:24:35 -0300</lastBuildDate>
+        <pubDate>Mon, 16 Apr 2018 00:49:55 -0300</pubDate>
+        <lastBuildDate>Mon, 16 Apr 2018 00:49:55 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Configurando certificado digital no Linux openSUSE</title>
+                <description>&lt;p&gt;Um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Certificado_digital&quot;&gt;certificado digital&lt;/a&gt; permite &lt;strong&gt;identificar&lt;/strong&gt; e &lt;strong&gt;autenticar&lt;/strong&gt; pessoas físicas, empresas ou computadores em &lt;em&gt;sites&lt;/em&gt; e sistemas. Ele garante princípios da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o&quot;&gt;segurança da informação&lt;/a&gt; às operações realizadas por meio dele, como &lt;strong&gt;autenticidade&lt;/strong&gt; e &lt;strong&gt;não repúdio&lt;/strong&gt;, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.&lt;/p&gt;
+
+&lt;p&gt;Existem basicamente 2 tipos de certificado digital:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;o &lt;strong&gt;Certificado A1&lt;/strong&gt;, que é armazenado no computador (ou dispositivo móvel, como &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt;) e tem validade de 1 ano; e&lt;/li&gt;
+&lt;li&gt;o &lt;strong&gt;Certificado A3&lt;/strong&gt;, que é armazenado em uma mídia criptográfica (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente&quot;&gt;cartão inteligente&lt;/a&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)&quot;&gt;token&lt;/a&gt;) e tem validade de 1 a 3 anos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/etoken.jpg&#39; title=&#39;Um *token* parece um *pendrive*, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital&#39;&gt;
+&lt;img src=&#39;/files/2018/04/etoken.jpg&#39; alt=&#39;Um *token* parece um *pendrive*, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;em class=&#39;caption&#39; itemprop=&#39;description&#39;&gt;
+&lt;p&gt;Um &lt;em&gt;token&lt;/em&gt; parece um &lt;em&gt;pendrive&lt;/em&gt;, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Algumas utilidades do certificado digital para pessoas físicas e jurídicas são:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Assinar e enviar documentos com validade jurídica pela Internet;&lt;/li&gt;
+&lt;li&gt;Assinar &lt;a href=&quot;http://www.nfe.fazenda.gov.br/&quot;&gt;Nota Fiscal eletrônica (NF-e)&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;Entrar em ambientes seguros;&lt;/li&gt;
+&lt;li&gt;Acessar sistemas seguros do governo que possibilitam atendimentos antes possíveis apenas presencialmente, como o &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; da &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;Enviar declarações de imposto de renda, seja de pessoa física ou jurídica; e&lt;/li&gt;
+&lt;li&gt;Realizar transações bancárias com mais segurança.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para uma lista completa de tipos de certificados digitais e suas possíveis utilizações para pessoas físicas e jurídicas, consulte &lt;a href=&quot;https://www.certisign.com.br/certificado-digital/indicacao-uso&quot;&gt;esta página&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Há também os certificados digitais que identificam &lt;em&gt;sites&lt;/em&gt;. Quando você acessa um &lt;em&gt;site&lt;/em&gt; que apresenta um certificado digital, o navegador exibe o ícone de um cadeado verde, indicando que o &lt;em&gt;site&lt;/em&gt; é autêntico e seguro. Já falamos um pouco sobre certificados de &lt;em&gt;sites&lt;/em&gt; em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, você verá como utilizar um &lt;em&gt;token&lt;/em&gt; para acessar um sistema do governo com certificado digital no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Linux openSUSE&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na demonstração, vou utilizar um &lt;em&gt;token&lt;/em&gt; USB igual ao da imagem, modelo &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/&quot;&gt;eToken PRO&lt;/a&gt;, da fabricante &lt;a href=&quot;https://safenet.gemalto.com/&quot;&gt;SafeNet&lt;/a&gt; (antiga &lt;a href=&quot;https://pt.wikipedia.org/wiki/Aladdin_Knowledge_Systems&quot;&gt;Aladdin&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2&gt;Instalando os pacotes necessários&lt;/h2&gt;
+
+&lt;p&gt;No Linux, a utilização de mídias criptográficas é gerenciada principalmente pelos &lt;em&gt;softwares&lt;/em&gt; &lt;a href=&quot;https://pcsclite.apdu.fr/&quot;&gt;PC/SC&lt;/a&gt; e &lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki&quot;&gt;OpenSC&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para instalá-los no openSUSE, execute o seguinte comando (observe a notação para executá-lo como usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper in opensc pcsc-ccid pcsc-lite pcsc-tools
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Inicie o serviço do PC/SC, que disponibiliza as mídias criptográficas para os aplicativos, e habilite-o para que seja iniciado automaticamente junto com o sistema:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# systemctl start pcscd
+# systemctl enable pcscd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Você pode verificar que o serviço está funcionando com:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# systemctl status pcscd
+● pcscd.service - PC/SC Smart Card Daemon
+   Loaded: loaded (/usr/lib/systemd/system/pcscd.service; indirect; vendor preset: disabled)
+   Active: active (running) since Sun 2018-04-15 17:43:24 -03; 10s ago
+ Main PID: 10394 (pcscd)
+    Tasks: 3 (limit: 4915)
+   CGroup: /system.slice/pcscd.service
+           └─10394 /usr/sbin/pcscd --foreground
+
+Apr 15 17:43:24 localhost.localdomain systemd[1]: Started PC/SC Smart Card Daemon.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Conecte o &lt;em&gt;token&lt;/em&gt; e verifique que ele é reconhecido como um dispositivo USB (note que você pode executar o comando a seguir como usuário &lt;em&gt;root&lt;/em&gt; ou comum):&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ lsusb
+Bus 001 Device 002: ID 8087:8001 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 005: ID 0bda:0129 Realtek Semiconductor Corp. RTS5129 Card Reader Controller
+Bus 002 Device 004: ID 1bcf:2c81 Sunplus Innovation Technology Inc. 
+Bus 002 Device 002: ID 13fe:4200 Kingston Technology Company Inc. 
+Bus 002 Device 006: ID 045e:0745 Microsoft Corp. Nano Transceiver v1.0 for Bluetooth
+Bus 002 Device 007: ID 0529:0620 Aladdin Knowledge Systems Token JC
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Observe o &lt;em&gt;token&lt;/em&gt; listado na penúltima linha.&lt;/p&gt;
+
+&lt;p&gt;Verifique que o PC/SC reconhece o &lt;em&gt;token&lt;/em&gt; com o comando:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ pcsc_scan
+PC/SC device scanner
+V 1.5.2 (c) 2001-2017, Ludovic Rousseau &amp;lt;ludovic.rousseau@free.fr&amp;gt;
+Using reader plug&amp;#39;n play mechanism
+Scanning present readers...
+0: SafeNet eToken 5100 [Main Interface] 00 00
+
+Sun Apr 15 17:45:37 2018
+ Reader 0: SafeNet eToken 5100 [Main Interface] 00 00
+  Card state: Card inserted, 
+  ATR: 3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
+
+ATR: 3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
++ TS = 3B --&amp;gt; Direct Convention
++ T0 = D5, Y(1): 1101, K: 5 (historical bytes)
+  TA(1) = 18 --&amp;gt; Fi=372, Di=12, 31 cycles/ETU
+    129032 bits/s at 4 MHz, fMax for Fi = 5 MHz =&amp;gt; 161290 bits/s
+  TC(1) = 00 --&amp;gt; Extra guard time: 0
+  TD(1) = 81 --&amp;gt; Y(i+1) = 1000, Protocol T = 1 
+-----
+  TD(2) = 31 --&amp;gt; Y(i+1) = 0011, Protocol T = 1 
+-----
+  TA(3) = FE --&amp;gt; IFSC: 254
+  TB(3) = 7D --&amp;gt; Block Waiting Integer: 7 - Character Waiting Integer: 13
++ Historical bytes: 80 73 C8 21 10
+  Category indicator byte: 80 (compact TLV data object)
+    Tag: 7, len: 3 (card capabilities)
+      Selection methods: C8
+        - DF selection by full DF name
+        - DF selection by partial DF name
+        - Implicit DF selection
+      Data coding byte: 21
+        - Behaviour of write functions: proprietary
+        - Value &amp;#39;FF&amp;#39; for the first byte of BER-TLV tag fields: invalid
+        - Data unit in quartets: 2
+      Command chaining, length fields and logical channels: 10
+        - Logical channel number assignment: by the card
+        - Maximum number of logical channels: 1
++ TCK = F4 (correct checksum)
+
+Possibly identified card (using /usr/share/pcsc/smartcard_list.txt):
+3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
+    Bank of Lithuania Identification card
+    Gemalto SafeNet eToken Java Based Cards
+    https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Observe que esse comando não para, você deve teclar &lt;strong&gt;Ctrl + C&lt;/strong&gt; para interrompê-lo.&lt;/p&gt;
+
+&lt;p&gt;O OpenSC pode ser testado com o comando:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ opensc-tool -l
+# Detected readers (pcsc)
+Nr.  Card  Features  Name
+0    Yes             SafeNet eToken 5100 [Main Interface] 00 00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Especificidades do token Aladdin/SafeNet&lt;/h3&gt;
+
+&lt;p&gt;Observe que ambos os &lt;em&gt;softwares&lt;/em&gt; reconhecem o &lt;em&gt;token&lt;/em&gt;, mas o atribuem um modelo errado: &lt;code&gt;SafeNet eToken 5100&lt;/code&gt;, que é &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/etoken-5110-usb-token/&quot;&gt;outro &lt;em&gt;token&lt;/em&gt;&lt;/a&gt; da mesma fabricante.&lt;/p&gt;
+
+&lt;p&gt;A consequência disso é que não é possível, a priori, utilizar o &lt;em&gt;token&lt;/em&gt;. Os comandos a seguir que deveriam retornar mais informações sobre o &lt;em&gt;token&lt;/em&gt; resultam em erro:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ opensc-tool -r 0 -f
+SELECT FILE failed: Incorrect parameters in APDU
+
+$ pkcs15-tool --reader 0 --list-pins
+Failed to connect to card: Card is invalid or cannot be handled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vários &lt;em&gt;tokens&lt;/em&gt; já são reconhecidos e funcionam bem com a dupla PC/SC e OpenSC, mas no caso específico do Aladdin/SafeNet eToken PRO é necessário instalar também um &lt;em&gt;software&lt;/em&gt; proprietário da SafeNet, que é o &lt;a href=&quot;https://safenet.gemalto.com/etoken-pki-client/&quot;&gt;SafeNet Authentication Client&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;O ideal é que você obtenha esse &lt;em&gt;software&lt;/em&gt; da certificadora onde você adquiriu o &lt;em&gt;token&lt;/em&gt;, mas você pode obtê-lo do &lt;em&gt;site&lt;/em&gt; da &lt;a href=&quot;https://www.soluti.com.br/&quot;&gt;Soluti&lt;/a&gt;, que é uma das certificadoras que suportam a utilização de Linux.&lt;/p&gt;
+
+&lt;p&gt;Acesse o &lt;a href=&quot;https://www.soluti.com.br/&quot;&gt;&lt;em&gt;site&lt;/em&gt; da Soluti&lt;/a&gt; e clique, na sequência, em:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dúvidas e suporte&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Token&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SafeNet&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por fim, clique no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;SafeNet Authentication Client 9.1 para distribuições Red Hat/Fedora de 32 ou 64 bits&lt;/strong&gt; (o primeiro da lista):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-01-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-01-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Salve o arquivo.&lt;/p&gt;
+
+&lt;p&gt;Ele é criado com o nome &lt;code&gt;safenet_rpm_9.1.7-0.tar.gz&lt;/code&gt; na pasta &lt;code&gt;Downloads&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Abra essa pasta, clique com o botão direito do &lt;em&gt;mouse&lt;/em&gt; no arquivo baixado e clique em &lt;strong&gt;Extrair aqui&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-02-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-02-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;É criada a pasta &lt;code&gt;safenet_rpm_9.1.7-0&lt;/code&gt; com o conteúdo extraído do arquivo.&lt;/p&gt;
+
+&lt;p&gt;Clique com o botão direito nessa pasta e depois clique em &lt;strong&gt;Abrir no terminal&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-03-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-03-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Alterne para o usuário &lt;em&gt;root&lt;/em&gt;, para realizar a instalação:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ su
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Instale os requisitos do SafeNet Authentication Client:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper in libcrypto43 openssl
+# ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E, por fim, instale o SafeNet Authentication Client em si:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# ./install.sh 
+################################# [100%]
+Updating / installing...
+################################# [100%]
+could not find mozilla directory
+Enable pcscd service
+Enable SACSrv service
+SafeNet Authentication Client installation completed.
+Installing Language code pt-BR.
+logout and login to apply changes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Reinicie o computador (fazer &lt;em&gt;logout&lt;/em&gt; e &lt;em&gt;login&lt;/em&gt; como sugere o &lt;em&gt;script&lt;/em&gt; de instalação não funcionou ao menos para mim).&lt;/p&gt;
+
+&lt;p&gt;Quando voltar, inicie o &lt;strong&gt;SafeNet Authentication Client Tools&lt;/strong&gt; (o primeiro ícone):&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-04-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-04-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Observe que ele reconhece o &lt;em&gt;token&lt;/em&gt; devidamente:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-05-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-05-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Configurando o token no Firefox&lt;/h2&gt;
+
+&lt;p&gt;Para poder utilizar o &lt;em&gt;token&lt;/em&gt; no navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, vamos cadastrá-lo como um dispositivo de segurança.&lt;/p&gt;
+
+&lt;p&gt;Para isso, com o Firefox aberto, abra o &lt;strong&gt;menu do Firefox&lt;/strong&gt; e clique em &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Depois, clique em &lt;strong&gt;Privacidade e Segurança&lt;/strong&gt; e, por último, no botão &lt;strong&gt;Dispositivos de Segurança&lt;/strong&gt;, no final:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-06-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-06-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Em &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo OpenSC, informe &lt;code&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;se você instalou o SafeNet Authentication Client (meu caso), informe &lt;code&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+&lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-07-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-07-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Observe que o &lt;em&gt;token&lt;/em&gt; é adicionado à lista de &lt;strong&gt;Dispositivos e módulos de segurança&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-08-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-08-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Acessando o sistema eCAC&lt;/h2&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; é um sistema da &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt; que disponibiliza pela Internet &lt;a href=&quot;http://www.receita.fazenda.gov.br/aplicacoes/ATBHE/servicos-ecac/default.aspx&quot;&gt;vários serviços&lt;/a&gt; para pessoas físicas e jurídicas, antes disponíveis apenas presencialmente. É possível acessá-lo por meio de um código de acesso gerado na hora, mas menos serviços estão disponíveis por esse meio, que é menos seguro. A totalidade dos serviços está disponível apenas para quem o acessa com certificado digital.&lt;/p&gt;
+
+&lt;p&gt;Alguns dos serviços mais úteis para pessoas físicas incluem consultar declarações e recibos já enviados do imposto de renda e &lt;a href=&quot;http://g1.globo.com/economia/imposto-de-renda/2016/noticia/2016/05/contribuinte-ja-pode-saber-se-caiu-na-malha-fina-do-imposto-de-renda-2016.html&quot;&gt;verificar se a declaração caiu na malha fina&lt;/a&gt;, assim como &lt;a href=&quot;http://economia.estadao.com.br/blogs/regina-pitoscia/sua-declaracao-ficou-em-malha-fina-acerte-logo-a-situacao/&quot;&gt;tomar ações para regularizar a situação&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; o eCAC é um sistema do governo assinado com um certificado de segurança próprio. Para acessá-lo, você deve instalar o certificado da Autoridade Certificadora Raiz Brasileira. Se ainda não fez isso, veja como fazer &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;nesse &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para acessar o eCAC, certifique-se de que o &lt;em&gt;token&lt;/em&gt; está conectado ao computador.&lt;/p&gt;
+
+&lt;p&gt;Depois, clique no &lt;em&gt;link&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;https://cav.receita.fazenda.gov.br/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Na tela de &lt;em&gt;login&lt;/em&gt;, clique em &lt;strong&gt;Certificado Digital&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-09-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-09-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-10-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-10-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Confirme as informações do certificado a ser utilizado e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-11-pt.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-11-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Verifique suas informações na parte superior da tela:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/token-12-pt.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/token-12-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Pronto! Agora você está no ambiente seguro da Receita Federal e sabe que configurou corretamente seu certificado digital no Linux openSUSE!&lt;/p&gt;
+
+&lt;p&gt;Divirta-se bastante... (&lt;em&gt;have a lot of fun...&lt;/em&gt;)&lt;/p&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.certisign.com.br/certificado-digital&quot;&gt;Certificado Digital | Certisign&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://serasa.certificadodigital.com.br/o-que-e/&quot;&gt;O que é Certificado Digital? | Serasa Experian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://idg.receita.fazenda.gov.br/orientacao/tributaria/senhas-e-procuracoes/senhas/certificados-digitais&quot;&gt;Certificados Digitais — Receita Federal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://diadialinux.wordpress.com/2017/03/02/instalar-etoken-alladin-usar-sites-do-governo-com-certificado-digital-e-assinar-documentos-pdf/&quot;&gt;Instalar eToken Alladin, usar sites do governo com certificado Digital e assinar documentos PDF — Dicas do cotidiano com linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.mayrhofer.eu.org/aladdin-etoken-under-linux&quot;&gt;Howto use Aladdin eToken under Linux | Rene Mayrhofer&amp;#39;s virtual home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.suse.com/c/configuring-smart-card-authentication-suse-linux-enterprise/&quot;&gt;Configuring Smart Card authentication on SUSE Linux Enterprise - SUSE Communities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/Aladdin-eToken-PRO&quot;&gt;Aladdin eToken PRO · OpenSC/OpenSC Wiki · GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/issues/461&quot;&gt;Unsuported Aladdin eToken PRO USB 72k Java · Issue #461 · OpenSC/OpenSC · GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/Installing-OpenSC-PKCS%2311-Module-in-Firefox,-Step-by-Step&quot;&gt;Installing OpenSC PKCS#11 Module in Firefox, Step by Step · OpenSC/OpenSC Wiki · GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Mon, 16 Apr 2018 00:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Economizando a munheca no LibreOffice com autocorreção e autotexto</title>
@@ -1758,107 +2108,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Sat, 03 Jun 2017 18:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>TP-Link Archer T4U no Linux openSUSE</title>
-                <description>&lt;p&gt;Mês passado decidi turbinar a rede Wi-Fi da minha casa. Eu, que já tinha comprado uma &lt;a href=&quot;https://mikrotik.com/product/RB952Ui-5ac2nD-TC&quot;&gt;MikroTik hAP ac lite tower&lt;/a&gt;, comprei dessa vez uma antena para conectar meu &lt;em&gt;notebook&lt;/em&gt; à frequência de 5GHz do padrão &lt;a href=&quot;http://www.techtudo.com.br/noticias/noticia/2016/09/80211ac-e-80211n-veja-diferencas-entre-padroes-da-performance-wi-fi.html&quot;&gt;802.11ac&lt;/a&gt;: a &lt;a href=&quot;http://www.tp-link.com.br/products/details/cat-11_Archer-T4U.html&quot;&gt;TP-Link Archer T4U&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/05/tp-link-archer-t4u.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/05/tp-link-archer-t4u.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O novo padrão de Wi-Fi 802.11ac visa ao desempenho. Além de maior velocidade, a frequência maior também garante que haja menos interferência, seja pela menor quantidade de aparelhos que a utilizam (hoje, por exemplo, telefones sem fio, microondas e dispositivos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Bluetooth&quot;&gt;Bluetooth&lt;/a&gt; competem com a Wi-Fi pela frequência de 2,4GHz), seja pelo menor alcance das redes a 5GHz (o comprimento da onda reduz quando aumenta a frequência, na prática isso quer dizer que se a sua Wi-Fi e a do vizinho transmitem a 5GHz, é mais difícil que elas invadam a casa um do outro).&lt;/p&gt;
-
-&lt;p&gt;Escolhi a antena levando em consideração que &lt;a href=&quot;http://www.tp-link.com.br/download/Archer-T4U_V1.html#Driver&quot;&gt;o fabricante disponibiliza um &lt;em&gt;driver&lt;/em&gt; para Linux&lt;/a&gt; (um módulo para o &lt;a href=&quot;https://www.kernel.org/&quot;&gt;&lt;em&gt;kernel&lt;/em&gt; Linux&lt;/a&gt;). No entanto, não consegui fazê-la funcionar no &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap 42.2&lt;/a&gt; seguindo o tutorial do fabricante. O &lt;em&gt;driver&lt;/em&gt; oficial foi desenvolvido para o &lt;a href=&quot;https://wiki.ubuntu.com/TrustyTahr/ReleaseNotes&quot;&gt;Ubuntu 14.04&lt;/a&gt; com o &lt;em&gt;kernel&lt;/em&gt; versão 3.16.0, ambos lançados em 2014. De lá pra cá, muita coisa mudou, de sorte que o &lt;em&gt;driver&lt;/em&gt; oficial não mais funciona com o &lt;em&gt;kernel&lt;/em&gt; 4.4.27 que acompanha a versão mais recente do openSUSE Leap.&lt;/p&gt;
-
-&lt;p&gt;Felizmente, como é frequente no mundo do &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, pesquisando no &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt;, encontrei &lt;a href=&quot;https://github.com/abperiasamy/rtl8812AU_8821AU_linux&quot;&gt;uma versão comunitária desse &lt;em&gt;driver&lt;/em&gt; no GitHub&lt;/a&gt;. Com um pouco de leitura, consegui instalá-la e hoje estou usufruindo da minha conexão a 5GHz.&lt;/p&gt;
-
-&lt;p&gt;Para dar minha contribuição, decidi escrever o que eu fiz, passo a passo, pro caso de alguém precisar.&lt;/p&gt;
-
-&lt;h2&gt;O que vamos utilizar&lt;/h2&gt;
-
-&lt;p&gt;Vamos baixar o código-fonte do &lt;em&gt;driver&lt;/em&gt; comunitário. Se você tem familiaridade com o &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, pode obter o código-fonte clonando seu repositório:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ git clone https://github.com/abperiasamy/rtl8812AU_8821AU_linux.git
-$ cd rtl8812AU_8821AU_linux/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Se você não usa Git, não se preocupe: aqui ele seria apenas uma facilidade, um atalho, para quem o usa. Para baixar o código-fonte do &lt;em&gt;driver&lt;/em&gt; comunitário, acesse &lt;a href=&quot;https://github.com/abperiasamy/rtl8812AU_8821AU_linux&quot;&gt;sua página no GitHub&lt;/a&gt;, clique em &lt;strong&gt;Clone or download&lt;/strong&gt; e depois em &lt;strong&gt;Download ZIP&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/05/tp-link-archer-t4u-1.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/05/tp-link-archer-t4u-1.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Todos os arquivos que compõem o código-fonte são baixados na forma de um arquivo compactado ZIP. Extraia o conteúdo desse arquivo:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;$ unzip rtl8812AU_8821AU_linux-master.zip
-$ cd rtl8812AU_8821AU_linux-master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para compilar o código-fonte do &lt;em&gt;driver&lt;/em&gt;, instale os pacotes &lt;strong&gt;gcc&lt;/strong&gt;, &lt;strong&gt;make&lt;/strong&gt;, &lt;strong&gt;dkms&lt;/strong&gt; e &lt;strong&gt;kernel-default-devel&lt;/strong&gt; (supondo que você utiliza o &lt;em&gt;kernel&lt;/em&gt; padrão, que é o &lt;strong&gt;kernel-default&lt;/strong&gt;):&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# zypper ref
-# zypper in gcc make dkms kernel-default-devel
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Mão na massa!&lt;/h2&gt;
-
-&lt;p&gt;Para compilar e instalar o &lt;em&gt;driver&lt;/em&gt; da TP-Link Archer T4U, dentro da pasta onde está seu código-fonte, basta executar o seguinte comando:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# make -f Makefile.dkms install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Note que o &lt;em&gt;driver&lt;/em&gt; (módulo do &lt;em&gt;kernel&lt;/em&gt;) ainda não é carregado de imediato. O comando a seguir não retorna nada:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# lsmod | grep rtl8812au
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Carregue o módulo do &lt;em&gt;kernel&lt;/em&gt; e verifique que ele foi de fato carregado:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;# modprobe rtl8812au
-# lsmod | grep rtl8812au
-rtl8812au            1368064  0 
-cfg80211              593920  5 mac80211,rtl8812au,ath9k,ath,ath9k_common
-usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rtsx_usb,ath3k,btusb,xhci_hcd,ehci_pci
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Os comandos dessa seção devem ser repetidos a cada atualização do &lt;em&gt;kernel&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Voilà!&lt;/h2&gt;
-
-&lt;p&gt;Feito isso, o sistema já mostra seu novo adaptador Wi-Fi:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/05/tp-link-archer-t4u-2-pt.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/05/tp-link-archer-t4u-2-pt.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você já pode se conectar à sua rede Wi-Fi 802.11ac de 5GHz:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/05/tp-link-archer-t4u-3-pt.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/05/tp-link-archer-t4u-3-pt.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Divirta-se bastante!&lt;/p&gt;
-
-&lt;h2&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.techtudo.com.br/noticias/noticia/2016/09/80211ac-e-80211n-veja-diferencas-entre-padroes-da-performance-wi-fi.html&quot;&gt;802.11ac e 802.11n: veja diferenças entre padrões da performance Wi-Fi | Notícias | TechTudo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.tp-link.com.br/products/details/cat-11_Archer-T4U.html&quot;&gt;Adaptador USB Wireless Dual Band AC1200 - TP-Link&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/abperiasamy/rtl8812AU_8821AU_linux&quot;&gt;abperiasamy/rtl8812AU&lt;em&gt;8821AU&lt;/em&gt;linux: rtl8812AU_8821AU linux kernel driver for AC1200 (801.11ac) Wireless Dual-Band USB Adapter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://wikidevi.com/wiki/TP-LINK_Archer_T4U&quot;&gt;TP-LINK Archer T4U - WikiDevi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/dica/Uso-basico-dos-comandos-zip-e-unzip&quot;&gt;Uso básico dos comandos zip e unzip [Dica] - Viva o Linux&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.cyberciti.biz/faq/add-remove-list-linux-kernel-modules/&quot;&gt;Howto: Linux Add or Remove a Linux Kernel Modules / Drivers - nixCraft&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-                <pubDate>Tue, 16 May 2017 01:15:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/05/16/tp-link-archer-t4u-no-linux-opensuse/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/05/16/tp-link-archer-t4u-no-linux-opensuse/</guid>
                 
                 
                     <category>pt</category>
