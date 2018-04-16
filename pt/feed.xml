@@ -9,10 +9,194 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 16 Apr 2018 00:49:55 -0300</pubDate>
-        <lastBuildDate>Mon, 16 Apr 2018 00:49:55 -0300</lastBuildDate>
+        <pubDate>Mon, 16 Apr 2018 02:43:43 -0300</pubDate>
+        <lastBuildDate>Mon, 16 Apr 2018 02:43:43 -0300</lastBuildDate>
         <generator>Jekyll v2.5.3</generator>
         
+        
+            <item>
+                <title>Como transmitir a declaração do Imposto de Renda com certificado digital no Linux openSUSE</title>
+                <description>&lt;p&gt;Quem possui &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt; pode ter benefícios na hora de preencher a declaração do &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018&quot;&gt;Imposto de Renda Pessoa Física 2018&lt;/a&gt; (IRPF 2018). Embora seja opcional para a maioria dos contribuintes, em alguns casos a transmissão com certificado digital é obrigatória. Confira aqui quais são esses casos e como realizar a transmissão da declaração com certificado digital.&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2017/02/irpf-2017.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2017/02/irpf-2017.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Declaração pré-preenchida&lt;/h2&gt;
+
+&lt;p&gt;Para quem possui certificado digital, a &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt; disponibiliza a &lt;a href=&quot;http://idg.receita.fazenda.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/dirpf/declaracao-pre-preenchida&quot;&gt;declaração pré-preenchida&lt;/a&gt;, que já vem com alguns dados preenchidos, como rendimentos, deduções, bens e dívidas. A declaração pré-preenchida ajuda a economizar tempo e evitar erros, o que reduz o risco de cair na malha fina.&lt;/p&gt;
+
+&lt;p&gt;Para que esses dados venham preenchidos automaticamente na declaração, é necessário que antes as pessoas jurídicas responsáveis (fontes pagadoras, imobiliárias e médicos, por exemplo) já tenham enviado suas declarações, cujos prazos são anteriores ao prazo da pessoa física.&lt;/p&gt;
+
+&lt;p&gt;A declaração pré-preenchida está disponível para &lt;em&gt;download&lt;/em&gt; no sistema &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt;. Após baixá-la, o contribuinte pode importá-la no programa do IRPF 2018 e continuar a preencher a declaração tomando como ponto de partida os dados pré-preenchidos.&lt;/p&gt;
+
+&lt;p&gt;Para mais informações sobre como importar a declaração pré-preenchida, consulte o &lt;a href=&quot;http://idg.receita.fazenda.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/dirpf/declaracao-pre-preenchida&quot;&gt;&lt;em&gt;site&lt;/em&gt; da Receita Federal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Obrigatoriedade do uso do certificado&lt;/h2&gt;
+
+&lt;p&gt;Em resumo, é obrigatório transmitir a declaração com certificado digital quando na declaração os rendimentos e/ou pagamentos passam de R$ 10 milhões.&lt;/p&gt;
+
+&lt;p&gt;Mais informações, obtidas &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/declaracao/transmissao&quot;&gt;nesta página da Receita Federal&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Deve transmitir a Declaração de Ajuste Anual, com a utilização de certificado digital, o contribuinte que se enquadrou, no ano-calendário de 2017, em pelo menos uma das seguintes situações:&lt;/p&gt;
+
+&lt;p&gt;I - recebeu rendimentos:&lt;/p&gt;
+
+&lt;p&gt;a) tributáveis sujeitos ao ajuste anual, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais);&lt;/p&gt;
+
+&lt;p&gt;b) isentos e não tributáveis, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais);&lt;/p&gt;
+
+&lt;p&gt;c) tributados exclusivamente na fonte, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); ou&lt;/p&gt;
+
+&lt;p&gt;II - realizou pagamentos de rendimentos a pessoas jurídicas, quando constituam dedução na declaração, ou a pessoas físicas, quando constituam, ou não, dedução na declaração, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais), em cada caso ou no total.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Para ainda mais informações, consulte &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/declaracao/transmissao&quot;&gt;a referida página&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Pré-requisitos&lt;/h2&gt;
+
+&lt;p&gt;O programa do IRPF 2018 &lt;a href=&quot;https://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/download/instrucoes-de-instalacao&quot;&gt;requer&lt;/a&gt; que a máquina virtual do &lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;Java&lt;/a&gt; da &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt; versão 7 ou superior esteja instalada no computador. Você pode acessar a &lt;a href=&quot;https://www.java.com/verify/&quot;&gt;página de teste do Java&lt;/a&gt; para ver se o Java está instalado no seu computador, qual versão está instalada e se há necessidade de atualizar.&lt;/p&gt;
+
+&lt;p&gt;No momento da escrita, a versão mais atual do Java é a &lt;strong&gt;8 Update 161&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u161-relnotes-4021379.html&quot;&gt;16 de janeiro de 2018&lt;/a&gt;. Caso precise, dediquei um &lt;em&gt;post&lt;/em&gt; a explicar &lt;a href=&quot;/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/&quot;&gt;como instalar o Java&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Também já expliquei aqui &lt;a href=&quot;/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/&quot;&gt;como instalar o programa do Imposto de Renda&lt;/a&gt;. O &lt;em&gt;post&lt;/em&gt; trata do IRPF 2017, mas a instalação do IRPF 2018 é bastante semelhante. Você pode obter o programa do IRPF 2018 do &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;&lt;em&gt;site&lt;/em&gt; da Receita Federal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A mídia do certificado digital (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente&quot;&gt;cartão inteligente&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)&quot;&gt;&lt;em&gt;token&lt;/em&gt;&lt;/a&gt; ou arquivo) deve estar funcionando. Um bom teste é acessar o sistema &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt;, da Receita Federal. &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Como configurar o certificado digital e acessar o eCAC&lt;/a&gt; foi o assunto do &lt;em&gt;post&lt;/em&gt; anterior.&lt;/p&gt;
+
+&lt;p&gt;Por fim, observo que utilizo a distribuição &lt;a href=&quot;https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/&quot;&gt;openSUSE Leap 15.0 Beta&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sem mais delongas, vamos meter a mão na massa!&lt;/p&gt;
+
+&lt;h2&gt;Configurando o Receitanet&lt;/h2&gt;
+
+&lt;p&gt;Para que o programa do IRPF 2018 reconheça a mídia do certificado digital, é necessário criar um arquivo de configuração na pasta do Receitanet.&lt;/p&gt;
+
+&lt;p&gt;Abra o aplicativo &lt;strong&gt;Editor de texto&lt;/strong&gt; e copie e cole o seguinte conteúdo:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;name=eToken
+library=/usr/lib64/libeToken.so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Explicando essas duas variáveis:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;: um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Identificador&quot;&gt;identificador&lt;/a&gt; (não pode ter espaços) para a mídia do certificado; e&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;library&lt;/code&gt;: caminho para a biblioteca (extensão &lt;code&gt;.so&lt;/code&gt;) que implementa o padrão &lt;a href=&quot;https://en.wikipedia.org/wiki/PKCS_11&quot;&gt;PKCS#11&lt;/a&gt; para a mídia do certificado.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Salve esse arquivo com o nome de &lt;code&gt;receitanet.cfg&lt;/code&gt; na pasta &lt;code&gt;~/.receitanet&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-01.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-01.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Entregando a declaração&lt;/h2&gt;
+
+&lt;p&gt;Abra o programa do IRPF 2018 e inicie o procedimento para transmitir a declaração. Para isso, vá no menu &lt;strong&gt;Declaração&lt;/strong&gt; e clique em &lt;strong&gt;Entregar Declaração&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-02.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-02.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a sua declaração, marque a opção &lt;strong&gt;Transmitir com certificação digital&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-03.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-03.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Revise a forma de pagamento ou restituição do imposto:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-04.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-04.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O programa verifica o certificado digital armazenado na mídia. Informe a senha PIN:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-05.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-05.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione seu certificado na lista e clique em &lt;strong&gt;Assinar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-06.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-06.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nesse momento, para mim, a luz do &lt;em&gt;token&lt;/em&gt; acendeu (que nem tem &lt;em&gt;pendrives&lt;/em&gt; que acendem uma luz quando estão sendo utilizados) e o programa fechou, sem dar qualquer aviso. No entanto, ao iniciar novamente o programa do IRPF 2018, percebi que havia recibo de entrega. Concluí que, embora o programa tivesse travado, a declaração havia sido transmitida.&lt;/p&gt;
+
+&lt;p&gt;Para salvar o recibo de entrega da declaração como PDF, vá no menu &lt;strong&gt;Imprimir&lt;/strong&gt; e clique em &lt;strong&gt;Recibo&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-07.jpg&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-07.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a sua declaração (observe o ícone &lt;strong&gt;Transmitida&lt;/strong&gt; no início da linha), selecione a opção &lt;strong&gt;Visualizar&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-08.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-08.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Observe a informação ao final da primeira página:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Esta declaração foi assinada com o certificado digital do NI 123.456.789-01&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
+&lt;a href=&#39;/files/2018/04/irpf-2018-certificado-09.png&#39; title=&#39;&#39;&gt;
+&lt;img src=&#39;/files/2018/04/irpf-2018-certificado-09.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para salvar o recibo como PDF, clique no ícone de &lt;strong&gt;Salvar&lt;/strong&gt; no canto superior esquerdo da janela.&lt;/p&gt;
+
+&lt;h2&gt;Restituição antecipada&lt;/h2&gt;
+
+&lt;p&gt;Há quem diga que &lt;a href=&quot;https://exame.abril.com.br/tecnologia/certificado-digital-facilita-a-declaracao-do-imposto-de-renda/&quot;&gt;transmitir a declaração com certificado digital antecipa a restituição&lt;/a&gt;, mas eu &lt;strong&gt;não consegui confirmar essa informação&lt;/strong&gt; em uma página oficial da Receita Federal. Fica a dúvida no ar se é verdade ou não...&lt;/p&gt;
+
+&lt;h2&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://oglobo.globo.com/economia/ir-certificados-digitais-ajudam-economizar-tempo-evitar-erros-18939459&quot;&gt;IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://idg.receita.fazenda.gov.br/programas-para-download/receitanet/ajuda-do-receitanet/configuracao-para-uso-de-tokens-e-smartcards-no-linux&quot;&gt;Configuração para uso de Tokens e SmartCards no Linux —  Receita Federal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://serasa.certificadodigital.com.br/ajuda/imposto-de-renda/&quot;&gt;Declaração do Imposto de Renda com Certificado Digital&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Mon, 16 Apr 2018 02:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Configurando certificado digital no Linux openSUSE</title>
@@ -52,7 +236,7 @@
 
 &lt;p&gt;Há também os certificados digitais que identificam &lt;em&gt;sites&lt;/em&gt;. Quando você acessa um &lt;em&gt;site&lt;/em&gt; que apresenta um certificado digital, o navegador exibe o ícone de um cadeado verde, indicando que o &lt;em&gt;site&lt;/em&gt; é autêntico e seguro. Já falamos um pouco sobre certificados de &lt;em&gt;sites&lt;/em&gt; em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, você verá como utilizar um &lt;em&gt;token&lt;/em&gt; para acessar um sistema do governo com certificado digital no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Linux openSUSE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, você verá como utilizar um &lt;em&gt;token&lt;/em&gt; para acessar um sistema do governo com certificado digital no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Linux openSUSE&lt;/a&gt;. Para referência, utilizo a versão &lt;a href=&quot;https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/&quot;&gt;15.0 Beta&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Na demonstração, vou utilizar um &lt;em&gt;token&lt;/em&gt; USB igual ao da imagem, modelo &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/&quot;&gt;eToken PRO&lt;/a&gt;, da fabricante &lt;a href=&quot;https://safenet.gemalto.com/&quot;&gt;SafeNet&lt;/a&gt; (antiga &lt;a href=&quot;https://pt.wikipedia.org/wiki/Aladdin_Knowledge_Systems&quot;&gt;Aladdin&lt;/a&gt;).&lt;/p&gt;
 
@@ -289,7 +473,7 @@ logout and login to apply changes
 
 &lt;h2&gt;Acessando o sistema eCAC&lt;/h2&gt;
 
-&lt;p&gt;O &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; é um sistema da &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt; que disponibiliza pela Internet &lt;a href=&quot;http://www.receita.fazenda.gov.br/aplicacoes/ATBHE/servicos-ecac/default.aspx&quot;&gt;vários serviços&lt;/a&gt; para pessoas físicas e jurídicas, antes disponíveis apenas presencialmente. É possível acessá-lo por meio de um código de acesso gerado na hora, mas menos serviços estão disponíveis por esse meio, que é menos seguro. A totalidade dos serviços está disponível apenas para quem o acessa com certificado digital.&lt;/p&gt;
+&lt;p&gt;O &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; é um sistema da Receita Federal que disponibiliza pela Internet &lt;a href=&quot;http://www.receita.fazenda.gov.br/aplicacoes/ATBHE/servicos-ecac/default.aspx&quot;&gt;vários serviços&lt;/a&gt; para pessoas físicas e jurídicas, antes disponíveis apenas presencialmente. É possível acessá-lo por meio de um código de acesso gerado na hora, mas menos serviços estão disponíveis por esse meio, que é menos seguro. A totalidade dos serviços está disponível apenas para quem o acessa com certificado digital.&lt;/p&gt;
 
 &lt;p&gt;Alguns dos serviços mais úteis para pessoas físicas incluem consultar declarações e recibos já enviados do imposto de renda e &lt;a href=&quot;http://g1.globo.com/economia/imposto-de-renda/2016/noticia/2016/05/contribuinte-ja-pode-saber-se-caiu-na-malha-fina-do-imposto-de-renda-2016.html&quot;&gt;verificar se a declaração caiu na malha fina&lt;/a&gt;, assim como &lt;a href=&quot;http://economia.estadao.com.br/blogs/regina-pitoscia/sua-declaracao-ficou-em-malha-fina-acerte-logo-a-situacao/&quot;&gt;tomar ações para regularizar a situação&lt;/a&gt;.&lt;/p&gt;
 
@@ -1958,156 +2142,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Sun, 04 Jun 2017 10:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como acessar o netbanking do Banco do Brasil no openSUSE</title>
-                <description>&lt;p&gt;Usuários de &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; podem ter a impressão de que são esquecidos pelos seus bancos, ou que não recebem a mesma atenção que usuários de &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, ou mesmo acabar concluindo que acessar o &lt;em&gt;netbanking&lt;/em&gt; no Linux é impossível. Na verdade, é possível sim, o problema é que informações sobre Linux muitas vezes não são amplamente divulgadas ou não aparecem nos momentos em que seus usuários precisam. Tudo é uma questão de encontrar as informações corretas nos lugares certos.&lt;/p&gt;
-
-&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você vai ver como acessar o &lt;em&gt;netbanking&lt;/em&gt; do &lt;a href=&quot;http://www.bb.com.br/&quot;&gt;Banco do Brasil&lt;/a&gt; no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; e onde encontrar informações quando tiver dúvidas.&lt;/p&gt;
-
-&lt;p&gt;Para referência, estou usando a distribuição &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap 42.2&lt;/a&gt; e o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; versão 52.1.1, a última disponível para essa distribuição até então.&lt;/p&gt;
-
-&lt;p&gt;Em se tratando de acesso ao banco, toda segurança é pouco. Por isso, recomendo que você &lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;mantenha seu sistema sempre atualizado&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Embora aqui eu utilize o navegador Mozilla Firefox, em outros navegadores, a exemplo do &lt;a href=&quot;https://www.google.com.br/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, o procedimento deve ser parecido e funcionar.&lt;/p&gt;
-
-&lt;h2&gt;Como acessar o netbanking&lt;/h2&gt;
-
-&lt;p&gt;Abra o navegador, acesse o &lt;em&gt;site&lt;/em&gt; do Banco do Brasil (&lt;a href=&quot;http://www.bb.com.br/&quot;&gt;www.bb.com.br&lt;/a&gt;) e clique em &lt;strong&gt;Acesse sua conta&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-01.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-01.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;É comum que no primeiro acesso você se depare com essa mensagem de erro:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-02.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-02.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso acontece porque os bancos necessitam de segurança adicional àquela oferecida pelos navegadores. Por isso, eles solicitam que o usuário instale em seu computador um módulo de segurança.&lt;/p&gt;
-
-&lt;h2&gt;Como instalar o módulo de segurança&lt;/h2&gt;
-
-&lt;p&gt;Se você clicar no primeiro &lt;em&gt;link&lt;/em&gt; daquela mensagem (&lt;a href=&quot;https://seg.bb.com.br/&quot;&gt;seg.bb.com.br&lt;/a&gt;), será redirecionado para uma página que sugere instalar um pacote &lt;a href=&quot;https://pt.wikipedia.org/wiki/.deb&quot;&gt;DEB&lt;/a&gt;, utilizado pelas &lt;a href=&quot;http://distrowatch.com/dwres.php?resource=popularity&quot;&gt;distribuições mais populares&lt;/a&gt; como &lt;a href=&quot;https://linuxmint.com/&quot;&gt;Mint&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;. O openSUSE utiliza outro formato de empacotamento, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/RPM_(Linux)&quot;&gt;RPM&lt;/a&gt;, também utilizado pelo &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Em vez de clicar no primeiro &lt;em&gt;link&lt;/em&gt;, clique no segundo, onde se lê &amp;quot;Tire suas dúvidas...&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;Na página &lt;strong&gt;Dúvidas sobre o Módulo de Segurança&lt;/strong&gt;, clique no &lt;em&gt;link&lt;/em&gt; referente às distribuições que utilizam pacotes RPM:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-03.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-03.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na página seguinte, clique no ícone referente ao pacote para o openSUSE Leap 42.2:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-04.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-04.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça o &lt;em&gt;download&lt;/em&gt; do pacote:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-05.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-05.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, clique no pacote baixado:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-06.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-06.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O navegador pode advertir sobre a possível existência de vírus. Não é um problema nesse caso. Clique em &lt;strong&gt;OK&lt;/strong&gt; para continuar:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-07.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-07.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A instalação do módulo de segurança, assim como a instalação de qualquer programa, requer privilégios de administrador. Informe a senha do superusuário (&lt;em&gt;root&lt;/em&gt;) e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-08.png&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-08.png&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.opensuse.org/Portal:YaST&quot;&gt;Centro de Controle do YaST&lt;/a&gt; mostra informações sobre a instalação:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-09.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-09.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se for necessário instalar pacotes adicionais dos quais o módulo de segurança dependa, esses pacotes também serão mostrados nessa tela.&lt;/p&gt;
-
-&lt;p&gt;É recomendável fechar todos os navegadores abertos antes de continuar.&lt;/p&gt;
-
-&lt;p&gt;Quando estiver pronto para começar a instalação, volte ao YaST e clique em &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Após o fim da instalação, clique em &lt;strong&gt;Concluir&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-10.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-10.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Por último, reinicie o computador.&lt;/p&gt;
-
-&lt;h2&gt;Agora sim&lt;/h2&gt;
-
-&lt;p&gt;Agora, com o módulo de segurança instalado, se você acessar o &lt;em&gt;netbanking&lt;/em&gt; do Banco do Brasil, ele permitirá que você insira as informações da sua conta e continue:&lt;/p&gt;
-
-&lt;div class=&#39;image no-ads-here text-center&#39; itemscope itemtype=&#39;http://schema.org/ImageObject&#39;&gt;
-&lt;a href=&#39;/files/2017/06/netbanking-bb-11.jpg&#39; title=&#39;&#39;&gt;
-&lt;img src=&#39;/files/2017/06/netbanking-bb-11.jpg&#39; alt=&#39;&#39; class=&#39;img-responsive img-thumbnail&#39; itemprop=&#39;contentUrl&#39;&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De tempos em tempos, o banco atualiza o módulo de segurança, o que faz com que aquela mensagem de erro volte a aparecer. Quando isso acontecer, você já sabe como proceder.&lt;/p&gt;
-
-&lt;p&gt;Faça bom proveito!&lt;/p&gt;
-
-&lt;h2&gt;Referência&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://seg.bb.com.br/duvidas.html?question=8&quot;&gt;Seg.BB - Distribuições baseadas em pacotes .RPM - Como instalar o Módulo de Segurança?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-                <pubDate>Sat, 03 Jun 2017 18:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/</guid>
                 
                 
                     <category>pt</category>
