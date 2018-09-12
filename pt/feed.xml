@@ -9,10 +9,196 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 11 Sep 2018 00:00:50 -0300</pubDate>
-        <lastBuildDate>Tue, 11 Sep 2018 00:00:50 -0300</lastBuildDate>
+        <pubDate>Wed, 12 Sep 2018 18:58:04 -0300</pubDate>
+        <lastBuildDate>Wed, 12 Sep 2018 18:58:04 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Sincronizando o Gmail no Thunderbird</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Thunderbird&lt;/a&gt; é o cliente de &lt;em&gt;e-mail&lt;/em&gt; gratuito da &lt;a href=&quot;https://www.mozilla.org/pt-BR/foundation/&quot;&gt;Fundação Mozilla&lt;/a&gt;, a mesma que desenvolve o conhecido navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Firefox&lt;/a&gt;. E o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt; dispensa apresentações: é o serviço de &lt;em&gt;e-mail&lt;/em&gt; gratuito da gigante &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.&lt;/p&gt;
+
+&lt;p&gt;Bem verdade que as pessoas tem preferido utilizar navegadores em vez de clientes de &lt;em&gt;e-mail&lt;/em&gt; para ler e enviar mensagens, por ser mais prático. No entanto, os clientes de &lt;em&gt;e-mail&lt;/em&gt; nos fornecem algumas possibilidades interessantes, como veremos nos próximos &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-thunderbird&quot;&gt;Instalando o Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;No openSUSE, o Thunderbird é distribuído pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaThunderbird&quot;&gt;MozillaThunderbird&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para instalá-lo, abra o &lt;strong&gt;Terminal&lt;/strong&gt; e execute como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaThunderbird MozillaThunderbird-translations-common
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;iniciando-o-thunderbird&quot;&gt;Iniciando o Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;Instalado o Thunderbird, inicie-o pelo menu &lt;strong&gt;Atividades&lt;/strong&gt;, digitando &lt;code class=&quot;highlighter-rouge&quot;&gt;Thunderbird&lt;/code&gt; e clicando no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;sincronizando-com-o-gmail&quot;&gt;Sincronizando com o Gmail&lt;/h2&gt;
+
+&lt;p&gt;No primeiro uso, o Thunderbird deve mostrar o assistente de configuração da conta:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nessa primeira tela, clique em &lt;strong&gt;Ignorar e usar meu e-mail existente&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se o assistente de configuração da conta não for iniciado, na tela inicial, abaixo de &lt;strong&gt;Criar uma nova conta&lt;/strong&gt;, clique em &lt;strong&gt;Mensagens&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na segunda tela, preencha os campos com seu nome, endereço de &lt;em&gt;e-mail&lt;/em&gt; e senha. Se quiser, você pode marcar a opção &lt;strong&gt;Memorizar senha&lt;/strong&gt;. Quando terminar, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para saber como se conectar ao servidor de &lt;em&gt;e-mail&lt;/em&gt; do Gmail, o Thunderbird consulta uma base de dados de configurações da Mozilla.&lt;/p&gt;
+
+&lt;p&gt;Ainda nessa tela, o assistente pergunta se você deseja utilizar IMAP ou POP3:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP3&lt;/a&gt; são dois protocolos usados para receber &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; é um protocolo usado para enviar &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A diferença entre o IMAP e o POP3 é que o POP3 baixa as mensagens para o computador e não as sincroniza mais com o servidor (então, por exemplo, uma mensagem excluída no computador não é excluída no servidor, e vice-versa), enquanto o IMAP baixa as mensagens mas mantém a sincronia (se uma mensagem é excluída no computador, é excluída também no servidor, e vice-versa). O protoloco IMAP é uma evolução do protocolo POP3.&lt;/p&gt;
+
+&lt;p&gt;Eu, particularmente, prefiro e recomendo o IMAP. Também o próprio Thunderbird já o traz marcado por padrão.&lt;/p&gt;
+
+&lt;p&gt;Caso o Thunderbird não encontre as configurações automaticamente e você precise informá-las manualmente, aqui estão:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Recebimento: IMAP (ou POP3)
+    &lt;ul&gt;
+      &lt;li&gt;Nome do servidor: imap.gmail.com (ou pop.gmail.com)&lt;/li&gt;
+      &lt;li&gt;Porta: 993 (ou 995)&lt;/li&gt;
+      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Envio: SMTP
+    &lt;ul&gt;
+      &lt;li&gt;Nome do servidor: smtp.gmail.com&lt;/li&gt;
+      &lt;li&gt;Porta: 465&lt;/li&gt;
+      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Concluir&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por fim, o Thunderbird abre uma janela do Gmail, na qual você deve entrar com seu &lt;em&gt;login&lt;/em&gt; e senha e autorizar o Thunderbird a acessar seu &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à tela inicial do Thunderbird, perceba que agora é exibida sua conta e as mensagens de &lt;em&gt;e-mail&lt;/em&gt; estão sendo obtidas:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;alguns-ajustes&quot;&gt;Alguns ajustes&lt;/h2&gt;
+
+&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feito isso, para abrir um &lt;em&gt;e-mail&lt;/em&gt;, dê dois cliques nele e ele será aberto em uma nova aba.&lt;/p&gt;
+
+&lt;p&gt;Por padrão, o Thunderbird ordena as mensagens por data de forma crescente (mensagens mais recentes embaixo). Para ordená-las de forma decrescente, igual ao Gmail (mais recentes em cima), clique na coluna &lt;strong&gt;Data&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Um problema que eu percebi usando o Thunderbird: ele não adiciona a assinatura aos e-mails encaminhados. Vejamos como corrigir.&lt;/p&gt;
+
+&lt;p&gt;Clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Editar e endereçar&lt;/strong&gt;, à direita, e marque a opção &lt;strong&gt;Ao encaminhar, incluir assinatura&lt;/strong&gt;. Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Espero que tenha sido útil. Até a próxima!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7126229?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando IMAP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7104828?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando POP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 12 Sep 2018 15:55:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Baseado no código do Enterprise, testado milhões de vezes: openSUSE Leap 15 lançado</title>
@@ -2172,170 +2358,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Tue, 01 Aug 2017 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como conectar a uma VPN do OpenVPN</title>
-                <description>&lt;p&gt;Nos acostumamos a ter acesso a tudo de qualquer lugar. Havendo conexão de Internet, hoje é possível trabalhar de casa acessando os sistemas da empresa, ou abrir no celular um documento que está no computador de casa. Como a Internet é, a princípio, um espaço público, inseguro, acessível, visível a todos, para garantir que os acessos remotos a essas redes privadas sejam feitos com privacidade e segurança foram criadas as redes privadas virtuais ou VPNs.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client.png&quot; title=&quot;Uma VPN permite enviar de casa um documento para imprimir no trabalho&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client.png&quot; alt=&quot;Uma VPN permite enviar de casa um documento para imprimir no trabalho&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Uma VPN permite enviar de casa um documento para imprimir no trabalho&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;o-que-é-uma-vpn&quot;&gt;O que é uma VPN?&lt;/h2&gt;
-
-&lt;p&gt;Uma &lt;strong&gt;rede privada virtual&lt;/strong&gt; (do inglês &lt;a href=&quot;https://pt.wikipedia.org/wiki/Virtual_private_network&quot;&gt;&lt;em&gt;Virtual Private Network&lt;/em&gt;&lt;/a&gt;, ou VPN) estabelece uma conexão entre dois computadores distantes, que passam a se comunicar pela Internet como se estivessem fisicamente conectados à mesma &lt;a href=&quot;https://pt.wikipedia.org/wiki/Rede_de_%C3%A1rea_local&quot;&gt;rede local&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;A VPN funciona assim: os dois computadores pertencem, a princípio, a redes diferentes (eles podem estar em prédios, cidades ou até mesmo países diferentes, por exemplo). Mas eles precisam se comunicar e possuem conexão com a Internet. Então, eles estabelecem na rede mundial um circuito por onde trocam informações de forma privada. É como uma ligação telefônica que não pode ser grampeada.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-01.jpg&quot; title=&quot;Apesar de estarem conectados à Internet, dois computadores em uma VPN se comunicam de forma privada&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-01.jpg&quot; alt=&quot;Apesar de estarem conectados à Internet, dois computadores em uma VPN se comunicam de forma privada&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Apesar de estarem conectados à Internet, dois computadores em uma VPN se comunicam de forma privada&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A VPN é dita &lt;strong&gt;privada&lt;/strong&gt; porque os computadores utilizam criptografia para se comunicar, impedindo que outros computadores leiam sua comunicação. Por isso, a VPN também é conhecida como &lt;strong&gt;túnel&lt;/strong&gt; (uma analogia perfeita, se você parar pra pensar). O termo &lt;strong&gt;virtual&lt;/strong&gt; vem do fato de a VPN simular uma rede local, quando na verdade há duas redes distintas separadas pela grande rede mundial que é a Internet.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-02.png&quot; title=&quot;Um túnel é bem assim: o que entra em uma ponta sai em outra, sendo ocultado no caminho&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-02.png&quot; alt=&quot;Um túnel é bem assim: o que entra em uma ponta sai em outra, sendo ocultado no caminho&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Um túnel é bem assim: o que entra em uma ponta sai em outra, sendo ocultado no caminho&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com VPNs, podemos fazer algumas coisas interessantes. Empresas vem usando VPNs para permitir que seus empregados trabalhem remotamente, assim como para interligar matrizes e filiais aproveitando suas conexões com a Internet. Sem VPNs, essas conexões seriam feitas usando antenas ou cabos de fibra ótica, e seriam muito mais caras ou até mesmo inviáveis. Pessoas tem usado VPNs para acessar conteúdos bloqueados ou censurados em determinados países.&lt;/p&gt;
-
-&lt;h2 id=&quot;como-é-feita-uma-vpn&quot;&gt;Como é feita uma VPN?&lt;/h2&gt;
-
-&lt;p&gt;Se conectar a uma VPN é um procedimento surpreendentemente simples, apesar de complexo nos bastidores (conexão, criptografia, etc.). Por exemplo, você está em casa e precisa se conectar à rede do trabalho. Sua casa e a empresa dispõem de conexão com a Internet. Você instala e configura em seu computador um cliente VPN e se conecta ao servidor VPN do seu trabalho. Cliente e servidor estabelecem a conexão segura e lhe concedem acesso à rede do trabalho. Pronto!&lt;/p&gt;
-
-&lt;p&gt;Para que consigam se comunicar, cliente e servidor utilizam um protocolo. Existem alguns protocolos de VPNs, cada um servindo a um tipo de VPN e mais adequado para uma ou outra finalidade. Exemplos incluem &lt;a href=&quot;https://technet.microsoft.com/en-us/library/cc771298(v=ws.10).aspx&quot;&gt;PPTP, L2TP, SSTP&lt;/a&gt; e &lt;a href=&quot;https://openvpn.net/&quot;&gt;OpenVPN&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;O OpenVPN é um protocolo popular por ser &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;livre&lt;/a&gt;, versátil, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Multiplataforma&quot;&gt;multiplataforma&lt;/a&gt; e fácil de configurar e usar. Ele é apropriado para o exemplo da conexão à rede do trabalho.&lt;/p&gt;
-
-&lt;p&gt;Vejamos nesse &lt;em&gt;post&lt;/em&gt; como você pode conectar seu computador com Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; à rede do trabalho usando o cliente OpenVPN.&lt;/p&gt;
-
-&lt;p&gt;É necessário que a empresa possua um servidor OpenVPN, como o configurado &lt;a href=&quot;https://vinyanalista.github.io/blog/2016/06/26/como-criar-uma-vpn-pfsense-openvpn/&quot;&gt;nesse &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; no &lt;a href=&quot;https://www.pfsense.org/&quot;&gt;pfSense&lt;/a&gt;, um &lt;em&gt;firewall&lt;/em&gt; igualmente livre, versátil e popular. Como configurar um servidor OpenVPN no openSUSE será assunto para outro &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para acessar conteúdos bloqueados ou censurados, ou simplesmente garantir o anonimato e a privacidade da navegação, outro tipo de VPN se faz mais apropriado, falarei dele em outro &lt;em&gt;post&lt;/em&gt;. Adianto, para os curiosos, que falarei do &lt;a href=&quot;https://www.torproject.org/&quot;&gt;projeto Tor&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;como-se-conectar&quot;&gt;Como se conectar&lt;/h2&gt;
-
-&lt;p&gt;Depois de todas essas explicações, vamos ao objetivo do &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Peça ao administrador da rede do seu trabalho o arquivo que contém as configurações do cliente OpenVPN. Ele deve possuir a extensão &lt;strong&gt;.ovpn&lt;/strong&gt;. Pode se chamar, por exemplo, &lt;strong&gt;vpn-do-trabalho.ovpn&lt;/strong&gt;. Pergunte o que você precisa para se conectar, como, por exemplo, nome de usuário (&lt;em&gt;login&lt;/em&gt;) e senha.&lt;/p&gt;
-
-&lt;p&gt;No computador que deseja conectar à VPN, abra o aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e clique em &lt;strong&gt;Rede&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;À esquerda são listadas as conexões de rede. Clique no botão de adicionar, abaixo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;VPN&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione &lt;strong&gt;Importar de arquivo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Procure pelo arquivo de configuração fornecido pelo administrador de rede e selecione-o.&lt;/p&gt;
-
-&lt;p&gt;Na tela &lt;strong&gt;Adicionar conexão de rede&lt;/strong&gt;, boa parte dos campos já está preenchida com as informações presentes naquele arquivo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você deve preencher os demais campos, a exemplo de &lt;strong&gt;Nome de usuário&lt;/strong&gt;, &lt;strong&gt;Senha&lt;/strong&gt; e &lt;strong&gt;Senha da chave privada&lt;/strong&gt;, conforme as orientações do administrador de rede. Opcionalmente, você pode mudar o &lt;strong&gt;Nome&lt;/strong&gt; da conexão para algo que ajude a identificá-la (no meu exemplo, eu a nomeei como &lt;code class=&quot;highlighter-rouge&quot;&gt;trabalho&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Por fim, clique em &lt;strong&gt;Adicionar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta às configurações de &lt;strong&gt;Rede&lt;/strong&gt;, ative a conexão:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o estado não conexão não mudou para &lt;strong&gt;Conectado&lt;/strong&gt;, clique no botão de configurações (ícone de engrenagem no canto inferior direito) e verifique as configurações da VPN.&lt;/p&gt;
-
-&lt;p&gt;Quando não precisar mais usar a VPN, desconecte clicando no menu do sistema, no canto superior direito da tela, depois na VPN e por último em &lt;strong&gt;Desligar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/openvpn-client-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/openvpn-client-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Espero que as informações possam ter sido úteis!&lt;/p&gt;
-
-&lt;p&gt;Para referência futura, nesse &lt;em&gt;post&lt;/em&gt; foi utilizada a distribuição Linux &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;openSUSE Leap 42.2&lt;/a&gt; com ambiente de trabalho &lt;a href=&quot;https://www.gnome.org/news/2016/03/gnome-3-20-released/&quot;&gt;GNOME 3.20&lt;/a&gt; e cliente &lt;a href=&quot;https://github.com/OpenVPN/openvpn/releases/tag/v2.3.8&quot;&gt;OpenVPN 2.3.8&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vinyanalista.github.io/blog/2016/06/26/como-criar-uma-vpn-pfsense-openvpn/&quot;&gt;Como criar uma VPN utilizando pfSense e OpenVPN - Antônio Vinícius&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://lifehacker.com/5940565/why-you-should-start-using-a-vpn-and-how-to-choose-the-best-one-for-your-needs&quot;&gt;Why You Should Be Using a VPN (and How to Choose One)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://gizmodo.com/5990192/vpns-what-they-do-how-they-work-and-why-youre-dumb-for-not-using-one&quot;&gt;VPNs: What They Do, How They Work, and Why You’re Dumb for Not Using One&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://youtu.be/LaKdl2Dv920?t=61&quot;&gt;Connecting to pfSense-based OpenVPN Server From Linux Mint 17 - YouTube&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Fri, 07 Jul 2017 01:15:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/</guid>
                 
                 
                     <category>pt</category>
