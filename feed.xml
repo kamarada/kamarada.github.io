@@ -1,5 +1,200 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-12T18:58:04-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Sincronizando o Gmail no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/" rel="alternate" type="text/html" title="Sincronizando o Gmail no Thunderbird" /><published>2018-09-12T15:55:00-03:00</published><updated>2018-09-12T18:57:37-03:00</updated><id>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-19T19:15:12-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Impressoras HP no openSUSE</title><link href="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/" rel="alternate" type="text/html" title="Impressoras HP no openSUSE" /><published>2018-09-19T16:00:00-03:00</published><updated>2018-09-19T19:14:58-03:00</updated><id>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As impressoras da marca &lt;a href=&quot;https://www.hp.com&quot;&gt;HP&lt;/a&gt; são bastante comuns no Brasil.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, mostro como adicionei uma &lt;a href=&quot;https://support.hp.com/br-pt/product/hp-deskjet-ink-advantage-3830-all-in-one-printer-series/7172328/model/7429639&quot;&gt;HP DeskJet Ink Advantage 3836&lt;/a&gt; ao &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.&lt;/p&gt;
+
+&lt;p&gt;Suponho que a conexão da impressora à rede já tenha sido configurada, mas dou uma dica para quem acabou de tirar a impressora da caixa.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-driver-da-impressora-hp&quot;&gt;Instalando o driver da impressora HP&lt;/h2&gt;
+
+&lt;p&gt;No &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, quem fornece suporte às impressoras HP é o &lt;em&gt;driver&lt;/em&gt; &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;strong&gt;HPLIP&lt;/strong&gt;&lt;/a&gt;, abreviação de &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;em&gt;HP Linux Imaging and Printing&lt;/em&gt;&lt;/a&gt; (Impressão e Digitalização da HP para Linux, em inglês).&lt;/p&gt;
+
+&lt;p&gt;No openSUSE, ele é instalado pelo pacote de mesmo nome, &lt;a href=&quot;https://software.opensuse.org/package/hplip&quot;&gt;hplip&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hplip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A versão 15.0 da distribuição openSUSE Leap fornece a versão 3.17.9 do &lt;em&gt;driver&lt;/em&gt; HPLIP.&lt;/p&gt;
+
+&lt;h2 id=&quot;adicionando-a-impressora-hp&quot;&gt;Adicionando a impressora HP&lt;/h2&gt;
+
+&lt;p&gt;Instalado o HPLIP, inicie o &lt;strong&gt;Gerenciador de dispositivos HP&lt;/strong&gt; (HP Device Manager).&lt;/p&gt;
+
+&lt;p&gt;A interface do aplicativo está em inglês e não possui tradução. A tela inicial alerta que não há dispositivos HP instalados (&lt;strong&gt;No Installed HP Devices Found&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Setup Device&lt;/strong&gt; (configurar dispositivo).&lt;/p&gt;
+
+&lt;p&gt;Caso ainda não tenha ligado a impressora, ligue-a agora.&lt;/p&gt;
+
+&lt;p&gt;Na primeira tela do assistente de configuração, selecione o tipo de conexão:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se sua impressora está conectada diretamente ao computador por um cabo USB, selecione &lt;strong&gt;Universal Serial Bus (USB)&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;se sua impressora está conectada pela rede e já está configurada (meu caso), selecione &lt;strong&gt;Network/Ethernet/Wireless network&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;se sua impressora será conectada a uma rede sem fio e ainda não está configurada, selecione &lt;strong&gt;Wireless/802.11&lt;/strong&gt;; ou&lt;/li&gt;
+  &lt;li&gt;se sua impressora usa a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Interface_paralela&quot;&gt;porta paralela&lt;/a&gt; (provavelmente é uma impressora antiga, porque muitos computadores e &lt;em&gt;notebooks&lt;/em&gt; já não oferecem mais essa conexão), selecione a opção &lt;strong&gt;Parallel Port (LPT)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A dica para quem acabou de tirar a impressora da caixa é selecionar a terceira opção: primeiro a impressora será conectada ao computador usando um cabo USB, o assistente auxiliará a configuração de rede sem fio da impressora, no final o cabo será removido e ela poderá ser utilizada pela rede sem fio.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar).&lt;/p&gt;
+
+&lt;p&gt;O assistente vai procurar sua impressora na rede.&lt;/p&gt;
+
+&lt;p&gt;É possível que ele não encontre a impressora (aconteceu comigo):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se esse for o caso, clique em &lt;strong&gt;OK&lt;/strong&gt; e depois em &lt;strong&gt;Back&lt;/strong&gt; para voltar à tela anterior.&lt;/p&gt;
+
+&lt;p&gt;Verifique a configuração de rede da sua impressora. Como fazer isso é algo que pode variar de modelo para modelo. No caso da minha, eu toquei no ícone &lt;strong&gt;Sem fio&lt;/strong&gt; (na parte de baixo, a figura de antena, no meio):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Anote o endereço &lt;strong&gt;IP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;172.17.0.2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à primeira tela do assistente, clique em &lt;strong&gt;Show Advanced Options&lt;/strong&gt; (mostrar opções avançadas), marque a opção &lt;strong&gt;Manual Discovery&lt;/strong&gt; (descoberta manual), informe o endereço IP (&lt;strong&gt;IP Address&lt;/strong&gt;) e clique em &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora sim a impressora é encontrada. Perceba que o assistente se comunicou com ela e já apresentou o modelo correto:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se mesmo informando o IP manualmente o assistente não encontrar a impressora, saia do assistente e verifique a informação que consta na última seção dessa página.&lt;/p&gt;
+
+&lt;p&gt;Com a impressora aparecendo na lista e devidamente selecionada, clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se sua impressora possui fax mas você não utiliza, desmarque a opção &lt;strong&gt;Fax Setup&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;Add Printer&lt;/strong&gt; (adicionar impressora).&lt;/p&gt;
+
+&lt;p&gt;Forneça o nome de usuário e a senha de uma conta com permissão de administrador (&lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;E pronto! A impressora passa a aparecer na tela principal do Gerenciador de dispositivos HP:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode usar a opção &lt;strong&gt;Print Test Page&lt;/strong&gt; para enviar uma página de teste à impressora, para testar se a configuração funciona.&lt;/p&gt;
+
+&lt;h2 id=&quot;imprimindo-um-documento&quot;&gt;Imprimindo um documento&lt;/h2&gt;
+
+&lt;p&gt;Agora sua impressora já aparece disponível nos aplicativos para impressão.&lt;/p&gt;
+
+&lt;p&gt;Como imprimir é algo que pode variar de aplicativo para aplicativo. Por exemplo, para imprimir no &lt;a href=&quot;https://wiki.gnome.org/Apps/Evince&quot;&gt;&lt;strong&gt;Visualizador de documentos&lt;/strong&gt;&lt;/a&gt; (usado para ler documentos em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt;), clique no botão &lt;strong&gt;Opções do arquivo&lt;/strong&gt; (canto superior direito da tela) e clique em &lt;strong&gt;Imprimir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Imprimir&lt;/strong&gt;, selecione sua impressora na lista, opcionalmente ajuste outras opções de impressão e, por fim, clique no botão &lt;strong&gt;Imprimir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dica-modo-rascunho&quot;&gt;Dica: modo rascunho&lt;/h2&gt;
+
+&lt;p&gt;Caso não esteja imprimindo um documento importante (por exemplo, um texto para ler em casa mesmo), você pode usar o modo rascunho da impressora para economizar tinta. O único porém desse modo é que imagens e fotos podem ser prejudicadas.&lt;/p&gt;
+
+&lt;p&gt;Para imprimir no modo rascunho, na caixa de diálogo &lt;strong&gt;Imprimir&lt;/strong&gt;, vá à última aba &lt;strong&gt;Avançado&lt;/strong&gt; e mude o valor da opção &lt;strong&gt;Printout Mode&lt;/strong&gt; (modo de impressão) para &lt;strong&gt;Draft Grayscale&lt;/strong&gt; (rascunho em preto e branco) ou &lt;strong&gt;Draft&lt;/strong&gt; (rascunho, colorido):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso precise, você também pode usar essa mesma opção para aumentar a qualidade da impressão (&lt;strong&gt;High Quality&lt;/strong&gt;), ao custo de usar mais tinta.&lt;/p&gt;
+
+&lt;h2 id=&quot;minha-impressora-não-é-reconhecida&quot;&gt;Minha impressora não é reconhecida&lt;/h2&gt;
+
+&lt;p&gt;A versão do &lt;em&gt;driver&lt;/em&gt; HPLIP disponível no repositório oficial da distribuição nem sempre corresponde à versão mais recente disponível no &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;em&gt;site&lt;/em&gt; do HPLIP&lt;/a&gt; (no momento da escrita, 3.18.7). Como consequência disso, é possível que sua impressora não seja reconhecida, principalmente se o modelo for recente.&lt;/p&gt;
+
+&lt;p&gt;Para usar uma versão mais atual do &lt;em&gt;driver&lt;/em&gt;, adicione o repositório do projeto &lt;a href=&quot;https://build.opensuse.org/project/show/Printing&quot;&gt;&lt;em&gt;Printing&lt;/em&gt;&lt;/a&gt; (impressão):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">As impressoras da marca HP são bastante comuns no Brasil. Nesse post, mostro como adicionei uma HP DeskJet Ink Advantage 3836 ao openSUSE para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Sincronizando o Gmail no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/" rel="alternate" type="text/html" title="Sincronizando o Gmail no Thunderbird" /><published>2018-09-12T15:55:00-03:00</published><updated>2018-09-12T18:57:37-03:00</updated><id>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
 &lt;/a&gt;
@@ -2045,134 +2240,4 @@ kamarada@desktop:~&amp;gt;
     &lt;/table&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">If you work at a company whose email is locally hosted on a Microsoft Exchange server or cloud hosted on Office 365, you can use traditional POP, IMAP and SMTP email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the Microsoft’s proprietary Exchange ActiveSync protocol. The good news is that in an Exchange company Linux users don’t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect Evolution to Exchange or Office 365 using GNOME Online Accounts. Evolution is one of the most powerful open source groupware clients out there. It is the default groupware client of the GNOME desktop environment and can be considered the Linux counterpart to Outlook for Windows. GNOME users setup their online accounts (such as Office 365) using the Settings app and then can access them using GNOME integrated apps (like Evolution). To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages gnome-online-accounts (it should have been installed by default if you use openSUSE with GNOME) and evolution-ews: 1 # zypper in gnome-online-accounts evolution-ews To add your Exchange account, open the Settings app and click on Online Accounts: Online accounts are listed on the left. Click the add button below: On the Add Account dialog box, choose Microsoft Exchange: Expand the Custom section so all fields are shown. Fill them with your account information: E-mail: your e-mail address (e.g. your.name@example.com) Password: your e-mail account password Username: your e-mail address once more Server: outlook.office365.com Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company’s network administrator. When you are ready, click on Connect: Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled): Now you can close the Online Accounts dialog box and open the Evolution app. Note that now it shows: Your mail Your contacts Your calendar Enjoy! References [Use Evolution to Connect to Microsoft Exchange on Linux Linux.com The source for Linux information]linux.com Office 365 (Evolution) - Configure Evolution</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/09/evolution.png" /></entry><entry xml:lang="pt"><title type="html">Conecte o Evolution ao Office 365</title><link href="https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/" rel="alternate" type="text/html" title="Conecte o Evolution ao Office 365" /><published>2017-09-05T20:45:00-03:00</published><updated>2017-09-07T09:23:43-03:00</updated><id>https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365</id><content type="html" xml:base="https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/">&lt;p&gt;Se você trabalha em uma empresa cujo &lt;em&gt;e-mail&lt;/em&gt; é servido localmente pelo &lt;a href=&quot;https://products.office.com/pt-BR/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; ou na nuvem pelo &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, você pode gerenciar seus &lt;em&gt;e-mails&lt;/em&gt; pelo computador utilizando os tradicionais protocolos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt;. No entanto, alguns recursos adicionais como gerenciar agendas e contatos estão disponíveis apenas para quem utiliza o protocolo proprietário &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; da &lt;a href=&quot;https://www.microsoft.com/pt-br&quot;&gt;Microsoft&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pois saiba que nesse cenário usuários de &lt;a href=&quot;https://www.vivaolinux.com.br/linux&quot;&gt;Linux&lt;/a&gt; não precisam deixar seu sistema favorito para poder se comunicar com seus colegas: veja neste &lt;em&gt;post&lt;/em&gt; como conectar o &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; ao Microsoft Exchange ou ao Office 365 com as &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;contas &lt;em&gt;online&lt;/em&gt; do GNOME&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;Evolution&lt;/strong&gt; é um dos mais completos clientes de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_colaborativo&quot;&gt;&lt;em&gt;groupware&lt;/em&gt;&lt;/a&gt; (sistema colaborativo) de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt; existentes. Ele é o cliente de &lt;em&gt;groupware&lt;/em&gt; que acompanha o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; por padrão e pode ser considerado, no sistema Linux, o equivalente ao &lt;a href=&quot;https://products.office.com/pt-br/outlook&quot;&gt;Outlook&lt;/a&gt; para o sistema &lt;a href=&quot;https://www.microsoft.com/pt-br/windows&quot;&gt;Windows&lt;/a&gt;. No GNOME, as contas &lt;em&gt;online&lt;/em&gt; (a exemplo da conta do Office 365) são adicionadas pelo aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e podem então ser usadas pelos demais aplicativos (a exemplo do Evolution).&lt;/p&gt;
-
-&lt;p&gt;Para que o Evolution seja capaz de gerenciar seu &lt;em&gt;e-mail&lt;/em&gt; do Office 365, certifique-se de que seu sistema possua instalados os pacotes &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (deve vir instalado por padrão se você utiliza o &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; com GNOME) e &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-online-accounts evolution-ews
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para adicionar a conta, abra o aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e clique em &lt;strong&gt;Contas on-line&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-1-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-1-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;À esquerda são listadas as contas &lt;em&gt;online&lt;/em&gt;. Clique no &lt;strong&gt;botão de adicionar&lt;/strong&gt;, abaixo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-2-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-2-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Adicionar conta&lt;/strong&gt;, selecione &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-3-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-3-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Expanda a seção &lt;strong&gt;Personalizado&lt;/strong&gt; para exibir todos os campos e os preencha com as informações da conta:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; seu endereço de &lt;em&gt;e-mail&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;nome.sobrenome@empresa.com.br&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Senha:&lt;/strong&gt; a senha da sua conta de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Nome de usuário:&lt;/strong&gt; mais uma vez, seu endereço de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Servidor:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Essas informações podem ser diferentes a depender de como está configurado o &lt;em&gt;e-mail&lt;/em&gt; da sua empresa. Caso você não consiga adicionar sua conta, entre em contato com o administrador da rede.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-4-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-4-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que sua conta é adicionada, selecione o que deseja sincronizar (por padrão, todas as opções estão ativadas):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-5-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-5-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora você pode fechar a caixa de diálogo &lt;strong&gt;Contas on-line&lt;/strong&gt; e abrir o aplicativo &lt;strong&gt;Evolution&lt;/strong&gt;. Perceba que lá estão:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-6-pt.jpg&quot; title=&quot;Seu correio&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-6-pt.jpg&quot; alt=&quot;Seu correio&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Seu correio&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-7-pt.jpg&quot; title=&quot;Seus contatos&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-7-pt.jpg&quot; alt=&quot;Seus contatos&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Seus contatos&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-8-pt.jpg&quot; title=&quot;Sua agenda&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-8-pt.jpg&quot; alt=&quot;Sua agenda&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Sua agenda&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça bom proveito!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Use Evolution to Connect to Microsoft Exchange on Linux&lt;/td&gt;
-          &lt;td&gt;Linux.com&lt;/td&gt;
-          &lt;td&gt;The source for Linux information]&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;linux.com&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Se você trabalha em uma empresa cujo e-mail é servido localmente pelo Microsoft Exchange ou na nuvem pelo Office 365, você pode gerenciar seus e-mails pelo computador utilizando os tradicionais protocolos POP, IMAP e SMTP. No entanto, alguns recursos adicionais como gerenciar agendas e contatos estão disponíveis apenas para quem utiliza o protocolo proprietário Exchange ActiveSync da Microsoft. Pois saiba que nesse cenário usuários de Linux não precisam deixar seu sistema favorito para poder se comunicar com seus colegas: veja neste post como conectar o Evolution ao Microsoft Exchange ou ao Office 365 com as contas online do GNOME.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/09/evolution.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">If you work at a company whose email is locally hosted on a Microsoft Exchange server or cloud hosted on Office 365, you can use traditional POP, IMAP and SMTP email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the Microsoft’s proprietary Exchange ActiveSync protocol. The good news is that in an Exchange company Linux users don’t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect Evolution to Exchange or Office 365 using GNOME Online Accounts. Evolution is one of the most powerful open source groupware clients out there. It is the default groupware client of the GNOME desktop environment and can be considered the Linux counterpart to Outlook for Windows. GNOME users setup their online accounts (such as Office 365) using the Settings app and then can access them using GNOME integrated apps (like Evolution). To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages gnome-online-accounts (it should have been installed by default if you use openSUSE with GNOME) and evolution-ews: 1 # zypper in gnome-online-accounts evolution-ews To add your Exchange account, open the Settings app and click on Online Accounts: Online accounts are listed on the left. Click the add button below: On the Add Account dialog box, choose Microsoft Exchange: Expand the Custom section so all fields are shown. Fill them with your account information: E-mail: your e-mail address (e.g. your.name@example.com) Password: your e-mail account password Username: your e-mail address once more Server: outlook.office365.com Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company’s network administrator. When you are ready, click on Connect: Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled): Now you can close the Online Accounts dialog box and open the Evolution app. Note that now it shows: Your mail Your contacts Your calendar Enjoy! References [Use Evolution to Connect to Microsoft Exchange on Linux Linux.com The source for Linux information]linux.com Office 365 (Evolution) - Configure Evolution</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/09/evolution.png" /></entry></feed>

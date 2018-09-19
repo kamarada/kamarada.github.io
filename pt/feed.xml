@@ -9,10 +9,219 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Sep 2018 18:58:04 -0300</pubDate>
-        <lastBuildDate>Wed, 12 Sep 2018 18:58:04 -0300</lastBuildDate>
+        <pubDate>Wed, 19 Sep 2018 19:15:12 -0300</pubDate>
+        <lastBuildDate>Wed, 19 Sep 2018 19:15:12 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Impressoras HP no openSUSE</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As impressoras da marca &lt;a href=&quot;https://www.hp.com&quot;&gt;HP&lt;/a&gt; são bastante comuns no Brasil.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, mostro como adicionei uma &lt;a href=&quot;https://support.hp.com/br-pt/product/hp-deskjet-ink-advantage-3830-all-in-one-printer-series/7172328/model/7429639&quot;&gt;HP DeskJet Ink Advantage 3836&lt;/a&gt; ao &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.&lt;/p&gt;
+
+&lt;p&gt;Suponho que a conexão da impressora à rede já tenha sido configurada, mas dou uma dica para quem acabou de tirar a impressora da caixa.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-driver-da-impressora-hp&quot;&gt;Instalando o driver da impressora HP&lt;/h2&gt;
+
+&lt;p&gt;No &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, quem fornece suporte às impressoras HP é o &lt;em&gt;driver&lt;/em&gt; &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;strong&gt;HPLIP&lt;/strong&gt;&lt;/a&gt;, abreviação de &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;em&gt;HP Linux Imaging and Printing&lt;/em&gt;&lt;/a&gt; (Impressão e Digitalização da HP para Linux, em inglês).&lt;/p&gt;
+
+&lt;p&gt;No openSUSE, ele é instalado pelo pacote de mesmo nome, &lt;a href=&quot;https://software.opensuse.org/package/hplip&quot;&gt;hplip&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hplip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A versão 15.0 da distribuição openSUSE Leap fornece a versão 3.17.9 do &lt;em&gt;driver&lt;/em&gt; HPLIP.&lt;/p&gt;
+
+&lt;h2 id=&quot;adicionando-a-impressora-hp&quot;&gt;Adicionando a impressora HP&lt;/h2&gt;
+
+&lt;p&gt;Instalado o HPLIP, inicie o &lt;strong&gt;Gerenciador de dispositivos HP&lt;/strong&gt; (HP Device Manager).&lt;/p&gt;
+
+&lt;p&gt;A interface do aplicativo está em inglês e não possui tradução. A tela inicial alerta que não há dispositivos HP instalados (&lt;strong&gt;No Installed HP Devices Found&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Setup Device&lt;/strong&gt; (configurar dispositivo).&lt;/p&gt;
+
+&lt;p&gt;Caso ainda não tenha ligado a impressora, ligue-a agora.&lt;/p&gt;
+
+&lt;p&gt;Na primeira tela do assistente de configuração, selecione o tipo de conexão:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se sua impressora está conectada diretamente ao computador por um cabo USB, selecione &lt;strong&gt;Universal Serial Bus (USB)&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;se sua impressora está conectada pela rede e já está configurada (meu caso), selecione &lt;strong&gt;Network/Ethernet/Wireless network&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;se sua impressora será conectada a uma rede sem fio e ainda não está configurada, selecione &lt;strong&gt;Wireless/802.11&lt;/strong&gt;; ou&lt;/li&gt;
+  &lt;li&gt;se sua impressora usa a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Interface_paralela&quot;&gt;porta paralela&lt;/a&gt; (provavelmente é uma impressora antiga, porque muitos computadores e &lt;em&gt;notebooks&lt;/em&gt; já não oferecem mais essa conexão), selecione a opção &lt;strong&gt;Parallel Port (LPT)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A dica para quem acabou de tirar a impressora da caixa é selecionar a terceira opção: primeiro a impressora será conectada ao computador usando um cabo USB, o assistente auxiliará a configuração de rede sem fio da impressora, no final o cabo será removido e ela poderá ser utilizada pela rede sem fio.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar).&lt;/p&gt;
+
+&lt;p&gt;O assistente vai procurar sua impressora na rede.&lt;/p&gt;
+
+&lt;p&gt;É possível que ele não encontre a impressora (aconteceu comigo):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se esse for o caso, clique em &lt;strong&gt;OK&lt;/strong&gt; e depois em &lt;strong&gt;Back&lt;/strong&gt; para voltar à tela anterior.&lt;/p&gt;
+
+&lt;p&gt;Verifique a configuração de rede da sua impressora. Como fazer isso é algo que pode variar de modelo para modelo. No caso da minha, eu toquei no ícone &lt;strong&gt;Sem fio&lt;/strong&gt; (na parte de baixo, a figura de antena, no meio):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Anote o endereço &lt;strong&gt;IP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;172.17.0.2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à primeira tela do assistente, clique em &lt;strong&gt;Show Advanced Options&lt;/strong&gt; (mostrar opções avançadas), marque a opção &lt;strong&gt;Manual Discovery&lt;/strong&gt; (descoberta manual), informe o endereço IP (&lt;strong&gt;IP Address&lt;/strong&gt;) e clique em &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora sim a impressora é encontrada. Perceba que o assistente se comunicou com ela e já apresentou o modelo correto:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se mesmo informando o IP manualmente o assistente não encontrar a impressora, saia do assistente e verifique a informação que consta na última seção dessa página.&lt;/p&gt;
+
+&lt;p&gt;Com a impressora aparecendo na lista e devidamente selecionada, clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se sua impressora possui fax mas você não utiliza, desmarque a opção &lt;strong&gt;Fax Setup&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;Add Printer&lt;/strong&gt; (adicionar impressora).&lt;/p&gt;
+
+&lt;p&gt;Forneça o nome de usuário e a senha de uma conta com permissão de administrador (&lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;E pronto! A impressora passa a aparecer na tela principal do Gerenciador de dispositivos HP:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode usar a opção &lt;strong&gt;Print Test Page&lt;/strong&gt; para enviar uma página de teste à impressora, para testar se a configuração funciona.&lt;/p&gt;
+
+&lt;h2 id=&quot;imprimindo-um-documento&quot;&gt;Imprimindo um documento&lt;/h2&gt;
+
+&lt;p&gt;Agora sua impressora já aparece disponível nos aplicativos para impressão.&lt;/p&gt;
+
+&lt;p&gt;Como imprimir é algo que pode variar de aplicativo para aplicativo. Por exemplo, para imprimir no &lt;a href=&quot;https://wiki.gnome.org/Apps/Evince&quot;&gt;&lt;strong&gt;Visualizador de documentos&lt;/strong&gt;&lt;/a&gt; (usado para ler documentos em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt;), clique no botão &lt;strong&gt;Opções do arquivo&lt;/strong&gt; (canto superior direito da tela) e clique em &lt;strong&gt;Imprimir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Imprimir&lt;/strong&gt;, selecione sua impressora na lista, opcionalmente ajuste outras opções de impressão e, por fim, clique no botão &lt;strong&gt;Imprimir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dica-modo-rascunho&quot;&gt;Dica: modo rascunho&lt;/h2&gt;
+
+&lt;p&gt;Caso não esteja imprimindo um documento importante (por exemplo, um texto para ler em casa mesmo), você pode usar o modo rascunho da impressora para economizar tinta. O único porém desse modo é que imagens e fotos podem ser prejudicadas.&lt;/p&gt;
+
+&lt;p&gt;Para imprimir no modo rascunho, na caixa de diálogo &lt;strong&gt;Imprimir&lt;/strong&gt;, vá à última aba &lt;strong&gt;Avançado&lt;/strong&gt; e mude o valor da opção &lt;strong&gt;Printout Mode&lt;/strong&gt; (modo de impressão) para &lt;strong&gt;Draft Grayscale&lt;/strong&gt; (rascunho em preto e branco) ou &lt;strong&gt;Draft&lt;/strong&gt; (rascunho, colorido):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso precise, você também pode usar essa mesma opção para aumentar a qualidade da impressão (&lt;strong&gt;High Quality&lt;/strong&gt;), ao custo de usar mais tinta.&lt;/p&gt;
+
+&lt;h2 id=&quot;minha-impressora-não-é-reconhecida&quot;&gt;Minha impressora não é reconhecida&lt;/h2&gt;
+
+&lt;p&gt;A versão do &lt;em&gt;driver&lt;/em&gt; HPLIP disponível no repositório oficial da distribuição nem sempre corresponde à versão mais recente disponível no &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;em&gt;site&lt;/em&gt; do HPLIP&lt;/a&gt; (no momento da escrita, 3.18.7). Como consequência disso, é possível que sua impressora não seja reconhecida, principalmente se o modelo for recente.&lt;/p&gt;
+
+&lt;p&gt;Para usar uma versão mais atual do &lt;em&gt;driver&lt;/em&gt;, adicione o repositório do projeto &lt;a href=&quot;https://build.opensuse.org/project/show/Printing&quot;&gt;&lt;em&gt;Printing&lt;/em&gt;&lt;/a&gt; (impressão):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;
+
+</description>
+                <pubDate>Wed, 19 Sep 2018 16:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Sincronizando o Gmail no Thunderbird</title>
@@ -1799,565 +2008,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Mon, 07 Aug 2017 09:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como atualizar do openSUSE Leap 42.2 para o 42.3</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-00-pt.png&quot; title=&quot;openSUSE Leap 42.3 já está disponível&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-00-pt.png&quot; alt=&quot;openSUSE Leap 42.3 já está disponível&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;openSUSE Leap 42.3 já está disponível&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A versão atual da distribuição &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt;, a 42.3, &lt;a href=&quot;https://news.opensuse.org/2017/07/26/refresh-of-linux-distribution-continues-leveraging-community-enterprise-benefits/&quot;&gt;foi lançada dia 26 de julho&lt;/a&gt;. Atualizar da versão 42.2 para a versão 42.3 é como &lt;a href=&quot;/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/&quot;&gt;atualizar da versão 42.1 para a versão 42.2&lt;/a&gt;, o passo a passo é bem parecido. Se você já utiliza o openSUSE há algum tempo, sabe que atualizar de uma versão para outra é fácil e tranquilo. Se você conheceu o openSUSE na versão 42.2, vai perceber isso agora.&lt;/p&gt;
-
-&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt; você verá como atualizar seu openSUSE Leap da versão 42.2 para a 42.3.&lt;/p&gt;
-
-&lt;h2 id=&quot;algumas-observações&quot;&gt;Algumas observações&lt;/h2&gt;
-
-&lt;p&gt;O passo a passo para atualização que apresento aqui é o que utilizei no meu computador e que aprendi lendo a &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do openSUSE&lt;/a&gt;. Ele é praticamente o mesmo desde que comecei a utilizar o openSUSE. É um procedimento seguro, que deve funcionar para a maioria dos casos, mas que requer alguns cuidados.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve estar utilizando a versão imediatamente anterior do openSUSE.&lt;/strong&gt; Isso quer dizer que se você pretende atualizar para a versão 42.3, deve estar usando agora a versão 42.2. Saltos de versões não são suportados. Podem funcionar, mas não há garantia. Portanto, se você utiliza a versão 42.1, por exemplo, é melhor que primeiro atualize para a versão 42.2, para então atualizar para a versão 42.3. Se esse é o seu caso, sua leitura deve começar por &lt;a href=&quot;/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/&quot;&gt;esse outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;. Quando terminar, retorne a este.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sua instalação do openSUSE deve estar atualizada&lt;/strong&gt; com as versões mais recentes dos pacotes lançadas até o momento.&lt;/p&gt;
-
-&lt;p&gt;É curioso observar que a palavra &lt;strong&gt;atualização&lt;/strong&gt; no nosso português se refere a dois processos distintos, com nomes distintos em inglês: existe a atualização dos pacotes sem mudar a versão da distribuição (&lt;em&gt;update&lt;/em&gt;) — essa deve ser feita com frequência, sempre que necessário — e a atualização com mudança da versão da distribuição (&lt;em&gt;upgrade&lt;/em&gt;) — essa normalmente é feita uma vez por ano.&lt;/p&gt;
-
-&lt;p&gt;Aqui, veremos como fazer ambas, porque antes de avançar para a próxima versão (&lt;em&gt;upgrade&lt;/em&gt;) você deve se certificar de que obteve todas as atualizações (&lt;em&gt;updates&lt;/em&gt;) disponíveis para os pacotes que já possui.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve se informar sobre a versão do openSUSE que vai instalar.&lt;/strong&gt; Consulte as &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.3/RELEASE-NOTES.pt_BR.html&quot;&gt;notas de lançamento&lt;/a&gt;, que descrevem o que muda na nova versão e listam alguns &lt;em&gt;bugs&lt;/em&gt; conhecidos, como preveni-los e/ou solucioná-los.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve fazer uma cópia de segurança (&lt;em&gt;backup&lt;/em&gt;) de arquivos importantes.&lt;/strong&gt; Apesar de a atualização (&lt;em&gt;upgrade&lt;/em&gt;) do openSUSE ser segura (fazendo lembrar, para quem conhece, a atualização do &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;), não quer dizer que seja perfeita. Ganhar na loteria é difícil, mas uma hora alguém ganha. Algo dar errado na atualização é difícil, especialmente se você toma todos os cuidados, mas pode acontecer. Eu, particularmente, já atualizei algumas vezes sem problema. Nunca é demais fazer uma cópia dos seus arquivos pessoais por precaução, especialmente se a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; não está em uma partição reservada. Se o computador não pode ficar parado por muito tempo (um servidor, por exemplo), considere fazer uma cópia de todo o sistema, a fim de restaurá-la imediatamente caso algo não funcione como esperado.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você não deve utilizar repositórios não oficiais (de terceiros) durante a atualização.&lt;/strong&gt; Antes de começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), removeremos os &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt;. É possível que isso ocasione a remoção também de programas de terceiros. Você pode devolvê-los depois. Isso não quer dizer que não seja possível atualizar com esses repositórios presentes, mas usar apenas os &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;repositórios oficiais&lt;/a&gt; é mais garantido. A base do sistema será atualizada para uma nova base estável, sólida, confiável. Depois, sobre essa base, você poderá instalar o que quiser. Faça diferente dessa recomendação apenas se souber o que está fazendo.&lt;/p&gt;
-
-&lt;p&gt;Recomendo também que você leia toda essa página antes de começar de fato a agir. Para organizá-la melhor, vou dividi-la em 6 etapas. Conhecendo todo o processo, você terá condição de agendá-lo melhor. Você pode até fazer outras coisas usando o computador enquanto segue o passo a passo, mas depois que começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), só poderá usar o computador quando ela for concluída.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-atualização-dos-pacotes-da-distribuição-update&quot;&gt;1) Atualização dos pacotes da distribuição (&lt;em&gt;update&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Certifique-se de que a instalação do openSUSE que está no seu computador esteja atualizada. Você pode obter atualizações pela interface gráfica ou pela interface de linha de comando, como veremos.&lt;/p&gt;
-
-&lt;p&gt;Utilizo sempre que possível a interface gráfica, mas a interface textual nos permite vantagens como apenas baixar as atualizações e depois apenas instalá-las. Se você não está acostumado à linha de comando, perceberá que não é difícil utilizá-la.&lt;/p&gt;
-
-&lt;p&gt;Quase sempre, você pode utilizar a interface de linha de comando sem abandonar a interface gráfica por meio do aplicativo &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/index.html.pt_BR&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt;. Como iniciá-lo? Mova o ponteiro do &lt;em&gt;mouse&lt;/em&gt; para o canto superior esquerdo da tela onde se lê “Atividades” para mostrar o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;. Você também pode abrir o panorama pressionando a tecla &lt;strong&gt;Super&lt;/strong&gt; (em alguns teclados, ela possui a bandeira do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;). Digite &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; e clique no ícone do aplicativo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Terminal é iniciado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-02-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você utiliza Windows, talvez ache o Terminal parecido com o &lt;strong&gt;Prompt de Comando&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;pela-interface-gráfica&quot;&gt;Pela interface gráfica&lt;/h3&gt;
-
-&lt;p&gt;Para obter atualizações pela interface gráfica, você pode usar o aplicativo &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;. Para iniciá-lo, acesse o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, comece a digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;atualizador&lt;/code&gt; e clique no ícone do &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Atualizador de pacotes verifica se há atualizações disponíveis para o sistema e, se houver, as lista:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Instalar atualizações&lt;/strong&gt;. O Atualizador de pacotes começará a baixar as atualizações. Quando terminar de instalar atualizações, pode ser que o Atualizador de pacotes peça a você para fazer algo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, siga as instruções na tela.&lt;/p&gt;
-
-&lt;p&gt;Para se certificar de que instalou realmente todas as atualizações disponíveis até o momento, repita esse processo de buscar e instalar atualizações até que o Atualizador de pacotes informe que o sistema está totalmente atualizado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-06-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;pela-interface-de-linha-de-comando&quot;&gt;Pela interface de linha de comando&lt;/h3&gt;
-
-&lt;p&gt;Na linha de comando, você pode utilizar o gerenciador de pacotes &lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mas não é qualquer usuário que tem permissão para invocar o &lt;strong&gt;zypper&lt;/strong&gt;. Somente o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Superusu%C3%A1rio&quot;&gt;superusuário&lt;/a&gt; ou administrador (&lt;em&gt;root&lt;/em&gt;) pode fazê-lo.&lt;/p&gt;
-
-&lt;p&gt;Para alternar do seu usuário para o &lt;em&gt;root&lt;/em&gt;, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se você não está acostumado com essa notação, isso significa digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; e teclar &lt;strong&gt;Enter&lt;/strong&gt;. O cifrão (&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;) não deve ser digitado, ele apenas indica que o comando pode ser executado por qualquer usuário do computador. A seguir, você verá exemplos de comandos que só podem ser executados com permissões elevadas (do usuário &lt;em&gt;root&lt;/em&gt;). Estes são precedidos por cerquilha (&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;O comando &lt;strong&gt;su&lt;/strong&gt; pedirá a senha do usuário &lt;em&gt;root&lt;/em&gt;, que você deve fornecer para continuar. Digite a senha e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Estava esperando que apareceriam asteriscos (&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;) enquanto você digitava a senha? Não se preocupe, na interface textual do Linux é assim mesmo: a senha não aparece enquanto é digitada, de forma alguma, nem mesmo camuflada com asteriscos.&lt;/p&gt;
-
-&lt;p&gt;Agora sim, como usuário &lt;em&gt;root&lt;/em&gt;, invoque o &lt;strong&gt;zypper&lt;/strong&gt; com o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(esse &lt;em&gt;ref&lt;/em&gt; vem do inglês &lt;em&gt;refresh&lt;/em&gt;, que significa atualizar — olha só, encontramos uma terceira tradução no inglês para o nosso “atualizar” em português!)&lt;/p&gt;
-
-&lt;p&gt;Esse comando fará o &lt;strong&gt;zypper&lt;/strong&gt; obter da Internet a lista de pacotes disponíveis:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que o &lt;strong&gt;zypper&lt;/strong&gt; indica o progresso. Quando estiver concluído, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(esse &lt;em&gt;up&lt;/em&gt; vem do inglês &lt;em&gt;update&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;Esse comando fará com que o &lt;strong&gt;zypper&lt;/strong&gt; baixe e instale atualizações disponíveis, se houver:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-08-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-08-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-09-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-09-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; indica o que precisa fazer para deixar o sistema atualizado e pergunta se você deseja continuar. A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se é isso o que deseja, você pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e a atualização começará.&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; mostra o andamento do processo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Normalmente, quando a atualização acaba, não é necessário fazer mais nada, nem reiniciar o computador. Mas note que ao final dessa atualização o &lt;strong&gt;zypper&lt;/strong&gt; cogitou reiniciar programas, porque arquivos que estavam sendo usados foram apagados:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, mesmo que o &lt;strong&gt;zypper&lt;/strong&gt; não tenha dito para reiniciar o computador, como ele falou em “reiniciar”, recomendo que você reinicie o computador. Para isso, use o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(reiniciar, em inglês)&lt;/p&gt;
-
-&lt;p&gt;Quando voltar, seu sistema estará novo e limpo, sem risco de mau funcionamento.&lt;/p&gt;
-
-&lt;p&gt;Para se certificar de que instalou realmente todas as atualizações disponíveis até o momento, repita o comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt; até que ele diga que não há o que fazer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando ele diz isso, significa que não há mais atualizações disponíveis: todas as que havia já foram instaladas.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-backup-dos-repositórios-atuais&quot;&gt;2) &lt;em&gt;Backup&lt;/em&gt; dos repositórios atuais&lt;/h2&gt;
-
-&lt;p&gt;Essa etapa, na verdade, é opcional.&lt;/p&gt;
-
-&lt;p&gt;Talvez você queira fazer &lt;em&gt;backup&lt;/em&gt; da sua lista atual de repositórios para devolvê-la depois da atualização. O openSUSE guarda as configurações de repositórios na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/repos.d&lt;/code&gt;, sendo um arquivo de texto para cada repositório.&lt;/p&gt;
-
-&lt;p&gt;Vamos copiar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d&lt;/code&gt;, em &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp&lt;/code&gt;, para outra no mesmo lugar, chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;. Para isso, utilizaremos a interface de linha de comando.&lt;/p&gt;
-
-&lt;p&gt;Se não já o fez, alterne do seu usuário para o usuário &lt;em&gt;root&lt;/em&gt; executando o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Forneça a senha do usuário &lt;em&gt;root&lt;/em&gt; para continuar.&lt;/p&gt;
-
-&lt;p&gt;Se você já atualizou da versão 42.1 para a versão 42.2 usando &lt;a href=&quot;/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/&quot;&gt;o nosso tutorial&lt;/a&gt;, talvez ainda tenha o &lt;em&gt;backup&lt;/em&gt; antigo guardado. Se esse é o seu caso, execute o comando a seguir para excluir a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Então, ordene a cópia:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.antigos
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-13-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-13-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você ainda não fez &lt;em&gt;backup&lt;/em&gt; dos seus arquivos pessoais e/ou do seu sistema, considere fazê-lo agora.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-faxina-dos-repositórios&quot;&gt;3) Faxina dos repositórios&lt;/h2&gt;
-
-&lt;p&gt;Como expliquei antes, durante a atualização utilizaremos apenas os &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;repositórios oficiais&lt;/a&gt;. Mais especificamente, apenas dois deles:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.3-OSS&lt;/strong&gt;: o repositório principal da distribuição, contém apenas &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; de código aberto&lt;/a&gt; (do inglês &lt;em&gt;open source sofware&lt;/em&gt;, OSS).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/distribution/leap/42.3/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/42.3/repo/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE-Leap-42.3-Update&lt;/strong&gt;: contém atualizações (&lt;em&gt;updates&lt;/em&gt;) oficiais para os pacotes do repositório OSS.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/update/leap/42.3/oss/&quot;&gt;http://download.opensuse.org/update/leap/42.3/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Vamos fazer uma faxina nos repositórios, excluindo quaisquer outros repositórios configurados (vamos excluir inclusive quaisquer &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Acesse o Centro de Controle do YaST. Para isso, acesse o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone do YaST:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-14-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-14-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Será solicitada a você a senha do usuário &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na categoria &lt;strong&gt;Software&lt;/strong&gt;, clique em &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-15-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à lista de repositórios do seu sistema:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-16-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para cada repositório que não seja o &lt;strong&gt;openSUSE-Leap-42.2-OSS&lt;/strong&gt; ou o &lt;strong&gt;openSUSE-Leap-42.2-Update&lt;/strong&gt; , selecione o repositório na lista e clique em &lt;strong&gt;Remover&lt;/strong&gt; (não é erro de digitação, estamos falando dos repositórios que já existem, que são os da versão 42.2, vamos mudar para os novos da versão 42.3 já já).&lt;/p&gt;
-
-&lt;p&gt;Aparecerá uma mensagem de confirmação. Clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-17-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-17-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça isso com todos os repositórios até que só sobrem os repositórios &lt;strong&gt;openSUSE-Leap-42.2-OSS&lt;/strong&gt; e &lt;strong&gt;openSUSE-Leap-42.2-Update&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-18-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esses repositórios podem estar com nomes diferentes no seu computador. Se esse for o caso, você pode se orientar pela &lt;a href=&quot;https://pt.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; em vez do nome. Se não encontrá-los, não tem problema: apague todos os repositórios e já adicione os novos a seguir.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-repositórios-da-nova-versão&quot;&gt;4) Repositórios da nova versão&lt;/h2&gt;
-
-&lt;p&gt;Vamos agora mudar para os repositórios da nova versão.&lt;/p&gt;
-
-&lt;p&gt;Selecione o repositório &lt;strong&gt;openSUSE-Leap-42.2-OSS&lt;/strong&gt; e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Substitua &lt;code class=&quot;highlighter-rouge&quot;&gt;42.2&lt;/code&gt;por &lt;code class=&quot;highlighter-rouge&quot;&gt;42.3&lt;/code&gt; onde houver e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-19-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-19-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;licença de uso do openSUSE Leap 42.3&lt;/a&gt;. Você pode lê-la para conhecer seus direitos ao usar o openSUSE. Quando terminar, clique em &lt;strong&gt;Avançar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-20-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-20-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça o mesmo procedimento para o repositório &lt;strong&gt;openSUSE-Leap-42.2-Update&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ao final, sua lista de repositórios deve estar assim:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-21-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-21-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para gravar as alterações. Pode fechar o YaST.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-download-dos-pacotes&quot;&gt;5) &lt;em&gt;Download&lt;/em&gt; dos pacotes&lt;/h2&gt;
-
-&lt;p&gt;Já podemos começar a baixar os pacotes da nova versão do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;De volta à interface de linha de comando, obtenha da Internet a lista de pacotes dos novos repositórios:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper dup --download-only
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(&lt;em&gt;distribution upgrade&lt;/em&gt;, atualização da distribuição, &lt;em&gt;download only&lt;/em&gt;, apenas baixar)&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-22-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-22-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ele passa um tempo “pensando” e logo depois mostra o que precisa fazer para atualizar o openSUSE para a próxima versão e pergunta se você deseja continuar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-23-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-23-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que essa lista de ações é semelhante à produzida pelo comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt;, apresentado na primeira etapa. No entanto, como agora estamos fazendo uma atualização de distribuição (&lt;em&gt;upgrade&lt;/em&gt;), e não uma atualização de pacotes (&lt;em&gt;update&lt;/em&gt;), a lista do que precisa ser feito é bem maior.&lt;/p&gt;
-
-&lt;p&gt;Confira essa lista com cuidado. Você pode ir para cima ou para baixo utilizando a barra de rolagem à direita da tela ou a roda (&lt;em&gt;scroll&lt;/em&gt;) do &lt;em&gt;mouse&lt;/em&gt;, se utiliza o Terminal, ou as combinações de teclas &lt;strong&gt;Shift + Page Up&lt;/strong&gt; ou &lt;strong&gt;Shift + Page Down&lt;/strong&gt;, se está em uma interface puramente textual (elas também funcionam no Terminal).&lt;/p&gt;
-
-&lt;p&gt;A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se você concorda, pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e o &lt;em&gt;download&lt;/em&gt; dos novos pacotes começará. Enquanto isso, você pode utilizar seu computador normalmente. A atualização propriamente dita ainda não começou.&lt;/p&gt;
-
-&lt;p&gt;Observe que o &lt;strong&gt;zypper&lt;/strong&gt; apenas baixa os pacotes, ele não inicia a atualização:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-24-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-24-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso porque ordenamos a ele por ora apenas baixar os pacotes.&lt;/p&gt;
-
-&lt;p&gt;Termine o que está fazendo e salve os arquivos abertos para iniciarmos a atualização da distribuição. Note que ela pode levar alguns (vários) minutos e você só poderá voltar a usar o computador quando ela for concluída.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-atualização-da-distribuição-upgrade&quot;&gt;6) Atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Agora que já baixamos os pacotes necessários para atualizar nosso openSUSE Leap da versão 42.2 para a 42.3, vamos sair da interface gráfica e utilizar a linha de comando para realizar a instalação. Aqui, você não poderá utilizar o Terminal.&lt;/p&gt;
-
-&lt;p&gt;Isso é necessário porque inclusive a própria interface gráfica será atualizada. Se estivermos utilizando a interface gráfica durante a atualização, pode ser que o sistema trave no meio da processo e as consequências disso são imprevisíveis.&lt;/p&gt;
-
-&lt;p&gt;Considere abrir essa página em outro computador, em um &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt;, imprimi-la ou anotar o que vai fazer.&lt;/p&gt;
-
-&lt;p&gt;Se o openSUSE que você vai atualizar está em um &lt;em&gt;notebook&lt;/em&gt;, certifique-se de que ele esteja com a bateria completamente carregada e conectado à fonte de alimentação. Não desconecte a bateria ou a fonte durante a atualização. Vamos prevenir qualquer possibilidade de problema.&lt;/p&gt;
-
-&lt;p&gt;Encerre sua sessão (&lt;em&gt;logout&lt;/em&gt;). Para isso, clique no &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, clique no seu nome de usuário e escolha a opção &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/logout-gnome-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/logout-gnome-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à tela de &lt;em&gt;login&lt;/em&gt;, onde você poderia informar seu nome de usuário e senha para iniciar uma nova sessão na interface gráfica:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-25-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-25-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Mas não é ela que queremos. Aperte a combinação de teclas &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; para alternar para uma interface puramente textual:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-26.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-26.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Caso isso seja novidade para você, saiba que o Linux disponibiliza seis &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;consoles&lt;/a&gt; (terminais) além da interface gráfica. Você pode usar as teclas de &lt;strong&gt;F1&lt;/strong&gt; a &lt;strong&gt;F6&lt;/strong&gt; na mesma combinação (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; e assim por diante) para alternar entre os consoles, assim como pressionar &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; para retornar à interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Vamos permanecer no primeiro console.&lt;/p&gt;
-
-&lt;p&gt;Entre com o usuário &lt;em&gt;root&lt;/em&gt;. Para isso, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Depois, digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Vamos alternar do nível de execução (&lt;a href=&quot;http://www.hardware.com.br/termos/runlevel&quot;&gt;&lt;em&gt;runlevel&lt;/em&gt;&lt;/a&gt;) 5, nível padrão, no qual o sistema nos provê interface gráfica, para o nível de execução 3, no qual temos apenas a interface de linha de comando e conexão de rede.&lt;/p&gt;
-
-&lt;p&gt;Para &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;alterar o nível de execução&lt;/a&gt; para 3, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# init 3
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Finalmente, vamos realizar a atualização de distribuição propriamente dita. Para isso, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --no-refresh dup
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-27.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-27.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O argumento &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-refresh&lt;/code&gt; faz com que o &lt;strong&gt;zypper&lt;/strong&gt; não atualize a lista de pacotes dos repositórios. Com isso, garantimos que ele não tente baixar mais algum pacote além dos que nós já baixamos. Isso pode ser útil especialmente em &lt;em&gt;notebooks&lt;/em&gt;, que podem perder a conexão com a rede Wi-Fi ao sair da interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Como antes, o &lt;strong&gt;zypper&lt;/strong&gt; vai processar a atualização e mostrar o que vai fazer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-28.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-28.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que todos os pacotes que ele precisa já foram baixados: ao final ele mostra “&lt;em&gt;Overall download size: 0 B. Already cached: 1.21 GiB.&lt;/em&gt;” (Tamanho geral do &lt;em&gt;download&lt;/em&gt;: 0 B. Já em cache: 1.21 GiB).&lt;/p&gt;
-
-&lt;p&gt;Apenas pressione &lt;strong&gt;Enter&lt;/strong&gt; para que a atualização comece.&lt;/p&gt;
-
-&lt;p&gt;Ele pula o &lt;em&gt;download&lt;/em&gt; dos pacotes e já vai direto para a instalação:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-29.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-29.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A atualização da distribuição pode demorar alguns (vários) minutos.&lt;/p&gt;
-
-&lt;p&gt;Quando ela terminar, assim como aconteceu na primeira etapa, o &lt;strong&gt;zypper&lt;/strong&gt; vai sugerir reiniciar. É o que vamos fazer executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-30.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-30.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;pronto&quot;&gt;Pronto&lt;/h2&gt;
-
-&lt;p&gt;Se você conseguiu fazer tudo até aqui, agora seu computador já está com o openSUSE Leap 42.3.&lt;/p&gt;
-
-&lt;p&gt;Observe que o menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt;, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui Windows e Linux instalados na mesma máquina), já está diferente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-31-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-31-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;E &lt;em&gt;voilà&lt;/em&gt;! O openSUSE Leap 42.3 está instalado e pronto para uso!&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-32-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-32-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique se está tudo no lugar.&lt;/p&gt;
-
-&lt;p&gt;Agora você pode devolver os repositórios que excluiu, lembrando de fazer os devidos ajustes em relação à versão do openSUSE, mudando de &lt;code class=&quot;highlighter-rouge&quot;&gt;42.2&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;42.3&lt;/code&gt; onde for necessário. Pela interface de linha de comando é fácil:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sed -i 's,42\.2,42.3,g' /etc/zypp/repos.d.antigos/*
-# mv /etc/zypp/repos.d.antigos/* /etc/zypp/repos.d/
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Feito isso, você pode excluir o &lt;em&gt;backup&lt;/em&gt; da sua antiga lista de repositórios:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos/
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você também pode tentar instalar qualquer programa que por ventura tenha sido removido durante a atualização.&lt;/p&gt;
-
-&lt;p&gt;Se lembre de regularmente verificar se há atualizações (&lt;em&gt;updates&lt;/em&gt;) para sua nova distribuição.&lt;/p&gt;
-
-&lt;p&gt;Se você encontrou alguma dificuldade durante a atualização ou possui alguma dúvida, não deixe de comentar!&lt;/p&gt;
-
-&lt;p&gt;Até a próxima!&lt;/p&gt;
-
-</description>
-                <pubDate>Tue, 01 Aug 2017 23:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/</guid>
                 
                 
                     <category>pt</category>
