@@ -1,5 +1,281 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-19T19:24:18-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Impressoras HP no openSUSE</title><link href="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/" rel="alternate" type="text/html" title="Impressoras HP no openSUSE" /><published>2018-09-19T16:00:00-03:00</published><updated>2018-09-19T19:14:58-03:00</updated><id>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-09-24T16:50:13-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Assinando e-mails enviados com certificado digital no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/" rel="alternate" type="text/html" title="Assinando e-mails enviados com certificado digital no Thunderbird" /><published>2018-09-24T13:30:00-03:00</published><updated>2018-09-24T16:50:02-03:00</updated><id>https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Embora hoje o &lt;em&gt;webmail&lt;/em&gt; seja mais popular que o cliente de &lt;em&gt;e-mail&lt;/em&gt;, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com o cliente de &lt;em&gt;e-mail&lt;/em&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais e também sobre o Thunderbird:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/&quot;&gt;Sincronizando o Gmail no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configurando-a-assinatura-digital-no-thunderbird&quot;&gt;Configurando a assinatura digital no Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;Para poder utilizar o &lt;em&gt;token&lt;/em&gt; no Thunderbird, vamos cadastrá-lo como um dispositivo de segurança.&lt;/p&gt;
+
+&lt;p&gt;Para isso, com o Thunderbird aberto, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, e depois clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e, por fim, no botão &lt;strong&gt;Dispositivos de segurança&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você configurou o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; para usar o &lt;em&gt;token&lt;/em&gt;, como instruímos em &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;, já deve ter percebido que o procedimento é semelhante.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;No campo &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Observe que o &lt;em&gt;token&lt;/em&gt; é adicionado à lista de &lt;strong&gt;Dispositivos e módulos de segurança&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à tela principal do Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Segurança&lt;/strong&gt; e à direita, dentro de &lt;strong&gt;Assinatura digital&lt;/strong&gt;, clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione o &lt;strong&gt;Certificado&lt;/strong&gt; a ser usado para assinatura e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como o objetivo é configurar a criptografia apenas para o envio, e não para a resposta, clique em &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-09.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-09.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Configurar contas&lt;/strong&gt;, caso deseje sempre assinar digitalmente os &lt;em&gt;e-mails&lt;/em&gt; que envia, marque a opção &lt;strong&gt;Assinar mensagens digitalmente (por padrão)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt; para voltar à tela principal do Thunderbird.&lt;/p&gt;
+
+&lt;p&gt;A assinatura digital está configurada e pronta para ser utilizada.&lt;/p&gt;
+
+&lt;h2 id=&quot;enviando-e-mails-com-assinatura-digital&quot;&gt;Enviando e-mails com assinatura digital&lt;/h2&gt;
+
+&lt;p&gt;Na tela principal do Thunderbird, clique no botão &lt;strong&gt;Nova msg&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Redija a mensagem normalmente.&lt;/p&gt;
+
+&lt;p&gt;Antes de enviar, certifique-se de que a opção &lt;strong&gt;Assinar digitalmente&lt;/strong&gt;, dentro do menu &lt;strong&gt;Segurança&lt;/strong&gt;, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Enviar agora&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Thunderbird solicita o PIN do &lt;em&gt;token&lt;/em&gt; para assinar a mensagem no momento do envio:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;verificando-a-assinatura-digital-de-e-mails-recebidos&quot;&gt;Verificando a assinatura digital de e-mails recebidos&lt;/h2&gt;
+
+&lt;p&gt;Se o destinatário utiliza o cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird, ele pode verificar a assinatura digital da mensagem:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que a princípio o Thunderbird não reconhece a assinatura, exibindo &lt;strong&gt;A assinatura digital não é válida&lt;/strong&gt;. Isso pode acontecer porque ele não conhece o certificado da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;Autoridade Certificadora Raiz brasileira&lt;/a&gt;. Por tabela, ele não confia no certificado do remetente, que foi emitido por essa autoridade certificadora.&lt;/p&gt;
+
+&lt;p&gt;Já tratamos de situação parecida que ocorre no navegador Firefox em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; e a solução no caso do cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird é semelhante.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
+
+&lt;p&gt;Depois, volte ao Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt; e depois no item &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e por fim no botão &lt;strong&gt;Gerenciar certificados&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de certificados&lt;/strong&gt;, clique no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe o caminho para o certificado que você baixou.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Verifique que a &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; aparece na lista de autoridades certificadoras:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-16.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-16.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Agora, se você voltar ao &lt;em&gt;e-mail&lt;/em&gt;, perceberá que a assinatura é reconhecida:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se o destinatário utiliza o &lt;em&gt;webmail&lt;/em&gt;, pode ser que o &lt;em&gt;webmail&lt;/em&gt; possibilite verificar a assinatura da mensagem, como o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;, por exemplo, possibilita:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que o Gmail também não reconhece a assinatura, muito provavelmente pelo menos motivo: não conhece o certificado da ICP-Brasil. Infelizmente, a solução definitiva para isso demandaria ao &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt; instalar esse certificado em seus servidores.&lt;/p&gt;
+
+&lt;p&gt;Ainda assim, o Gmail te possibilita, clicando em &lt;strong&gt;Informações do remetente&lt;/strong&gt;, baixar o certificado do remetente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você pode verificar o certificado você mesmo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wwws.prodemge.gov.br/component/phocadownload/category/23-assinatura-digital-e-mail?download=63:manual-de-assinatura-digital-thunderbird&quot;&gt;Manual de assinatura de e-mail utilizando o Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com o cliente de e-mail Mozilla Thunderbird.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-token.png" /></entry><entry xml:lang="pt"><title type="html">Impressoras HP no openSUSE</title><link href="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/" rel="alternate" type="text/html" title="Impressoras HP no openSUSE" /><published>2018-09-19T16:00:00-03:00</published><updated>2018-09-19T19:14:58-03:00</updated><id>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -194,7 +470,7 @@
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">As impressoras da marca HP são bastante comuns no Brasil. Nesse post, mostro como adicionei uma HP DeskJet Ink Advantage 3836 ao openSUSE para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Sincronizando o Gmail no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/" rel="alternate" type="text/html" title="Sincronizando o Gmail no Thunderbird" /><published>2018-09-12T15:55:00-03:00</published><updated>2018-09-12T18:57:37-03:00</updated><id>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">As impressoras da marca HP são bastante comuns no Brasil. Nesse post, mostro como adicionei uma HP DeskJet Ink Advantage 3836 ao openSUSE para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Sincronizando o Gmail no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/" rel="alternate" type="text/html" title="Sincronizando o Gmail no Thunderbird" /><published>2018-09-12T15:55:00-03:00</published><updated>2018-09-24T16:50:02-03:00</updated><id>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
 &lt;/a&gt;
@@ -206,6 +482,17 @@
 &lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.&lt;/p&gt;
 
 &lt;p&gt;Bem verdade que as pessoas tem preferido utilizar navegadores em vez de clientes de &lt;em&gt;e-mail&lt;/em&gt; para ler e enviar mensagens, por ser mais prático. No entanto, os clientes de &lt;em&gt;e-mail&lt;/em&gt; nos fornecem algumas possibilidades interessantes, como veremos nos próximos &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;instalando-o-thunderbird&quot;&gt;Instalando o Thunderbird&lt;/h2&gt;
 
@@ -319,7 +606,7 @@
 
 &lt;h2 id=&quot;alguns-ajustes&quot;&gt;Alguns ajustes&lt;/h2&gt;
 
-&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
@@ -341,7 +628,7 @@
 
 &lt;p&gt;Um problema que eu percebi usando o Thunderbird: ele não adiciona a assinatura aos e-mails encaminhados. Vejamos como corrigir.&lt;/p&gt;
 
-&lt;p&gt;Clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
@@ -687,7 +974,7 @@ library=/usr/lib64/libeToken.so
   &lt;li&gt;&lt;a href=&quot;https://oglobo.globo.com/economia/ir-certificados-digitais-ajudam-economizar-tempo-evitar-erros-18939459&quot;&gt;IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://idg.receita.fazenda.gov.br/programas-para-download/receitanet/ajuda-do-receitanet/configuracao-para-uso-de-tokens-e-smartcards-no-linux&quot;&gt;Configuração para uso de Tokens e SmartCards no Linux —  Receita Federal&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://serasa.certificadodigital.com.br/ajuda/imposto-de-renda/&quot;&gt;Declaração do Imposto de Renda com Certificado Digital&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Quem possui certificado digital pode ter benefícios na hora de preencher a declaração do Imposto de Renda Pessoa Física 2018 (IRPF 2018). Embora seja opcional para a maioria dos contribuintes, em alguns casos a transmissão com certificado digital é obrigatória. Confira aqui quais são esses casos e como realizar a transmissão da declaração com certificado digital. Declaração pré-preenchida Para quem possui certificado digital, a Receita Federal disponibiliza a declaração pré-preenchida, que já vem com alguns dados preenchidos, como rendimentos, deduções, bens e dívidas. A declaração pré-preenchida ajuda a economizar tempo e evitar erros, o que reduz o risco de cair na malha fina. Para que esses dados venham preenchidos automaticamente na declaração, é necessário que antes as pessoas jurídicas responsáveis (fontes pagadoras, imobiliárias e médicos, por exemplo) já tenham enviado suas declarações, cujos prazos são anteriores ao prazo da pessoa física. A declaração pré-preenchida está disponível para download no sistema eCAC. Após baixá-la, o contribuinte pode importá-la no programa do IRPF 2018 e continuar a preencher a declaração tomando como ponto de partida os dados pré-preenchidos. Para mais informações sobre como importar a declaração pré-preenchida, consulte o site da Receita Federal. Obrigatoriedade do uso do certificado Em resumo, é obrigatório transmitir a declaração com certificado digital quando na declaração os rendimentos e/ou pagamentos passam de R$ 10 milhões. Mais informações, obtidas nesta página da Receita Federal: Deve transmitir a Declaração de Ajuste Anual, com a utilização de certificado digital, o contribuinte que se enquadrou, no ano-calendário de 2017, em pelo menos uma das seguintes situações: I - recebeu rendimentos: a) tributáveis sujeitos ao ajuste anual, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); b) isentos e não tributáveis, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); c) tributados exclusivamente na fonte, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); ou II - realizou pagamentos de rendimentos a pessoas jurídicas, quando constituam dedução na declaração, ou a pessoas físicas, quando constituam, ou não, dedução na declaração, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais), em cada caso ou no total. Para ainda mais informações, consulte a referida página. Pré-requisitos O programa do IRPF 2018 requer que a máquina virtual do Java da Oracle versão 7 ou superior esteja instalada no computador. Você pode acessar a página de teste do Java para ver se o Java está instalado no seu computador, qual versão está instalada e se há necessidade de atualizar. No momento da escrita, a versão mais atual do Java é a 8 Update 161, lançada em 16 de janeiro de 2018. Caso precise, dediquei um post a explicar como instalar o Java. Também já expliquei aqui como instalar o programa do Imposto de Renda. O post trata do IRPF 2017, mas a instalação do IRPF 2018 é bastante semelhante. Você pode obter o programa do IRPF 2018 do site da Receita Federal. A mídia do certificado digital (cartão inteligente, token ou arquivo) deve estar funcionando. Um bom teste é acessar o sistema eCAC, da Receita Federal. Como configurar o certificado digital e acessar o eCAC foi o assunto do post anterior. Por fim, observo que utilizo a distribuição openSUSE Leap 15.0 Beta. Sem mais delongas, vamos meter a mão na massa! Configurando o Receitanet Para que o programa do IRPF 2018 reconheça a mídia do certificado digital, é necessário criar um arquivo de configuração na pasta do Receitanet. Abra o aplicativo Editor de texto e copie e cole o seguinte conteúdo: 1 2 name=eToken library=/usr/lib64/libeToken.so Explicando essas duas variáveis: name: um identificador (não pode ter espaços) para a mídia do certificado; e library: caminho para a biblioteca (extensão .so) que implementa o padrão PKCS#11 para a mídia do certificado. Salve esse arquivo com o nome de receitanet.cfg na pasta ~/.receitanet: Entregando a declaração Abra o programa do IRPF 2018 e inicie o procedimento para transmitir a declaração. Para isso, vá no menu Declaração e clique em Entregar Declaração: Selecione a sua declaração, marque a opção Transmitir com certificação digital e clique em OK: Revise a forma de pagamento ou restituição do imposto: O programa verifica o certificado digital armazenado na mídia. Informe a senha PIN: Selecione seu certificado na lista e clique em Assinar: Nesse momento, para mim, a luz do token acendeu (que nem tem pendrives que acendem uma luz quando estão sendo utilizados) e o programa fechou, sem dar qualquer aviso. No entanto, ao iniciar novamente o programa do IRPF 2018, percebi que havia recibo de entrega. Concluí que, embora o programa tivesse travado, a declaração havia sido transmitida. Para salvar o recibo de entrega da declaração como PDF, vá no menu Imprimir e clique em Recibo: Selecione a sua declaração (observe o ícone Transmitida no início da linha), selecione a opção Visualizar e clique em OK: Observe a informação ao final da primeira página: Esta declaração foi assinada com o certificado digital do NI 123.456.789-01 Para salvar o recibo como PDF, clique no ícone de Salvar no canto superior esquerdo da janela. Restituição antecipada Há quem diga que transmitir a declaração com certificado digital antecipa a restituição, mas eu não consegui confirmar essa informação em uma página oficial da Receita Federal. Fica a dúvida no ar se é verdade ou não… Referências IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo Configuração para uso de Tokens e SmartCards no Linux — Receita Federal Declaração do Imposto de Renda com Certificado Digital</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/02/irpf-2017.jpg" /></entry><entry xml:lang="pt"><title type="html">Configurando certificado digital no Linux openSUSE</title><link href="https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/" rel="alternate" type="text/html" title="Configurando certificado digital no Linux openSUSE" /><published>2018-04-16T00:30:00-03:00</published><updated>2018-09-10T22:51:58-03:00</updated><id>https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">&lt;p&gt;Um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Certificado_digital&quot;&gt;certificado digital&lt;/a&gt; permite &lt;strong&gt;identificar&lt;/strong&gt; e &lt;strong&gt;autenticar&lt;/strong&gt; pessoas físicas, empresas ou computadores em &lt;em&gt;sites&lt;/em&gt; e sistemas. Ele garante princípios da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o&quot;&gt;segurança da informação&lt;/a&gt; às operações realizadas por meio dele, como &lt;strong&gt;autenticidade&lt;/strong&gt; e &lt;strong&gt;não repúdio&lt;/strong&gt;, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Quem possui certificado digital pode ter benefícios na hora de preencher a declaração do Imposto de Renda Pessoa Física 2018 (IRPF 2018). Embora seja opcional para a maioria dos contribuintes, em alguns casos a transmissão com certificado digital é obrigatória. Confira aqui quais são esses casos e como realizar a transmissão da declaração com certificado digital. Declaração pré-preenchida Para quem possui certificado digital, a Receita Federal disponibiliza a declaração pré-preenchida, que já vem com alguns dados preenchidos, como rendimentos, deduções, bens e dívidas. A declaração pré-preenchida ajuda a economizar tempo e evitar erros, o que reduz o risco de cair na malha fina. Para que esses dados venham preenchidos automaticamente na declaração, é necessário que antes as pessoas jurídicas responsáveis (fontes pagadoras, imobiliárias e médicos, por exemplo) já tenham enviado suas declarações, cujos prazos são anteriores ao prazo da pessoa física. A declaração pré-preenchida está disponível para download no sistema eCAC. Após baixá-la, o contribuinte pode importá-la no programa do IRPF 2018 e continuar a preencher a declaração tomando como ponto de partida os dados pré-preenchidos. Para mais informações sobre como importar a declaração pré-preenchida, consulte o site da Receita Federal. Obrigatoriedade do uso do certificado Em resumo, é obrigatório transmitir a declaração com certificado digital quando na declaração os rendimentos e/ou pagamentos passam de R$ 10 milhões. Mais informações, obtidas nesta página da Receita Federal: Deve transmitir a Declaração de Ajuste Anual, com a utilização de certificado digital, o contribuinte que se enquadrou, no ano-calendário de 2017, em pelo menos uma das seguintes situações: I - recebeu rendimentos: a) tributáveis sujeitos ao ajuste anual, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); b) isentos e não tributáveis, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); c) tributados exclusivamente na fonte, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); ou II - realizou pagamentos de rendimentos a pessoas jurídicas, quando constituam dedução na declaração, ou a pessoas físicas, quando constituam, ou não, dedução na declaração, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais), em cada caso ou no total. Para ainda mais informações, consulte a referida página. Pré-requisitos O programa do IRPF 2018 requer que a máquina virtual do Java da Oracle versão 7 ou superior esteja instalada no computador. Você pode acessar a página de teste do Java para ver se o Java está instalado no seu computador, qual versão está instalada e se há necessidade de atualizar. No momento da escrita, a versão mais atual do Java é a 8 Update 161, lançada em 16 de janeiro de 2018. Caso precise, dediquei um post a explicar como instalar o Java. Também já expliquei aqui como instalar o programa do Imposto de Renda. O post trata do IRPF 2017, mas a instalação do IRPF 2018 é bastante semelhante. Você pode obter o programa do IRPF 2018 do site da Receita Federal. A mídia do certificado digital (cartão inteligente, token ou arquivo) deve estar funcionando. Um bom teste é acessar o sistema eCAC, da Receita Federal. Como configurar o certificado digital e acessar o eCAC foi o assunto do post anterior. Por fim, observo que utilizo a distribuição openSUSE Leap 15.0 Beta. Sem mais delongas, vamos meter a mão na massa! Configurando o Receitanet Para que o programa do IRPF 2018 reconheça a mídia do certificado digital, é necessário criar um arquivo de configuração na pasta do Receitanet. Abra o aplicativo Editor de texto e copie e cole o seguinte conteúdo: 1 2 name=eToken library=/usr/lib64/libeToken.so Explicando essas duas variáveis: name: um identificador (não pode ter espaços) para a mídia do certificado; e library: caminho para a biblioteca (extensão .so) que implementa o padrão PKCS#11 para a mídia do certificado. Salve esse arquivo com o nome de receitanet.cfg na pasta ~/.receitanet: Entregando a declaração Abra o programa do IRPF 2018 e inicie o procedimento para transmitir a declaração. Para isso, vá no menu Declaração e clique em Entregar Declaração: Selecione a sua declaração, marque a opção Transmitir com certificação digital e clique em OK: Revise a forma de pagamento ou restituição do imposto: O programa verifica o certificado digital armazenado na mídia. Informe a senha PIN: Selecione seu certificado na lista e clique em Assinar: Nesse momento, para mim, a luz do token acendeu (que nem tem pendrives que acendem uma luz quando estão sendo utilizados) e o programa fechou, sem dar qualquer aviso. No entanto, ao iniciar novamente o programa do IRPF 2018, percebi que havia recibo de entrega. Concluí que, embora o programa tivesse travado, a declaração havia sido transmitida. Para salvar o recibo de entrega da declaração como PDF, vá no menu Imprimir e clique em Recibo: Selecione a sua declaração (observe o ícone Transmitida no início da linha), selecione a opção Visualizar e clique em OK: Observe a informação ao final da primeira página: Esta declaração foi assinada com o certificado digital do NI 123.456.789-01 Para salvar o recibo como PDF, clique no ícone de Salvar no canto superior esquerdo da janela. Restituição antecipada Há quem diga que transmitir a declaração com certificado digital antecipa a restituição, mas eu não consegui confirmar essa informação em uma página oficial da Receita Federal. Fica a dúvida no ar se é verdade ou não… Referências IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo Configuração para uso de Tokens e SmartCards no Linux — Receita Federal Declaração do Imposto de Renda com Certificado Digital</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/02/irpf-2017.jpg" /></entry><entry xml:lang="pt"><title type="html">Configurando certificado digital no Linux openSUSE</title><link href="https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/" rel="alternate" type="text/html" title="Configurando certificado digital no Linux openSUSE" /><published>2018-04-16T00:30:00-03:00</published><updated>2018-09-24T16:50:02-03:00</updated><id>https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">&lt;p&gt;Um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Certificado_digital&quot;&gt;certificado digital&lt;/a&gt; permite &lt;strong&gt;identificar&lt;/strong&gt; e &lt;strong&gt;autenticar&lt;/strong&gt; pessoas físicas, empresas ou computadores em &lt;em&gt;sites&lt;/em&gt; e sistemas. Ele garante princípios da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o&quot;&gt;segurança da informação&lt;/a&gt; às operações realizadas por meio dele, como &lt;strong&gt;autenticidade&lt;/strong&gt; e &lt;strong&gt;não repúdio&lt;/strong&gt;, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.&lt;/p&gt;
 
 &lt;p&gt;Existem basicamente 2 tipos de certificado digital:&lt;/p&gt;
 
@@ -1040,7 +1327,9 @@ logout and login to apply changes
 
 &lt;/div&gt;
 
-&lt;p&gt;Em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Na caixa de diálogo que aparece, &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Em &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
 
@@ -1121,6 +1410,17 @@ logout and login to apply changes
 &lt;p&gt;Pronto! Agora você está no ambiente seguro da Receita Federal e sabe que configurou corretamente seu certificado digital no Linux openSUSE!&lt;/p&gt;
 
 &lt;p&gt;Divirta-se bastante… (&lt;em&gt;have a lot of fun…&lt;/em&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Veja outro uso interessante para o seu certificado digital:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
 
@@ -2110,134 +2410,4 @@ kamarada@desktop:~&amp;gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/CitrixICAClientHowTo&quot;&gt;CitrixICAClientHowTo - Community Help Wiki&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/citrix&quot;&gt;Citrix - ArchWiki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que permitem virtualizar servidores, aplicativos e ambientes de trabalho, respectivamente. Uma possibilidade interessante é, de um lado, a empresa instalar em um servidor o XenApp ou o XenDesktop, para disponibilizar aplicativos, e de outro lado, o funcionário instalar em seu computador o Citrix Receiver, que é o software cliente dessas soluções. Com isso, o funcionário pode executar em seu computador um aplicativo da empresa como se estivesse dentro da empresa, ainda que na verdade esteja, por exemplo, em casa. Isso porque, embora a tela do aplicativo apareça em seu computador, o processamento ocorre na verdade no servidor. A empresa pode permitir que o funcionário leve seu próprio dispositivo (bring your own device, BYOD) e/ou trabalhe em casa, flexibilizando a carga horária e reduzindo custos. Se você trabalha em um lugar que utiliza o Citrix Receiver, verá neste post como instalá-lo no openSUSE Leap.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/02/citrix-receiver.jpg" /></entry><entry xml:lang="en"><title type="html">Use Evolution to connect to Office 365 on Linux</title><link href="https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/" rel="alternate" type="text/html" title="Use Evolution to connect to Office 365 on Linux" /><published>2017-09-06T20:45:00-03:00</published><updated>2017-09-07T09:23:43-03:00</updated><id>https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/">&lt;p&gt;If you work at a company whose email is locally hosted on a &lt;a href=&quot;https://products.office.com/en-us/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; server or cloud hosted on &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, you can use traditional &lt;a href=&quot;https://en.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the &lt;a href=&quot;https://www.microsoft.com/en-us&quot;&gt;Microsoft&lt;/a&gt;’s proprietary &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; protocol.&lt;/p&gt;
-
-&lt;p&gt;The good news is that in an Exchange company &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users don’t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; to Exchange or Office 365 using &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;GNOME Online Accounts&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Evolution&lt;/strong&gt; is one of the most powerful &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Collaborative_software&quot;&gt;groupware&lt;/a&gt; clients out there. It is the default groupware client of the &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; desktop environment and can be considered the Linux counterpart to &lt;a href=&quot;https://products.office.com/en-us/outlook&quot;&gt;Outlook&lt;/a&gt; for &lt;a href=&quot;https://www.microsoft.com/en-us/windows&quot;&gt;Windows&lt;/a&gt;. GNOME users setup their online accounts (such as Office 365) using the &lt;strong&gt;Settings&lt;/strong&gt; app and then can access them using GNOME integrated apps (like Evolution).&lt;/p&gt;
-
-&lt;p&gt;To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (it should have been installed by default if you use &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; with GNOME) and &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-online-accounts evolution-ews
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To add your Exchange account, open the &lt;strong&gt;Settings&lt;/strong&gt; app and click on &lt;strong&gt;Online Accounts&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Online accounts are listed on the left. Click the &lt;strong&gt;add button&lt;/strong&gt; below:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-2-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Add Account&lt;/strong&gt; dialog box, choose &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-3-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-3-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Expand the &lt;strong&gt;Custom&lt;/strong&gt; section so all fields are shown. Fill them with your account information:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; your e-mail address (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;your.name@example.com&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Password:&lt;/strong&gt; your e-mail account password&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Username:&lt;/strong&gt; your e-mail address once more&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company’s network administrator.&lt;/p&gt;
-
-&lt;p&gt;When you are ready, click on &lt;strong&gt;Connect&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-4-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-4-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-5-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-5-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now you can close the &lt;strong&gt;Online Accounts&lt;/strong&gt; dialog box and open the &lt;strong&gt;Evolution&lt;/strong&gt; app. Note that now it shows:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-6-en.jpg&quot; title=&quot;Your mail&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-6-en.jpg&quot; alt=&quot;Your mail&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your mail&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-7-en.jpg&quot; title=&quot;Your contacts&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-7-en.jpg&quot; alt=&quot;Your contacts&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your contacts&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-8-en.jpg&quot; title=&quot;Your calendar&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-8-en.jpg&quot; alt=&quot;Your calendar&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your calendar&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enjoy!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Use Evolution to Connect to Microsoft Exchange on Linux&lt;/td&gt;
-          &lt;td&gt;Linux.com&lt;/td&gt;
-          &lt;td&gt;The source for Linux information]&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;linux.com&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">If you work at a company whose email is locally hosted on a Microsoft Exchange server or cloud hosted on Office 365, you can use traditional POP, IMAP and SMTP email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the Microsoft’s proprietary Exchange ActiveSync protocol. The good news is that in an Exchange company Linux users don’t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect Evolution to Exchange or Office 365 using GNOME Online Accounts. Evolution is one of the most powerful open source groupware clients out there. It is the default groupware client of the GNOME desktop environment and can be considered the Linux counterpart to Outlook for Windows. GNOME users setup their online accounts (such as Office 365) using the Settings app and then can access them using GNOME integrated apps (like Evolution). To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages gnome-online-accounts (it should have been installed by default if you use openSUSE with GNOME) and evolution-ews: 1 # zypper in gnome-online-accounts evolution-ews To add your Exchange account, open the Settings app and click on Online Accounts: Online accounts are listed on the left. Click the add button below: On the Add Account dialog box, choose Microsoft Exchange: Expand the Custom section so all fields are shown. Fill them with your account information: E-mail: your e-mail address (e.g. your.name@example.com) Password: your e-mail account password Username: your e-mail address once more Server: outlook.office365.com Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company’s network administrator. When you are ready, click on Connect: Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled): Now you can close the Online Accounts dialog box and open the Evolution app. Note that now it shows: Your mail Your contacts Your calendar Enjoy! References [Use Evolution to Connect to Microsoft Exchange on Linux Linux.com The source for Linux information]linux.com Office 365 (Evolution) - Configure Evolution</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/09/evolution.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">A Citrix é uma empresa de software focada em soluções de virtualização e nuvem. Seus produtos mais conhecidos são o XenServer, o XenApp e o XenDesktop, que permitem virtualizar servidores, aplicativos e ambientes de trabalho, respectivamente. Uma possibilidade interessante é, de um lado, a empresa instalar em um servidor o XenApp ou o XenDesktop, para disponibilizar aplicativos, e de outro lado, o funcionário instalar em seu computador o Citrix Receiver, que é o software cliente dessas soluções. Com isso, o funcionário pode executar em seu computador um aplicativo da empresa como se estivesse dentro da empresa, ainda que na verdade esteja, por exemplo, em casa. Isso porque, embora a tela do aplicativo apareça em seu computador, o processamento ocorre na verdade no servidor. A empresa pode permitir que o funcionário leve seu próprio dispositivo (bring your own device, BYOD) e/ou trabalhe em casa, flexibilizando a carga horária e reduzindo custos. Se você trabalha em um lugar que utiliza o Citrix Receiver, verá neste post como instalá-lo no openSUSE Leap.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/02/citrix-receiver.jpg" /></entry></feed>

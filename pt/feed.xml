@@ -9,10 +9,300 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 19 Sep 2018 19:24:18 -0300</pubDate>
-        <lastBuildDate>Wed, 19 Sep 2018 19:24:18 -0300</lastBuildDate>
+        <pubDate>Mon, 24 Sep 2018 16:50:13 -0300</pubDate>
+        <lastBuildDate>Mon, 24 Sep 2018 16:50:13 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Assinando e-mails enviados com certificado digital no Thunderbird</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Embora hoje o &lt;em&gt;webmail&lt;/em&gt; seja mais popular que o cliente de &lt;em&gt;e-mail&lt;/em&gt;, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com o cliente de &lt;em&gt;e-mail&lt;/em&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais e também sobre o Thunderbird:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/&quot;&gt;Sincronizando o Gmail no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configurando-a-assinatura-digital-no-thunderbird&quot;&gt;Configurando a assinatura digital no Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;Para poder utilizar o &lt;em&gt;token&lt;/em&gt; no Thunderbird, vamos cadastrá-lo como um dispositivo de segurança.&lt;/p&gt;
+
+&lt;p&gt;Para isso, com o Thunderbird aberto, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, e depois clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e, por fim, no botão &lt;strong&gt;Dispositivos de segurança&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você configurou o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; para usar o &lt;em&gt;token&lt;/em&gt;, como instruímos em &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;, já deve ter percebido que o procedimento é semelhante.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;No campo &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Observe que o &lt;em&gt;token&lt;/em&gt; é adicionado à lista de &lt;strong&gt;Dispositivos e módulos de segurança&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à tela principal do Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Segurança&lt;/strong&gt; e à direita, dentro de &lt;strong&gt;Assinatura digital&lt;/strong&gt;, clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione o &lt;strong&gt;Certificado&lt;/strong&gt; a ser usado para assinatura e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como o objetivo é configurar a criptografia apenas para o envio, e não para a resposta, clique em &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-09.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-09.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Configurar contas&lt;/strong&gt;, caso deseje sempre assinar digitalmente os &lt;em&gt;e-mails&lt;/em&gt; que envia, marque a opção &lt;strong&gt;Assinar mensagens digitalmente (por padrão)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt; para voltar à tela principal do Thunderbird.&lt;/p&gt;
+
+&lt;p&gt;A assinatura digital está configurada e pronta para ser utilizada.&lt;/p&gt;
+
+&lt;h2 id=&quot;enviando-e-mails-com-assinatura-digital&quot;&gt;Enviando e-mails com assinatura digital&lt;/h2&gt;
+
+&lt;p&gt;Na tela principal do Thunderbird, clique no botão &lt;strong&gt;Nova msg&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Redija a mensagem normalmente.&lt;/p&gt;
+
+&lt;p&gt;Antes de enviar, certifique-se de que a opção &lt;strong&gt;Assinar digitalmente&lt;/strong&gt;, dentro do menu &lt;strong&gt;Segurança&lt;/strong&gt;, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Enviar agora&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Thunderbird solicita o PIN do &lt;em&gt;token&lt;/em&gt; para assinar a mensagem no momento do envio:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;verificando-a-assinatura-digital-de-e-mails-recebidos&quot;&gt;Verificando a assinatura digital de e-mails recebidos&lt;/h2&gt;
+
+&lt;p&gt;Se o destinatário utiliza o cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird, ele pode verificar a assinatura digital da mensagem:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que a princípio o Thunderbird não reconhece a assinatura, exibindo &lt;strong&gt;A assinatura digital não é válida&lt;/strong&gt;. Isso pode acontecer porque ele não conhece o certificado da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;Autoridade Certificadora Raiz brasileira&lt;/a&gt;. Por tabela, ele não confia no certificado do remetente, que foi emitido por essa autoridade certificadora.&lt;/p&gt;
+
+&lt;p&gt;Já tratamos de situação parecida que ocorre no navegador Firefox em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; e a solução no caso do cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird é semelhante.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
+
+&lt;p&gt;Depois, volte ao Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt; e depois no item &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e por fim no botão &lt;strong&gt;Gerenciar certificados&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de certificados&lt;/strong&gt;, clique no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe o caminho para o certificado que você baixou.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Verifique que a &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; aparece na lista de autoridades certificadoras:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-16.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-16.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Agora, se você voltar ao &lt;em&gt;e-mail&lt;/em&gt;, perceberá que a assinatura é reconhecida:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se o destinatário utiliza o &lt;em&gt;webmail&lt;/em&gt;, pode ser que o &lt;em&gt;webmail&lt;/em&gt; possibilite verificar a assinatura da mensagem, como o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;, por exemplo, possibilita:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que o Gmail também não reconhece a assinatura, muito provavelmente pelo menos motivo: não conhece o certificado da ICP-Brasil. Infelizmente, a solução definitiva para isso demandaria ao &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt; instalar esse certificado em seus servidores.&lt;/p&gt;
+
+&lt;p&gt;Ainda assim, o Gmail te possibilita, clicando em &lt;strong&gt;Informações do remetente&lt;/strong&gt;, baixar o certificado do remetente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você pode verificar o certificado você mesmo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wwws.prodemge.gov.br/component/phocadownload/category/23-assinatura-digital-e-mail?download=63:manual-de-assinatura-digital-thunderbird&quot;&gt;Manual de assinatura de e-mail utilizando o Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Mon, 24 Sep 2018 13:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Impressoras HP no openSUSE</title>
@@ -238,6 +528,17 @@
 
 &lt;p&gt;Bem verdade que as pessoas tem preferido utilizar navegadores em vez de clientes de &lt;em&gt;e-mail&lt;/em&gt; para ler e enviar mensagens, por ser mais prático. No entanto, os clientes de &lt;em&gt;e-mail&lt;/em&gt; nos fornecem algumas possibilidades interessantes, como veremos nos próximos &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
 
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
 &lt;h2 id=&quot;instalando-o-thunderbird&quot;&gt;Instalando o Thunderbird&lt;/h2&gt;
 
 &lt;p&gt;No openSUSE, o Thunderbird é distribuído pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaThunderbird&quot;&gt;MozillaThunderbird&lt;/a&gt;.&lt;/p&gt;
@@ -350,7 +651,7 @@
 
 &lt;h2 id=&quot;alguns-ajustes&quot;&gt;Alguns ajustes&lt;/h2&gt;
 
-&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
@@ -372,7 +673,7 @@
 
 &lt;p&gt;Um problema que eu percebi usando o Thunderbird: ele não adiciona a assinatura aos e-mails encaminhados. Vejamos como corrigir.&lt;/p&gt;
 
-&lt;p&gt;Clique no botão de &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Opções&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
@@ -1040,7 +1341,9 @@ logout and login to apply changes
 
 &lt;/div&gt;
 
-&lt;p&gt;Em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Na caixa de diálogo que aparece, &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;Em &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
 
@@ -1121,6 +1424,17 @@ logout and login to apply changes
 &lt;p&gt;Pronto! Agora você está no ambiente seguro da Receita Federal e sabe que configurou corretamente seu certificado digital no Linux openSUSE!&lt;/p&gt;
 
 &lt;p&gt;Divirta-se bastante… (&lt;em&gt;have a lot of fun…&lt;/em&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Veja outro uso interessante para o seu certificado digital:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
 
@@ -1765,6 +2079,13 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
 
 &lt;p&gt;Vejamos como instalar o certificado de segurança da Autoridade Certificadora Raiz brasileira nos navegadores &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; e &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; para que eles parem de exibir esse alerta para &lt;em&gt;sites&lt;/em&gt; brasileiros, principalmente os do governo. Os passos para o Google Chrome também valem para seu equivalente &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;aberto&lt;/a&gt;, o &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;.&lt;/p&gt;
 
+&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Caso precise instalar esse certificado no cliente de &lt;em&gt;e-mail&lt;/em&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt;, leia &lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;esse &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+
 &lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv2.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
 
 &lt;h3 id=&quot;mozilla-firefox&quot;&gt;Mozilla Firefox&lt;/h3&gt;
@@ -1857,157 +2178,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Tue, 29 Aug 2017 19:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Atualização de distribuição Linux continua empoderando a comunidade, e as empresas se beneficiam</title>
-                <description>&lt;p&gt;&lt;em&gt;Essa é uma tradução não oficial da notícia originalmente publicada em 26 de julho por &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; no site &lt;a href=&quot;https://news.opensuse.org/2017/07/26/refresh-of-linux-distribution-continues-leveraging-community-enterprise-benefits/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2015/11/Leap-green.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2015/11/Leap-green.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 150px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;opensuse-leap-423-provê-atualização-suave-para-desktops-e-servidores&quot;&gt;openSUSE Leap 42.3 provê atualização suave para &lt;em&gt;desktops&lt;/em&gt; e servidores&lt;/h2&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Projeto openSUSE&lt;/a&gt; lançou hoje o &lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;openSUSE Leap 42.3&lt;/a&gt; trazendo a distribuição Linux comunitária ainda mais alinhada com sua base compartilhada do &lt;a href=&quot;https://www.suse.com/pt-br/products/server/&quot;&gt;SUSE Linux Enterprise&lt;/a&gt; (SLE) 12 Service Pack 3.&lt;/p&gt;
-
-&lt;p&gt;Os pacotes compartilhados entre as distribuições Leap e SLE dão aos usuários, administradores de sistemas e desenvolvedores Linux experientes ainda mais motivos para usar a mais nova distribuição do camaleão.&lt;/p&gt;
-
-&lt;p&gt;Aconselha-se aos usuários realizar a atualização para a Leap 42.3, que deve ocorrer sem problemas. A versão 42.2 terá sua manutenção encerrada em 6 meses.&lt;/p&gt;
-
-&lt;p&gt;“Evitando grandes atualizações de versões na base do sistema assim como nos ambientes de trabalho, a atualização para a Leap 42.3 não é uma aventura”, disse Ludwig Nussel, gerente de lançamentos do openSUSE Leap.&lt;/p&gt;
-
-&lt;p&gt;A versão 42.3 da distribuição Leap provê aos adotantes um sistema operacional para servidores confiável para implantar serviços de TI em ambientes físicos, virtuais ou na nuvem.&lt;/p&gt;
-
-&lt;p&gt;A terceira edição da série 42 da Leap tem mais de 10.000 pacotes e oferece aos usuários que se preocupam com estabilidade uma versão que atualiza e habilita &lt;em&gt;hardware&lt;/em&gt;. Essa versão se baseia no mesmo &lt;em&gt;kernel&lt;/em&gt; Linux 4.4 com suporte estendido (em inglês, LTS - &lt;em&gt;Long Term Support&lt;/em&gt;) encontrado na edição anterior da Leap.&lt;/p&gt;
-
-&lt;p&gt;Leap 42.3 continua a usar a versão com suporte estendido do KDE 5.8 como ambiente de trabalho padrão, enquanto oferece também o GNOME 3.20, o mesmo usado pelo SUSE Linux Enterprise. Uma variedade de ambientes de trabalho adicionais é disponibilizada pelo instalador por meio da tela de seleção de ambiente de trabalho, que foi redesenhada.&lt;/p&gt;
-
-&lt;p&gt;“Leap 42.3 é o resultado de muitos anos de esforço integrando a base de código empresarial da SUSE com o trabalho de alta qualidade excepcional da comunidade openSUSE”, disse Richard Brown, gerente do Projeto openSUSE. “Eu estou excepcionalmente orgulhoso do que o Projeto openSUSE alcançou com a Leap 42.3 e espero que nossos usuários apreciem essa abordagem estável, porém inovadora, para o Linux comunitário, em que se pode realmente confiar para trabalhar.”&lt;/p&gt;
-
-&lt;p&gt;Essa versão do openSUSE Leap é bem apropriada para servidores graças ao seu perfil de instalação em servidor e seu instalador em modo texto cheio de recursos, que inclui todas as opções do YaST sem um ambiente gráfico.&lt;/p&gt;
-
-&lt;p&gt;Administradores de sistema vão adorar a solução de &lt;em&gt;backup&lt;/em&gt; Borg, que agora pode ser usada com mais facilidade do que nunca graças ao Borgmatic, &lt;em&gt;script&lt;/em&gt; que encapsula o Borg e automaticamente faz &lt;em&gt;backup&lt;/em&gt; dos seus dados com um serviço do systemd. Administradores de sistema também vão gostar da integração do System Security Services Daemon do Samba com o Active Directory.&lt;/p&gt;
-
-&lt;p&gt;Leap, e o Projeto openSUSE, provêm o conjunto de ferramentas DevOps que os desenvolvedores precisam para serem bem sucedidos. Microsserviços com Leap oferecem escalabilidade e entrega contínua por meio da disponibilidade do Docker e Kubernetes assim como fácil configuração com Salt, Ansible e outras tecnologias do openSUSE. A nova integração do AutoYaST com SaltStack e outros sistemas de gerenciamento de configuração pode cuidar da instalação do sistema (particionamento, configuração da rede, etc.) e então delegar a configuração do sistema para uma dessas populares ferramentas externas.&lt;/p&gt;
-
-&lt;p&gt;Desenvolvedores e empresas podem se beneficiar do extensivo conjunto de bibliotecas básicas encontradas na Leap 42.3 para criar ou melhorar &lt;em&gt;softwares&lt;/em&gt; para uso empresarial. Uma vez que Leap e SLE compartilham uma base comum, o desenvolvimento com pacotes na Leap para uso em produção no SLE nunca foi tão fácil. Além disso, integradores de sistemas podem desenvolver na Leap com a possibilidade de ter seu trabalho em futuras versões do SLE.&lt;/p&gt;
-
-&lt;p&gt;Leap provê as ferramentas, linguagens e bibliotecas para o desenvolvimento de &lt;em&gt;software&lt;/em&gt; e engenharia sustentáveis: versões prontas para uso empresarial (&lt;em&gt;enterprise-ready&lt;/em&gt;) do Python, Ruby, Perl, Go, Rust, Haskell e PHP estão todas disponíveis na Leap.&lt;/p&gt;
-
-&lt;p&gt;Atualizações para o &lt;em&gt;kernel&lt;/em&gt; e a pilha gráfica (&lt;em&gt;graphics stack&lt;/em&gt;) habilitam mais &lt;em&gt;hardware&lt;/em&gt; e provêm melhorias na estabilidade e desempenho.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-opensuse-leap-423-é&quot;&gt;O openSUSE Leap 42.3 é…&lt;/h2&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/status/meeting-participant.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/status/meeting-participant.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;ainda-mais-empresarial&quot;&gt;Ainda mais empresarial&lt;/h3&gt;
-
-&lt;p&gt;Depois de basear o openSUSE Leap no SLE (SUSE Linux Enterprise) e adicionar mais código fonte do SLE 12 à Leap 42.2, a Leap 42.3 adiciona ainda mais pacotes do SLE 12 SP 3 e sincroniza vários pacotes comuns. A base de código compartilhada permite ao openSUSE Leap 42.3 receber melhor manutenção e correções de falhas (&lt;em&gt;bugs&lt;/em&gt;) tanto da comunidade openSUSE quanto dos engenheiros da SUSE.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/network-server.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/network-server.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;pronto-para-servidores&quot;&gt;Pronto para servidores&lt;/h3&gt;
-
-&lt;p&gt;O instalador do openSUSE Leap 42.3 oferece uma opção de instalação em servidor. Sem interface gráfica, um servidor com Leap está pronto para fazer o que você precisar. Algo simples como servir um &lt;em&gt;site&lt;/em&gt; ou &lt;em&gt;e-mail&lt;/em&gt; é mais fácil do que nunca, assim como projetos complexos usando tecnologias de virtualização ou contêiner (&lt;em&gt;container&lt;/em&gt;). Por exemplo, usuários procurando por um serviço parecido com o Exchange podem se beneficiar da versão mais recente da plataforma de colaboração Kopano, que inclui suporte para Thunderbird, Outlook e clientes de e-mail móveis.&lt;/p&gt;
-
-&lt;p&gt;Também é bom lembrar que a Leap e todas as outras distribuições do openSUSE e do SLE oferecem suporte a um completo instalador em modo texto, que oferece exatamente as mesmas funcionalidades que o instalador gráfico. O instalador também é capaz de realizar instalações remotamente usando VNC ou SSH, permitindo a você configurar seu servidor com openSUSE Leap sem precisar estar perto dele.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/start-here-branding.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/start-here-branding.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;para-jogos&quot;&gt;Para jogos&lt;/h3&gt;
-
-&lt;p&gt;Jogos no Linux estão cada vez mais populares. O openSUSE Leap 42.3 provê um sistema estável para rodar a popular plataforma Steam. Para rodar jogos ainda não disponíveis no Linux, Wine e PlayOnLinux também estão incluídos nessa versão.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/favorites.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/favorites.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;para-mentes-criativas-e-profissionais&quot;&gt;Para mentes criativas e profissionais&lt;/h3&gt;
-
-&lt;p&gt;Liberte a sua criatividade com aplicativos de desenho como o FreeCAD para impressão em 3D ou gPhoto para edição de imagens. Cientistas podem usar o Avogadro para química computacional, modelagem molecular, bioinformática e mais. Profissionais de saúde também podem escolher o GNU Health para cuidar do paciente confiando na segurança e manutenção fornecida com a Leap 42.3.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;baixe-a-leap&quot;&gt;Baixe a Leap!&lt;/h2&gt;
-
-&lt;p&gt;Veja você mesmo porque o openSUSE Leap é uma distribuição comunitária-empresarial que vale a pena adotar. &lt;em&gt;Downloads&lt;/em&gt; do openSUSE Leap 42.3 podem ser encontrados em &lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;software.opensuse.org&lt;/a&gt;. Recomendamos verificar as &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.3/RELEASE-NOTES.pt_BR.html&quot;&gt;Notas de Lançamento&lt;/a&gt; antes de atualizar ou instalar. Usuários que no momento utilizam o openSUSE Leap 42.2 podem &lt;a href=&quot;https://en.opensuse.org/Upgrade&quot;&gt;atualizar para o openSUSE Leap 42.3 via instruções neste &lt;em&gt;link&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;obrigado&quot;&gt;Obrigado!&lt;/h2&gt;
-
-&lt;p&gt;O openSUSE Leap 42.3 representa o esforço conjunto de milhares de desenvolvedores que participam das nossas distribuições e projetos de código aberto (&lt;em&gt;open source&lt;/em&gt;). “Obrigado” a todos os colaboradores, dentro e fora do Projeto openSUSE. Todo o seu trabalho duro e contribuições são apreciados pela comunidade do código aberto e usuários ao redor do mundo. Acreditamos que Leap é a distribuição Linux ideal para desenvolvedores, administradores de sistemas e usuários. Esperamos que você se divirta bastante usando a Leap, e aguardamos ansiosamente contar com você no lançamento da próxima versão ou no &lt;a href=&quot;https://pt.opensuse.org/Portal:Tumbleweed&quot;&gt;Tumbleweed&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;sobre-o-projeto-opensuse&quot;&gt;Sobre o Projeto openSUSE&lt;/h2&gt;
-
-&lt;p&gt;O Projeto openSUSE é uma comunidade ao redor do mundo que promove o uso do Linux em todos os lugares. Ele cria duas das melhores distribuições Linux do mundo: a Tumbleweed, atualizada continuamente (&lt;em&gt;rolling-release&lt;/em&gt;), e a Leap, distribuição híbrida de empresa e comunidade. O openSUSE trabalha continuamente de maneira conjunta, aberta, transparente e amigável como parte da comunidade internacional de &lt;em&gt;Software&lt;/em&gt; Livre e Aberto (&lt;em&gt;Free and Open Source Software&lt;/em&gt; - FOSS). O projeto é comandado por sua comunidade e depende das contribuições de pessoas, que trabalham como testadores, escritores, tradutores, especialistas em usabilidade, artistas, embaixadores ou desenvolvedores. O projeto abrange uma ampla variedade de tecnologias, pessoas com diferentes níveis de conhecimentos, que falam diferentes línguas e possuem diversas raízes culturais. Saiba mais sobre o Projeto openSUSE em &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;opensuse.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/07/leap-release-image-150x150.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/07/leap-release-image-150x150.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-</description>
-                <pubDate>Mon, 07 Aug 2017 09:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/</guid>
                 
                 
                     <category>pt</category>
