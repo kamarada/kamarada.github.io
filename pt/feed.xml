@@ -9,10 +9,767 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 06 Oct 2018 11:29:14 -0300</pubDate>
-        <lastBuildDate>Sat, 06 Oct 2018 11:29:14 -0300</lastBuildDate>
+        <pubDate>Tue, 16 Oct 2018 00:19:39 -0300</pubDate>
+        <lastBuildDate>Tue, 16 Oct 2018 00:19:39 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Criptografia de arquivos com o VeraCrypt</title>
+                <description>&lt;p&gt;Criptografar arquivos é como mantê-los trancados em um cofre: só quem possui a senha para abri-lo pode acessá-los. Ainda que você não seja &lt;a href=&quot;https://pt.wikipedia.org/wiki/Nerd&quot;&gt;&lt;em&gt;nerd&lt;/em&gt;&lt;/a&gt; ou paranoico com segurança (do tipo que sempre desconfia de espionagem), &lt;a href=&quot;https://noticias.r7.com/tecnologia-e-ciencia/tudo-que-voce-sempre-quis-saber-sobre-criptografia-e-nao-perguntou-24012018&quot;&gt;criptografia&lt;/a&gt; pode ser útil pra você. Se você tem um &lt;em&gt;notebook&lt;/em&gt;, imagine o que pode acontecer se ele for roubado: documentos, contatos, dados de clientes, do trabalho, fotos podem levar você e sua empresa à ruína.&lt;/p&gt;
+
+&lt;p&gt;Felizmente, se você usa &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, dispõe de um programa gratuito para criar “cofres” de arquivos, que é o &lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt;. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como pode utilizá-lo para proteger informações sensíveis no seu computador.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/how-to-veracrypt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/how-to-veracrypt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;introdução&quot;&gt;Introdução&lt;/h2&gt;
+
+&lt;p&gt;O &lt;strong&gt;VeraCrypt&lt;/strong&gt; é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; e gratuito desenvolvido pela companhia &lt;a href=&quot;https://www.idrix.fr&quot;&gt;IDRIX&lt;/a&gt; que pode ser usado no Linux, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e &lt;a href=&quot;http://www.apple.com/br/macosx/&quot;&gt;Mac OS X&lt;/a&gt; para guardar arquivos em volumes criptografados. Esses volumes podem ser arquivos (parecidos com um &lt;a href=&quot;https://pt.wikipedia.org/wiki/ZIP&quot;&gt;arquivo ZIP&lt;/a&gt; com senha), partições ou mesmo discos inteiros.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; o VeraCrypt suporta &lt;a href=&quot;https://pt.wikipedia.org/wiki/Criptografia_de_disco&quot;&gt;criptografia do disco inteiro&lt;/a&gt; (&lt;em&gt;full disk encryption&lt;/em&gt; ou FDE) apenas no Windows.&lt;/p&gt;
+
+&lt;p&gt;O VeraCrypt é baseado no extinto projeto &lt;a href=&quot;http://truecrypt.sourceforge.net/&quot;&gt;TrueCrypt&lt;/a&gt;, tendo resolvido suas falhas de segurança e adicionado funcionalidades. Ele se assemelha a outras ferramentas de segurança proprietárias disponíveis em sistemas operacionais pagos, como o &lt;a href=&quot;https://docs.microsoft.com/pt-br/windows/security/information-protection/bitlocker/bitlocker-overview&quot;&gt;BitLocker&lt;/a&gt; para Windows e o &lt;a href=&quot;https://en.wikipedia.org/wiki/FileVault&quot;&gt;FileVault&lt;/a&gt; para Mac OS X.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, vamos focar nos volumes criptografados em arquivos. No futuro, pretendo escrever um &lt;em&gt;post&lt;/em&gt; mostrando como criptografar um &lt;em&gt;pendrive&lt;/em&gt; inteiro com o VeraCrypt.&lt;/p&gt;
+
+&lt;p&gt;A diferença entre um volume em arquivo do VeraCrypt e um arquivo ZIP com senha é que no caso do VeraCrypt a criptografia ocorre ao vivo (&lt;em&gt;on-the-fly&lt;/em&gt;), é automática e transparente.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, suponha que você precisa trabalhar em um documento de texto do &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/writer/&quot;&gt;LibreOffice Writer&lt;/a&gt; (extensão &lt;strong&gt;.odt&lt;/strong&gt;) ou do &lt;a href=&quot;https://products.office.com/pt-br/word&quot;&gt;Word&lt;/a&gt; (&lt;strong&gt;.doc&lt;/strong&gt; ou &lt;strong&gt;.docx&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Se esse documento está dentro de um arquivo ZIP com senha, você deve extrai-lo do arquivo ZIP para o disco (fornecendo a senha), abri-lo do disco, editá-lo, então salvá-lo no disco e atualizá-lo no arquivo ZIP (fornecendo mais uma vez a senha). Note que enquanto o documento está no disco, fora do do arquivo ZIP, está desprotegido (se há uma queda de energia, por exemplo, é fácil acessar o documento fora do arquivo ZIP com senha). Também é necessário espaço em disco adicional para extrair o documento.&lt;/p&gt;
+
+&lt;p&gt;Se esse mesmo documento está dentro de um volume do VeraCrypt, você monta o volume (fornecendo a senha), abre o documento de dentro do volume (não é necessário copiá-lo para o disco, para fora do volume), edita e salva. Quando terminar, desmonta o volume. Note que dentro do volume o documento está protegido (se há uma queda de energia, o documento está dentro do volume, que é protegido por senha). Também não é necessário espaço em disco ou memória RAM adicional para abrir o documento.&lt;/p&gt;
+
+&lt;p&gt;Agora que já apresentei o funcionamento básico do VeraCrypt, mostrarei na prática como baixá-lo, instalá-lo e usá-lo para criar, montar, desmontar e usar volumes em arquivo.&lt;/p&gt;
+
+&lt;p&gt;Esse &lt;em&gt;post&lt;/em&gt; é baseado em grande parte no &lt;a href=&quot;https://securityinabox.org/pt/guide/veracrypt/linux/&quot;&gt;guia de segurança digital Security in a Box&lt;/a&gt; e na &lt;a href=&quot;https://www.veracrypt.fr/en/Documentation.html&quot;&gt;documentação do VeraCrypt&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para referência futura, aqui uso a versão 1.23 do VeraCrypt, &lt;a href=&quot;https://www.veracrypt.fr/en/Release%20Notes.html&quot;&gt;lançada em 12 de setembro de 2018&lt;/a&gt;, e a distribuição Linux &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-o-instalador-do-veracrypt&quot;&gt;Baixando o instalador do VeraCrypt&lt;/h2&gt;
+
+&lt;p&gt;Em se tratando de programas relacionados a segurança, sempre os baixe do repositório oficial da própria distribuição ou do &lt;em&gt;site&lt;/em&gt; oficial do programa.&lt;/p&gt;
+
+&lt;p&gt;Como o openSUSE não possui o VeraCrypt em seu repositório, vamos baixá-lo do &lt;em&gt;site&lt;/em&gt; oficial.&lt;/p&gt;
+
+&lt;p&gt;Para baixar o VeraCrypt, acesse sua página de &lt;em&gt;downloads&lt;/em&gt; em:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.veracrypt.fr/en/Downloads.html&quot;&gt;https://www.veracrypt.fr/en/Downloads.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Na seção &lt;strong&gt;Linux&lt;/strong&gt;, clique no &lt;em&gt;link&lt;/em&gt; para &lt;em&gt;download&lt;/em&gt; do instalador:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(o arquivo se chama &lt;code class=&quot;highlighter-rouge&quot;&gt;veracrypt-1.23-setup.tar.bz2&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;verificando-o-instalador&quot;&gt;Verificando o instalador&lt;/h3&gt;
+
+&lt;p&gt;Em se tratando de programas relacionados a segurança, também é sempre importante verificar a integridade e autenticidade do programa baixado.&lt;/p&gt;
+
+&lt;p&gt;O processo é bem semelhante ao já apresentado no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;Verificação de integridade e autenticidade com SHA-256 e GPG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Naquele &lt;em&gt;post&lt;/em&gt;, vimos como verificar uma imagem ISO baixada do &lt;em&gt;site&lt;/em&gt; do openSUSE.&lt;/p&gt;
+
+&lt;p&gt;Aqui, vou resumir o passo-a-passo para o instalador baixado do &lt;em&gt;site&lt;/em&gt; do VeraCrypt.&lt;/p&gt;
+
+&lt;p&gt;Ainda na página de &lt;em&gt;downloads&lt;/em&gt; do VeraCrypt, baixe também:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a chave pública do Projeto VeraCrypt (o arquivo se chama &lt;code class=&quot;highlighter-rouge&quot;&gt;VeraCrypt_PGP_public_key.asc&lt;/code&gt;, o &lt;em&gt;link&lt;/em&gt; para &lt;em&gt;download&lt;/em&gt; é um dos primeiros, no topo da página),&lt;/li&gt;
+  &lt;li&gt;a assinatura do instalador (&lt;code class=&quot;highlighter-rouge&quot;&gt;veracrypt-1.23-setup.tar.bz2.sig&lt;/code&gt;, o &lt;em&gt;link&lt;/em&gt; está ao lado do &lt;em&gt;link&lt;/em&gt; do instalador) e&lt;/li&gt;
+  &lt;li&gt;a soma de verificação do instalador (&lt;code class=&quot;highlighter-rouge&quot;&gt;veracrypt-1.23-sha256sum.txt&lt;/code&gt;, o &lt;em&gt;link&lt;/em&gt; está disponível mais abaixo).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Usando o terminal, verifique a integridade do instalador com o comando &lt;strong&gt;sha256sum&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd Downloads
+$ sha256sum veracrypt-1.23-setup.tar.bz2
+fcbffa08f34695570dcaaa89a10cac9bf999766fd92f84eb66ad718255fb2432  veracrypt-1.23-setup.tar.bz2
+$ cat veracrypt-1.23-sha256sum.txt | grep veracrypt-1.23-setup.tar.bz2
+fcbffa08f34695570dcaaa89a10cac9bf999766fd92f84eb66ad718255fb2432  veracrypt-1.23-setup.tar.bz2
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Certifique-se de que confere a soma informada por ambos os comandos (&lt;code class=&quot;highlighter-rouge&quot;&gt;fcbf...2432&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Aqui, optamos por fazer a verificação de forma diferente, manual: calculamos a soma de verificação e a comparamos com a esperada, porque o arquivo de texto contém as somas para os vários arquivos disponibilizados no &lt;em&gt;site&lt;/em&gt; e parece estar mal formatado.&lt;/p&gt;
+
+&lt;p&gt;Importe a chave pública do Projeto VeraCrypt com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --import VeraCrypt_PGP_public_key.asc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Perceba que a saída do comando revela parte da impressão digital (&lt;em&gt;fingerprint&lt;/em&gt;) da chave:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: key 821ACD02680D16DE: 1 signature not checked due to a missing key
+gpg: key 821ACD02680D16DE: public key &quot;VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;&quot; imported
+gpg: Número total processado: 1
+gpg:               importados: 1
+gpg: no ultimately trusted keys found
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(nesse caso, &lt;code class=&quot;highlighter-rouge&quot;&gt;821ACD02680D16DE&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Confira a impressão digital completa com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --fingerprint 821ACD02680D16DE
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Compare o número informado com o que aparece na página de &lt;em&gt;downloads&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;pub   rsa4096 2018-09-11 [SC]
+      5069 A233 D55A 0EEB 174A  5FC3 821A CD02 680D 16DE
+uid           [ unknown] VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+sub   rsa4096 2018-09-11 [E]
+sub   rsa4096 2018-09-11 [A]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se a impressão digital confere, podemos continuar a verificação de autenticidade (ainda não é hora de pular para a instalação).&lt;/p&gt;
+
+&lt;p&gt;Opcionalmente, se você possui uma chave GPG, assine a chave pública do VeraCrypt com a sua chave, estabelecendo uma rede de confiança (&lt;em&gt;web of trust&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --edit-key 821ACD02680D16DE
+gpg (GnuPG) 2.2.5; Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+pub  rsa4096/821ACD02680D16DE
+     created: 2018-09-11  expires: never       usage: SC
+     trust: unknown       validity: unknown
+sub  rsa4096/200B5A9D26878A32
+     created: 2018-09-11  expires: never       usage: E
+sub  rsa4096/0F5AACD65483D029
+     created: 2018-09-11  expires: never       usage: A
+[ unknown] (1). VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+
+gpg&amp;gt; fpr
+pub   rsa4096/821ACD02680D16DE 2018-09-11 VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+Impressão da chave primária: 5069 A233 D55A 0EEB 174A  5FC3 821A CD02 680D 16DE
+
+gpg&amp;gt; trust
+pub  rsa4096/821ACD02680D16DE
+     created: 2018-09-11  expires: never       usage: SC
+     trust: unknown       validity: unknown
+sub  rsa4096/200B5A9D26878A32
+     created: 2018-09-11  expires: never       usage: E
+sub  rsa4096/0F5AACD65483D029
+     created: 2018-09-11  expires: never       usage: A
+[ unknown] (1). VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+
+Please decide how far you trust this user to correctly verify other users' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don't know or won't say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Decisão? 5
+Do you really want to set this key to ultimate trust? (y/N) y
+
+pub  rsa4096/821ACD02680D16DE
+     created: 2018-09-11  expires: never       usage: SC
+     trust: ultimate      validity: unknown
+sub  rsa4096/200B5A9D26878A32
+     created: 2018-09-11  expires: never       usage: E
+sub  rsa4096/0F5AACD65483D029
+     created: 2018-09-11  expires: never       usage: A
+[ unknown] (1). VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+Não se esqueça que a validade de chave mostrada não é necessáriamente a
+correcta a não ser que reinicie o programa.
+
+gpg&amp;gt; sign
+
+pub  rsa4096/821ACD02680D16DE
+     created: 2018-09-11  expires: never       usage: SC
+     trust: ultimate      validity: unknown
+Impressão da chave primária: 5069 A233 D55A 0EEB 174A  5FC3 821A CD02 680D 16DE
+
+     VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+
+Are you sure that you want to sign this key with your
+key &quot;Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;&quot; (E9A54DC9D55B83C6)
+
+Really sign? (y/N) y
+
+gpg&amp;gt; quit
+Save changes? (y/N) y
+$ gpg --list-sig 821ACD02680D16DE
+gpg: a verificar a base de dados de confiança
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+gpg: proxima verificação da base de dados de confiança a 2020-10-13
+pub   rsa4096 2018-09-11 [SC]
+      5069A233D55A0EEB174A5FC3821ACD02680D16DE
+uid           [ultimate] VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+sig 3        821ACD02680D16DE 2018-09-11  VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+sig          EB559C7C54DDD393 2018-09-11  VeraCrypt Team &amp;lt;veracrypt@idrix.fr&amp;gt;
+sig          E9A54DC9D55B83C6 2018-10-14  Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;
+sub   rsa4096 2018-09-11 [E]
+sig          821ACD02680D16DE 2018-09-11  VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+sub   rsa4096 2018-09-11 [A]
+sig          821ACD02680D16DE 2018-09-11  VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verifique a assinatura GPG do instalador com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --verify veracrypt-1.23-setup.tar.bz2.sig
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você não assinou a chave pública do VeraCrypt, a saída desse comando deve ser parecida com:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: assuming signed data in 'veracrypt-1.23-setup.tar.bz2'
+gpg: Signature made qua 12 set 2018 19:50:49 -03
+gpg:                using RSA key 5069A233D55A0EEB174A5FC3821ACD02680D16DE
+gpg: Good signature from &quot;VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;&quot; [unknown]
+gpg: AVISO: Esta chave não está certificada com uma assinatura confiável!
+gpg:          Não há indicação de que a assinatura pertence ao dono.
+Impressão da chave primária: 5069 A233 D55A 0EEB 174A  5FC3 821A CD02 680D 16DE
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O mais importante é o aviso de boa assinatura (&lt;em&gt;good signature&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Se você assinou a chave pública do VeraCrypt, a saída desse comando é menor:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: assuming signed data in 'veracrypt-1.23-setup.tar.bz2'
+gpg: Signature made qua 12 set 2018 19:50:49 -03
+gpg:                using RSA key 5069A233D55A0EEB174A5FC3821ACD02680D16DE
+gpg: Good signature from &quot;VeraCrypt Team (2018 - Supersedes Key ID=0x54DDD393) &amp;lt;veracrypt@idrix.fr&amp;gt;&quot; [ultimate]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse ponto, se ambas as verificações de integridade e autenticidade sucederam, podemos confiar tranquilamente no instalador baixado e seguir à instalação.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-veracrypt&quot;&gt;Instalando o VeraCrypt&lt;/h2&gt;
+
+&lt;p&gt;Antes de começar, verifique se você está usando um sistema de 32 &lt;em&gt;bits&lt;/em&gt; ou 64 &lt;em&gt;bits&lt;/em&gt;. Para isso, no terminal execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ uname -m
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você estiver usando um sistema de 32 &lt;em&gt;bits&lt;/em&gt;, o terminal irá mostrar &lt;code class=&quot;highlighter-rouge&quot;&gt;i686&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;i386&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se seu sistema for de 64 &lt;em&gt;bits&lt;/em&gt;, o terminal irá mostrar &lt;code class=&quot;highlighter-rouge&quot;&gt;x86_64&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nos exemplos, vou assumir a utilização de um sistema de 64 &lt;em&gt;bits&lt;/em&gt;, que é o meu caso.&lt;/p&gt;
+
+&lt;p&gt;Extraia os arquivos do instalador:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ tar xvjf veracrypt-1.23-setup.tar.bz2
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute o instalador:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ./veracrypt-1.23-setup-console-x64
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ele limpa a tela do terminal e apresenta:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;VeraCrypt 1.23 Setup
+____________________
+
+
+Installation options:
+
+ 1) Install veracrypt_1.23_console_amd64.tar.gz
+ 2) Extract package file veracrypt_1.23_console_amd64.tar.gz and place it to /tmp
+
+To select, enter 1 or 2:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Digite &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Before you can use, extract, or install VeraCrypt, you must accept the
+terms of the VeraCrypt License.
+
+Press Enter to display the license terms...
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Antes de continuar, você deve ler a licença. Tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pressione &lt;strong&gt;Page Down&lt;/strong&gt; até chegar ao final da licença.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Do you accept and agree to be bound by the license terms? (yes/no):
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ele pergunta se você aceita a licença. Digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yes&lt;/code&gt; (sim) e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Uninstalling VeraCrypt:
+-----------------------
+
+To uninstall VeraCrypt, please run 'veracrypt-uninstall.sh'.
+
+Installing package...
+[sudo] senha para root:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Digite a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Os arquivos são extraídos.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;...
+usr/share/veracrypt/doc/HTML/VeraCrypt Volume Format Specification.html
+usr/share/veracrypt/doc/HTML/VeraCrypt Rescue Disk.html
+usr/share/veracrypt/doc/HTML/VeraCrypt128x128.png
+usr/bin/
+usr/bin/veracrypt-uninstall.sh
+usr/bin/veracrypt
+
+Press Enter to exit...
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tecle &lt;strong&gt;Enter&lt;/strong&gt; para encerrar o instalador e voltar ao terminal.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-o-veracrypt&quot;&gt;Iniciando o VeraCrypt&lt;/h2&gt;
+
+&lt;p&gt;Para iniciar o VeraCrypt, abra o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;veracrypt&lt;/code&gt; e clique no ícone do aplicativo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aparece a tela principal do VeraCrypt:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-04.jpg&quot; title=&quot;Tela principal do VeraCrypt sem volume montado&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-04.jpg&quot; alt=&quot;Tela principal do VeraCrypt sem volume montado&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Tela principal do VeraCrypt sem volume montado&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Assim como o instalador, a interface do aplicativo não possui tradução.&lt;/p&gt;
+
+&lt;h2 id=&quot;criando-um-volume-padrão-em-arquivo&quot;&gt;Criando um volume padrão em arquivo&lt;/h2&gt;
+
+&lt;p&gt;Na tela principal do VeraCrypt, clique no botão &lt;strong&gt;Create Volume&lt;/strong&gt; (criar volume).&lt;/p&gt;
+
+&lt;p&gt;É iniciado o &lt;strong&gt;VeraCrypt Volume Creation Wizard&lt;/strong&gt; (assistente de criação de volume do VeraCrypt). Na primeira tela, informe se o volume será um arquivo ou uma partição:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como eu expliquei anteriormente, um volume em arquivo do VeraCrypt é parecido com um arquivo ZIP com senha. É esse volume que vamos criar nesse &lt;em&gt;post&lt;/em&gt;. Para isso, vamos utilizar a primeira opção, &lt;strong&gt;Create an encrypted file container&lt;/strong&gt; (criar um arquivo de recipiente encriptado), que já vem marcada por padrão. É a opção recomendada para quem está começando a usar o VeraCrypt. Deixe como está e clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar).&lt;/p&gt;
+
+&lt;p&gt;Na segunda tela, selecione o tipo de volume:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O VeraCrypt permite criar dois tipos de volumes criptografados: volumes padrão (&lt;em&gt;standard&lt;/em&gt;) e volumes escondidos (&lt;em&gt;hidden&lt;/em&gt;). Um &lt;strong&gt;volume padrão&lt;/strong&gt; é protegido por uma senha, semelhante a um cofre simples. Um &lt;strong&gt;volume escondido&lt;/strong&gt; é protegido por duas senhas, semelhante a um cofre com fundo falso. Ao acessá-lo, se você informa uma senha, determinados arquivos são apresentados, se você informa outra, outros arquivos são apresentados no lugar. Um volume escondido oferece mais segurança para arquivos ainda mais confidenciais.&lt;/p&gt;
+
+&lt;p&gt;Aqui, vamos nos ater à simplicidade do volume padrão. Para mais informações sobre volumes escondidos, consulte o &lt;a href=&quot;https://securityinabox.org/pt/guide/veracrypt/linux/&quot;&gt;guia Security in a Box&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A opção &lt;strong&gt;Standard VeraCrypt volume&lt;/strong&gt; (volume padrão do VeraCrypt) deve vir marcada por padrão. Deixe como está e clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, informe o local onde será criado o volume. Para isso, clique em &lt;strong&gt;Select File&lt;/strong&gt; (selecionar arquivo):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como exemplo, vou por meu volume na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Documentos&lt;/code&gt; e chamá-lo de &lt;code class=&quot;highlighter-rouge&quot;&gt;FotosAntigasDoVovo.zip&lt;/code&gt;. O volume pode ter quaisquer nome e extensão, assim como ser salvo em qualquer lugar. O objetivo é disfarçar a existência de um volume do VeraCrypt. Não selecione um arquivo que já existe, senão ele será sobrescrito, e memorize bem o nome e o local que escolheu para o volume.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, &lt;strong&gt;Encryption Options&lt;/strong&gt; (opções de encriptação), você pode selecionar qual algoritmo usar para criptografia (&lt;em&gt;encryption&lt;/em&gt;) e soma (&lt;em&gt;hash&lt;/em&gt;) do volume:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As opções padrão já são suficientemente seguras e atendem aos usos mais comuns. A menos que saiba o que está fazendo, não altere essas opções e clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, informe um tamanho para o volume (&lt;strong&gt;Volume Size&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como exemplo, vou criar um volume de 250MB, mas defina o tamanho do volume conforme sua necessidade. Considere o espaço disponível em disco (diferente de um arquivo ZIP, o volume do VeraCrypt não cresce conforme a necessidade, todo o espaço já é reservado de antemão), o tipo de arquivo que você vai encriptar (documentos de texto ocupam menos espaço que fotos e vídeos, por exemplo) e como você vai fazer &lt;em&gt;backup&lt;/em&gt; desse volume (se o &lt;em&gt;backup&lt;/em&gt; será feito em &lt;a href=&quot;https://pt.wikipedia.org/wiki/DVD&quot;&gt;DVD&lt;/a&gt;, por exemplo, o volume deve ser de 4,3GB ou menos).&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, crie uma senha para o volume (&lt;strong&gt;Volume Password&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para se certificar de que digitou a senha corretamente, você deve digitá-la no campo de cima (&lt;strong&gt;Password&lt;/strong&gt;, senha) e repeti-la no campo de baixo (&lt;strong&gt;Confirm password&lt;/strong&gt;, confirme a senha).&lt;/p&gt;
+
+&lt;p&gt;A senha é o principal componente da segurança do volume. Escolha uma senha forte. Se precisar de dicas para pensar em uma senha segura, consulte o &lt;a href=&quot;https://securityinabox.org/pt/guide/passwords/&quot;&gt;guia Security in a Box&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt;. Se o botão estiver desabilitado, é porque as senhas digitadas nos dois campos não conferem. Se sua senha for fraca, o VeraCrypt apresentará um alerta. Se isso acontecer, considere mudar a senha.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, selecione um sistema de arquivos (&lt;em&gt;filesystem&lt;/em&gt;) para o volume:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por dentro, um volume do VeraCrypt é como uma partição de disco, que deve ser formatada com um &lt;a href=&quot;https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2016/02/entenda-o-que-e-sistema-de-arquivos-e-sua-utilidade-no-pc-e-no-celular.html&quot;&gt;sistema de arquivos&lt;/a&gt;. Não vou explicar em detalhes sistemas de arquivos (você pode ler mais &lt;a href=&quot;https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2016/02/entenda-o-que-e-sistema-de-arquivos-e-sua-utilidade-no-pc-e-no-celular.html&quot;&gt;aqui&lt;/a&gt;), mas apenas pontuar algumas questões.&lt;/p&gt;
+
+&lt;p&gt;O sistema de arquivos que vem selecionado por padrão (&lt;a href=&quot;https://pt.wikipedia.org/wiki/File_Allocation_Table&quot;&gt;FAT&lt;/a&gt;) vai funcionar para a maioria dos usos e é suportado por todos os sistemas operacionais - Linux, Windows e Mac OS X. No entanto, se você pretende armazenar dentro do volume arquivos maiores que 4GB, terá que selecionar outro sistema de arquivos. Nesse caso, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/NTFS&quot;&gt;NTFS&lt;/a&gt; é uma opção, e é suportado pelo Windows e pela maioria das &lt;a href=&quot;https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_Linux&quot;&gt;distribuições Linux&lt;/a&gt; - incluindo o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Os sistemas de arquivos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ext2&quot;&gt;Ext2&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ext3&quot;&gt;Ext3&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ext4&quot;&gt;Ext4&lt;/a&gt; são suportados apenas pelo Linux. O sistema de arquivos &lt;a href=&quot;https://pt.wikipedia.org/wiki/ExFAT&quot;&gt;exFAT&lt;/a&gt; é suportado, a princípio, apenas pelo Windows e pelo Mac OS X.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; se você pretende usar o volume no Linux para armazenar arquivos do &lt;a href=&quot;https://www.dropbox.com/pt_BR/&quot;&gt;Dropbox&lt;/a&gt;, obrigatoriamente terá que utilizar o sistema de arquivos Ext4 (saiba mais &lt;a href=&quot;https://www.diolinux.com.br/2018/08/dropbox-nao-tera-mais-suporte-para-ext4-criptografado.html&quot;&gt;aqui&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O VeraCrypt já dispõe de quase todas as informações que necessita para criar o volume. Resta apenas criar as chaves de criptografia (&lt;em&gt;encryption keys&lt;/em&gt;). Mova o cursor do &lt;em&gt;mouse&lt;/em&gt; aleatoriamente dentro da janela do assistente. Perceba que a barra de progresso avança conforme você move o &lt;em&gt;mouse&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O VeraCrypt usa as posições do cursor como números aleatórios para gerar chaves mais fortes. Portanto, quanto mais você mover o &lt;em&gt;mouse&lt;/em&gt; nessa tela, melhor.&lt;/p&gt;
+
+&lt;p&gt;Mova-o até preencher a barra de progresso. Quando terminar, clique em &lt;strong&gt;Format&lt;/strong&gt; (formatar).&lt;/p&gt;
+
+&lt;p&gt;O VeraCrypt cria o volume, o que pode demorar um pouco. Ele avisa quando termina:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A última tela do assistente, &lt;strong&gt;Volume Created&lt;/strong&gt;, basicamente avisa que o volume foi criado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-14.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Exit&lt;/strong&gt; (sair) para terminar. Se quiser criar outro volume, você pode clicar em &lt;strong&gt;Next&lt;/strong&gt;. Nesse caso, o assistente volta para a primeira tela.&lt;/p&gt;
+
+&lt;h2 id=&quot;montando-o-volume&quot;&gt;Montando o volume&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Montar&lt;/strong&gt; um volume do VeraCrypt significa torná-lo &lt;strong&gt;disponível&lt;/strong&gt; para uso.&lt;/p&gt;
+
+&lt;p&gt;É semelhante a montar uma partição no Linux, o que deve ser feito sempre antes do uso. Normalmente, as partições do disco do próprio computador são montadas automaticamente quando o computador é ligado, e dispositivos de armazenamento removíveis - como &lt;em&gt;pendrives&lt;/em&gt; - são montados automaticamente quando conectados, mas em alguns casos a montagem é um processo manual.&lt;/p&gt;
+
+&lt;p&gt;Para montar um volume do VeraCrypt, na tela principal do VeraCrypt, selecione qualquer vaga (&lt;em&gt;slot&lt;/em&gt;) disponível na lista e clique no botão &lt;strong&gt;Select File&lt;/strong&gt; (selecionar arquivo).&lt;/p&gt;
+
+&lt;p&gt;Aqui, vou usar a primeira vaga, mas você pode escolher qualquer uma. Inclusive, pode selecionar uma vaga diferente cada vez que montar um volume.&lt;/p&gt;
+
+&lt;p&gt;Procure o arquivo de volume, selecione-o e clique em &lt;strong&gt;Abrir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-15-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; nessa tela fica bem visível que o arquivo de volume é um arquivo como outro qualquer. Portanto, ele pode ser excluído acidentalmente, como qualquer outro arquivo. Mantenha seu volume em um local seguro e evite que ele seja excluído junto com todos os arquivos secretos que ele abriga.&lt;/p&gt;
+
+&lt;p&gt;De volta à tela principal do VeraCrypt, clique em &lt;strong&gt;Mount&lt;/strong&gt; (montar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite a senha do volume e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-17-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-17-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;) e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-18-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se a senha do volume estiver correta, o VeraCrypt montará o volume e informará o ponto de montagem (&lt;strong&gt;Mount Directory&lt;/strong&gt;) na tela principal (nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/veracrypt1&lt;/code&gt;). Para acessar um volume montado, você pode clicar duas vezes na vaga correspondente na tela principal do VeraCrypt ou navegar para a pasta normalmente, como faria com um &lt;em&gt;pendrive&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-19-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-19-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;usando-o-volume&quot;&gt;Usando o volume&lt;/h2&gt;
+
+&lt;p&gt;O volume recém criado está vazio. Experimente criar pastas e arquivos dentro dele.&lt;/p&gt;
+
+&lt;p&gt;Um volume do VeraCrypt montado é um disco virtual. Para os aplicativos, ele se comporta como um dispositivo de armazenamento externo. Você pode copiar e mover arquivos e pastas de e para o volume, criar pastas e salvar arquivos diretamente no volume, assim como faria com um &lt;em&gt;pendrive&lt;/em&gt;. A criptografia e a descriptografia dos dados são feitas nos bastidores pelo VeraCrypt, de forma transparente e automática.&lt;/p&gt;
+
+&lt;p&gt;Se o computador for desligado ou reiniciado (de forma intencional ou acidental), o conteúdo do volume permanecerá criptografado e inacessível até que seja montado novamente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; enquanto o volume VeraCrypt estiver montado, os arquivos dentro dele podem ser acessados livremente. Para proteger seus arquivos sensíveis, você deve desmontar o volume do VeraCrypt assim que terminar de usá-los.&lt;/p&gt;
+
+&lt;p&gt;Vejamos agora como e quando devemos desmontar o volume do VeraCrypt.&lt;/p&gt;
+
+&lt;h2 id=&quot;desmontando-o-volume&quot;&gt;Desmontando o volume&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Desmontar&lt;/strong&gt; um volume do VeraCrypt significa torná-lo &lt;strong&gt;indisponível&lt;/strong&gt; para uso.&lt;/p&gt;
+
+&lt;p&gt;É semelhante a desmontar uma partição no Linux, o que deve ser feito sempre após o uso. Normalmente, as partições do disco do próprio computador são desmontadas automaticamente quando o computador é desligado. Mas na maior parte dos casos a desmontagem é um processo manual. Você sempre deve desmontar partições de dispositivos de armazenamento externos antes de removê-los.&lt;/p&gt;
+
+&lt;p&gt;Para desmontar um volume do VeraCrypt, selecione-o na tela principal do VeraCrypt e clique em &lt;strong&gt;Dismount&lt;/strong&gt; (desmontar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/veracrypt-20-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/veracrypt-20-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Uma vez desmontado o volume, para acessar novamente os arquivos que estão dentro dele, é necessário montá-lo, o que requer que sua senha seja informada novamente. Dessa forma, a menos que saiba a senha, ninguém pode acessar os arquivos que estão dentro do volume. Com o volume desmontado, os arquivos dentro dele estão seguros contra acesso indevido.&lt;/p&gt;
+
+&lt;p&gt;Sempre desmonte o volume do VeraCrypt:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;antes de sair de perto do computador (dependendo da confidencialidade dos arquivos, você vai querer desmontar o volume antes de ir para outra sala - se vai perder o computador de vista - ou antes de sair de casa, por exemplo),&lt;/li&gt;
+  &lt;li&gt;antes de entrar em uma situação em que há risco de perda ou roubo (antes de levar o &lt;em&gt;notebook&lt;/em&gt; para a faculdade, por exemplo),&lt;/li&gt;
+  &lt;li&gt;antes de colocar o computador em suspensão ou hibernação, e&lt;/li&gt;
+  &lt;li&gt;antes de remover o dispositivo de armazenamento externo (&lt;em&gt;pendrive&lt;/em&gt;, HD externo ou cartão de memória, por exemplo), caso seu volume esteja em um.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Em resumo, sempre desmonte o volume do VeraCrypt se não estiver usando seus arquivos.&lt;/p&gt;
+
+&lt;p&gt;Para acessar os arquivos dentro de um volume, monte-o novamente.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; o volume do VeraCrypt protege os arquivos dentro dele contra acesso indevido. Mas, como qualquer sistema de arquivos, ele está sujeito a corrupção. Portanto, certifique-se de fazer &lt;em&gt;backup&lt;/em&gt; dos seus arquivos regularmente.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://securityinabox.org/pt/guide/veracrypt/linux/&quot;&gt;VeraCrypt para Linux - Armazenamento seguro de arquivos - Security in a Box&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://securityinabox.org/pt/guide/secure-file-storage/&quot;&gt;Como proteger os arquivos sensíveis em seu computador - Security in a Box&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.veracrypt.fr/en/Documentation.html&quot;&gt;VeraCrypt Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pcworld.com/article/3140023/linux/3-encryption-tools-for-linux-that-will-keep-your-data-safe.html&quot;&gt;3 encryption tools for Linux that will keep your data safe - PCWorld&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.linuxandubuntu.com/home/encrypt-data-in-linux-with-veracrypt-an-alternative-to-truecrypt&quot;&gt;How To Install &amp;amp; Use VeraCrypt In Linux An Alternative To TrueCrypt - LinuxAndUbuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Mon, 15 Oct 2018 23:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Verificação de integridade e autenticidade com SHA-256 e GPG</title>
@@ -750,6 +1507,7 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/246332/how-to-verify-a-downloaded-linux-iso-file-wasnt-tampered-with/&quot;&gt;How to Verify a Linux ISO’s Checksum and Confirm It Hasn’t Been Tampered With&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://bitzuma.com/posts/how-to-verify-an-electrum-download-on-windows/&quot;&gt;How to Verify an Electrum Download on Windows - Bitzuma&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://xmodulo.com/verify-authenticity-integrity-downloaded-file.html&quot;&gt;How to verify the authenticity and integrity of a downloaded file on Linux - Xmodulo&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://pt.opensuse.org/SDB:Ajuda_de_download&quot;&gt;SDB:Ajuda de download - openSUSE&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;The GNU Privacy Handbook&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/GnuPrivacyGuardHowto&quot;&gt;GnuPrivacyGuardHowto&lt;/a&gt;&lt;/li&gt;
@@ -2645,150 +3403,6 @@ Art. 42. Na cobrança de débitos, o consumidor inadimplente não será exposto 
                 <pubDate>Tue, 20 Feb 2018 02:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/02/20/citrix-receiver-no-linux/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Conecte o Evolution ao Office 365</title>
-                <description>&lt;p&gt;Se você trabalha em uma empresa cujo &lt;em&gt;e-mail&lt;/em&gt; é servido localmente pelo &lt;a href=&quot;https://products.office.com/pt-BR/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; ou na nuvem pelo &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, você pode gerenciar seus &lt;em&gt;e-mails&lt;/em&gt; pelo computador utilizando os tradicionais protocolos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt;. No entanto, alguns recursos adicionais como gerenciar agendas e contatos estão disponíveis apenas para quem utiliza o protocolo proprietário &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; da &lt;a href=&quot;https://www.microsoft.com/pt-br&quot;&gt;Microsoft&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pois saiba que nesse cenário usuários de &lt;a href=&quot;https://www.vivaolinux.com.br/linux&quot;&gt;Linux&lt;/a&gt; não precisam deixar seu sistema favorito para poder se comunicar com seus colegas: veja neste &lt;em&gt;post&lt;/em&gt; como conectar o &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; ao Microsoft Exchange ou ao Office 365 com as &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;contas &lt;em&gt;online&lt;/em&gt; do GNOME&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;Evolution&lt;/strong&gt; é um dos mais completos clientes de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_colaborativo&quot;&gt;&lt;em&gt;groupware&lt;/em&gt;&lt;/a&gt; (sistema colaborativo) de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt; existentes. Ele é o cliente de &lt;em&gt;groupware&lt;/em&gt; que acompanha o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; por padrão e pode ser considerado, no sistema Linux, o equivalente ao &lt;a href=&quot;https://products.office.com/pt-br/outlook&quot;&gt;Outlook&lt;/a&gt; para o sistema &lt;a href=&quot;https://www.microsoft.com/pt-br/windows&quot;&gt;Windows&lt;/a&gt;. No GNOME, as contas &lt;em&gt;online&lt;/em&gt; (a exemplo da conta do Office 365) são adicionadas pelo aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e podem então ser usadas pelos demais aplicativos (a exemplo do Evolution).&lt;/p&gt;
-
-&lt;p&gt;Para que o Evolution seja capaz de gerenciar seu &lt;em&gt;e-mail&lt;/em&gt; do Office 365, certifique-se de que seu sistema possua instalados os pacotes &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (deve vir instalado por padrão se você utiliza o &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; com GNOME) e &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-online-accounts evolution-ews
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para adicionar a conta, abra o aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; e clique em &lt;strong&gt;Contas on-line&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-1-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-1-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;À esquerda são listadas as contas &lt;em&gt;online&lt;/em&gt;. Clique no &lt;strong&gt;botão de adicionar&lt;/strong&gt;, abaixo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-2-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-2-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Adicionar conta&lt;/strong&gt;, selecione &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-3-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-3-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Expanda a seção &lt;strong&gt;Personalizado&lt;/strong&gt; para exibir todos os campos e os preencha com as informações da conta:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; seu endereço de &lt;em&gt;e-mail&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;nome.sobrenome@empresa.com.br&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Senha:&lt;/strong&gt; a senha da sua conta de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Nome de usuário:&lt;/strong&gt; mais uma vez, seu endereço de &lt;em&gt;e-mail&lt;/em&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Servidor:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Essas informações podem ser diferentes a depender de como está configurado o &lt;em&gt;e-mail&lt;/em&gt; da sua empresa. Caso você não consiga adicionar sua conta, entre em contato com o administrador da rede.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-4-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-4-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que sua conta é adicionada, selecione o que deseja sincronizar (por padrão, todas as opções estão ativadas):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-5-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-5-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora você pode fechar a caixa de diálogo &lt;strong&gt;Contas on-line&lt;/strong&gt; e abrir o aplicativo &lt;strong&gt;Evolution&lt;/strong&gt;. Perceba que lá estão:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-6-pt.jpg&quot; title=&quot;Seu correio&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-6-pt.jpg&quot; alt=&quot;Seu correio&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Seu correio&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-7-pt.jpg&quot; title=&quot;Seus contatos&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-7-pt.jpg&quot; alt=&quot;Seus contatos&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Seus contatos&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-8-pt.jpg&quot; title=&quot;Sua agenda&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-8-pt.jpg&quot; alt=&quot;Sua agenda&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Sua agenda&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça bom proveito!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Use Evolution to Connect to Microsoft Exchange on Linux&lt;/td&gt;
-          &lt;td&gt;Linux.com&lt;/td&gt;
-          &lt;td&gt;The source for Linux information]&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;linux.com&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 05 Sep 2017 20:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2017/09/05/conecte-o-evolution-ao-office-365/</guid>
                 
                 
                     <category>pt</category>
