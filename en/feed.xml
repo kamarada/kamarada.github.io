@@ -9,10 +9,223 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 23 Oct 2018 08:17:14 -0300</pubDate>
-        <lastBuildDate>Tue, 23 Oct 2018 08:17:14 -0300</lastBuildDate>
+        <pubDate>Fri, 26 Oct 2018 19:36:45 -0300</pubDate>
+        <lastBuildDate>Fri, 26 Oct 2018 19:36:45 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>HP printers on openSUSE</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.hp.com&quot;&gt;HP&lt;/a&gt; printers and all-in-one devices (printer, scanner and fax) are very popular in Brazil.&lt;/p&gt;
+
+&lt;p&gt;In this post, I show how I have my &lt;a href=&quot;https://support.hp.com/us-en/product/HP-DeskJet-Ink-Advantage-3830-All-in-One-Printer-series/7172328/model/7429639&quot;&gt;HP DeskJet Ink Advantage 3836&lt;/a&gt; setup to print via network on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Other HP printers can be setup the same way.&lt;/p&gt;
+
+&lt;p&gt;I suppose your printer is already connected to the network, but if you are just unboxing it, there is no problem, you can set its networking up using openSUSE too.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-the-hp-printing-driver&quot;&gt;Installing the HP printing driver&lt;/h2&gt;
+
+&lt;p&gt;The HP printing driver for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; is called &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;strong&gt;HPLIP (HP Linux Imaging and Printing)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can install it on openSUSE by the same name package &lt;a href=&quot;https://software.opensuse.org/package/hplip&quot;&gt;hplip&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hplip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The official &lt;a href=&quot;/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt; repository provides HPLIP version 3.17.9.&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-the-hp-printer&quot;&gt;Adding the HP printer&lt;/h2&gt;
+
+&lt;p&gt;With HPLIP installed, launch the &lt;strong&gt;HP Device Manager&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;p&gt;It starts warning there are no HP devices setup:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Setup Device&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Turn on your printer, in case it is not turned on yet.&lt;/p&gt;
+
+&lt;p&gt;On the first screen of the setup wizard, choose your printer connection type:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if your printer is directly connected to your computer by an USB cable, choose &lt;strong&gt;Universal Serial Bus (USB)&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;if your printer is connected to your network (already setup, that is my case), choose &lt;strong&gt;Network/Ethernet/Wireless network&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;if your printer is to be connected to a Wi-Fi network (not setup yet), choose &lt;strong&gt;Wireless/802.11&lt;/strong&gt;; or&lt;/li&gt;
+  &lt;li&gt;if your printer uses a &lt;a href=&quot;https://en.wikipedia.org/wiki/Parallel_port&quot;&gt;parallel port&lt;/a&gt; (probably it is an old printer, because many desktops and laptops don’t have that port anymore), choose &lt;strong&gt;Parallel Port (LPT)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you have just unboxed your printer, choose the third option (&lt;strong&gt;Wireless/802.11&lt;/strong&gt;). First connect your printer to your computer using an USB cable. The wizard will set up your printer networking. In the end, you are going to remove the USB cable and print wirelessly.&lt;/p&gt;
+
+&lt;p&gt;Choose your printer connection type and click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The wizard is going to look for your printer on the network.&lt;/p&gt;
+
+&lt;p&gt;It may not find your printer (it happened to me):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If that happen to you, click on &lt;strong&gt;OK&lt;/strong&gt; to get back to the &lt;strong&gt;Device Discovery&lt;/strong&gt; screen.&lt;/p&gt;
+
+&lt;p&gt;Check your printer networking settings. The exact steps may vary depending on your printer model. On mine, I just touched the &lt;strong&gt;Wireless&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Take note of the &lt;strong&gt;IP&lt;/strong&gt; address:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;172.17.0.2&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Back to the wizard first screen, click on &lt;strong&gt;Show Advanced Options&lt;/strong&gt;, check the &lt;strong&gt;Manual Discovery&lt;/strong&gt; option, fill in the &lt;strong&gt;IP Address&lt;/strong&gt; field and click on &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the wizard finds the printer. It even shows its model:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If the wizard still does not find your printer, close it and read the troubleshooting section at the end of this post.&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If your printer has fax capability but you don’t use it, uncheck the &lt;strong&gt;Fax Setup&lt;/strong&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, click on &lt;strong&gt;Add Printer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enter an administrator (e.g. &lt;em&gt;root&lt;/em&gt;) &lt;strong&gt;Username&lt;/strong&gt; and &lt;strong&gt;Password&lt;/strong&gt; and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;And that’s all! Now the printer is shown on the HP Device Manager main screen:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can use &lt;strong&gt;Print Test Page&lt;/strong&gt; to check if your printer has been properly setup.&lt;/p&gt;
+
+&lt;h2 id=&quot;printing-a-document&quot;&gt;Printing a document&lt;/h2&gt;
+
+&lt;p&gt;Now your printer is already available for printing on apps.&lt;/p&gt;
+
+&lt;p&gt;Instructions on how to print vary from app to app.&lt;/p&gt;
+
+&lt;p&gt;As an example, let’s see how to print a &lt;a href=&quot;https://en.wikipedia.org/wiki/PDF&quot;&gt;PDF document&lt;/a&gt; using &lt;a href=&quot;https://wiki.gnome.org/Apps/Evince&quot;&gt;&lt;strong&gt;Document Viewer&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click on the &lt;strong&gt;File options&lt;/strong&gt; button (top right corner of the window) and click on &lt;strong&gt;Print&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Print&lt;/strong&gt; dialog, select your printer on the list, optionally adjust any printing settings, lastly click on the &lt;strong&gt;Print&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;tip-draft-mode&quot;&gt;Tip: draft mode&lt;/h2&gt;
+
+&lt;p&gt;If you are printing a text just for reading at home, you can use the draft mode of your printer to save ink. The only disadvantage of this mode is that photos and pictures in general may seem pixelated.&lt;/p&gt;
+
+&lt;p&gt;To print in draft mode, on the &lt;strong&gt;Print&lt;/strong&gt; dialog, open the &lt;strong&gt;Advanced&lt;/strong&gt; tab and change the &lt;strong&gt;Printout Mode&lt;/strong&gt; setting to &lt;strong&gt;Draft Grayscale&lt;/strong&gt; or &lt;strong&gt;Draft&lt;/strong&gt; (color):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the other hand, if you need a higher quality printing (at the expense of ink), you can choose &lt;strong&gt;High Quality Grayscale&lt;/strong&gt; or &lt;strong&gt;High Quality&lt;/strong&gt; (color).&lt;/p&gt;
+
+&lt;h2 id=&quot;hplip-cannot-detect-my-printer&quot;&gt;HPLIP cannot detect my printer&lt;/h2&gt;
+
+&lt;p&gt;The HPLIP driver available on the distribution official repository is not always the latest version available on the &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;HPLIP’s site&lt;/a&gt; (at the time of writing, version 3.18.9). Therefore, it may not recognize your printer, mainly if it is a later model.&lt;/p&gt;
+
+&lt;p&gt;To get a more recent version of the HPLIP driver, add the &lt;a href=&quot;https://build.opensuse.org/project/show/Printing&quot;&gt;Printing project&lt;/a&gt; repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, reinstall the HPLIP driver and try to add the printer again.&lt;/p&gt;
+
+</description>
+                <pubDate>Fri, 26 Oct 2018 16:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Based on Enterprise Code, Tested Millions of Times: openSUSE Leap 15 released</title>
@@ -2982,206 +3195,6 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
                 <pubDate>Wed, 16 Nov 2016 08:30:00 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>How to install openSUSE Leap Linux</title>
-                <description>&lt;p&gt;It’s easy to install &lt;a href=&quot;/en/2015/11/04/opensuse-leap-42-1-becomes-first-hybrid-distribution/&quot;&gt;openSUSE Leap&lt;/a&gt; on your computer. Here is a brief how-to that will help you doing that. In case you need further information, refer to the &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/part.basics.html&quot;&gt;openSUSE Leap official documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;before-installation&quot;&gt;Before installation&lt;/h2&gt;
-
-&lt;p&gt;Before starting, there are a few things you should be aware of.&lt;/p&gt;
-
-&lt;p&gt;openSUSE supports most &lt;a href=&quot;https://en.wikipedia.org/wiki/IBM_Personal_Computer&quot;&gt;PC&lt;/a&gt; hardware components and can be installed alongside your current operating system (maybe your computer already has &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; installed, for example). You don’t need to remove it in order to install openSUSE.&lt;/p&gt;
-
-&lt;p&gt;However, to ensure smooth operation of openSUSE Leap, your computer should satisfy the following &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/art.opensuse.installquick.html#sec.osuse.installquick.sysreqs&quot;&gt;requirements&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.intel.com/&quot;&gt;Intel&lt;/a&gt;, &lt;a href=&quot;http://www.amd.com/&quot;&gt;AMD&lt;/a&gt; or compatible 64-bit processor (&lt;a href=&quot;https://www.reddit.com/r/openSUSE/comments/3d711c/will_leap_42_support_32bit_machines_given_that/&quot;&gt;32-bit processors are not supported&lt;/a&gt;, but if your computer is at least relatively new, there is a good chance its processor is 64-bit);&lt;/li&gt;
-  &lt;li&gt;1GB physical RAM (2GB or more recommended); and&lt;/li&gt;
-  &lt;li&gt;5GB available disk space (more recommended for personal files and software to be installed in the future).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you are going to install openSUSE Leap on a laptop, make sure its battery is fully charged and its AC adapter is plugged in. Do not remove the battery or unplug the AC adapter during installation.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started&quot;&gt;Getting started&lt;/h2&gt;
-
-&lt;p&gt;Which media are you using to install openSUSE Leap? If it’s the &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;LiveDVD built by the Linux Kamarada Project&lt;/a&gt;, put it into your computer’s DVD-drive. If it’s a &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;LiveUSB&lt;/a&gt;, insert it on one of your computer’s USB ports. Then, in both cases, restart your computer.&lt;/p&gt;
-
-&lt;p&gt;Within moments, you will get to the &lt;a href=&quot;https://www.kde.org/&quot;&gt;KDE’s Plasma desktop&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click the &lt;strong&gt;Install&lt;/strong&gt; icon on the desktop to start installer.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-language-keyboard-layout-and-license&quot;&gt;1) Language, keyboard layout and license&lt;/h2&gt;
-
-&lt;p&gt;On the first screen, you are presented to the language and keyboard layout settings and the &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;openSUSE Leap license&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Check that the language and keyboard layout settings are as desired. The installer offers a text field in which you can type something to test your keyboard.&lt;/p&gt;
-
-&lt;p&gt;You don’t need to worry about the software license: since openSUSE is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;software &lt;em&gt;libre&lt;/em&gt;&lt;/a&gt;, its license does not limit your use. You can read it just to know your rights as an openSUSE user.&lt;/p&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-clock-and-time-zone&quot;&gt;2) Clock and time zone&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Check that your time zone, date and time settings are correct.&lt;/p&gt;
-
-&lt;p&gt;If you need to change the time zone, click on the map closest to your current location or use the &lt;strong&gt;Region&lt;/strong&gt; and &lt;strong&gt;Time Zone&lt;/strong&gt; dropdown menus below the map.&lt;/p&gt;
-
-&lt;p&gt;If your computer will have only Linux installed, it’s recommended to keep the &lt;strong&gt;Hardware Clock Set to UTC&lt;/strong&gt; option checked. If you are installing Linux alongside Windows or other operating system, make sure you unckeck that box.&lt;/p&gt;
-
-&lt;p&gt;If you need further information about that screen, please refer to the &lt;a href=&quot;/en/2017/02/25/sync-your-system-time-with-ntp/&quot;&gt;Sync your system time with NTP&lt;/a&gt; post.&lt;/p&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-partitioning&quot;&gt;3) Partitioning&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;By default, openSUSE proposes to create three new partitions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; (root), for system files;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt;, for personal files of users; and&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linux.com/news/all-about-linux-swap-space&quot;&gt;swap&lt;/a&gt;, which is used as a supplement for RAM, similar to the &lt;a href=&quot;https://support.microsoft.com/kb/2160852&quot;&gt;page file&lt;/a&gt; in Windows.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If your computer is in &lt;a href=&quot;https://en.opensuse.org/openSUSE:UEFI&quot;&gt;UEFI&lt;/a&gt; mode (as is the case in the figure), possibly the installer will suggest creating a fourth partition, which is the &lt;a href=&quot;https://en.wikipedia.org/wiki/EFI_system_partition&quot;&gt;ESP&lt;/a&gt;. If your computer came with Windows pre-installed, probably it already has an ESP, so its creation is not suggested.&lt;/p&gt;
-
-&lt;p&gt;I’m not going to dive into details about partitioning here, as that would be a subject for an entire (and long) post. If you need more information, I suggest you take a look at the &lt;a href=&quot;https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.inst.html#sec.i.yast2.inst_mode.partitioning&quot;&gt;openSUSE Leap official documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Usually the openSUSE installer is smart enough to suggest you the best possible partitioning setting for your computer. Change it only if you know what you are doing, since improper partitioning can lead to accidental loss of data.&lt;/p&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-username-and-password&quot;&gt;4) Username and password&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On that screen, you are going to create an user account for you. Enter your full name and the desired username and password.&lt;/p&gt;
-
-&lt;p&gt;If security is a concern, please note that the installer suggests to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;use the same password for the administrator user (in Linux, it is called superuser or &lt;em&gt;root&lt;/em&gt;); and&lt;/li&gt;
-  &lt;li&gt;automatically log in your user account when the computer turns on.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Those options are suggested for convenience, but actually they make your system a little less secure. Consider unchecking the &lt;strong&gt;Use this password for system administrator&lt;/strong&gt; option and setting up a different password for the root user. Also, unchecking the &lt;strong&gt;Automatic Login&lt;/strong&gt; option will enforce that an username and password must be provided to use the computer.&lt;/p&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;The installer may complain about your password if it is considered easy to guess:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If that is the case, it is strongly recommended that you click &lt;strong&gt;No&lt;/strong&gt; and set up a safer password.&lt;/p&gt;
-
-&lt;p&gt;If you need help on how to elaborate a strong password, you may check this Lifehacker’s post &lt;a href=&quot;http://lifehacker.com/four-methods-to-create-a-secure-password-youll-actually-1601854240&quot;&gt;Four Methods to Create a Secure Password You’ll Actually Remember&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-installation-overview&quot;&gt;5) Installation overview&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Check that everything is as desired. Once you click &lt;strong&gt;Install&lt;/strong&gt;, there will be no way back.&lt;/p&gt;
-
-&lt;p&gt;If you need to change any setting, click on its link to go to the corresponding screen.&lt;/p&gt;
-
-&lt;p&gt;Else, if you are ready, click &lt;strong&gt;Install&lt;/strong&gt;. A confirmation message is shown:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Install&lt;/strong&gt; to start &lt;em&gt;de facto&lt;/em&gt; installing openSUSE Leap.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-actual-installation&quot;&gt;6) Actual installation&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now the actual installation is performed. That screen shows its progress in detail.&lt;/p&gt;
-
-&lt;p&gt;Even though you are allowed to use your computer during installation, avoid doing that, so it won’t crash and the system being installed won’t be corrupted, what could turn your computer unusable.&lt;/p&gt;
-
-&lt;p&gt;When the installation is done, the installer asks you to reboot your computer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/installation-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/installation-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That’s all folks!&lt;/p&gt;
-
-&lt;p&gt;Now you just need to restart your computer and start using openSUSE Leap.&lt;/p&gt;
-
-&lt;p&gt;Have a lot of fun!&lt;/p&gt;
-
-</description>
-                <pubDate>Tue, 15 Nov 2016 23:59:59 -0200</pubDate>
-                <link>https://kamarada.github.io/en/2016/11/15/how-to-install-opensuse-leap-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2016/11/15/how-to-install-opensuse-leap-linux/</guid>
                 
                 
                     <category>en</category>

@@ -1,5 +1,204 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-23T08:17:14-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Mantenha a hora do Android sempre certa</title><link href="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/" rel="alternate" type="text/html" title="Mantenha a hora do Android sempre certa" /><published>2018-10-22T01:20:00-03:00</published><updated>2018-10-23T08:17:09-03:00</updated><id>https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-26T19:36:45-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">HP printers on openSUSE</title><link href="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/" rel="alternate" type="text/html" title="HP printers on openSUSE" /><published>2018-10-26T16:30:00-03:00</published><updated>2018-10-26T19:36:19-03:00</updated><id>https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.hp.com&quot;&gt;HP&lt;/a&gt; printers and all-in-one devices (printer, scanner and fax) are very popular in Brazil.&lt;/p&gt;
+
+&lt;p&gt;In this post, I show how I have my &lt;a href=&quot;https://support.hp.com/us-en/product/HP-DeskJet-Ink-Advantage-3830-All-in-One-Printer-series/7172328/model/7429639&quot;&gt;HP DeskJet Ink Advantage 3836&lt;/a&gt; setup to print via network on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Other HP printers can be setup the same way.&lt;/p&gt;
+
+&lt;p&gt;I suppose your printer is already connected to the network, but if you are just unboxing it, there is no problem, you can set its networking up using openSUSE too.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-the-hp-printing-driver&quot;&gt;Installing the HP printing driver&lt;/h2&gt;
+
+&lt;p&gt;The HP printing driver for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; is called &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;&lt;strong&gt;HPLIP (HP Linux Imaging and Printing)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can install it on openSUSE by the same name package &lt;a href=&quot;https://software.opensuse.org/package/hplip&quot;&gt;hplip&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hplip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The official &lt;a href=&quot;/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt; repository provides HPLIP version 3.17.9.&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-the-hp-printer&quot;&gt;Adding the HP printer&lt;/h2&gt;
+
+&lt;p&gt;With HPLIP installed, launch the &lt;strong&gt;HP Device Manager&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;p&gt;It starts warning there are no HP devices setup:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Setup Device&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Turn on your printer, in case it is not turned on yet.&lt;/p&gt;
+
+&lt;p&gt;On the first screen of the setup wizard, choose your printer connection type:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if your printer is directly connected to your computer by an USB cable, choose &lt;strong&gt;Universal Serial Bus (USB)&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;if your printer is connected to your network (already setup, that is my case), choose &lt;strong&gt;Network/Ethernet/Wireless network&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;if your printer is to be connected to a Wi-Fi network (not setup yet), choose &lt;strong&gt;Wireless/802.11&lt;/strong&gt;; or&lt;/li&gt;
+  &lt;li&gt;if your printer uses a &lt;a href=&quot;https://en.wikipedia.org/wiki/Parallel_port&quot;&gt;parallel port&lt;/a&gt; (probably it is an old printer, because many desktops and laptops don’t have that port anymore), choose &lt;strong&gt;Parallel Port (LPT)&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you have just unboxed your printer, choose the third option (&lt;strong&gt;Wireless/802.11&lt;/strong&gt;). First connect your printer to your computer using an USB cable. The wizard will set up your printer networking. In the end, you are going to remove the USB cable and print wirelessly.&lt;/p&gt;
+
+&lt;p&gt;Choose your printer connection type and click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The wizard is going to look for your printer on the network.&lt;/p&gt;
+
+&lt;p&gt;It may not find your printer (it happened to me):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If that happen to you, click on &lt;strong&gt;OK&lt;/strong&gt; to get back to the &lt;strong&gt;Device Discovery&lt;/strong&gt; screen.&lt;/p&gt;
+
+&lt;p&gt;Check your printer networking settings. The exact steps may vary depending on your printer model. On mine, I just touched the &lt;strong&gt;Wireless&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Take note of the &lt;strong&gt;IP&lt;/strong&gt; address:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;172.17.0.2&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Back to the wizard first screen, click on &lt;strong&gt;Show Advanced Options&lt;/strong&gt;, check the &lt;strong&gt;Manual Discovery&lt;/strong&gt; option, fill in the &lt;strong&gt;IP Address&lt;/strong&gt; field and click on &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the wizard finds the printer. It even shows its model:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If the wizard still does not find your printer, close it and read the troubleshooting section at the end of this post.&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If your printer has fax capability but you don’t use it, uncheck the &lt;strong&gt;Fax Setup&lt;/strong&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, click on &lt;strong&gt;Add Printer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enter an administrator (e.g. &lt;em&gt;root&lt;/em&gt;) &lt;strong&gt;Username&lt;/strong&gt; and &lt;strong&gt;Password&lt;/strong&gt; and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;And that’s all! Now the printer is shown on the HP Device Manager main screen:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/hp-printers-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/hp-printers-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can use &lt;strong&gt;Print Test Page&lt;/strong&gt; to check if your printer has been properly setup.&lt;/p&gt;
+
+&lt;h2 id=&quot;printing-a-document&quot;&gt;Printing a document&lt;/h2&gt;
+
+&lt;p&gt;Now your printer is already available for printing on apps.&lt;/p&gt;
+
+&lt;p&gt;Instructions on how to print vary from app to app.&lt;/p&gt;
+
+&lt;p&gt;As an example, let’s see how to print a &lt;a href=&quot;https://en.wikipedia.org/wiki/PDF&quot;&gt;PDF document&lt;/a&gt; using &lt;a href=&quot;https://wiki.gnome.org/Apps/Evince&quot;&gt;&lt;strong&gt;Document Viewer&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click on the &lt;strong&gt;File options&lt;/strong&gt; button (top right corner of the window) and click on &lt;strong&gt;Print&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Print&lt;/strong&gt; dialog, select your printer on the list, optionally adjust any printing settings, lastly click on the &lt;strong&gt;Print&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;tip-draft-mode&quot;&gt;Tip: draft mode&lt;/h2&gt;
+
+&lt;p&gt;If you are printing a text just for reading at home, you can use the draft mode of your printer to save ink. The only disadvantage of this mode is that photos and pictures in general may seem pixelated.&lt;/p&gt;
+
+&lt;p&gt;To print in draft mode, on the &lt;strong&gt;Print&lt;/strong&gt; dialog, open the &lt;strong&gt;Advanced&lt;/strong&gt; tab and change the &lt;strong&gt;Printout Mode&lt;/strong&gt; setting to &lt;strong&gt;Draft Grayscale&lt;/strong&gt; or &lt;strong&gt;Draft&lt;/strong&gt; (color):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/hp-printers-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/hp-printers-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the other hand, if you need a higher quality printing (at the expense of ink), you can choose &lt;strong&gt;High Quality Grayscale&lt;/strong&gt; or &lt;strong&gt;High Quality&lt;/strong&gt; (color).&lt;/p&gt;
+
+&lt;h2 id=&quot;hplip-cannot-detect-my-printer&quot;&gt;HPLIP cannot detect my printer&lt;/h2&gt;
+
+&lt;p&gt;The HPLIP driver available on the distribution official repository is not always the latest version available on the &lt;a href=&quot;https://developers.hp.com/hp-linux-imaging-and-printing&quot;&gt;HPLIP’s site&lt;/a&gt; (at the time of writing, version 3.18.9). Therefore, it may not recognize your printer, mainly if it is a later model.&lt;/p&gt;
+
+&lt;p&gt;To get a more recent version of the HPLIP driver, add the &lt;a href=&quot;https://build.opensuse.org/project/show/Printing&quot;&gt;Printing project&lt;/a&gt; repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, reinstall the HPLIP driver and try to add the printer again.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">HP printers and all-in-one devices (printer, scanner and fax) are very popular in Brazil. In this post, I show how I have my HP DeskJet Ink Advantage 3836 setup to print via network on openSUSE. Other HP printers can be setup the same way.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Mantenha a hora do Android sempre certa</title><link href="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/" rel="alternate" type="text/html" title="Mantenha a hora do Android sempre certa" /><published>2018-10-22T01:20:00-03:00</published><updated>2018-10-23T08:17:09-03:00</updated><id>https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/10/howto-android-clock.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/10/howto-android-clock.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
 &lt;/a&gt;
@@ -2020,7 +2219,7 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://wwws.prodemge.gov.br/component/phocadownload/category/23-assinatura-digital-e-mail?download=63:manual-de-assinatura-digital-thunderbird&quot;&gt;Manual de assinatura de e-mail utilizando o Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com o cliente de e-mail Mozilla Thunderbird.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-token.png" /></entry><entry xml:lang="pt"><title type="html">Impressoras HP no openSUSE</title><link href="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/" rel="alternate" type="text/html" title="Impressoras HP no openSUSE" /><published>2018-09-19T16:00:00-03:00</published><updated>2018-09-19T19:14:58-03:00</updated><id>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com o cliente de e-mail Mozilla Thunderbird.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-token.png" /></entry><entry xml:lang="pt"><title type="html">Impressoras HP no openSUSE</title><link href="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/" rel="alternate" type="text/html" title="Impressoras HP no openSUSE" /><published>2018-09-19T16:00:00-03:00</published><updated>2018-10-26T19:36:19-03:00</updated><id>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -2043,7 +2242,7 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hplip
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;A versão 15.0 da distribuição openSUSE Leap fornece a versão 3.17.9 do &lt;em&gt;driver&lt;/em&gt; HPLIP.&lt;/p&gt;
+&lt;p&gt;A versão 15.0 da distribuição &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap&lt;/a&gt; fornece a versão 3.17.9 do &lt;em&gt;driver&lt;/em&gt; HPLIP.&lt;/p&gt;
 
 &lt;h2 id=&quot;adicionando-a-impressora-hp&quot;&gt;Adicionando a impressora HP&lt;/h2&gt;
 
@@ -2093,7 +2292,7 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 
 &lt;/div&gt;
 
-&lt;p&gt;Se esse for o caso, clique em &lt;strong&gt;OK&lt;/strong&gt; e depois em &lt;strong&gt;Back&lt;/strong&gt; para voltar à tela anterior.&lt;/p&gt;
+&lt;p&gt;Se esse for o caso, clique em &lt;strong&gt;OK&lt;/strong&gt; para voltar à tela anterior.&lt;/p&gt;
 
 &lt;p&gt;Verifique a configuração de rede da sua impressora. Como fazer isso é algo que pode variar de modelo para modelo. No caso da minha, eu toquei no ícone &lt;strong&gt;Sem fio&lt;/strong&gt; (na parte de baixo, a figura de antena, no meio):&lt;/p&gt;
 
@@ -2544,179 +2743,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 
 &lt;p&gt;Maintenance and security updates for the Leap 15 series are expected to last for at least three years. Users should update to the newest Leap 15 Service Packs (SP) within six months of each SP release to receive prudent updates. Service Pack updates are expected annually.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Adapted from the original news published by &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; at &lt;a href=&quot;https://news.opensuse.org/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Today's major release of openSUSE Leap 15 is offering professional users, entrepreneurs and ISVs (Independent Software Vendors) a new, fresh and hardened code base for their workloads that supports modern hardware, based on a stable, community- and enterprise-based open-source GNU/Linux distribution – but developed with a modern, more secure, better tested and much more open open-source build system unique to SUSE and openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry><entry xml:lang="pt"><title type="html">Como transmitir a declaração do Imposto de Renda com certificado digital no Linux openSUSE</title><link href="https://kamarada.github.io/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/" rel="alternate" type="text/html" title="Como transmitir a declaração do Imposto de Renda com certificado digital no Linux openSUSE" /><published>2018-04-16T02:30:00-03:00</published><updated>2018-09-10T22:51:58-03:00</updated><id>https://kamarada.github.io/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/">&lt;p&gt;Quem possui &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt; pode ter benefícios na hora de preencher a declaração do &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018&quot;&gt;Imposto de Renda Pessoa Física 2018&lt;/a&gt; (IRPF 2018). Embora seja opcional para a maioria dos contribuintes, em alguns casos a transmissão com certificado digital é obrigatória. Confira aqui quais são esses casos e como realizar a transmissão da declaração com certificado digital.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/02/irpf-2017.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/02/irpf-2017.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;declaração-pré-preenchida&quot;&gt;Declaração pré-preenchida&lt;/h2&gt;
-
-&lt;p&gt;Para quem possui certificado digital, a &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt; disponibiliza a &lt;a href=&quot;http://idg.receita.fazenda.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/dirpf/declaracao-pre-preenchida&quot;&gt;declaração pré-preenchida&lt;/a&gt;, que já vem com alguns dados preenchidos, como rendimentos, deduções, bens e dívidas. A declaração pré-preenchida ajuda a economizar tempo e evitar erros, o que reduz o risco de cair na malha fina.&lt;/p&gt;
-
-&lt;p&gt;Para que esses dados venham preenchidos automaticamente na declaração, é necessário que antes as pessoas jurídicas responsáveis (fontes pagadoras, imobiliárias e médicos, por exemplo) já tenham enviado suas declarações, cujos prazos são anteriores ao prazo da pessoa física.&lt;/p&gt;
-
-&lt;p&gt;A declaração pré-preenchida está disponível para &lt;em&gt;download&lt;/em&gt; no sistema &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt;. Após baixá-la, o contribuinte pode importá-la no programa do IRPF 2018 e continuar a preencher a declaração tomando como ponto de partida os dados pré-preenchidos.&lt;/p&gt;
-
-&lt;p&gt;Para mais informações sobre como importar a declaração pré-preenchida, consulte o &lt;a href=&quot;http://idg.receita.fazenda.gov.br/orientacao/tributaria/declaracoes-e-demonstrativos/dirpf/declaracao-pre-preenchida&quot;&gt;&lt;em&gt;site&lt;/em&gt; da Receita Federal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;obrigatoriedade-do-uso-do-certificado&quot;&gt;Obrigatoriedade do uso do certificado&lt;/h2&gt;
-
-&lt;p&gt;Em resumo, é obrigatório transmitir a declaração com certificado digital quando na declaração os rendimentos e/ou pagamentos passam de R$ 10 milhões.&lt;/p&gt;
-
-&lt;p&gt;Mais informações, obtidas &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/declaracao/transmissao&quot;&gt;nesta página da Receita Federal&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Deve transmitir a Declaração de Ajuste Anual, com a utilização de certificado digital, o contribuinte que se enquadrou, no ano-calendário de 2017, em pelo menos uma das seguintes situações:&lt;/p&gt;
-
-  &lt;p&gt;I - recebeu rendimentos:&lt;/p&gt;
-
-  &lt;p&gt;a) tributáveis sujeitos ao ajuste anual, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais);&lt;/p&gt;
-
-  &lt;p&gt;b) isentos e não tributáveis, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais);&lt;/p&gt;
-
-  &lt;p&gt;c) tributados exclusivamente na fonte, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); ou&lt;/p&gt;
-
-  &lt;p&gt;II - realizou pagamentos de rendimentos a pessoas jurídicas, quando constituam dedução na declaração, ou a pessoas físicas, quando constituam, ou não, dedução na declaração, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais), em cada caso ou no total.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Para ainda mais informações, consulte &lt;a href=&quot;http://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/declaracao/transmissao&quot;&gt;a referida página&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;pré-requisitos&quot;&gt;Pré-requisitos&lt;/h2&gt;
-
-&lt;p&gt;O programa do IRPF 2018 &lt;a href=&quot;https://idg.receita.fazenda.gov.br/interface/cidadao/irpf/2018/download/instrucoes-de-instalacao&quot;&gt;requer&lt;/a&gt; que a máquina virtual do &lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;Java&lt;/a&gt; da &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt; versão 7 ou superior esteja instalada no computador. Você pode acessar a &lt;a href=&quot;https://www.java.com/verify/&quot;&gt;página de teste do Java&lt;/a&gt; para ver se o Java está instalado no seu computador, qual versão está instalada e se há necessidade de atualizar.&lt;/p&gt;
-
-&lt;p&gt;No momento da escrita, a versão mais atual do Java é a &lt;strong&gt;8 Update 161&lt;/strong&gt;, lançada em &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/8u161-relnotes-4021379.html&quot;&gt;16 de janeiro de 2018&lt;/a&gt;. Caso precise, dediquei um &lt;em&gt;post&lt;/em&gt; a explicar &lt;a href=&quot;/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/&quot;&gt;como instalar o Java&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Também já expliquei aqui &lt;a href=&quot;/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/&quot;&gt;como instalar o programa do Imposto de Renda&lt;/a&gt;. O &lt;em&gt;post&lt;/em&gt; trata do IRPF 2017, mas a instalação do IRPF 2018 é bastante semelhante. Você pode obter o programa do IRPF 2018 do &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;&lt;em&gt;site&lt;/em&gt; da Receita Federal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;A mídia do certificado digital (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente&quot;&gt;cartão inteligente&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)&quot;&gt;&lt;em&gt;token&lt;/em&gt;&lt;/a&gt; ou arquivo) deve estar funcionando. Um bom teste é acessar o sistema &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt;, da Receita Federal. &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Como configurar o certificado digital e acessar o eCAC&lt;/a&gt; foi o assunto do &lt;em&gt;post&lt;/em&gt; anterior.&lt;/p&gt;
-
-&lt;p&gt;Por fim, observo que utilizo a distribuição &lt;a href=&quot;https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/&quot;&gt;openSUSE Leap 15.0 Beta&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sem mais delongas, vamos meter a mão na massa!&lt;/p&gt;
-
-&lt;h2 id=&quot;configurando-o-receitanet&quot;&gt;Configurando o Receitanet&lt;/h2&gt;
-
-&lt;p&gt;Para que o programa do IRPF 2018 reconheça a mídia do certificado digital, é necessário criar um arquivo de configuração na pasta do Receitanet.&lt;/p&gt;
-
-&lt;p&gt;Abra o aplicativo &lt;strong&gt;Editor de texto&lt;/strong&gt; e copie e cole o seguinte conteúdo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;name=eToken
-library=/usr/lib64/libeToken.so
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Explicando essas duas variáveis:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;: um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Identificador&quot;&gt;identificador&lt;/a&gt; (não pode ter espaços) para a mídia do certificado; e&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;library&lt;/code&gt;: caminho para a biblioteca (extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.so&lt;/code&gt;) que implementa o padrão &lt;a href=&quot;https://en.wikipedia.org/wiki/PKCS_11&quot;&gt;PKCS#11&lt;/a&gt; para a mídia do certificado.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Salve esse arquivo com o nome de &lt;code class=&quot;highlighter-rouge&quot;&gt;receitanet.cfg&lt;/code&gt; na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.receitanet&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-01.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-01.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;entregando-a-declaração&quot;&gt;Entregando a declaração&lt;/h2&gt;
-
-&lt;p&gt;Abra o programa do IRPF 2018 e inicie o procedimento para transmitir a declaração. Para isso, vá no menu &lt;strong&gt;Declaração&lt;/strong&gt; e clique em &lt;strong&gt;Entregar Declaração&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione a sua declaração, marque a opção &lt;strong&gt;Transmitir com certificação digital&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-03.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-03.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Revise a forma de pagamento ou restituição do imposto:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-04.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-04.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O programa verifica o certificado digital armazenado na mídia. Informe a senha PIN:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione seu certificado na lista e clique em &lt;strong&gt;Assinar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse momento, para mim, a luz do &lt;em&gt;token&lt;/em&gt; acendeu (que nem tem &lt;em&gt;pendrives&lt;/em&gt; que acendem uma luz quando estão sendo utilizados) e o programa fechou, sem dar qualquer aviso. No entanto, ao iniciar novamente o programa do IRPF 2018, percebi que havia recibo de entrega. Concluí que, embora o programa tivesse travado, a declaração havia sido transmitida.&lt;/p&gt;
-
-&lt;p&gt;Para salvar o recibo de entrega da declaração como PDF, vá no menu &lt;strong&gt;Imprimir&lt;/strong&gt; e clique em &lt;strong&gt;Recibo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione a sua declaração (observe o ícone &lt;strong&gt;Transmitida&lt;/strong&gt; no início da linha), selecione a opção &lt;strong&gt;Visualizar&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-08.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-08.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe a informação ao final da primeira página:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Esta declaração foi assinada com o certificado digital do NI 123.456.789-01&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/04/irpf-2018-certificado-09.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/04/irpf-2018-certificado-09.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para salvar o recibo como PDF, clique no ícone de &lt;strong&gt;Salvar&lt;/strong&gt; no canto superior esquerdo da janela.&lt;/p&gt;
-
-&lt;h2 id=&quot;restituição-antecipada&quot;&gt;Restituição antecipada&lt;/h2&gt;
-
-&lt;p&gt;Há quem diga que &lt;a href=&quot;https://exame.abril.com.br/tecnologia/certificado-digital-facilita-a-declaracao-do-imposto-de-renda/&quot;&gt;transmitir a declaração com certificado digital antecipa a restituição&lt;/a&gt;, mas eu &lt;strong&gt;não consegui confirmar essa informação&lt;/strong&gt; em uma página oficial da Receita Federal. Fica a dúvida no ar se é verdade ou não…&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://oglobo.globo.com/economia/ir-certificados-digitais-ajudam-economizar-tempo-evitar-erros-18939459&quot;&gt;IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://idg.receita.fazenda.gov.br/programas-para-download/receitanet/ajuda-do-receitanet/configuracao-para-uso-de-tokens-e-smartcards-no-linux&quot;&gt;Configuração para uso de Tokens e SmartCards no Linux —  Receita Federal&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://serasa.certificadodigital.com.br/ajuda/imposto-de-renda/&quot;&gt;Declaração do Imposto de Renda com Certificado Digital&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Quem possui certificado digital pode ter benefícios na hora de preencher a declaração do Imposto de Renda Pessoa Física 2018 (IRPF 2018). Embora seja opcional para a maioria dos contribuintes, em alguns casos a transmissão com certificado digital é obrigatória. Confira aqui quais são esses casos e como realizar a transmissão da declaração com certificado digital. Declaração pré-preenchida Para quem possui certificado digital, a Receita Federal disponibiliza a declaração pré-preenchida, que já vem com alguns dados preenchidos, como rendimentos, deduções, bens e dívidas. A declaração pré-preenchida ajuda a economizar tempo e evitar erros, o que reduz o risco de cair na malha fina. Para que esses dados venham preenchidos automaticamente na declaração, é necessário que antes as pessoas jurídicas responsáveis (fontes pagadoras, imobiliárias e médicos, por exemplo) já tenham enviado suas declarações, cujos prazos são anteriores ao prazo da pessoa física. A declaração pré-preenchida está disponível para download no sistema eCAC. Após baixá-la, o contribuinte pode importá-la no programa do IRPF 2018 e continuar a preencher a declaração tomando como ponto de partida os dados pré-preenchidos. Para mais informações sobre como importar a declaração pré-preenchida, consulte o site da Receita Federal. Obrigatoriedade do uso do certificado Em resumo, é obrigatório transmitir a declaração com certificado digital quando na declaração os rendimentos e/ou pagamentos passam de R$ 10 milhões. Mais informações, obtidas nesta página da Receita Federal: Deve transmitir a Declaração de Ajuste Anual, com a utilização de certificado digital, o contribuinte que se enquadrou, no ano-calendário de 2017, em pelo menos uma das seguintes situações: I - recebeu rendimentos: a) tributáveis sujeitos ao ajuste anual, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); b) isentos e não tributáveis, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); c) tributados exclusivamente na fonte, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais); ou II - realizou pagamentos de rendimentos a pessoas jurídicas, quando constituam dedução na declaração, ou a pessoas físicas, quando constituam, ou não, dedução na declaração, cuja soma foi superior a R$ 10.000.000,00 (dez milhões de reais), em cada caso ou no total. Para ainda mais informações, consulte a referida página. Pré-requisitos O programa do IRPF 2018 requer que a máquina virtual do Java da Oracle versão 7 ou superior esteja instalada no computador. Você pode acessar a página de teste do Java para ver se o Java está instalado no seu computador, qual versão está instalada e se há necessidade de atualizar. No momento da escrita, a versão mais atual do Java é a 8 Update 161, lançada em 16 de janeiro de 2018. Caso precise, dediquei um post a explicar como instalar o Java. Também já expliquei aqui como instalar o programa do Imposto de Renda. O post trata do IRPF 2017, mas a instalação do IRPF 2018 é bastante semelhante. Você pode obter o programa do IRPF 2018 do site da Receita Federal. A mídia do certificado digital (cartão inteligente, token ou arquivo) deve estar funcionando. Um bom teste é acessar o sistema eCAC, da Receita Federal. Como configurar o certificado digital e acessar o eCAC foi o assunto do post anterior. Por fim, observo que utilizo a distribuição openSUSE Leap 15.0 Beta. Sem mais delongas, vamos meter a mão na massa! Configurando o Receitanet Para que o programa do IRPF 2018 reconheça a mídia do certificado digital, é necessário criar um arquivo de configuração na pasta do Receitanet. Abra o aplicativo Editor de texto e copie e cole o seguinte conteúdo: 1 2 name=eToken library=/usr/lib64/libeToken.so Explicando essas duas variáveis: name: um identificador (não pode ter espaços) para a mídia do certificado; e library: caminho para a biblioteca (extensão .so) que implementa o padrão PKCS#11 para a mídia do certificado. Salve esse arquivo com o nome de receitanet.cfg na pasta ~/.receitanet: Entregando a declaração Abra o programa do IRPF 2018 e inicie o procedimento para transmitir a declaração. Para isso, vá no menu Declaração e clique em Entregar Declaração: Selecione a sua declaração, marque a opção Transmitir com certificação digital e clique em OK: Revise a forma de pagamento ou restituição do imposto: O programa verifica o certificado digital armazenado na mídia. Informe a senha PIN: Selecione seu certificado na lista e clique em Assinar: Nesse momento, para mim, a luz do token acendeu (que nem tem pendrives que acendem uma luz quando estão sendo utilizados) e o programa fechou, sem dar qualquer aviso. No entanto, ao iniciar novamente o programa do IRPF 2018, percebi que havia recibo de entrega. Concluí que, embora o programa tivesse travado, a declaração havia sido transmitida. Para salvar o recibo de entrega da declaração como PDF, vá no menu Imprimir e clique em Recibo: Selecione a sua declaração (observe o ícone Transmitida no início da linha), selecione a opção Visualizar e clique em OK: Observe a informação ao final da primeira página: Esta declaração foi assinada com o certificado digital do NI 123.456.789-01 Para salvar o recibo como PDF, clique no ícone de Salvar no canto superior esquerdo da janela. Restituição antecipada Há quem diga que transmitir a declaração com certificado digital antecipa a restituição, mas eu não consegui confirmar essa informação em uma página oficial da Receita Federal. Fica a dúvida no ar se é verdade ou não… Referências IR: Certificados digitais ajudam a economizar tempo e evitar erros - Jornal O Globo Configuração para uso de Tokens e SmartCards no Linux — Receita Federal Declaração do Imposto de Renda com Certificado Digital</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2017/02/irpf-2017.jpg" /></entry></feed>
+&lt;p&gt;&lt;em&gt;Adapted from the original news published by &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; at &lt;a href=&quot;https://news.opensuse.org/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Today's major release of openSUSE Leap 15 is offering professional users, entrepreneurs and ISVs (Independent Software Vendors) a new, fresh and hardened code base for their workloads that supports modern hardware, based on a stable, community- and enterprise-based open-source GNU/Linux distribution – but developed with a modern, more secure, better tested and much more open open-source build system unique to SUSE and openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry></feed>
