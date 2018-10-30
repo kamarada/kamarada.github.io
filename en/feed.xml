@@ -9,10 +9,174 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 26 Oct 2018 19:36:45 -0300</pubDate>
-        <lastBuildDate>Fri, 26 Oct 2018 19:36:45 -0300</lastBuildDate>
+        <pubDate>Tue, 30 Oct 2018 19:58:51 -0300</pubDate>
+        <lastBuildDate>Tue, 30 Oct 2018 19:58:51 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>How to install website certificates on Linux</title>
+                <description>&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-1.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-1.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;understand-whats-going-on&quot;&gt;Understand what’s going on&lt;/h2&gt;
+
+&lt;p&gt;When you visit a website that uses secure connection (web address starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;), your communication is encrypted to help ensure your privacy. Before establishing connection, the website presents to the browser a &lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;&lt;strong&gt;security certificate&lt;/strong&gt;&lt;/a&gt; identifying itself.&lt;/p&gt;
+
+&lt;p&gt;Anyone can create a certificate claiming to be whoever they want. But usually website certificates are issued and signed by &lt;a href=&quot;https://en.wikipedia.org/wiki/Certificate_authority&quot;&gt;&lt;strong&gt;certificate authorities (CA’s)&lt;/strong&gt;&lt;/a&gt;, which also have their own certificates. On their turn, CA’s certificates may be self-signed (in the case of a company’s internal CA) or signed by other CA’s so forth up to a &lt;strong&gt;root certificate authority (root CA)&lt;/strong&gt;. This chain of certificates is called the &lt;strong&gt;certificate hierarchy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Root CA’s are public, well known and trusted organizations, such as the American &lt;a href=&quot;https://fpki.idmanagement.gov/ca/&quot;&gt;FCPCA&lt;/a&gt; or the Brazilian &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;. Usually root CA’s certificates are previously known by browsers.&lt;/p&gt;
+
+&lt;p&gt;When you visit an &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; website, the browser checks that its certificate is valid and the certificate hierarchy ends on a known CA certificate. If that checking succeeds, the browser displays a green lock icon near the address bar, indicating the website you are visiting is actually the website that it claims to be. You are safe to stay on it, enter passwords, provide credit card numbers and send or receive other sensitive data. Always look for the green lock icon when accessing banking or shopping websites.&lt;/p&gt;
+
+&lt;p&gt;When you visit an HTTPS website, but the certificate checking does not succeed, the browser adverts you that your connection is not secure or private. If that is the case, you need to proceed with caution: don’t enter any sensitive information on this page. If possible, leave it.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, the connection is not really insecure. Security alerts may appear, for example, when you visit a web system of your organization, signed by an internal CA whose certificate is not previously known by the browser. In that case, you need to manually install your organization’s CA certificate to prevent false alerts.&lt;/p&gt;
+
+&lt;p&gt;Also Brazilian citizens always see privacy alerts when visiting websites of the Brazilian government. Browsers don’t come with the &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; certificate out-of-the-box because it does not comply to &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=438825&quot;&gt;Mozilla security requirements, which is an 11-year old bug&lt;/a&gt;. So, Brazilian citizens need to manually install it. Some Brazilian public organizations have adopted workarounds: for instance, the &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;Federal Police of Brazil&lt;/a&gt; sign its forms (e.g. the &lt;a href=&quot;https://servicos.dpf.gov.br/sinpa/inicializacaoSolicitacao.do?dispatch=inicializarSolicitacaoPassaporte&quot;&gt;passport application form&lt;/a&gt;) with a certificate issued by Let’s Encrypt, but content-only pages (including &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;their own home page&lt;/a&gt;) are not signed at all. &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt; is an American non-profit organization that issues certificates for free for anyone and &lt;a href=&quot;https://letsencrypt.org/2018/08/06/trusted-by-all-major-root-programs.html&quot;&gt;is trusted by browsers&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-the-ca-certificate&quot;&gt;Install the CA certificate&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to add a CA certificate to the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; and &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; browsers, so they trust certificates signed by that CA. Same instructions for Chrome apply to its &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; base &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’m going to use &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt; as example, which is a Brazilian government web system whose certificate is signed by &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, the Brazilian root CA.&lt;/p&gt;
+
+&lt;p&gt;In your case, the certificate you are going to install may be from your company’s internal CA. You should retrieve it with your company’s network administrator.&lt;/p&gt;
+
+&lt;h3 id=&quot;mozilla-firefox&quot;&gt;Mozilla Firefox&lt;/h3&gt;
+
+&lt;p&gt;Pull down the &lt;strong&gt;Firefox menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Privacy &amp;amp; Security&lt;/strong&gt; by the left and click on &lt;strong&gt;View Certificates&lt;/strong&gt; by the right, at the end of the page:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog, select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-4.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-4.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
+
+&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; in the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog and close the &lt;strong&gt;Preferences&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;Refresh the page you were trying to visit and realize the green lock icon at the begining of the address bar, indicating the website is safe to visit:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;google-chrome&quot;&gt;Google Chrome&lt;/h3&gt;
+
+&lt;p&gt;Pull down the &lt;strong&gt;Chrome menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Search settings&lt;/strong&gt; field, type &lt;code class=&quot;highlighter-rouge&quot;&gt;certificates&lt;/code&gt;. Chrome filters related settings. Click on &lt;strong&gt;Manage certificates&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
+
+&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Close the &lt;strong&gt;Settings&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;Refresh the page you were trying to visit and realize the lock icon to the left of the web address, indicating the website is safe to visit:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/359298/why-does-google-chrome-say-websites-are-%E2%80%9Cnot-secure%E2%80%9D/&quot;&gt;Why Does Google Chrome Say Websites Are “Not Secure”?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;Secure Website Certificate - Firefox Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chrome/answer/95617&quot;&gt;Check if a site’s connection is secure - Google Chrome Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.mozilla.org/PSM:Changing_Trust_Settings&quot;&gt;PSM:Changing Trust Settings - MozillaWiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bounca.org/tutorials/install_root_certificate.html&quot;&gt;Install self-generated root certificate authorities - BounCA.org generate self-signed SSL certificates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 30 Oct 2018 16:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>HP printers on openSUSE</title>
@@ -1013,17 +1177,7 @@ kamarada@desktop:~&amp;gt;
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;[Use Evolution to Connect to Microsoft Exchange on Linux&lt;/td&gt;
-          &lt;td&gt;Linux.com&lt;/td&gt;
-          &lt;td&gt;The source for Linux information]&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;linux.com&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;Use Evolution to Connect to Microsoft Exchange on Linux - Linux.com&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2708,493 +2862,6 @@ usbcore               245760  10 uvcvideo,usbhid,rtl8812au,ehci_hcd,xhci_pci,rts
                 <pubDate>Wed, 25 Jan 2017 06:20:00 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Optimal Release for Linux Professionals Arrives with openSUSE Leap 42.2</title>
-                <description>&lt;h2 id=&quot;a-professional-distribution-for-developers-system-administrators-and-users&quot;&gt;A Professional Distribution for Developers, System Administrators and Users&lt;/h2&gt;
-
-&lt;p&gt;Members of the openSUSE Project are pleased to announce the release of the next minor version of Leap; openSUSE Leap 42.2! Leap is made to give stability-minded users and conservative technology adopters peace of mind. openSUSE Leap 42.2 is powered by the Linux 4.4 Long-Term-Support (LTS) kernel and is a secure, stable and reliable server operating system for deploying IT services in physical, virtual or cloud environments.&lt;/p&gt;
-
-&lt;p&gt;A selective process of including well-established packages in openSUSE Leap 42.2 gives new meaning to the term &lt;em&gt;Linux Optimization&lt;/em&gt;; openSUSE Leap is simply the safe choice that offers Linux professionals a user-friendly desktop and a feature-rich server environment.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2015/11/Leap-green.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2015/11/Leap-green.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 150px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Continuing the tradition of using source code from &lt;a href=&quot;https://www.suse.com/products/server&quot;&gt;SUSE Linux Enterprise&lt;/a&gt; (SLE), openSUSE Leap 42.2 provides a level of stability unmatched by other Linux distributions. With community-built packages on top of Leap’s enterprise reliability, openSUSE Leap users benefit both from community and enterprise maintenance efforts.&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;pt&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Wow! &lt;a href=&quot;https://twitter.com/openSUSE&quot;&gt;@openSUSE&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/SUSE&quot;&gt;@SUSE&lt;/a&gt; together creating great distros for devs and operators! Check out openSUSE Leap 42.2: &lt;a href=&quot;https://t.co/jEeQFltLe5&quot;&gt;https://t.co/jEeQFltLe5&lt;/a&gt;&lt;/p&gt;&amp;mdash; Michael Miller (@michaelwmiller) &lt;a href=&quot;https://twitter.com/michaelwmiller/status/798551355795206144&quot;&gt;15 de novembro de 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;Contributions to openSUSE Leap from SUSE include several new features like Network Functions Virtualization capabilities that combines &lt;a href=&quot;http://www.openvswitch.org/&quot;&gt;Open vSwitch&lt;/a&gt; with the Data Plane Development Kit to process packets faster. YaST also has a significant amount of improvements and new features.&lt;/p&gt;
-
-&lt;p&gt;Community contributions were equally enormous as more than 1,400 new packages made it into this newest Leap version, with 42.2 providing 17% more packages than 42.1.&lt;/p&gt;
-
-&lt;p&gt;One of those community packages includes &lt;a href=&quot;http://health.gnu.org/&quot;&gt;GNU Health&lt;/a&gt; Version 3.0.4. This Free Health and Hospital Information System is used by hospitals, governments and institutions under a free license. GNU Health allows management and analysis of a huge amount of data and aspects.&lt;/p&gt;
-
-&lt;p&gt;Another new package in Leap 42.2 is &lt;a href=&quot;https://www.prelude-siem.org/&quot;&gt;Prelude Security Information &amp;amp; Event Management (SIEM)&lt;/a&gt; system, which collects, normalizes, sorts, aggregates, correlates and reports all security-related events (IDMEF).&lt;/p&gt;
-
-&lt;p&gt;A large community effort and cooperation between openSUSE and KDE has brought a Long-Term Support version for &lt;a href=&quot;http://www.kde.org/announcements/plasma-5.8.2.php&quot;&gt;Plasma 5.8&lt;/a&gt;, which improves multiple monitor support out-of-the-box.&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;pt&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Tons of great feedback from devs &amp;amp; ops about using &lt;a href=&quot;https://twitter.com/openSUSE&quot;&gt;@openSUSE&lt;/a&gt; Leap (42.2 on its way in a few hours!) for dev &amp;amp; then move to &lt;a href=&quot;https://twitter.com/SUSE&quot;&gt;@SUSE&lt;/a&gt; production!&lt;/p&gt;&amp;mdash; Thomas Di Giacomo (@thomasdigiacomo) &lt;a href=&quot;https://twitter.com/thomasdigiacomo/status/798547292143828992&quot;&gt;15 de novembro de 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;Leap provides an ideal &lt;a href=&quot;https://www.youtube.com/watch?v=eVXDGnaYbKQ&quot;&gt;dev-to-production&lt;/a&gt; model with SLE for developers and system administrators who want to align their development and production environments. openSUSE Leap is highly stable and is a safe choice for sysadmins, developers and desktop users.&lt;/p&gt;
-
-&lt;p&gt;The newest Leap version improves user capabilities with &lt;a href=&quot;https://en.opensuse.org/Portal:Snapper&quot;&gt;snapper&lt;/a&gt; snapshots that are based on the Btrfs filesystem. A new Btrfs concept for quota makes snapper much less disk-hungry. It is configured by default on fresh installations and can be &lt;a href=&quot;http://snapper.io/2016/05/18/space-aware-cleanup.html&quot;&gt;manually setup&lt;/a&gt; after upgrading to Leap 42.2. &lt;a href=&quot;http://snapper.io/&quot;&gt;Snapper&lt;/a&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Poka-yoke&quot;&gt;poka-yoke&lt;/a&gt; and can give system administrators confidence about updating new packages and rolling back the system if any errors occur.&lt;/p&gt;
-
-&lt;p&gt;Leap also offers users, developers and system administrators an easy path to move to other operating systems like openSUSE’s faster, more updated distribution &lt;a href=&quot;https://en.opensuse.org/Tumbleweed&quot;&gt;Tumbleweed&lt;/a&gt;, with the newest upstream packages and software versions provided on a rolling release basis, or to an enterprise-level support system with &lt;a href=&quot;https://www.suse.com/products/server&quot;&gt;SLE&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;See for yourself why openSUSE Leap is an acclaimed community-enterprise distribution.&lt;/p&gt;
-
-&lt;h2 id=&quot;opensuse-leap-422-is&quot;&gt;openSUSE Leap 42.2 is…&lt;/h2&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/status/meeting-participant.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/status/meeting-participant.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;more-enterprise&quot;&gt;More Enterprise&lt;/h3&gt;
-
-&lt;p&gt;That’s right. After basing openSUSE Leap 42.1 on SLE (SUSE Linux Enterprise), Leap 42.2 gets even more source code from the release of &lt;a href=&quot;https://www.suse.com/promo/sle/&quot;&gt;SLE 12&lt;/a&gt; Service Pack 2. New technologies such as NVDIMM, OmniPATH, Data Plane Development Kit with openVSwitch are back ported for the release. XEN no longer requires it’s own kernel and is supported by the default kernel. Along with the shared SLE codebase, openSUSE Leap 42.2 gets packages, maintenance and bug fixes from the openSUSE community and SUSE engineers. The 42 series of Leap achieves at a minimum 36 months of maintenance and security updates starting from 42.1.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/network-server.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/network-server.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;server-ready&quot;&gt;Server Ready&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 is the first Leap release to offer a Server profile as clear option during the installation. With no graphical environment, a Server install of Leap stands ready to do whatever you need from it. Something as simple as running a Web or Mail platform is easier than ever, as are complex projects using virtualization or container technologies.&lt;/p&gt;
-
-&lt;p&gt;It’s also good to remember that Leap and all other openSUSE and SLE distributions have support for a &lt;a href=&quot;https://en.opensuse.org/SDB:Installation_with_little_memory#Text_mode&quot;&gt;full-featured textmode installer&lt;/a&gt;, giving all the same functionality as the graphical installer without the need for X. Our installer is also fully capable of doing &lt;a href=&quot;https://en.opensuse.org/SDB:Remote_installation&quot;&gt;installations remotely using VNC or SSH&lt;/a&gt;, letting you set up your openSUSE Leap server without needing to be anywhere near it at all.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-12&quot;&gt;
-
-&lt;h3 id=&quot;the-return-of-the-konqi&quot;&gt;The Return of the Konqi&lt;/h3&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/konqi.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2016/11/konqi.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Konqi has returned and is in full force. Plasma 5.8 brings a whole new component to openSUSE Leap. As the first Long Term Supported release for Plasma, Plasma 5.8 complements stability-minded Leap users. In unison with &lt;a href=&quot;https://www.qt.io/qt5-6/&quot;&gt;Qt 5.6&lt;/a&gt; and Frameworks 5.26, Plasma 5.8 will bring Leap 42.2 users excellent KDE reliability and stability.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/start-here-branding.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/start-here-branding.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;the-kernel&quot;&gt;The Kernel&lt;/h3&gt;
-
-&lt;p&gt;The 4.4 LTS Linux Kernel for openSUSE Leap 42.2 improves file system performance and features, including a new balance filter for Btrfs. The default kernel now has paravirtualization enabled. The kernel version also improves cryptography and security support for Trusted Platform Module 2.0 chips as well as adds support for nested Virtualization through KVM. Networking is dramatically improved for IP Virtual Server and IPv6 and of course there is more updates and changes for the multiple architectures.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;get-leap&quot;&gt;Get Leap!&lt;/h2&gt;
-
-&lt;p&gt;Downloads of openSUSE Leap 42.2 can be found at &lt;a href=&quot;http://software.opensuse.org/&quot;&gt;software.opensuse.org&lt;/a&gt;. We recommend checking out the &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.2/&quot;&gt;Release Notes&lt;/a&gt; before upgrade or installation.&lt;/p&gt;
-
-&lt;p&gt;Users currently running &lt;a href=&quot;https://en.opensuse.org/Portal:42.1&quot;&gt;openSUSE Leap 42.1&lt;/a&gt; can &lt;a href=&quot;http://en.opensuse.org/Upgrade&quot;&gt;upgrade to openSUSE Leap 42.2 via the instructions at this link&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The AArch64 architecture port has continued to mature and is now considered stable. ARMv7 has successfully entered the Leap sphere and is available now as well, giving users an upgrade path for their 13.2 installations. To find instructions on how to install openSUSE Leap on a given ARM system, please visit &lt;a href=&quot;https://en.opensuse.org/Portal:ARM&quot;&gt;the ARM wiki&lt;/a&gt; for more information.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks!&lt;/h2&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 represents the combined effort of thousands of developers who participate in our distributions and projects shipped with it. The contributors, inside and outside the openSUSE Project, should be proud of this release, and they deserve a major &lt;strong&gt;“thank you”&lt;/strong&gt; for all of the hard work and care that have gone into it. We believe Leap is the ideal Linux distribution for developers, sysadmins and users. We hope you have a lot of fun using it, and we look forward to working with you on the next release or in &lt;a href=&quot;https://en.opensuse.org/Tumbleweed&quot;&gt;Tumbleweed&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;for-developers&quot;&gt;For Developers&lt;/h2&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/Kde_qt5_designer.jpg&quot; title=&quot;KDE Qt5 designer&quot;&gt;
-&lt;img src=&quot;/files/2016/11/Kde_qt5_designer.jpg&quot; alt=&quot;KDE Qt5 designer&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KDE Qt5 designer&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/GNOME_Builder_42.2.jpg&quot; title=&quot;GNOME Builder&quot;&gt;
-&lt;img src=&quot;/files/2016/11/GNOME_Builder_42.2.jpg&quot; alt=&quot;GNOME Builder&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Builder&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/Anjuta_42.2.jpg&quot; title=&quot;KDE Anjunta&quot;&gt;
-&lt;img src=&quot;/files/2016/11/Anjuta_42.2.jpg&quot; alt=&quot;KDE Anjunta&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KDE Anjunta&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/hicolor/48x48/apps/yast-network.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/hicolor/48x48/apps/yast-network.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;containers&quot;&gt;Containers&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 is ships with &lt;a href=&quot;https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/&quot;&gt;Docker 1.12&lt;/a&gt; which builds upon Dockers &lt;a href=&quot;https://blog.docker.com/2016/04/docker-engine-1-11-runc/&quot;&gt;recent adoption of runC and containerd&lt;/a&gt; to bring the latest orchestration features, such as Docker Swarm.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/categories/applications-development.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/categories/applications-development.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;ides-and-tooling&quot;&gt;IDEs and tooling&lt;/h3&gt;
-
-&lt;p&gt;Leap 42.2 carries a mature, LTS version of the Qt 5 GUI toolkit (5.6). With more than 800 improvements from the previous version in Leap 42.1, Qt 5.6 also brings some non-critical security fixes in the Qt framework and in third-party libraries.&lt;/p&gt;
-
-&lt;p&gt;gtk 3.20, shared with SUSE Linux Enterprise 12 SP2, provides a solid &amp;amp; stable toolkit for building gtk based applications. GNOME Builder is offered as a powerful general purpose IDE for not only gtk applications based on C, C++ and Vala, but many other languages in addition.&lt;/p&gt;
-
-&lt;p&gt;For all your compiling needs Leap 42.2 contains gcc 4.8.5, 5.3.1 and 6.1.1. llvm-clang is also available at version 3.8.0. Leap also includes CMake 3.5 providing a powerful, cross-platform build environment for open-source project developers.&lt;/p&gt;
-
-&lt;p&gt;The OpenSSL toolkit found in Leap 42.2 is 1.0.2h, which modifies behavior of ALPN and prevents ASN.1 BIO from excessive memory allocation. OpenSSH is version 7.2p2 in this latest stable release and sanitizes X11 authentication credentials.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/categories/applications-engineering.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/categories/applications-engineering.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;languages-and-libraries&quot;&gt;Languages and Libraries&lt;/h3&gt;
-
-&lt;p&gt;Programming languages found in openSUSE Leap 42.2 include Python 2.7, Ruby 2.1 and Perl 5.18. This Leap release provides new major version libraries for libvirt (2.0) and libzypp (16.2). Leap also has the well established glibc 2.22 and libsigc++ 2.8, which defines signals and connects them to any callback function, whether static or virtual.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;for-sysadmins&quot;&gt;For Sysadmins&lt;/h2&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/Installation_overview_42.2.jpg&quot; title=&quot;Installation overview&quot;&gt;
-&lt;img src=&quot;/files/2016/11/Installation_overview_42.2.jpg&quot; alt=&quot;Installation overview&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Installation overview&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/GNOME_YaST_42.2.jpg&quot; title=&quot;YaST&quot;&gt;
-&lt;img src=&quot;/files/2016/11/GNOME_YaST_42.2.jpg&quot; alt=&quot;YaST&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;YaST&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-4&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/Gnome-control-center.jpg&quot; title=&quot;Control Center 42.2&quot;&gt;
-&lt;img src=&quot;/files/2016/11/Gnome-control-center.jpg&quot; alt=&quot;Control Center 42.2&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Control Center 42.2&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/hicolor/64x64/apps/yast-virtualisation.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/hicolor/64x64/apps/yast-virtualisation.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;virtualization&quot;&gt;Virtualization&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 is full of virtualization solutions. QEMU 2.6.1 and VirtualBox 5.0.24 make openSUSE Leap 42.2 a perfect base system to distribute applications. Set up is easy with YaST and gnome-boxes, so you’ll be able deploy solutions quickly and easily. openSUSE Leap 42.2 has Xen and KVM. It also supports Linux containers in the form of both Docker and LXC.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/hicolor/48x48/apps/yast.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/hicolor/48x48/apps/yast.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;yast-goodness&quot;&gt;YaST Goodness&lt;/h3&gt;
-
-&lt;p&gt;YaST Sprints leading up to the release of openSUSE Leap 42.2 have brought tons of goodness and are making YaST more intuitive than ever. The YaST community revamped the user interface to improve usability and continues adding new tools and modules that have been in Tumbleweed for some time and are now been added to the Leap family.&lt;/p&gt;
-
-&lt;p&gt;yast2-alternatives is a new module to manage openSUSE’s alternatives system developed during Google Summer of Code 2016. Another module, yast2-vpn, is a module for configuring VPN gateway and clients. yast2-auth-client is another module to configure centralized system authentication and it has been almost completely rewritten. New features to YaST have improved bootloader management, which offers support for Trusted Boot and has a revamped configuration of password protection. yast2-firewall now includes full support for firewalld, in addition to the already existing SuSEFirewall2.&lt;/p&gt;
-
-&lt;p&gt;When something goes wrong during installation, the system now offers the possibility of starting a debugger; users with Ruby knowledge can use it to check what went wrong or even to work around the problem. There have also been several enhancements, including installer memory usage being significantly reduced. The selection and configuration of keyboard layouts and console fonts has also been adapted for better compatibility with systemd. There are several other YaST improvements that can be found on the &lt;a href=&quot;https://en.opensuse.org/Archive:Features_42.2#YaST&quot;&gt;features page&lt;/a&gt;.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/apps/krdc.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/apps/krdc.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;managing-systems&quot;&gt;Managing Systems&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap has Samba 4.4.2, which has improved support for working against a Windows 2003 domain. systemd 228 creates a plain directory instead of a subvolume (even on a Btrfs file system) if the root directory is a plain directory, and not a subvolume, which should simplify things with certain chroot() environments which are not aware of the concept of btrfs subvolumes. AppStream version in Leap enhances the interaction of software repositories. MariaDB remains the same version as it was in the previous release and MySQL’s small upgrade to version 5.1.35 resolves a number of issues including a failover being triggered inadvertently and a failover process that kept trying to connect to an unavailable server.&lt;/p&gt;
-
-&lt;p&gt;It is also worth remembering that openSUSE Leap uses Delta RPMs for all &lt;a href=&quot;https://en.opensuse.org/Portal:Maintenance&quot;&gt;maintenance updates&lt;/a&gt;, ensuring that the long term bandwidth requirements for maintaining your Leap system are as small as possible.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;for-users&quot;&gt;For Users&lt;/h2&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-sm-3&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/LibreOffice_in_GNOME_Leap_42.2.jpg&quot; title=&quot;LibreOffice 5 in GNOME 3.20&quot;&gt;
-&lt;img src=&quot;/files/2016/11/LibreOffice_in_GNOME_Leap_42.2.jpg&quot; alt=&quot;LibreOffice 5 in GNOME 3.20&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;LibreOffice 5 in GNOME 3.20&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-3&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/KDE_Gimp_Leap_42.2.jpg&quot; title=&quot;GIMP in Plasma 5.8&quot;&gt;
-&lt;img src=&quot;/files/2016/11/KDE_Gimp_Leap_42.2.jpg&quot; alt=&quot;GIMP in Plasma 5.8&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GIMP in Plasma 5.8&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-3&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/VLC_in_GNOME_Leap_42.2.jpg&quot; title=&quot;VLC in GNOME 3.20&quot;&gt;
-&lt;img src=&quot;/files/2016/11/VLC_in_GNOME_Leap_42.2.jpg&quot; alt=&quot;VLC in GNOME 3.20&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;VLC in GNOME 3.20&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-    &lt;div class=&quot;col-sm-3&quot;&gt;&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/11/Hexchat_xfce_42.2.jpg&quot; title=&quot;HexChat in Xfce&quot;&gt;
-&lt;img src=&quot;/files/2016/11/Hexchat_xfce_42.2.jpg&quot; alt=&quot;HexChat in Xfce&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;HexChat in Xfce&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/apps/kde.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/apps/kde.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;kde&quot;&gt;KDE&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 is the first to offer KDE’s Long Term Support edition of its flagship desktop software, Plasma. Feature rich with excellent performance, &lt;a href=&quot;https://www.kde.org/announcements/plasma-5.8.1.php&quot;&gt;Plasma 5.8 LTS&lt;/a&gt; is the default desktop environment in openSUSE. Previous KDE users who moved away should reassess this release, with Plasma 5.8 bringing significant improvements in stability as well as new features. Plasma 5.8 improves multiple monitor support out-of-the-box in openSUSE Leap 42.2.&lt;/p&gt;
-
-&lt;p&gt;Jump List Actions are new in KRunner and it doesn’t only open applications, but can be used to start certain actions directly when the application starts. Drag and drop support was added to bring search result to any application. &lt;a href=&quot;https://userbase.kde.org/KDE_System_Administration/Kiosk/Introduction&quot;&gt;System administrators will enjoy the Kiosk support&lt;/a&gt; from an improved Plasma in Leap 42.2. Android phone users can get phone integration with KDE Connect from the Google Play store; all they need to do is enable the KDE Connect service in the SUSE firewall module in YaST. Using KDE Connect, users can get text messages on their desktop or easily transfer files to their phone.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/hicolor/48x48/apps/pattern-gnome.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/hicolor/48x48/apps/pattern-gnome.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;gnome&quot;&gt;GNOME&lt;/h3&gt;
-
-&lt;p&gt;The stability of &lt;a href=&quot;https://www.gnome.org/news/2016/03/gnome-3-20-released/&quot;&gt;GNOME 3.20&lt;/a&gt; offers conservative upgrade users new privacy controls to improve per-application location access, quick access to media controls directly from the shell, and keyboard shortcuts and gestures can be easily learned with new shortcut overlay windows. Many GNOME applications have shortcut windows for 3.20, including Files, Videos, Photos, gedit, Builder, Maps and more. In each application, the shortcut window can be opened from the application menu, or by using the &lt;strong&gt;Ctrl + /&lt;/strong&gt; or &lt;strong&gt;Ctrl + F1&lt;/strong&gt; shortcut. GNOME can now access Google Drive directly from the Files application in openSUSE Leap 42.2. More than 28,000 changes were made for GNOME 3.20 by approximately 870 contributors. Check out the &lt;a href=&quot;https://help.gnome.org/misc/release-notes/3.20/&quot;&gt;release notes for GNOME 3.20&lt;/a&gt;.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/places/user-desktop.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/places/user-desktop.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;other-desktop-environments&quot;&gt;Other desktop environments&lt;/h3&gt;
-
-&lt;p&gt;openSUSE Leap 42.2 offers users the option to choose their desktop; try MATE, Xfce, Enlightenment or Cinnamon. LXQt 0.11.0, which has an improved user experience thanks to several bug fixes, ships in openSUSE Leap 42.2, but is not available in the installer. LXQt 0.11.0 introduces pavucontrol-Qt, the Qt port of PulseAudio’s mixer pavucontrol the UI of which is based upon GTK.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;row&quot;&gt;
-&lt;div class=&quot;col-sm-2&quot;&gt;
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/assets/icons/oxygen/48x48/categories/applications-internet.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/assets/icons/oxygen/48x48/categories/applications-internet.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;col-sm-10&quot;&gt;
-
-&lt;h3 id=&quot;internationalization&quot;&gt;Internationalization&lt;/h3&gt;
-
-&lt;p&gt;This openSUSE release is the first to use &lt;a href=&quot;https://l10n.opensuse.org/&quot;&gt;Weblate&lt;/a&gt; to coordinate the translation of openSUSE into more than 50 languages. openSUSE’s Weblate interface enables everyone (from dedicated translators to casual contributors) to take part in the process and makes it possible to coordinate the translations of openSUSE with the ones for SUSE Enterprise Linux, boosting collaboration between community and enterprise.&lt;/p&gt;
-
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;about-the-opensuse-project&quot;&gt;About the openSUSE Project&lt;/h2&gt;
-
-&lt;p&gt;The openSUSE Project is a worldwide community that promotes the use of Linux everywhere. It creates two of the world’s best Linux distributions, the Tumbleweed rolling-release, and Leap, the hybrid enterprise-community distribution. openSUSE is continuously working together in an open, transparent and friendly manner as part of the worldwide Free and Open Source Software community. The project is controlled by its community and relies on the contributions of individuals, working as testers, writers, translators, usability experts, artists and ambassadors or developers. The project embraces a wide variety of technology, people with different levels of expertise, speaking different languages and having different cultural backgrounds. Learn more about it on &lt;a href=&quot;http://www.opensuse.org/&quot;&gt;opensuse.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This news was originally published by &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; at &lt;a href=&quot;https://news.opensuse.org/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/&quot;&gt;news.opensuse.org&lt;/a&gt;. &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Konqi_sitting_on_KDE_logo.png&quot;&gt;Konqi sitting on KDE logo&lt;/a&gt; art by &lt;a href=&quot;http://tysontan.deviantart.com/art/Konqi-ver-2-494267237&quot;&gt;Tyson Tan&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-</description>
-                <pubDate>Wed, 16 Nov 2016 08:30:00 -0200</pubDate>
-                <link>https://kamarada.github.io/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/</guid>
                 
                 
                     <category>en</category>

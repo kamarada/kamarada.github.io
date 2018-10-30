@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" prefix="
+<html lang="en" prefix="
     addthis: http://www.addthis.com/help/api-spec
     og: http://ogp.me/ns#
     fb: http://ogp.me/ns/fb#
@@ -20,30 +20,30 @@
     <title>
         
             
-                Como instalar certificados de segurança no Linux - Linux Kamarada
+                How to install website certificates on Linux - Linux Kamarada
             
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="Já foi pego de surpresa ao acessar um site e ser alertado pelo navegador de que não é seguro? O que fazer se você é servidor público federal, acessa o SIGEPE...">
-    <link rel="canonical" href="https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">
-    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+    <meta name="description" content="Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
 
     
     
         
-            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" />
-        
     
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/" />
         
     
 
     <!-- OpenSearch -->
-    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
 
     <!-- Open Graph -->
     
-        <meta property="article:published_time" content="2017-08-29 19:40:00 -0300"/>
+        <meta property="article:published_time" content="2018-10-30 16:50:00 -0300"/>
         
             <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
         
@@ -52,19 +52,19 @@
     
         <meta property="fb:page_id" content="1700979763454346" />
     
-    <meta property="og:description" content="Já foi pego de surpresa ao acessar um site e ser alertado pelo navegador de que não é seguro? O que fazer se você é servidor público federal, acessa o SIGEPE..." />
+    <meta property="og:description" content="Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure..." />
     
-        <meta property="og:image" content="https://kamarada.github.io/files/2017/08/certificados-firefox-1.png" />
+        <meta property="og:image" content="https://kamarada.github.io/files/2018/10/certificates-firefox-1.png" />
     
     <meta property="og:site_name" content="Linux Kamarada" />
-    <meta property="og:title" content="Como instalar certificados de segurança no Linux" />
+    <meta property="og:title" content="How to install website certificates on Linux" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />
     
-        <meta name="twitter:site" content="@LinuxKamarada" />
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
     
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
@@ -124,13 +124,13 @@
                 data_track_clickback: true,
                 data_track_addressbar: true,
                 
-                    ui_language: 'pt'
+                    ui_language: 'en'
                 
             };
             var addthis_share = {
-                url: 'https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/',
+                url: 'https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/',
                 title: document.title,
-                description: 'Já foi pego de surpresa ao acessar um site e ser alertado pelo navegador de que não é seguro? O que fazer se você é servidor público federal, acessa o SIGEPE...'
+                description: 'Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure...'
             };
         </script>
         <!-- End AddThis -->
@@ -160,16 +160,16 @@
                 
                     
                         <li class="nav-item">
-                            <a class="nav-link" href="/pt/download/leap/42.2/">Download</a>
+                            <a class="nav-link" href="/en/download/leap/42.2/">Download</a>
                         </li>
                     
                 
             </ul>
-            <form action="/pt/buscar/" class="form-inline" id="search-form" method="get" role="search">
+            <form action="/en/search/" class="form-inline" id="search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
-                    <input class="form-control" id="search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <input class="form-control" id="search-field" name="q" placeholder="Search" type="text" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-secondary btn-number" id="search-button" type="submit">
                             <i class="fa fa-search"></i>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
+                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
                     <div class="dropdown-menu" aria-labelledby="language-button">
                         
                         
@@ -198,7 +198,7 @@
                             <div class="dropdown-divider"></div>
                         
                         <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
-                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">Translate this page</a>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">Translate this page</a>
                     </div>
                 </div><!--.dropdown-->
             </form>
@@ -218,20 +218,16 @@
                 <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
-            <a class="blog-post-link" href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/" itemprop="mainEntityOfPage url">
-                Como instalar certificados de segurança no Linux
+            <a class="blog-post-link" href="/en/2018/10/30/how-to-install-website-certificates-on-linux/" itemprop="mainEntityOfPage url">
+                How to install website certificates on Linux
             </a>
         </h1>
         <div class="blog-post-meta row">
             <div class='col-sm-6'>
-                <p class="blog-post-date" itemprop="datePublished" content="2017-08-29">
-                    <a href="/2017/08/29/">
+                <p class="blog-post-date" itemprop="datePublished" content="2018-10-30">
+                    <a href="/2018/10/30/">
                         
-    29 de
-    
-    Agosto
-        
-    de 2017
+    Oct 30, 2018
 
 
                     </a>
@@ -244,7 +240,7 @@
                         <!-- AddThis Sharing Buttons -->
                         <div class="addthis_toolbox addthis_default_style">
                             <a class="addthis_button_facebook"></a>
-                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                             <a class="addthis_button_google_plusone_share"></a>
                             <a class="addthis_button_favorites"></a>
                             <a class="addthis_button_compact"></a>
@@ -271,171 +267,156 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <div class="alert alert-success atualizacao" role="alert">
-    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (30/10/2018):</strong>
-    <p>O <em>post</em> foi revisado e reescrito em quase sua totalidade.</p>
-
-</div>
-
-<p>Já foi pego de surpresa ao acessar um <em>site</em> e ser alertado pelo navegador de que não é seguro? O que fazer ao acessar um <em>site</em> do governo brasileiro e ver uma mensagem dessas?</p>
+            <p>Have you ever visited a website and your browser adverted you that your connection is not secure or private?</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-firefox-1.png" title="">
-<img src="/files/2017/08/certificados-firefox-1.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-1.png" title="">
+<img src="/files/2018/10/certificates-firefox-1.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-1.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-1.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-1.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-1.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<h2 id="entenda-o-que-acontece">Entenda o que acontece</h2>
+<h2 id="understand-whats-going-on">Understand what’s going on</h2>
 
-<p>Quando você visita um <em>site</em> que usa conexão segura (endereço começando com <code class="highlighter-rouge">https</code>), sua comunicação é criptografada para ajudar a garantir sua privacidade. Antes de iniciar a comunicação criptografada, o <em>site</em> apresenta ao navegador um <a href="https://support.mozilla.org/en-US/kb/secure-website-certificate"><strong>certificado de segurança</strong></a> para se identificar (como se fosse um documento de identidade, um RG).</p>
+<p>When you visit a website that uses secure connection (web address starting with <code class="highlighter-rouge">https</code>), your communication is encrypted to help ensure your privacy. Before establishing connection, the website presents to the browser a <a href="https://support.mozilla.org/en-US/kb/secure-website-certificate"><strong>security certificate</strong></a> identifying itself.</p>
 
-<p>Qualquer um pode criar um certificado afirmando ser quem quiser. Mas normalmente certificados de <em>sites</em> são emitidos e assinados por <a href="https://pt.wikipedia.org/wiki/Autoridade_de_certifica%C3%A7%C3%A3o"><strong>autoridades certificadoras (ACs)</strong></a>, que também possuem seus próprios certificados. Por sua vez, os certificados das ACs podem ser autoassinados (no caso de uma AC interna de uma empresa) ou assinados por outras ACs, e assim sucessivamente até chegar em uma <strong>autoridade certificadora raiz (AC raiz)</strong>. Essa cadeia de certificados é chamada de <strong>hierarquia de certificados</strong>.</p>
+<p>Anyone can create a certificate claiming to be whoever they want. But usually website certificates are issued and signed by <a href="https://en.wikipedia.org/wiki/Certificate_authority"><strong>certificate authorities (CA’s)</strong></a>, which also have their own certificates. On their turn, CA’s certificates may be self-signed (in the case of a company’s internal CA) or signed by other CA’s so forth up to a <strong>root certificate authority (root CA)</strong>. This chain of certificates is called the <strong>certificate hierarchy</strong>.</p>
 
-<p>Autoridades certificadoras raiz são organizações públicas, conhecidas e seguras. No Brasil, por exemplo, a AC raiz é a <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a>. Normalmente os navegadores conhecem de antemão os certificados das ACs raiz (veremos a seguir que a AC raiz brasileira é uma exceção).</p>
+<p>Root CA’s are public, well known and trusted organizations, such as the American <a href="https://fpki.idmanagement.gov/ca/">FCPCA</a> or the Brazilian <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a>. Usually root CA’s certificates are previously known by browsers.</p>
 
-<p>Quando você visita um <em>site</em> <a href="https://pt.wikipedia.org/wiki/Hyper_Text_Transfer_Protocol_Secure">HTTPS</a>, o navegador verifica se o certificado apresentado por ele é válido e se pertence a uma hierarquia de certificados que termina em um certificado de uma AC conhecida. Se essa validação passa, o navegador mostra um ícone de cadeado verde perto da barra de endereço, indicando que o <em>site</em> que você está visitando é de fato o <em>site</em> que afirma ser. É seguro permanecer nele, digitar senhas, fornecer dados de cartões de crédito e enviar ou receber outros dados pessoais. Sempre procure pelo ícone do cadeado verde quando acessar um <em>netbanking</em> ou um <em>site</em> de compras, por exemplo.</p>
+<p>When you visit an <a href="https://en.wikipedia.org/wiki/HTTPS">HTTPS</a> website, the browser checks that its certificate is valid and the certificate hierarchy ends on a known CA certificate. If that checking succeeds, the browser displays a green lock icon near the address bar, indicating the website you are visiting is actually the website that it claims to be. You are safe to stay on it, enter passwords, provide credit card numbers and send or receive other sensitive data. Always look for the green lock icon when accessing banking or shopping websites.</p>
 
-<p>Quando você visita um <em>site</em> HTTPS mas o navegador não consegue verificar o certificado do <em>site</em>, ele apresenta um alerta de que a conexão não é segura ou privada. Se isso acontecer, você deve agir com cautela: não forneça dados pessoais a esse <em>site</em>. Se possível, saia dele.</p>
+<p>When you visit an HTTPS website, but the certificate checking does not succeed, the browser adverts you that your connection is not secure or private. If that is the case, you need to proceed with caution: don’t enter any sensitive information on this page. If possible, leave it.</p>
 
-<p>Às vezes, a conexão não é de fato insegura. Alertas de segurança podem aparecer, por exemplo, quando você acessa um sistema <em>web</em> da empresa ou órgão onde trabalha, assinado por uma AC interna, cujo certificado não é conhecido pelo navegador. Nesse caso, você precisa instalar manualmente o certificado da AC interna para prevenir falsos alertas.</p>
+<p>Sometimes, the connection is not really insecure. Security alerts may appear, for example, when you visit a web system of your organization, signed by an internal CA whose certificate is not previously known by the browser. In that case, you need to manually install your organization’s CA certificate to prevent false alerts.</p>
 
-<p>Também é comum aparecer alertas de privacidade ao visitar <em>sites</em> do governo brasileiro. Os navegadores não vem com o certificado da ICP-Brasil porque <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=438825">ele não atende aos requisitos de segurança da Fundação Mozilla, um <em>bug</em> que já se arrasta por 11 anos</a>. Por isso, é necessário instalar o certificado da ICP-Brasil manualmente. Alguns órgãos públicos tem adotado soluções de contorno: o <a href="http://www.pf.gov.br"><em>site</em> da Polícia Federal</a>, por exemplo, tem os formulários (por exemplo, o de <a href="https://servicos.dpf.gov.br/sinpa/inicializacaoSolicitacao.do?dispatch=inicializarSolicitacaoPassaporte">emissão de passaporte</a>) assinados pela AC Let’s Encrypt, mas páginas que possuem apenas conteúdo (inclusive <a href="http://www.pf.gov.br">a própria página inicial do <em>site</em> da PF</a>) sequer são assinadas. A <a href="https://letsencrypt.org/">Let’s Encrypt</a> é uma <a href="https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_n%C3%A3o_governamental">ONG</a> norte-americana que emite certificados de graça para qualquer pessoa e <a href="https://letsencrypt.org/2018/08/06/trusted-by-all-major-root-programs.html">é conhecida pelos navegadores</a>.</p>
+<p>Also Brazilian citizens always see privacy alerts when visiting websites of the Brazilian government. Browsers don’t come with the <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a> certificate out-of-the-box because it does not comply to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=438825">Mozilla security requirements, which is an 11-year old bug</a>. So, Brazilian citizens need to manually install it. Some Brazilian public organizations have adopted workarounds: for instance, the <a href="http://www.pf.gov.br">Federal Police of Brazil</a> sign its forms (e.g. the <a href="https://servicos.dpf.gov.br/sinpa/inicializacaoSolicitacao.do?dispatch=inicializarSolicitacaoPassaporte">passport application form</a>) with a certificate issued by Let’s Encrypt, but content-only pages (including <a href="http://www.pf.gov.br">their own home page</a>) are not signed at all. <a href="https://letsencrypt.org/">Let’s Encrypt</a> is an American non-profit organization that issues certificates for free for anyone and <a href="https://letsencrypt.org/2018/08/06/trusted-by-all-major-root-programs.html">is trusted by browsers</a>.</p>
 
-<h2 id="instale-o-certificado-da-ac">Instale o certificado da AC</h2>
+<h2 id="install-the-ca-certificate">Install the CA certificate</h2>
 
-<p>Vejamos como adicionar o certificado da AC aos navegadores <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a> e <a href="https://www.google.com/chrome/">Google Chrome</a>, para que eles confiem nos certificados assinados pela AC. O passo-a-passo para o Google Chrome também valem para seu equivalente de <a href="https://pt.wikipedia.org/wiki/Software_de_código_aberto">código-aberto</a>, o <a href="https://www.chromium.org/">Chromium</a>.</p>
+<p>Let’s see how to add a CA certificate to the <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a> and <a href="https://www.google.com/chrome/">Google Chrome</a> browsers, so they trust certificates signed by that CA. Same instructions for Chrome apply to its <a href="https://opensource.org/osd-annotated">open source</a> base <a href="https://www.chromium.org/">Chromium</a>.</p>
 
-<div class="alert alert-success atualizacao" role="alert">
-    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (24/09/2018):</strong>
-    
-<p>Caso precise instalar o certificado da AC no cliente de <em>e-mail</em> <a href="https://www.thunderbird.net">Mozilla Thunderbird</a>, leia <a href="/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/">esse <em>post</em></a>.</p>
+<p>I’m going to use <a href="https://servidor.sigepe.planejamento.gov.br">SIGEPE</a> as example, which is a Brazilian government web system whose certificate is signed by <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a>, the Brazilian root CA.</p>
 
-</div>
-
-<p>Vou usar como exemplo o <a href="https://servidor.sigepe.planejamento.gov.br">SIGEPE</a>, um sistema do governo brasileiro que servidores públicos federais acessam para consultar seu contracheque e fazer solicitações de RH. Vamos adicionar o certificado da AC raiz brasileira, a ICP-Brasil, de modo que os navegadores parem de exibir alertas de segurança para os <em>sites</em> do governo.</p>
-
-<p>Primeiro, <a href="http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv2.crt">clique aqui</a> para baixar o certificado de segurança da AC raiz brasileira.</p>
-
-<p>Você pode usar as mesmas instruções a seguir para instalar o certificado da AC interna da sua organização. Nesse caso, consulte o administrador da rede para obtê-lo.</p>
+<p>In your case, the certificate you are going to install may be from your company’s internal CA. You should retrieve it with your company’s network administrator.</p>
 
 <h3 id="mozilla-firefox">Mozilla Firefox</h3>
 
-<p>Abra o <strong>menu do Firefox</strong> (canto superior direito da janela) e selecione <strong>Preferências</strong>:</p>
+<p>Pull down the <strong>Firefox menu</strong> (top right corner of the window) and select <strong>Preferences</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/certificados-firefox-2.jpg" title="">
-<img src="/files/2018/10/certificados-firefox-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-2.jpg" title="">
+<img src="/files/2018/10/certificates-firefox-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Selecione <strong>Privacidade e Segurança</strong> à esquerda e clique no botão <strong>Ver Certificados</strong> à direita, ao final da página:</p>
+<p>Select <strong>Privacy &amp; Security</strong> by the left and click on <strong>View Certificates</strong> by the right, at the end of the page:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/certificados-firefox-3.jpg" title="">
-<img src="/files/2018/10/certificados-firefox-3.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-3.jpg" title="">
+<img src="/files/2018/10/certificates-firefox-3.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Na caixa de diálogo <strong>Gerenciador de certificados</strong>, selecione a aba <strong>Autoridades</strong> e clique no botão <strong>Importar</strong>:</p>
+<p>In the <strong>Certificate Manager</strong> dialog, select the <strong>Authorities</strong> tab and click on <strong>Import</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/certificados-firefox-4.png" title="">
-<img src="/files/2018/10/certificados-firefox-4.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-4.png" title="">
+<img src="/files/2018/10/certificates-firefox-4.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Procure pelo certificado da AC que você quer importar.</p>
+<p>Select the CA certificate file you want to import.</p>
 
-<p>Marque todas as opções para confiar completamente no certificado e clique em <strong>OK</strong>:</p>
+<p>Check all the options to fully trust the certificate and click on <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/certificados-firefox-5.jpg" title="">
-<img src="/files/2018/10/certificados-firefox-5.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-5.jpg" title="">
+<img src="/files/2018/10/certificates-firefox-5.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Clique em <strong>OK</strong> na caixa de diálogo <strong>Gerenciador de certificados</strong> e feche a aba <strong>Preferências</strong>.</p>
+<p>Click on <strong>OK</strong> in the <strong>Certificate Manager</strong> dialog and close the <strong>Preferences</strong> tab.</p>
 
-<p>Atualize a página que estava tentando visitar (no nosso exemplo, o <a href="https://servidor.sigepe.planejamento.gov.br">SIGEPE</a>) e você perceberá na barra de endereço o cadeado verde, indicando que a conexão é segura:</p>
+<p>Refresh the page you were trying to visit and realize the green lock icon at the begining of the address bar, indicating the website is safe to visit:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/certificados-firefox-6.jpg" title="">
-<img src="/files/2018/10/certificados-firefox-6.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-firefox-6.jpg" title="">
+<img src="/files/2018/10/certificates-firefox-6.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
 <h3 id="google-chrome">Google Chrome</h3>
 
-<p>Abra o <strong>menu do Chrome</strong> (canto superior direito da janela) e selecione <strong>Configurações</strong>:</p>
+<p>Pull down the <strong>Chrome menu</strong> (top right corner of the window) and select <strong>Settings</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-2.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-2.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>No campo <strong>Pesquisar nas configurações</strong>, digite <code class="highlighter-rouge">certificados</code>. O Google Chrome filtra as opções relacionadas. Clique em <strong>Gerenciar certificados</strong>:</p>
+<p>On the <strong>Search settings</strong> field, type <code class="highlighter-rouge">certificates</code>. Chrome filters related settings. Click on <strong>Manage certificates</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-3.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-3.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-3.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-3.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Selecione a aba <strong>Autoridades</strong> e clique no botão <strong>Importar</strong>:</p>
+<p>Select the <strong>Authorities</strong> tab and click on <strong>Import</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-4.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-4.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-4.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-4.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Procure pelo certificado da AC que você quer importar.</p>
+<p>Select the CA certificate file you want to import.</p>
 
-<p>Marque todas as opções para confiar completamente no certificado e clique em <strong>OK</strong>:</p>
+<p>Check all the options to fully trust the certificate and click on <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-5.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-5.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-5.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-5.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Feche a aba <strong>Configurações</strong>.</p>
+<p>Close the <strong>Settings</strong> tab.</p>
 
-<p>Atualize a página que estava tentando visitar (no nosso exemplo, o <a href="https://servidor.sigepe.planejamento.gov.br">SIGEPE</a>) e você perceberá na barra de endereço o cadeado verde, indicando que a conexão é segura:</p>
+<p>Refresh the page you were trying to visit and realize the lock icon to the left of the web address, indicating the website is safe to visit:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-chrome-6.jpg" title="">
-<img src="/files/2017/08/certificados-chrome-6.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/10/certificates-chrome-6.jpg" title="">
+<img src="/files/2018/10/certificates-chrome-6.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<h2 id="referências">Referências</h2>
+<h2 id="references">References</h2>
 
 <ul>
   <li><a href="https://www.howtogeek.com/359298/why-does-google-chrome-say-websites-are-%E2%80%9Cnot-secure%E2%80%9D/">Why Does Google Chrome Say Websites Are “Not Secure”?</a></li>
-  <li><a href="https://support.mozilla.org/en-US/kb/secure-website-certificate">Certificado de segurança - Ajuda do Firefox</a></li>
-  <li><a href="https://support.google.com/chrome/answer/95617?hl=pt-BR">Verificar se a conexão de um site é segura - Ajuda do Google Chrome</a></li>
-  <li><a href="http://antigo.iti.gov.br/noticias/ascom/188-atualizacao/4526-mozilla">MOZILLA FIREFOX - ITI</a></li>
-  <li><a href="http://antigo.iti.gov.br/noticias/ascom/188-atualizacao/4532-chrome-linux">GOOGLE CHROMIUM - LINUX - ITI</a></li>
+  <li><a href="https://support.mozilla.org/en-US/kb/secure-website-certificate">Secure Website Certificate - Firefox Help</a></li>
+  <li><a href="https://support.google.com/chrome/answer/95617">Check if a site’s connection is secure - Google Chrome Help</a></li>
+  <li><a href="https://wiki.mozilla.org/PSM:Changing_Trust_Settings">PSM:Changing Trust Settings - MozillaWiki</a></li>
+  <li><a href="https://www.bounca.org/tutorials/install_root_certificate.html">Install self-generated root certificate authorities - BounCA.org generate self-signed SSL certificates</a></li>
 </ul>
 
 
@@ -446,12 +427,12 @@
             <div class="gap"></div>
             <h2>
                 
-                    Gostou? Que tal compartilhar?
+                    Did you like it? What about sharing?
                 
             </h2>
             <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                 <a class="addthis_button_facebook"></a>
-                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                 <a class="addthis_button_google_plusone_share"></a>
                 <a class="addthis_button_email"></a>
                 <a class="addthis_button_favorites"></a>
@@ -468,22 +449,22 @@
             <div class="gap"></div>
             <h2>
                 
-                    Comentários
+                    Comments
                 
             </h2>
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
                     
-                        this.language = "pt";
+                        this.language = "en";
                     
-                    this.page.url = 'https://kamarada.github.io/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/';
+                    this.page.url = 'https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/';
                 };
 
                 (function() {
                     var d = document, s = d.createElement('script');
 
-                    s.src = '//kamarada.disqus.com/embed.js';
+                    s.src = '//kamaradaww.disqus.com/embed.js';
 
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
@@ -504,7 +485,7 @@
       <h3>
           <a name="about"></a>
           
-              Sobre
+              About
           
       </h3>
     </div>
@@ -520,7 +501,7 @@
         </p>
         <p class="text" itemprop="description">
             
-                O Projeto Linux Kamarada é um projeto novo que visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+                The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
 
             
         </p>
@@ -531,7 +512,7 @@
                     <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
                 
                 
-                    <a href="https://twitter.com/LinuxKamarada" class="addthis_button_twitter_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
                 
                 
                 
@@ -540,7 +521,7 @@
                 
                     <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
                 
-                <a href="https://kamarada.github.io/pt/feed.xml" class="addthis_button_rss_follow"></a>
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
             </div>
             <!-- AddThis Follow Buttons End -->
         
@@ -552,7 +533,7 @@
         <h3>
             <a name="author"></a>
             
-                Autor
+                Author
             
         </h3>
     </div>
@@ -601,22 +582,22 @@
 
     <footer class="footer">
     <div class="container">
-        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
     </div>
 </footer>
 
-<meta itemprop="description" content="Já foi pego de surpresa ao acessar um site e ser alertado pelo navegador de que não é seguro? O que fazer se você é servidor público federal, acessa o SIGEPE, sistema do governo que o próprio departamento de pessoal te orientou acessar para consultar seu contracheque, e se depara com uma mensagem dessas? Será...">
+<meta itemprop="description" content="Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure. Understand what’s going on and learn how to install website certificates on Linux.">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-        <meta itemprop="url" content="https://kamarada.github.io/files/2017/08/certificados-firefox-1.png"/>
+        <meta itemprop="url" content="https://kamarada.github.io/files/2018/10/certificates-firefox-1.png"/>
         <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
         <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
     </div>
 
 
 
-    <meta itemprop="inLanguage" content="pt"/>
+    <meta itemprop="inLanguage" content="en"/>
 
 
 
@@ -625,10 +606,10 @@
         /* * * CONFIGURATION VARIABLES * * */
         
             var disqus_config = function () {
-                this.language = "pt";
+                this.language = "en";
             };
         
-        var disqus_shortname = 'kamarada';
+        var disqus_shortname = 'kamaradaww';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {

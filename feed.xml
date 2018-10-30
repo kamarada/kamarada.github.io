@@ -1,5 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-26T19:36:45-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">HP printers on openSUSE</title><link href="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/" rel="alternate" type="text/html" title="HP printers on openSUSE" /><published>2018-10-26T16:30:00-03:00</published><updated>2018-10-26T19:36:19-03:00</updated><id>https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-30T19:58:51-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">How to install website certificates on Linux</title><link href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" rel="alternate" type="text/html" title="How to install website certificates on Linux" /><published>2018-10-30T16:50:00-03:00</published><updated>2018-10-30T19:58:48-03:00</updated><id>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-1.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-1.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;understand-whats-going-on&quot;&gt;Understand what’s going on&lt;/h2&gt;
+
+&lt;p&gt;When you visit a website that uses secure connection (web address starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;), your communication is encrypted to help ensure your privacy. Before establishing connection, the website presents to the browser a &lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;&lt;strong&gt;security certificate&lt;/strong&gt;&lt;/a&gt; identifying itself.&lt;/p&gt;
+
+&lt;p&gt;Anyone can create a certificate claiming to be whoever they want. But usually website certificates are issued and signed by &lt;a href=&quot;https://en.wikipedia.org/wiki/Certificate_authority&quot;&gt;&lt;strong&gt;certificate authorities (CA’s)&lt;/strong&gt;&lt;/a&gt;, which also have their own certificates. On their turn, CA’s certificates may be self-signed (in the case of a company’s internal CA) or signed by other CA’s so forth up to a &lt;strong&gt;root certificate authority (root CA)&lt;/strong&gt;. This chain of certificates is called the &lt;strong&gt;certificate hierarchy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Root CA’s are public, well known and trusted organizations, such as the American &lt;a href=&quot;https://fpki.idmanagement.gov/ca/&quot;&gt;FCPCA&lt;/a&gt; or the Brazilian &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;. Usually root CA’s certificates are previously known by browsers.&lt;/p&gt;
+
+&lt;p&gt;When you visit an &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; website, the browser checks that its certificate is valid and the certificate hierarchy ends on a known CA certificate. If that checking succeeds, the browser displays a green lock icon near the address bar, indicating the website you are visiting is actually the website that it claims to be. You are safe to stay on it, enter passwords, provide credit card numbers and send or receive other sensitive data. Always look for the green lock icon when accessing banking or shopping websites.&lt;/p&gt;
+
+&lt;p&gt;When you visit an HTTPS website, but the certificate checking does not succeed, the browser adverts you that your connection is not secure or private. If that is the case, you need to proceed with caution: don’t enter any sensitive information on this page. If possible, leave it.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, the connection is not really insecure. Security alerts may appear, for example, when you visit a web system of your organization, signed by an internal CA whose certificate is not previously known by the browser. In that case, you need to manually install your organization’s CA certificate to prevent false alerts.&lt;/p&gt;
+
+&lt;p&gt;Also Brazilian citizens always see privacy alerts when visiting websites of the Brazilian government. Browsers don’t come with the &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; certificate out-of-the-box because it does not comply to &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=438825&quot;&gt;Mozilla security requirements, which is an 11-year old bug&lt;/a&gt;. So, Brazilian citizens need to manually install it. Some Brazilian public organizations have adopted workarounds: for instance, the &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;Federal Police of Brazil&lt;/a&gt; sign its forms (e.g. the &lt;a href=&quot;https://servicos.dpf.gov.br/sinpa/inicializacaoSolicitacao.do?dispatch=inicializarSolicitacaoPassaporte&quot;&gt;passport application form&lt;/a&gt;) with a certificate issued by Let’s Encrypt, but content-only pages (including &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;their own home page&lt;/a&gt;) are not signed at all. &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt; is an American non-profit organization that issues certificates for free for anyone and &lt;a href=&quot;https://letsencrypt.org/2018/08/06/trusted-by-all-major-root-programs.html&quot;&gt;is trusted by browsers&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-the-ca-certificate&quot;&gt;Install the CA certificate&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to add a CA certificate to the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; and &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; browsers, so they trust certificates signed by that CA. Same instructions for Chrome apply to its &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; base &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’m going to use &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt; as example, which is a Brazilian government web system whose certificate is signed by &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, the Brazilian root CA.&lt;/p&gt;
+
+&lt;p&gt;In your case, the certificate you are going to install may be from your company’s internal CA. You should retrieve it with your company’s network administrator.&lt;/p&gt;
+
+&lt;h3 id=&quot;mozilla-firefox&quot;&gt;Mozilla Firefox&lt;/h3&gt;
+
+&lt;p&gt;Pull down the &lt;strong&gt;Firefox menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Privacy &amp;amp; Security&lt;/strong&gt; by the left and click on &lt;strong&gt;View Certificates&lt;/strong&gt; by the right, at the end of the page:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog, select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-4.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-4.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
+
+&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; in the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog and close the &lt;strong&gt;Preferences&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;Refresh the page you were trying to visit and realize the green lock icon at the begining of the address bar, indicating the website is safe to visit:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;google-chrome&quot;&gt;Google Chrome&lt;/h3&gt;
+
+&lt;p&gt;Pull down the &lt;strong&gt;Chrome menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Search settings&lt;/strong&gt; field, type &lt;code class=&quot;highlighter-rouge&quot;&gt;certificates&lt;/code&gt;. Chrome filters related settings. Click on &lt;strong&gt;Manage certificates&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
+
+&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Close the &lt;strong&gt;Settings&lt;/strong&gt; tab.&lt;/p&gt;
+
+&lt;p&gt;Refresh the page you were trying to visit and realize the lock icon to the left of the web address, indicating the website is safe to visit:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/359298/why-does-google-chrome-say-websites-are-%E2%80%9Cnot-secure%E2%80%9D/&quot;&gt;Why Does Google Chrome Say Websites Are “Not Secure”?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;Secure Website Certificate - Firefox Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chrome/answer/95617&quot;&gt;Check if a site’s connection is secure - Google Chrome Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.mozilla.org/PSM:Changing_Trust_Settings&quot;&gt;PSM:Changing Trust Settings - MozillaWiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bounca.org/tutorials/install_root_certificate.html&quot;&gt;Install self-generated root certificate authorities - BounCA.org generate self-signed SSL certificates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure. Understand what’s going on and learn how to install website certificates on Linux.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/certificates-firefox-1.png" /></entry><entry xml:lang="en"><title type="html">HP printers on openSUSE</title><link href="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/" rel="alternate" type="text/html" title="HP printers on openSUSE" /><published>2018-10-26T16:30:00-03:00</published><updated>2018-10-26T19:36:19-03:00</updated><id>https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/09/hp-printers.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/09/hp-printers.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -2670,77 +2820,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 
 &lt;p&gt;As atualizações de manutenção e segurança para a série Leap 15 devem durar pelo menos três anos. Os usuários devem atualizar para o mais novo Leap 15 Service Packs (SP) dentro de seis meses de cada versão do SP para receber atualizações. Atualizações do Service Pack são esperadas anualmente.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Notícia adaptada da original publicada por &lt;a href=&quot;https://en.opensuse.org/User:Asramos&quot;&gt;Aslan Ramos&lt;/a&gt; na &lt;a href=&quot;https://pt.opensuse.org/openSUSE:Lancamento_versao_15&quot;&gt;*wiki* do openSUSE em Português&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">A versão mais recente do openSUSE Leap 15 está oferecendo aos usuários profissionais, empreendedores e ISVs (Independent Software Vendors) uma base de código nova, reforçada e robusta para suas cargas de trabalho e que suportam hardware moderno, baseado em código aberto estável, enterprise em uma distribuição GNU/Linux comunidade - desenvolvida com um sistema de construção open source moderno, mais seguro, melhor testado e muito mais aberto, exclusivo do SUSE e do openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry><entry xml:lang="en"><title type="html">Based on Enterprise Code, Tested Millions of Times: openSUSE Leap 15 released</title><link href="https://kamarada.github.io/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/" rel="alternate" type="text/html" title="Based on Enterprise Code, Tested Millions of Times: openSUSE Leap 15 released" /><published>2018-05-25T16:45:00-03:00</published><updated>2018-05-25T19:46:53-03:00</updated><id>https://kamarada.github.io/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released</id><content type="html" xml:base="https://kamarada.github.io/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/">&lt;p&gt;&lt;strong&gt;Fresh community build on top of SUSE Linux Enterprise 15 brings huge variety of newest software, easy migration to SLE, transactional updates, server roles, scalable cloud images and Linux laptops&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Today’s major release of openSUSE Leap 15 is offering professional users, entrepreneurs and ISVs (Independent Software Vendors) a new, fresh and hardened code base for their workloads that supports modern hardware, based on a stable, community- and enterprise-based open-source GNU/Linux distribution – but developed with a modern, more secure, better tested and much more open open-source build system unique to SUSE and openSUSE.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-features&quot;&gt;New Features&lt;/h2&gt;
-
-&lt;p&gt;openSUSE Leap 15 now allows migration to SLE, brings a new partitioner, integrates the Groupware Kopano, moves to Firewalld – and also comes distributed by Linode (for Cloud and infrastructure setups) and on high-end hardware like Tuxedo Laptops (other Cloud and hardware vendors will follow). On top of that, Leap 15 introduces a system role selection with classic “server” or “transactional server” role with transactional updates and a read-only root file system. This brings in all the benefits of atomic updates to the full scope of deployments, from the Internet of Things (IoT) and embedded devices to classical server and desktop roles. Apart from that, Leap 15 has been continually optimized for cloud usage scenarios as virtualization guest and at the same time offers a great variety of desktops, including KDE and GNOME and features the return of Live images for simple test-driving.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-look-closely-aligned-with-sle&quot;&gt;New Look, closely aligned with SLE&lt;/h2&gt;
-
-&lt;p&gt;With a brand new look developed by the community, openSUSE Leap 15 brings plenty of community packages built on top of a core from &lt;a href=&quot;https://www.suse.com/products/server/&quot;&gt;SUSE Linux Enterprise (SLE)&lt;/a&gt; 15 sources, with the two major releases being built in parallel from the beginning for the first time. Leap 15 shares a common core with SLE 15, which is due for release in the coming months. The first release of Leap was version 42.1, and it was based on the first Service Pack (SP1) of SLE 12. Three years later SUSE’s enterprise version and openSUSE’s community version are now aligned at 15 with a fresh rebase.&lt;/p&gt;
-
-&lt;p&gt;“Having a community distribution that shares a common DNA with enterprise is the smart way to interact with the open-source ecosystem”, said Kai Dupke, long-time openSUSE user and senior product manager for SUSE Linux Enterprise 15. “Leap provides great flexibility and freedom of choice for developers and users”.&lt;/p&gt;
-
-&lt;h2 id=&quot;migration-to-enterprise-made-easy&quot;&gt;Migration to Enterprise made easy&lt;/h2&gt;
-
-&lt;p&gt;Consequently, for the first time, SUSE will support migration from openSUSE Leap server installations to SUSE Linux Enterprise, which makes it easy for system integrators to develop on Leap code and later move to an enterprise version for SLAs, certification, mass deployment, or extended Long Term Support.&lt;/p&gt;
-
-&lt;p&gt;“Upgrading to a commercial product can be complex for developers wanting to migrate a solution from a community Linux distribution to an enterprise distribution”, Dupke explains. “With Leap 15 SUSE Linux Enterprise Server 15, that journey is made easy. We know that the community is where the innovations happen, and Leap community developers now can easily broaden that scope into enterprise Linux, if needed. Leap 15 is offering the quickest and most flexible transition to enterprise service, support and maintenance”.&lt;/p&gt;
-
-&lt;h2 id=&quot;obs-openqa-better-tested-more-secure-and-more-open-than-others&quot;&gt;OBS, OpenQA: Better Tested, More Secure and More Open than Others&lt;/h2&gt;
-
-&lt;p&gt;Using the &lt;a href=&quot;https://build.opensuse.org/&quot;&gt;Open Build Service&lt;/a&gt; and &lt;a href=&quot;https://openqa.opensuse.org/&quot;&gt;openQA&lt;/a&gt;, openSUSE Leap has become the best and most tested Linux distribution, and it is built differently than any other distribution, using a much more secure development model than competitors.&lt;/p&gt;
-
-&lt;p&gt;The community distribution with its enterprise base system is developed in cooperation with SUSE developers using open source and openSUSE tools like the Open Build Service and openQA, which have &lt;a href=&quot;https://www.suse.com/c/celebrate-openqa-one-million-reasons-believe-testing/&quot;&gt;run more than a million test runs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The vibrant developer community, the availability of the open-source tools and the distribution alignment between Leap and SLE make it easy for developers to contribute to Leap and further drive technological innovations and open-source solutions.&lt;/p&gt;
-
-&lt;h2 id=&quot;all-standard-and-some-new-services-for-networks&quot;&gt;All Standard and Some New Services for Networks&lt;/h2&gt;
-
-&lt;p&gt;For all existing Leap users seamless updates to Leap 15 are available. Any migration is recommended to take place within the next six months. Like prior versions, System Administrators and small businesses can use Leap for hosting web and mail servers or for network management with DHCP, DNS, NTP, Samba, NFS, LDAP, and hundreds of other services.&lt;/p&gt;
-
-&lt;p&gt;File sharing and cloud services include software such as &lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; and even the groupware application suite &lt;a href=&quot;https://kopano.com/&quot;&gt;Kopano&lt;/a&gt; (formerly known as Zarafa) is part of the official Leap 15 repositories.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-installer-and-partitioner-moving-to-firewalld&quot;&gt;New Installer and Partitioner, Moving to Firewalld&lt;/h2&gt;
-
-&lt;p&gt;Leap 15 further improves one of openSUSE’s most powerful tools YaST. For example, the partitioner’s Libstorage-ng subsystem has been reworked, making it more powerful and reliable and taking ease-of-use to a new level. The same applies for the move from SuSEfirewall2 to the widely used firewall management tool Firewalld which provides better integration with dynamic network setups.&lt;/p&gt;
-
-&lt;p&gt;Administrators in need of mass deployments e.g. in cloud solutions will find helpful improvements in AutoYaST. Its profiles contain installation and configuration data to simplify unattended installations. The new AutoYaST version benefits from cleaned-up profiles, extended documentation and now supports the new partitioning features of libstorage-ng.&lt;/p&gt;
-
-&lt;h2 id=&quot;images-deployment-and-hardware-with-linode-and-tuxedo&quot;&gt;Images, Deployment and Hardware with Linode and Tuxedo&lt;/h2&gt;
-
-&lt;p&gt;Today’s public release of Leap 15 aren’t only released as DVD and Network ISO: &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt; and hardware vendor &lt;a href=&quot;https://www.tuxedocomputers.com/&quot;&gt;TUXEDO Computers&lt;/a&gt; have cloud images through of Leap ready, too. While the brand new TUXEDO InfinityBook Pro 13 is immediately available with Leap 15 preinstalled and ready-to-run, Linode has Leap available for all infrastructure needs. And there are more cloud images and hardware providers that will provide Leap 15 in the coming weeks, pre-installed or deployable.&lt;/p&gt;
-
-&lt;h2 id=&quot;atomic-updates-by-kubic-additional-building-blocks-for-professionals&quot;&gt;Atomic Updates by Kubic: Additional building blocks for professionals&lt;/h2&gt;
-
-&lt;p&gt;This release has a system role selection that offers a classic server role and a Transactional Server role. Contributed by openSUSE’s container platform project &lt;a href=&quot;https://en.opensuse.org/Kubic&quot;&gt;Kubic&lt;/a&gt;, this role uses transactional updates and a Read-Only Root Filesystem to provide Leap with all the benefits of atomic updates in a multitude of use cases, including container hosts, Internet of Things (IoT), and classic server functions with potential future applications also involving desktops.&lt;/p&gt;
-
-&lt;h2 id=&quot;built-to-scale&quot;&gt;Built to Scale&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/05/clear-748x1024.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/05/clear-748x1024.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;openSUSE Leap is also excellently suited and prepared for usage as a Virtual Machine (VM) or container guest, allowing professional users to efficiently run network services no matter whether it’s a single server or a data center.&lt;/p&gt;
-
-&lt;h2 id=&quot;any-desktop-and-live-images-available&quot;&gt;Any Desktop and Live Images available&lt;/h2&gt;
-
-&lt;p&gt;Users of openSUSE Leap can choose their favorite desktop environment, configuration and setup. The &lt;a href=&quot;https://en.opensuse.org/GNOME&quot;&gt;GNOME&lt;/a&gt; version in Leap is the same as the version used in SLE 15, now using &lt;a href=&quot;https://wayland.freedesktop.org/&quot;&gt;Wayland&lt;/a&gt; by default. &lt;a href=&quot;https://wiki.gnome.org/Apps/Builder&quot;&gt;GNOME Builder&lt;/a&gt; is available for Leap for the first time, allowing easy development for &lt;a href=&quot;https://wiki.gnome.org/Projects&quot;&gt;GNOME Projects&lt;/a&gt;. &lt;a href=&quot;https://en.opensuse.org/KDE&quot;&gt;KDE&lt;/a&gt; and the latest Plasma 5.12 Long-Term-Support version are also available for SLE 15 through &lt;a href=&quot;https://packagehub.suse.com/&quot;&gt;PackageHub&lt;/a&gt;, including all its community supported tools and applications. Leap offers the return of &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.0/live/&quot;&gt;Live Images&lt;/a&gt; for those mentioned above.&lt;/p&gt;
-
-&lt;h2 id=&quot;health-and-science&quot;&gt;Health and Science&lt;/h2&gt;
-
-&lt;p&gt;The Leap distribution supports the health, science, research and developer communities with packages like &lt;a href=&quot;http://health.gnu.org/&quot;&gt;GNU Health&lt;/a&gt;, which can help facilitate running the operations of a hospital and collecting vital patient data, and &lt;a href=&quot;https://www.qgis.org/&quot;&gt;QGIS&lt;/a&gt;, which allows researchers to create, edit, visualize, analyze and publish geospatial information.&lt;/p&gt;
-
-&lt;h2 id=&quot;platforms&quot;&gt;Platforms&lt;/h2&gt;
-
-&lt;p&gt;Leap works with X86_64 and deployment scenarios can be run for physical, virtual, host and guest, and cloud. Ports to other architectures like &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM64&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_Architecture&quot;&gt;POWER&lt;/a&gt; are in the works by the community.&lt;/p&gt;
-
-&lt;p&gt;Maintenance and security updates for the Leap 15 series are expected to last for at least three years. Users should update to the newest Leap 15 Service Packs (SP) within six months of each SP release to receive prudent updates. Service Pack updates are expected annually.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Adapted from the original news published by &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; at &lt;a href=&quot;https://news.opensuse.org/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Today's major release of openSUSE Leap 15 is offering professional users, entrepreneurs and ISVs (Independent Software Vendors) a new, fresh and hardened code base for their workloads that supports modern hardware, based on a stable, community- and enterprise-based open-source GNU/Linux distribution – but developed with a modern, more secure, better tested and much more open open-source build system unique to SUSE and openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry></feed>
+&lt;p&gt;&lt;em&gt;Notícia adaptada da original publicada por &lt;a href=&quot;https://en.opensuse.org/User:Asramos&quot;&gt;Aslan Ramos&lt;/a&gt; na &lt;a href=&quot;https://pt.opensuse.org/openSUSE:Lancamento_versao_15&quot;&gt;*wiki* do openSUSE em Português&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">A versão mais recente do openSUSE Leap 15 está oferecendo aos usuários profissionais, empreendedores e ISVs (Independent Software Vendors) uma base de código nova, reforçada e robusta para suas cargas de trabalho e que suportam hardware moderno, baseado em código aberto estável, enterprise em uma distribuição GNU/Linux comunidade - desenvolvida com um sistema de construção open source moderno, mais seguro, melhor testado e muito mais aberto, exclusivo do SUSE e do openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry></feed>
