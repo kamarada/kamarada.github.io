@@ -1,5 +1,210 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-30T20:03:45-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">How to install website certificates on Linux</title><link href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" rel="alternate" type="text/html" title="How to install website certificates on Linux" /><published>2018-10-30T16:50:00-03:00</published><updated>2018-10-30T19:58:48-03:00</updated><id>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-06T19:03:28-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Criptografando os arquivos do Dropbox no disco com VeraCrypt</title><link href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" rel="alternate" type="text/html" title="Criptografando os arquivos do Dropbox no disco com VeraCrypt" /><published>2018-11-06T18:30:00-02:00</published><updated>2018-11-06T19:03:23-02:00</updated><id>https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; é um dos serviços de nuvem mais populares e um dos poucos que disponibiliza cliente para sincronização no &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;. Recentemente, alguns usuários receberam um alerta:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-01-pt.jpg&quot; title=&quot;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-01-pt.jpg&quot; alt=&quot;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No meu caso, como eu tenho um &lt;em&gt;notebook&lt;/em&gt; com Linux e &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e o cliente do Dropbox instalado em ambos os sistemas, eu armazenava a pasta Dropbox em uma partição &lt;a href=&quot;https://pt.wikipedia.org/wiki/NTFS&quot;&gt;NTFS&lt;/a&gt;, acessível por ambos.&lt;/p&gt;
+
+&lt;p&gt;Mas o Dropbox anunciou &lt;a href=&quot;https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255&quot;&gt;em seu fórum&lt;/a&gt; que a partir de 07/11/2018 vai restringir o suporte a &lt;a href=&quot;https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2016/02/entenda-o-que-e-sistema-de-arquivos-e-sua-utilidade-no-pc-e-no-celular.html&quot;&gt;sistemas de arquivos&lt;/a&gt; apenas aos mais comuns em cada sistema: NTFS no Windows, &lt;a href=&quot;https://pt.wikipedia.org/wiki/HFS%2B&quot;&gt;HFS+&lt;/a&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Apple_File_System&quot;&gt;APFS&lt;/a&gt; no &lt;a href=&quot;http://www.apple.com/br/macosx/&quot;&gt;Mac OS X&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ext4&quot;&gt;Ext4&lt;/a&gt; limpo (sem criptografia) no Linux. Em tese, essa mudança deve garantir estabilidade e experiência consistente aos usuários. A notícia não é de todo ruim, porque o sistema de arquivos Ext4 é comum em instalações Linux.&lt;/p&gt;
+
+&lt;p&gt;Para verificar suas partições e sistemas de arquivos, consulte o aplicativo &lt;a href=&quot;https://gparted.org/&quot;&gt;&lt;strong&gt;GParted&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ou, se prefere a linha de comando, utilize o comando &lt;a href=&quot;https://www.gnu.org/software/fdisk/&quot;&gt;&lt;strong&gt;fdisk&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# mount -l
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nenhuma das minhas partições possui sistema de arquivos Ext4. Portanto, a princípio, eu não poderia seguir sincronizando o Dropbox pelo Linux. Eu poderia manter o Dropbox na partição NTFS, mas eu só poderia sincronizar pelo Windows.&lt;/p&gt;
+
+&lt;p&gt;Mas como eu uso com muito mais frequência o Linux do que o Windows, decidi viabilizar a sincronização do Dropbox pelo Linux, ainda de quebra garantindo a segurança dos arquivos no disco: vou armazenar os arquivos do Dropbox em um &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;volume criptografado do VeraCrypt&lt;/a&gt;. Dessa forma, os arquivos estão seguros contra acesso indevido caso o &lt;em&gt;notebook&lt;/em&gt; seja roubado, por exemplo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; essa solução garante a segurança dos arquivos apenas no disco. De posse de &lt;em&gt;e-mail&lt;/em&gt; e senha, uma pessoa mal-intencionada ainda pode acessá-los usando o navegador.&lt;/p&gt;
+
+&lt;p&gt;Essa pode ser uma alternativa inclusive para quem hoje armazena os arquivos do Dropbox em uma partição Ext4 criptografada, porque o VeraCrypt realiza a criptografia “nos bastidores”, o Dropbox não é ciente que os arquivos são criptografados.&lt;/p&gt;
+
+&lt;p&gt;Uma desvantagem dessa solução é que ela requer o trabalho manual de montar o volume e iniciar o Dropbox sempre que for necessário sincronizar. Por isso, recomendo que leia essa página até o final antes de começar, para ver se essa solução de fato te interessa.&lt;/p&gt;
+
+&lt;p&gt;Já falamos sobre o &lt;em&gt;software&lt;/em&gt; de criptografia de arquivos &lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt; aqui:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;Criptografia de arquivos com o VeraCrypt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você ainda não leu aquele &lt;em&gt;post&lt;/em&gt;, leia antes de continuar.&lt;/p&gt;
+
+&lt;h2 id=&quot;antes-de-começar&quot;&gt;Antes de começar&lt;/h2&gt;
+
+&lt;p&gt;Para evitar problemas, certifique-se de que seus arquivos estão sincronizados. Para isso, clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e certifique-se de que aparece &lt;strong&gt;Atualizado&lt;/strong&gt; no menu:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Também nesse menu verifique o espaço disponível para sua conta. No meu caso, eu disponho de 5,8GB de espaço. Normalmente, novas contas começam com 2GB.&lt;/p&gt;
+
+&lt;h2 id=&quot;criando-o-volume-criptografado&quot;&gt;Criando o volume criptografado&lt;/h2&gt;
+
+&lt;p&gt;Inicie o VeraCrypt e siga o passo-a-passo do &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre o VeraCrypt&lt;/a&gt; para criar um volume padrão em arquivo. Apenas se atente a alguns detalhes para esse volume do Dropbox.&lt;/p&gt;
+
+&lt;p&gt;O local do volume (tela &lt;strong&gt;Volume Location&lt;/strong&gt;) não é relevante, pois essa informação é invisível ao Dropbox. Ele pode inclusive ser armazenado naquela partição NTFS.&lt;/p&gt;
+
+&lt;p&gt;O tamanho do volume (tela &lt;strong&gt;Volume Size&lt;/strong&gt;) deve ser igual ao espaço disponível no Dropbox (ou um pouco maior, por precaução):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como informamos um tamanho maior, o assistente mostra uma tela que não apareceu da outra vez, questionando quanto a arquivos grandes (&lt;strong&gt;Large Files&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você pretende armazenar arquivos grandes (maiores que 4GB) no volume, selecione a segunda opção (&lt;strong&gt;I will store files larger than 4 GB on the volume&lt;/strong&gt;). Senão, selecione a primeira. Na dúvida, selecione a segunda. Clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar).&lt;/p&gt;
+
+&lt;p&gt;A tela seguinte já é conhecida. É importante que o volume seja formatado com o sistema de arquivos &lt;strong&gt;Linux Ext4&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ao clicar em &lt;strong&gt;Next&lt;/strong&gt;, mais uma tela nova:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa tela questiona o suporte multi-plataforma (&lt;strong&gt;Cross-Platform Support&lt;/strong&gt;). Como o volume será usado apenas no Linux, marque a segunda opção (&lt;strong&gt;I will mount the volume only on Linux&lt;/strong&gt;) e clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Após a criação do volume, monte-o. Escolha uma vaga e sempre monte esse volume nessa vaga, porque o ponto de montagem será passado para o Dropbox. No meu exemplo, escolhi a vaga 10, então o ponto de montagem do meu volume é &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/veracrypt10&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;movendo-a-pasta-do-dropbox&quot;&gt;Movendo a pasta do Dropbox&lt;/h2&gt;
+
+&lt;p&gt;Crie uma pasta chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; dentro do volume criptografado.&lt;/p&gt;
+
+&lt;p&gt;Para mover a pasta do Dropbox, clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e, no menu que aparece, clique em &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Dropbox&lt;/strong&gt;, selecione a aba &lt;strong&gt;Sincronização&lt;/strong&gt; e clique no botão &lt;strong&gt;Mover&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe o caminho para a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; dentro do volume criptografado e clique em &lt;strong&gt;Choose&lt;/strong&gt; (escolher, essa tela o Dropbox não traduziu):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Permita que o Dropbox mova a pasta e o seu conteúdo para o novo local:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Uma barra de progresso indica o andamento da mudança:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando terminar, ainda precisamos alterar mais uma configuração. Selecione a aba &lt;strong&gt;Geral&lt;/strong&gt; e desmarque a opção &lt;strong&gt;Iniciar o Dropbox junto com o sistema&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Preferências do Dropbox&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;uso-no-dia-a-dia&quot;&gt;Uso no dia-a-dia&lt;/h2&gt;
+
+&lt;p&gt;Se você leu todo o &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre o VeraCrypt&lt;/a&gt; (suponho que sim), sabe que o volume só deve ficar montado durante o uso.&lt;/p&gt;
+
+&lt;p&gt;Se você não vai mais usar os arquivos do Dropbox, encerre o cliente do Dropbox (clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e depois em &lt;strong&gt;Sair do Dropbox&lt;/strong&gt;) e depois desmonte o volume pelo VeraCrypt. É importante sempre sair do Dropbox antes de desmontar o volume.&lt;/p&gt;
+
+&lt;p&gt;Quando for voltar a usar os arquivos do Dropbox, inicie o VeraCrypt, monte o volume e então, com o volume montado, inicie o Dropbox. Caso você esqueça de montar o volume antes de iniciar o Dropbox, ele não vai encontrar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; e exibir uma mensagem de erro:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-14-pt.jpg&quot; title=&quot;A pasta do Dropbox não foi encontrada.&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-14-pt.jpg&quot; alt=&quot;A pasta do Dropbox não foi encontrada.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;A pasta do Dropbox não foi encontrada.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/move-dropbox-folder&quot;&gt;Mover a pasta do Dropbox para um novo local - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/system-requirements#desktop&quot;&gt;Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry><entry xml:lang="en"><title type="html">How to install website certificates on Linux</title><link href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" rel="alternate" type="text/html" title="How to install website certificates on Linux" /><published>2018-10-30T16:50:00-03:00</published><updated>2018-10-30T19:58:48-03:00</updated><id>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/10/certificates-firefox-1.png&quot; title=&quot;&quot;&gt;
@@ -2747,77 +2952,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7126229?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando IMAP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7104828?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando POP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Thunderbird é o cliente de e-mail gratuito da Fundação Mozilla, a mesma que desenvolve o conhecido navegador Firefox. E o Gmail dispensa apresentações: é o serviço de e-mail gratuito da gigante Google. Nesse post, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-gmail.png" /></entry><entry xml:lang="pt"><title type="html">Baseado no código do Enterprise, testado milhões de vezes: openSUSE Leap 15 lançado</title><link href="https://kamarada.github.io/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/" rel="alternate" type="text/html" title="Baseado no código do Enterprise, testado milhões de vezes: openSUSE Leap 15 lançado" /><published>2018-05-25T16:45:00-03:00</published><updated>2018-05-25T19:46:53-03:00</updated><id>https://kamarada.github.io/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/">&lt;p&gt;&lt;strong&gt;A nova comunidade criada sobre o SUSE Linux Enterprise 15 traz uma grande variedade de novos softwares, fácil migração para o SLE, atualizações transacionais, funções de servidor, imagens de nuvem escaláveis e laptops Linux&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A versão mais recente do openSUSE Leap 15 está oferecendo aos usuários profissionais, empreendedores e ISVs (Independent Software Vendors) uma base de código nova, reforçada e robusta para suas cargas de trabalho e que suportam hardware moderno, baseado em código aberto estável, enterprise em uma distribuição GNU/Linux comunidade - desenvolvida com um sistema de construção open source moderno, mais seguro, melhor testado e muito mais aberto, exclusivo do SUSE e do openSUSE.&lt;/p&gt;
-
-&lt;h2 id=&quot;novas-funcionalidades&quot;&gt;Novas funcionalidades&lt;/h2&gt;
-
-&lt;p&gt;O openSUSE Leap 15 agora permite a migração para o SUSE Linux Enterprise (SLE), traz um novo particionador, integra o Groupware Kopano, atualizado para o firewalld - e também vem distribuído pela Linode (para configurações de infraestrutura e nuvem) e hardware de ponta como os Laptops Tuxedo (outros fornecedores de computação em nuvem e hardware segurirão). Além disso, o Leap 15 introduz uma seleção de função do sistema com “‘servidor”’ ou “‘servidor transacional”’, com as atualizações transacionais e um sistema de arquivos raiz somente leitura. Isso traz todos os benefícios das atualizações atômicas para o escopo completo das implantações, da Internet das Coisas (IoT) e dispositivos incorporados a funções clássicas de servidor e desktop. Além disso, o Leap 15 foi continuamente otimizado para cenários de uso da nuvem como convidado de virtualização e ao mesmo tempo oferece uma grande variedade de desktops, incluindo o KDE e o GNOME, e apresenta o retorno de imagens ao vivo para uma simples condução de teste.&lt;/p&gt;
-
-&lt;h2 id=&quot;novo-visual-bem-próximo-com-o-sle&quot;&gt;Novo visual, bem próximo com o SLE&lt;/h2&gt;
-
-&lt;p&gt;Com um novo visual desenvolvido pela comunidade, o openSUSE Leap 15 traz muitos pacotes de comunidades construídos sobre um núcleo de fontes do &lt;a href=&quot;https://www.suse.com/products/server/&quot;&gt;SUSE Linux Enterprise (SLE)&lt;/a&gt; 15, com os dois principais lançamentos sendo construídos pela primeira vez em paralelo desde o início. O openSUSE Leap 15 compartilha um núcleo comum com o SLE 15, que deve ser lançado nos próximos meses. A primeira versão do Leap foi a versão 42.1 e foi baseada no primeiro Service Pack (SP1) do SLE 12. Três anos depois, a versão corporativa do SUSE e a versão da comunidade do openSUSE agora estão alinhadas na versão 15 com uma nova base.&lt;/p&gt;
-
-&lt;p&gt;“Ter uma distribuição comunitária que compartilha um DNA comum com a empresa é a maneira inteligente de interagir com o ecossistema de código aberto”’, disse Kai Dupke, usuário de longa data do openSUSE e gerente sênior de produto do SUSE Linux Enterprise 15. “‘O Leap oferece grande flexibilidade e liberdade de escolha para desenvolvedores e usuários.”&lt;/p&gt;
-
-&lt;h2 id=&quot;migração-facilitada-para-o-enterprise&quot;&gt;Migração facilitada para o Enterprise&lt;/h2&gt;
-
-&lt;p&gt;Conseqüentemente, pela primeira vez, o SUSE suportará a migração das instalações do servidor openSUSE Leap para o SUSE Linux Enterprise, o que torna mais fácil para os integradores de sistemas desenvolverem o código Leap e depois migrarem para uma versão corporativa para disponibilizar SLAs, certificação, implementação em massa e suporte estendido de longo termo.&lt;/p&gt;
-
-&lt;p&gt;“A atualização para um produto comercial pode ser complexa para os desenvolvedores que desejam migrar uma solução de uma distribuição Linux comunitária para uma distribuição enterprise”, explica Dupke. “Com o Leap 15 SUSE e Linux Enterprise Server 15, essa jornada é facilitada. Sabemos que a comunidade é onde as inovações acontecem e os desenvolvedores da comunidade Leap agora podem facilmente ampliar esse escopo no Linux enterprise, se necessário. O Leap 15 está oferecendo a transição mais rápida e flexível para serviços corporativos, suporte e manutenção.”&lt;/p&gt;
-
-&lt;h2 id=&quot;obs-openqa-melhor-testado-mais-seguro-e-mais-aberto-que-outros&quot;&gt;OBS, OpenQA: melhor testado, mais seguro e mais aberto que outros&lt;/h2&gt;
-
-&lt;p&gt;Usando o &lt;a href=&quot;https://build.opensuse.org/&quot;&gt;Open Build Service&lt;/a&gt; e o &lt;a href=&quot;https://openqa.opensuse.org/&quot;&gt;openQA&lt;/a&gt;, o openSUSE Leap se tornou a melhor e mais testada distribuição Linux, e é construído de forma diferente qualquer outra distribuição, usando um modelo de desenvolvimento muito mais seguro do que os concorrentes.&lt;/p&gt;
-
-&lt;p&gt;A distribuição da comunidade com sistema base corporativo é desenvolvida em cooperação com os desenvolvedores do SUSE usando ferramentas open source e openSUSE como o Open Build Service e openQA , que &lt;a href=&quot;https://www.suse.com/c/celebrate-openqa-one-million-reasons-believe-testing/&quot;&gt;executaram mais de um milhão de testes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Uma comunidade vibrante de desenvolvedores, a disponibilidade das ferramentas de código aberto e o alinhamento da distribuição entre o Leap e o SLE facilitam a contribuição dos desenvolvedores para o Leap e impulsionam ainda mais as inovações tecnológicas e as soluções de código aberto.&lt;/p&gt;
-
-&lt;h2 id=&quot;todos-os-padrões-e-alguns-novos-serviços-para-redes&quot;&gt;Todos os Padrões e Alguns Novos Serviços para Redes&lt;/h2&gt;
-
-&lt;p&gt;Para todos os usuários existentes do Leap, atualizações contínuas para o Leap 15 estão disponíveis. Qualquer migração é recomendada para ocorrer nos próximos seis meses. Como nas versões anteriores, os administradores de sistema e pequenas empresas podem usar o Leap para hospedagem de servidores web e de e-mail ou para gerenciamento de rede com DHCP, DNS, NTP, Samba, NFS, LDAP e centenas de outros serviços.&lt;/p&gt;
-
-&lt;p&gt;Os serviços de compartilhamento de arquivos e nuvem incluem softwares como o &lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; e até mesmo o aplicativo de groupware &lt;a href=&quot;https://kopano.com/&quot;&gt;Kopano&lt;/a&gt; (antes conhecido como Zarafa) fazem parte dos repositórios oficiais do Leap 15.&lt;/p&gt;
-
-&lt;h2 id=&quot;novo-instalador-particionador-e-alterado-para-o-firewalld&quot;&gt;Novo instalador, particionador e alterado para o Firewalld&lt;/h2&gt;
-
-&lt;p&gt;O Leap 15 melhora ainda mais uma das ferramentas mais poderosas do openSUSE, o YaST. Por exemplo, o subsistema particionador do Libstorage-ng foi reformulado, tornando-o mais poderoso e confiável e levando a facilidade de uso a um novo nível. O mesmo se aplica à mudança do SuSEfirewall2 para a ferramenta de gerenciamento de firewall amplamente usada, Firewalld, que oferece melhor integração com configurações de rede dinâmicas.&lt;/p&gt;
-
-&lt;p&gt;Administradores que precisam de implantações em massa, por exemplo em soluções em nuvem encontrará melhorias úteis no AutoYaST. Seus perfis contêm dados de instalação e configuração para simplificar instalações autônomas. A nova versão do AutoYaST se beneficia de perfis limpos, documentação estendida e agora suporta os novos recursos de particionamento do libstorage-ng.&lt;/p&gt;
-
-&lt;h2 id=&quot;imagens-implantação-e-hardware-com-linode-e-tuxedo&quot;&gt;Imagens, Implantação e Hardware com Linode e Tuxedo&lt;/h2&gt;
-
-&lt;p&gt;O lançamento público do Leap 15 não é apenas liberado como DVD e Network ISO: Linode é o fornecedor de hardware do TUXEDO Computers, que também têm imagens em nuvem do Leap. Enquanto o novíssimo InfinityBook Pro 13 da TUXEDO está imediatamente disponível com o Leap 15 pré-instalado e pronto para uso, o Linode tem o Leap disponível para todas as necessidades de infraestrutura. E há mais imagens em nuvem e provedores de hardware que fornecerão o Leap 15 nas próximas semanas, pré-instalados ou implantáveis.&lt;/p&gt;
-
-&lt;h2 id=&quot;atualizações-atômicas-pelo-kubic-construção-em-blocos-de-para-profissionais&quot;&gt;Atualizações Atômicas pelo Kubic: construção em blocos de para profissionais&lt;/h2&gt;
-
-&lt;p&gt;Esta versão tem uma seleção do tipo de sistema, dando como opções uma função de servidor clássica e uma função de servidor transacional. Contribuído pelo projeto da plataforma em contêiner do openSUSE Kubic, essa função usa atualizações transacionais e um sistema de arquivos raiz somente para leitura para fornecer no Leap todos os benefícios de atualizações atômicas em vários casos de uso, incluindo hosts de contêiner, Internet das coisas (IoT). ), e as funções clássicas de servidor com potenciais aplicações futuras envolvendo também desktops.&lt;/p&gt;
-
-&lt;h2 id=&quot;construído-para-escalar&quot;&gt;Construído para escalar&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/05/clear-748x1024.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/05/clear-748x1024.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O openSUSE Leap também é perfeitamente adequado e preparado para uso como uma máquina virtual (VM) ou guest de contêiner, permitindo que os usuários profissionais executem serviços de rede com eficiência, independentemente de ser um único servidor ou um data center.&lt;/p&gt;
-
-&lt;h2 id=&quot;qualquer-ambiente-desktop-e-live-images-estão-disponíveis&quot;&gt;Qualquer ambiente Desktop e Live Images estão disponíveis&lt;/h2&gt;
-
-&lt;p&gt;Os usuários do openSUSE Leap podem escolher seu ambiente de desktop, configuração e seup. A versão do &lt;a href=&quot;https://en.opensuse.org/GNOME&quot;&gt;GNOME&lt;/a&gt; no Leap é a mesma usada no SLE 15, agora usando &lt;a href=&quot;https://wayland.freedesktop.org/&quot;&gt;Wayland&lt;/a&gt; por padrão. O &lt;a href=&quot;https://wiki.gnome.org/Apps/Builder&quot;&gt;GNOME Builder&lt;/a&gt; está disponível para o Leap pela primeira vez, permitindo fácil desenvolvimento para &lt;a href=&quot;https://wiki.gnome.org/Projects&quot;&gt;GNOME Projects&lt;/a&gt;. O &lt;a href=&quot;https://en.opensuse.org/KDE&quot;&gt;KDE&lt;/a&gt; é a versão mais recente do Suporte a Longo Prazo do KDE Plasma 5.12, também estão disponíveis novos pacotes para o SLE 15 através do &lt;a href=&quot;https://packagehub.suse.com/&quot;&gt;PackageHub&lt;/a&gt;, incluindo todas as ferramentas e aplicativos suportados pela comunidade. Leap oferece o várias &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.0/live/&quot;&gt;Live Images&lt;/a&gt; para os desktops mencionados acima.&lt;/p&gt;
-
-&lt;h2 id=&quot;saúde-e-ciência&quot;&gt;Saúde e Ciência&lt;/h2&gt;
-
-&lt;p&gt;A distribuição Leap suporta as comunidades de saúde, ciências, pesquisa e desenvolvimento com pacotes como o &lt;a href=&quot;http://health.gnu.org/&quot;&gt;GNU Health&lt;/a&gt;, que podem ajudar a facilitar a execução das operações de um hospital e a coleta de dados vitais do paciente e &lt;a href=&quot;https://www.qgis.org/&quot;&gt;QGIS&lt;/a&gt;, que permite aos pesquisadores criar, editar, visualizar, analisar e publicar informações geoespaciais.&lt;/p&gt;
-
-&lt;h2 id=&quot;plataformas&quot;&gt;Plataformas&lt;/h2&gt;
-
-&lt;p&gt;O Leap funciona em X86_64 e os cenários de implantação podem ser executados para físico, virtual, host, convidado e na nuvem. Suporte para outras arquiteturas como &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM64&lt;/a&gt; e &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_Architecture&quot;&gt;POWER&lt;/a&gt; estão em desenvolvimento pela comunidade.&lt;/p&gt;
-
-&lt;p&gt;As atualizações de manutenção e segurança para a série Leap 15 devem durar pelo menos três anos. Os usuários devem atualizar para o mais novo Leap 15 Service Packs (SP) dentro de seis meses de cada versão do SP para receber atualizações. Atualizações do Service Pack são esperadas anualmente.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Notícia adaptada da original publicada por &lt;a href=&quot;https://en.opensuse.org/User:Asramos&quot;&gt;Aslan Ramos&lt;/a&gt; na &lt;a href=&quot;https://pt.opensuse.org/openSUSE:Lancamento_versao_15&quot;&gt;*wiki* do openSUSE em Português&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">A versão mais recente do openSUSE Leap 15 está oferecendo aos usuários profissionais, empreendedores e ISVs (Independent Software Vendors) uma base de código nova, reforçada e robusta para suas cargas de trabalho e que suportam hardware moderno, baseado em código aberto estável, enterprise em uma distribuição GNU/Linux comunidade - desenvolvida com um sistema de construção open source moderno, mais seguro, melhor testado e muito mais aberto, exclusivo do SUSE e do openSUSE.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/05/Built-to-scale1.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Thunderbird é o cliente de e-mail gratuito da Fundação Mozilla, a mesma que desenvolve o conhecido navegador Firefox. E o Gmail dispensa apresentações: é o serviço de e-mail gratuito da gigante Google. Nesse post, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-gmail.png" /></entry></feed>
