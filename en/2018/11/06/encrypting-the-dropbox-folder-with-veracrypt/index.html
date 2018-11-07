@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" prefix="
+<html lang="en" prefix="
     addthis: http://www.addthis.com/help/api-spec
     og: http://ogp.me/ns#
     fb: http://ogp.me/ns/fb#
@@ -20,30 +20,30 @@
     <title>
         
             
-                Criptografando os arquivos do Dropbox no disco com VeraCrypt - Linux Kamarada
+                Encrypting the Dropbox folder with VeraCrypt - Linux Kamarada
             
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, dev...">
-    <link rel="canonical" href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">
-    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+    <meta name="description" content="Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported f...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
 
     
     
         
-            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/" />
-        
     
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" />
         
     
 
     <!-- OpenSearch -->
-    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
 
     <!-- Open Graph -->
     
-        <meta property="article:published_time" content="2018-11-06 18:30:00 -0200"/>
+        <meta property="article:published_time" content="2018-11-06 23:59:00 -0200"/>
         
             <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
         
@@ -52,19 +52,19 @@
     
         <meta property="fb:page_id" content="1700979763454346" />
     
-    <meta property="og:description" content="O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, dev..." />
+    <meta property="og:description" content="Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported f..." />
     
         <meta property="og:image" content="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" />
     
     <meta property="og:site_name" content="Linux Kamarada" />
-    <meta property="og:title" content="Criptografando os arquivos do Dropbox no disco com VeraCrypt" />
+    <meta property="og:title" content="Encrypting the Dropbox folder with VeraCrypt" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />
     
-        <meta name="twitter:site" content="@LinuxKamarada" />
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
     
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
@@ -124,13 +124,13 @@
                 data_track_clickback: true,
                 data_track_addressbar: true,
                 
-                    ui_language: 'pt'
+                    ui_language: 'en'
                 
             };
             var addthis_share = {
-                url: 'https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/',
+                url: 'https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/',
                 title: document.title,
-                description: 'O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, dev...'
+                description: 'Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported f...'
             };
         </script>
         <!-- End AddThis -->
@@ -160,16 +160,16 @@
                 
                     
                         <li class="nav-item">
-                            <a class="nav-link" href="/pt/download/leap/42.2/">Download</a>
+                            <a class="nav-link" href="/en/download/leap/42.2/">Download</a>
                         </li>
                     
                 
             </ul>
-            <form action="/pt/buscar/" class="form-inline" id="search-form" method="get" role="search">
+            <form action="/en/search/" class="form-inline" id="search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
-                    <input class="form-control" id="search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <input class="form-control" id="search-field" name="q" placeholder="Search" type="text" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-secondary btn-number" id="search-button" type="submit">
                             <i class="fa fa-search"></i>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
+                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
                     <div class="dropdown-menu" aria-labelledby="language-button">
                         
                         
@@ -198,7 +198,7 @@
                             <div class="dropdown-divider"></div>
                         
                         <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
-                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">Translate this page</a>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/">Translate this page</a>
                     </div>
                 </div><!--.dropdown-->
             </form>
@@ -218,8 +218,8 @@
                 <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
-            <a class="blog-post-link" href="/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" itemprop="mainEntityOfPage url">
-                Criptografando os arquivos do Dropbox no disco com VeraCrypt
+            <a class="blog-post-link" href="/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/" itemprop="mainEntityOfPage url">
+                Encrypting the Dropbox folder with VeraCrypt
             </a>
         </h1>
         <div class="blog-post-meta row">
@@ -227,11 +227,7 @@
                 <p class="blog-post-date" itemprop="datePublished" content="2018-11-06">
                     <a href="/2018/11/06/">
                         
-    06 de
-    
-    Novembro
-        
-    de 2018
+    Nov 6, 2018
 
 
                     </a>
@@ -244,7 +240,7 @@
                         <!-- AddThis Sharing Buttons -->
                         <div class="addthis_toolbox addthis_default_style">
                             <a class="addthis_button_facebook"></a>
-                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                             <a class="addthis_button_google_plusone_share"></a>
                             <a class="addthis_button_favorites"></a>
                             <a class="addthis_button_compact"></a>
@@ -278,77 +274,77 @@
 
 </div>
 
-<p>O <a href="https://www.dropbox.com">Dropbox</a> é um dos serviços de nuvem mais populares e um dos poucos que disponibiliza cliente para sincronização no <a href="http://www.vivaolinux.com.br/linux/">Linux</a>. Recentemente, alguns usuários receberam um alerta:</p>
+<p><a href="https://www.dropbox.com">Dropbox</a> is one of the most popular cloud services and one of a few that offer a sync client for <a href="https://www.kernel.org/linux.html">Linux</a>. Recently, some of its users received a warning:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-01-pt.jpg" title="O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.">
-<img src="/files/2018/11/dropbox-veracrypt-01-pt.jpg" alt="O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-01-en.jpg" title="Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.">
+<img src="/files/2018/11/dropbox-veracrypt-01-en.jpg" alt="Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system." class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 <em class="caption" itemprop="description">
-<p>O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.</p>
+<p>Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.</p>
 
 </em>
 
 </div>
 
-<p>No meu caso, como eu tenho um <em>notebook</em> com Linux e <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e o cliente do Dropbox instalado em ambos os sistemas, eu armazenava a pasta Dropbox em uma partição <a href="https://pt.wikipedia.org/wiki/NTFS">NTFS</a>, acessível por ambos.</p>
+<p>My laptop dual-boots Linux and <a href="https://www.microsoft.com/windows/">Windows</a> and I have installed the Dropbox sync client on both systems. My Dropbox folder was on a shared <a href="https://en.wikipedia.org/wiki/NTFS">NTFS</a> partition.</p>
 
-<p>Mas o Dropbox anunciou <a href="https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255">em seu fórum</a> que a partir de 07/11/2018 vai restringir o suporte a <a href="https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2016/02/entenda-o-que-e-sistema-de-arquivos-e-sua-utilidade-no-pc-e-no-celular.html">sistemas de arquivos</a> apenas aos mais comuns em cada sistema: NTFS no Windows, <a href="https://pt.wikipedia.org/wiki/HFS%2B">HFS+</a> ou <a href="https://pt.wikipedia.org/wiki/Apple_File_System">APFS</a> no <a href="http://www.apple.com/br/macosx/">Mac OS X</a> e <a href="https://pt.wikipedia.org/wiki/Ext4">Ext4</a> limpo (sem criptografia) no Linux. Em tese, essa mudança deve garantir estabilidade e experiência consistente aos usuários. A notícia não é de todo ruim, porque o sistema de arquivos Ext4 é comum em instalações Linux.</p>
+<p>But Dropbox has announced <a href="https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255">on its forum</a> that starting on Nov 7, 2018 supported <a href="https://en.wikipedia.org/wiki/File_system">file systems</a> will be restricted to the most common ones for each operating system: NTFS for Windows, <a href="https://en.wikipedia.org/wiki/HFS_Plus">HFS+</a> or <a href="https://en.wikipedia.org/wiki/Apple_File_System">APFS</a> for <a href="http://www.apple.com/macosx/">Mac OS X</a>, and clean (not encrypted) <a href="https://en.wikipedia.org/wiki/Ext4">Ext4</a> for Linux. The move is intended to provide a stable and consistent experience. That’s not entirely bad news because chances are that your system already has an Ext4 partition.</p>
 
-<p>Para verificar suas partições e sistemas de arquivos, consulte o aplicativo <a href="https://gparted.org/"><strong>GParted</strong></a>:</p>
+<p>Use the <a href="https://gparted.org/"><strong>GParted</strong></a> application to look at your partitions and file systems:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-02-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-02-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-02-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Ou, se prefere a linha de comando, utilize o comando <a href="https://www.gnu.org/software/fdisk/"><strong>fdisk</strong></a>:</p>
+<p>Or, in case you prefer the command line interface, use the <a href="https://www.gnu.org/software/fdisk/"><strong>fdisk</strong></a> command:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre># mount -l
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Nenhuma das minhas partições possui sistema de arquivos Ext4. Portanto, a princípio, eu não poderia seguir sincronizando o Dropbox pelo Linux. Eu poderia manter o Dropbox na partição NTFS, mas eu só poderia sincronizar pelo Windows.</p>
+<p>None of my partitions are Ext4. So, at least in principle, I won’t be able to sync Dropbox on Linux, only on Windows, providing my Dropbox folder remains on the NTFS partition.</p>
 
-<p>Mas como eu uso com muito mais frequência o Linux do que o Windows, decidi viabilizar a sincronização do Dropbox pelo Linux, ainda de quebra garantindo a segurança dos arquivos no disco: vou armazenar os arquivos do Dropbox em um <a href="/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">volume criptografado do VeraCrypt</a>. Dessa forma, os arquivos estão seguros contra acesso indevido caso o <em>notebook</em> seja roubado, por exemplo.</p>
+<p>But I use Linux much more often than Windows, so I looked for an option to keep on syncing on Linux. I found a solution with the bonus of increased security: to store the Dropbox folder on an <a href="http://translate.google.com/translate?js=n&amp;sl=pt&amp;tl=en&amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">encrypted VeraCrypt volume</a>, which would secure the files in case I lose my laptop or it is stolen, for example.</p>
 
-<p>Já falamos sobre o <em>software</em> de criptografia de arquivos <a href="https://www.veracrypt.fr/">VeraCrypt</a> aqui:</p>
+<p><a href="https://www.veracrypt.fr/">VeraCrypt</a> is a file encryption software about which I have already written:</p>
 
 <ul>
-  <li><a href="/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">Criptografia de arquivos com o VeraCrypt</a></li>
+  <li><a href="http://translate.google.com/translate?js=n&amp;sl=pt&amp;tl=en&amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">Encrypting files with VeraCrypt</a> (by now in Portuguese and translated by <a href="https://translate.google.com.br/">Google Translate</a>, the proper English version is on the way)</li>
 </ul>
 
-<p>Se você ainda não leu aquele <em>post</em>, leia antes de continuar.</p>
+<p>I strongly recommend that you read that post before going on.</p>
 
-<p>Essa pode ser uma alternativa inclusive para quem hoje armazena os arquivos do Dropbox em uma partição Ext4 criptografada, porque o VeraCrypt realiza a criptografia “nos bastidores”, o Dropbox não é ciente que os arquivos são criptografados.</p>
+<p>An encrypted VeraCrypt volume may be an alternative for those who currently store the Dropbox folder on an encrypted Ext4 partition, because VeraCrypt encrypts files “behind the scenes”, in a way Dropbox is not aware that they are being encrypted.</p>
 
-<p><strong>Observação:</strong> o VeraCrypt garante apenas a segurança dos arquivos no disco contra acesso indevido. Por exemplo, sabendo <em>e-mail</em> e senha, uma pessoa mal-intencionada poderia acessar os mesmos arquivos pelo <a href="https://www.dropbox.com"><em>site</em> do Dropbox</a> usando o navegador. O VeraCrypt também não dispensa o uso de outras ferramentas de segurança, como antivírus e <em>backup</em>.</p>
+<p><strong>Note:</strong> VeraCrypt only ensures confidentiality for the files on disk. For instance, if a malicious person knows your e-mail and password, he or she is able to access the same files by the <a href="https://www.dropbox.com">Dropbox website</a> using a browser. VeraCrypt also does not dismiss the use of other security tools, such as antivirus and backup.</p>
 
-<p>Uma desvantagem dessa solução é que ela requer o trabalho manual de montar o volume e iniciar o cliente do Dropbox sempre que for necessário sincronizar. Por isso, recomendo que leia essa página até o final antes de começar, para ver se essa solução de fato te interessa.</p>
+<p>A disadvantage of that solution is that it requires the manual work of mounting the encrypted volume and starting the Dropbox client whenever it is necessary to sync. So I recommend that you read the entire post before acting, to decide whether my solution really helps you.</p>
 
-<h2 id="antes-de-começar">Antes de começar</h2>
+<h2 id="before-starting">Before starting</h2>
 
-<p>Para evitar problemas, certifique-se de que seus arquivos estão sincronizados. Para isso, clique no <strong>ícone do Dropbox</strong> e certifique-se de que aparece <strong>Atualizado</strong> no menu:</p>
+<p>To avoid problems, make sure your files are synced. That is true if you click the <strong>Dropbox icon</strong> and read <strong>Up to date</strong> on the menu that appears:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-03-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-03-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-03-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Também nesse menu verifique o espaço disponível para sua conta. No meu caso, eu disponho de 5,8GB de espaço. Normalmente, novas contas começam com 2GB.</p>
+<p>Also in that menu check the available space for your Dropbox account. I have 5.8GB of space. Usually new accounts start with 2GB.</p>
 
-<h2 id="criando-o-volume-criptografado">Criando o volume criptografado</h2>
+<h2 id="creating-the-encrypted-volume">Creating the encrypted volume</h2>
 
-<p>Inicie o VeraCrypt e siga o passo-a-passo do <a href="/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/"><em>post</em> sobre o VeraCrypt</a> para criar um volume padrão em arquivo. Apenas se atente a alguns detalhes para esse volume do Dropbox.</p>
+<p>Launch VeraCrypt and follow the <a href="http://translate.google.com/translate?js=n&amp;sl=pt&amp;tl=en&amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">VeraCrypt how-to</a> to create an encrypted file container / standard volume. Here I’m going to highlight only some specifics of our Dropbox volume.</p>
 
-<p>O local do volume (tela <strong>Volume Location</strong>) não é relevante, pois essa informação é invisível ao Dropbox. Ele pode inclusive ser armazenado naquela partição NTFS.</p>
+<p>The <strong>Volume Location</strong> can be any, because that information is not visible to the Dropbox client. The volume itself is a file like any other, so it can be stored on that NTFS partition, for example, as long as it has available space, there is no problem.</p>
 
-<p>O tamanho do volume (tela <strong>Volume Size</strong>) deve ser igual ao espaço disponível no Dropbox (ou um pouco maior, por precaução):</p>
+<p>The <strong>Volume Size</strong> must be equal to the available space for your Dropbox account (or bigger, to be safe):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/11/dropbox-veracrypt-04.jpg" title="">
@@ -357,7 +353,7 @@
 
 </div>
 
-<p>Como informamos um tamanho maior, o assistente mostra uma tela que não apareceu da outra vez, questionando quanto a arquivos grandes (<strong>Large Files</strong>):</p>
+<p>As we specified a size bigger than 4GB, the Volume Creation Wizard asks about <strong>Large Files</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/11/dropbox-veracrypt-05.jpg" title="">
@@ -366,9 +362,9 @@
 
 </div>
 
-<p>Se você pretende armazenar arquivos grandes (maiores que 4GB) no volume, selecione a segunda opção (<strong>I will store files larger than 4 GB on the volume</strong>). Senão, selecione a primeira. Na dúvida, selecione a segunda. Clique em <strong>Next</strong> (avançar).</p>
+<p>If you plan to store large files (larger than 4GB) in the volume, select the second option (<strong>I will store files larger than 4 GB on the volume</strong>). Otherwise, select the first. In doubt, select the second. Click <strong>Next</strong>.</p>
 
-<p>A tela seguinte já é conhecida. É importante que o volume seja formatado com o sistema de arquivos <strong>Linux Ext4</strong>:</p>
+<p>On the <strong>Format Options</strong> screen, the volume must be formatted with the <strong>Linux Ext4</strong> filesystem:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/11/dropbox-veracrypt-06.jpg" title="">
@@ -377,7 +373,7 @@
 
 </div>
 
-<p>Ao clicar em <strong>Next</strong>, mais uma tela nova:</p>
+<p>Click <strong>Next</strong>. The next screen asks about <strong>Cross-Platform Support</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/11/dropbox-veracrypt-07.jpg" title="">
@@ -386,33 +382,33 @@
 
 </div>
 
-<p>Essa tela questiona o suporte multi-plataforma (<strong>Cross-Platform Support</strong>). Como o volume será usado apenas no Linux, marque a segunda opção (<strong>I will mount the volume only on Linux</strong>) e clique em <strong>Next</strong>.</p>
+<p>As the volume is going to be used only on Linux, select the second option (<strong>I will mount the volume only on Linux</strong>) and click <strong>Next</strong>.</p>
 
-<p>Após a criação do volume, monte-o. Escolha uma vaga e sempre monte esse volume nessa vaga, porque o ponto de montagem será passado para o Dropbox. No meu exemplo, escolhi a vaga 10, então o ponto de montagem do meu volume é <code class="highlighter-rouge">/mnt/veracrypt10</code>:</p>
+<p>After creating the volume, mount it. Choose a slot and always mount the volume on the chosen slot, because you are going to inform the volume mount point to the Dropbox client. For instance, I chose the slot 10, so my volume mount point is <code class="highlighter-rouge">/mnt/veracrypt10</code>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-08-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-08-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-08-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-08-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<h2 id="movendo-a-pasta-do-dropbox">Movendo a pasta do Dropbox</h2>
+<h2 id="moving-the-dropbox-folder">Moving the Dropbox folder</h2>
 
-<p>Crie uma pasta chamada <code class="highlighter-rouge">Dropbox</code> dentro do volume criptografado.</p>
+<p>Create a folder called <code class="highlighter-rouge">Dropbox</code> inside the encrypted volume.</p>
 
-<p>Para mover a pasta do Dropbox, clique no <strong>ícone do Dropbox</strong> e, no menu que aparece, clique em <strong>Preferências</strong>.</p>
+<p>Click the <strong>Dropbox icon</strong> in the <strong>system tray</strong>, then click <strong>Preferences</strong>.</p>
 
-<p>Na caixa de diálogo <strong>Preferências do Dropbox</strong>, selecione a aba <strong>Sincronização</strong> e clique no botão <strong>Mover</strong>:</p>
+<p>On the <strong>Dropbox Preferences</strong> dialog box, select the <strong>Sync</strong> tab and click <strong>Move</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-09-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-09-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-09-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-09-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Informe o caminho para a pasta <code class="highlighter-rouge">Dropbox</code> dentro do volume criptografado e clique em <strong>Choose</strong> (escolher, essa tela o Dropbox não traduziu):</p>
+<p>Navigate into the encrypted volume mount point, select the <code class="highlighter-rouge">Dropbox</code> folder and click <strong>Choose</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/11/dropbox-veracrypt-10.jpg" title="">
@@ -421,61 +417,50 @@
 
 </div>
 
-<p>Permita que o Dropbox mova a pasta e o seu conteúdo para o novo local:</p>
+<p>Let Dropbox move your folder and its contents to the new location:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-11-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-11-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-11-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-11-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Uma barra de progresso indica o andamento da mudança:</p>
+<p>A progress bar is shown during the moving.</p>
+
+<p>When it finishes, there is one more change to do. Select the <strong>General</strong> tab and uncheck <strong>Start Dropbox on system startup</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-12-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-12-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-13-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-13-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Quando terminar, ainda precisamos alterar mais uma configuração. Selecione a aba <strong>Geral</strong> e desmarque a opção <strong>Iniciar o Dropbox junto com o sistema</strong>:</p>
+<p>Click <strong>OK</strong> to close the <strong>Dropbox Preferences</strong> dialog box.</p>
+
+<h2 id="daily-usage">Daily usage</h2>
+
+<p>If you have read the entire <a href="http://translate.google.com/translate?js=n&amp;sl=pt&amp;tl=en&amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">VeraCrypt how-to</a> (I suppose you have), you know the volume should stay mounted only during use.</p>
+
+<p>When you don’t need to use your Dropbox files anymore, quit the Dropbox client (click the <strong>Dropbox icon</strong> and then click <strong>Quit Dropbox</strong>) and unmount the volume (VeraCrypt calls that operation <em>dismount</em>). Always quit the Dropbox client before unmounting the volume.</p>
+
+<p>When you need to use your Dropbox files again, launch VeraCrypt, mount the volume and start the Dropbox client. In case you forget to mount the volume before starting the Dropbox client, it won’t find the <code class="highlighter-rouge">Dropbox</code> folder and complain about it:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-13-pt.jpg" title="">
-<img src="/files/2018/11/dropbox-veracrypt-13-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/dropbox-veracrypt-14-en.jpg" title="">
+<img src="/files/2018/11/dropbox-veracrypt-14-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Clique em <strong>OK</strong> para fechar a caixa de diálogo <strong>Preferências do Dropbox</strong>.</p>
-
-<h2 id="uso-no-dia-a-dia">Uso no dia-a-dia</h2>
-
-<p>Se você leu todo o <a href="/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/"><em>post</em> sobre o VeraCrypt</a> (suponho que sim), sabe que o volume só deve ficar montado durante o uso.</p>
-
-<p>Se você não vai mais usar os arquivos do Dropbox, encerre o cliente do Dropbox (clique no <strong>ícone do Dropbox</strong> e depois em <strong>Sair do Dropbox</strong>) e depois desmonte o volume pelo VeraCrypt. É importante sempre sair do Dropbox antes de desmontar o volume.</p>
-
-<p>Quando for voltar a usar os arquivos do Dropbox, inicie o VeraCrypt, monte o volume e então, com o volume montado, inicie o Dropbox. Caso você esqueça de montar o volume antes de iniciar o Dropbox, ele não vai encontrar a pasta <code class="highlighter-rouge">Dropbox</code> e exibir uma mensagem de erro:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/11/dropbox-veracrypt-14-pt.jpg" title="A pasta do Dropbox não foi encontrada.">
-<img src="/files/2018/11/dropbox-veracrypt-14-pt.jpg" alt="A pasta do Dropbox não foi encontrada." class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-<em class="caption" itemprop="description">
-<p>A pasta do Dropbox não foi encontrada.</p>
-
-</em>
-
-</div>
-
-<h2 id="referências">Referências</h2>
+<h2 id="references">References</h2>
 
 <ul>
   <li><a href="https://itsfoss.com/dropbox-linux-ext4-only/">Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS</a></li>
-  <li><a href="https://www.dropbox.com/pt_BR/help/desktop-web/move-dropbox-folder">Mover a pasta do Dropbox para um novo local - Ajuda do Dropbox</a></li>
-  <li><a href="https://www.dropbox.com/pt_BR/help/desktop-web/system-requirements#desktop">Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox</a></li>
+  <li><a href="https://lifehacker.com/5794486/how-to-add-a-second-layer-of-encryption-to-dropbox">How To Add a Second Layer of Encryption to Dropbox - Lifehacker</a></li>
+  <li><a href="https://www.dropbox.com/help/desktop-web/move-dropbox-folder">Moving your Dropbox folder to a new location - Dropbox Help</a></li>
+  <li><a href="https://www.dropbox.com/help/desktop-web/system-requirements#desktop">What are the system requirements to run Dropbox? - Dropbox Help</a></li>
 </ul>
 
 
@@ -486,12 +471,12 @@
             <div class="gap"></div>
             <h2>
                 
-                    Gostou? Que tal compartilhar?
+                    Did you like it? What about sharing?
                 
             </h2>
             <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                 <a class="addthis_button_facebook"></a>
-                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                 <a class="addthis_button_google_plusone_share"></a>
                 <a class="addthis_button_email"></a>
                 <a class="addthis_button_favorites"></a>
@@ -508,22 +493,22 @@
             <div class="gap"></div>
             <h2>
                 
-                    Comentários
+                    Comments
                 
             </h2>
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
                     
-                        this.language = "pt";
+                        this.language = "en";
                     
-                    this.page.url = 'https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/';
+                    this.page.url = 'https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/';
                 };
 
                 (function() {
                     var d = document, s = d.createElement('script');
 
-                    s.src = '//kamarada.disqus.com/embed.js';
+                    s.src = '//kamaradaww.disqus.com/embed.js';
 
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
@@ -544,7 +529,7 @@
       <h3>
           <a name="about"></a>
           
-              Sobre
+              About
           
       </h3>
     </div>
@@ -560,7 +545,7 @@
         </p>
         <p class="text" itemprop="description">
             
-                O Projeto Linux Kamarada é um projeto novo que visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+                The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
 
             
         </p>
@@ -571,7 +556,7 @@
                     <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
                 
                 
-                    <a href="https://twitter.com/LinuxKamarada" class="addthis_button_twitter_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
                 
                 
                 
@@ -580,7 +565,7 @@
                 
                     <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
                 
-                <a href="https://kamarada.github.io/pt/feed.xml" class="addthis_button_rss_follow"></a>
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
             </div>
             <!-- AddThis Follow Buttons End -->
         
@@ -592,7 +577,7 @@
         <h3>
             <a name="author"></a>
             
-                Autor
+                Author
             
         </h3>
     </div>
@@ -641,11 +626,11 @@
 
     <footer class="footer">
     <div class="container">
-        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
     </div>
 </footer>
 
-<meta itemprop="description" content="O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.">
+<meta itemprop="description" content="Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported file system. See how to keep Dropbox syncing and in addition protect your local Dropbox folder against unauthorized access storing it on an encrypted VeraCrypt volume....">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
@@ -656,7 +641,7 @@
 
 
 
-    <meta itemprop="inLanguage" content="pt"/>
+    <meta itemprop="inLanguage" content="en"/>
 
 
 
@@ -665,10 +650,10 @@
         /* * * CONFIGURATION VARIABLES * * */
         
             var disqus_config = function () {
-                this.language = "pt";
+                this.language = "en";
             };
         
-        var disqus_shortname = 'kamarada';
+        var disqus_shortname = 'kamaradaww';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {

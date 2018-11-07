@@ -1,5 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-06T19:03:28-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Criptografando os arquivos do Dropbox no disco com VeraCrypt</title><link href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" rel="alternate" type="text/html" title="Criptografando os arquivos do Dropbox no disco com VeraCrypt" /><published>2018-11-06T18:30:00-02:00</published><updated>2018-11-06T19:03:23-02:00</updated><id>https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-07T14:46:21-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">Encrypting the Dropbox folder with VeraCrypt</title><link href="https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/" rel="alternate" type="text/html" title="Encrypting the Dropbox folder with VeraCrypt" /><published>2018-11-06T23:59:00-02:00</published><updated>2018-11-07T14:45:04-02:00</updated><id>https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt</id><content type="html" xml:base="https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; is one of the most popular cloud services and one of a few that offer a sync client for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;. Recently, some of its users received a warning:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-01-en.jpg&quot; title=&quot;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-01-en.jpg&quot; alt=&quot;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;My laptop dual-boots Linux and &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and I have installed the Dropbox sync client on both systems. My Dropbox folder was on a shared &lt;a href=&quot;https://en.wikipedia.org/wiki/NTFS&quot;&gt;NTFS&lt;/a&gt; partition.&lt;/p&gt;
+
+&lt;p&gt;But Dropbox has announced &lt;a href=&quot;https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255&quot;&gt;on its forum&lt;/a&gt; that starting on Nov 7, 2018 supported &lt;a href=&quot;https://en.wikipedia.org/wiki/File_system&quot;&gt;file systems&lt;/a&gt; will be restricted to the most common ones for each operating system: NTFS for Windows, &lt;a href=&quot;https://en.wikipedia.org/wiki/HFS_Plus&quot;&gt;HFS+&lt;/a&gt; or &lt;a href=&quot;https://en.wikipedia.org/wiki/Apple_File_System&quot;&gt;APFS&lt;/a&gt; for &lt;a href=&quot;http://www.apple.com/macosx/&quot;&gt;Mac OS X&lt;/a&gt;, and clean (not encrypted) &lt;a href=&quot;https://en.wikipedia.org/wiki/Ext4&quot;&gt;Ext4&lt;/a&gt; for Linux. The move is intended to provide a stable and consistent experience. That’s not entirely bad news because chances are that your system already has an Ext4 partition.&lt;/p&gt;
+
+&lt;p&gt;Use the &lt;a href=&quot;https://gparted.org/&quot;&gt;&lt;strong&gt;GParted&lt;/strong&gt;&lt;/a&gt; application to look at your partitions and file systems:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Or, in case you prefer the command line interface, use the &lt;a href=&quot;https://www.gnu.org/software/fdisk/&quot;&gt;&lt;strong&gt;fdisk&lt;/strong&gt;&lt;/a&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# mount -l
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;None of my partitions are Ext4. So, at least in principle, I won’t be able to sync Dropbox on Linux, only on Windows, providing my Dropbox folder remains on the NTFS partition.&lt;/p&gt;
+
+&lt;p&gt;But I use Linux much more often than Windows, so I looked for an option to keep on syncing on Linux. I found a solution with the bonus of increased security: to store the Dropbox folder on an &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;encrypted VeraCrypt volume&lt;/a&gt;, which would secure the files in case I lose my laptop or it is stolen, for example.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt; is a file encryption software about which I have already written:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;Encrypting files with VeraCrypt&lt;/a&gt; (by now in Portuguese and translated by &lt;a href=&quot;https://translate.google.com.br/&quot;&gt;Google Translate&lt;/a&gt;, the proper English version is on the way)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I strongly recommend that you read that post before going on.&lt;/p&gt;
+
+&lt;p&gt;An encrypted VeraCrypt volume may be an alternative for those who currently store the Dropbox folder on an encrypted Ext4 partition, because VeraCrypt encrypts files “behind the scenes”, in a way Dropbox is not aware that they are being encrypted.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; VeraCrypt only ensures confidentiality for the files on disk. For instance, if a malicious person knows your e-mail and password, he or she is able to access the same files by the &lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox website&lt;/a&gt; using a browser. VeraCrypt also does not dismiss the use of other security tools, such as antivirus and backup.&lt;/p&gt;
+
+&lt;p&gt;A disadvantage of that solution is that it requires the manual work of mounting the encrypted volume and starting the Dropbox client whenever it is necessary to sync. So I recommend that you read the entire post before acting, to decide whether my solution really helps you.&lt;/p&gt;
+
+&lt;h2 id=&quot;before-starting&quot;&gt;Before starting&lt;/h2&gt;
+
+&lt;p&gt;To avoid problems, make sure your files are synced. That is true if you click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; and read &lt;strong&gt;Up to date&lt;/strong&gt; on the menu that appears:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Also in that menu check the available space for your Dropbox account. I have 5.8GB of space. Usually new accounts start with 2GB.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-the-encrypted-volume&quot;&gt;Creating the encrypted volume&lt;/h2&gt;
+
+&lt;p&gt;Launch VeraCrypt and follow the &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt how-to&lt;/a&gt; to create an encrypted file container / standard volume. Here I’m going to highlight only some specifics of our Dropbox volume.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Volume Location&lt;/strong&gt; can be any, because that information is not visible to the Dropbox client. The volume itself is a file like any other, so it can be stored on that NTFS partition, for example, as long as it has available space, there is no problem.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Volume Size&lt;/strong&gt; must be equal to the available space for your Dropbox account (or bigger, to be safe):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As we specified a size bigger than 4GB, the Volume Creation Wizard asks about &lt;strong&gt;Large Files&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you plan to store large files (larger than 4GB) in the volume, select the second option (&lt;strong&gt;I will store files larger than 4 GB on the volume&lt;/strong&gt;). Otherwise, select the first. In doubt, select the second. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Format Options&lt;/strong&gt; screen, the volume must be formatted with the &lt;strong&gt;Linux Ext4&lt;/strong&gt; filesystem:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Next&lt;/strong&gt;. The next screen asks about &lt;strong&gt;Cross-Platform Support&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As the volume is going to be used only on Linux, select the second option (&lt;strong&gt;I will mount the volume only on Linux&lt;/strong&gt;) and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;After creating the volume, mount it. Choose a slot and always mount the volume on the chosen slot, because you are going to inform the volume mount point to the Dropbox client. For instance, I chose the slot 10, so my volume mount point is &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/veracrypt10&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;moving-the-dropbox-folder&quot;&gt;Moving the Dropbox folder&lt;/h2&gt;
+
+&lt;p&gt;Create a folder called &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; inside the encrypted volume.&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; in the &lt;strong&gt;system tray&lt;/strong&gt;, then click &lt;strong&gt;Preferences&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Dropbox Preferences&lt;/strong&gt; dialog box, select the &lt;strong&gt;Sync&lt;/strong&gt; tab and click &lt;strong&gt;Move&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Navigate into the encrypted volume mount point, select the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; folder and click &lt;strong&gt;Choose&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Let Dropbox move your folder and its contents to the new location:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A progress bar is shown during the moving.&lt;/p&gt;
+
+&lt;p&gt;When it finishes, there is one more change to do. Select the &lt;strong&gt;General&lt;/strong&gt; tab and uncheck &lt;strong&gt;Start Dropbox on system startup&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Dropbox Preferences&lt;/strong&gt; dialog box.&lt;/p&gt;
+
+&lt;h2 id=&quot;daily-usage&quot;&gt;Daily usage&lt;/h2&gt;
+
+&lt;p&gt;If you have read the entire &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt how-to&lt;/a&gt; (I suppose you have), you know the volume should stay mounted only during use.&lt;/p&gt;
+
+&lt;p&gt;When you don’t need to use your Dropbox files anymore, quit the Dropbox client (click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; and then click &lt;strong&gt;Quit Dropbox&lt;/strong&gt;) and unmount the volume (VeraCrypt calls that operation &lt;em&gt;dismount&lt;/em&gt;). Always quit the Dropbox client before unmounting the volume.&lt;/p&gt;
+
+&lt;p&gt;When you need to use your Dropbox files again, launch VeraCrypt, mount the volume and start the Dropbox client. In case you forget to mount the volume before starting the Dropbox client, it won’t find the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; folder and complain about it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-14-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lifehacker.com/5794486/how-to-add-a-second-layer-of-encryption-to-dropbox&quot;&gt;How To Add a Second Layer of Encryption to Dropbox - Lifehacker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/move-dropbox-folder&quot;&gt;Moving your Dropbox folder to a new location - Dropbox Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/system-requirements#desktop&quot;&gt;What are the system requirements to run Dropbox? - Dropbox Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported file system. See how to keep Dropbox syncing and in addition protect your local Dropbox folder against unauthorized access storing it on an encrypted VeraCrypt volume.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry><entry xml:lang="pt"><title type="html">Criptografando os arquivos do Dropbox no disco com VeraCrypt</title><link href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" rel="alternate" type="text/html" title="Criptografando os arquivos do Dropbox no disco com VeraCrypt" /><published>2018-11-06T18:30:00-02:00</published><updated>2018-11-07T14:45:04-02:00</updated><id>https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/11/dropbox-veracrypt.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/11/dropbox-veracrypt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
 &lt;/a&gt;
@@ -43,12 +237,6 @@
 
 &lt;p&gt;Mas como eu uso com muito mais frequência o Linux do que o Windows, decidi viabilizar a sincronização do Dropbox pelo Linux, ainda de quebra garantindo a segurança dos arquivos no disco: vou armazenar os arquivos do Dropbox em um &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;volume criptografado do VeraCrypt&lt;/a&gt;. Dessa forma, os arquivos estão seguros contra acesso indevido caso o &lt;em&gt;notebook&lt;/em&gt; seja roubado, por exemplo.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; essa solução garante a segurança dos arquivos apenas no disco. De posse de &lt;em&gt;e-mail&lt;/em&gt; e senha, uma pessoa mal-intencionada ainda pode acessá-los usando o navegador.&lt;/p&gt;
-
-&lt;p&gt;Essa pode ser uma alternativa inclusive para quem hoje armazena os arquivos do Dropbox em uma partição Ext4 criptografada, porque o VeraCrypt realiza a criptografia “nos bastidores”, o Dropbox não é ciente que os arquivos são criptografados.&lt;/p&gt;
-
-&lt;p&gt;Uma desvantagem dessa solução é que ela requer o trabalho manual de montar o volume e iniciar o Dropbox sempre que for necessário sincronizar. Por isso, recomendo que leia essa página até o final antes de começar, para ver se essa solução de fato te interessa.&lt;/p&gt;
-
 &lt;p&gt;Já falamos sobre o &lt;em&gt;software&lt;/em&gt; de criptografia de arquivos &lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt; aqui:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -56,6 +244,12 @@
 &lt;/ul&gt;
 
 &lt;p&gt;Se você ainda não leu aquele &lt;em&gt;post&lt;/em&gt;, leia antes de continuar.&lt;/p&gt;
+
+&lt;p&gt;Essa pode ser uma alternativa inclusive para quem hoje armazena os arquivos do Dropbox em uma partição Ext4 criptografada, porque o VeraCrypt realiza a criptografia “nos bastidores”, o Dropbox não é ciente que os arquivos são criptografados.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; o VeraCrypt garante apenas a segurança dos arquivos no disco contra acesso indevido. Por exemplo, sabendo &lt;em&gt;e-mail&lt;/em&gt; e senha, uma pessoa mal-intencionada poderia acessar os mesmos arquivos pelo &lt;a href=&quot;https://www.dropbox.com&quot;&gt;&lt;em&gt;site&lt;/em&gt; do Dropbox&lt;/a&gt; usando o navegador. O VeraCrypt também não dispensa o uso de outras ferramentas de segurança, como antivírus e &lt;em&gt;backup&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Uma desvantagem dessa solução é que ela requer o trabalho manual de montar o volume e iniciar o cliente do Dropbox sempre que for necessário sincronizar. Por isso, recomendo que leia essa página até o final antes de começar, para ver se essa solução de fato te interessa.&lt;/p&gt;
 
 &lt;h2 id=&quot;antes-de-começar&quot;&gt;Antes de começar&lt;/h2&gt;
 
@@ -203,7 +397,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/move-dropbox-folder&quot;&gt;Mover a pasta do Dropbox para um novo local - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/system-requirements#desktop&quot;&gt;Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/system-requirements#desktop&quot;&gt;Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry><entry xml:lang="en"><title type="html">How to install website certificates on Linux</title><link href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" rel="alternate" type="text/html" title="How to install website certificates on Linux" /><published>2018-10-30T16:50:00-03:00</published><updated>2018-10-30T19:58:48-03:00</updated><id>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
@@ -2769,187 +2963,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">As impressoras da marca HP são bastante comuns no Brasil. Nesse post, mostro como adicionei uma HP DeskJet Ink Advantage 3836 ao openSUSE para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Sincronizando o Gmail no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/" rel="alternate" type="text/html" title="Sincronizando o Gmail no Thunderbird" /><published>2018-09-12T15:55:00-03:00</published><updated>2018-09-24T16:50:02-03:00</updated><id>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Thunderbird&lt;/a&gt; é o cliente de &lt;em&gt;e-mail&lt;/em&gt; gratuito da &lt;a href=&quot;https://www.mozilla.org/pt-BR/foundation/&quot;&gt;Fundação Mozilla&lt;/a&gt;, a mesma que desenvolve o conhecido navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Firefox&lt;/a&gt;. E o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt; dispensa apresentações: é o serviço de &lt;em&gt;e-mail&lt;/em&gt; gratuito da gigante &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.&lt;/p&gt;
-
-&lt;p&gt;Bem verdade que as pessoas tem preferido utilizar navegadores em vez de clientes de &lt;em&gt;e-mail&lt;/em&gt; para ler e enviar mensagens, por ser mais prático. No entanto, os clientes de &lt;em&gt;e-mail&lt;/em&gt; nos fornecem algumas possibilidades interessantes, como veremos nos próximos &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
-    
-&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;instalando-o-thunderbird&quot;&gt;Instalando o Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;No openSUSE, o Thunderbird é distribuído pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaThunderbird&quot;&gt;MozillaThunderbird&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, abra o &lt;strong&gt;Terminal&lt;/strong&gt; e execute como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaThunderbird MozillaThunderbird-translations-common
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;iniciando-o-thunderbird&quot;&gt;Iniciando o Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;Instalado o Thunderbird, inicie-o pelo menu &lt;strong&gt;Atividades&lt;/strong&gt;, digitando &lt;code class=&quot;highlighter-rouge&quot;&gt;Thunderbird&lt;/code&gt; e clicando no ícone correspondente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;sincronizando-com-o-gmail&quot;&gt;Sincronizando com o Gmail&lt;/h2&gt;
-
-&lt;p&gt;No primeiro uso, o Thunderbird deve mostrar o assistente de configuração da conta:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nessa primeira tela, clique em &lt;strong&gt;Ignorar e usar meu e-mail existente&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se o assistente de configuração da conta não for iniciado, na tela inicial, abaixo de &lt;strong&gt;Criar uma nova conta&lt;/strong&gt;, clique em &lt;strong&gt;Mensagens&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na segunda tela, preencha os campos com seu nome, endereço de &lt;em&gt;e-mail&lt;/em&gt; e senha. Se quiser, você pode marcar a opção &lt;strong&gt;Memorizar senha&lt;/strong&gt;. Quando terminar, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para saber como se conectar ao servidor de &lt;em&gt;e-mail&lt;/em&gt; do Gmail, o Thunderbird consulta uma base de dados de configurações da Mozilla.&lt;/p&gt;
-
-&lt;p&gt;Ainda nessa tela, o assistente pergunta se você deseja utilizar IMAP ou POP3:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP3&lt;/a&gt; são dois protocolos usados para receber &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; é um protocolo usado para enviar &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;A diferença entre o IMAP e o POP3 é que o POP3 baixa as mensagens para o computador e não as sincroniza mais com o servidor (então, por exemplo, uma mensagem excluída no computador não é excluída no servidor, e vice-versa), enquanto o IMAP baixa as mensagens mas mantém a sincronia (se uma mensagem é excluída no computador, é excluída também no servidor, e vice-versa). O protoloco IMAP é uma evolução do protocolo POP3.&lt;/p&gt;
-
-&lt;p&gt;Eu, particularmente, prefiro e recomendo o IMAP. Também o próprio Thunderbird já o traz marcado por padrão.&lt;/p&gt;
-
-&lt;p&gt;Caso o Thunderbird não encontre as configurações automaticamente e você precise informá-las manualmente, aqui estão:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Recebimento: IMAP (ou POP3)
-    &lt;ul&gt;
-      &lt;li&gt;Nome do servidor: imap.gmail.com (ou pop.gmail.com)&lt;/li&gt;
-      &lt;li&gt;Porta: 993 (ou 995)&lt;/li&gt;
-      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Envio: SMTP
-    &lt;ul&gt;
-      &lt;li&gt;Nome do servidor: smtp.gmail.com&lt;/li&gt;
-      &lt;li&gt;Porta: 465&lt;/li&gt;
-      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Concluir&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por fim, o Thunderbird abre uma janela do Gmail, na qual você deve entrar com seu &lt;em&gt;login&lt;/em&gt; e senha e autorizar o Thunderbird a acessar seu &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela inicial do Thunderbird, perceba que agora é exibida sua conta e as mensagens de &lt;em&gt;e-mail&lt;/em&gt; estão sendo obtidas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;alguns-ajustes&quot;&gt;Alguns ajustes&lt;/h2&gt;
-
-&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Feito isso, para abrir um &lt;em&gt;e-mail&lt;/em&gt;, dê dois cliques nele e ele será aberto em uma nova aba.&lt;/p&gt;
-
-&lt;p&gt;Por padrão, o Thunderbird ordena as mensagens por data de forma crescente (mensagens mais recentes embaixo). Para ordená-las de forma decrescente, igual ao Gmail (mais recentes em cima), clique na coluna &lt;strong&gt;Data&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Um problema que eu percebi usando o Thunderbird: ele não adiciona a assinatura aos e-mails encaminhados. Vejamos como corrigir.&lt;/p&gt;
-
-&lt;p&gt;Clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Editar e endereçar&lt;/strong&gt;, à direita, e marque a opção &lt;strong&gt;Ao encaminhar, incluir assinatura&lt;/strong&gt;. Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Espero que tenha sido útil. Até a próxima!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7126229?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando IMAP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7104828?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando POP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Thunderbird é o cliente de e-mail gratuito da Fundação Mozilla, a mesma que desenvolve o conhecido navegador Firefox. E o Gmail dispensa apresentações: é o serviço de e-mail gratuito da gigante Google. Nesse post, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-gmail.png" /></entry></feed>
+&lt;p&gt;Feito isso, experimente repetir a instalação do HPLIP e a adição da impressora.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">As impressoras da marca HP são bastante comuns no Brasil. Nesse post, mostro como adicionei uma HP DeskJet Ink Advantage 3836 ao openSUSE para imprimir pela rede. O procedimento é semelhante para outros modelos de impressoras HP.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry></feed>
