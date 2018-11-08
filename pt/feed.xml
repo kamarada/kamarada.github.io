@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 07 Nov 2018 14:46:21 -0200</pubDate>
-        <lastBuildDate>Wed, 07 Nov 2018 14:46:21 -0200</lastBuildDate>
+        <pubDate>Thu, 08 Nov 2018 19:20:48 -0200</pubDate>
+        <lastBuildDate>Thu, 08 Nov 2018 19:20:48 -0200</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
         
@@ -1285,7 +1285,7 @@ Press Enter to exit...
                 <title>Verificação de integridade e autenticidade com SHA-256 e GPG</title>
                 <description>&lt;p&gt;Por vezes pode ser importante verificar um arquivo obtido da Internet, por exemplo, a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Imagem_ISO&quot;&gt;imagem ISO&lt;/a&gt; de uma &lt;a href=&quot;https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_Linux&quot;&gt;distribuição Linux&lt;/a&gt; - ela contém o sistema operacional que você vai utilizar ou instalar em seu computador, já pensou se o arquivo se corrompeu durante o &lt;em&gt;download&lt;/em&gt; ou foi adulterado por um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ataque_man-in-the-middle&quot;&gt;ataque de homem no meio&lt;/a&gt;?&lt;/p&gt;
 
-&lt;p&gt;Duas verificações comuns que reduzem a quase zero as chances de usar um arquivo corrompido ou adulterado são a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Soma_de_verifica%C3%A7%C3%A3o&quot;&gt;soma de verificação&lt;/a&gt; e a &lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;assinatura digital&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Soma_de_verifica%C3%A7%C3%A3o&quot;&gt;soma de verificação&lt;/a&gt; e a &lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;assinatura digital&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;a &lt;strong&gt;soma de verificação&lt;/strong&gt; (&lt;em&gt;checksum&lt;/em&gt;) é uma soma feita antes do envio por quem cria o arquivo e verificada depois por quem baixa o arquivo, há alguns algoritmos para fazer essa soma, mas a ideia geral é somar os &lt;em&gt;bytes&lt;/em&gt; do arquivo - ao verificar a soma de um arquivo, se houve modificação do arquivo ou da soma em si, a verificação falha, indicando que não é seguro usar o arquivo; e&lt;/li&gt;
@@ -1305,13 +1305,13 @@ Press Enter to exit...
 
 &lt;/div&gt;
 
-&lt;p&gt;Se você nunca utilizou a &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;interface textual&lt;/a&gt; (também conhecida como &lt;strong&gt;linha de comando&lt;/strong&gt; ou &lt;strong&gt;terminal&lt;/strong&gt;) do &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, não se assuste: verá que não é tão difícil como dizem por aí.&lt;/p&gt;
+&lt;p&gt;Embora usemos aqui o exemplo da imagem ISO, qualquer arquivo pode ser verificado, contanto que a soma de verificação e a assinatura digital estejam disponíveis. É o caso, por exemplo, dos arquivos disponibilizados para &lt;em&gt;download&lt;/em&gt; no &lt;em&gt;site&lt;/em&gt; do programa &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Embora usemos aqui o exemplo da imagem ISO, qualquer arquivo pode ser verificado, contanto que a soma de verificação e a assinatura digital estejam disponíveis. É o caso, por exemplo, dos arquivos disponibilizados para &lt;em&gt;download&lt;/em&gt; no &lt;em&gt;site&lt;/em&gt; do programa &lt;a href=&quot;https://www.veracrypt.fr/en/Downloads.html&quot;&gt;VeraCrypt&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se você ainda não usa &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; e está baixando uma imagem ISO de uma distribuição Linux no &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, leia &lt;a href=&quot;https://vinyanalista.github.io/blog/2018/10/05/verificacao-de-integridade-e-autenticidade-com-o-gpg4win/&quot;&gt;essa página&lt;/a&gt; em vez desta.&lt;/p&gt;
 
 &lt;p&gt;Para referência futura, aqui utilizo a distribuição Linux &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt; e as versões dos utilitários &lt;strong&gt;sha256sum&lt;/strong&gt; e &lt;strong&gt;gpg&lt;/strong&gt; instalados por padrão nessa versão da distribuição.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se você ainda não usa Linux e está baixando uma imagem ISO de uma distribuição Linux no &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, leia &lt;a href=&quot;https://vinyanalista.github.io/blog/2018/10/05/verificacao-de-integridade-e-autenticidade-com-o-gpg4win/&quot;&gt;essa página&lt;/a&gt; em vez desta.&lt;/p&gt;
+&lt;p&gt;Se você nunca utilizou a interface textual do Linux (também conhecida como &lt;strong&gt;linha de comando&lt;/strong&gt; ou &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;&lt;strong&gt;terminal&lt;/strong&gt;&lt;/a&gt;), não se assuste: verá que não é tão difícil como dizem por aí.&lt;/p&gt;
 
 &lt;h2 id=&quot;visão-geral&quot;&gt;Visão geral&lt;/h2&gt;
 
@@ -1474,7 +1474,7 @@ uid           [ unknown] openSUSE Project Signing Key &amp;lt;opensuse@opensuse.
 
 &lt;p&gt;(observe que é passado no comando o nome do arquivo da soma de verificação, que termina com &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso.sha256&lt;/code&gt;, não da imagem ISO, que termina com &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso&lt;/code&gt;)&lt;/p&gt;
 
-&lt;p&gt;A saída do comando deve ser:&lt;/p&gt;
+&lt;p&gt;O &lt;strong&gt;sha256sum&lt;/strong&gt; demora um tempo calculando a soma de verificação da imagem ISO e depois confere essa soma com a presente no arquivo. A saída do comando deve ser:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1489,9 +1489,9 @@ sha256sum: AVISO: 14 linhas estão formatadas inapropriadamente
 
 &lt;/div&gt;
 
-&lt;p&gt;Ele demora um tempo calculando a soma de verificação da imagem ISO e depois confere essa soma com a presente no arquivo. Nesse exemplo, a primeira linha informa que as somas foram conferidas com sucesso. Portanto, é seguro usar o arquivo.&lt;/p&gt;
+&lt;p&gt;Nesse exemplo, a primeira linha da saída informa que as somas foram conferidas com sucesso. Portanto, do ponto de vista da integridade, é seguro usar a imagem ISO baixada. Você pode proceder à verificação de autentiticade.&lt;/p&gt;
 
-&lt;p&gt;Se a saída do comando &lt;strong&gt;sha256sum&lt;/strong&gt; for diferente para você, informando que a verificação falhou, não é seguro usar essa imagem ISO: você deve tentar baixá-la novamente.&lt;/p&gt;
+&lt;p&gt;Se a saída do comando &lt;strong&gt;sha256sum&lt;/strong&gt; for diferente para você, informando que a verificação falhou, não é seguro usar essa imagem ISO: durante o &lt;em&gt;download&lt;/em&gt; ela se corrompeu e você deve baixá-la novamente.&lt;/p&gt;
 
 &lt;p&gt;A segunda linha avisa que algumas das linhas do arquivo da soma de verificação estão formatadas impropriamente. O comando &lt;strong&gt;sha256sum&lt;/strong&gt; dá esse aviso porque ele não entende as linhas que se referem à assinatura GPG, que o openSUSE coloca no mesmo arquivo.&lt;/p&gt;
 
@@ -1503,7 +1503,7 @@ sha256sum: AVISO: 14 linhas estão formatadas inapropriadamente
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cat openSUSE-Leap-15.0-NET-x86_64.iso.sha256
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;O comando &lt;strong&gt;cat&lt;/strong&gt; exibe o conteúdo de um arquivo de texto. Veja:&lt;/p&gt;
+&lt;p&gt;O comando &lt;a href=&quot;https://linux.die.net/man/1/cat&quot;&gt;&lt;strong&gt;cat&lt;/strong&gt;&lt;/a&gt; exibe o conteúdo de um arquivo de texto. Veja:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1596,7 +1596,7 @@ Não se esqueça que o ficheiro com a assinatura (.sig ou .asc)
 deve ser o primeiro a ser dado na linha de comando.
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Se isso acontecer, não é seguro usar essa imagem ISO: você deve tentar baixá-la novamente.&lt;/p&gt;
+&lt;p&gt;Se você recebeu essa saída, não é seguro usar essa imagem ISO: você deve verificar sua procedência e baixá-la novamente.&lt;/p&gt;
 
 &lt;h2 id=&quot;6-opcionalidades&quot;&gt;6) Opcionalidades&lt;/h2&gt;
 
@@ -1660,7 +1660,7 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 
 &lt;p&gt;Se está tudo certo, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;O&lt;/code&gt; (de &lt;em&gt;OK&lt;/em&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; solicita que seja criada uma senha (&lt;em&gt;passphrase&lt;/em&gt;) para a nova chave. Por algum motivo aqui ele apresenta uma janela para a digitação da senha:&lt;/p&gt;
+&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; solicita que seja criada uma senha (&lt;em&gt;passphrase&lt;/em&gt;) para a nova chave. Por algum motivo aqui ele apresenta uma janela fora do terminal para a digitação da senha:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/10/how-to-verify-iso-06-pt.jpg&quot; title=&quot;&quot;&gt;
@@ -1669,7 +1669,7 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 
 &lt;/div&gt;
 
-&lt;p&gt;Digite a senha no campo de cima e depois digite mais uma vez no campo de baixo, para se certificar que não digitou errado, e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Digite a senha no campo de cima e depois digite mais uma vez no campo de baixo, para se certificar que não digitou errado. Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt; (ou tecle &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
 
 &lt;p&gt;Feito isso, sua chave pessoal foi criada:&lt;/p&gt;
 
@@ -1711,7 +1711,7 @@ sub   rsa2048 2018-10-06 [E] [expires: 2020-10-05]
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --edit-key 3DBDC284
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; inicia uma espécie de terminal próprio e mostra informações sobre a chave:&lt;/p&gt;
+&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; inicia uma espécie de terminal próprio (&lt;code class=&quot;highlighter-rouge&quot;&gt;gpg&amp;gt;&lt;/code&gt;) e mostra informações sobre a chave:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1869,7 +1869,7 @@ Really sign? (y/N)
 
 &lt;p&gt;Ele pergunta se você realmente deseja assinar essa chave, tecle &lt;strong&gt;y&lt;/strong&gt; e depois &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Digite a senha da sua chave e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Digite a senha da sua chave e clique em &lt;strong&gt;OK&lt;/strong&gt; (ou tecle &lt;strong&gt;Enter&lt;/strong&gt;):&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/10/how-to-verify-iso-07-pt.jpg&quot; title=&quot;&quot;&gt;

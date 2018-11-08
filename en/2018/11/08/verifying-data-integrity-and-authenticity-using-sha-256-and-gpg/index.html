@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" prefix="
+<html lang="en" prefix="
     addthis: http://www.addthis.com/help/api-spec
     og: http://ogp.me/ns#
     fb: http://ogp.me/ns/fb#
@@ -20,30 +20,30 @@
     <title>
         
             
-                Verificação de integridade e autenticidade com SHA-256 e GPG - Linux Kamarada
+                Verifying data integrity and authenticity using SHA-256 and GPG - Linux Kamarada
             
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido...">
-    <link rel="canonical" href="https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">
-    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+    <meta name="description" content="Sometimes it is important to verify a downloaded file. Two common verifications that greatly reduce chances of using a corrupted or tampered file are the che...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
 
     
     
         
-            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/" />
-        
     
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/" />
         
     
 
     <!-- OpenSearch -->
-    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
 
     <!-- Open Graph -->
     
-        <meta property="article:published_time" content="2018-10-06 11:20:00 -0300"/>
+        <meta property="article:published_time" content="2018-11-08 19:15:00 -0200"/>
         
             <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
         
@@ -52,19 +52,19 @@
     
         <meta property="fb:page_id" content="1700979763454346" />
     
-    <meta property="og:description" content="Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido..." />
+    <meta property="og:description" content="Sometimes it is important to verify a downloaded file. Two common verifications that greatly reduce chances of using a corrupted or tampered file are the che..." />
     
         <meta property="og:image" content="https://kamarada.github.io/files/2018/10/how-to-verify-iso.png" />
     
     <meta property="og:site_name" content="Linux Kamarada" />
-    <meta property="og:title" content="Verificação de integridade e autenticidade com SHA-256 e GPG" />
+    <meta property="og:title" content="Verifying data integrity and authenticity using SHA-256 and GPG" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />
     
-        <meta name="twitter:site" content="@LinuxKamarada" />
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
     
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
@@ -124,13 +124,13 @@
                 data_track_clickback: true,
                 data_track_addressbar: true,
                 
-                    ui_language: 'pt'
+                    ui_language: 'en'
                 
             };
             var addthis_share = {
-                url: 'https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/',
+                url: 'https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/',
                 title: document.title,
-                description: 'Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido...'
+                description: 'Sometimes it is important to verify a downloaded file. Two common verifications that greatly reduce chances of using a corrupted or tampered file are the che...'
             };
         </script>
         <!-- End AddThis -->
@@ -160,16 +160,16 @@
                 
                     
                         <li class="nav-item">
-                            <a class="nav-link" href="/pt/download/leap/42.2/">Download</a>
+                            <a class="nav-link" href="/en/download/leap/42.2/">Download</a>
                         </li>
                     
                 
             </ul>
-            <form action="/pt/buscar/" class="form-inline" id="search-form" method="get" role="search">
+            <form action="/en/search/" class="form-inline" id="search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
-                    <input class="form-control" id="search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <input class="form-control" id="search-field" name="q" placeholder="Search" type="text" aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-secondary btn-number" id="search-button" type="submit">
                             <i class="fa fa-search"></i>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
+                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
                     <div class="dropdown-menu" aria-labelledby="language-button">
                         
                         
@@ -198,7 +198,7 @@
                             <div class="dropdown-divider"></div>
                         
                         <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
-                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">Translate this page</a>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/">Translate this page</a>
                     </div>
                 </div><!--.dropdown-->
             </form>
@@ -218,20 +218,16 @@
                 <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
-            <a class="blog-post-link" href="/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/" itemprop="mainEntityOfPage url">
-                Verificação de integridade e autenticidade com SHA-256 e GPG
+            <a class="blog-post-link" href="/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/" itemprop="mainEntityOfPage url">
+                Verifying data integrity and authenticity using SHA-256 and GPG
             </a>
         </h1>
         <div class="blog-post-meta row">
             <div class='col-sm-6'>
-                <p class="blog-post-date" itemprop="datePublished" content="2018-10-06">
-                    <a href="/2018/10/06/">
+                <p class="blog-post-date" itemprop="datePublished" content="2018-11-08">
+                    <a href="/2018/11/08/">
                         
-    06 de
-    
-    Outubro
-        
-    de 2018
+    Nov 8, 2018
 
 
                     </a>
@@ -244,7 +240,7 @@
                         <!-- AddThis Sharing Buttons -->
                         <div class="addthis_toolbox addthis_default_style">
                             <a class="addthis_button_facebook"></a>
-                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                             <a class="addthis_button_google_plusone_share"></a>
                             <a class="addthis_button_favorites"></a>
                             <a class="addthis_button_compact"></a>
@@ -271,20 +267,20 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>Por vezes pode ser importante verificar um arquivo obtido da Internet, por exemplo, a <a href="https://pt.wikipedia.org/wiki/Imagem_ISO">imagem ISO</a> de uma <a href="https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_Linux">distribuição Linux</a> - ela contém o sistema operacional que você vai utilizar ou instalar em seu computador, já pensou se o arquivo se corrompeu durante o <em>download</em> ou foi adulterado por um <a href="https://pt.wikipedia.org/wiki/Ataque_man-in-the-middle">ataque de homem no meio</a>?</p>
+            <p>Sometimes it is important to verify a downloaded file. For example, the <a href="https://en.wikipedia.org/wiki/ISO_image">ISO image</a> of a <a href="https://en.wikipedia.org/wiki/Linux_distribution">Linux distribution</a> - it contains the operating system that you will use or install on your computer, bad things may happen if the file was corrupted during download or tampered by a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attack</a>.</p>
 
-<p>Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a <a href="https://pt.wikipedia.org/wiki/Soma_de_verifica%C3%A7%C3%A3o">soma de verificação</a> e a <a href="https://www.gnupg.org/gph/en/manual.html">assinatura digital</a>:</p>
+<p>Two common verifications that greatly reduce chances of using a corrupted or tampered file are <a href="https://en.wikipedia.org/wiki/Checksum">checksum</a> and <a href="https://www.gnupg.org/gph/en/manual.html">digital signature</a>:</p>
 
 <ul>
-  <li>a <strong>soma de verificação</strong> (<em>checksum</em>) é uma soma feita antes do envio por quem cria o arquivo e verificada depois por quem baixa o arquivo, há alguns algoritmos para fazer essa soma, mas a ideia geral é somar os <em>bytes</em> do arquivo - ao verificar a soma de um arquivo, se houve modificação do arquivo ou da soma em si, a verificação falha, indicando que não é seguro usar o arquivo; e</li>
-  <li>a <strong>assinatura digital</strong> certifica um arquivo, tal qual uma assinatura à mão, mas por utilizar mecanismos de criptografia tem a vantagem de ser resistente a fraudes - ao verificar a assinatura de um arquivo, se houve modificação do arquivo ou da assinatura em si, ou se a assinatura foi feita com a chave de outra pessoa, a verificação falha, indicando que não é seguro usar o arquivo.</li>
+  <li>a <strong>checksum</strong> is made by who creates and uploads the file, before uploading, and later verified by who downloads the file, after downloading. There are some algorithms to compute checksums, but the general idea behind them is to sum all bytes of the file. When verifying the checksum of a downloaded file, if the file or the checksum itself were modified, verification fails, indicating it is not safe to use the file; and</li>
+  <li>a <strong>digital signature</strong> certifies a file, similar to a hand-written signature, but has the advantage of being tamper-resistant, because it uses encryption mechanisms. When verifying the digital signature of a downloaded file, if the file or the signature itself were modified, or if the signature was made using another person’s key, verification fails, indicating it is not safe to use the file.</li>
 </ul>
 
-<p>Elas verificam, respectivamente, <strong>integridade</strong> e <strong>autenticidade</strong>, duas propriedades básicas da <a href="https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o">segurança da informação</a>.</p>
+<p>Those verifications are for <strong>integrity</strong> and <strong>authenticity</strong> respectively, two basic properties of <a href="https://en.wikipedia.org/wiki/Information_security">information security</a>.</p>
 
-<p>Comumente as distribuições Linux disponibilizam somas de verificação <a href="https://pt.wikipedia.org/wiki/SHA-2">SHA-256</a> e assinaturas digitais <a href="https://gnupg.org/">GPG</a> para verificar suas imagens ISO.</p>
+<p>Linux distributions often provide <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a> checksums and <a href="https://gnupg.org/">GPG</a> digital signatures to verify their ISO images.</p>
 
-<p>Nesse <em>post</em>, você verá como fazer essas verificações com o <a href="https://linux.die.net/man/1/sha256sum"><strong>sha256sum</strong></a> e o <a href="https://linux.die.net/man/1/gpg"><strong>gpg</strong></a> (de <a href="https://gnupg.org/"><strong>GNU Privacy Guard</strong></a>, também conhecido como <strong>GnuPG</strong> ou simplesmente <strong>GPG</strong>), dois utilitários de linha de comando que por padrão já vem instalados na maioria das distribuições Linux.</p>
+<p>In this post, you are going to see how to do those verifications with <a href="https://linux.die.net/man/1/sha256sum"><strong>sha256sum</strong></a> and <a href="https://linux.die.net/man/1/gpg"><strong>gpg</strong></a> (from <a href="https://gnupg.org/"><strong>GNU Privacy Guard</strong></a>, also known as <strong>GnuPG</strong> or simply <strong>GPG</strong>), two command-line utilities that come already installed on most Linux distributions by default.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/10/how-to-verify-iso.png" title="">
@@ -293,111 +289,111 @@
 
 </div>
 
-<p>Embora usemos aqui o exemplo da imagem ISO, qualquer arquivo pode ser verificado, contanto que a soma de verificação e a assinatura digital estejam disponíveis. É o caso, por exemplo, dos arquivos disponibilizados para <em>download</em> no <em>site</em> do programa <a href="/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/">VeraCrypt</a>.</p>
+<p>Although I use the example of an ISO image, any file can be verified, as long as there are a checksum and a digital signature available. For instance, that is the case of the files available for download on the <a href="https://www.veracrypt.fr/en/Downloads.html">VeraCrypt</a> software website.</p>
 
-<p><strong>Dica:</strong> se você ainda não usa <a href="http://www.vivaolinux.com.br/linux/">Linux</a> e está baixando uma imagem ISO de uma distribuição Linux no <a href="https://www.microsoft.com/pt-br/windows/">Windows</a>, leia <a href="https://vinyanalista.github.io/blog/2018/10/05/verificacao-de-integridade-e-autenticidade-com-o-gpg4win/">essa página</a> em vez desta.</p>
+<p><strong>Tip:</strong> if you don’t use <a href="https://www.kernel.org/linux.html">Linux</a> yet and is using <a href="https://www.microsoft.com/windows/">Windows</a> to download a Linux distribution ISO image, read <a href="http://translate.google.com/translate?js=n&amp;sl=pt&amp;tl=en&amp;u=https://vinyanalista.github.io/blog/2018/10/05/verificacao-de-integridade-e-autenticidade-com-o-gpg4win/">this page</a> instead.</p>
 
-<p>Para referência futura, aqui utilizo a distribuição Linux <a href="/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/">openSUSE Leap 15.0</a> e as versões dos utilitários <strong>sha256sum</strong> e <strong>gpg</strong> instalados por padrão nessa versão da distribuição.</p>
+<p>For future reference, here I use the <a href="/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/">openSUSE Leap 15.0</a> Linux distribution and the <strong>sha256sum</strong> and <strong>gpg</strong> utilities on the versions available on the official repositories of the distribution.</p>
 
-<p>Se você nunca utilizou a interface textual do Linux (também conhecida como <strong>linha de comando</strong> ou <a href="http://www.hardware.com.br/livros/linux/usando-terminal.html"><strong>terminal</strong></a>), não se assuste: verá que não é tão difícil como dizem por aí.</p>
+<p>If you have never used the Linux <strong>command-line interface</strong> (also known as <a href="http://opensuse-guide.org/command.php"><strong>terminal</strong></a>), don’t be afraid: you’re going to see that it’s not difficult at all!</p>
 
-<h2 id="visão-geral">Visão geral</h2>
+<h2 id="overview">Overview</h2>
 
-<p>Como a verificação de uma imagem ISO não é um processo tão simples, primeiro tenhamos uma visão geral do processo. A “receita de bolo” se resume a:</p>
+<p>The process of checking an ISO image is not so simple, so before we roll up our sleeves, let’s get an overview of it:</p>
 
 <ol>
-  <li>Baixar a imagem ISO do <em>site</em> da distribuição (como de costume, nenhuma novidade);</li>
-  <li>Baixar a soma de verificação e a assinatura digital do <em>site</em> da distribuição, a depender da distribuição elas podem ser dois arquivos ou pode ser apenas um arquivo de texto contendo ambas (o openSUSE é o segundo caso);</li>
-  <li>Importar a chave pública da distribuição, seja do <em>site</em> da distribuição, seja de um servidor de chaves públicas confiável (aqui, optaremos por importar de um servidor de chaves, mas a chave do openSUSE também está disponível na <a href="https://software.opensuse.org/distributions/leap">página de <em>downloads</em></a>);</li>
-  <li>Fazer a soma de verificação da imagem ISO baixada e conferir com a soma de verificação esperada; e</li>
-  <li>Verificar a assinatura digital, que pode ter sido feita em relação à imagem ISO, ou em relação à soma de verificação, o que estende a proteção à soma de verificação (o openSUSE é o segundo caso).</li>
+  <li>Download the ISO image from the Linux distribution’s website (as usual);</li>
+  <li>Download checksum and digital signature from the Linux distribution’s website, depending on the distribution they can be two files or a single text file containing both (openSUSE provides them as a single text file);</li>
+  <li>Import the public PGP key belonging to the Linux distribution, depending on the distribution you may get that key from the distribution’s website or from a trusted key server (here we are going to retrieve the openSUSE key from a key server, but it is also available on the <a href="https://software.opensuse.org/distributions/leap">downloads page</a>);</li>
+  <li>Compute the checksum of the downloaded ISO image and compare it against the expected checksum, provided by the distribution; and</li>
+  <li>Verify the digital signature, which might have been computed against the ISO image itself or against the checksum file, which is better, because authenticity protection is extended to the checksum file (openSUSE has made it the second way).</li>
 </ol>
 
-<p>O processo pode variar de acordo com a distribuição, mas geralmente segue essa linha. Por exemplo, há vários algoritmos de somas de verificação. O algoritmo <a href="https://pt.wikipedia.org/wiki/MD5">MD5</a> era mais popular, mas tem sido substituído pelo <a href="https://pt.wikipedia.org/wiki/SHA-2">SHA-256</a>, que em tese é menos vulnerável. Também há distribuições que não fazem assinatura digital, nesses casos não é possível verificar a autenticidade da imagem ISO.</p>
+<p>The process may differ a bit according to the distribution, but it usually follows that general pattern. For example, there are several different checksum algorithms. The <a href="https://en.wikipedia.org/wiki/MD5">MD5</a> algorithm has been the most popular, but has been replaced by the <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-256</a> algorithm, which is theoretically more resistant to attacks. Also some distros don’t provide digital signatures, users of those distros are more vulnerable to man-in-the-middle attacks.</p>
 
-<h2 id="usando-o-terminal">Usando o Terminal</h2>
+<h2 id="using-terminal">Using Terminal</h2>
 
-<p>O <a href="https://help.gnome.org/users/gnome-terminal/stable/index.html.pt_BR"><strong>Terminal</strong></a> é um aplicativo que recebe comandos na forma de texto. É diferente da maioria dos aplicativos, que você comanda com o <em>mouse</em> clicando em botões e menus.</p>
+<p><a href="https://help.gnome.org/users/gnome-terminal/stable/index.html"><strong>Terminal</strong></a> is an application that receives text-based commands. It is different from most applications, which you control using the mouse and clicking on buttons and menus.</p>
 
-<p>Para iniciá-lo, abra o <strong>panorama de Atividades</strong>, clicando em <strong>Atividades</strong>, no canto superior esquerdo da tela, ou pressionando a tecla <strong>Super</strong> (em alguns teclados, ela possui a bandeira do Windows). Então, digite <code class="highlighter-rouge">terminal</code> e clique no ícone do aplicativo:</p>
+<p>To start Terminal, open the <strong>Activities overview</strong>, clicking <strong>Activities</strong>, on the top-left corner of the screen, or pressing the <strong>Super</strong> key (on some keyboards, it shows the Windows logo). Type <code class="highlighter-rouge">terminal</code> and click its icon:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg" title="">
-<img src="/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2017/08/how-to-upgrade-to-42.3-01-en.jpg" title="">
+<img src="/files/2017/08/how-to-upgrade-to-42.3-01-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>O Terminal é iniciado. Você verá uma janela praticamente vazia com um cursor piscando após um caractere que pode ser <code class="highlighter-rouge">&gt;</code> (maior que) ou <code class="highlighter-rouge">$</code> (cifrão):</p>
+<p>Terminal is launched. It shows an almost empty window with a cursor blinking after a character, which can be <code class="highlighter-rouge">&gt;</code> (greater than) or <code class="highlighter-rouge">$</code> (dollar sign):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/how-to-upgrade-to-42.3-02-pt.png" title="">
-<img src="/files/2017/08/how-to-upgrade-to-42.3-02-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2017/08/how-to-upgrade-to-42.3-02-en.png" title="">
+<img src="/files/2017/08/how-to-upgrade-to-42.3-02-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Esse caractere indica que o comando será executado por um usuário comum.</p>
+<p>That character indicates the command will be executed by an ordinary user.</p>
 
-<p>Para executar um comando, você deve digitá-lo e teclar <strong>Enter</strong>.</p>
+<p>To execute a command (also said as <em>run</em> a command), you need to type it and press <strong>Enter</strong>.</p>
 
-<p>Nas seções seguintes, executaremos alguns comandos.</p>
+<p>In the following sections, we are going to execute some commands.</p>
 
-<p>Se o Terminal está sendo usado pelo administrador (também conhecido como <strong>superusuário</strong> ou usuário <em>root</em>), ele mostra o caractere <code class="highlighter-rouge">#</code> (cerquilha). Exemplo de <a href="/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/">outro <em>post</em></a>:</p>
+<p>If Terminal is being used by the administrator (also known as <strong>superuser</strong> or <em>root</em> user), it shows the hash character (<code class="highlighter-rouge">#</code>). An example of <a href="/en/2017/08/03/how-to-upgrade-from-opensuse-leap-422-to-423/">another post</a>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg" title="">
-<img src="/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2017/08/how-to-upgrade-to-42.3-07-en.jpg" title="">
+<img src="/files/2017/08/how-to-upgrade-to-42.3-07-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Se você utiliza Windows, talvez ache o Terminal parecido com o <a href="https://pt.wikipedia.org/wiki/Prompt_de_comando">Prompt de Comando</a>.</p>
+<p>If you are familiar with Windows, perhaps you think Terminal resembles Windows’ <a href="https://en.wikipedia.org/wiki/Cmd.exe">Command Prompt</a>.</p>
 
-<h2 id="1-e-2-baixando-a-imagem-iso-do-opensuse">1 e 2) Baixando a imagem ISO do openSUSE</h2>
+<h2 id="1--2-download-the-opensuse-iso-image">1 &amp; 2) Download the openSUSE ISO image</h2>
 
-<p>Baixe a imagem de instalação via rede do openSUSE Leap, assim como o arquivo da soma de verificação, em:</p>
+<p>Download the openSUSE Leap network installation image as well as the checksum file from:</p>
 
 <p><a href="https://software.opensuse.org/distributions/leap">https://software.opensuse.org/distributions/leap</a></p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-01-pt.png" title="">
-<img src="/files/2018/10/how-to-verify-iso-01-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-01-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-01-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Escolhi a imagem de instalação via rede por ser o menor arquivo, apenas para exemplo.</p>
+<p>I chose the network installation image just to illustrate, because it’s the smaller image available for download.</p>
 
-<p>Quando acabar, você deve ter dois arquivos na pasta <code class="highlighter-rouge">Downloads</code>:</p>
+<p>When you finish downloading, there should be two files in your <code class="highlighter-rouge">Downloads</code> folder:</p>
 
 <ul>
-  <li>a imagem ISO (<code class="highlighter-rouge">openSUSE-Leap-15.0-NET-x86_64.iso.sha256</code>) e</li>
-  <li>a soma de verificação (<code class="highlighter-rouge">openSUSE-Leap-15.0-NET-x86_64.iso.sha256</code>).</li>
+  <li>the ISO image (<code class="highlighter-rouge">openSUSE-Leap-15.0-NET-x86_64.iso.sha256</code>) and</li>
+  <li>the checksum file (<code class="highlighter-rouge">openSUSE-Leap-15.0-NET-x86_64.iso.sha256</code>).</li>
 </ul>
 
-<h2 id="3-importando-a-chave-pública-do-opensuse">3) Importando a chave pública do openSUSE</h2>
+<h2 id="3-import-the-opensuse-public-key">3) Import the openSUSE public key</h2>
 
-<p>Mais abaixo na página <strong>Baixe o openSUSE</strong>, na seção <strong>Verifique seu download antes de usar</strong>, veja o grande número em <a href="https://pt.wikipedia.org/wiki/Sistema_de_numera%C3%A7%C3%A3o_hexadecimal">hexadecimal</a>:</p>
+<p>Scroll down the <strong>Get openSUSE</strong> page and see the large <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> number on the <strong>Verify Your Download Before Use</strong> section:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-02-pt.png" title="">
-<img src="/files/2018/10/how-to-verify-iso-02-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-02-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-02-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Esse número é a <strong>impressão digital</strong> (<em>fingerprint</em>) da chave pública do Projeto openSUSE.</p>
+<p>That number is the <strong>fingerprint</strong> of the openSUSE Project public GPG key.</p>
 
-<p>Para importá-la, execute o comando a seguir, com os 8 últimos dígitos da impressão:</p>
+<p>To import that key, run the following command, informing the fingerprint last 8 digits:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --recv-keys 3DBDC284
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p><strong>Dica:</strong> você pode copiar o texto da página e colar no Terminal com <strong>Ctrl + Shift + V</strong>. Se você precisar copiar um texto do Terminal, o atalho é parecido: <strong>Ctrl + Shift + C</strong>.</p>
+<p><strong>Tip:</strong> you can copy from and paste to the Terminal. To do that, use the <strong>Ctrl + Shift + C</strong> and <strong>Ctrl + Shift + V</strong> keyboard shortcuts respectively.</p>
 
-<p>No terminal aparece o seguinte texto, que é a <strong>saída</strong> (o retorno) do comando:</p>
+<p>When running that command, terminal shows the following text, which is the <strong>output</strong> (or return) of that command:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -410,22 +406,22 @@
 </pre></td><td class="rouge-code"><pre>gpg: directory '/home/kamarada/.gnupg' created
 gpg: keybox '/home/kamarada/.gnupg/pubring.kbx' created
 gpg: key B88B2FD43DBDC284: 20 signatures not checked due to missing keys
-gpg: /home/kamarada/.gnupg/trustdb.gpg: base de dados de confiança criada
+gpg: /home/kamarada/.gnupg/trustdb.gpg: trustdb created
 gpg: key B88B2FD43DBDC284: public key "openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;" imported
 gpg: no ultimately trusted keys found
-gpg: Número total processado: 1
-gpg:               importados: 1
+gpg: Total number processed: 1
+gpg:               imported: 1
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Pena que a tradução está incompleta… Mas resumidamente o <strong>gpg</strong> informa que criou alguns arquivos de configuração, devido à primeira execução, e importou a chave do openSUSE.</p>
+<p>Shortly, <strong>gpg</strong> informs that it has created some configuration files, because it has been executed for the first time, and imported the openSUSE key.</p>
 
-<p>Execute o comando a seguir para conferir a impressão digital da chave importada:</p>
+<p>Run the following command to check the fingerprint of the imported key:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --fingerprint 3DBDC284
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele retorna:</p>
+<p>It returns:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -435,63 +431,61 @@ gpg:               importados: 1
 uid           [ unknown] openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Compare a impressão digital com a presente no site do openSUSE:</p>
+<p>Compare the fingerprint returned by <strong>gpg</strong> with the one present on the openSUSE website:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-03-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-03-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-03-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Se os números conferem, você importou com sucesso a chave pública do openSUSE.</p>
+<p>If the numbers match, you successfully imported the openSUSE Project public GPG key.</p>
 
-<h2 id="4-verificando-a-integridade-da-imagem-iso">4) Verificando a integridade da imagem ISO</h2>
+<h2 id="4-verify-the-checksum">4) Verify the checksum</h2>
 
-<p>No terminal, passe para a pasta <code class="highlighter-rouge">Downloads</code> com o comando:</p>
+<p>On terminal, enter the <code class="highlighter-rouge">Downloads</code> folder with the command:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ cd Downloads
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Em seguida, verifique sua imagem ISO com o <strong>sha256sum</strong>:</p>
+<p>Then, verify the checksum of the ISO image using the <strong>sha256sum</strong> utility:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ sha256sum -c openSUSE-Leap-15.0-NET-x86_64.iso.sha256
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>(observe que é passado no comando o nome do arquivo da soma de verificação, que termina com <code class="highlighter-rouge">.iso.sha256</code>, não da imagem ISO, que termina com <code class="highlighter-rouge">.iso</code>)</p>
+<p>(note that in the command you need to inform the checksum file name, which ends with <code class="highlighter-rouge">.iso.sha256</code>, not the ISO image file name, which ends with <code class="highlighter-rouge">.iso</code>)</p>
 
-<p>O <strong>sha256sum</strong> demora um tempo calculando a soma de verificação da imagem ISO e depois confere essa soma com a presente no arquivo. A saída do comando deve ser:</p>
+<p><strong>sha256sum</strong> takes some time computing the downloaded ISO image checksum and compares it against the expected checksum, present on the checksum file.</p>
+
+<p>The command output should be:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>openSUSE-Leap-15.0-NET-x86_64.iso: SUCESSO
-sha256sum: AVISO: 14 linhas estão formatadas inapropriadamente
+</pre></td><td class="rouge-code"><pre>openSUSE-Leap-15.0-NET-x86_64.iso: OK
+sha256sum: WARNING: 14 lines are improperly formatted
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-04-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-04-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-04-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Nesse exemplo, a primeira linha da saída informa que as somas foram conferidas com sucesso. Portanto, do ponto de vista da integridade, é seguro usar a imagem ISO baixada. Você pode proceder à verificação de autentiticade.</p>
+<p>The first line means checksums match. So, from the integrity point of view, it is safe to use the downloaded ISO image. You can proceed to the authenticity verification.</p>
 
-<p>Se a saída do comando <strong>sha256sum</strong> for diferente para você, informando que a verificação falhou, não é seguro usar essa imagem ISO: durante o <em>download</em> ela se corrompeu e você deve baixá-la novamente.</p>
+<p>If there is difference between the computed and the expected checksums, the command output is different. If that is the case, it is not safe to use the downloaded ISO image: it is broken and should be downloaded again.</p>
 
-<p>A segunda linha avisa que algumas das linhas do arquivo da soma de verificação estão formatadas impropriamente. O comando <strong>sha256sum</strong> dá esse aviso porque ele não entende as linhas que se referem à assinatura GPG, que o openSUSE coloca no mesmo arquivo.</p>
-
-<p>Se tiver curiosidade, você pode ver essas linhas abrindo o arquivo da soma de verificação.</p>
-
-<p>Como é um arquivo de texto simples, podemos abri-lo com o próprio terminal:</p>
+<p>The second line warns about some lines of the checksum file that <strong>sha256sum</strong> does not understand. Those lines are the digital signature, which the openSUSE Project writes on the same file. Just for the sake of curiosity, if you want to see those lines, you can open the checksum file using the terminal itself, since it is a text file:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ cat openSUSE-Leap-15.0-NET-x86_64.iso.sha256
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>O comando <a href="https://linux.die.net/man/1/cat"><strong>cat</strong></a> exibe o conteúdo de um arquivo de texto. Veja:</p>
+<p>The <a href="https://linux.die.net/man/1/cat"><strong>cat</strong></a> command shows the contents of a text file. Look:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -525,25 +519,25 @@ aJu8EqdG3Kn43bX1FwAecNgRov7PSFGua/38ANdLWMsBpV6jNpMoyA==
 -----END PGP SIGNATURE-----
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ao comando <strong>sha256sum</strong> interessa apenas essa linha:</p>
+<p>The <strong>sha256sum</strong> utility understands only this line:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>1a322de7c215da96fdbad4c247d218eb79073c5620a332a759c0291b44746fbc  openSUSE-Leap-15.0-NET-x86_64.iso
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Todas as outras ele não consegue entender, por isso ele dá aquele aviso.</p>
+<p>It does not understand all the others, that’s why it shows that warning.</p>
 
-<h2 id="5-verificando-a-autentiticade-da-imagem-iso">5) Verificando a autentiticade da imagem ISO</h2>
+<h2 id="5-verify-the-digital-signature">5) Verify the digital signature</h2>
 
-<p>Agora sim vamos verificar a assinatura GPG com o comando apropriado:</p>
+<p>To verify the GPG signature of the ISO image, use the <strong>gpg</strong> utility:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --verify openSUSE-Leap-15.0-NET-x86_64.iso.sha256
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>(aqui mais uma vez usamos o arquivo da soma de verificação, cuja extensão termina com <code class="highlighter-rouge">.iso.sha256</code>)</p>
+<p>(once again we refer to the checksum file name, which ends with <code class="highlighter-rouge">.iso.sha256</code>)</p>
 
-<p>A saída informa que a assinatura confere (<em>good signature</em>, boa assinatura):</p>
+<p>The <strong>gpg</strong> output should inform <strong>Good signature</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -554,57 +548,57 @@ aJu8EqdG3Kn43bX1FwAecNgRov7PSFGua/38ANdLWMsBpV6jNpMoyA==
 </pre></td><td class="rouge-code"><pre>gpg: Signature made qui 17 mai 2018 12:55:03 -03
 gpg:                using RSA key B88B2FD43DBDC284
 gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;" [unknown]
-gpg: AVISO: Esta chave não está certificada com uma assinatura confiável!
-gpg:          Não há indicação de que a assinatura pertence ao dono.
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-05-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-05-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-05-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>O aviso <strong>Esta chave não está certificada com uma assinatura confiável</strong> não indica um problema, mas apenas o fato de que você não assinou a chave você mesmo, o que é opcional e explicarei melhor a seguir.</p>
+<p>The warning <strong>This key is not certified with a trusted signature</strong> does not really indicate a problem, but only the fact that you have not signed the key yourself. The next section shows how to optionally correct this.</p>
 
-<p>Se você não é paranoico com segurança, pode ficar satisfeito com a mensagem acima e usar a imagem ISO tranquilamente.</p>
+<p>If you received the above output, unless you are paranoid, you can feel satisfied and use the ISO image safely.</p>
 
-<p>Veja como a saída é diferente se a assinatura não confere:</p>
+<p>Look how the output is different if the signature verification fails:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre>gpg: CRC error; 60B2DC - 60B2DA
+</pre></td><td class="rouge-code"><pre>gpg: CRC error; 60B2DC - 60B2DB
 gpg: no signature found
-gpg: a assinatura não pode ser verificada.
-Não se esqueça que o ficheiro com a assinatura (.sig ou .asc)
-deve ser o primeiro a ser dado na linha de comando.
+gpg: the signature could not be verified.
+Please remember that the signature file (.sig or .asc)
+should be the first file given on the command line.
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Se você recebeu essa saída, não é seguro usar essa imagem ISO: você deve verificar sua procedência e baixá-la novamente.</p>
+<p>If you received that output, it is not safe to use that ISO image. You should check its origin and download it again.</p>
 
-<h2 id="6-opcionalidades">6) Opcionalidades</h2>
+<h2 id="6-optionalities">6) Optionalities</h2>
 
-<p>Até aqui, você fez todos os passos que elencamos na visão geral, no início.</p>
+<p>At this point, you have done all the steps we have outlined in the overview at the beginning.</p>
 
-<p>Você pode ir um passo além assinando a chave pública do openSUSE com uma chave privada sua, sinalizando para o <strong>gpg</strong> que você confia que a chave pública do Projeto openSUSE pertence de fato ao Projeto openSUSE.</p>
+<p>However, you could go a step further by signing the openSUSE Project public key with your private key. Doing that, you tell <strong>gpg</strong> you trust that the openSUSE Project public key actually belongs to the openSUSE Project.</p>
 
-<p>Pode parecer burocrático, mas da forma como o GPG foi projetado, idealmente as pessoas trocariam chaves apenas pessoalmente, para formar uma rede de confiança. Na prática, não é assim que funciona. Obter a chave pública do <em>site</em> da distribuição é o máximo que você pode fazer enquanto usuário final que deseja verificar uma imagem ISO. De qualquer forma, já é mais seguro do que baixar a imagem ISO e confiar nela sem fazer nenhuma verificação.</p>
+<p>It may seem bureaucratic, but the way GPG was designed, ideally people should exchange keys only in person to establish a web of trust. Real life people don’t use it that way. Obtaining the public key from the distribution website is all you can reasonably do as an end-user trying to verify a downloaded ISO image. Anyway, you’re still safer than people who simply download and trust it without verifying it at all.</p>
 
-<p>Para assinar a chave pública do openSUSE, você precisa antes criar um par de chaves seu.</p>
+<p>To sign the openSUSE public GPG key, you must first create your own GPG key pair.</p>
 
-<h2 id="61-criando-um-par-de-chaves-pessoal">6.1) Criando um par de chaves pessoal</h2>
+<h2 id="61-generate-a-personal-key-pair">6.1) Generate a personal key pair</h2>
 
-<p>Para iniciar a criação de um par de chaves, execute o seguinte comando no terminal:</p>
+<p>To start generating a key pair, run the following command on terminal:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --gen-key
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>O <strong>gpg</strong> solicita seu nome completo:</p>
+<p><strong>gpg</strong> asks you to provide your name:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -623,14 +617,14 @@ Note: Use "gpg2 --full-generate-key" for a full featured key generation dialog.
 
 GnuPG needs to construct a user ID to identify your key.
 
-Nome completo:
+Real name:
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Digite seu nome completo e tecle <strong>Enter</strong>.</p>
+<p>Type your complete name and press <strong>Enter</strong>.</p>
 
-<p>Depois, ele pede seu <em>e-mail</em>, digite-o e tecle <strong>Enter</strong>.</p>
+<p>Then, <strong>gpg</strong> asks your email address. Type it and press <strong>Enter</strong>.</p>
 
-<p>O <strong>gpg</strong> oferece a oportunidade de mudar alguma informação. Verifique seus dados:</p>
+<p><strong>gpg</strong> offers you the opportunity to review your information and change it if necessary:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -638,28 +632,28 @@ Nome completo:
 4
 5
 6
-</pre></td><td class="rouge-code"><pre>Nome completo: Linux Kamarada
-Endereço de correio eletrónico: linux@kamarada.com.br
-Você selecionou este identificador de utilizador:
+</pre></td><td class="rouge-code"><pre>Real name: Linux Kamarada
+Email address: linux@kamarada.com.br
+You selected this USER-ID:
     "Linux Kamarada &lt;linux@kamarada.com.br&gt;"
 
 Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Se está tudo certo, digite <code class="highlighter-rouge">O</code> (de <em>OK</em>) e tecle <strong>Enter</strong>.</p>
+<p>If everything is alright, type <code class="highlighter-rouge">O</code> and press <strong>Enter</strong>.</p>
 
-<p>O <strong>gpg</strong> solicita que seja criada uma senha (<em>passphrase</em>) para a nova chave. Por algum motivo aqui ele apresenta uma janela fora do terminal para a digitação da senha:</p>
+<p><strong>gpg</strong> asks you to create a password (<em>passphrase</em>) to protect your new private key. For some reason, it provides a window outside the terminal for entering the password:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-06-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-06-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-06-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-06-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Digite a senha no campo de cima e depois digite mais uma vez no campo de baixo, para se certificar que não digitou errado. Quando terminar, clique em <strong>OK</strong> (ou tecle <strong>Enter</strong>).</p>
+<p>Enter the password in the first field and repeat it in the second field to make sure there is no typo. When you are finished, click <strong>OK</strong> (or press <strong>Enter</strong>).</p>
 
-<p>Feito isso, sua chave pessoal foi criada:</p>
+<p>After that, your personal key pair is generated:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -675,31 +669,39 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 12
 13
 14
+15
+16
+17
+18
 </pre></td><td class="rouge-code"><pre>Change (N)ame, (E)mail, or (O)kay/(Q)uit? o
-Precisamos gerar muitos bytes aleatórios. É uma boa ideia realizar outra
-actividade (escrever no teclado, mover o rato, usar os discos) durante a
-geração dos números primos; isso dá ao gerador de números aleatórios
-uma hipótese maior de ganhar entropia suficiente.
-gpg: key 622F81C351878B72 marked as ultimately trusted
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 203CFD6387754CFF marked as ultimately trusted
 gpg: directory '/home/kamarada/.gnupg/openpgp-revocs.d' created
-gpg: revocation certificate stored as '/home/kamarada/.gnupg/openpgp-revocs.d/52213656B323285921EF8144622F81C351878B72.rev'
-chaves pública e privada criadas e assinadas.
+gpg: revocation certificate stored as '/home/kamarada/.gnupg/openpgp-revocs.d/A6EA439A6BC66CC857C85700203CFD6387754CFF.rev'
+public and secret key created and signed.
 
-pub   rsa2048 2018-10-06 [SC] [expires: 2020-10-05]
-      52213656B323285921EF8144622F81C351878B72
+pub   rsa2048 2018-11-06 [SC] [expires: 2020-11-05]
+      A6EA439A6BC66CC857C85700203CFD6387754CFF
 uid                      Linux Kamarada &lt;linux@kamarada.com.br&gt;
-sub   rsa2048 2018-10-06 [E] [expires: 2020-10-05]
+sub   rsa2048 2018-11-06 [E] [expires: 2020-11-05]
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<h2 id="62-assinando-a-chave-pública-do-opensuse">6.2) Assinando a chave pública do openSUSE</h2>
+<h2 id="62-sign-the-opensuse-public-key">6.2) Sign the openSUSE public key</h2>
 
-<p>Para assinar a chave pública do openSUSE, execute o comando:</p>
+<p>To sign the openSUSE public key, run:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --edit-key 3DBDC284
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>O <strong>gpg</strong> inicia uma espécie de terminal próprio (<code class="highlighter-rouge">gpg&gt;</code>) e mostra informações sobre a chave:</p>
+<p><strong>gpg</strong> shows information about the key and starts its own terminal (starting with <code class="highlighter-rouge">gpg&gt;</code>):</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -725,9 +727,9 @@ pub  rsa2048/B88B2FD43DBDC284
 gpg&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Confira mais uma vez a impressão digital com aquela que está no <em>site</em> do openSUSE.</p>
+<p>Compare the fingerprint with the one present on the openSUSE website once more.</p>
 
-<p>Para fazer isso, digite <strong>fpr</strong> (de <em>fingerprint</em>, impressão digital) e tecle <strong>Enter</strong>:</p>
+<p>To do that, type <strong>fpr</strong> (from <em>fingerprint</em>) and press <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -736,12 +738,12 @@ gpg&gt;
 5
 </pre></td><td class="rouge-code"><pre>gpg&gt; fpr
 pub   rsa2048/B88B2FD43DBDC284 2008-11-07 openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
+ Primary key fingerprint: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
 
 gpg&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Estando correta, digite <strong>trust</strong> (confiar) e tecle <strong>Enter</strong>:</p>
+<p>If the numbers match, type <strong>trust</strong> and press <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -776,30 +778,18 @@ Please decide how far you trust this user to correctly verify other users' keys
   5 = I trust ultimately
   m = back to the main menu
 
-Decisão?
+Your decision?
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele pergunta o quanto você confia nessa chave, as opções são:</p>
-
-<ol>
-  <li>Eu não sei ou não direi</li>
-  <li>Eu não confio</li>
-  <li>Eu confio em parte</li>
-  <li>Eu confio completamente</li>
-  <li>Eu confio em última análise</li>
-</ol>
-
-<p>(não soube traduzir essa última, pedi ajuda ao <a href="https://translate.google.com.br/">Google</a>)</p>
-
-<p>Digite <strong>5</strong> (parece haver uma escala gradativa de confiança) e tecle <strong>Enter</strong>:</p>
+<p><strong>gpg</strong> asks you how far you trust that key. I decided to trust it 100% (5 of 5) so I typed <code class="highlighter-rouge">5</code> and pressed <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>Decisão? 5
+</pre></td><td class="rouge-code"><pre>Your decision? 5
 Do you really want to set this key to ultimate trust? (y/N)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele pergunta se você realmente deseja confiar nessa chave, tecle <strong>y</strong> (de <em>yes</em>, sim) e depois <strong>Enter</strong>:</p>
+<p>It asks if you really want to trust this key, type <code class="highlighter-rouge">y</code> (<em>yes</em>) and press <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -817,13 +807,13 @@ pub  rsa2048/B88B2FD43DBDC284
      created: 2008-11-07  expires: 2024-05-02  usage: SC  
      trust: ultimate      validity: unknown
 [ unknown] (1). openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;
-Não se esqueça que a validade de chave mostrada não é necessáriamente a
-correcta a não ser que reinicie o programa.
+Please note that the shown key validity is not necessarily correct
+unless you restart the program.
 
 gpg&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Agora digite <strong>sign</strong> (assinar) e tecle <strong>Enter</strong>:</p>
+<p>Now type <strong>sign</strong> and press <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -844,29 +834,29 @@ gpg&gt;
 pub  rsa2048/B88B2FD43DBDC284
      created: 2008-11-07  expires: 2024-05-02  usage: SC  
      trust: ultimate      validity: unknown
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
+ Primary key fingerprint: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
 
      openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;
 
-Esta chave vai expirar em 2024-05-02.
+This key is due to expire on 2024-05-02.
 Are you sure that you want to sign this key with your
-key "Linux Kamarada &lt;linux@kamarada.com.br&gt;" (622F81C351878B72)
+key "Linux Kamarada &lt;linux@kamarada.com.br&gt;" (203CFD6387754CFF)
 
 Really sign? (y/N)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele pergunta se você realmente deseja assinar essa chave, tecle <strong>y</strong> e depois <strong>Enter</strong>.</p>
+<p>It asks if you really want to sign this key, type <code class="highlighter-rouge">y</code> and press <strong>Enter</strong>:</p>
 
-<p>Digite a senha da sua chave e clique em <strong>OK</strong> (ou tecle <strong>Enter</strong>):</p>
+<p>Enter your private key password and click <strong>OK</strong> (or press <strong>Enter</strong>):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-07-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-07-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-07-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-07-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Por fim, digite <strong>quit</strong> (sair) e tecle <strong>Enter</strong>:</p>
+<p>Finally, type <strong>quit</strong> and press <strong>Enter</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -874,21 +864,21 @@ Really sign? (y/N)
 Save changes? (y/N)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele pergunta se você deseja salvar as alterações, tecle <strong>y</strong> e depois <strong>Enter</strong>.</p>
+<p>It asks if you want to save changes, type <code class="highlighter-rouge">y</code> and press <strong>Enter</strong>.</p>
 
-<p>Feito isso, a chave pública do openSUSE foi assinada e voltamos para o terminal normal.</p>
+<p>The openSUSE public key is signed and we return to the ordinary terminal.</p>
 
-<p>Para conferir que a chave foi de fato assinada, execute o comando:</p>
+<p>Confirm that the key has been actually signed running:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --list-sig 3DBDC284
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Ele lista todas as assinaturas da chave. Observe que a sua aparece na lista, na última linha:</p>
+<p>That command lists all signatures of the key. Note that yours appears on the last line:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-08-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-08-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-08-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-08-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -920,15 +910,7 @@ Save changes? (y/N)
 25
 26
 27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre>gpg: a verificar a base de dados de confiança
-gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
-gpg: proxima verificação da base de dados de confiança a 2020-10-05
-pub   rsa2048 2008-11-07 [SC] [expires: 2024-05-02]
+</pre></td><td class="rouge-code"><pre>pub   rsa2048 2008-11-07 [SC] [expires: 2024-05-02]
       22C07BA534178CD02EFE22AAB88B2FD43DBDC284
 uid           [ultimate] openSUSE Project Signing Key &lt;opensuse@opensuse.org&gt;
 sig          EA7BF3970175623E 2012-08-23  [User ID not found]
@@ -954,18 +936,18 @@ sig          E6596246D46BD98A 2016-12-03  [User ID not found]
 sig          F8E8F9BBBD86B2BD 2018-09-18  [User ID not found]
 sig          19D77FD04BCDA246 2018-10-03  [User ID not found]
 sig          58FC58B1317CD502 2017-09-28  [User ID not found]
-sig          622F81C351878B72 2018-10-06  Linux Kamarada &lt;linux@kamarada.com.br&gt;
+sig          203CFD6387754CFF 2018-11-06  Linux Kamarada &lt;linux@kamarada.com.br&gt;
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<h2 id="63-verificando-novamente-a-autentiticade-da-imagem-iso">6.3) Verificando novamente a autentiticade da imagem ISO</h2>
+<h2 id="63-verify-the-digital-signature-this-time-with-the-key-signed">6.3) Verify the digital signature (this time with the key signed)</h2>
 
-<p>Repita a verificação de autentiticade da imagem ISO (passo 5):</p>
+<p>Repeat verifying the GPG signature of the ISO image (step 5):</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ gpg --verify openSUSE-Leap-15.0-NET-x86_64.iso.sha256
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Veja que agora a mensagem apresentada pelo <strong>gpg</strong> não mostra o aviso nem a impressão digital ao final, apenas informa que a assinatura confere (<em>good signature</em>, boa assinatura):</p>
+<p>Now <strong>gpg</strong> does not warn you the key is not trusted nor show its fingerprint at the end. <strong>gpg</strong> just informs <strong>Good signature</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -976,37 +958,37 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/10/how-to-verify-iso-09-pt.jpg" title="">
-<img src="/files/2018/10/how-to-verify-iso-09-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/11/how-to-verify-iso-09-en.jpg" title="">
+<img src="/files/2018/11/how-to-verify-iso-09-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<h2 id="finalizando">Finalizando</h2>
+<h2 id="summing-up">Summing up</h2>
 
-<p>Agora que você já conhece o <strong>sha256sum</strong> e o <strong>gpg</strong>, pode usá-los para verificar imagens ISO do openSUSE, assim como imagens ISO de outras distribuições, ou quaisquer arquivos que precise verificar. Como expliquei na visão geral, o processo é semelhante.</p>
+<p>Now that you are familiar with <strong>sha256sum</strong> and <strong>gpg</strong>, you can use them to verify ISO images downloaded from openSUSE, as well as from other Linux distributions, or any files you need to verify. As I explained in the overview, the process is similar.</p>
 
-<p>Possivelmente, boa parte do que fizemos aqui você não precisará fazer de novo:</p>
+<p>Possibly, much of what you did here you won’t have to do again:</p>
 
 <ul>
-  <li>você só precisa importar de novo a chave pública do openSUSE (seção 3) se no futuro o openSUSE criar uma nova chave;</li>
-  <li>você só precisa assinar de novo a chave pública do openSUSE (seção 6.2) se no futuro importar uma nova chave; e</li>
-  <li>se você só utiliza sua chave GPG pessoal para verificar arquivos baixados, não precisará criar um novo par de chaves (seção 6.1).</li>
+  <li>you only need to repeat importing the openSUSE public key (section 3) if the openSUSE Project generates a new key in the future;</li>
+  <li>you only need to re-sign the openSUSE public key (section 6.2) if you import a new openSUSE key in the future; and</li>
+  <li>if you use your personal GPG key only to check downloaded files, you do not need to create a new GPG key pair (section 6.1).</li>
 </ul>
 
-<p>Caso baixe outra imagem ISO do openSUSE (por exemplo, quando houver uma nova versão da distribuição), você pula o passo 3 e repete os passos 1, 2, 4 e 5.</p>
+<p>In case you download another ISO image from openSUSE (for instance, when there is a new release), skip step 3 and repeat steps 1, 2, 4 and 5.</p>
 
-<p>Caso baixe uma imagem ISO de outra distribuição, aí sim você deve repetir todo o processo, opcionalmente assinando a chave pública da distribuição após importá-la (seção 6.2).</p>
+<p>In case you download an ISO image from another distribution, then you should repeat the entire process, optionally signing the public key of the distribution after importing it (section 6.2).</p>
 
-<p>Espero que tenha ajudado. Deixo as referências para o caso de você querer ler mais.</p>
+<p>I hope this post has helped you. I leave the references in case you want to read more.</p>
 
-<h2 id="referências">Referências</h2>
+<h2 id="references">References</h2>
 
 <ul>
   <li><a href="https://www.howtogeek.com/246332/how-to-verify-a-downloaded-linux-iso-file-wasnt-tampered-with/">How to Verify a Linux ISO’s Checksum and Confirm It Hasn’t Been Tampered With</a></li>
   <li><a href="https://bitzuma.com/posts/how-to-verify-an-electrum-download-on-windows/">How to Verify an Electrum Download on Windows - Bitzuma</a></li>
   <li><a href="http://xmodulo.com/verify-authenticity-integrity-downloaded-file.html">How to verify the authenticity and integrity of a downloaded file on Linux - Xmodulo</a></li>
-  <li><a href="https://pt.opensuse.org/SDB:Ajuda_de_download">SDB:Ajuda de download - openSUSE</a></li>
+  <li><a href="https://en.opensuse.org/SDB:Download_help">SDB:Download help - openSUSE</a></li>
   <li><a href="https://www.gnupg.org/gph/en/manual.html">The GNU Privacy Handbook</a></li>
   <li><a href="https://help.ubuntu.com/community/GnuPrivacyGuardHowto">GnuPrivacyGuardHowto</a></li>
   <li><a href="https://security.stackexchange.com/a/120926">digital signature - Verify a key was signed by another key - Information Security Stack Exchange</a></li>
@@ -1020,12 +1002,12 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
             <div class="gap"></div>
             <h2>
                 
-                    Gostou? Que tal compartilhar?
+                    Did you like it? What about sharing?
                 
             </h2>
             <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                 <a class="addthis_button_facebook"></a>
-                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
                 <a class="addthis_button_google_plusone_share"></a>
                 <a class="addthis_button_email"></a>
                 <a class="addthis_button_favorites"></a>
@@ -1042,22 +1024,22 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
             <div class="gap"></div>
             <h2>
                 
-                    Comentários
+                    Comments
                 
             </h2>
             <div id="disqus_thread"></div>
             <script>
                 var disqus_config = function () {
                     
-                        this.language = "pt";
+                        this.language = "en";
                     
-                    this.page.url = 'https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/';
+                    this.page.url = 'https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/';
                 };
 
                 (function() {
                     var d = document, s = d.createElement('script');
 
-                    s.src = '//kamarada.disqus.com/embed.js';
+                    s.src = '//kamaradaww.disqus.com/embed.js';
 
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
@@ -1078,7 +1060,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
       <h3>
           <a name="about"></a>
           
-              Sobre
+              About
           
       </h3>
     </div>
@@ -1094,7 +1076,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
         </p>
         <p class="text" itemprop="description">
             
-                O Projeto Linux Kamarada é um projeto novo que visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+                The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
 
             
         </p>
@@ -1105,7 +1087,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
                     <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
                 
                 
-                    <a href="https://twitter.com/LinuxKamarada" class="addthis_button_twitter_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
                 
                 
                 
@@ -1114,7 +1096,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
                 
                     <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
                 
-                <a href="https://kamarada.github.io/pt/feed.xml" class="addthis_button_rss_follow"></a>
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
             </div>
             <!-- AddThis Follow Buttons End -->
         
@@ -1126,7 +1108,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
         <h3>
             <a name="author"></a>
             
-                Autor
+                Author
             
         </h3>
     </div>
@@ -1175,11 +1157,11 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
 
     <footer class="footer">
     <div class="container">
-        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+        Copyright &copy; 2018 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
     </div>
 </footer>
 
-<meta itemprop="description" content="Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a soma de verificação e a assinatura digital. Nesse post, você verá como fazê-las com o sha256sum e o gpg, dois utilitários de linha de comando que por...">
+<meta itemprop="description" content="Sometimes it is important to verify a downloaded file. Two common verifications that greatly reduce chances of using a corrupted or tampered file are the checksum and the digital signature. In this post, you are going to see how to do those verifications with sha256sum and gpg, two command-line utilities that come already installed on...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
@@ -1190,7 +1172,7 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
 
 
 
-    <meta itemprop="inLanguage" content="pt"/>
+    <meta itemprop="inLanguage" content="en"/>
 
 
 
@@ -1199,10 +1181,10 @@ gpg: Good signature from "openSUSE Project Signing Key &lt;opensuse@opensuse.org
         /* * * CONFIGURATION VARIABLES * * */
         
             var disqus_config = function () {
-                this.language = "pt";
+                this.language = "en";
             };
         
-        var disqus_shortname = 'kamarada';
+        var disqus_shortname = 'kamaradaww';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
