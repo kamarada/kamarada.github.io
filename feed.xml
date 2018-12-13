@@ -1,5 +1,619 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-08T19:20:48-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">Verifying data integrity and authenticity using SHA-256 and GPG</title><link href="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/" rel="alternate" type="text/html" title="Verifying data integrity and authenticity using SHA-256 and GPG" /><published>2018-11-08T19:15:00-02:00</published><updated>2018-11-08T19:20:42-02:00</updated><id>https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg</id><content type="html" xml:base="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/">&lt;p&gt;Sometimes it is important to verify a downloaded file. For example, the &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_image&quot;&gt;ISO image&lt;/a&gt; of a &lt;a href=&quot;https://en.wikipedia.org/wiki/Linux_distribution&quot;&gt;Linux distribution&lt;/a&gt; - it contains the operating system that you will use or install on your computer, bad things may happen if the file was corrupted during download or tampered by a &lt;a href=&quot;https://en.wikipedia.org/wiki/Man-in-the-middle_attack&quot;&gt;man-in-the-middle attack&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-12-12T23:43:54-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Bitcoin para iniciantes com a carteira Electrum</title><link href="https://kamarada.github.io/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/" rel="alternate" type="text/html" title="Bitcoin para iniciantes com a carteira Electrum" /><published>2018-12-12T23:30:00-02:00</published><updated>2018-12-12T23:43:51-02:00</updated><id>https://kamarada.github.io/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/bitcoin.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/bitcoin.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://bitcoin.org&quot;&gt;Bitcoin&lt;/a&gt; é uma moeda digital que circula apenas eletronicamente, pela Internet. Já existe há 10 anos e mostra que veio pra ficar. Por enquanto &lt;a href=&quot;https://www.repositorio.blog/pt/2018/o-mundo-em-bitcoin-valor-e-preco/&quot;&gt;o Bitcoin tem sido usado mais para especulação que outra coisa&lt;/a&gt;, mas já há &lt;a href=&quot;http://blog.negociecoins.com.br/lojas-aceitam-bitcoins&quot;&gt;lojas e serviços que aceitam pagamento em Bitcoins&lt;/a&gt; e projetos que aceitam doações em Bitcoins, a exemplo da &lt;a href=&quot;https://donate.wikimedia.org/wiki/Ways_to_Give#Bitcoin&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nesse tutorial, você vai aprender como transacionar Bitcoins usando a carteira &lt;a href=&quot;https://electrum.org&quot;&gt;Electrum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para referência futura, aqui utilizo a distribuição Linux &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE Leap&lt;/a&gt; versão 15.0, &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;lançada em 25/05/2018&lt;/a&gt;, e a carteira Electrum versão 3.2.3, &lt;a href=&quot;https://github.com/spesmilo/electrum/blob/3.2.3/RELEASE-NOTES&quot;&gt;lançada em 03/09/2018&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vou tentar explicar resumidamente um pouco sobre o Bitcoin. Depois, vamos ver como utilizá-lo na prática, comprando, transferindo e vendendo Bitcoins.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observações:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Há quem ganhe dinheiro fazendo &lt;strong&gt;especulação&lt;/strong&gt; com Bitcoin, comprando ou vendendo conforme a moeda se valoriza ou desvaloriza. Adianto que &lt;strong&gt;não&lt;/strong&gt; é o objetivo desse tutorial ensinar a fazer isso. Se é isso que você procura, recomendo procurar outros conteúdos, como a série &lt;a href=&quot;https://www.empiricus.com.br/artigos/bitcoin/&quot;&gt;Crypto Alert&lt;/a&gt;, da &lt;a href=&quot;https://www.empiricus.com.br/artigos/bitcoin/&quot;&gt;Empiricus&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Devido à alta volatilidade da cotação do Bitcoin, se você executar todos os passos desse tutorial literalmente como aparecem, pode ser que ganhe ou &lt;strong&gt;perca dinheiro&lt;/strong&gt;, esteja ciente disso. Recomendo que você leia todo o texto apenas para aprender como funciona e use a carteira Electrum no dia a dia conforme sua real necessidade.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;entendendo-como-funciona-o-bitcoin&quot;&gt;Entendendo como funciona o Bitcoin&lt;/h2&gt;
+
+&lt;p&gt;O Bitcoin foi criado em 2008 por Satoshi Nakamoto, que escreveu um &lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;artigo explicando o funcionamento da moeda&lt;/a&gt;. A título de curiosidade, Satoshi Nakamoto é na verdade um pseudônimo, não se sabe se é uma pessoa ou um grupo de pessoas.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/bitcoin-paper.jpg&quot; title=&quot;O artigo que apresentou o conceito do Bitcoin, disponível para leitura [aqui](https://bitcoin.org/bitcoin.pdf).&quot;&gt;
+&lt;img src=&quot;/files/2018/12/bitcoin-paper.jpg&quot; alt=&quot;O artigo que apresentou o conceito do Bitcoin, disponível para leitura [aqui](https://bitcoin.org/bitcoin.pdf).&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;O artigo que apresentou o conceito do Bitcoin, disponível para leitura &lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O objetivo do Projeto Bitcoin é desenvolver uma moeda &lt;strong&gt;descentralizada&lt;/strong&gt;, que não seja suportada ou regulada por governos ou bancos, não dependa deles para ser confiável, nem sofra interferências de eventos políticos. A moeda Bitcoin depende apenas da própria rede de usuários para existir. Por isso, ela é dita uma moeda &lt;a href=&quot;https://pt.wikipedia.org/wiki/Peer-to-peer&quot;&gt;&lt;strong&gt;&lt;em&gt;peer-to-peer&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (expressão que em inglês significa &lt;em&gt;par-a-par&lt;/em&gt; e é mais conhecida por &lt;a href=&quot;https://pt.wikipedia.org/wiki/Peer-to-peer&quot;&gt;P2P&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Se você já conhece a rede &lt;a href=&quot;https://www.techtudo.com.br/noticias/noticia/2015/06/o-que-e-torrent-e-como-funciona.html&quot;&gt;&lt;em&gt;torrent&lt;/em&gt;&lt;/a&gt;, que também é uma rede &lt;em&gt;peer-to-peer&lt;/em&gt;, mas usada para compartilhar arquivos, talvez entenda mais facilmente a rede Bitcoin.&lt;/p&gt;
+
+&lt;p&gt;Diferente das moedas tradicionais, que são impressas por bancos centrais, Bitcoins não podem ser impressos: existem apenas eletronicamente. Também não podem ser baixados, porque não são arquivos. Na verdade, o que circula na rede são &lt;strong&gt;transações&lt;/strong&gt; de Bitcoins. Todas as transações são divulgadas a todos os usuários da rede (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Broadcasting_(rede_de_computadores)&quot;&gt;&lt;em&gt;broadcasting&lt;/em&gt;&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Uma transação é uma transferência de Bitcoins entre &lt;strong&gt;carteiras Bitcoin&lt;/strong&gt; (&lt;em&gt;Bitcoin wallets&lt;/em&gt;). Na ideia, essas carteiras são semelhantes às tradicionais nas quais guardamos cédulas, moedas e cartões. Mas lembre-se que Bitcoins não são armazenáveis, apenas transferidos. Tecnicamente, as carteiras Bitcoin são formadas por um &lt;strong&gt;endereço&lt;/strong&gt; (&lt;em&gt;address&lt;/em&gt;), do qual ou para o qual são transferidos Bitcoins, e uma &lt;strong&gt;chave privada&lt;/strong&gt; (&lt;em&gt;private key&lt;/em&gt;, também chamada de &lt;strong&gt;semente&lt;/strong&gt;, &lt;em&gt;seed&lt;/em&gt;), que é uma informação secreta usada para assinar transações. A &lt;strong&gt;assinatura&lt;/strong&gt; fornece uma prova matemática de que a transação foi feita pelo dono da carteira e também previne que a transação seja alterada depois de emitida.&lt;/p&gt;
+
+&lt;p&gt;Chave privada e assinatura são conceitos de &lt;a href=&quot;https://noticias.r7.com/tecnologia-e-ciencia/tudo-que-voce-sempre-quis-saber-sobre-criptografia-e-nao-perguntou-24012018&quot;&gt;criptografia&lt;/a&gt;, que é um dos pilares do Bitcoin. É graças a ela que as transações de Bitcoins podem ser asseguradas pelas próprias partes envolvidas, diferente das transações de moedas tradicionais, que são asseguradas sempre por terceiros (normalmente, bancos).&lt;/p&gt;
+
+&lt;p&gt;Da mesma forma como na rede &lt;em&gt;torrent&lt;/em&gt; um arquivo existe enquanto usuários possuem e disponibilizam esse arquivo, na rede Bitcoin uma transação existe a partir do momento que os usuários &lt;strong&gt;confirmam&lt;/strong&gt; essa transação. Após a confirmação por vários usuários (normalmente, pelo menos seis), a transação é gravada em um gigantesco banco de dados que registra todas as transações de Bitcoins que já ocorreram na história, chamado de &lt;strong&gt;&lt;em&gt;blockchain&lt;/em&gt;&lt;/strong&gt;. Esse banco de dados é construído de forma síncrona e distribuída por vários usuários da rede e também utiliza criptografia, de modo que é difícil adulterá-lo.&lt;/p&gt;
+
+&lt;p&gt;O processo de confirmação de transações é chamado de &lt;strong&gt;mineração&lt;/strong&gt;. Dá trabalho, porque envolve operações pesadas de criptografia, consome tempo, processamento, espaço em disco, energia elétrica e, portanto, tem custo. Quem transfere Bitcoins paga uma pequena &lt;strong&gt;taxa&lt;/strong&gt; a quem confirma a transação. Quem precisa que a transação seja feita mais rápida, pode oferecer pagar uma taxa um pouco maior, de modo a atrair mais mineradores.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://guiadobitcoin.com.br/o-que-considerar-antes-de-iniciar-uma-operacao-de-mineracao-de-bitcoin/&quot;&gt;Mineração já foi uma forma de ganhar dinheiro com Bitcoins&lt;/a&gt;. Mas com a evolução da rede, as sucessivas operações criptográficas têm tornado as confirmações cada vez mais trabalhosas. O custo-benefício de minerar Bitcoins em casa no Brasil não compensa mais.&lt;/p&gt;
+
+&lt;p&gt;Se você ainda não tem Bitcoins e deseja obtê-los, o primeiro passo é escolher uma carteira. Com isso, você terá um endereço que poderá usar para receber Bitcoins. Alguém que já possui Bitcoins pode te transferir (como pagamento por um serviço ou produto, ou mesmo como doação, por exemplo) ou você pode &lt;strong&gt;comprar&lt;/strong&gt; Bitcoins. Para isso, deve se cadastrar em uma &lt;strong&gt;corretora&lt;/strong&gt; (&lt;em&gt;exchange&lt;/em&gt;) e transferir dinheiro (em reais, por exemplo) para ela. As corretoras são análogas às casas de câmbio que convertem reais para dólares e vice-versa.&lt;/p&gt;
+
+&lt;p&gt;Se essa explicação pareceu confusa, não se preocupe: veremos na prática a seguir.&lt;/p&gt;
+
+&lt;p&gt;Aqui não esgotamos o assunto Bitcoin, que é bastante interessante. Para saber mais, visite o &lt;a href=&quot;https://bitcoin.org&quot;&gt;&lt;em&gt;site&lt;/em&gt; do Projeto Bitcoin&lt;/a&gt;, que possui muita informação, &lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;leia o artigo do Bitcoin&lt;/a&gt; e &lt;a href=&quot;https://www.google.com.br/search?q=Bitcoin&quot;&gt;pesquise no Google&lt;/a&gt;. De forma genérica, você pode pesquisar sobre &lt;a href=&quot;https://www.google.com.br/search?q=criptomoedas&quot;&gt;&lt;strong&gt;criptomoedas&lt;/strong&gt;&lt;/a&gt;, que são moedas semelhantes ao Bitcoin, baseadas em criptografia. O Bitcoin foi a primeira criptomoeda e inspirou várias que surgiram depois dele propondo alguma melhoria.&lt;/p&gt;
+
+&lt;h2 id=&quot;cotação-do-bitcoin&quot;&gt;Cotação do Bitcoin&lt;/h2&gt;
+
+&lt;p&gt;Assim como o valor do dólar oscila comparativamente ao real, o valor do Bitcoin também oscila de acordo com a demanda pela moeda no mercado (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Lei_da_oferta_e_da_procura&quot;&gt;lei da oferta e da procura&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;A melhor forma de descobrir quanto vale 1 Bitcoin (também abreviado &lt;strong&gt;BTC&lt;/strong&gt; ou &lt;i class=&quot;fab fa-btc&quot;&gt;&lt;/i&gt;) comparado ao real (&lt;strong&gt;BRL&lt;/strong&gt; ou &lt;strong&gt;R$&lt;/strong&gt;) é consultar &lt;em&gt;sites&lt;/em&gt; de corretoras.&lt;/p&gt;
+
+&lt;p&gt;Mas se você não precisa da cotação em tempo real e quer ter apenas uma noção, pode ser mais prático &lt;a href=&quot;https://www.google.com/search?q=bitcoin+real&quot;&gt;pesquisar no Google&lt;/a&gt;. Experimente pesquisar “&lt;a href=&quot;https://www.google.com/search?q=bitcoin+real&quot;&gt;bitcoin real&lt;/a&gt;” (sem as aspas):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/bitcoin-real.jpg&quot; title=&quot;No momento da escrita, 1 Bitcoin é igual a R$ 13.256,93.&quot;&gt;
+&lt;img src=&quot;/files/2018/12/bitcoin-real.jpg&quot; alt=&quot;No momento da escrita, 1 Bitcoin é igual a R$ 13.256,93.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;No momento da escrita, 1 Bitcoin é igual a R$ 13.256,93.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;divisões-de-bitcoins&quot;&gt;Divisões de Bitcoins&lt;/h2&gt;
+
+&lt;p&gt;A moeda Bitcoin pode ser dividida em até 8 casas decimais.&lt;/p&gt;
+
+&lt;p&gt;A menor unidade de Bitcoin é chamada de &lt;strong&gt;satoshi&lt;/strong&gt;, em homenagem ao seu criador.&lt;/p&gt;
+
+&lt;pre&gt;1 satoshi = 0,00000001 BTC&lt;/pre&gt;
+
+&lt;p&gt;Dessa forma, ainda que o valor de 1 BTC fosse elevado, seria possível transacionar qualquer valor. Se 1 BTC valesse 1 milhão de dólares, 1 satoshi valeria 1 centavo de dólar.&lt;/p&gt;
+
+&lt;p&gt;Se 1 BTC vale 13 mil reais, 1 satoshi vale 0,00013 reais (menos que 1 centavo de real).&lt;/p&gt;
+
+&lt;p&gt;Outra unidade comum é o &lt;strong&gt;milibitcoin&lt;/strong&gt; (1 milésimo de Bitcoin), abreviado por &lt;strong&gt;mBTC&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;1 mBTC = 1/1.000 BTC = 0,001 BTC = 100.000 satoshis&lt;/pre&gt;
+
+&lt;p&gt;Se 1 BTC vale 13 mil reais, 1 mBTC vale 13 reais.&lt;/p&gt;
+
+&lt;h2 id=&quot;corretoras-bitcoin&quot;&gt;Corretoras Bitcoin&lt;/h2&gt;
+
+&lt;p&gt;No Brasil há várias corretoras por meio das quais é possível comprar e vender Bitcoins. As mais antigas em funcionamento incluem: &lt;a href=&quot;https://www.mercadobitcoin.com.br/&quot;&gt;Mercado Bitcoin&lt;/a&gt;, &lt;a href=&quot;https://pt.bitcointoyou.com/&quot;&gt;Bitcoin To You&lt;/a&gt;, &lt;a href=&quot;https://coinbr.net/&quot;&gt;CoinBR&lt;/a&gt;, &lt;a href=&quot;https://foxbit.com.br/&quot;&gt;FoxBit&lt;/a&gt;, &lt;a href=&quot;https://www.flowbtc.com.br/&quot;&gt;FlowBTC&lt;/a&gt; e &lt;a href=&quot;https://www.bitcointrade.com.br/&quot;&gt;BitcoinTrade&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na escolha da corretora, você deve levar em consideração alguns pontos como o volume de negociação (um grande número de usuários sugere um bom serviço), recursos de segurança, formas de transferir dinheiro, bancos suportados, entre outros. As corretoras não cobram taxas para manter a conta, como geralmente fazem os bancos, mas cobram pequenas taxas em cada transação. Para mais informações, leia &lt;a href=&quot;https://ferasdobitcoin.com/corretoras-de-bitcoin-no-brasil/&quot;&gt;esse texto&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eu já possuía conta na &lt;a href=&quot;https://www.mercadobitcoin.com.br/&quot;&gt;Mercado Bitcoin&lt;/a&gt; e nunca tive problemas com ela, então vou usá-la como exemplo aqui. Não vou falar muito sobre a corretora, apenas o essencial para entender como funciona o Bitcoin, porque o foco é no Bitcoin em si e na carteira Electrum.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin.jpg&quot; title=&quot;[Mercado Bitcoin](https://www.mercadobitcoin.com.br): a primeira corretora Bitcoin do Brasil.&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin.jpg&quot; alt=&quot;[Mercado Bitcoin](https://www.mercadobitcoin.com.br): a primeira corretora Bitcoin do Brasil.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.mercadobitcoin.com.br&quot;&gt;Mercado Bitcoin&lt;/a&gt;: a primeira corretora Bitcoin do Brasil.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;carteiras-bitcoin&quot;&gt;Carteiras Bitcoin&lt;/h2&gt;
+
+&lt;p&gt;Existem diversos &lt;a href=&quot;https://guiadobitcoin.com.br/tipos-de-carteira-bitcoin-escolha-a-sua/&quot;&gt;tipos de carteiras&lt;/a&gt;, cada uma com suas vantagens e desvantagens: aplicativos para computadores (&lt;em&gt;desktops&lt;/em&gt;), celulares (&lt;em&gt;smartphones&lt;/em&gt;), carteiras de &lt;em&gt;hardware&lt;/em&gt;, &lt;em&gt;web&lt;/em&gt; e de papel também. O &lt;a href=&quot;https://bitcoin.org/pt_BR/escolha-sua-carteira&quot;&gt;&lt;em&gt;site&lt;/em&gt; do Projeto Bitcoin lista algumas carteiras disponíveis&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dentre elas, carteiras que são aplicativos para &lt;em&gt;desktop&lt;/em&gt;, funcionam no &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; e possuem &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt; incluem: &lt;a href=&quot;https://bitcoin.org/en/bitcoin-core/&quot;&gt;Bitcoin Core&lt;/a&gt;, &lt;a href=&quot;https://bitcoinknots.org&quot;&gt;Bitcoin Knots&lt;/a&gt;, &lt;a href=&quot;https://www.bitcoinarmory.com&quot;&gt;Armory&lt;/a&gt;, &lt;a href=&quot;https://bither.net&quot;&gt;Bither&lt;/a&gt; e &lt;a href=&quot;https://electrum.org&quot;&gt;Electrum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A carteira &lt;a href=&quot;https://bitcoin.org/en/bitcoin-core/&quot;&gt;Bitcoin Core&lt;/a&gt; é do próprio Projeto Bitcoin, mas também faz mineração. Portanto, consome bastante processador e disco. Use apenas se deseja minerar.&lt;/p&gt;
+
+&lt;p&gt;A carteira &lt;a href=&quot;https://bither.net&quot;&gt;Bither&lt;/a&gt; é a que está disponível para mais sistemas e dispositivos (Linux, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, &lt;a href=&quot;http://www.apple.com/br/macosx/&quot;&gt;Mac OS X&lt;/a&gt;, &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; e &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt;), mas o &lt;em&gt;site&lt;/em&gt; é muito simples, não oferece documentação e eu não consegui baixar a versão para Linux.&lt;/p&gt;
+
+&lt;p&gt;Assim, escolhi usar a carteira &lt;a href=&quot;https://electrum.org&quot;&gt;Electrum&lt;/a&gt; por ser a segunda com mais sistemas suportados (Linux, Android, Windows e Mac OS X) e possuir boa documentação tanto em seu &lt;a href=&quot;https://electrum.org&quot;&gt;&lt;em&gt;site&lt;/em&gt;&lt;/a&gt; quanto &lt;a href=&quot;https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/&quot;&gt;em outros&lt;/a&gt;. Além disso, o &lt;em&gt;site&lt;/em&gt; da Electrum disponibiliza a assinatura dos &lt;em&gt;downloads&lt;/em&gt;, de modo que é possível &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;verificar a autenticidade do arquivo baixado&lt;/a&gt;. É importante sempre fazer essa verificação, especialmente no caso de programas críticos para a segurança, como essa carteira. Seu código-fonte está &lt;a href=&quot;https://github.com/spesmilo/electrum&quot;&gt;disponível no GitHub&lt;/a&gt; e recebe atualizações frequentes, outro ponto importante a se considerar.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;instalação-da-carteira-electrum&quot;&gt;Instalação da carteira Electrum&lt;/h2&gt;
+
+&lt;p&gt;Antes de instalar a carteira Electrum propriamente dita, vamos instalar seus pré-requisitos:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install python3-setuptools python3-qt5 python3-pip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Um apressado, que dispensa verificação de autenticidade, poderia instalar a carteira rodando apenas o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# python3 -m pip install https://download.electrum.org/3.2.3/Electrum-3.2.3.tar.gz#egg=electrum[fast]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Mas vamos fazer as coisas do jeito mais seguro, como aprendemos no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;Verificação de integridade e autenticidade com SHA-256 e GPG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Acesse o &lt;a href=&quot;https://electrum.org&quot;&gt;&lt;em&gt;site&lt;/em&gt; da carteira Electrum&lt;/a&gt; e clique em &lt;strong&gt;&lt;em&gt;Download&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Desça até &lt;strong&gt;&lt;em&gt;Installation from Python sources&lt;/em&gt;&lt;/strong&gt; (instalação a partir do código-fonte em Python). Clique em &lt;strong&gt;Electrum-3.2.3.tar.gz&lt;/strong&gt; e depois no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;&lt;em&gt;signature&lt;/em&gt;&lt;/strong&gt; (assinatura) ao lado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-download-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-download-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você deve ter dois novos arquivos na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Downloads&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Electrum-3.2.3.tar.gz&lt;/code&gt; (o código-fonte) e&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Electrum-3.2.3.tar.gz.asc&lt;/code&gt; (a assinatura GPG do código-fonte).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Para obter a chave pública do desenvolvedor, clique no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;ThomasV&lt;/strong&gt;, no início da página, onde se lê &lt;em&gt;Sources and executables are signed by ThomasV&lt;/em&gt; (códigos-fonte e executáveis são assinados por ThomasV):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-download-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-download-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na página que abre, veja o grande número em hexadecimal:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-download-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-download-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Esse número é a identificação da chave pública do desenvolvedor. Para importá-la, copie o número após &lt;code class=&quot;highlighter-rouge&quot;&gt;0x&lt;/code&gt; e execute o comando a seguir, colando o número:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --recv-keys 2bd5824b7f9470e6
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Opcionalmente, se você possui uma chave GPG, assine a chave pública importada:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --edit-key 2bd5824b7f9470e6
+&amp;gt; trust
+&amp;gt; sign
+&amp;gt; quit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verifique a assinatura GPG do código-fonte com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --verify Electrum-3.2.3.tar.gz.asc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Certifique-se de que aparece o aviso de boa assinatura (&lt;em&gt;good signature&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: assuming signed data in 'Electrum-3.2.3.tar.gz'
+gpg: Signature made seg 17 set 2018 08:59:04 -03
+gpg:                using RSA key 2BD5824B7F9470E6
+gpg: a verificar a base de dados de confiança
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   3  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 3u
+gpg: proxima verificação da base de dados de confiança a 2020-10-05
+gpg: Good signature from &quot;Thomas Voegtlin (https://electrum.org) &amp;lt;thomasv@electrum.org&amp;gt;&quot; [ultimate]
+gpg:                 aka &quot;ThomasV &amp;lt;thomasv1@gmx.de&amp;gt;&quot; [ultimate]
+gpg:                 aka &quot;Thomas Voegtlin &amp;lt;thomasv1@gmx.de&amp;gt;&quot; [ultimate]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse ponto, se a verificação de autenticidade sucedeu, podemos confiar tranquilamente no código-fonte baixado e seguir à instalação.&lt;/p&gt;
+
+&lt;p&gt;A página da Electrum não disponibiliza soma de verificação, mas se a integridade do arquivo estivesse prejudicada, a verificação de autenticidade falharia.&lt;/p&gt;
+
+&lt;p&gt;Tentei explicar a verificação de autenticidade de forma resumida. Se algo aqui não fez sentido pra você, leia &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;o &lt;em&gt;post&lt;/em&gt; completo sobre verificação de integridade e autenticidade&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por fim, vamos à instalação da carteira propriamente dita usando o código-fonte baixado:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# python3 -m pip install Electrum-3.2.3.tar.gz
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;primeiro-uso-da-carteira-electrum&quot;&gt;Primeiro uso da carteira Electrum&lt;/h2&gt;
+
+&lt;p&gt;Para iniciar a carteira Electrum, abra o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;electrum&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-atividades.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-atividades.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No primeiro uso, a Electrum apresenta um assistente de configuração:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para um iniciante, é seguro aceitar todas as configurações padrão clicando em &lt;strong&gt;Próximo&lt;/strong&gt;…&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;…até chegar nesta tela (&lt;strong&gt;não&lt;/strong&gt; clique em &lt;strong&gt;Próximo&lt;/strong&gt; ainda):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa tela mostra a &lt;strong&gt;chave privada&lt;/strong&gt; (&lt;em&gt;private key&lt;/em&gt;) ou &lt;strong&gt;semente&lt;/strong&gt; (&lt;em&gt;seed&lt;/em&gt;) da sua &lt;strong&gt;carteira Bitcoin&lt;/strong&gt; (&lt;em&gt;Bitcoin wallet&lt;/em&gt;). Anote-a em um lugar seguro (se você é paranoico com segurança, anote-a em um papel). Ela permitirá recuperar a carteira, caso algo dê errado.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Somente após anotar&lt;/strong&gt; sua chave privada, clique em &lt;strong&gt;Próximo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa tela pede que você digite sua chave privada. Digite-a no campo de texto e, caso esteja correta, o botão &lt;strong&gt;Próximo&lt;/strong&gt; se tornará disponível. Feito isso, clique nele.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-config-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-config-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na última tela do assistente, você tem a oportunidade de criar uma senha para proteger a carteira, o que é &lt;strong&gt;altamente recomendável&lt;/strong&gt;. Caso seu computador seja comprometido (roubado, por exemplo), a carteira estará protegida por senha e não será possível fazer transações com seus Bitcoins nem visualizar seu histórico.&lt;/p&gt;
+
+&lt;p&gt;Digite uma senha no campo de cima, digite-a novamente no campo de baixo, certifique-se de que a opção &lt;strong&gt;Criptografar o arquivo da carteira&lt;/strong&gt; esteja marcada e clique em &lt;strong&gt;Próximo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Encerrado o assistente de configuração, você verá a tela principal da carteira Electrum:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-tela-inicial.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-tela-inicial.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Sua carteira foi criada em &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/nomedeusuario/.electrum/wallets/default_wallet&lt;/code&gt;. Esse arquivo é criptografado e armazena o endereço Bitcoin e a chave privada da carteira.&lt;/p&gt;
+
+&lt;h2 id=&quot;depósito-transferir-reais-do-banco-para-a-corretora&quot;&gt;Depósito: transferir reais do banco para a corretora&lt;/h2&gt;
+
+&lt;p&gt;Antes de comprar Bitcoins (converter reais em Bitcoins), você precisa transferir reais da sua conta no banco para a conta indicada pela corretora usando TED ou DOC. É importante que a conta bancária seja &lt;strong&gt;sua (em seu nome)&lt;/strong&gt;, não no nome de um parente, amigo ou conhecido.&lt;/p&gt;
+
+&lt;p&gt;Para fim de demonstração, nesse tutorial vou transferir R$ 100,00 (cem reais). Uma quantia menor talvez não fosse interessante, porque são descontadas taxas nas operações. Lembro mais uma vez da observação do início: a cotação do Bitcoin é volátil, recomendo que você não reproduza esse tutorial se não há necessidade, pois corre o &lt;strong&gt;risco de perder dinheiro&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Mercado Bitcoin não cobra taxa dos depósitos, que são reconhecidos no mesmo dia se feitos em dias úteis das 10:00 às 17:00. Para depositar, faça &lt;em&gt;login&lt;/em&gt; e clique em &lt;strong&gt;Depósitos&lt;/strong&gt; no menu à esquerda. Informe o &lt;strong&gt;Valor do depósito&lt;/strong&gt; e opcionalmente uma &lt;strong&gt;Descrição&lt;/strong&gt;. Por fim, clique em &lt;strong&gt;Confirmar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-deposito-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-deposito-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Tome nota dos dados da conta da corretora e clique em &lt;strong&gt;Fechar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-deposito-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-deposito-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enquanto aguarda o depósito, a corretora mostra &lt;strong&gt;Aguardando aprovação&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-deposito-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-deposito-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça a transferência usando o aplicativo ou o &lt;em&gt;netbanking&lt;/em&gt; do seu banco.&lt;/p&gt;
+
+&lt;p&gt;Quando o Mercado Bitcoin identificar o depósito, você receberá um &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-deposito-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-deposito-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aí poderá proceder à compra de Bitcoins.&lt;/p&gt;
+
+&lt;h2 id=&quot;comprar-converter-reais-em-bitcoins&quot;&gt;Comprar: converter reais em Bitcoins&lt;/h2&gt;
+
+&lt;p&gt;No Mercado Bitcoin, contanto que haja &lt;strong&gt;Saldo disponível&lt;/strong&gt; em reais, você pode comprar Bitcoins a qualquer hora, mesmo nos finais de semana. Para comprar Bitcoins, clique em &lt;strong&gt;Comprar&lt;/strong&gt; no menu à esquerda. Informe o &lt;strong&gt;Valor em Reais&lt;/strong&gt; e clique em &lt;strong&gt;Comprar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-compra-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-compra-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que é feita a conversão de reais em Bitcoins conforme o &lt;strong&gt;Preço Médio&lt;/strong&gt; e depois descontada uma &lt;strong&gt;Comissão&lt;/strong&gt;, que no caso do Mercado Bitcoin é de 0,7% (em Bitcoins). A compra é executada de imediato. O &lt;strong&gt;Saldo disponível&lt;/strong&gt; em reais diminui e o &lt;strong&gt;Saldo disponível&lt;/strong&gt; em &lt;strong&gt;Bitcoin&lt;/strong&gt; aumenta de acordo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-compra-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-compra-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Assim como no depósito, o Mercado Bitcoin envia um &lt;em&gt;e-mail&lt;/em&gt; avisando da compra. Também é possível ver o depósito e a compra no &lt;strong&gt;Extrato de operações&lt;/strong&gt;. Para acessá-lo, clique em &lt;strong&gt;Ver extrato&lt;/strong&gt; no menu à esquerda.&lt;/p&gt;
+
+&lt;p&gt;Na corretora, você possui uma carteira e um endereço, mas &lt;a href=&quot;https://moneytimes.com.br/por-que-voce-nao-deveria-comprar-ou-deixar-bitcoin-em-nenhuma-corretora/&quot;&gt;não é recomendado deixar seus Bitcoins na corretora&lt;/a&gt;. Carteiras &lt;em&gt;web&lt;/em&gt; estão sujeitas a ataques &lt;em&gt;hackers&lt;/em&gt;, então vejamos como transferir nossos recém comprados Bitcoins para a Electrum, nossa carteira &lt;em&gt;desktop&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;transferir-bitcoins-para-a-carteira&quot;&gt;Transferir Bitcoins para a carteira&lt;/h2&gt;
+
+&lt;p&gt;Transferências de Bitcoins podem ser feitas a qualquer hora, mesmo nos finais de semana.&lt;/p&gt;
+
+&lt;p&gt;Para transferir Bitcoins para a carteira Electrum, abra o aplicativo e selecione a guia &lt;strong&gt;Receber&lt;/strong&gt;. Selecione e copie o &lt;strong&gt;Endereço de recebimento&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-receber-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-receber-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No Mercado Bitcoin, clique em &lt;strong&gt;Transferir&lt;/strong&gt; no menu à esquerda. Cole o endereço copiado em &lt;strong&gt;Endereço bitcoin de destino&lt;/strong&gt; e informe a &lt;strong&gt;Quantidade&lt;/strong&gt; de Bitcoins a transferir:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-receber-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-receber-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que a &lt;strong&gt;Quantidade&lt;/strong&gt; não pode ser exatamente igual ao &lt;strong&gt;Saldo disponível&lt;/strong&gt; em &lt;strong&gt;Bitcoin&lt;/strong&gt;, porque há a &lt;strong&gt;Taxa dos mineradores&lt;/strong&gt; a ser paga. Essa taxa é somada à &lt;strong&gt;Quantidade&lt;/strong&gt; e informada em &lt;strong&gt;Total&lt;/strong&gt;, que deve ser menor ou igual ao saldo. Opcionalmente, você pode informar uma &lt;strong&gt;Descrição&lt;/strong&gt; para a transferência. Se configurou a autenticação em dois passos, preencha o campo &lt;strong&gt;Token&lt;/strong&gt;. Quando terminar, clique em &lt;strong&gt;Transferir Bitcoins&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Mercado Bitcoin envia um &lt;em&gt;e-mail&lt;/em&gt; avisando que fez a transferência.&lt;/p&gt;
+
+&lt;p&gt;Volte à carteira Electrum, selecione a guia &lt;strong&gt;Histórico&lt;/strong&gt; e perceba que a transação já aparece:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-receber-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-receber-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A transação já foi divulgada a todos os usuários da rede (&lt;em&gt;broadcasting&lt;/em&gt;), mas ainda não foi confirmada (&lt;em&gt;unconfirmed&lt;/em&gt;). Na sequência, os mineradores devem confirmar a transação. Enquanto a transação é confirmada, os Bitcoins ainda não podem ser usados - perceba que a barra de estado mostra &lt;strong&gt;Balanço: 0&lt;/strong&gt;, como se ainda não houvesse Bitcoins na carteira.&lt;/p&gt;
+
+&lt;p&gt;Você pode ver mais informações sobre a transferência clicando com o botão direito nela e clicando em seguida em &lt;strong&gt;Detalhes&lt;/strong&gt;. Aparece uma caixa de diálogo que mostra, entre outras coisas, a &lt;strong&gt;Taxa&lt;/strong&gt; que foi paga aos mineradores:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-receber-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-receber-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O processo de confirmação é automático, não requer intervenção humana, apenas o trabalho dos computadores conectados à rede Bitcoin. Após algumas confirmações (normalmente, pelo menos seis), a transação é confirmada:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-receber-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-receber-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, a transação é registrada no &lt;em&gt;blockchain&lt;/em&gt; e os Bitcoins já podem ser usados. Note o balanço (saldo) atualizado na barra de estado. No meu caso, o processo de confirmação demorou 1 hora. Poderia ter demorado menos, se eu tivesse pago uma taxa maior.&lt;/p&gt;
+
+&lt;h2 id=&quot;transferir-bitcoins-da-carteira&quot;&gt;Transferir Bitcoins da carteira&lt;/h2&gt;
+
+&lt;p&gt;Para exemplificar a transferência de Bitcoins a partir da carteira Electrum, vejamos como devolvê-los para a corretora.&lt;/p&gt;
+
+&lt;p&gt;No Mercado Bitcoin, clique em &lt;strong&gt;Receber&lt;/strong&gt; no menu à esquerda e copie o endereço informado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Abra a carteira Electrum, selecione a guia &lt;strong&gt;Enviar&lt;/strong&gt;, cole o endereço no campo &lt;strong&gt;Pagar para&lt;/strong&gt; e informe a &lt;strong&gt;Quantidade&lt;/strong&gt; de Bitcoins a ser transferida. Caso deseje transferir todos os Bitcoins, clique no botão &lt;strong&gt;Máximo&lt;/strong&gt;. Opcionalmente, forneça uma &lt;strong&gt;Descrição&lt;/strong&gt; para a transferência:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aqui também você deve se atentar à taxa: o valor total da transação é a soma da &lt;strong&gt;Quantidade&lt;/strong&gt; com a &lt;strong&gt;Taxa&lt;/strong&gt;. O campo &lt;strong&gt;Quantidade&lt;/strong&gt; é destacado em vermelho caso não haja saldo disponível. Você pode personalizar a taxa a ser paga aos mineradores deslizando o controle &lt;strong&gt;Taxa&lt;/strong&gt; para a esquerda ou direita conforme deseje reduzir ou aumentar a taxa, respectivamente.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Visualização&lt;/strong&gt; antes de fazer a transferência. Aparece uma caixa de diálogo que mostra, entre outras coisas, a &lt;strong&gt;Taxa&lt;/strong&gt; que será paga aos mineradores:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A transação pode ser efetivada na própria caixa de diálogo &lt;strong&gt;Transação&lt;/strong&gt;, clicando em &lt;strong&gt;Assinar&lt;/strong&gt; e depois em &lt;strong&gt;Transmitir&lt;/strong&gt;, ou você pode &lt;strong&gt;Fechar&lt;/strong&gt; essa caixa de diálogo e, de volta à tela principal da Electrum, clicar em &lt;strong&gt;Enviar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A Electrum pede a senha da carteira, informe-a e clique em &lt;strong&gt;Concluído&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em seguida, é informado que houve a divulgação (&lt;em&gt;broadcasting&lt;/em&gt;) da transação, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a guia &lt;strong&gt;Histórico&lt;/strong&gt; e acompanhe o processo de confirmação:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Assim que foi divulgada, a transação ainda aparece como não confirmada (&lt;em&gt;unconfirmed&lt;/em&gt;). Conforme vai recebendo confirmações, a Electrum vai atualizando o ícone da transação:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Após algumas confirmações (normalmente, pelo menos seis), a transação é confirmada. O processo para essa transação também demorou 1 hora.&lt;/p&gt;
+
+&lt;p&gt;Quando a transação é confirmada, o Mercado Bitcoin envia &lt;em&gt;e-mail&lt;/em&gt; informando que a recebeu e já é possível ver o &lt;strong&gt;Saldo disponível&lt;/strong&gt; em &lt;strong&gt;Bitcoin&lt;/strong&gt; e o &lt;strong&gt;Extrato de operações&lt;/strong&gt; atualizados.&lt;/p&gt;
+
+&lt;p&gt;Horas depois, é possível ver que a transação segue recebendo confirmações:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/electrum-enviar-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/electrum-enviar-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; em transações de Bitcoins, não memorize endereços, pois eles podem mudar. Sempre confira para qual endereço deve enviar Bitcoins. Não vou explicar aqui, mas caso queira saber mais, pesquise sobre &lt;a href=&quot;https://bitzuma.com/posts/who-needs-bitcoin-change-addresses-anyway/&quot;&gt;endereços de troco (&lt;em&gt;change addresses&lt;/em&gt;)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;vender-converter-bitcoins-em-reais&quot;&gt;Vender: converter Bitcoins em reais&lt;/h2&gt;
+
+&lt;p&gt;No Mercado Bitcoin, contanto que haja &lt;strong&gt;Saldo disponível&lt;/strong&gt; em &lt;strong&gt;Bitcoin&lt;/strong&gt;, você pode vender Bitcoins a qualquer hora, mesmo nos finais de semana. Para vender Bitcoins, clique em &lt;strong&gt;Vender&lt;/strong&gt; no menu à esquerda. Informe a &lt;strong&gt;Quantidade de Bitcoins&lt;/strong&gt; e clique em &lt;strong&gt;Vender&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-venda.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-venda.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que é feita a conversão de Bitcoins em reais conforme o &lt;strong&gt;Preço Médio&lt;/strong&gt; e depois descontada uma &lt;strong&gt;Comissão&lt;/strong&gt;, que no caso do Mercado Bitcoin é de 0,7% (em reais). A venda é executada de imediato. O &lt;strong&gt;Saldo disponível&lt;/strong&gt; em &lt;strong&gt;Bitcoin&lt;/strong&gt; diminui e o &lt;strong&gt;Saldo disponível&lt;/strong&gt; em reais aumenta de acordo. Assim como na compra, o Mercado Bitcoin envia um &lt;em&gt;e-mail&lt;/em&gt; avisando da venda e também é possível ver a operação no &lt;strong&gt;Extrato de operações&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;saque-transferir-reais-da-corretora-para-o-banco&quot;&gt;Saque: transferir reais da corretora para o banco&lt;/h2&gt;
+
+&lt;p&gt;No Mercado Bitcoin, contanto que haja &lt;strong&gt;Saldo disponível&lt;/strong&gt; em reais, você pode solicitar saque de reais para sua conta bancária a qualquer hora. Se solicitado até às 18 horas, o saque será efetuado em um prazo máximo de 3 dias úteis.&lt;/p&gt;
+
+&lt;p&gt;Para sacar, clique em &lt;strong&gt;Saque&lt;/strong&gt; no menu à esquerda:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/mercado-bitcoin-saque.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/mercado-bitcoin-saque.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a &lt;strong&gt;Conta bancária&lt;/strong&gt; (assim como no depósito, deve ser em seu nome), informe o &lt;strong&gt;Valor da retirada&lt;/strong&gt; (se deseja sacar todo o saldo disponível, clique no botão &lt;strong&gt;Saldo&lt;/strong&gt;), verifique a &lt;strong&gt;Comissão&lt;/strong&gt; cobrada (1,99% + R$ 2,90) e o valor que &lt;strong&gt;Será despositado&lt;/strong&gt;. Informe o &lt;strong&gt;PIN de segurança&lt;/strong&gt; e opcionalmente uma &lt;strong&gt;Descrição&lt;/strong&gt; para o saque. Por fim, clique em &lt;strong&gt;Solicitar saque&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Feito isso, é só aguardar o valor do saque entrar na sua conta bancária até o prazo estimado. Confira seu extrato bancário!&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Nesse tutorial, entendemos como funciona o Bitcoin, instalamos a carteira Electrum e vimos como manusear o Bitcoin na prática, comprando, transferindo e vendendo Bitcoins.&lt;/p&gt;
+
+&lt;p&gt;Se um dia você precisar transacionar Bitcoins, já dispõe do mínimo necessário para começar. Espero que tenha gostado e que possa ser útil.&lt;/p&gt;
+
+&lt;p&gt;Siga o Linux Kamarada para ser notificado da publicação de outros textos como esse.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;Bitcoin: A Peer-to-Peer Electronic Cash System&lt;/a&gt; (artigo do Bitcoin)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.empiricus.com.br/artigos/bitcoin/&quot;&gt;O que é Bitcoin e como investir? - Empiricus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bitcoin.org/pt_BR/como-funciona&quot;&gt;Como o Bitcoin funciona? - Bitcoin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.politize.com.br/bitcoin-o-que-e-como-usar/&quot;&gt;Bitcoin: o que é e como usar? - Politize!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techtudo.com.br/artigos/noticia/2012/05/o-que-e-bitcoin.html&quot;&gt;O que é bitcoin? Perguntas e respostas sobre a moeda virtual - TechTudo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vocemaisrico.com/bitcoin-o-que-e-e-como-ganhar/&quot;&gt;Bitcoin - O que é e como ganhar dinheiro com ele? - Você MAIS Rico&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ferasdobitcoin.com/corretoras-de-bitcoin-no-brasil/&quot;&gt;As melhores corretoras de Bitcoin no Brasil - Feras do Bitcoin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.maketecheasier.com/bitcoin-clients-for-linux/&quot;&gt;5 of the Best Bitcoin Clients for Linux - Make Tech Easier&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/&quot;&gt;A Beginner’s Guide to the Electrum Bitcoin Wallet - Bitzuma&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Bitcoin é uma moeda digital que circula apenas eletronicamente, pela Internet. Já existe há 10 anos e mostra que veio pra ficar. Por enquanto o Bitcoin tem sido usado mais para especulação que outra coisa, mas já há lojas e serviços que aceitam pagamento em Bitcoins e projetos que aceitam doações em Bitcoins, a exemplo da Wikipedia. Nesse tutorial, você vai aprender como transacionar Bitcoins usando a carteira Electrum.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/12/bitcoin.jpg" /></entry><entry xml:lang="en"><title type="html">Verifying data integrity and authenticity using SHA-256 and GPG</title><link href="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/" rel="alternate" type="text/html" title="Verifying data integrity and authenticity using SHA-256 and GPG" /><published>2018-11-08T19:15:00-02:00</published><updated>2018-11-08T19:20:42-02:00</updated><id>https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg</id><content type="html" xml:base="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/">&lt;p&gt;Sometimes it is important to verify a downloaded file. For example, the &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_image&quot;&gt;ISO image&lt;/a&gt; of a &lt;a href=&quot;https://en.wikipedia.org/wiki/Linux_distribution&quot;&gt;Linux distribution&lt;/a&gt; - it contains the operating system that you will use or install on your computer, bad things may happen if the file was corrupted during download or tampered by a &lt;a href=&quot;https://en.wikipedia.org/wiki/Man-in-the-middle_attack&quot;&gt;man-in-the-middle attack&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Two common verifications that greatly reduce chances of using a corrupted or tampered file are &lt;a href=&quot;https://en.wikipedia.org/wiki/Checksum&quot;&gt;checksum&lt;/a&gt; and &lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;digital signature&lt;/a&gt;:&lt;/p&gt;
 
@@ -3217,280 +3831,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
   &lt;li&gt;&lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;The GNU Privacy Handbook&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/GnuPrivacyGuardHowto&quot;&gt;GnuPrivacyGuardHowto&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://security.stackexchange.com/a/120926&quot;&gt;digital signature - Verify a key was signed by another key - Information Security Stack Exchange&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a soma de verificação e a assinatura digital. Nesse post, você verá como fazê-las com o sha256sum e o gpg, dois utilitários de linha de comando que por padrão já vem instalados na maioria das distribuições Linux. Se você nunca utilizou o terminal do Linux, não se assuste: verá que não é tão difícil como dizem por aí.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/how-to-verify-iso.png" /></entry><entry xml:lang="pt"><title type="html">Assinando e-mails enviados com certificado digital no Thunderbird</title><link href="https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/" rel="alternate" type="text/html" title="Assinando e-mails enviados com certificado digital no Thunderbird" /><published>2018-09-24T13:30:00-03:00</published><updated>2018-09-24T16:50:02-03:00</updated><id>https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Embora hoje o &lt;em&gt;webmail&lt;/em&gt; seja mais popular que o cliente de &lt;em&gt;e-mail&lt;/em&gt;, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com o cliente de &lt;em&gt;e-mail&lt;/em&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais e também sobre o Thunderbird:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/&quot;&gt;Sincronizando o Gmail no Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;configurando-a-assinatura-digital-no-thunderbird&quot;&gt;Configurando a assinatura digital no Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;Para poder utilizar o &lt;em&gt;token&lt;/em&gt; no Thunderbird, vamos cadastrá-lo como um dispositivo de segurança.&lt;/p&gt;
-
-&lt;p&gt;Para isso, com o Thunderbird aberto, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, e depois clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e, por fim, no botão &lt;strong&gt;Dispositivos de segurança&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você configurou o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; para usar o &lt;em&gt;token&lt;/em&gt;, como instruímos em &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;, já deve ter percebido que o procedimento é semelhante.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;No campo &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que o &lt;em&gt;token&lt;/em&gt; é adicionado à lista de &lt;strong&gt;Dispositivos e módulos de segurança&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à tela principal do Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Segurança&lt;/strong&gt; e à direita, dentro de &lt;strong&gt;Assinatura digital&lt;/strong&gt;, clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione o &lt;strong&gt;Certificado&lt;/strong&gt; a ser usado para assinatura e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Como o objetivo é configurar a criptografia apenas para o envio, e não para a resposta, clique em &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-09.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-09.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Configurar contas&lt;/strong&gt;, caso deseje sempre assinar digitalmente os &lt;em&gt;e-mails&lt;/em&gt; que envia, marque a opção &lt;strong&gt;Assinar mensagens digitalmente (por padrão)&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt; para voltar à tela principal do Thunderbird.&lt;/p&gt;
-
-&lt;p&gt;A assinatura digital está configurada e pronta para ser utilizada.&lt;/p&gt;
-
-&lt;h2 id=&quot;enviando-e-mails-com-assinatura-digital&quot;&gt;Enviando e-mails com assinatura digital&lt;/h2&gt;
-
-&lt;p&gt;Na tela principal do Thunderbird, clique no botão &lt;strong&gt;Nova msg&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Redija a mensagem normalmente.&lt;/p&gt;
-
-&lt;p&gt;Antes de enviar, certifique-se de que a opção &lt;strong&gt;Assinar digitalmente&lt;/strong&gt;, dentro do menu &lt;strong&gt;Segurança&lt;/strong&gt;, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Enviar agora&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Thunderbird solicita o PIN do &lt;em&gt;token&lt;/em&gt; para assinar a mensagem no momento do envio:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;verificando-a-assinatura-digital-de-e-mails-recebidos&quot;&gt;Verificando a assinatura digital de e-mails recebidos&lt;/h2&gt;
-
-&lt;p&gt;Se o destinatário utiliza o cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird, ele pode verificar a assinatura digital da mensagem:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que a princípio o Thunderbird não reconhece a assinatura, exibindo &lt;strong&gt;A assinatura digital não é válida&lt;/strong&gt;. Isso pode acontecer porque ele não conhece o certificado da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;Autoridade Certificadora Raiz brasileira&lt;/a&gt;. Por tabela, ele não confia no certificado do remetente, que foi emitido por essa autoridade certificadora.&lt;/p&gt;
-
-&lt;p&gt;Já tratamos de situação parecida que ocorre no navegador Firefox em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; e a solução no caso do cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird é semelhante.&lt;/p&gt;
-
-&lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
-
-&lt;p&gt;Depois, volte ao Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt; e depois no item &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e por fim no botão &lt;strong&gt;Gerenciar certificados&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de certificados&lt;/strong&gt;, clique no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe o caminho para o certificado que você baixou.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo seguinte, marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique que a &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; aparece na lista de autoridades certificadoras:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-16.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-16.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pronto! Agora, se você voltar ao &lt;em&gt;e-mail&lt;/em&gt;, perceberá que a assinatura é reconhecida:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o destinatário utiliza o &lt;em&gt;webmail&lt;/em&gt;, pode ser que o &lt;em&gt;webmail&lt;/em&gt; possibilite verificar a assinatura da mensagem, como o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;, por exemplo, possibilita:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que o Gmail também não reconhece a assinatura, muito provavelmente pelo menos motivo: não conhece o certificado da ICP-Brasil. Infelizmente, a solução definitiva para isso demandaria ao &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt; instalar esse certificado em seus servidores.&lt;/p&gt;
-
-&lt;p&gt;Ainda assim, o Gmail te possibilita, clicando em &lt;strong&gt;Informações do remetente&lt;/strong&gt;, baixar o certificado do remetente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com isso, você pode verificar o certificado você mesmo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wwws.prodemge.gov.br/component/phocadownload/category/23-assinatura-digital-e-mail?download=63:manual-de-assinatura-digital-thunderbird&quot;&gt;Manual de assinatura de e-mail utilizando o Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com o cliente de e-mail Mozilla Thunderbird.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/thunderbird-token.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Por vezes pode ser importante verificar um arquivo obtido da Internet. Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a soma de verificação e a assinatura digital. Nesse post, você verá como fazê-las com o sha256sum e o gpg, dois utilitários de linha de comando que por padrão já vem instalados na maioria das distribuições Linux. Se você nunca utilizou o terminal do Linux, não se assuste: verá que não é tão difícil como dizem por aí.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/how-to-verify-iso.png" /></entry></feed>
