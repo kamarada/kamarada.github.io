@@ -9,10 +9,218 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Dec 2018 23:43:54 -0200</pubDate>
-        <lastBuildDate>Wed, 12 Dec 2018 23:43:54 -0200</lastBuildDate>
+        <pubDate>Sun, 16 Dec 2018 20:03:39 -0200</pubDate>
+        <lastBuildDate>Sun, 16 Dec 2018 20:03:39 -0200</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Assinando documentos ODF e PDF com o LibreOffice</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você possui um &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com a suíte de escritório &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, que é capaz de assinar não só os documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt; criados na própria suíte, como documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt; quaisquer (mesmo os criados fora da suíte).&lt;/p&gt;
+
+&lt;p&gt;O LibreOffice utiliza a infraestrutura de certificados digitais do navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;. Portanto, antes de assinar documentos com o LibreOffice, você deve ter o Firefox instalado (normalmente já vem na distribuição) e configurado para usar seu certificado digital. Esses dois &lt;em&gt;posts&lt;/em&gt; mostram como fazer essa configuração:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;assinando-um-documento-odf&quot;&gt;Assinando um documento ODF&lt;/h2&gt;
+
+&lt;p&gt;O formato de documento aberto (do inglês &lt;em&gt;Open Document Format&lt;/em&gt; - &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt;) é o formato de arquivo padrão do LibreOffice. Documentos ODF são identificados pelas extensões:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt; para documentos de texto (&lt;em&gt;&lt;strong&gt;t&lt;/strong&gt;ext&lt;/em&gt;), abertos com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/writer/&quot;&gt;Writer&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.ods&lt;/code&gt; para planilhas (&lt;em&gt;&lt;strong&gt;s&lt;/strong&gt;preadsheets&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/calc/&quot;&gt;Calc&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odp&lt;/code&gt; para apresentações de &lt;em&gt;slides&lt;/em&gt; (&lt;em&gt;&lt;strong&gt;p&lt;/strong&gt;resentations&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/impress/&quot;&gt;Impress&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odg&lt;/code&gt; para desenhos vetoriais (&lt;em&gt;&lt;strong&gt;g&lt;/strong&gt;raphic&lt;/em&gt;), abertos com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/draw/&quot;&gt;Draw&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odb&lt;/code&gt; para bases de dados (&lt;em&gt;data&lt;strong&gt;b&lt;/strong&gt;ase&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/base/&quot;&gt;Base&lt;/a&gt;; e&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odf&lt;/code&gt; para equações matemáticas (&lt;em&gt;&lt;strong&gt;f&lt;/strong&gt;ormula&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/math/&quot;&gt;Math&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A seguir, vamos ver como assinar um documento de texto (extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt;) no LibreOffice Writer, mas os passos são os mesmos para qualquer aplicativo da suíte LibreOffice.&lt;/p&gt;
+
+&lt;p&gt;Vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e clique em &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso o documento ainda não esteja salvo, o LibreOffice alerta que é necessário salvar o documento para que ele possa ser assinado e pergunta se deseja salvar o documento. Clique em &lt;strong&gt;Sim&lt;/strong&gt; e salve o documento:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, clique em &lt;strong&gt;Assinar documento&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O LibreOffice solicita a senha PIN do &lt;em&gt;token&lt;/em&gt;. Informe-a e clique em OK.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Selecionar certificado&lt;/strong&gt;, selecione o certificado e clique em &lt;strong&gt;Assinar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, note que ela mostra a assinatura:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Fechar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;verificando-a-assinatura-de-um-documento-odf&quot;&gt;Verificando a assinatura de um documento ODF&lt;/h2&gt;
+
+&lt;p&gt;Quando você abre um documento ODF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt; na barra de estado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para verificar a assinatura, você pode clicar duas vezes no ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt;, na barra de estado, ou clicar no botão &lt;strong&gt;Mostrar assinaturas&lt;/strong&gt;, na notificação.&lt;/p&gt;
+
+&lt;p&gt;É aberta a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, na qual você pode selecionar uma assinatura e clicar em &lt;strong&gt;Exibir certificado&lt;/strong&gt; para ver mais informações sobre o certificado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A mensagem &lt;strong&gt;Este certificado foi validado&lt;/strong&gt; indica que o LibreOffice conseguiu estabelecer o &lt;strong&gt;Caminho da certificação&lt;/strong&gt; até o certificado de uma autoridade certificadora conhecida:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso é o mesmo que o navegador faz quando você acessa um &lt;em&gt;site&lt;/em&gt; HTTPS e ele exibe o cadeado verde. Explicamos hierarquia de certificados em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;modificando-um-documento-odf-assinado&quot;&gt;Modificando um documento ODF assinado&lt;/h2&gt;
+
+&lt;p&gt;Note que você até pode modificar um documento ODF assinado, mas na hora de salvar o LibreOffice avisa que removerá todas as assinaturas que o documento tinha:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Será necessário assinar o documento novamente.&lt;/p&gt;
+
+&lt;p&gt;Com isso, quem abrir um documento que foi assinado e depois modificado pode abrir a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e verificar que ele foi assinado em outra data e hora, possivelmente por outra pessoa.&lt;/p&gt;
+
+&lt;h2 id=&quot;exportando-um-documento-como-um-pdf-assinado&quot;&gt;Exportando um documento como um PDF assinado&lt;/h2&gt;
+
+&lt;p&gt;O formato de documento portável (&lt;em&gt;Portable Document Format&lt;/em&gt; - &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt;) foi desenvolvido pela &lt;a href=&quot;https://www.adobe.com/br/&quot;&gt;Adobe&lt;/a&gt; para representar documentos de forma independente do aplicativo, do &lt;em&gt;hardware&lt;/em&gt; e do sistema operacional. Era no início um formato proprietário, que depois foi aberto. É comum compartilhar documentos como PDF na Internet, porque esse formato previne a perda de formatação.&lt;/p&gt;
+
+&lt;p&gt;Para exportar um documento ODF como um PDF assinado, vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Exportar como&lt;/strong&gt; e clique em &lt;strong&gt;Exportar como PDF&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Abra a guia &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e em &lt;strong&gt;Certificado&lt;/strong&gt; clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Selecionar certificado&lt;/strong&gt;, selecione o certificado e clique em &lt;strong&gt;Assinar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;Exportar&lt;/strong&gt; e salve o documento PDF.&lt;/p&gt;
+
+&lt;h2 id=&quot;verificando-a-assinatura-de-um-documento-pdf&quot;&gt;Verificando a assinatura de um documento PDF&lt;/h2&gt;
+
+&lt;p&gt;Você pode abrir documentos PDF no LibreOffice usando o aplicativo Draw.&lt;/p&gt;
+
+&lt;p&gt;Quando você abre um documento PDF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt; na barra de estado (da mesma forma como ele faz com documentos ODF):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para verificar a assinatura, você pode clicar duas vezes no ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt;, na barra de estado, ou clicar no botão &lt;strong&gt;Mostrar assinaturas&lt;/strong&gt;, na notificação.&lt;/p&gt;
+
+&lt;h2 id=&quot;assinando-um-documento-pdf-qualquer&quot;&gt;Assinando um documento PDF qualquer&lt;/h2&gt;
+
+&lt;p&gt;O LibreOffice consegue assinar documentos PDF criados não só pela própria suíte, como também quaisquer documentos PDF já existentes, ainda que criados por outros aplicativos.&lt;/p&gt;
+
+&lt;p&gt;Você pode iniciar a assinatura de um documento PDF a partir de qualquer aplicativo da suíte LibreOffice. Para isso, vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, clique em &lt;strong&gt;Assinar um PDF já existente&lt;/strong&gt; e abra o documento PDF que deve ser assinado.&lt;/p&gt;
+
+&lt;p&gt;O documento PDF é aberto no LibreOffice Draw no modo somente leitura:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Assinar documento&lt;/strong&gt;. Aparece a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O resto do procedimento é semelhante ao da assinatura de documentos ODF.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/About_Digital_Signatures/pt-BR&quot;&gt;Sobre assinaturas digitais - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/Applying_Digital_Signatures/pt-BR&quot;&gt;Assinar com assinaturas digitais - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vmiklos.hu/blog/pdf-sign.html&quot;&gt;Signing existing PDF files in LibreOffice&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 16 Dec 2018 20:00:00 -0200</pubDate>
+                <link>https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Bitcoin para iniciantes com a carteira Electrum</title>
@@ -3352,93 +3560,6 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
                 <pubDate>Wed, 12 Sep 2018 15:55:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Baseado no código do Enterprise, testado milhões de vezes: openSUSE Leap 15 lançado</title>
-                <description>&lt;p&gt;&lt;strong&gt;A nova comunidade criada sobre o SUSE Linux Enterprise 15 traz uma grande variedade de novos softwares, fácil migração para o SLE, atualizações transacionais, funções de servidor, imagens de nuvem escaláveis e laptops Linux&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A versão mais recente do openSUSE Leap 15 está oferecendo aos usuários profissionais, empreendedores e ISVs (Independent Software Vendors) uma base de código nova, reforçada e robusta para suas cargas de trabalho e que suportam hardware moderno, baseado em código aberto estável, enterprise em uma distribuição GNU/Linux comunidade - desenvolvida com um sistema de construção open source moderno, mais seguro, melhor testado e muito mais aberto, exclusivo do SUSE e do openSUSE.&lt;/p&gt;
-
-&lt;h2 id=&quot;novas-funcionalidades&quot;&gt;Novas funcionalidades&lt;/h2&gt;
-
-&lt;p&gt;O openSUSE Leap 15 agora permite a migração para o SUSE Linux Enterprise (SLE), traz um novo particionador, integra o Groupware Kopano, atualizado para o firewalld - e também vem distribuído pela Linode (para configurações de infraestrutura e nuvem) e hardware de ponta como os Laptops Tuxedo (outros fornecedores de computação em nuvem e hardware segurirão). Além disso, o Leap 15 introduz uma seleção de função do sistema com “‘servidor”’ ou “‘servidor transacional”’, com as atualizações transacionais e um sistema de arquivos raiz somente leitura. Isso traz todos os benefícios das atualizações atômicas para o escopo completo das implantações, da Internet das Coisas (IoT) e dispositivos incorporados a funções clássicas de servidor e desktop. Além disso, o Leap 15 foi continuamente otimizado para cenários de uso da nuvem como convidado de virtualização e ao mesmo tempo oferece uma grande variedade de desktops, incluindo o KDE e o GNOME, e apresenta o retorno de imagens ao vivo para uma simples condução de teste.&lt;/p&gt;
-
-&lt;h2 id=&quot;novo-visual-bem-próximo-com-o-sle&quot;&gt;Novo visual, bem próximo com o SLE&lt;/h2&gt;
-
-&lt;p&gt;Com um novo visual desenvolvido pela comunidade, o openSUSE Leap 15 traz muitos pacotes de comunidades construídos sobre um núcleo de fontes do &lt;a href=&quot;https://www.suse.com/products/server/&quot;&gt;SUSE Linux Enterprise (SLE)&lt;/a&gt; 15, com os dois principais lançamentos sendo construídos pela primeira vez em paralelo desde o início. O openSUSE Leap 15 compartilha um núcleo comum com o SLE 15, que deve ser lançado nos próximos meses. A primeira versão do Leap foi a versão 42.1 e foi baseada no primeiro Service Pack (SP1) do SLE 12. Três anos depois, a versão corporativa do SUSE e a versão da comunidade do openSUSE agora estão alinhadas na versão 15 com uma nova base.&lt;/p&gt;
-
-&lt;p&gt;“Ter uma distribuição comunitária que compartilha um DNA comum com a empresa é a maneira inteligente de interagir com o ecossistema de código aberto”’, disse Kai Dupke, usuário de longa data do openSUSE e gerente sênior de produto do SUSE Linux Enterprise 15. “‘O Leap oferece grande flexibilidade e liberdade de escolha para desenvolvedores e usuários.”&lt;/p&gt;
-
-&lt;h2 id=&quot;migração-facilitada-para-o-enterprise&quot;&gt;Migração facilitada para o Enterprise&lt;/h2&gt;
-
-&lt;p&gt;Conseqüentemente, pela primeira vez, o SUSE suportará a migração das instalações do servidor openSUSE Leap para o SUSE Linux Enterprise, o que torna mais fácil para os integradores de sistemas desenvolverem o código Leap e depois migrarem para uma versão corporativa para disponibilizar SLAs, certificação, implementação em massa e suporte estendido de longo termo.&lt;/p&gt;
-
-&lt;p&gt;“A atualização para um produto comercial pode ser complexa para os desenvolvedores que desejam migrar uma solução de uma distribuição Linux comunitária para uma distribuição enterprise”, explica Dupke. “Com o Leap 15 SUSE e Linux Enterprise Server 15, essa jornada é facilitada. Sabemos que a comunidade é onde as inovações acontecem e os desenvolvedores da comunidade Leap agora podem facilmente ampliar esse escopo no Linux enterprise, se necessário. O Leap 15 está oferecendo a transição mais rápida e flexível para serviços corporativos, suporte e manutenção.”&lt;/p&gt;
-
-&lt;h2 id=&quot;obs-openqa-melhor-testado-mais-seguro-e-mais-aberto-que-outros&quot;&gt;OBS, OpenQA: melhor testado, mais seguro e mais aberto que outros&lt;/h2&gt;
-
-&lt;p&gt;Usando o &lt;a href=&quot;https://build.opensuse.org/&quot;&gt;Open Build Service&lt;/a&gt; e o &lt;a href=&quot;https://openqa.opensuse.org/&quot;&gt;openQA&lt;/a&gt;, o openSUSE Leap se tornou a melhor e mais testada distribuição Linux, e é construído de forma diferente qualquer outra distribuição, usando um modelo de desenvolvimento muito mais seguro do que os concorrentes.&lt;/p&gt;
-
-&lt;p&gt;A distribuição da comunidade com sistema base corporativo é desenvolvida em cooperação com os desenvolvedores do SUSE usando ferramentas open source e openSUSE como o Open Build Service e openQA , que &lt;a href=&quot;https://www.suse.com/c/celebrate-openqa-one-million-reasons-believe-testing/&quot;&gt;executaram mais de um milhão de testes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Uma comunidade vibrante de desenvolvedores, a disponibilidade das ferramentas de código aberto e o alinhamento da distribuição entre o Leap e o SLE facilitam a contribuição dos desenvolvedores para o Leap e impulsionam ainda mais as inovações tecnológicas e as soluções de código aberto.&lt;/p&gt;
-
-&lt;h2 id=&quot;todos-os-padrões-e-alguns-novos-serviços-para-redes&quot;&gt;Todos os Padrões e Alguns Novos Serviços para Redes&lt;/h2&gt;
-
-&lt;p&gt;Para todos os usuários existentes do Leap, atualizações contínuas para o Leap 15 estão disponíveis. Qualquer migração é recomendada para ocorrer nos próximos seis meses. Como nas versões anteriores, os administradores de sistema e pequenas empresas podem usar o Leap para hospedagem de servidores web e de e-mail ou para gerenciamento de rede com DHCP, DNS, NTP, Samba, NFS, LDAP e centenas de outros serviços.&lt;/p&gt;
-
-&lt;p&gt;Os serviços de compartilhamento de arquivos e nuvem incluem softwares como o &lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; e até mesmo o aplicativo de groupware &lt;a href=&quot;https://kopano.com/&quot;&gt;Kopano&lt;/a&gt; (antes conhecido como Zarafa) fazem parte dos repositórios oficiais do Leap 15.&lt;/p&gt;
-
-&lt;h2 id=&quot;novo-instalador-particionador-e-alterado-para-o-firewalld&quot;&gt;Novo instalador, particionador e alterado para o Firewalld&lt;/h2&gt;
-
-&lt;p&gt;O Leap 15 melhora ainda mais uma das ferramentas mais poderosas do openSUSE, o YaST. Por exemplo, o subsistema particionador do Libstorage-ng foi reformulado, tornando-o mais poderoso e confiável e levando a facilidade de uso a um novo nível. O mesmo se aplica à mudança do SuSEfirewall2 para a ferramenta de gerenciamento de firewall amplamente usada, Firewalld, que oferece melhor integração com configurações de rede dinâmicas.&lt;/p&gt;
-
-&lt;p&gt;Administradores que precisam de implantações em massa, por exemplo em soluções em nuvem encontrará melhorias úteis no AutoYaST. Seus perfis contêm dados de instalação e configuração para simplificar instalações autônomas. A nova versão do AutoYaST se beneficia de perfis limpos, documentação estendida e agora suporta os novos recursos de particionamento do libstorage-ng.&lt;/p&gt;
-
-&lt;h2 id=&quot;imagens-implantação-e-hardware-com-linode-e-tuxedo&quot;&gt;Imagens, Implantação e Hardware com Linode e Tuxedo&lt;/h2&gt;
-
-&lt;p&gt;O lançamento público do Leap 15 não é apenas liberado como DVD e Network ISO: Linode é o fornecedor de hardware do TUXEDO Computers, que também têm imagens em nuvem do Leap. Enquanto o novíssimo InfinityBook Pro 13 da TUXEDO está imediatamente disponível com o Leap 15 pré-instalado e pronto para uso, o Linode tem o Leap disponível para todas as necessidades de infraestrutura. E há mais imagens em nuvem e provedores de hardware que fornecerão o Leap 15 nas próximas semanas, pré-instalados ou implantáveis.&lt;/p&gt;
-
-&lt;h2 id=&quot;atualizações-atômicas-pelo-kubic-construção-em-blocos-de-para-profissionais&quot;&gt;Atualizações Atômicas pelo Kubic: construção em blocos de para profissionais&lt;/h2&gt;
-
-&lt;p&gt;Esta versão tem uma seleção do tipo de sistema, dando como opções uma função de servidor clássica e uma função de servidor transacional. Contribuído pelo projeto da plataforma em contêiner do openSUSE Kubic, essa função usa atualizações transacionais e um sistema de arquivos raiz somente para leitura para fornecer no Leap todos os benefícios de atualizações atômicas em vários casos de uso, incluindo hosts de contêiner, Internet das coisas (IoT). ), e as funções clássicas de servidor com potenciais aplicações futuras envolvendo também desktops.&lt;/p&gt;
-
-&lt;h2 id=&quot;construído-para-escalar&quot;&gt;Construído para escalar&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/05/clear-748x1024.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/05/clear-748x1024.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O openSUSE Leap também é perfeitamente adequado e preparado para uso como uma máquina virtual (VM) ou guest de contêiner, permitindo que os usuários profissionais executem serviços de rede com eficiência, independentemente de ser um único servidor ou um data center.&lt;/p&gt;
-
-&lt;h2 id=&quot;qualquer-ambiente-desktop-e-live-images-estão-disponíveis&quot;&gt;Qualquer ambiente Desktop e Live Images estão disponíveis&lt;/h2&gt;
-
-&lt;p&gt;Os usuários do openSUSE Leap podem escolher seu ambiente de desktop, configuração e seup. A versão do &lt;a href=&quot;https://en.opensuse.org/GNOME&quot;&gt;GNOME&lt;/a&gt; no Leap é a mesma usada no SLE 15, agora usando &lt;a href=&quot;https://wayland.freedesktop.org/&quot;&gt;Wayland&lt;/a&gt; por padrão. O &lt;a href=&quot;https://wiki.gnome.org/Apps/Builder&quot;&gt;GNOME Builder&lt;/a&gt; está disponível para o Leap pela primeira vez, permitindo fácil desenvolvimento para &lt;a href=&quot;https://wiki.gnome.org/Projects&quot;&gt;GNOME Projects&lt;/a&gt;. O &lt;a href=&quot;https://en.opensuse.org/KDE&quot;&gt;KDE&lt;/a&gt; é a versão mais recente do Suporte a Longo Prazo do KDE Plasma 5.12, também estão disponíveis novos pacotes para o SLE 15 através do &lt;a href=&quot;https://packagehub.suse.com/&quot;&gt;PackageHub&lt;/a&gt;, incluindo todas as ferramentas e aplicativos suportados pela comunidade. Leap oferece o várias &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.0/live/&quot;&gt;Live Images&lt;/a&gt; para os desktops mencionados acima.&lt;/p&gt;
-
-&lt;h2 id=&quot;saúde-e-ciência&quot;&gt;Saúde e Ciência&lt;/h2&gt;
-
-&lt;p&gt;A distribuição Leap suporta as comunidades de saúde, ciências, pesquisa e desenvolvimento com pacotes como o &lt;a href=&quot;http://health.gnu.org/&quot;&gt;GNU Health&lt;/a&gt;, que podem ajudar a facilitar a execução das operações de um hospital e a coleta de dados vitais do paciente e &lt;a href=&quot;https://www.qgis.org/&quot;&gt;QGIS&lt;/a&gt;, que permite aos pesquisadores criar, editar, visualizar, analisar e publicar informações geoespaciais.&lt;/p&gt;
-
-&lt;h2 id=&quot;plataformas&quot;&gt;Plataformas&lt;/h2&gt;
-
-&lt;p&gt;O Leap funciona em X86_64 e os cenários de implantação podem ser executados para físico, virtual, host, convidado e na nuvem. Suporte para outras arquiteturas como &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM64&lt;/a&gt; e &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_Architecture&quot;&gt;POWER&lt;/a&gt; estão em desenvolvimento pela comunidade.&lt;/p&gt;
-
-&lt;p&gt;As atualizações de manutenção e segurança para a série Leap 15 devem durar pelo menos três anos. Os usuários devem atualizar para o mais novo Leap 15 Service Packs (SP) dentro de seis meses de cada versão do SP para receber atualizações. Atualizações do Service Pack são esperadas anualmente.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Notícia adaptada da original publicada por &lt;a href=&quot;https://en.opensuse.org/User:Asramos&quot;&gt;Aslan Ramos&lt;/a&gt; na &lt;a href=&quot;https://pt.opensuse.org/openSUSE:Lancamento_versao_15&quot;&gt;*wiki* do openSUSE em Português&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-</description>
-                <pubDate>Fri, 25 May 2018 16:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/</guid>
                 
                 
                     <category>pt</category>
