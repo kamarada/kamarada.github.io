@@ -20,13 +20,13 @@
     <title>
         
             
-                Assinando documentos ODF e PDF com o LibreOffice - Linux Kamarada
+                SSH com autenticação em dois fatores usando certificado digital - Linux Kamarada
             
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="Se você possui um certificado digital, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse post, você verá como fazer ...">
-    <link rel="canonical" href="https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">
+    <meta name="description" content="Se você possui um certificado digital armazenado em uma mídia criptográfica, como um cartão inteligente ou um token, pode adicionar uma camada de segurança à...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">
     <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
 
     
@@ -39,7 +39,7 @@
 
     <!-- Open Graph -->
     
-        <meta property="article:published_time" content="2018-12-16 20:00:00 -0200"/>
+        <meta property="article:published_time" content="2018-12-19 00:50:00 -0200"/>
         
             <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
         
@@ -48,14 +48,14 @@
     
         <meta property="fb:page_id" content="1700979763454346" />
     
-    <meta property="og:description" content="Se você possui um certificado digital, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse post, você verá como fazer ..." />
+    <meta property="og:description" content="Se você possui um certificado digital armazenado em uma mídia criptográfica, como um cartão inteligente ou um token, pode adicionar uma camada de segurança à..." />
     
-        <meta property="og:image" content="https://kamarada.github.io/files/2018/12/libreoffice-signing.png" />
+        <meta property="og:image" content="https://kamarada.github.io/files/2018/12/ssh-token.png" />
     
     <meta property="og:site_name" content="Linux Kamarada" />
-    <meta property="og:title" content="Assinando documentos ODF e PDF com o LibreOffice" />
+    <meta property="og:title" content="SSH com autenticação em dois fatores usando certificado digital" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary" />
@@ -124,9 +124,9 @@
                 
             };
             var addthis_share = {
-                url: 'https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/',
+                url: 'https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/',
                 title: document.title,
-                description: 'Se você possui um certificado digital, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse post, você verá como fazer ...'
+                description: 'Se você possui um certificado digital armazenado em uma mídia criptográfica, como um cartão inteligente ou um token, pode adicionar uma camada de segurança à...'
             };
         </script>
         <!-- End AddThis -->
@@ -180,7 +180,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">This page in English</a>
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -188,13 +188,13 @@
                             <h6 class="dropdown-header">Português</h6>
                             
                             
-                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">Esta página em Português</a>
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">Esta página em Português</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
                             <div class="dropdown-divider"></div>
                         
                         <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
-                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">Translate this page</a>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">Translate this page</a>
                     </div>
                 </div><!--.dropdown-->
             </form>
@@ -214,16 +214,16 @@
                 <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
-            <a class="blog-post-link" href="/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/" itemprop="mainEntityOfPage url">
-                Assinando documentos ODF e PDF com o LibreOffice
+            <a class="blog-post-link" href="/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/" itemprop="mainEntityOfPage url">
+                SSH com autenticação em dois fatores usando certificado digital
             </a>
         </h1>
         <div class="blog-post-meta row">
             <div class='col-sm-6'>
-                <p class="blog-post-date" itemprop="datePublished" content="2018-12-16">
-                    <a href="/2018/12/16/">
+                <p class="blog-post-date" itemprop="datePublished" content="2018-12-19">
+                    <a href="/2018/12/19/">
                         
-    16 de
+    19 de
     
     Dezembro
     
@@ -268,199 +268,165 @@
 
         <div itemprop="articleBody mainEntity">
             <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing.png" title="">
-<img src="/files/2018/12/libreoffice-signing.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2018/12/ssh-token.png" title="">
+<img src="/files/2018/12/ssh-token.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Se você possui um <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">certificado digital</a>, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse <em>post</em>, você verá como fazer isso com a suíte de escritório <a href="https://pt-br.libreoffice.org/">LibreOffice</a>, que é capaz de assinar não só os documentos <a href="https://pt.wikipedia.org/wiki/OpenDocument">ODF</a> criados na própria suíte, como documentos <a href="https://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a> quaisquer (mesmo os criados fora da suíte).</p>
+<p>Se você possui um <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">certificado digital</a> armazenado em uma mídia criptográfica, como um <a href="https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente">cartão inteligente</a> ou um <a href="https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)"><em>token</em></a>, pode adicionar uma camada de segurança às conexões <a href="https://pt.wikipedia.org/wiki/Secure_Shell">SSH</a> com seu servidor configurando <a href="https://en.wikipedia.org/wiki/Multi-factor_authentication">autenticação baseada em dois fatores</a> (<em>two-factor authentication</em> ou 2FA). Com isso, para se conectar ao servidor, é necessário possuir a mídia criptográfica e conhecer sua senha PIN.</p>
 
-<p>O LibreOffice utiliza a infraestrutura de certificados digitais do navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a>. Portanto, antes de assinar documentos com o LibreOffice, você deve ter o Firefox instalado (normalmente já vem na distribuição) e configurado para usar seu certificado digital. Esses dois <em>posts</em> mostram como fazer essa configuração:</p>
+<p>Neste <em>post</em>, você verá como configurar autenticação com <em>token</em> no acesso remoto via SSH.</p>
+
+<h2 id="pré-requisitos">Pré-requisitos</h2>
+
+<p>Aqui, parto do princípio que:</p>
 
 <ul>
-  <li><a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">Como instalar certificados de segurança no Linux</a></li>
-  <li><a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">Configurando certificado digital no Linux openSUSE</a></li>
+  <li>o servidor está com o acesso remoto via SSH habilitado e funcionando,</li>
+  <li>o computador cliente consegue acessar remotamente o servidor via SSH, e</li>
+  <li>o computador cliente como consegue utilizar o <em>token</em>.</li>
 </ul>
 
-<h2 id="assinando-um-documento-odf">Assinando um documento ODF</h2>
-
-<p>O formato de documento aberto (do inglês <em>Open Document Format</em> - <a href="https://pt.wikipedia.org/wiki/OpenDocument">ODF</a>) é o formato de arquivo padrão do LibreOffice. Documentos ODF são identificados pelas extensões:</p>
+<p>Recomendo a leitura de alguns <em>posts</em> anteriores:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.odt</code> para documentos de texto (<em><strong>t</strong>ext</em>), abertos com o <a href="https://pt-br.libreoffice.org/descubra/writer/">Writer</a>;</li>
-  <li><code class="highlighter-rouge">.ods</code> para planilhas (<em><strong>s</strong>preadsheets</em>), abertas com o <a href="https://pt-br.libreoffice.org/descubra/calc/">Calc</a>;</li>
-  <li><code class="highlighter-rouge">.odp</code> para apresentações de <em>slides</em> (<em><strong>p</strong>resentations</em>), abertas com o <a href="https://pt-br.libreoffice.org/descubra/impress/">Impress</a>;</li>
-  <li><code class="highlighter-rouge">.odg</code> para desenhos vetoriais (<em><strong>g</strong>raphic</em>), abertos com o <a href="https://pt-br.libreoffice.org/descubra/draw/">Draw</a>;</li>
-  <li><code class="highlighter-rouge">.odb</code> para bases de dados (<em>data<strong>b</strong>ase</em>), abertas com o <a href="https://pt-br.libreoffice.org/descubra/base/">Base</a>; e</li>
-  <li><code class="highlighter-rouge">.odf</code> para equações matemáticas (<em><strong>f</strong>ormula</em>), abertas com o <a href="https://pt-br.libreoffice.org/descubra/math/">Math</a>.</li>
+  <li><a href="/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/">Levante um servidor com o Linux openSUSE Leap - parte 1</a> (instalação),</li>
+  <li><a href="/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/">Levante um servidor com o Linux openSUSE Leap - parte 2</a> (configuração), e</li>
+  <li><a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">Configurando certificado digital no Linux openSUSE</a>.</li>
 </ul>
 
-<p>A seguir, vamos ver como assinar um documento de texto (extensão <code class="highlighter-rouge">.odt</code>) no LibreOffice Writer, mas os passos são os mesmos para qualquer aplicativo da suíte LibreOffice.</p>
+<h2 id="obtendo-a-chave-pública-do-token-e-copiando-para-o-servidor">Obtendo a chave pública do <em>token</em> e copiando para o servidor</h2>
 
-<p>Vá no menu <strong>Arquivo</strong>, <strong>Assinaturas digitais</strong> e clique em <strong>Assinaturas digitais</strong>:</p>
+<p>O <em>token</em> armazena seu certificado <a href="https://pt.wikipedia.org/wiki/X.509">X.509</a>. Sua chave pública deve ser conhecida pelo servidor para que ele aceite a conexão SSH encriptada com ela.</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-01.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<p>Para extrair a chave pública do <em>token</em> no formato <a href="https://pt.wikipedia.org/wiki/RSA_(sistema_criptogr%C3%A1fico)">RSA</a>, utilizado por padrão no SSH, use o comando <a href="https://linux.die.net/man/1/ssh-keygen"><strong>ssh-keygen</strong></a> com o argumento <code class="highlighter-rouge">-D</code> e o caminho para a biblioteca do <em>token</em> (no meu caso, <code class="highlighter-rouge">/usr/lib64/libeToken.so</code>). Salve a saída em um arquivo (por exemplo, <code class="highlighter-rouge">chaves_token</code>):</p>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ssh-keygen -D /usr/lib64/libeToken.so &gt; chaves_token
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Caso o documento ainda não esteja salvo, o LibreOffice alerta que é necessário salvar o documento para que ele possa ser assinado e pergunta se deseja salvar o documento. Clique em <strong>Sim</strong> e salve o documento:</p>
+<p>Copie sua chave pública para o servidor usando o protocolo e comando <a href="https://pt.wikipedia.org/wiki/Secure_copy">SCP</a> (semelhante ao SSH, mas usado para copiar arquivos):</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-02.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ scp chaves_token kamarada@meuservidor:/home/kamarada/
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-</div>
+<p>São informados, na sequência: o caminho no computador local do arquivo a ser copiado, o nome do usuário do servidor, o nome de rede (ou endereço IP) do servidor e o destino do arquivo no servidor.</p>
 
-<p>Na caixa de diálogo <strong>Assinaturas digitais</strong>, clique em <strong>Assinar documento</strong>:</p>
+<h2 id="configurando-a-autenticação-no-servidor">Configurando a autenticação no servidor</h2>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-03.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<p>Acesse remotamente o servidor usando SSH:</p>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ssh kamarada@meuservidor
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>O LibreOffice solicita a senha PIN do <em>token</em>. Informe-a e clique em OK.</p>
+<p>No servidor, crie a pasta de configuração do SSH:</p>
 
-<p>Na caixa de diálogo <strong>Selecionar certificado</strong>, selecione o certificado e clique em <strong>Assinar</strong>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ mkdir -p .ssh
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-04.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<p>Copie a chave pública RSA para o arquivo <code class="highlighter-rouge">.ssh/authorized_keys</code>:</p>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ cat chaves_token &gt;&gt; .ssh/authorized_keys
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>De volta à caixa de diálogo <strong>Assinaturas digitais</strong>, note que ela mostra a assinatura:</p>
+<p><code class="highlighter-rouge">authorized_keys</code> é um arquivo de configuração do SSH que especifica quais chaves podem ser aceitas no acesso remoto com a conta do usuário.</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-05.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<p>Você pode excluir o arquivo <code class="highlighter-rouge">chaves_token</code> e encerrar o acesso remoto:</p>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ rm chaves_token
+$ exit
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Clique em <strong>Fechar</strong>.</p>
+<h2 id="acesso-remoto-usando-o-token">Acesso remoto usando o token</h2>
 
-<h2 id="verificando-a-assinatura-de-um-documento-odf">Verificando a assinatura de um documento ODF</h2>
+<p>Acesse remotamente o servidor via SSH, dessa vez adicionando o argumento <code class="highlighter-rouge">-I</code> e o caminho para a biblioteca do <em>token</em>:</p>
 
-<p>Quando você abre um documento ODF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone <strong>Assinatura digital</strong> na barra de estado:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ssh -I /usr/lib64/libeToken.so kamarada@meuservidor
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-06.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<p>Forneça a senha PIN do <em>token</em>:</p>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Enter PIN for 'ANTONIO VINICIUS MENEZES MEDEIR': 
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Para verificar a assinatura, você pode clicar duas vezes no ícone <strong>Assinatura digital</strong>, na barra de estado, ou clicar no botão <strong>Mostrar assinaturas</strong>, na notificação.</p>
+<p>E pronto: você está na linha de comando do servidor!</p>
 
-<p>É aberta a caixa de diálogo <strong>Assinaturas digitais</strong>, na qual você pode selecionar uma assinatura e clicar em <strong>Exibir certificado</strong> para ver mais informações sobre o certificado:</p>
+<p>Encerre o acesso remoto, por enquanto:</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-07.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ exit
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-</div>
+<h2 id="autenticando-com-o-token-por-padrão">Autenticando com o token por padrão</h2>
 
-<p>A mensagem <strong>Este certificado foi validado</strong> indica que o LibreOffice conseguiu estabelecer o <strong>Caminho da certificação</strong> até o certificado de uma autoridade certificadora conhecida:</p>
+<p>No momento, é possível acessar remotamente o servidor de duas formas:</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-08.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<ul>
+  <li>informando a senha do usuário do servidor, como de costume, com:</li>
+</ul>
 
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ssh kamarada@meuservidor
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Isso é o mesmo que o navegador faz quando você acessa um <em>site</em> HTTPS e ele exibe o cadeado verde. Explicamos hierarquia de certificados em <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">outro <em>post</em></a>.</p>
+<ul>
+  <li>ou usando o <em>token</em> e informando sua senha PIN com:</li>
+</ul>
 
-<h2 id="modificando-um-documento-odf-assinado">Modificando um documento ODF assinado</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ssh -I /usr/lib64/libeToken.so kamarada@meuservidor
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Note que você até pode modificar um documento ODF assinado, mas na hora de salvar o LibreOffice avisa que removerá todas as assinaturas que o documento tinha:</p>
+<p>Para usar o <em>token</em> por padrão, edite o arquivo <code class="highlighter-rouge">~/.ssh/config</code>:</p>
 
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-09.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ nano ~/.ssh/config
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-</div>
+<p>E adicione a linha:</p>
 
-<p>Será necessário assinar o documento novamente.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>PKCS11Provider /usr/lib64/libeToken.so
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Com isso, quem abrir um documento que foi assinado e depois modificado pode abrir a caixa de diálogo <strong>Assinaturas digitais</strong> e verificar que ele foi assinado em outra data e hora, possivelmente por outra pessoa.</p>
+<p>(lembre de mudar o caminho para a biblioteca do <em>token</em> conforme sua necessidade)</p>
 
-<h2 id="exportando-um-documento-como-um-pdf-assinado">Exportando um documento como um PDF assinado</h2>
+<p>Feito isso, não é mais necessário adicionar o argumento <code class="highlighter-rouge">-I</code> para usar o <em>token</em>:</p>
 
-<p>O formato de documento portável (<em>Portable Document Format</em> - <a href="https://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a>) foi desenvolvido pela <a href="https://www.adobe.com/br/">Adobe</a> para representar documentos de forma independente do aplicativo, do <em>hardware</em> e do sistema operacional. Era no início um formato proprietário, que depois foi aberto. É comum compartilhar documentos como PDF na Internet, porque esse formato previne a perda de formatação.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>$ ssh kamarada@meuservidor
+Enter PIN for 'ANTONIO VINICIUS MENEZES MEDEIR': 
+Last login: Mon Dec 17 00:47:15 2018 from 172.17.0.10
+Have a lot of fun...
+kamarada@meuservidor:~&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Para exportar um documento ODF como um PDF assinado, vá no menu <strong>Arquivo</strong>, <strong>Exportar como</strong> e clique em <strong>Exportar como PDF</strong>:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-10.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-10.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Abra a guia <strong>Assinaturas digitais</strong> e em <strong>Certificado</strong> clique em <strong>Selecionar</strong>:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-11.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-11.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Na caixa de diálogo <strong>Selecionar certificado</strong>, selecione o certificado e clique em <strong>Assinar</strong>.</p>
-
-<p>Por fim, clique em <strong>Exportar</strong> e salve o documento PDF.</p>
-
-<h2 id="verificando-a-assinatura-de-um-documento-pdf">Verificando a assinatura de um documento PDF</h2>
-
-<p>Você pode abrir documentos PDF no LibreOffice usando o aplicativo Draw.</p>
-
-<p>Quando você abre um documento PDF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone <strong>Assinatura digital</strong> na barra de estado (da mesma forma como ele faz com documentos ODF):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-12.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-12.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Para verificar a assinatura, você pode clicar duas vezes no ícone <strong>Assinatura digital</strong>, na barra de estado, ou clicar no botão <strong>Mostrar assinaturas</strong>, na notificação.</p>
-
-<h2 id="assinando-um-documento-pdf-qualquer">Assinando um documento PDF qualquer</h2>
-
-<p>O LibreOffice consegue assinar documentos PDF criados não só pela própria suíte, como também quaisquer documentos PDF já existentes, ainda que criados por outros aplicativos.</p>
-
-<p>Você pode iniciar a assinatura de um documento PDF a partir de qualquer aplicativo da suíte LibreOffice. Para isso, vá no menu <strong>Arquivo</strong>, <strong>Assinaturas digitais</strong>, clique em <strong>Assinar um PDF já existente</strong> e abra o documento PDF que deve ser assinado.</p>
-
-<p>O documento PDF é aberto no LibreOffice Draw no modo somente leitura:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/12/libreoffice-signing-13.jpg" title="">
-<img src="/files/2018/12/libreoffice-signing-13.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Clique em <strong>Assinar documento</strong>. Aparece a caixa de diálogo <strong>Assinaturas digitais</strong>.</p>
-
-<p>O resto do procedimento é semelhante ao da assinatura de documentos ODF.</p>
+<p>Se o <em>token</em> estiver plugado no computador cliente, será solicitada sua senha PIN. Senão, será solicitada a senha do usuário do servidor.</p>
 
 <h2 id="referências">Referências</h2>
 
+<p>Quero agradecer ao meu colega <a href="https://br.linkedin.com/in/leandro-peracchi-425463159">Leandro Peracchi</a> por ter compartilhado essa dica comigo.</p>
+
+<p>Para escrever a explicação, consultei algumas páginas:</p>
+
 <ul>
-  <li><a href="https://help.libreoffice.org/Common/About_Digital_Signatures/pt-BR">Sobre assinaturas digitais - LibreOffice Help</a></li>
-  <li><a href="https://help.libreoffice.org/Common/Applying_Digital_Signatures/pt-BR">Assinar com assinaturas digitais - LibreOffice Help</a></li>
-  <li><a href="https://vmiklos.hu/blog/pdf-sign.html">Signing existing PDF files in LibreOffice</a></li>
+  <li><a href="http://blog.fkraiem.org/2013/03/13/linux-smart-card-authentication-openssh/">Linux smart card authentication - OpenSSH - Firas Kraïem</a></li>
+  <li><a href="https://github.com/OpenSC/OpenSC/wiki/OpenSSH-and-smart-cards-PKCS%2311">OpenSSH and smart cards PKCS#11 - OpenSC/OpenSC Wiki - GitHub</a></li>
+  <li><a href="https://access.redhat.com/articles/1523343">About SSH and Smart Card support (RHEL 7)</a></li>
+  <li><a href="https://www.ssh.com/ssh/authorized_keys/">Authorized_keys file in SSH - SSH.COM</a></li>
 </ul>
 
 
@@ -502,7 +468,7 @@
                     
                         this.language = "pt";
                     
-                    this.page.url = 'https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/';
+                    this.page.url = 'https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/';
                 };
 
                 (function() {
@@ -630,11 +596,11 @@
     </div>
 </footer>
 
-<meta itemprop="description" content="Se você possui um certificado digital, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com a suíte de escritório LibreOffice, que é capaz de assinar não só os documentos ODF criados na própria suíte, como documentos PDF quaisquer (mesmo os criados fora...">
+<meta itemprop="description" content="Se você possui um certificado digital armazenado em uma mídia criptográfica, como um cartão inteligente ou um token, pode adicionar uma camada de segurança às conexões SSH com seu servidor configurando autenticação baseada em dois fatores (two-factor authentication ou 2FA). Com isso, para se conectar ao servidor, é necessário possuir a mídia criptográfica e conhecer...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-        <meta itemprop="url" content="https://kamarada.github.io/files/2018/12/libreoffice-signing.png"/>
+        <meta itemprop="url" content="https://kamarada.github.io/files/2018/12/ssh-token.png"/>
         <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
         <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
     </div>

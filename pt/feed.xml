@@ -9,10 +9,184 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 16 Dec 2018 20:03:39 -0200</pubDate>
-        <lastBuildDate>Sun, 16 Dec 2018 20:03:39 -0200</lastBuildDate>
+        <pubDate>Wed, 19 Dec 2018 01:03:22 -0200</pubDate>
+        <lastBuildDate>Wed, 19 Dec 2018 01:03:22 -0200</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>SSH com autenticação em dois fatores usando certificado digital</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/ssh-token.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/ssh-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt; armazenado em uma mídia criptográfica, como um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente&quot;&gt;cartão inteligente&lt;/a&gt; ou um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)&quot;&gt;&lt;em&gt;token&lt;/em&gt;&lt;/a&gt;, pode adicionar uma camada de segurança às conexões &lt;a href=&quot;https://pt.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt; com seu servidor configurando &lt;a href=&quot;https://en.wikipedia.org/wiki/Multi-factor_authentication&quot;&gt;autenticação baseada em dois fatores&lt;/a&gt; (&lt;em&gt;two-factor authentication&lt;/em&gt; ou 2FA). Com isso, para se conectar ao servidor, é necessário possuir a mídia criptográfica e conhecer sua senha PIN.&lt;/p&gt;
+
+&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, você verá como configurar autenticação com &lt;em&gt;token&lt;/em&gt; no acesso remoto via SSH.&lt;/p&gt;
+
+&lt;h2 id=&quot;pré-requisitos&quot;&gt;Pré-requisitos&lt;/h2&gt;
+
+&lt;p&gt;Aqui, parto do princípio que:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;o servidor está com o acesso remoto via SSH habilitado e funcionando,&lt;/li&gt;
+  &lt;li&gt;o computador cliente consegue acessar remotamente o servidor via SSH, e&lt;/li&gt;
+  &lt;li&gt;o computador cliente como consegue utilizar o &lt;em&gt;token&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recomendo a leitura de alguns &lt;em&gt;posts&lt;/em&gt; anteriores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;Levante um servidor com o Linux openSUSE Leap - parte 1&lt;/a&gt; (instalação),&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/&quot;&gt;Levante um servidor com o Linux openSUSE Leap - parte 2&lt;/a&gt; (configuração), e&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;obtendo-a-chave-pública-do-token-e-copiando-para-o-servidor&quot;&gt;Obtendo a chave pública do &lt;em&gt;token&lt;/em&gt; e copiando para o servidor&lt;/h2&gt;
+
+&lt;p&gt;O &lt;em&gt;token&lt;/em&gt; armazena seu certificado &lt;a href=&quot;https://pt.wikipedia.org/wiki/X.509&quot;&gt;X.509&lt;/a&gt;. Sua chave pública deve ser conhecida pelo servidor para que ele aceite a conexão SSH encriptada com ela.&lt;/p&gt;
+
+&lt;p&gt;Para extrair a chave pública do &lt;em&gt;token&lt;/em&gt; no formato &lt;a href=&quot;https://pt.wikipedia.org/wiki/RSA_(sistema_criptogr%C3%A1fico)&quot;&gt;RSA&lt;/a&gt;, utilizado por padrão no SSH, use o comando &lt;a href=&quot;https://linux.die.net/man/1/ssh-keygen&quot;&gt;&lt;strong&gt;ssh-keygen&lt;/strong&gt;&lt;/a&gt; com o argumento &lt;code class=&quot;highlighter-rouge&quot;&gt;-D&lt;/code&gt; e o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt; (no meu caso, &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;). Salve a saída em um arquivo (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;chaves_token&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh-keygen -D /usr/lib64/libeToken.so &amp;gt; chaves_token
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Copie sua chave pública para o servidor usando o protocolo e comando &lt;a href=&quot;https://pt.wikipedia.org/wiki/Secure_copy&quot;&gt;SCP&lt;/a&gt; (semelhante ao SSH, mas usado para copiar arquivos):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ scp chaves_token kamarada@meuservidor:/home/kamarada/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;São informados, na sequência: o caminho no computador local do arquivo a ser copiado, o nome do usuário do servidor, o nome de rede (ou endereço IP) do servidor e o destino do arquivo no servidor.&lt;/p&gt;
+
+&lt;h2 id=&quot;configurando-a-autenticação-no-servidor&quot;&gt;Configurando a autenticação no servidor&lt;/h2&gt;
+
+&lt;p&gt;Acesse remotamente o servidor usando SSH:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh kamarada@meuservidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No servidor, crie a pasta de configuração do SSH:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ mkdir -p .ssh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Copie a chave pública RSA para o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.ssh/authorized_keys&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cat chaves_token &amp;gt;&amp;gt; .ssh/authorized_keys
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;authorized_keys&lt;/code&gt; é um arquivo de configuração do SSH que especifica quais chaves podem ser aceitas no acesso remoto com a conta do usuário.&lt;/p&gt;
+
+&lt;p&gt;Você pode excluir o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;chaves_token&lt;/code&gt; e encerrar o acesso remoto:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rm chaves_token
+$ exit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;acesso-remoto-usando-o-token&quot;&gt;Acesso remoto usando o token&lt;/h2&gt;
+
+&lt;p&gt;Acesse remotamente o servidor via SSH, dessa vez adicionando o argumento &lt;code class=&quot;highlighter-rouge&quot;&gt;-I&lt;/code&gt; e o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -I /usr/lib64/libeToken.so kamarada@meuservidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Forneça a senha PIN do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Enter PIN for 'ANTONIO VINICIUS MENEZES MEDEIR': 
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E pronto: você está na linha de comando do servidor!&lt;/p&gt;
+
+&lt;p&gt;Encerre o acesso remoto, por enquanto:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ exit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;autenticando-com-o-token-por-padrão&quot;&gt;Autenticando com o token por padrão&lt;/h2&gt;
+
+&lt;p&gt;No momento, é possível acessar remotamente o servidor de duas formas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;informando a senha do usuário do servidor, como de costume, com:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh kamarada@meuservidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ou usando o &lt;em&gt;token&lt;/em&gt; e informando sua senha PIN com:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -I /usr/lib64/libeToken.so kamarada@meuservidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para usar o &lt;em&gt;token&lt;/em&gt; por padrão, edite o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ nano ~/.ssh/config
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E adicione a linha:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;PKCS11Provider /usr/lib64/libeToken.so
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(lembre de mudar o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt; conforme sua necessidade)&lt;/p&gt;
+
+&lt;p&gt;Feito isso, não é mais necessário adicionar o argumento &lt;code class=&quot;highlighter-rouge&quot;&gt;-I&lt;/code&gt; para usar o &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh kamarada@meuservidor
+Enter PIN for 'ANTONIO VINICIUS MENEZES MEDEIR': 
+Last login: Mon Dec 17 00:47:15 2018 from 172.17.0.10
+Have a lot of fun...
+kamarada@meuservidor:~&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se o &lt;em&gt;token&lt;/em&gt; estiver plugado no computador cliente, será solicitada sua senha PIN. Senão, será solicitada a senha do usuário do servidor.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Quero agradecer ao meu colega &lt;a href=&quot;https://br.linkedin.com/in/leandro-peracchi-425463159&quot;&gt;Leandro Peracchi&lt;/a&gt; por ter compartilhado essa dica comigo.&lt;/p&gt;
+
+&lt;p&gt;Para escrever a explicação, consultei algumas páginas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.fkraiem.org/2013/03/13/linux-smart-card-authentication-openssh/&quot;&gt;Linux smart card authentication - OpenSSH - Firas Kraïem&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/OpenSSH-and-smart-cards-PKCS%2311&quot;&gt;OpenSSH and smart cards PKCS#11 - OpenSC/OpenSC Wiki - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://access.redhat.com/articles/1523343&quot;&gt;About SSH and Smart Card support (RHEL 7)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ssh.com/ssh/authorized_keys/&quot;&gt;Authorized_keys file in SSH - SSH.COM&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 19 Dec 2018 00:50:00 -0200</pubDate>
+                <link>https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Assinando documentos ODF e PDF com o LibreOffice</title>
@@ -23,7 +197,7 @@
 
 &lt;/div&gt;
 
-&lt;p&gt;Se você possui um &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com a suíte de escritório &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, que é capaz de assinar não só os documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt; criados na própria suíte, como documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt; quaisquer (mesmo os criados fora da suíte).&lt;/p&gt;
+&lt;p&gt;Se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com a suíte de escritório &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, que é capaz de assinar não só os documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt; criados na própria suíte, como documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt; quaisquer (mesmo os criados fora da suíte).&lt;/p&gt;
 
 &lt;p&gt;O LibreOffice utiliza a infraestrutura de certificados digitais do navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;. Portanto, antes de assinar documentos com o LibreOffice, você deve ter o Firefox instalado (normalmente já vem na distribuição) e configurado para usar seu certificado digital. Esses dois &lt;em&gt;posts&lt;/em&gt; mostram como fazer essa configuração:&lt;/p&gt;
 
@@ -3363,203 +3537,6 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
                 <pubDate>Wed, 19 Sep 2018 16:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/19/impressoras-hp-no-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Sincronizando o Gmail no Thunderbird</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Thunderbird&lt;/a&gt; é o cliente de &lt;em&gt;e-mail&lt;/em&gt; gratuito da &lt;a href=&quot;https://www.mozilla.org/pt-BR/foundation/&quot;&gt;Fundação Mozilla&lt;/a&gt;, a mesma que desenvolve o conhecido navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Firefox&lt;/a&gt;. E o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt; dispensa apresentações: é o serviço de &lt;em&gt;e-mail&lt;/em&gt; gratuito da gigante &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e configurar o Thunderbird para sincronizar suas mensagens do Gmail.&lt;/p&gt;
-
-&lt;p&gt;Bem verdade que as pessoas tem preferido utilizar navegadores em vez de clientes de &lt;em&gt;e-mail&lt;/em&gt; para ler e enviar mensagens, por ser mais prático. No entanto, os clientes de &lt;em&gt;e-mail&lt;/em&gt; nos fornecem algumas possibilidades interessantes, como veremos nos próximos &lt;em&gt;posts&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (24/09/2018):&lt;/strong&gt;
-    
-&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;instalando-o-thunderbird&quot;&gt;Instalando o Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;No openSUSE, o Thunderbird é distribuído pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaThunderbird&quot;&gt;MozillaThunderbird&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, abra o &lt;strong&gt;Terminal&lt;/strong&gt; e execute como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaThunderbird MozillaThunderbird-translations-common
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;iniciando-o-thunderbird&quot;&gt;Iniciando o Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;Instalado o Thunderbird, inicie-o pelo menu &lt;strong&gt;Atividades&lt;/strong&gt;, digitando &lt;code class=&quot;highlighter-rouge&quot;&gt;Thunderbird&lt;/code&gt; e clicando no ícone correspondente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;sincronizando-com-o-gmail&quot;&gt;Sincronizando com o Gmail&lt;/h2&gt;
-
-&lt;p&gt;No primeiro uso, o Thunderbird deve mostrar o assistente de configuração da conta:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nessa primeira tela, clique em &lt;strong&gt;Ignorar e usar meu e-mail existente&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se o assistente de configuração da conta não for iniciado, na tela inicial, abaixo de &lt;strong&gt;Criar uma nova conta&lt;/strong&gt;, clique em &lt;strong&gt;Mensagens&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na segunda tela, preencha os campos com seu nome, endereço de &lt;em&gt;e-mail&lt;/em&gt; e senha. Se quiser, você pode marcar a opção &lt;strong&gt;Memorizar senha&lt;/strong&gt;. Quando terminar, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para saber como se conectar ao servidor de &lt;em&gt;e-mail&lt;/em&gt; do Gmail, o Thunderbird consulta uma base de dados de configurações da Mozilla.&lt;/p&gt;
-
-&lt;p&gt;Ainda nessa tela, o assistente pergunta se você deseja utilizar IMAP ou POP3:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP3&lt;/a&gt; são dois protocolos usados para receber &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; é um protocolo usado para enviar &lt;em&gt;e-mails&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;A diferença entre o IMAP e o POP3 é que o POP3 baixa as mensagens para o computador e não as sincroniza mais com o servidor (então, por exemplo, uma mensagem excluída no computador não é excluída no servidor, e vice-versa), enquanto o IMAP baixa as mensagens mas mantém a sincronia (se uma mensagem é excluída no computador, é excluída também no servidor, e vice-versa). O protoloco IMAP é uma evolução do protocolo POP3.&lt;/p&gt;
-
-&lt;p&gt;Eu, particularmente, prefiro e recomendo o IMAP. Também o próprio Thunderbird já o traz marcado por padrão.&lt;/p&gt;
-
-&lt;p&gt;Caso o Thunderbird não encontre as configurações automaticamente e você precise informá-las manualmente, aqui estão:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Recebimento: IMAP (ou POP3)
-    &lt;ul&gt;
-      &lt;li&gt;Nome do servidor: imap.gmail.com (ou pop.gmail.com)&lt;/li&gt;
-      &lt;li&gt;Porta: 993 (ou 995)&lt;/li&gt;
-      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Envio: SMTP
-    &lt;ul&gt;
-      &lt;li&gt;Nome do servidor: smtp.gmail.com&lt;/li&gt;
-      &lt;li&gt;Porta: 465&lt;/li&gt;
-      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Concluir&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por fim, o Thunderbird abre uma janela do Gmail, na qual você deve entrar com seu &lt;em&gt;login&lt;/em&gt; e senha e autorizar o Thunderbird a acessar seu &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela inicial do Thunderbird, perceba que agora é exibida sua conta e as mensagens de &lt;em&gt;e-mail&lt;/em&gt; estão sendo obtidas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;alguns-ajustes&quot;&gt;Alguns ajustes&lt;/h2&gt;
-
-&lt;p&gt;Por padrão, o Thunderbird mostra o painel de mensagens. Caso você deseje ocultá-lo, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt;, depois para &lt;strong&gt;Layout&lt;/strong&gt; e desmarque &lt;strong&gt;Painel de mensagens&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Feito isso, para abrir um &lt;em&gt;e-mail&lt;/em&gt;, dê dois cliques nele e ele será aberto em uma nova aba.&lt;/p&gt;
-
-&lt;p&gt;Por padrão, o Thunderbird ordena as mensagens por data de forma crescente (mensagens mais recentes embaixo). Para ordená-las de forma decrescente, igual ao Gmail (mais recentes em cima), clique na coluna &lt;strong&gt;Data&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Um problema que eu percebi usando o Thunderbird: ele não adiciona a assinatura aos e-mails encaminhados. Vejamos como corrigir.&lt;/p&gt;
-
-&lt;p&gt;Clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Editar e endereçar&lt;/strong&gt;, à direita, e marque a opção &lt;strong&gt;Ao encaminhar, incluir assinatura&lt;/strong&gt;. Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Espero que tenha sido útil. Até a próxima!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7126229?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando IMAP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7104828?hl=pt-BR&quot;&gt;Ler mensagens do Gmail em outros clientes de e-mail usando POP - Ajuda do Gmail&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 12 Sep 2018 15:55:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/</guid>
                 
                 
                     <category>pt</category>
