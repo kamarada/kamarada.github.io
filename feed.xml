@@ -1,5 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-12-19T06:17:53-02:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">SSH com autenticação em dois fatores usando certificado digital</title><link href="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/" rel="alternate" type="text/html" title="SSH com autenticação em dois fatores usando certificado digital" /><published>2018-12-19T00:50:00-02:00</published><updated>2018-12-19T06:17:36-02:00</updated><id>https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-03-17T16:45:09-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Como criar “comandos personalizados” no Linux</title><link href="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/" rel="alternate" type="text/html" title="Como criar &quot;comandos personalizados&quot; no Linux" /><published>2019-03-17T16:30:00-03:00</published><updated>2019-03-17T16:44:43-03:00</updated><id>https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">&lt;p&gt;Se você costuma usar o terminal e há comandos que você usa com frequência, saiba que pode economizar digitação criando &lt;em&gt;scripts&lt;/em&gt; com nomes personalizados. Em vez de digitar um comando grande, ou digitar vários comandos, você chama o &lt;em&gt;script&lt;/em&gt; e ele faz todo o trabalho. Veja nesse &lt;em&gt;post&lt;/em&gt; como fazer isso.&lt;/p&gt;
+
+&lt;p&gt;Uma tarefa que simplifiquei onde trabalho foi o envio de arquivos para um servidor usando &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Transferindo-arquivos-com-o-rsync?pagina=3&quot;&gt;&lt;strong&gt;rsync&lt;/strong&gt;&lt;/a&gt;. Eu percebi que com frequência eu usava um comando parecido com esse:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rsync -Cavz /pasta/no/computador usuario@servidor:/pasta/no/servidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Eu decidi criar um &lt;em&gt;script&lt;/em&gt; com um nome pequeno (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;syncsrv&lt;/code&gt;) para abreviar a digitação desse comando.&lt;/p&gt;
+
+&lt;p&gt;Como fiz isso?&lt;/p&gt;
+
+&lt;p&gt;Por padrão, o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; cria uma pasta chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt; na pasta pessoal de cada usuário (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/kamarada&lt;/code&gt;) e adiciona essa pasta à variável de ambiente &lt;code class=&quot;highlighter-rouge&quot;&gt;$PATH&lt;/code&gt; de cada usuário. Com isso, &lt;em&gt;scripts&lt;/em&gt; criados nessa pasta podem ser chamados de qualquer pasta.&lt;/p&gt;
+
+&lt;p&gt;Então eu criei o &lt;em&gt;script&lt;/em&gt; chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;syncsrv&lt;/code&gt; (sem extensão mesmo) na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd ~/bin
+$ touch syncsrv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; é um atalho para a pasta pessoal, no meu caso &lt;code class=&quot;highlighter-rouge&quot;&gt;/home/kamarada&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Com meu editor favorito (no terminal, eu gosto de usar o &lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt;) abri o &lt;em&gt;script&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ nano syncsrv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E digitei:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+rsync &lt;span class=&quot;nt&quot;&gt;-Cavz&lt;/span&gt; /pasta/no/computador usuario@servidor:/pasta/no/servidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Salvei. Por último, tornei o &lt;em&gt;script&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;syncsrv&lt;/code&gt; executável modificando suas permissões:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ chmod u+x syncsrv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pronto! Feito isso, agora eu posso chamar de qualquer pasta:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ syncsrv
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;para enviar arquivos para o servidor, em vez de ter que digitar o comando original:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rsync -Cavz /pasta/no/computador usuario@servidor:/pasta/no/servidor
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cansa menos as mãos, não?&lt;/p&gt;
+
+&lt;h2 id=&quot;mais-um-exemplo&quot;&gt;Mais um exemplo&lt;/h2&gt;
+
+&lt;p&gt;Com o tempo, também percebi que eu sempre quando chegava no trabalho iniciava o &lt;a href=&quot;https://www.thunderbird.net/pt-BR/&quot;&gt;Thunderbird&lt;/a&gt;, o &lt;a href=&quot;https://pidgin.im/&quot;&gt;Pidgin&lt;/a&gt; e sincronizava meus repositórios do &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; usando o comando &lt;a href=&quot;https://myrepos.branchable.com/&quot;&gt;&lt;strong&gt;mr&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Usando o mesmo procedimento acima, criei um &lt;em&gt;script&lt;/em&gt; chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;cheguei&lt;/code&gt; com o seguinte conteúdo:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;thunderbird &amp;amp;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;pidgin &amp;amp;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+mr update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Comandos como &lt;code class=&quot;highlighter-rouge&quot;&gt;(thunderbird &amp;amp;)&lt;/code&gt; iniciam programas em segundo plano, de modo que não são encerrados ao fechar a janela do terminal, para mais informações consulte &lt;a href=&quot;https://unix.stackexchange.com/a/305769/106621&quot;&gt;essa pergunta no Unix &amp;amp; Linux Stack Exchange (em inglês)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Agora sempre que chego no trabalho abro o terminal, aviso que cheguei e ele executa esses comandos para mim.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/custom-commands-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/custom-commands-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 300px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;não-funciona-no-meu-computador&quot;&gt;Não funciona no meu computador&lt;/h2&gt;
+
+&lt;p&gt;Se você utiliza outra distribuição Linux, ou utiliza uma versão anterior do openSUSE, que talvez não venha com a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt; pré-configurada, saiba que é possível criá-la e configurá-la automaticamente. Veja a seguir como fazer.&lt;/p&gt;
+
+&lt;p&gt;Acesse a pasta pessoal e crie a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;bin&lt;/code&gt; (essa é apenas uma convenção, mas na verdade você pode nomeá-la como quiser):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd ~
+$ mkdir bin
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Abra o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.bash_profile&lt;/code&gt; localizado na pasta pessoal (já estamos nela) e adicione essa linha ao final (lembre-se de substituir &lt;code class=&quot;highlighter-rouge&quot;&gt;kamarada&lt;/code&gt; pelo seu nome de usuário):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/kamarada/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feche a janela atual do terminal e abra uma nova, para que o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.bash_profile&lt;/code&gt; seja executado novamente.&lt;/p&gt;
+
+&lt;p&gt;Com isso você já pode criar &lt;em&gt;scripts&lt;/em&gt; na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt; e executá-los.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.taniarascia.com/how-to-create-and-use-bash-scripts&quot;&gt;How to Create and Use Bash Scripts – Tania Rascia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/a/305769/106621&quot;&gt;exec - How to “correctly” start an application from a shell - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Se você costuma usar o terminal e há comandos que você usa com frequência, saiba que pode economizar digitação criando scripts com nomes personalizados. Em vez de digitar um comando grande, ou digitar vários comandos, você chama o script e ele faz todo o trabalho. Veja nesse post como fazer isso.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2019/03/custom-commands-pt.jpg" /></entry><entry xml:lang="pt"><title type="html">SSH com autenticação em dois fatores usando certificado digital</title><link href="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/" rel="alternate" type="text/html" title="SSH com autenticação em dois fatores usando certificado digital" /><published>2018-12-19T00:50:00-02:00</published><updated>2018-12-19T06:17:36-02:00</updated><id>https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2018/12/ssh-token.png&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2018/12/ssh-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -2585,122 +2697,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.androidcentral.com/why-wont-my-phone-keep-right-time&quot;&gt;How to fix the incorrect time on your Android phone - Android Central&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Diante da indefinição quanto ao início do horário de verão em 2018, muitas pessoas sofreram nas últimas 2 semanas com seus celulares se adiantando em 1 hora sozinhos. Ontem eu fiz um post explicando como configurar seu computador pessoal (PC) com Linux para se prevenir de situações como essas. Entendendo que Android também é Linux, resolvi escrever outro post explicando como configurar a data e a hora de dispositivos móveis (smartphones e tablets) com Android.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/howto-android-clock.png" /></entry><entry xml:lang="pt"><title type="html">Acordou com a hora do computador errada? Entenda o que aconteceu</title><link href="https://kamarada.github.io/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/" rel="alternate" type="text/html" title="Acordou com a hora do computador errada? Entenda o que aconteceu" /><published>2018-10-21T13:00:00-03:00</published><updated>2018-10-23T08:17:09-03:00</updated><id>https://kamarada.github.io/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/tux-wrong-clock.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/tux-wrong-clock.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Muita gente que virou acordado a madrugada de ontem para hoje (21/10/2018) percebeu que &lt;a href=&quot;https://www.correiobraziliense.com.br/app/noticia/brasil/2018/10/21/interna-brasil,714001/relogio-de-celulares-adianta-uma-hora-de-novo-e-a-segunda-vez-na-sema.shtml&quot;&gt;o relógio do computador se adiantou em 1 hora sozinho&lt;/a&gt;, com o suposto início do horário de verão. Ocorre que desde o ano passado já &lt;a href=&quot;https://g1.globo.com/politica/noticia/2018/10/15/planalto-informa-que-nao-havera-adiamento-e-que-horario-de-verao-comecara-no-proximo-dia-4.ghtml&quot;&gt;é a terceira vez que o governo brasileiro altera a data de início do horário de verão em 2018&lt;/a&gt; e o computador talvez não tenha recebido atualizações. Quem estava com seu computador devidamente configurado e atualizado não teve problemas. Nesse &lt;em&gt;post&lt;/em&gt; você vai entender o que aconteceu e como se prevenir.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-o-que-aconteceu&quot;&gt;1) O que aconteceu&lt;/h2&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.wikipedia.org/wiki/Hor%C3%A1rio_de_ver%C3%A3o&quot;&gt;&lt;strong&gt;horário de verão&lt;/strong&gt;&lt;/a&gt; é a prática de adiantar os relógios em 1 hora durante o verão. Quando foi criado, a ideia era aproveitar a maior duração do dia no verão e economizar energia.&lt;/p&gt;
-
-&lt;p&gt;No entanto, com o passar dos anos, a mudança na rotina dos brasileiros e o aquecimento do planeta fizeram com que a economia com o horário de verão se tornasse cada vez menor: as pessoas mudaram seus horários de trabalho e passaram a chegar em casa já à noite, além disso o uso de equipamentos que mais consomem energia como ares-condicionados e ventiladores se intensificou justamente durante o dia.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://noticias.r7.com/sao-paulo/senado-propoe-acabar-com-o-horario-de-verao-no-brasil-20092018&quot;&gt;Há proposta do Senado para extinguir o horário de verão&lt;/a&gt; e &lt;a href=&quot;https://oglobo.globo.com/economia/governo-voltara-discutir-se-acaba-com-horario-de-verao-22397585&quot;&gt;o governo estuda fazer isso&lt;/a&gt;. Quem é contra o horário de verão, também alega que o horário de verão pode implicar problemas de saúde. Quem é a favor, alega que o horário de verão incentiva o comércio, o turismo e a prática de esportes nas cidades.&lt;/p&gt;
-
-&lt;p&gt;Por ora, o governo decidiu reduzir a duração do horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Em dezembro de 2017, o presidente Michel Temer assinou o &lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2017/Decreto/D9242.htm&quot;&gt;Decreto nº 9.242&lt;/a&gt; que alterou o início do horário de verão do terceiro domingo de outubro (21/10/2018) para o primeiro domingo de novembro (04/11/2018), um fim de semana após o segundo turno das eleições, que está marcado para 28/10/2018.&lt;/p&gt;
-
-&lt;p&gt;Essa alteração foi feita a pedido do Tribunal Superior Eleitoral (TSE). O horário de verão em ano de eleição dificulta a apuração dos votos. Em 2014, por exemplo, a Justiça Eleitoral teve que adiar a divulgação do resultado para esperar a votação acabar no Acre.&lt;/p&gt;
-
-&lt;p&gt;O final do horário de verão foi mantido no terceiro domingo de fevereiro (17/02/2019).&lt;/p&gt;
-
-&lt;p&gt;Acontece que o Ministério da Educação (MEC) pediu que o início do horário de verão fosse adiado para 18 de novembro, a fim de evitar prejuízos aos estudantes que farão o Exame Nacional do Ensino Médio (Enem), cuja primeira prova está marcada para 04 de novembro. A necessidade de adiantar os relógios em uma 1 poderia confundir os candidatos.&lt;/p&gt;
-
-&lt;p&gt;O governo chegou a preparar o decreto e anunciar que faria essa nova alteração, porém depois não a oficializou por meio do Diário Oficial da União (DOU), decidindo finalmente por manter o horário de verão iniciando no dia 04 de novembro.&lt;/p&gt;
-
-&lt;p&gt;A razão para essa última decisão foi um protesto da Associação Brasileira das Empresas Aéreas (Abear), que alertou que a mudança poderia levar passageiros que compraram passagens com antecedência a perderem seus voos. Cerca de 42 mil voos poderiam ser afetados e pelo menos 3 milhões de passageiros poderiam ser prejudicados.&lt;/p&gt;
-
-&lt;p&gt;Portanto, desde o ano passado, o início do horário de verão no Brasil em 2018 já teve 3 mudanças: passou de 21/10 para 04/11, depois para 18/11, e por fim foi mantido em 04/11.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-como-saber-se-seu-computador-foi-afetado&quot;&gt;2) Como saber se seu computador foi afetado&lt;/h2&gt;
-
-&lt;p&gt;Você pode verificar se a data e a hora do seu computador estão corretas acessando o &lt;em&gt;site&lt;/em&gt; do projeto &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;, que mantém servidores de hora que os computadores podem consultar para sincronizar seus relógios:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/ntpbr-hora-certa.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/ntpbr-hora-certa.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;3-como-se-prevenir-dessas-mudanças&quot;&gt;3) Como se prevenir dessas mudanças&lt;/h2&gt;
-
-&lt;p&gt;Como eu disse no início do &lt;em&gt;post&lt;/em&gt;, quem estava com seu computador devidamente configurado e atualizado não teve problemas.&lt;/p&gt;
-
-&lt;p&gt;Eu já expliquei em um &lt;em&gt;post&lt;/em&gt; anterior como configurar o computador para sincronizar a data e a hora com a Internet usando o protocolo NTP:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;Mantenha a hora do seu computador sempre certa com o NTP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se você ainda não fez essa configuração, recomendo que a faça. Com isso, nunca mais você terá que se preocupar em ajustar manualmente a data e a hora do seu computador no início e no fim do horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Porém, essa configuração sozinha não é suficiente. Como vimos, as datas de início e fim do horário de verão podem mudar. Embora a data e hora possam ser obtidas da Internet, o início e o fim do horário de verão são programados no sistema operacional.&lt;/p&gt;
-
-&lt;p&gt;No caso da distribuição Linux &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap&lt;/a&gt;, o pacote que contém essa programação é o &lt;a href=&quot;https://software.opensuse.org/package/timezone&quot;&gt;&lt;strong&gt;timezone&lt;/strong&gt;&lt;/a&gt;, que já deve vir instalado por padrão. Esse pacote recebe atualizações conforme as datas de início e fim do horário de verão mudam. Essas atualizações devem ser baixadas e instaladas para que as mudanças passem a valer.&lt;/p&gt;
-
-&lt;p&gt;Também já expliquei em um &lt;em&gt;post&lt;/em&gt; anterior como manter o sistema sempre atualizado, recomendo a leitura:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/21/mantenha-seu-sistema-sempre-atualizado/&quot;&gt;Mantenha seu sistema sempre atualizado&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Você pode verificar se as mudanças de horário estão corretamente configuradas executando o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zdump -v /etc/localtime | grep '201[8,9]'
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A saída dele mostra todas as mudanças de horário programadas para ocorrer em 2018 e 2019:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;/etc/localtime  Sun Feb 18 01:59:59 2018 UT = Sat Feb 17 23:59:59 2018 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 18 02:00:00 2018 UT = Sat Feb 17 23:00:00 2018 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  4 02:59:59 2018 UT = Sat Nov  3 23:59:59 2018 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  4 03:00:00 2018 UT = Sun Nov  4 01:00:00 2018 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 17 01:59:59 2019 UT = Sat Feb 16 23:59:59 2019 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 17 02:00:00 2019 UT = Sat Feb 16 23:00:00 2019 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  3 02:59:59 2019 UT = Sat Nov  2 23:59:59 2019 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  3 03:00:00 2019 UT = Sun Nov  3 01:00:00 2019 -02 isdst=1 gmtoff=-7200
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Interpretando a saída desse comando, temos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fim do horário de verão em 18/02/2018,&lt;/li&gt;
-  &lt;li&gt;início do horário de verão em 04/11/2018,&lt;/li&gt;
-  &lt;li&gt;fim do horário de verão em 17/02/2019 e, de quebra,&lt;/li&gt;
-  &lt;li&gt;início do horário de verão em 03/11/2019.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No caso do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, provavelmente a &lt;a href=&quot;https://www.microsoft.com/pt-br/&quot;&gt;Microsoft&lt;/a&gt; deve lançar atualizações conforme as datas de início e fim do horário de verão mudam.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success atualizacao&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (22/10/2018):&lt;/strong&gt;
-    &lt;p&gt;Tem um &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt; Android que também está com a hora errada? &lt;a href=&quot;/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/&quot;&gt;Veja aqui como configurá-lo!&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;p&gt;Além das referências de jornais a seguir, que usei para me informar sobre o que aconteceu, gostaria de agradecer à troca de ideias com os demais usuários brasileiros do openSUSE no grupo do &lt;a href=&quot;https://telegram.org/&quot;&gt;Telegram&lt;/a&gt; em &lt;a href=&quot;https://t.me/opensusebr&quot;&gt;https://t.me/opensusebr&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.correiobraziliense.com.br/app/noticia/brasil/2018/10/21/interna-brasil,714001/relogio-de-celulares-adianta-uma-hora-de-novo-e-a-segunda-vez-na-sema.shtml&quot;&gt;Relógios de computador e celulares se adiantam antes do horário de verão - Correio Braziliense&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://g1.globo.com/politica/noticia/2018/10/15/planalto-informa-que-nao-havera-adiamento-e-que-horario-de-verao-comecara-no-proximo-dia-4.ghtml&quot;&gt;Planalto informa que não haverá adiamento e que horário de verão começará no próximo dia 4 - Política - G1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://oglobo.globo.com/economia/governo-voltara-discutir-se-acaba-com-horario-de-verao-22397585&quot;&gt;Governo voltará a discutir se acaba com horário de verão - Jornal O Globo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://noticias.r7.com/sao-paulo/senado-propoe-acabar-com-o-horario-de-verao-no-brasil-20092018&quot;&gt;Senado propõe acabar com o horário de verão no Brasil - Notícias - R7 São Paulo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Muita gente que virou acordado a madrugada de ontem para hoje percebeu que o relógio do computador se adiantou em 1 hora sozinho. Quem estava com seu computador devidamente configurado e atualizado não teve problemas. Nesse post você vai entender o que aconteceu e como se prevenir.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/tux-wrong-clock.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Diante da indefinição quanto ao início do horário de verão em 2018, muitas pessoas sofreram nas últimas 2 semanas com seus celulares se adiantando em 1 hora sozinhos. Ontem eu fiz um post explicando como configurar seu computador pessoal (PC) com Linux para se prevenir de situações como essas. Entendendo que Android também é Linux, resolvi escrever outro post explicando como configurar a data e a hora de dispositivos móveis (smartphones e tablets) com Android.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/howto-android-clock.png" /></entry></feed>
