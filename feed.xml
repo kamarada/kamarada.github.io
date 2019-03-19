@@ -1,5 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-03-17T16:50:11-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Como criar &quot;comandos personalizados&quot; no Linux</title><link href="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/" rel="alternate" type="text/html" title="Como criar &amp;quot;comandos personalizados&amp;quot; no Linux" /><published>2019-03-17T16:30:00-03:00</published><updated>2019-03-17T16:50:03-03:00</updated><id>https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">&lt;p&gt;Se você costuma usar o terminal e há comandos que você usa com frequência, saiba que pode economizar digitação criando &lt;em&gt;scripts&lt;/em&gt; com nomes personalizados. Em vez de digitar um comando grande, ou digitar vários comandos, você chama o &lt;em&gt;script&lt;/em&gt; e ele faz todo o trabalho. Veja nesse &lt;em&gt;post&lt;/em&gt; como fazer isso.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-03-19T02:43:05-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">Integrating the Open Build Service with GitHub</title><link href="https://kamarada.github.io/en/2019/03/18/integrating-the-open-build-service-with-github/" rel="alternate" type="text/html" title="Integrating the Open Build Service with GitHub" /><published>2019-03-18T22:30:00-03:00</published><updated>2019-03-19T02:42:48-03:00</updated><id>https://kamarada.github.io/en/2019/03/18/integrating-the-open-build-service-with-github</id><content type="html" xml:base="https://kamarada.github.io/en/2019/03/18/integrating-the-open-build-service-with-github/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you are developing software for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, you should know the &lt;a href=&quot;https://openbuildservice.org/&quot;&gt;&lt;strong&gt;Open Build Service (OBS)&lt;/strong&gt;&lt;/a&gt;. What does it do that makes it such an interesting tool? Let me quote &lt;a href=&quot;https://openbuildservice.org/&quot;&gt;its website&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Open Build Service (OBS) is a system to build and distribute binary packages from sources in an automatic, consistent and reproducible way. You can release packages as well as updates, add-ons, appliances and entire distributions for a wide range of operating systems and hardware architectures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In practice, you software developer can upload your software souce to OBS and build ready to install packages for &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org&quot;&gt;Debian&lt;/a&gt;, &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; and other distributions, as well as packages for &lt;a href=&quot;https://en.wikipedia.org/wiki/X86&quot;&gt;i586&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/X86-64&quot;&gt;x86_64&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM&lt;/a&gt; and other architectures. Your software users can download those packages directly from OBS. It is also able to build &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;Live images&lt;/a&gt;, so users can try your software on a clean and controlled system prior to actually installing anything.&lt;/p&gt;
+
+&lt;p&gt;OBS is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.en.html&quot;&gt;free software&lt;/a&gt;, so you can download, install and run it on a server of your own. Or (easier) you can use the reference server publicly and freely available at &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;. That server is used mainly for development of the openSUSE distribution, but it also hosts many community projects.&lt;/p&gt;
+
+&lt;p&gt;Also, if you are a software developer, you probably know &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; and &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; — they need no introduction. What if I tell you that you can integrate OBS with GitHub so that you always get your software built and available for download right after a &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;How to set up that integration is what you are going to see here.&lt;/p&gt;
+
+&lt;h2 id=&quot;obs-basics&quot;&gt;OBS basics&lt;/h2&gt;
+
+&lt;p&gt;I’m not going to dive into OBS basics here, I’ll write an entire post about them someday. By now, you can find how to get started with OBS here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/&quot;&gt;Documentation - Open Build Service&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Build_Service_Tutorial&quot;&gt;openSUSE:Build Service Tutorial - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I assume that you are able to login with your openSUSE account at &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt; (if you don’t have an account yet, click on the &lt;strong&gt;Sign Up&lt;/strong&gt; link at the top of the page to create one).&lt;/p&gt;
+
+&lt;p&gt;Create an empty package for your software at OBS. Here I’m going to use as example the Linux Kamarada’s &lt;a href=&quot;https://github.com/kamarada/patterns/tree/15.1-dev&quot;&gt;patterns&lt;/a&gt; GitHub repository, which by now has just a spec file.&lt;/p&gt;
+
+&lt;p&gt;If you don’t know what a spec file is and/or are new to &lt;a href=&quot;https://en.wikipedia.org/wiki/RPM_Package_Manager&quot;&gt;RPM&lt;/a&gt; packaging, read these:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/index.html&quot;&gt;Fedora RPM Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Packaging_guidelines&quot;&gt;openSUSE:Packaging guidelines - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also assume that you have installed &lt;a href=&quot;https://linux.die.net/man/1/osc&quot;&gt;&lt;strong&gt;osc&lt;/strong&gt;&lt;/a&gt;, the OBS command-line client, on your machine. If you are using openSUSE, you can do that running:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install osc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Checkout your OBS home project using:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc checkout home:username
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter the package directory:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd home:username/packagename
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let’s integrate OBS with GitHub.&lt;/p&gt;
+
+&lt;h2 id=&quot;obs-retrieving-sources-from-github&quot;&gt;OBS: retrieving sources from GitHub&lt;/h2&gt;
+
+&lt;p&gt;Set up the &lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html&quot;&gt;source service&lt;/a&gt; to retrieve sources from GitHub using &lt;strong&gt;osc&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc add git://github.com/kamarada/patterns.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit the generated &lt;code class=&quot;highlighter-rouge&quot;&gt;_service&lt;/code&gt; file and exchange its contents with:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;services&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;service&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;obs_scm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;scm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;git&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;git://github.com/kamarada/patterns.git&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;revision&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;15.1-dev&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;extract&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;patterns-kamarada-gnome.spec&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/service&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/services&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that I’m using the &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1-dev&lt;/code&gt; branch. If you are going to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch for your package, you can just omit the &lt;code class=&quot;highlighter-rouge&quot;&gt;revision&lt;/code&gt; parameter.&lt;/p&gt;
+
+&lt;p&gt;Commit changes:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc commit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The commit automatically triggers the source service and the build process. If you go to &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;, your project is already building:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In order for GitHub to trigger your package build you need to generate a &lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.authorization.token.html#id-1.7.18.4&quot;&gt;token&lt;/a&gt; using &lt;strong&gt;osc&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc token --create home:username packagename
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The command will return the token and its id:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;status&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;code=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;Ok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;AcRaZyStRiNgWhIcHiSyOuRtOkeN&lt;span class=&quot;nt&quot;&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;4321&lt;span class=&quot;nt&quot;&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/status&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As a test, you can manually trigger your package build using the generated token:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc token --trigger AcRaZyStRiNgWhIcHiSyOuRtOkeN
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you go to &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;, your project is building.&lt;/p&gt;
+
+&lt;h2 id=&quot;github-alerting-obs-of-new-commits&quot;&gt;GitHub: alerting OBS of new commits&lt;/h2&gt;
+
+&lt;p&gt;We want to update our package sources in OBS whenever they change in GitHub. We can have GitHub trigger that update automatically setting up a &lt;a href=&quot;https://developer.github.com/webhooks/&quot;&gt;GitHub webhook&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To do this execute the following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sign in to GitHub and go to your repository (in my case, &lt;a href=&quot;https://github.com/kamarada/patterns&quot;&gt;https://github.com/kamarada/patterns&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Settings&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Webhooks&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click the &lt;strong&gt;Add webhook&lt;/strong&gt; button:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Provide the following parameters:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Payload URL:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;https://build.opensuse.org/trigger/webhook?id=4321&lt;/code&gt; (remember to replace &lt;code class=&quot;highlighter-rouge&quot;&gt;4321&lt;/code&gt; by your token’s id)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Content type:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt; (default)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Secret:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;AcRaZyStRiNgWhIcHiSyOuRtOkeN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Leave the other parameters with their default values:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SSL verification&lt;/strong&gt;: Enable SSL verification&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Which events would you like to trigger this webhook?&lt;/strong&gt; Just the push event.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Active&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, click the &lt;strong&gt;Add webhook&lt;/strong&gt; green button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the previous page, you can see the added webhook:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-4.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;From now on, each &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; to GitHub will trigger a package rebuild in OBS. Your username will appear in the &lt;code class=&quot;highlighter-rouge&quot;&gt;osc log&lt;/code&gt; source history.&lt;/p&gt;
+
+&lt;p&gt;Have a lot of fun!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Build_Service_Tutorial&quot;&gt;openSUSE:Build Service Tutorial - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/2013/11/22/source-update-via_token/&quot;&gt;Let github.com trigger your source update - OBS blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-buildservice/2018-05/msg00042.html&quot;&gt;OBS + GitHub - deprecation of GitHub Services - opensuse-buildservice Mailing List Archive&lt;/a&gt; (and its &lt;a href=&quot;https://lists.opensuse.org/opensuse-buildservice/2018-10/msg00034.html&quot;&gt;follow up&lt;/a&gt; a few months later)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_scm_integration&quot;&gt;Integrating External Source Repositories - OBS Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html&quot;&gt;Using Source Services - OBS User Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.authorization.token.html#id-1.7.18.4&quot;&gt;OBS Token Authorization - OBS Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/seccubus/obs_autobuild_test&quot;&gt;GitHub - seccubus/obs_autobuild_test: Test to see how you make OpenSUSE build services build automagically&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Get your software built and available for download right after a git push!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2019/03/obs-and-github.jpg" /></entry><entry xml:lang="pt"><title type="html">Como criar &quot;comandos personalizados&quot; no Linux</title><link href="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/" rel="alternate" type="text/html" title="Como criar &amp;quot;comandos personalizados&amp;quot; no Linux" /><published>2019-03-17T16:30:00-03:00</published><updated>2019-03-17T16:50:03-03:00</updated><id>https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">&lt;p&gt;Se você costuma usar o terminal e há comandos que você usa com frequência, saiba que pode economizar digitação criando &lt;em&gt;scripts&lt;/em&gt; com nomes personalizados. Em vez de digitar um comando grande, ou digitar vários comandos, você chama o &lt;em&gt;script&lt;/em&gt; e ele faz todo o trabalho. Veja nesse &lt;em&gt;post&lt;/em&gt; como fazer isso.&lt;/p&gt;
 
 &lt;p&gt;Uma tarefa que simplifiquei onde trabalho foi o envio de arquivos para um servidor usando &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Transferindo-arquivos-com-o-rsync?pagina=3&quot;&gt;&lt;strong&gt;rsync&lt;/strong&gt;&lt;/a&gt;. Eu percebi que com frequência eu usava um comando parecido com esse:&lt;/p&gt;
 
@@ -2552,149 +2754,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/Printing/openSUSE_Leap_15.0/ printing
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Then, reinstall the HPLIP driver and try to add the printer again.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">HP printers and all-in-one devices (printer, scanner and fax) are very popular in Brazil. In this post, I show how I have my HP DeskJet Ink Advantage 3836 setup to print via network on openSUSE. Other HP printers can be setup the same way.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry><entry xml:lang="pt"><title type="html">Mantenha a hora do Android sempre certa</title><link href="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/" rel="alternate" type="text/html" title="Mantenha a hora do Android sempre certa" /><published>2018-10-22T01:20:00-03:00</published><updated>2018-10-23T08:17:09-03:00</updated><id>https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Diante da &lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;indefinição quanto ao início do horário de verão em 2018&lt;/a&gt;, muitas pessoas sofreram nas últimas 2 semanas com seus celulares se adiantando em 1 hora sozinhos. Ontem eu fiz um &lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;&lt;em&gt;post&lt;/em&gt;&lt;/a&gt; explicando como configurar seu &lt;a href=&quot;https://pt.wikipedia.org/wiki/IBM_PC&quot;&gt;computador pessoal (PC)&lt;/a&gt; com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; para se prevenir de situações como essas. Entendendo que &lt;a href=&quot;https://www.tecmundo.com.br/software/127038-android-linux-kernel.htm&quot;&gt;Android também é Linux&lt;/a&gt;, resolvi escrever outro &lt;em&gt;post&lt;/em&gt; explicando como configurar a data e a hora de dispositivos móveis (&lt;em&gt;smartphones&lt;/em&gt; e &lt;em&gt;tablets&lt;/em&gt;) com &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-o-que-aconteceu&quot;&gt;1) O que aconteceu&lt;/h2&gt;
-
-&lt;p&gt;Não vou explicar de novo nesse &lt;em&gt;post&lt;/em&gt; o que aconteceu, para detalhes leia o &lt;em&gt;post&lt;/em&gt; anterior:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;Acordou com a hora do computador errada? Entenda o que aconteceu&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mas resumindo, desde o ano passado, o início do horário de verão no Brasil em 2018 já teve 3 mudanças: passou de 21/10 para 04/11, depois para 18/11, e por fim foi mantido em 04/11. Diante dessas mudanças, os celulares de muitas pessoas meio que enlouqueceram:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tecmundo.com.br/dispositivos-moveis/135170-iphone-adianta-relogio-para-o-horario-verao.htm&quot;&gt;Celulares da TIM ‘se apressam’ e adiantam o relógio para o horário de verão&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tecmundo.com.br/mercado/135399-celulares-erram-novo-entram-horario-verao-hora.htm&quot;&gt;Celulares erram de novo e entram em horário de verão antes da hora&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-como-saber-se-seu-dispositivo-foi-afetado&quot;&gt;2) Como saber se seu dispositivo foi afetado&lt;/h2&gt;
-
-&lt;p&gt;Você pode verificar se a data e a hora do seu dispositivo Android estão corretas acessando o &lt;em&gt;site&lt;/em&gt; do projeto &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;, que mantém servidores de hora que informam a data e hora corretas no Brasil:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/ntpbr-hora-certa-android.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/ntpbr-hora-certa-android.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;3-como-se-prevenir-dessas-mudanças&quot;&gt;3) Como se prevenir dessas mudanças&lt;/h2&gt;
-
-&lt;p&gt;Geralmente é uma boa opção configurar o dispositivo Android para sincronizar a data e a hora com a rede (essa rede pode ser tanto a rede da operadora quanto a Internet). Com isso, você não precisa se preocupar com o início e o fim do horário de verão: seu dispositivo Android muda a data e hora automaticamente quando necessário.&lt;/p&gt;
-
-&lt;p&gt;Para fazer toda a configuração de data, hora e fuso horário do seu dispositivo Android de forma automática, toque em &lt;strong&gt;Configurar&lt;/strong&gt; &amp;gt; &lt;strong&gt;Sistema&lt;/strong&gt; &amp;gt; &lt;strong&gt;Data e hora&lt;/strong&gt; e certifique-se de que as opções &lt;strong&gt;Data e hora automáticas&lt;/strong&gt; e &lt;strong&gt;Fuso horário automático&lt;/strong&gt; estejam habilitadas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-1-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-1-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique se o dispositivo mostra o fuso horário correto na opção &lt;strong&gt;Selecionar fuso Horário&lt;/strong&gt;. No meu caso, ele mostra &lt;strong&gt;GMT-03:00 Horário Padrão de Brasília&lt;/strong&gt; porque estou no sul do Brasil, uma região que adota o horário de verão, assim como Brasília.&lt;/p&gt;
-
-&lt;p&gt;Verifique também se agora sua data e hora estão corretas.&lt;/p&gt;
-
-&lt;p&gt;Caso esteja tudo certo, pronto, não há mais o que fazer.&lt;/p&gt;
-
-&lt;p&gt;Caso contrário, perceba que o Android permite configurar manualmente a data e hora, ou o fuso horário, ou os dois. Você pode alterar manualmente apenas o que não estiver correto.&lt;/p&gt;
-
-&lt;p&gt;O mais comum é precisar mudar apenas o fuso horário: se você mora em uma região que não adota o horário de verão (Nordeste ou Norte), deve alterar o fuso horário para outro que também não adote o horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Consulte o mapa abaixo para saber se seu estado adota ou não o horário de verão:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/10/mapa-horario-de-verao-2016-2017.jpg&quot; title=&quot;Estados que adotam horário de verão no Brasil (referências: [G1](http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html) e [Decreto nº 8.112](http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm), mapa derivado do [mapa do Brasil em branco disponível na WikiMedia](https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg))&quot;&gt;
-&lt;img src=&quot;/files/2016/10/mapa-horario-de-verao-2016-2017.jpg&quot; alt=&quot;Estados que adotam horário de verão no Brasil (referências: [G1](http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html) e [Decreto nº 8.112](http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm), mapa derivado do [mapa do Brasil em branco disponível na WikiMedia](https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg))&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Estados que adotam horário de verão no Brasil (referências: &lt;a href=&quot;http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html&quot;&gt;G1&lt;/a&gt; e &lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm&quot;&gt;Decreto nº 8.112&lt;/a&gt;, mapa derivado do &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg&quot;&gt;mapa do Brasil em branco disponível na WikiMedia&lt;/a&gt;)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para configurar o fuso horário manualmente, desative a opção &lt;strong&gt;Fuso horário automático&lt;/strong&gt; e toque em &lt;strong&gt;Selecionar fuso horário&lt;/strong&gt;. Na tela seguinte, toque em &lt;strong&gt;Fuso horário&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-2-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-2-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione um fuso horário que não adote o horário de verão, por exemplo, &lt;strong&gt;Bahia&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-3-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-3-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que o Android confirma que esse fuso horário não adota o horário de verão (leia &lt;strong&gt;Sem horário de verão&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-4-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-4-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Toque no ícone de &lt;strong&gt;Voltar&lt;/strong&gt; no canto superior esquerdo da tela.&lt;/p&gt;
-
-&lt;p&gt;Não se espante se na tela &lt;strong&gt;Data e hora&lt;/strong&gt; o Android ainda mostra o fuso horário &lt;strong&gt;GMT-03:00 Horário Padrão de Brasília&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-5-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-5-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você tocar em &lt;strong&gt;Selecionar fuso horário&lt;/strong&gt; de novo verá que está selecionado o fuso horário da Bahia. Provavelmente ele guarda nas configurações que deve usar a mesma hora que Brasília, porém sem o horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Agora que você mudou o fuso horário, verifique se sua data e hora estão corretas.&lt;/p&gt;
-
-&lt;p&gt;Se mesmo selecionando o fuso horário manualmente a data e hora estiverem incorretas, você terá que configurá-las manualmente.&lt;/p&gt;
-
-&lt;p&gt;Para configurar a data e hora manualmente, desative a opção &lt;strong&gt;Data e hora automáticas&lt;/strong&gt; e use as opções &lt;strong&gt;Definir data&lt;/strong&gt; e &lt;strong&gt;Definir hora&lt;/strong&gt; conforme necessário:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-6-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-6-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-7-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-7-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-8-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-8-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, como sua configuração agora é totalmente manual, lembre-se de sempre ajustar a data e hora quando o horário de verão começar e terminar.&lt;/p&gt;
-
-&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.androidcentral.com/why-wont-my-phone-keep-right-time&quot;&gt;How to fix the incorrect time on your Android phone - Android Central&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Diante da indefinição quanto ao início do horário de verão em 2018, muitas pessoas sofreram nas últimas 2 semanas com seus celulares se adiantando em 1 hora sozinhos. Ontem eu fiz um post explicando como configurar seu computador pessoal (PC) com Linux para se prevenir de situações como essas. Entendendo que Android também é Linux, resolvi escrever outro post explicando como configurar a data e a hora de dispositivos móveis (smartphones e tablets) com Android.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/howto-android-clock.png" /></entry></feed>
+&lt;p&gt;Then, reinstall the HPLIP driver and try to add the printer again.&lt;/p&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">HP printers and all-in-one devices (printer, scanner and fax) are very popular in Brazil. In this post, I show how I have my HP DeskJet Ink Advantage 3836 setup to print via network on openSUSE. Other HP printers can be setup the same way.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/09/hp-printers.png" /></entry></feed>
