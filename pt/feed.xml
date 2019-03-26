@@ -9,10 +9,223 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 19 Mar 2019 02:45:57 -0300</pubDate>
-        <lastBuildDate>Tue, 19 Mar 2019 02:45:57 -0300</lastBuildDate>
+        <pubDate>Tue, 26 Mar 2019 01:19:13 -0300</pubDate>
+        <lastBuildDate>Tue, 26 Mar 2019 01:19:13 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Transmitindo do Linux para a TV com Chromecast</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://store.google.com/product/chromecast&quot;&gt;Google Chromecast&lt;/a&gt; é um pequeno aparelho que, conectado à rede Wi-Fi e à TV por &lt;a href=&quot;https://pt.wikipedia.org/wiki/High-Definition_Multimedia_Interface&quot;&gt;HDMI&lt;/a&gt;, permite que você transmita músicas, vídeos, páginas da Internet ou até mesmo toda a tela do seu computador, &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt; para a TV.&lt;/p&gt;
+
+&lt;p&gt;No computador, você pode usar o navegador &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; ou o seu equivalente aberto, o &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, para fazer transmissões. Nessa página você vai aprender como fazer isso.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuração-do-chromecast&quot;&gt;Configuração do Chromecast&lt;/h2&gt;
+
+&lt;p&gt;Antes de começar, certifique-se que seu Chromecast esteja pronto para receber transmissões.&lt;/p&gt;
+
+&lt;p&gt;Não é possível fazer a configuração inicial do Chromecast usando um computador. Caso seu Chromecast ainda não esteja pronto, você deve usar &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt; para configurá-lo.&lt;/p&gt;
+
+&lt;p&gt;Para mais informações, consulte a ajuda do Chromecast:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456?hl=pt-BR&quot;&gt;Configurar seu dispositivo Chromecast - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Já foi possível configurar um Chromecast usando um computador. Essa possibilidade foi &lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;descontinuada&lt;/a&gt; com o lançamento da &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;versão 72 do navegador Chrome&lt;/a&gt; em &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;janeiro de 2019&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuração-do-computador&quot;&gt;Configuração do computador&lt;/h2&gt;
+
+&lt;p&gt;Para transmitir de um computador para o Chromecast, ambos devem estar conectados à mesma rede (a rede doméstica, por exemplo).&lt;/p&gt;
+
+&lt;p&gt;Além disso, é necessário fazer algumas configurações no computador antes da primeira transmissão. Uma delas é liberar no &lt;em&gt;firewall&lt;/em&gt; as portas usadas pelo Chromecast.&lt;/p&gt;
+
+&lt;p&gt;De acordo com &lt;a href=&quot;https://blog.g3rt.nl/allow-google-chromecast-host-firewall-iptables.html&quot;&gt;essa página&lt;/a&gt;, o Chromecast usa as portas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;8008 e 8009 TCP; e&lt;/li&gt;
+  &lt;li&gt;32768 a 61000 UDP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Desde o lançamento do openSUSE Leap 15, o &lt;em&gt;firewall&lt;/em&gt; padrão do openSUSE é o &lt;a href=&quot;https://firewalld.org/&quot;&gt;&lt;strong&gt;firewalld&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para configurá-lo, inicie o aplicativo &lt;strong&gt;Firewall&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(pode clicar em qualquer um dos dois ícones)&lt;/p&gt;
+
+&lt;p&gt;Será solicitada a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), você deve fornecê-la para continuar.&lt;/p&gt;
+
+&lt;p&gt;Mude o campo &lt;strong&gt;Configuração&lt;/strong&gt; (na parte de cima) para &lt;strong&gt;Permanente&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Logo abaixo, selecione a aba &lt;strong&gt;Serviços&lt;/strong&gt; e clique no botão &lt;strong&gt;Adicionar Serviço&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Configurações do serviço base&lt;/strong&gt;, informe em &lt;strong&gt;Nome:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;chromecast&lt;/code&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à tela principal, selecione a aba &lt;strong&gt;Portas&lt;/strong&gt; e clique em &lt;strong&gt;Adicionar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No campo &lt;strong&gt;Porta / Intervalo de portas&lt;/strong&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;8008-8009&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em &lt;strong&gt;Protocolo&lt;/strong&gt;, selecione &lt;strong&gt;tcp&lt;/strong&gt;. Depois, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Adicione as portas UDP da mesma forma: clique em &lt;strong&gt;Adicionar&lt;/strong&gt;. Em &lt;strong&gt;Porta / Intervalo de portas&lt;/strong&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;32768-61000&lt;/code&gt;. Em &lt;strong&gt;Protocolo&lt;/strong&gt;, selecione &lt;strong&gt;udp&lt;/strong&gt;. Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ao final, sua janela deve estar assim:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique no menu &lt;strong&gt;Opções&lt;/strong&gt; e depois, na opção &lt;strong&gt;Recarregar Firewalld&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a aba &lt;strong&gt;Zonas&lt;/strong&gt;. Depois, selecione a zona &lt;strong&gt;home&lt;/strong&gt; (casa) e na aba &lt;strong&gt;Serviços&lt;/strong&gt; (há duas abas &lt;strong&gt;Serviços&lt;/strong&gt;, agora me refiro à de baixo), marque o serviço &lt;strong&gt;chromecast&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Recarregue o &lt;em&gt;firewall&lt;/em&gt; mais uma vez (menu &lt;strong&gt;Opções&lt;/strong&gt;, opção &lt;strong&gt;Recarregar Firewalld&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Por fim, selecione a conexão Wi-Fi à esquerda (&lt;strong&gt;wlan1&lt;/strong&gt;) e clique em &lt;strong&gt;Mudar Zona&lt;/strong&gt;. Selecione a zona &lt;strong&gt;home&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você liberou no &lt;em&gt;firewall&lt;/em&gt; conexões com dispositivos Chromecast em redes domésticas e informou que a rede atual é uma rede doméstica.&lt;/p&gt;
+
+&lt;p&gt;Você pode classificar diferentes redes em diferentes tipos: casa, trabalho, pública. Por padrão, todas as redes são tratadas como públicas e poucos serviços são liberados, mas não vou entrar em detalhes sobre &lt;em&gt;firewall&lt;/em&gt; agora.&lt;/p&gt;
+
+&lt;p&gt;Se você usa o navegador aberto Chromium, há mais uma configuração que precisa fazer. Por padrão, ele vem configurado para não procurar por dispositivos Chromecast na rede.&lt;/p&gt;
+
+&lt;p&gt;Vamos mudar isso. Abra o navegador, acesse o endereço &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome://flags/#load-media-router-component-extension&lt;/code&gt; e selecione &lt;strong&gt;Enabled&lt;/strong&gt; (habilitado):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Reinicie o navegador.&lt;/p&gt;
+
+&lt;p&gt;Agora estamos prontos para transmitir!&lt;/p&gt;
+
+&lt;h2 id=&quot;como-transmitir&quot;&gt;Como transmitir&lt;/h2&gt;
+
+&lt;p&gt;Navegue até o vídeo ou página que deseja transmitir, abra o menu do navegador e clique na opção &lt;strong&gt;Transmitir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique no &lt;strong&gt;Chromecast&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feito isso, você pode controlar a transmissão pelo navegador:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Sua TV já deve ter som e imagem que vem do computador via Chromecast.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Parar&lt;/strong&gt; quando não quiser mais transmitir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; para fixar o botão &lt;strong&gt;Transmitir&lt;/strong&gt; ao lado da barra de endereços, clique com o botão direito nele e depois em &lt;strong&gt;Sempre mostrar ícone&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Siga o Linux Kamarada para ver outras dicas de como usar seu computador com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; em conjunto com seu Chromecast.&lt;/p&gt;
+
+&lt;h1 id=&quot;referências&quot;&gt;Referências&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456?hl=pt-BR&quot;&gt;Configurar seu dispositivo Chromecast - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;Google killing desktop Chromecast setup for Mac and PC with Chrome 72 - 9to5Google&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/Chromium&quot;&gt;Chromium - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://firewalld.org/documentation/howto/add-a-service.html&quot;&gt;Documentation - HowTo - Add a Service - firewalld&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.thegeekdiary.com/5-useful-examples-of-firewall-cmd-command/&quot;&gt;5 Useful Examples of firewall-cmd command - The Geek Diary&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7&quot;&gt;How To Set Up a Firewall Using FirewallD on CentOS 7 - DigitalOcean&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/7249696?hl=pt-BR&quot;&gt;Adicionar o botão Transmitir à barra de ferramentas do Chrome - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 26 Mar 2019 01:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como criar &amp;quot;comandos personalizados&amp;quot; no Linux</title>
@@ -3164,296 +3377,6 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
                 <pubDate>Sat, 06 Oct 2018 11:20:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Assinando e-mails enviados com certificado digital no Thunderbird</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Embora hoje o &lt;em&gt;webmail&lt;/em&gt; seja mais popular que o cliente de &lt;em&gt;e-mail&lt;/em&gt;, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com o cliente de &lt;em&gt;e-mail&lt;/em&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais e também sobre o Thunderbird:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/&quot;&gt;Sincronizando o Gmail no Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;configurando-a-assinatura-digital-no-thunderbird&quot;&gt;Configurando a assinatura digital no Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;Para poder utilizar o &lt;em&gt;token&lt;/em&gt; no Thunderbird, vamos cadastrá-lo como um dispositivo de segurança.&lt;/p&gt;
-
-&lt;p&gt;Para isso, com o Thunderbird aberto, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, no canto superior direito da janela, e depois clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e, por fim, no botão &lt;strong&gt;Dispositivos de segurança&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você configurou o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; para usar o &lt;em&gt;token&lt;/em&gt;, como instruímos em &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;, já deve ter percebido que o procedimento é semelhante.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de dispositivos&lt;/strong&gt;, clique em &lt;strong&gt;Carregar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo seguinte, em &lt;strong&gt;Nome do módulo&lt;/strong&gt;, digite um nome que identifique o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;No campo &lt;strong&gt;Nome do arquivo do módulo&lt;/strong&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que o &lt;em&gt;token&lt;/em&gt; é adicionado à lista de &lt;strong&gt;Dispositivos e módulos de segurança&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à tela principal do Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt;, aponte para &lt;strong&gt;Preferências&lt;/strong&gt; e clique em &lt;strong&gt;Configurações de conta&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No painel da esquerda, dentro das opções da conta, selecione &lt;strong&gt;Segurança&lt;/strong&gt; e à direita, dentro de &lt;strong&gt;Assinatura digital&lt;/strong&gt;, clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione o &lt;strong&gt;Certificado&lt;/strong&gt; a ser usado para assinatura e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Como o objetivo é configurar a criptografia apenas para o envio, e não para a resposta, clique em &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-09.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-09.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Configurar contas&lt;/strong&gt;, caso deseje sempre assinar digitalmente os &lt;em&gt;e-mails&lt;/em&gt; que envia, marque a opção &lt;strong&gt;Assinar mensagens digitalmente (por padrão)&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt; para voltar à tela principal do Thunderbird.&lt;/p&gt;
-
-&lt;p&gt;A assinatura digital está configurada e pronta para ser utilizada.&lt;/p&gt;
-
-&lt;h2 id=&quot;enviando-e-mails-com-assinatura-digital&quot;&gt;Enviando e-mails com assinatura digital&lt;/h2&gt;
-
-&lt;p&gt;Na tela principal do Thunderbird, clique no botão &lt;strong&gt;Nova msg&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Redija a mensagem normalmente.&lt;/p&gt;
-
-&lt;p&gt;Antes de enviar, certifique-se de que a opção &lt;strong&gt;Assinar digitalmente&lt;/strong&gt;, dentro do menu &lt;strong&gt;Segurança&lt;/strong&gt;, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Enviar agora&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Thunderbird solicita o PIN do &lt;em&gt;token&lt;/em&gt; para assinar a mensagem no momento do envio:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;verificando-a-assinatura-digital-de-e-mails-recebidos&quot;&gt;Verificando a assinatura digital de e-mails recebidos&lt;/h2&gt;
-
-&lt;p&gt;Se o destinatário utiliza o cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird, ele pode verificar a assinatura digital da mensagem:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que a princípio o Thunderbird não reconhece a assinatura, exibindo &lt;strong&gt;A assinatura digital não é válida&lt;/strong&gt;. Isso pode acontecer porque ele não conhece o certificado da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;Autoridade Certificadora Raiz brasileira&lt;/a&gt;. Por tabela, ele não confia no certificado do remetente, que foi emitido por essa autoridade certificadora.&lt;/p&gt;
-
-&lt;p&gt;Já tratamos de situação parecida que ocorre no navegador Firefox em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt; e a solução no caso do cliente de &lt;em&gt;e-mail&lt;/em&gt; Thunderbird é semelhante.&lt;/p&gt;
-
-&lt;p&gt;Primeiro, &lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt&quot;&gt;clique aqui&lt;/a&gt; para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.&lt;/p&gt;
-
-&lt;p&gt;Depois, volte ao Thunderbird, clique no botão &lt;strong&gt;Menu&lt;/strong&gt; e depois no item &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique na aba &lt;strong&gt;Avançado&lt;/strong&gt;, depois na aba &lt;strong&gt;Certificados&lt;/strong&gt; e por fim no botão &lt;strong&gt;Gerenciar certificados&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Gerenciador de certificados&lt;/strong&gt;, clique no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe o caminho para o certificado que você baixou.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo seguinte, marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/certificados-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique que a &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; aparece na lista de autoridades certificadoras:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-16.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-16.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Preferências do Thunderbird&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pronto! Agora, se você voltar ao &lt;em&gt;e-mail&lt;/em&gt;, perceberá que a assinatura é reconhecida:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o destinatário utiliza o &lt;em&gt;webmail&lt;/em&gt;, pode ser que o &lt;em&gt;webmail&lt;/em&gt; possibilite verificar a assinatura da mensagem, como o &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;, por exemplo, possibilita:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que o Gmail também não reconhece a assinatura, muito provavelmente pelo menos motivo: não conhece o certificado da ICP-Brasil. Infelizmente, a solução definitiva para isso demandaria ao &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt; instalar esse certificado em seus servidores.&lt;/p&gt;
-
-&lt;p&gt;Ainda assim, o Gmail te possibilita, clicando em &lt;strong&gt;Informações do remetente&lt;/strong&gt;, baixar o certificado do remetente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com isso, você pode verificar o certificado você mesmo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token-21.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wwws.prodemge.gov.br/component/phocadownload/category/23-assinatura-digital-e-mail?download=63:manual-de-assinatura-digital-thunderbird&quot;&gt;Manual de assinatura de e-mail utilizando o Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Mon, 24 Sep 2018 13:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/</guid>
                 
                 
                     <category>pt</category>
