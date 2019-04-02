@@ -1,5 +1,202 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-04-01T09:48:49-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Transmitindo do Linux para a TV com Chromecast</title><link href="https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/" rel="alternate" type="text/html" title="Transmitindo do Linux para a TV com Chromecast" /><published>2019-03-26T01:00:00-03:00</published><updated>2019-04-01T09:48:45-03:00</updated><id>https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-04-01T22:47:09-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">Streaming from Linux to TV using Chromecast</title><link href="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/" rel="alternate" type="text/html" title="Streaming from Linux to TV using Chromecast" /><published>2019-04-01T22:45:00-03:00</published><updated>2019-04-01T22:45:49-03:00</updated><id>https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast</id><content type="html" xml:base="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://store.google.com/product/chromecast&quot;&gt;Google Chromecast&lt;/a&gt; is a small device that, once connected to your Wi-Fi network and plugged into your TV’s &lt;a href=&quot;https://en.wikipedia.org/wiki/HDMI&quot;&gt;HDMI&lt;/a&gt; port, allows you to stream video, music, web pages or even your computer’s or mobile device’s whole screen content to the TV.&lt;/p&gt;
+
+&lt;p&gt;On &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, you can use the &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; web browser or its open equivalent, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, to stream (cast) to Chromecast. How to do that is what you are going to see here.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-your-chromecast-device&quot;&gt;Set up your Chromecast device&lt;/h2&gt;
+
+&lt;p&gt;Before we get started, make sure your Chromecast device is ready to receive streams.&lt;/p&gt;
+
+&lt;p&gt;It’s not possible to setup Chromecast using a computer. In case you haven’t setup your Chromecast yet, use a mobile device with &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; or &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt; to set it up.&lt;/p&gt;
+
+&lt;p&gt;For more information on how to do that, refer to the Chromecast help:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456&quot;&gt;Set up your Chromecast device - Chromecast Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It was possible in the past to setup Chromecast using a computer. That feature was &lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;discontinued&lt;/a&gt; when &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; released &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;Chrome version 72&lt;/a&gt; by &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;January, 2019&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-your-computer&quot;&gt;Set up your computer&lt;/h2&gt;
+
+&lt;p&gt;To stream from a computer to a Chromecast device, both must be on the same Wi-Fi network (for instance, your home Wi-Fi).&lt;/p&gt;
+
+&lt;p&gt;Besides that, you need to adjust some settings on your computer before your first streaming.&lt;/p&gt;
+
+&lt;p&gt;First, let’s open in the firewall the ports used by Chromecast to communicate with the computer. According to &lt;a href=&quot;https://blog.g3rt.nl/allow-google-chromecast-host-firewall-iptables.html&quot;&gt;this blog post&lt;/a&gt;, Chromecast uses the following ports:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;TCP 8008 and 8009; and&lt;/li&gt;
+  &lt;li&gt;UDP 32768 through 61000.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Starting with &lt;a href=&quot;/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;openSUSE Leap 15&lt;/a&gt;, openSUSE’s default firewall is &lt;a href=&quot;https://firewalld.org/&quot;&gt;&lt;strong&gt;firewalld&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To set it up, open the &lt;strong&gt;Firewall&lt;/strong&gt; app:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(you can click either icon)&lt;/p&gt;
+
+&lt;p&gt;It will ask you the administrator (&lt;em&gt;root&lt;/em&gt; user) password, which you must provide to continue.&lt;/p&gt;
+
+&lt;p&gt;Switch &lt;strong&gt;Configuration&lt;/strong&gt; (on top) to &lt;strong&gt;Permanent&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Services&lt;/strong&gt; tab right below and click the &lt;strong&gt;Add Service&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;strong&gt;Base Service Settings&lt;/strong&gt; dialog box, fill in the &lt;strong&gt;Name&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;chromecast&lt;/code&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the main screen, select the just created &lt;strong&gt;chromecast&lt;/strong&gt; service, select the &lt;strong&gt;Ports&lt;/strong&gt; tab and click &lt;strong&gt;Add&lt;/strong&gt;. Fill in the &lt;strong&gt;Port / Port Range&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;8008-8009&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In &lt;strong&gt;Protocol&lt;/strong&gt;, choose &lt;strong&gt;tcp&lt;/strong&gt;. Then, click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Add the UDP ports the same way: click &lt;strong&gt;Add&lt;/strong&gt;. Fill in the &lt;strong&gt;Port / Port Range&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;32768-61000&lt;/code&gt;. In &lt;strong&gt;Protocol&lt;/strong&gt;, choose &lt;strong&gt;udp&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;By now, your &lt;strong&gt;Firewall Configuration&lt;/strong&gt; window should look like this:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Options&lt;/strong&gt; menu and click the &lt;strong&gt;Reload Firewalld&lt;/strong&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Zones&lt;/strong&gt; tab. Then, select the &lt;strong&gt;home&lt;/strong&gt; zone and in the &lt;strong&gt;Services&lt;/strong&gt; tab (there are two &lt;strong&gt;Services&lt;/strong&gt; tabs, now I refer to the one below) enable the &lt;strong&gt;chromecast&lt;/strong&gt; service:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Reload the firewall once more (&lt;strong&gt;Options&lt;/strong&gt;, &lt;strong&gt;Reload Firewalld&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Last, select the Wi-Fi connection by the left (&lt;strong&gt;wlan1&lt;/strong&gt;) and click &lt;strong&gt;Change Zone&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;home&lt;/strong&gt; zone and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In short, you have just (1) set up the firewall to allow connections between your computer and Chromecast devices when you’re at home and (2) said the Wi-Fi network you are now connected to is your home network.&lt;/p&gt;
+
+&lt;p&gt;You can classify different networks into different zones: home, work, public. By default, firewalld treats all new networks as public and allow just a few services, but I’m not going to dive into firewall details now.&lt;/p&gt;
+
+&lt;p&gt;If you use the Chromium open web browser, there is one more thing to do: by default, Chromium is setup to not search for Chromecast devices on the network.&lt;/p&gt;
+
+&lt;p&gt;To change that setting, open Chromium, go to &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome://flags/#load-media-router-component-extension&lt;/code&gt; and select &lt;strong&gt;Enabled&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/chromecast-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/chromecast-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Then, restart Chromium.&lt;/p&gt;
+
+&lt;p&gt;Now we are ready to cast!&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-cast-from-chrome--chromium&quot;&gt;How to cast from Chrome / Chromium&lt;/h2&gt;
+
+&lt;p&gt;Browse to the video or web page you want to cast, open the browser menu and click &lt;strong&gt;Cast&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Choose the Chromecast device you want to cast to:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now your TV should be playing audio and video cast from your computer through Chromecast. You can control the streaming by the browser:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Stop&lt;/strong&gt; when you no longer want to stream.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hint:&lt;/strong&gt; pin the &lt;strong&gt;Cast&lt;/strong&gt; button to the browser toolbar by right-clicking it and then clicking &lt;strong&gt;Always show icon&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/chromecast-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/chromecast-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Follow Linux Kamarada to discover other ways you can have fun with Linux and Chromecast.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456&quot;&gt;Set up your Chromecast device - Chromecast Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;Google killing desktop Chromecast setup for Mac and PC with Chrome 72 - 9to5Google&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/Chromium&quot;&gt;Chromium - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://firewalld.org/documentation/howto/add-a-service.html&quot;&gt;Documentation - HowTo - Add a Service - firewalld&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.thegeekdiary.com/5-useful-examples-of-firewall-cmd-command/&quot;&gt;5 Useful Examples of firewall-cmd command - The Geek Diary&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7&quot;&gt;How To Set Up a Firewall Using FirewallD on CentOS 7 - DigitalOcean&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/7249696&quot;&gt;Adding the Cast button to the Chrome toolbar - Chromecast Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Google Chromecast is a small device that, once connected to your Wi-Fi network and plugged into your TV’s HDMI port, allows you to stream video, music, web pages or even your computer’s or mobile device’s whole screen content to the TV. On Linux, you can use the Google Chrome web browser or its open equivalent, Chromium, to stream (cast) to Chromecast. How to do that is what you are going to see here.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2019/03/chromecast.jpg" /></entry><entry xml:lang="pt"><title type="html">Transmitindo do Linux para a TV com Chromecast</title><link href="https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/" rel="alternate" type="text/html" title="Transmitindo do Linux para a TV com Chromecast" /><published>2019-03-26T01:00:00-03:00</published><updated>2019-04-01T22:45:49-03:00</updated><id>https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -116,7 +313,9 @@
 
 &lt;p&gt;Recarregue o &lt;em&gt;firewall&lt;/em&gt; mais uma vez (menu &lt;strong&gt;Opções&lt;/strong&gt;, opção &lt;strong&gt;Recarregar Firewalld&lt;/strong&gt;).&lt;/p&gt;
 
-&lt;p&gt;Por fim, selecione a conexão Wi-Fi à esquerda (&lt;strong&gt;wlan1&lt;/strong&gt;) e clique em &lt;strong&gt;Mudar Zona&lt;/strong&gt;. Selecione a zona &lt;strong&gt;home&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Por fim, selecione a conexão Wi-Fi à esquerda (&lt;strong&gt;wlan1&lt;/strong&gt;) e clique em &lt;strong&gt;Mudar Zona&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Selecione a zona &lt;strong&gt;home&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2019/03/chromecast-08-pt.jpg&quot; title=&quot;&quot;&gt;
@@ -127,7 +326,7 @@
 
 &lt;p&gt;Com isso, você liberou no &lt;em&gt;firewall&lt;/em&gt; conexões com dispositivos Chromecast em redes domésticas e informou que a rede atual é uma rede doméstica.&lt;/p&gt;
 
-&lt;p&gt;Você pode classificar diferentes redes em diferentes tipos: casa, trabalho, pública. Por padrão, todas as redes são tratadas como públicas e poucos serviços são liberados, mas não vou entrar em detalhes sobre &lt;em&gt;firewall&lt;/em&gt; agora.&lt;/p&gt;
+&lt;p&gt;Você pode classificar diferentes redes em diferentes zonas: casa, trabalho, pública. Por padrão, todas as redes são tratadas como públicas e poucos serviços são liberados, mas não vou entrar em detalhes sobre &lt;em&gt;firewall&lt;/em&gt; agora.&lt;/p&gt;
 
 &lt;p&gt;Se você usa o navegador aberto Chromium, há mais uma configuração que precisa fazer. Por padrão, ele vem configurado para não procurar por dispositivos Chromecast na rede.&lt;/p&gt;
 
@@ -2604,154 +2803,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
   &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/move-dropbox-folder&quot;&gt;Mover a pasta do Dropbox para um novo local - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/system-requirements#desktop&quot;&gt;Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry><entry xml:lang="en"><title type="html">How to install website certificates on Linux</title><link href="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/" rel="alternate" type="text/html" title="How to install website certificates on Linux" /><published>2018-10-30T16:50:00-03:00</published><updated>2018-10-30T19:58:48-03:00</updated><id>https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux</id><content type="html" xml:base="https://kamarada.github.io/en/2018/10/30/how-to-install-website-certificates-on-linux/">&lt;p&gt;Have you ever visited a website and your browser adverted you that your connection is not secure or private?&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-1.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-1.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;understand-whats-going-on&quot;&gt;Understand what’s going on&lt;/h2&gt;
-
-&lt;p&gt;When you visit a website that uses secure connection (web address starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt;), your communication is encrypted to help ensure your privacy. Before establishing connection, the website presents to the browser a &lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;&lt;strong&gt;security certificate&lt;/strong&gt;&lt;/a&gt; identifying itself.&lt;/p&gt;
-
-&lt;p&gt;Anyone can create a certificate claiming to be whoever they want. But usually website certificates are issued and signed by &lt;a href=&quot;https://en.wikipedia.org/wiki/Certificate_authority&quot;&gt;&lt;strong&gt;certificate authorities (CA’s)&lt;/strong&gt;&lt;/a&gt;, which also have their own certificates. On their turn, CA’s certificates may be self-signed (in the case of a company’s internal CA) or signed by other CA’s so forth up to a &lt;strong&gt;root certificate authority (root CA)&lt;/strong&gt;. This chain of certificates is called the &lt;strong&gt;certificate hierarchy&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Root CA’s are public, well known and trusted organizations, such as the American &lt;a href=&quot;https://fpki.idmanagement.gov/ca/&quot;&gt;FCPCA&lt;/a&gt; or the Brazilian &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;. Usually root CA’s certificates are previously known by browsers.&lt;/p&gt;
-
-&lt;p&gt;When you visit an &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; website, the browser checks that its certificate is valid and the certificate hierarchy ends on a known CA certificate. If that checking succeeds, the browser displays a green lock icon near the address bar, indicating the website you are visiting is actually the website that it claims to be. You are safe to stay on it, enter passwords, provide credit card numbers and send or receive other sensitive data. Always look for the green lock icon when accessing banking or shopping websites.&lt;/p&gt;
-
-&lt;p&gt;When you visit an HTTPS website, but the certificate checking does not succeed, the browser adverts you that your connection is not secure or private. If that is the case, you need to proceed with caution: don’t enter any sensitive information on this page. If possible, leave it.&lt;/p&gt;
-
-&lt;p&gt;Sometimes, the connection is not really insecure. Security alerts may appear, for example, when you visit a web system of your organization, signed by an internal CA whose certificate is not previously known by the browser. In that case, you need to manually install your organization’s CA certificate to prevent false alerts.&lt;/p&gt;
-
-&lt;p&gt;Also Brazilian citizens always see privacy alerts when visiting websites of the Brazilian government. Browsers don’t come with the &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt; certificate out-of-the-box because it does not comply to &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=438825&quot;&gt;Mozilla security requirements, which is an 11-year old bug&lt;/a&gt;. So, Brazilian citizens need to manually install it. Some Brazilian public organizations have adopted workarounds: for instance, the &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;Federal Police of Brazil&lt;/a&gt; sign its forms (e.g. the &lt;a href=&quot;https://servicos.dpf.gov.br/sinpa/inicializacaoSolicitacao.do?dispatch=inicializarSolicitacaoPassaporte&quot;&gt;passport application form&lt;/a&gt;) with a certificate issued by Let’s Encrypt, but content-only pages (including &lt;a href=&quot;http://www.pf.gov.br&quot;&gt;their own home page&lt;/a&gt;) are not signed at all. &lt;a href=&quot;https://letsencrypt.org/&quot;&gt;Let’s Encrypt&lt;/a&gt; is an American non-profit organization that issues certificates for free for anyone and &lt;a href=&quot;https://letsencrypt.org/2018/08/06/trusted-by-all-major-root-programs.html&quot;&gt;is trusted by browsers&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;install-the-ca-certificate&quot;&gt;Install the CA certificate&lt;/h2&gt;
-
-&lt;p&gt;Let’s see how to add a CA certificate to the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; and &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; browsers, so they trust certificates signed by that CA. Same instructions for Chrome apply to its &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; base &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I’m going to use &lt;a href=&quot;https://servidor.sigepe.planejamento.gov.br&quot;&gt;SIGEPE&lt;/a&gt; as example, which is a Brazilian government web system whose certificate is signed by &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, the Brazilian root CA.&lt;/p&gt;
-
-&lt;p&gt;In your case, the certificate you are going to install may be from your company’s internal CA. You should retrieve it with your company’s network administrator.&lt;/p&gt;
-
-&lt;h3 id=&quot;mozilla-firefox&quot;&gt;Mozilla Firefox&lt;/h3&gt;
-
-&lt;p&gt;Pull down the &lt;strong&gt;Firefox menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select &lt;strong&gt;Privacy &amp;amp; Security&lt;/strong&gt; by the left and click on &lt;strong&gt;View Certificates&lt;/strong&gt; by the right, at the end of the page:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog, select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-4.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-4.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
-
-&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click on &lt;strong&gt;OK&lt;/strong&gt; in the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog and close the &lt;strong&gt;Preferences&lt;/strong&gt; tab.&lt;/p&gt;
-
-&lt;p&gt;Refresh the page you were trying to visit and realize the green lock icon at the begining of the address bar, indicating the website is safe to visit:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-firefox-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;google-chrome&quot;&gt;Google Chrome&lt;/h3&gt;
-
-&lt;p&gt;Pull down the &lt;strong&gt;Chrome menu&lt;/strong&gt; (top right corner of the window) and select &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Search settings&lt;/strong&gt; field, type &lt;code class=&quot;highlighter-rouge&quot;&gt;certificates&lt;/code&gt;. Chrome filters related settings. Click on &lt;strong&gt;Manage certificates&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click on &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
-
-&lt;p&gt;Check all the options to fully trust the certificate and click on &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-5.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Close the &lt;strong&gt;Settings&lt;/strong&gt; tab.&lt;/p&gt;
-
-&lt;p&gt;Refresh the page you were trying to visit and realize the lock icon to the left of the web address, indicating the website is safe to visit:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/certificates-chrome-6.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/359298/why-does-google-chrome-say-websites-are-%E2%80%9Cnot-secure%E2%80%9D/&quot;&gt;Why Does Google Chrome Say Websites Are “Not Secure”?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/kb/secure-website-certificate&quot;&gt;Secure Website Certificate - Firefox Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chrome/answer/95617&quot;&gt;Check if a site’s connection is secure - Google Chrome Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.mozilla.org/PSM:Changing_Trust_Settings&quot;&gt;PSM:Changing Trust Settings - MozillaWiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.bounca.org/tutorials/install_root_certificate.html&quot;&gt;Install self-generated root certificate authorities - BounCA.org generate self-signed SSL certificates&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Have you ever visited a website and your browser adverted you that your connection is not secure or private? Sometimes, the connection is not really insecure. Understand what’s going on and learn how to install website certificates on Linux.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/10/certificates-firefox-1.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry></feed>
