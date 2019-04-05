@@ -1,5 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-04-01T22:47:09-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
-</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="en"><title type="html">Streaming from Linux to TV using Chromecast</title><link href="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/" rel="alternate" type="text/html" title="Streaming from Linux to TV using Chromecast" /><published>2019-04-01T22:45:00-03:00</published><updated>2019-04-01T22:45:49-03:00</updated><id>https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast</id><content type="html" xml:base="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://kamarada.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kamarada.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2019-04-04T23:03:43-03:00</updated><id>https://kamarada.github.io/</id><title type="html">Linux Kamarada</title><subtitle>The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+</subtitle><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><entry xml:lang="pt"><title type="html">Monitorando recursos do sistema com a extensão do GNOME System Monitor</title><link href="https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/" rel="alternate" type="text/html" title="Monitorando recursos do sistema com a extensão do GNOME System Monitor" /><published>2019-04-04T23:00:00-03:00</published><updated>2019-04-04T23:03:39-03:00</updated><id>https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor</id><content type="html" xml:base="https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">&lt;p&gt;Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, pode instalar a extensão &lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;System Monitor&lt;/a&gt;. Como fazer isso é o que você verá nesse &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; title=&quot;A extensão do GNOME System Monitor&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; alt=&quot;A extensão do GNOME System Monitor&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 450px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;A extensão do GNOME System Monitor&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O ambiente &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; foca na usabilidade e traz consigo apenas um conjunto essencial de recursos, em contrapartida apresenta um funcionamento bem estável. Mas você pode estendê-lo com &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;extensões&lt;/a&gt;, algumas bastante úteis. Caso ainda não conheça, visite:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hoje vou mostrar como instalar a extensão System Monitor (do inglês &lt;em&gt;monitor do sistema&lt;/em&gt;), que fornece de forma gráfica, rápida e acessível diversas informações sobre o desempenho e consumo de recursos do sistema. Dentre elas, o uso da memória RAM.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-suporte-a-extensões-do-gnome&quot;&gt;Instalando o suporte a extensões do GNOME&lt;/h2&gt;
+
+&lt;p&gt;Para personalizar o GNOME usando extensões, você vai precisar do aplicativo &lt;a href=&quot;https://wiki.gnome.org/Apps/Tweaks&quot;&gt;&lt;strong&gt;Ajustes&lt;/strong&gt;&lt;/a&gt; (&lt;em&gt;Tweaks&lt;/em&gt;, não confundir com o aplicativo &lt;a href=&quot;https://wiki.gnome.org/Design/Apps/Settings&quot;&gt;&lt;strong&gt;Configurações&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;Settings&lt;/em&gt;). Se você usa a distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; com o ambiente GNOME, provavelmente esse aplicativo já vem instalado por padrão. Mas caso precise, ele é fornecido pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-tweak-tool&quot;&gt;gnome-tweak-tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Há também algumas extensões que já fazem parte da própria distribuição e são fornecidas pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-shell-extensions-common&quot;&gt;gnome-shell-extensions-common&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; title=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; alt=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;O aplicativo Ajustes mostrando as extensões instaladas&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Além disso, se você acessou o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;, talvez tenha visto o aviso:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;(para controlar as extensões do GNOME Shell usando este &lt;em&gt;site&lt;/em&gt; você deve instalar a integração do GNOME Shell que consiste em duas partes: extensão do navegador e aplicativo de mensagens nativas)&lt;/p&gt;
+
+&lt;p&gt;Quanto à extensão do navegador, conforme o navegador que você usa, utilize os &lt;em&gt;links&lt;/em&gt; a seguir para instalá-la:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/pt-br/&quot;&gt;Opera&lt;/a&gt; e &lt;a href=&quot;https://vivaldi.com/&quot;&gt;Vivaldi&lt;/a&gt;: visite a &lt;a href=&quot;https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep&quot;&gt;Chrome Web Store&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;para &lt;a href=&quot;https://www.mozilla.org/pt-BR/&quot;&gt;Mozilla Firefox&lt;/a&gt;: visite o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://addons.mozilla.org/pt-BR/firefox/addon/gnome-shell-integration/&quot;&gt;Mozilla Addons&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A segunda parte, que é o aplicativo, também é fornecida pela própria distribuição por meio do pacote &lt;a href=&quot;https://software.opensuse.org/package/chrome-gnome-shell&quot;&gt;chrome-gnome-shell&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para instalar todos os pacotes necessários de uma vez só, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-tweak-tool gnome-shell-extensions-common chrome-gnome-shell typelib-1_0-GTop-2_0 typelib-1_0-NetworkManager-1_0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(já que o objetivo é instalar tudo de uma vez só, incluí os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt;, que são solicitados pela extensão System Monitor)&lt;/p&gt;
+
+&lt;p&gt;Com tudo instalado, reinicie o computador (talvez seja suficiente fazer &lt;em&gt;logout&lt;/em&gt; e &lt;em&gt;login&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Abra o navegador e visite mais uma vez o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Perceba que dessa vez o aviso não aparece.&lt;/p&gt;
+
+&lt;p&gt;Agora você está pronto para instalar e usar extensões do GNOME!&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-a-extensão-system-monitor&quot;&gt;Instalando a extensão System monitor&lt;/h2&gt;
+
+&lt;p&gt;Para conseguir monitorar os recursos do sistema, a extensão System Monitor requer que os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt; estejam instalados. Já fizemos essa instalação no passo anterior.&lt;/p&gt;
+
+&lt;p&gt;Acesse a página da extensão:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;system-monitor - GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E clique na chave de liga e desliga:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Confirme o &lt;em&gt;download&lt;/em&gt; e instalação da extensão clicando em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Após a instalação, já é possível ver medidores de recursos na barra do topo do GNOME:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na sequência, eles mostram:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;consumo de processador (CPU),&lt;/li&gt;
+  &lt;li&gt;consumo de memória, e&lt;/li&gt;
+  &lt;li&gt;tráfego de rede.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Clique nos medidores para ver mais informações:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Preferências&lt;/strong&gt; para personalizar o que é exibido e como é exibido:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Eu costumo remover o monitor de tráfego de rede, deixando apenas CPU e memória.&lt;/p&gt;
+
+&lt;p&gt;Caso queira desabilitar ou remover essa extensão (assim como qualquer extensão do GNOME), utilize o aplicativo &lt;strong&gt;Ajustes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Agora você pode monitorar a memória RAM em uso e não ser pego de surpresa: quando houver pouca memória disponível, feche programas, para que o computador não trave.&lt;/p&gt;
+
+&lt;p&gt;Faça bom proveito!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/gnome-shell-extensions/&quot;&gt;How to Use GNOME Shell Extensions - Complete Guide - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation&quot;&gt;Projects/GnomeShellIntegrationForChrome/Installation - GNOME Wiki!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet&quot;&gt;paradoxxxzero/gnome-shell-system-monitor-applet - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do Android são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho GNOME, pode instalar a extensão System Monitor. Como fazer isso é o que você verá nesse post.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2019/04/gnome-extension-system-monitor-07-pt.jpg" /></entry><entry xml:lang="en"><title type="html">Streaming from Linux to TV using Chromecast</title><link href="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/" rel="alternate" type="text/html" title="Streaming from Linux to TV using Chromecast" /><published>2019-04-01T22:45:00-03:00</published><updated>2019-04-01T22:45:49-03:00</updated><id>https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast</id><content type="html" xml:base="https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
 &lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
@@ -2598,209 +2755,4 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
   &lt;li&gt;&lt;a href=&quot;https://lifehacker.com/5794486/how-to-add-a-second-layer-of-encryption-to-dropbox&quot;&gt;How To Add a Second Layer of Encryption to Dropbox - Lifehacker&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/move-dropbox-folder&quot;&gt;Moving your Dropbox folder to a new location - Dropbox Help&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/system-requirements#desktop&quot;&gt;What are the system requirements to run Dropbox? - Dropbox Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported file system. See how to keep Dropbox syncing and in addition protect your local Dropbox folder against unauthorized access storing it on an encrypted VeraCrypt volume.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry><entry xml:lang="pt"><title type="html">Criptografando os arquivos do Dropbox no disco com VeraCrypt</title><link href="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/" rel="alternate" type="text/html" title="Criptografando os arquivos do Dropbox no disco com VeraCrypt" /><published>2018-11-06T18:30:00-02:00</published><updated>2018-11-07T14:45:04-02:00</updated><id>https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt</id><content type="html" xml:base="https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/">&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; é um dos serviços de nuvem mais populares e um dos poucos que disponibiliza cliente para sincronização no &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;. Recentemente, alguns usuários receberam um alerta:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-01-pt.jpg&quot; title=&quot;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-01-pt.jpg&quot; alt=&quot;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;O Dropbox vai parar de sincronizar em 7 dias. Mova sua pasta do Dropbox para um sistema de arquivos compatível.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No meu caso, como eu tenho um &lt;em&gt;notebook&lt;/em&gt; com Linux e &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e o cliente do Dropbox instalado em ambos os sistemas, eu armazenava a pasta Dropbox em uma partição &lt;a href=&quot;https://pt.wikipedia.org/wiki/NTFS&quot;&gt;NTFS&lt;/a&gt;, acessível por ambos.&lt;/p&gt;
-
-&lt;p&gt;Mas o Dropbox anunciou &lt;a href=&quot;https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255&quot;&gt;em seu fórum&lt;/a&gt; que a partir de 07/11/2018 vai restringir o suporte a &lt;a href=&quot;https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2016/02/entenda-o-que-e-sistema-de-arquivos-e-sua-utilidade-no-pc-e-no-celular.html&quot;&gt;sistemas de arquivos&lt;/a&gt; apenas aos mais comuns em cada sistema: NTFS no Windows, &lt;a href=&quot;https://pt.wikipedia.org/wiki/HFS%2B&quot;&gt;HFS+&lt;/a&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Apple_File_System&quot;&gt;APFS&lt;/a&gt; no &lt;a href=&quot;http://www.apple.com/br/macosx/&quot;&gt;Mac OS X&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ext4&quot;&gt;Ext4&lt;/a&gt; limpo (sem criptografia) no Linux. Em tese, essa mudança deve garantir estabilidade e experiência consistente aos usuários. A notícia não é de todo ruim, porque o sistema de arquivos Ext4 é comum em instalações Linux.&lt;/p&gt;
-
-&lt;p&gt;Para verificar suas partições e sistemas de arquivos, consulte o aplicativo &lt;a href=&quot;https://gparted.org/&quot;&gt;&lt;strong&gt;GParted&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ou, se prefere a linha de comando, utilize o comando &lt;a href=&quot;https://www.gnu.org/software/fdisk/&quot;&gt;&lt;strong&gt;fdisk&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# mount -l
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nenhuma das minhas partições possui sistema de arquivos Ext4. Portanto, a princípio, eu não poderia seguir sincronizando o Dropbox pelo Linux. Eu poderia manter o Dropbox na partição NTFS, mas eu só poderia sincronizar pelo Windows.&lt;/p&gt;
-
-&lt;p&gt;Mas como eu uso com muito mais frequência o Linux do que o Windows, decidi viabilizar a sincronização do Dropbox pelo Linux, ainda de quebra garantindo a segurança dos arquivos no disco: vou armazenar os arquivos do Dropbox em um &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;volume criptografado do VeraCrypt&lt;/a&gt;. Dessa forma, os arquivos estão seguros contra acesso indevido caso o &lt;em&gt;notebook&lt;/em&gt; seja roubado, por exemplo.&lt;/p&gt;
-
-&lt;p&gt;Já falamos sobre o &lt;em&gt;software&lt;/em&gt; de criptografia de arquivos &lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt; aqui:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;Criptografia de arquivos com o VeraCrypt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se você ainda não leu aquele &lt;em&gt;post&lt;/em&gt;, leia antes de continuar.&lt;/p&gt;
-
-&lt;p&gt;Essa pode ser uma alternativa inclusive para quem hoje armazena os arquivos do Dropbox em uma partição Ext4 criptografada, porque o VeraCrypt realiza a criptografia “nos bastidores”, o Dropbox não é ciente que os arquivos são criptografados.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; o VeraCrypt garante apenas a segurança dos arquivos no disco contra acesso indevido. Por exemplo, sabendo &lt;em&gt;e-mail&lt;/em&gt; e senha, uma pessoa mal-intencionada poderia acessar os mesmos arquivos pelo &lt;a href=&quot;https://www.dropbox.com&quot;&gt;&lt;em&gt;site&lt;/em&gt; do Dropbox&lt;/a&gt; usando o navegador. O VeraCrypt também não dispensa o uso de outras ferramentas de segurança, como antivírus e &lt;em&gt;backup&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Uma desvantagem dessa solução é que ela requer o trabalho manual de montar o volume e iniciar o cliente do Dropbox sempre que for necessário sincronizar. Por isso, recomendo que leia essa página até o final antes de começar, para ver se essa solução de fato te interessa.&lt;/p&gt;
-
-&lt;h2 id=&quot;antes-de-começar&quot;&gt;Antes de começar&lt;/h2&gt;
-
-&lt;p&gt;Para evitar problemas, certifique-se de que seus arquivos estão sincronizados. Para isso, clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e certifique-se de que aparece &lt;strong&gt;Atualizado&lt;/strong&gt; no menu:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Também nesse menu verifique o espaço disponível para sua conta. No meu caso, eu disponho de 5,8GB de espaço. Normalmente, novas contas começam com 2GB.&lt;/p&gt;
-
-&lt;h2 id=&quot;criando-o-volume-criptografado&quot;&gt;Criando o volume criptografado&lt;/h2&gt;
-
-&lt;p&gt;Inicie o VeraCrypt e siga o passo-a-passo do &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre o VeraCrypt&lt;/a&gt; para criar um volume padrão em arquivo. Apenas se atente a alguns detalhes para esse volume do Dropbox.&lt;/p&gt;
-
-&lt;p&gt;O local do volume (tela &lt;strong&gt;Volume Location&lt;/strong&gt;) não é relevante, pois essa informação é invisível ao Dropbox. Ele pode inclusive ser armazenado naquela partição NTFS.&lt;/p&gt;
-
-&lt;p&gt;O tamanho do volume (tela &lt;strong&gt;Volume Size&lt;/strong&gt;) deve ser igual ao espaço disponível no Dropbox (ou um pouco maior, por precaução):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Como informamos um tamanho maior, o assistente mostra uma tela que não apareceu da outra vez, questionando quanto a arquivos grandes (&lt;strong&gt;Large Files&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você pretende armazenar arquivos grandes (maiores que 4GB) no volume, selecione a segunda opção (&lt;strong&gt;I will store files larger than 4 GB on the volume&lt;/strong&gt;). Senão, selecione a primeira. Na dúvida, selecione a segunda. Clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar).&lt;/p&gt;
-
-&lt;p&gt;A tela seguinte já é conhecida. É importante que o volume seja formatado com o sistema de arquivos &lt;strong&gt;Linux Ext4&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ao clicar em &lt;strong&gt;Next&lt;/strong&gt;, mais uma tela nova:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Essa tela questiona o suporte multi-plataforma (&lt;strong&gt;Cross-Platform Support&lt;/strong&gt;). Como o volume será usado apenas no Linux, marque a segunda opção (&lt;strong&gt;I will mount the volume only on Linux&lt;/strong&gt;) e clique em &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Após a criação do volume, monte-o. Escolha uma vaga e sempre monte esse volume nessa vaga, porque o ponto de montagem será passado para o Dropbox. No meu exemplo, escolhi a vaga 10, então o ponto de montagem do meu volume é &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/veracrypt10&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;movendo-a-pasta-do-dropbox&quot;&gt;Movendo a pasta do Dropbox&lt;/h2&gt;
-
-&lt;p&gt;Crie uma pasta chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; dentro do volume criptografado.&lt;/p&gt;
-
-&lt;p&gt;Para mover a pasta do Dropbox, clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e, no menu que aparece, clique em &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Dropbox&lt;/strong&gt;, selecione a aba &lt;strong&gt;Sincronização&lt;/strong&gt; e clique no botão &lt;strong&gt;Mover&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe o caminho para a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; dentro do volume criptografado e clique em &lt;strong&gt;Choose&lt;/strong&gt; (escolher, essa tela o Dropbox não traduziu):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Permita que o Dropbox mova a pasta e o seu conteúdo para o novo local:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Uma barra de progresso indica o andamento da mudança:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando terminar, ainda precisamos alterar mais uma configuração. Selecione a aba &lt;strong&gt;Geral&lt;/strong&gt; e desmarque a opção &lt;strong&gt;Iniciar o Dropbox junto com o sistema&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-13-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Preferências do Dropbox&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;uso-no-dia-a-dia&quot;&gt;Uso no dia-a-dia&lt;/h2&gt;
-
-&lt;p&gt;Se você leu todo o &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre o VeraCrypt&lt;/a&gt; (suponho que sim), sabe que o volume só deve ficar montado durante o uso.&lt;/p&gt;
-
-&lt;p&gt;Se você não vai mais usar os arquivos do Dropbox, encerre o cliente do Dropbox (clique no &lt;strong&gt;ícone do Dropbox&lt;/strong&gt; e depois em &lt;strong&gt;Sair do Dropbox&lt;/strong&gt;) e depois desmonte o volume pelo VeraCrypt. É importante sempre sair do Dropbox antes de desmontar o volume.&lt;/p&gt;
-
-&lt;p&gt;Quando for voltar a usar os arquivos do Dropbox, inicie o VeraCrypt, monte o volume e então, com o volume montado, inicie o Dropbox. Caso você esqueça de montar o volume antes de iniciar o Dropbox, ele não vai encontrar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; e exibir uma mensagem de erro:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-14-pt.jpg&quot; title=&quot;A pasta do Dropbox não foi encontrada.&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-14-pt.jpg&quot; alt=&quot;A pasta do Dropbox não foi encontrada.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A pasta do Dropbox não foi encontrada.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/move-dropbox-folder&quot;&gt;Mover a pasta do Dropbox para um novo local - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/help/desktop-web/system-requirements#desktop&quot;&gt;Quais são os requisitos de sistema para executar o Dropbox? - Ajuda do Dropbox&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">O Dropbox é um dos serviços de nuvem mais populares. Recentemente, alguns usuários receberam um alerta informando que o Dropbox vai parar de sincronizar, devido a incompatibilidade do sistema de arquivos. Veja como manter a sincronização e ainda de quebra garantir a segurança dos arquivos no disco armazenando-os em um volume criptografado do VeraCrypt.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Antônio Vinícius</name><email>vinyanalista@gmail.com</email></author><summary type="html">Dropbox is one of the most popular cloud services. Recently some of its users received a warning that it will stop syncing due to the use of an unsupported file system. See how to keep Dropbox syncing and in addition protect your local Dropbox folder against unauthorized access storing it on an encrypted VeraCrypt volume.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kamarada.github.io/files/2018/11/dropbox-veracrypt.png" /></entry></feed>

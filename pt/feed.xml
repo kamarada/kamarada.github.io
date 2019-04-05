@@ -9,10 +9,181 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 01 Apr 2019 22:47:09 -0300</pubDate>
-        <lastBuildDate>Mon, 01 Apr 2019 22:47:09 -0300</lastBuildDate>
+        <pubDate>Thu, 04 Apr 2019 23:03:43 -0300</pubDate>
+        <lastBuildDate>Thu, 04 Apr 2019 23:03:43 -0300</lastBuildDate>
         <generator>Jekyll v3.7.4</generator>
         
+        
+            <item>
+                <title>Monitorando recursos do sistema com a extensão do GNOME System Monitor</title>
+                <description>&lt;p&gt;Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, pode instalar a extensão &lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;System Monitor&lt;/a&gt;. Como fazer isso é o que você verá nesse &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; title=&quot;A extensão do GNOME System Monitor&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; alt=&quot;A extensão do GNOME System Monitor&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 450px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;A extensão do GNOME System Monitor&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O ambiente &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; foca na usabilidade e traz consigo apenas um conjunto essencial de recursos, em contrapartida apresenta um funcionamento bem estável. Mas você pode estendê-lo com &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;extensões&lt;/a&gt;, algumas bastante úteis. Caso ainda não conheça, visite:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hoje vou mostrar como instalar a extensão System Monitor (do inglês &lt;em&gt;monitor do sistema&lt;/em&gt;), que fornece de forma gráfica, rápida e acessível diversas informações sobre o desempenho e consumo de recursos do sistema. Dentre elas, o uso da memória RAM.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-suporte-a-extensões-do-gnome&quot;&gt;Instalando o suporte a extensões do GNOME&lt;/h2&gt;
+
+&lt;p&gt;Para personalizar o GNOME usando extensões, você vai precisar do aplicativo &lt;a href=&quot;https://wiki.gnome.org/Apps/Tweaks&quot;&gt;&lt;strong&gt;Ajustes&lt;/strong&gt;&lt;/a&gt; (&lt;em&gt;Tweaks&lt;/em&gt;, não confundir com o aplicativo &lt;a href=&quot;https://wiki.gnome.org/Design/Apps/Settings&quot;&gt;&lt;strong&gt;Configurações&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;Settings&lt;/em&gt;). Se você usa a distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; com o ambiente GNOME, provavelmente esse aplicativo já vem instalado por padrão. Mas caso precise, ele é fornecido pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-tweak-tool&quot;&gt;gnome-tweak-tool&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Há também algumas extensões que já fazem parte da própria distribuição e são fornecidas pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-shell-extensions-common&quot;&gt;gnome-shell-extensions-common&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; title=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; alt=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;O aplicativo Ajustes mostrando as extensões instaladas&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Além disso, se você acessou o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;, talvez tenha visto o aviso:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;(para controlar as extensões do GNOME Shell usando este &lt;em&gt;site&lt;/em&gt; você deve instalar a integração do GNOME Shell que consiste em duas partes: extensão do navegador e aplicativo de mensagens nativas)&lt;/p&gt;
+
+&lt;p&gt;Quanto à extensão do navegador, conforme o navegador que você usa, utilize os &lt;em&gt;links&lt;/em&gt; a seguir para instalá-la:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Para &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/pt-br/&quot;&gt;Opera&lt;/a&gt; e &lt;a href=&quot;https://vivaldi.com/&quot;&gt;Vivaldi&lt;/a&gt;: visite a &lt;a href=&quot;https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep&quot;&gt;Chrome Web Store&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;para &lt;a href=&quot;https://www.mozilla.org/pt-BR/&quot;&gt;Mozilla Firefox&lt;/a&gt;: visite o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://addons.mozilla.org/pt-BR/firefox/addon/gnome-shell-integration/&quot;&gt;Mozilla Addons&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A segunda parte, que é o aplicativo, também é fornecida pela própria distribuição por meio do pacote &lt;a href=&quot;https://software.opensuse.org/package/chrome-gnome-shell&quot;&gt;chrome-gnome-shell&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para instalar todos os pacotes necessários de uma vez só, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-tweak-tool gnome-shell-extensions-common chrome-gnome-shell typelib-1_0-GTop-2_0 typelib-1_0-NetworkManager-1_0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(já que o objetivo é instalar tudo de uma vez só, incluí os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt;, que são solicitados pela extensão System Monitor)&lt;/p&gt;
+
+&lt;p&gt;Com tudo instalado, reinicie o computador (talvez seja suficiente fazer &lt;em&gt;logout&lt;/em&gt; e &lt;em&gt;login&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Abra o navegador e visite mais uma vez o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Perceba que dessa vez o aviso não aparece.&lt;/p&gt;
+
+&lt;p&gt;Agora você está pronto para instalar e usar extensões do GNOME!&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-a-extensão-system-monitor&quot;&gt;Instalando a extensão System monitor&lt;/h2&gt;
+
+&lt;p&gt;Para conseguir monitorar os recursos do sistema, a extensão System Monitor requer que os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt; estejam instalados. Já fizemos essa instalação no passo anterior.&lt;/p&gt;
+
+&lt;p&gt;Acesse a página da extensão:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;system-monitor - GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E clique na chave de liga e desliga:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Confirme o &lt;em&gt;download&lt;/em&gt; e instalação da extensão clicando em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Após a instalação, já é possível ver medidores de recursos na barra do topo do GNOME:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na sequência, eles mostram:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;consumo de processador (CPU),&lt;/li&gt;
+  &lt;li&gt;consumo de memória, e&lt;/li&gt;
+  &lt;li&gt;tráfego de rede.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Clique nos medidores para ver mais informações:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Preferências&lt;/strong&gt; para personalizar o que é exibido e como é exibido:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Eu costumo remover o monitor de tráfego de rede, deixando apenas CPU e memória.&lt;/p&gt;
+
+&lt;p&gt;Caso queira desabilitar ou remover essa extensão (assim como qualquer extensão do GNOME), utilize o aplicativo &lt;strong&gt;Ajustes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Agora você pode monitorar a memória RAM em uso e não ser pego de surpresa: quando houver pouca memória disponível, feche programas, para que o computador não trave.&lt;/p&gt;
+
+&lt;p&gt;Faça bom proveito!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/gnome-shell-extensions/&quot;&gt;How to Use GNOME Shell Extensions - Complete Guide - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation&quot;&gt;Projects/GnomeShellIntegrationForChrome/Installation - GNOME Wiki!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet&quot;&gt;paradoxxxzero/gnome-shell-system-monitor-applet - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Thu, 04 Apr 2019 23:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Transmitindo do Linux para a TV com Chromecast</title>
@@ -2626,759 +2797,6 @@ Press Enter to exit...
                 <pubDate>Mon, 15 Oct 2018 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Verificação de integridade e autenticidade com SHA-256 e GPG</title>
-                <description>&lt;p&gt;Por vezes pode ser importante verificar um arquivo obtido da Internet, por exemplo, a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Imagem_ISO&quot;&gt;imagem ISO&lt;/a&gt; de uma &lt;a href=&quot;https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_Linux&quot;&gt;distribuição Linux&lt;/a&gt; - ela contém o sistema operacional que você vai utilizar ou instalar em seu computador, já pensou se o arquivo se corrompeu durante o &lt;em&gt;download&lt;/em&gt; ou foi adulterado por um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Ataque_man-in-the-middle&quot;&gt;ataque de homem no meio&lt;/a&gt;?&lt;/p&gt;
-
-&lt;p&gt;Duas verificações comuns que reduzem bastante as chances de usar um arquivo corrompido ou adulterado são a &lt;a href=&quot;https://pt.wikipedia.org/wiki/Soma_de_verifica%C3%A7%C3%A3o&quot;&gt;soma de verificação&lt;/a&gt; e a &lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;assinatura digital&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a &lt;strong&gt;soma de verificação&lt;/strong&gt; (&lt;em&gt;checksum&lt;/em&gt;) é uma soma feita antes do envio por quem cria o arquivo e verificada depois por quem baixa o arquivo, há alguns algoritmos para fazer essa soma, mas a ideia geral é somar os &lt;em&gt;bytes&lt;/em&gt; do arquivo - ao verificar a soma de um arquivo, se houve modificação do arquivo ou da soma em si, a verificação falha, indicando que não é seguro usar o arquivo; e&lt;/li&gt;
-  &lt;li&gt;a &lt;strong&gt;assinatura digital&lt;/strong&gt; certifica um arquivo, tal qual uma assinatura à mão, mas por utilizar mecanismos de criptografia tem a vantagem de ser resistente a fraudes - ao verificar a assinatura de um arquivo, se houve modificação do arquivo ou da assinatura em si, ou se a assinatura foi feita com a chave de outra pessoa, a verificação falha, indicando que não é seguro usar o arquivo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Elas verificam, respectivamente, &lt;strong&gt;integridade&lt;/strong&gt; e &lt;strong&gt;autenticidade&lt;/strong&gt;, duas propriedades básicas da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o&quot;&gt;segurança da informação&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Comumente as distribuições Linux disponibilizam somas de verificação &lt;a href=&quot;https://pt.wikipedia.org/wiki/SHA-2&quot;&gt;SHA-256&lt;/a&gt; e assinaturas digitais &lt;a href=&quot;https://gnupg.org/&quot;&gt;GPG&lt;/a&gt; para verificar suas imagens ISO.&lt;/p&gt;
-
-&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer essas verificações com o &lt;a href=&quot;https://linux.die.net/man/1/sha256sum&quot;&gt;&lt;strong&gt;sha256sum&lt;/strong&gt;&lt;/a&gt; e o &lt;a href=&quot;https://linux.die.net/man/1/gpg&quot;&gt;&lt;strong&gt;gpg&lt;/strong&gt;&lt;/a&gt; (de &lt;a href=&quot;https://gnupg.org/&quot;&gt;&lt;strong&gt;GNU Privacy Guard&lt;/strong&gt;&lt;/a&gt;, também conhecido como &lt;strong&gt;GnuPG&lt;/strong&gt; ou simplesmente &lt;strong&gt;GPG&lt;/strong&gt;), dois utilitários de linha de comando que por padrão já vem instalados na maioria das distribuições Linux.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Embora usemos aqui o exemplo da imagem ISO, qualquer arquivo pode ser verificado, contanto que a soma de verificação e a assinatura digital estejam disponíveis. É o caso, por exemplo, dos arquivos disponibilizados para &lt;em&gt;download&lt;/em&gt; no &lt;em&gt;site&lt;/em&gt; do programa &lt;a href=&quot;/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se você ainda não usa &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; e está baixando uma imagem ISO de uma distribuição Linux no &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, leia &lt;a href=&quot;https://vinyanalista.github.io/blog/2018/10/05/verificacao-de-integridade-e-autenticidade-com-o-gpg4win/&quot;&gt;essa página&lt;/a&gt; em vez desta.&lt;/p&gt;
-
-&lt;p&gt;Para referência futura, aqui utilizo a distribuição Linux &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt; e as versões dos utilitários &lt;strong&gt;sha256sum&lt;/strong&gt; e &lt;strong&gt;gpg&lt;/strong&gt; instalados por padrão nessa versão da distribuição.&lt;/p&gt;
-
-&lt;p&gt;Se você nunca utilizou a interface textual do Linux (também conhecida como &lt;strong&gt;linha de comando&lt;/strong&gt; ou &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;&lt;strong&gt;terminal&lt;/strong&gt;&lt;/a&gt;), não se assuste: verá que não é tão difícil como dizem por aí.&lt;/p&gt;
-
-&lt;h2 id=&quot;visão-geral&quot;&gt;Visão geral&lt;/h2&gt;
-
-&lt;p&gt;Como a verificação de uma imagem ISO não é um processo tão simples, primeiro tenhamos uma visão geral do processo. A “receita de bolo” se resume a:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Baixar a imagem ISO do &lt;em&gt;site&lt;/em&gt; da distribuição (como de costume, nenhuma novidade);&lt;/li&gt;
-  &lt;li&gt;Baixar a soma de verificação e a assinatura digital do &lt;em&gt;site&lt;/em&gt; da distribuição, a depender da distribuição elas podem ser dois arquivos ou pode ser apenas um arquivo de texto contendo ambas (o openSUSE é o segundo caso);&lt;/li&gt;
-  &lt;li&gt;Importar a chave pública da distribuição, seja do &lt;em&gt;site&lt;/em&gt; da distribuição, seja de um servidor de chaves públicas confiável (aqui, optaremos por importar de um servidor de chaves, mas a chave do openSUSE também está disponível na &lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;página de &lt;em&gt;downloads&lt;/em&gt;&lt;/a&gt;);&lt;/li&gt;
-  &lt;li&gt;Fazer a soma de verificação da imagem ISO baixada e conferir com a soma de verificação esperada; e&lt;/li&gt;
-  &lt;li&gt;Verificar a assinatura digital, que pode ter sido feita em relação à imagem ISO, ou em relação à soma de verificação, o que estende a proteção à soma de verificação (o openSUSE é o segundo caso).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;O processo pode variar de acordo com a distribuição, mas geralmente segue essa linha. Por exemplo, há vários algoritmos de somas de verificação. O algoritmo &lt;a href=&quot;https://pt.wikipedia.org/wiki/MD5&quot;&gt;MD5&lt;/a&gt; era mais popular, mas tem sido substituído pelo &lt;a href=&quot;https://pt.wikipedia.org/wiki/SHA-2&quot;&gt;SHA-256&lt;/a&gt;, que em tese é menos vulnerável. Também há distribuições que não fazem assinatura digital, nesses casos não é possível verificar a autenticidade da imagem ISO.&lt;/p&gt;
-
-&lt;h2 id=&quot;usando-o-terminal&quot;&gt;Usando o Terminal&lt;/h2&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/index.html.pt_BR&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt; é um aplicativo que recebe comandos na forma de texto. É diferente da maioria dos aplicativos, que você comanda com o &lt;em&gt;mouse&lt;/em&gt; clicando em botões e menus.&lt;/p&gt;
-
-&lt;p&gt;Para iniciá-lo, abra o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, clicando em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, ou pressionando a tecla &lt;strong&gt;Super&lt;/strong&gt; (em alguns teclados, ela possui a bandeira do Windows). Então, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; e clique no ícone do aplicativo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Terminal é iniciado. Você verá uma janela praticamente vazia com um cursor piscando após um caractere que pode ser &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt; (maior que) ou &lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; (cifrão):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-02-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse caractere indica que o comando será executado por um usuário comum.&lt;/p&gt;
-
-&lt;p&gt;Para executar um comando, você deve digitá-lo e teclar &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Nas seções seguintes, executaremos alguns comandos.&lt;/p&gt;
-
-&lt;p&gt;Se o Terminal está sendo usado pelo administrador (também conhecido como &lt;strong&gt;superusuário&lt;/strong&gt; ou usuário &lt;em&gt;root&lt;/em&gt;), ele mostra o caractere &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; (cerquilha). Exemplo de &lt;a href=&quot;/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/08/how-to-upgrade-to-42.3-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você utiliza Windows, talvez ache o Terminal parecido com o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Prompt_de_comando&quot;&gt;Prompt de Comando&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-e-2-baixando-a-imagem-iso-do-opensuse&quot;&gt;1 e 2) Baixando a imagem ISO do openSUSE&lt;/h2&gt;
-
-&lt;p&gt;Baixe a imagem de instalação via rede do openSUSE Leap, assim como o arquivo da soma de verificação, em:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;https://software.opensuse.org/distributions/leap&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-01-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-01-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Escolhi a imagem de instalação via rede por ser o menor arquivo, apenas para exemplo.&lt;/p&gt;
-
-&lt;p&gt;Quando acabar, você deve ter dois arquivos na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Downloads&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a imagem ISO (&lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE-Leap-15.0-NET-x86_64.iso.sha256&lt;/code&gt;) e&lt;/li&gt;
-  &lt;li&gt;a soma de verificação (&lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE-Leap-15.0-NET-x86_64.iso.sha256&lt;/code&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;3-importando-a-chave-pública-do-opensuse&quot;&gt;3) Importando a chave pública do openSUSE&lt;/h2&gt;
-
-&lt;p&gt;Mais abaixo na página &lt;strong&gt;Baixe o openSUSE&lt;/strong&gt;, na seção &lt;strong&gt;Verifique seu download antes de usar&lt;/strong&gt;, veja o grande número em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sistema_de_numera%C3%A7%C3%A3o_hexadecimal&quot;&gt;hexadecimal&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-02-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse número é a &lt;strong&gt;impressão digital&lt;/strong&gt; (&lt;em&gt;fingerprint&lt;/em&gt;) da chave pública do Projeto openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Para importá-la, execute o comando a seguir, com os 8 últimos dígitos da impressão:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --recv-keys 3DBDC284
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; você pode copiar o texto da página e colar no Terminal com &lt;strong&gt;Ctrl + Shift + V&lt;/strong&gt;. Se você precisar copiar um texto do Terminal, o atalho é parecido: &lt;strong&gt;Ctrl + Shift + C&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;No terminal aparece o seguinte texto, que é a &lt;strong&gt;saída&lt;/strong&gt; (o retorno) do comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: directory '/home/kamarada/.gnupg' created
-gpg: keybox '/home/kamarada/.gnupg/pubring.kbx' created
-gpg: key B88B2FD43DBDC284: 20 signatures not checked due to missing keys
-gpg: /home/kamarada/.gnupg/trustdb.gpg: base de dados de confiança criada
-gpg: key B88B2FD43DBDC284: public key &quot;openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;&quot; imported
-gpg: no ultimately trusted keys found
-gpg: Número total processado: 1
-gpg:               importados: 1
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Pena que a tradução está incompleta… Mas resumidamente o &lt;strong&gt;gpg&lt;/strong&gt; informa que criou alguns arquivos de configuração, devido à primeira execução, e importou a chave do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Execute o comando a seguir para conferir a impressão digital da chave importada:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --fingerprint 3DBDC284
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele retorna:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;pub   rsa2048 2008-11-07 [SC] [expires: 2024-05-02]
-      22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
-uid           [ unknown] openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Compare a impressão digital com a presente no site do openSUSE:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se os números conferem, você importou com sucesso a chave pública do openSUSE.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-verificando-a-integridade-da-imagem-iso&quot;&gt;4) Verificando a integridade da imagem ISO&lt;/h2&gt;
-
-&lt;p&gt;No terminal, passe para a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Downloads&lt;/code&gt; com o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd Downloads
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em seguida, verifique sua imagem ISO com o &lt;strong&gt;sha256sum&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sha256sum -c openSUSE-Leap-15.0-NET-x86_64.iso.sha256
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(observe que é passado no comando o nome do arquivo da soma de verificação, que termina com &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso.sha256&lt;/code&gt;, não da imagem ISO, que termina com &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;sha256sum&lt;/strong&gt; demora um tempo calculando a soma de verificação da imagem ISO e depois confere essa soma com a presente no arquivo. A saída do comando deve ser:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;openSUSE-Leap-15.0-NET-x86_64.iso: SUCESSO
-sha256sum: AVISO: 14 linhas estão formatadas inapropriadamente
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse exemplo, a primeira linha da saída informa que as somas foram conferidas com sucesso. Portanto, do ponto de vista da integridade, é seguro usar a imagem ISO baixada. Você pode proceder à verificação de autentiticade.&lt;/p&gt;
-
-&lt;p&gt;Se a saída do comando &lt;strong&gt;sha256sum&lt;/strong&gt; for diferente para você, informando que a verificação falhou, não é seguro usar essa imagem ISO: durante o &lt;em&gt;download&lt;/em&gt; ela se corrompeu e você deve baixá-la novamente.&lt;/p&gt;
-
-&lt;p&gt;A segunda linha avisa que algumas das linhas do arquivo da soma de verificação estão formatadas impropriamente. O comando &lt;strong&gt;sha256sum&lt;/strong&gt; dá esse aviso porque ele não entende as linhas que se referem à assinatura GPG, que o openSUSE coloca no mesmo arquivo.&lt;/p&gt;
-
-&lt;p&gt;Se tiver curiosidade, você pode ver essas linhas abrindo o arquivo da soma de verificação.&lt;/p&gt;
-
-&lt;p&gt;Como é um arquivo de texto simples, podemos abri-lo com o próprio terminal:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cat openSUSE-Leap-15.0-NET-x86_64.iso.sha256
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O comando &lt;a href=&quot;https://linux.die.net/man/1/cat&quot;&gt;&lt;strong&gt;cat&lt;/strong&gt;&lt;/a&gt; exibe o conteúdo de um arquivo de texto. Veja:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;-----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA256
-
-1a322de7c215da96fdbad4c247d218eb79073c5620a332a759c0291b44746fbc  openSUSE-Leap-15.0-NET-x86_64.iso
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
-
-iQEVAwUBWv2l17iLL9Q9vcKEAQgYyAf8DFVIKlbzmTteoIXCyxTO78QbJl764CvS
-Vf+deIEIfyHwvHIFR9diQm3gWeSuxD4dE+rhmRrDZBXsOIf1Xr1cXCAOWfr6zn5E
-8CurCwfYF4rKYu6wGqGJgf5WMh9E3swpJTfH4izvkRrGEDK13NRQcnXdhJYn5cJa
-9tC8n9sNdmzGSwaK44WCxhoN5+8EgJoJQTh1m3n7+O5xD6un9MD7Xh8dlfBxBMtV
-N0zZxCBEBbg+fL+/I7793R8RbZZwxihES4xmn2BLF5GeC28xBaWblbWmVBbo8un1
-aJu8EqdG3Kn43bX1FwAecNgRov7PSFGua/38ANdLWMsBpV6jNpMoyA==
-=YLLc
------END PGP SIGNATURE-----
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ao comando &lt;strong&gt;sha256sum&lt;/strong&gt; interessa apenas essa linha:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;1a322de7c215da96fdbad4c247d218eb79073c5620a332a759c0291b44746fbc  openSUSE-Leap-15.0-NET-x86_64.iso
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Todas as outras ele não consegue entender, por isso ele dá aquele aviso.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-verificando-a-autentiticade-da-imagem-iso&quot;&gt;5) Verificando a autentiticade da imagem ISO&lt;/h2&gt;
-
-&lt;p&gt;Agora sim vamos verificar a assinatura GPG com o comando apropriado:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --verify openSUSE-Leap-15.0-NET-x86_64.iso.sha256
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(aqui mais uma vez usamos o arquivo da soma de verificação, cuja extensão termina com &lt;code class=&quot;highlighter-rouge&quot;&gt;.iso.sha256&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;A saída informa que a assinatura confere (&lt;em&gt;good signature&lt;/em&gt;, boa assinatura):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: Signature made qui 17 mai 2018 12:55:03 -03
-gpg:                using RSA key B88B2FD43DBDC284
-gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;&quot; [unknown]
-gpg: AVISO: Esta chave não está certificada com uma assinatura confiável!
-gpg:          Não há indicação de que a assinatura pertence ao dono.
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O aviso &lt;strong&gt;Esta chave não está certificada com uma assinatura confiável&lt;/strong&gt; não indica um problema, mas apenas o fato de que você não assinou a chave você mesmo, o que é opcional e explicarei melhor a seguir.&lt;/p&gt;
-
-&lt;p&gt;Se você não é paranoico com segurança, pode ficar satisfeito com a mensagem acima e usar a imagem ISO tranquilamente.&lt;/p&gt;
-
-&lt;p&gt;Veja como a saída é diferente se a assinatura não confere:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: CRC error; 60B2DC - 60B2DA
-gpg: no signature found
-gpg: a assinatura não pode ser verificada.
-Não se esqueça que o ficheiro com a assinatura (.sig ou .asc)
-deve ser o primeiro a ser dado na linha de comando.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se você recebeu essa saída, não é seguro usar essa imagem ISO: você deve verificar sua procedência e baixá-la novamente.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-opcionalidades&quot;&gt;6) Opcionalidades&lt;/h2&gt;
-
-&lt;p&gt;Até aqui, você fez todos os passos que elencamos na visão geral, no início.&lt;/p&gt;
-
-&lt;p&gt;Você pode ir um passo além assinando a chave pública do openSUSE com uma chave privada sua, sinalizando para o &lt;strong&gt;gpg&lt;/strong&gt; que você confia que a chave pública do Projeto openSUSE pertence de fato ao Projeto openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Pode parecer burocrático, mas da forma como o GPG foi projetado, idealmente as pessoas trocariam chaves apenas pessoalmente, para formar uma rede de confiança. Na prática, não é assim que funciona. Obter a chave pública do &lt;em&gt;site&lt;/em&gt; da distribuição é o máximo que você pode fazer enquanto usuário final que deseja verificar uma imagem ISO. De qualquer forma, já é mais seguro do que baixar a imagem ISO e confiar nela sem fazer nenhuma verificação.&lt;/p&gt;
-
-&lt;p&gt;Para assinar a chave pública do openSUSE, você precisa antes criar um par de chaves seu.&lt;/p&gt;
-
-&lt;h2 id=&quot;61-criando-um-par-de-chaves-pessoal&quot;&gt;6.1) Criando um par de chaves pessoal&lt;/h2&gt;
-
-&lt;p&gt;Para iniciar a criação de um par de chaves, execute o seguinte comando no terminal:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --gen-key
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; solicita seu nome completo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg (GnuPG) 2.2.5; Copyright (C) 2018 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-Note: Use &quot;gpg2 --full-generate-key&quot; for a full featured key generation dialog.
-
-GnuPG needs to construct a user ID to identify your key.
-
-Nome completo:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Digite seu nome completo e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Depois, ele pede seu &lt;em&gt;e-mail&lt;/em&gt;, digite-o e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; oferece a oportunidade de mudar alguma informação. Verifique seus dados:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Nome completo: Linux Kamarada
-Endereço de correio eletrónico: linux@kamarada.com.br
-Você selecionou este identificador de utilizador:
-    &quot;Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;&quot;
-
-Change (N)ame, (E)mail, or (O)kay/(Q)uit?
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se está tudo certo, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;O&lt;/code&gt; (de &lt;em&gt;OK&lt;/em&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; solicita que seja criada uma senha (&lt;em&gt;passphrase&lt;/em&gt;) para a nova chave. Por algum motivo aqui ele apresenta uma janela fora do terminal para a digitação da senha:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Digite a senha no campo de cima e depois digite mais uma vez no campo de baixo, para se certificar que não digitou errado. Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt; (ou tecle &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Feito isso, sua chave pessoal foi criada:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Change (N)ame, (E)mail, or (O)kay/(Q)uit? o
-Precisamos gerar muitos bytes aleatórios. É uma boa ideia realizar outra
-actividade (escrever no teclado, mover o rato, usar os discos) durante a
-geração dos números primos; isso dá ao gerador de números aleatórios
-uma hipótese maior de ganhar entropia suficiente.
-gpg: key 622F81C351878B72 marked as ultimately trusted
-gpg: directory '/home/kamarada/.gnupg/openpgp-revocs.d' created
-gpg: revocation certificate stored as '/home/kamarada/.gnupg/openpgp-revocs.d/52213656B323285921EF8144622F81C351878B72.rev'
-chaves pública e privada criadas e assinadas.
-
-pub   rsa2048 2018-10-06 [SC] [expires: 2020-10-05]
-      52213656B323285921EF8144622F81C351878B72
-uid                      Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;
-sub   rsa2048 2018-10-06 [E] [expires: 2020-10-05]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;62-assinando-a-chave-pública-do-opensuse&quot;&gt;6.2) Assinando a chave pública do openSUSE&lt;/h2&gt;
-
-&lt;p&gt;Para assinar a chave pública do openSUSE, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --edit-key 3DBDC284
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;gpg&lt;/strong&gt; inicia uma espécie de terminal próprio (&lt;code class=&quot;highlighter-rouge&quot;&gt;gpg&amp;gt;&lt;/code&gt;) e mostra informações sobre a chave:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg (GnuPG) 2.2.5; Copyright (C) 2018 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-
-pub  rsa2048/B88B2FD43DBDC284
-     created: 2008-11-07  expires: 2024-05-02  usage: SC
-     trust: unknown       validity: unknown
-[ unknown] (1). openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-
-gpg&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Confira mais uma vez a impressão digital com aquela que está no &lt;em&gt;site&lt;/em&gt; do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Para fazer isso, digite &lt;strong&gt;fpr&lt;/strong&gt; (de &lt;em&gt;fingerprint&lt;/em&gt;, impressão digital) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg&amp;gt; fpr
-pub   rsa2048/B88B2FD43DBDC284 2008-11-07 openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
-
-gpg&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Estando correta, digite &lt;strong&gt;trust&lt;/strong&gt; (confiar) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg&amp;gt; trust
-pub  rsa2048/B88B2FD43DBDC284
-     created: 2008-11-07  expires: 2024-05-02  usage: SC  
-     trust: unknown       validity: unknown
-[ unknown] (1). openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-
-Please decide how far you trust this user to correctly verify other users' keys
-(by looking at passports, checking fingerprints from different sources, etc.)
-
-  1 = I don't know or won't say
-  2 = I do NOT trust
-  3 = I trust marginally
-  4 = I trust fully
-  5 = I trust ultimately
-  m = back to the main menu
-
-Decisão?
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele pergunta o quanto você confia nessa chave, as opções são:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Eu não sei ou não direi&lt;/li&gt;
-  &lt;li&gt;Eu não confio&lt;/li&gt;
-  &lt;li&gt;Eu confio em parte&lt;/li&gt;
-  &lt;li&gt;Eu confio completamente&lt;/li&gt;
-  &lt;li&gt;Eu confio em última análise&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;(não soube traduzir essa última, pedi ajuda ao &lt;a href=&quot;https://translate.google.com.br/&quot;&gt;Google&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Digite &lt;strong&gt;5&lt;/strong&gt; (parece haver uma escala gradativa de confiança) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Decisão? 5
-Do you really want to set this key to ultimate trust? (y/N)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele pergunta se você realmente deseja confiar nessa chave, tecle &lt;strong&gt;y&lt;/strong&gt; (de &lt;em&gt;yes&lt;/em&gt;, sim) e depois &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Do you really want to set this key to ultimate trust? (y/N) y
-
-pub  rsa2048/B88B2FD43DBDC284
-     created: 2008-11-07  expires: 2024-05-02  usage: SC  
-     trust: ultimate      validity: unknown
-[ unknown] (1). openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-Não se esqueça que a validade de chave mostrada não é necessáriamente a
-correcta a não ser que reinicie o programa.
-
-gpg&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Agora digite &lt;strong&gt;sign&lt;/strong&gt; (assinar) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg&amp;gt; sign
-
-pub  rsa2048/B88B2FD43DBDC284
-     created: 2008-11-07  expires: 2024-05-02  usage: SC  
-     trust: ultimate      validity: unknown
-Impressão da chave primária: 22C0 7BA5 3417 8CD0 2EFE  22AA B88B 2FD4 3DBD C284
-
-     openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-
-Esta chave vai expirar em 2024-05-02.
-Are you sure that you want to sign this key with your
-key &quot;Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;&quot; (622F81C351878B72)
-
-Really sign? (y/N)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele pergunta se você realmente deseja assinar essa chave, tecle &lt;strong&gt;y&lt;/strong&gt; e depois &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Digite a senha da sua chave e clique em &lt;strong&gt;OK&lt;/strong&gt; (ou tecle &lt;strong&gt;Enter&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Por fim, digite &lt;strong&gt;quit&lt;/strong&gt; (sair) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg&amp;gt; quit
-Save changes? (y/N)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele pergunta se você deseja salvar as alterações, tecle &lt;strong&gt;y&lt;/strong&gt; e depois &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Feito isso, a chave pública do openSUSE foi assinada e voltamos para o terminal normal.&lt;/p&gt;
-
-&lt;p&gt;Para conferir que a chave foi de fato assinada, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --list-sig 3DBDC284
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ele lista todas as assinaturas da chave. Observe que a sua aparece na lista, na última linha:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: a verificar a base de dados de confiança
-gpg: marginals needed: 3  completes needed: 1  trust model: pgp
-gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
-gpg: proxima verificação da base de dados de confiança a 2020-10-05
-pub   rsa2048 2008-11-07 [SC] [expires: 2024-05-02]
-      22C07BA534178CD02EFE22AAB88B2FD43DBDC284
-uid           [ultimate] openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-sig          EA7BF3970175623E 2012-08-23  [User ID not found]
-sig          8BD82E6F30B94B5C 2013-05-04  [User ID not found]
-sig          6347B5055AB3D350 2017-01-30  [User ID not found]
-sig          1C2B0DA2920E6F97 2013-08-15  [User ID not found]
-sig          29ED86E6F9CBBD4C 2018-02-10  [User ID not found]
-sig          77B2E6003D25D3D9 2012-08-23  [User ID not found]
-sig          080B3B0AD1E3EBDD 2014-02-11  [User ID not found]
-sig          D9C63ADCE11CE0A5 2016-07-18  [User ID not found]
-sig          4525B0A6741B9BBC 2018-04-02  [User ID not found]
-sig 3        B88B2FD43DBDC284 2010-05-05  openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-sig 3        B88B2FD43DBDC284 2014-05-05  openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-sig 3        B88B2FD43DBDC284 2008-11-07  openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;
-sig          37F0BE6297A01F40 2015-09-03  [User ID not found]
-sig          E7820D7B72511999 2016-02-29  [User ID not found]
-sig          A485A0ED51B8B7C4 2015-05-19  [User ID not found]
-sig          37B31673C6FD5677 2016-04-10  [User ID not found]
-sig          CA3A5E56C08DE9DB 2016-11-28  [User ID not found]
-sig          449AC1719D98D793 2017-12-01  [User ID not found]
-sig          2209D6902F969C95 2016-02-29  [User ID not found]
-sig          E6596246D46BD98A 2016-12-03  [User ID not found]
-sig          F8E8F9BBBD86B2BD 2018-09-18  [User ID not found]
-sig          19D77FD04BCDA246 2018-10-03  [User ID not found]
-sig          58FC58B1317CD502 2017-09-28  [User ID not found]
-sig          622F81C351878B72 2018-10-06  Linux Kamarada &amp;lt;linux@kamarada.com.br&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;63-verificando-novamente-a-autentiticade-da-imagem-iso&quot;&gt;6.3) Verificando novamente a autentiticade da imagem ISO&lt;/h2&gt;
-
-&lt;p&gt;Repita a verificação de autentiticade da imagem ISO (passo 5):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --verify openSUSE-Leap-15.0-NET-x86_64.iso.sha256
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Veja que agora a mensagem apresentada pelo &lt;strong&gt;gpg&lt;/strong&gt; não mostra o aviso nem a impressão digital ao final, apenas informa que a assinatura confere (&lt;em&gt;good signature&lt;/em&gt;, boa assinatura):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: Signature made qui 17 mai 2018 12:55:03 -03
-gpg:                using RSA key B88B2FD43DBDC284
-gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@opensuse.org&amp;gt;&quot; [ultimate]
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/how-to-verify-iso-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/how-to-verify-iso-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;finalizando&quot;&gt;Finalizando&lt;/h2&gt;
-
-&lt;p&gt;Agora que você já conhece o &lt;strong&gt;sha256sum&lt;/strong&gt; e o &lt;strong&gt;gpg&lt;/strong&gt;, pode usá-los para verificar imagens ISO do openSUSE, assim como imagens ISO de outras distribuições, ou quaisquer arquivos que precise verificar. Como expliquei na visão geral, o processo é semelhante.&lt;/p&gt;
-
-&lt;p&gt;Possivelmente, boa parte do que fizemos aqui você não precisará fazer de novo:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;você só precisa importar de novo a chave pública do openSUSE (seção 3) se no futuro o openSUSE criar uma nova chave;&lt;/li&gt;
-  &lt;li&gt;você só precisa assinar de novo a chave pública do openSUSE (seção 6.2) se no futuro importar uma nova chave; e&lt;/li&gt;
-  &lt;li&gt;se você só utiliza sua chave GPG pessoal para verificar arquivos baixados, não precisará criar um novo par de chaves (seção 6.1).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Caso baixe outra imagem ISO do openSUSE (por exemplo, quando houver uma nova versão da distribuição), você pula o passo 3 e repete os passos 1, 2, 4 e 5.&lt;/p&gt;
-
-&lt;p&gt;Caso baixe uma imagem ISO de outra distribuição, aí sim você deve repetir todo o processo, opcionalmente assinando a chave pública da distribuição após importá-la (seção 6.2).&lt;/p&gt;
-
-&lt;p&gt;Espero que tenha ajudado. Deixo as referências para o caso de você querer ler mais.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/246332/how-to-verify-a-downloaded-linux-iso-file-wasnt-tampered-with/&quot;&gt;How to Verify a Linux ISO’s Checksum and Confirm It Hasn’t Been Tampered With&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bitzuma.com/posts/how-to-verify-an-electrum-download-on-windows/&quot;&gt;How to Verify an Electrum Download on Windows - Bitzuma&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://xmodulo.com/verify-authenticity-integrity-downloaded-file.html&quot;&gt;How to verify the authenticity and integrity of a downloaded file on Linux - Xmodulo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pt.opensuse.org/SDB:Ajuda_de_download&quot;&gt;SDB:Ajuda de download - openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnupg.org/gph/en/manual.html&quot;&gt;The GNU Privacy Handbook&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/GnuPrivacyGuardHowto&quot;&gt;GnuPrivacyGuardHowto&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://security.stackexchange.com/a/120926&quot;&gt;digital signature - Verify a key was signed by another key - Information Security Stack Exchange&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sat, 06 Oct 2018 11:20:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/</guid>
                 
                 
                     <category>pt</category>

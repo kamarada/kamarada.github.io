@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Monitorando recursos do sistema com a extensão do GNOME System Monitor - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do Android são algun...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-04-04 23:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do Android são algun..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2019/04/gnome-extension-system-monitor-07-pt.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Monitorando recursos do sistema com a extensão do GNOME System Monitor" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=4">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=4">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=4">
+    <meta name="msapplication-TileColor" content="#4caf50">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="/libs/bootstrap/4.1.3/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.1/custom/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/libs/font-awesome/5.3.1/css/all.min.css">-->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!--<script src="/libs/jquery/3.3.1/jquery-3.3.1.slim.min.js"></script>-->
+    <script src="https://unpkg.com/popper.js@1.14.4/dist/umd/popper.min.js" integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+    <!--<script src="/libs/popper.js/1.14.4/umd/popper.min.js"></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
+    <!--<script src="/libs/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <!--<script src="/libs/bootstrap-material-design/4.1.1/js/bootstrap-material-design.min.js"></script>-->
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        <!-- AddThis -->
+        <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+        <script type="text/javascript">
+            var addthis_config = {
+                data_track_clickback: true,
+                data_track_addressbar: true,
+                
+                    ui_language: 'pt'
+                
+            };
+            var addthis_share = {
+                url: 'https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/',
+                title: document.title,
+                description: 'Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do Android são algun...'
+            };
+        </script>
+        <!-- End AddThis -->
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+
+    <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download/leap/42.2/">Download</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline" id="search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control" id="search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number" id="search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
+                    <div class="dropdown-menu" aria-labelledby="language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-8'>
+                <!--<div class='gap-small'>
+                    <a class='gap-small' href='http://en.opensuse.org/Portal:42.2'>
+                        <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                    </a>
+                </div>-->
+                <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/" itemprop="mainEntityOfPage url">
+                Monitorando recursos do sistema com a extensão do GNOME System Monitor
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-04-04">
+                    <a href="/2019/04/04/">
+                        
+    04 de
+    
+    Abril
+        
+    de 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-04-04" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            <!-- Google AdSense -->
+<ins class="adsbygoogle" id="content_ad_unit_1"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="8945658251"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do <a href="https://www.android.com/">Android</a> são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho <a href="https://www.gnome.org/">GNOME</a>, pode instalar a extensão <a href="https://extensions.gnome.org/extension/120/system-monitor/">System Monitor</a>. Como fazer isso é o que você verá nesse <em>post</em>.</p>
+
+<!--more-->
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-01.jpg" title="A extensão do GNOME System Monitor">
+<img src="/files/2019/04/gnome-extension-system-monitor-01.jpg" alt="A extensão do GNOME System Monitor" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 450px;" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>A extensão do GNOME System Monitor</p>
+
+</em>
+
+</div>
+
+<p>O ambiente <a href="https://www.gnome.org/">GNOME</a> foca na usabilidade e traz consigo apenas um conjunto essencial de recursos, em contrapartida apresenta um funcionamento bem estável. Mas você pode estendê-lo com <a href="https://extensions.gnome.org/">extensões</a>, algumas bastante úteis. Caso ainda não conheça, visite:</p>
+
+<ul>
+  <li><a href="https://extensions.gnome.org/">GNOME Shell Extensions</a></li>
+</ul>
+
+<p>Hoje vou mostrar como instalar a extensão System Monitor (do inglês <em>monitor do sistema</em>), que fornece de forma gráfica, rápida e acessível diversas informações sobre o desempenho e consumo de recursos do sistema. Dentre elas, o uso da memória RAM.</p>
+
+<h2 id="instalando-o-suporte-a-extensões-do-gnome">Instalando o suporte a extensões do GNOME</h2>
+
+<p>Para personalizar o GNOME usando extensões, você vai precisar do aplicativo <a href="https://wiki.gnome.org/Apps/Tweaks"><strong>Ajustes</strong></a> (<em>Tweaks</em>, não confundir com o aplicativo <a href="https://wiki.gnome.org/Design/Apps/Settings"><strong>Configurações</strong></a>, <em>Settings</em>). Se você usa a distribuição <a href="https://www.opensuse.org/">openSUSE</a> com o ambiente GNOME, provavelmente esse aplicativo já vem instalado por padrão. Mas caso precise, ele é fornecido pelo pacote <a href="https://software.opensuse.org/package/gnome-tweak-tool">gnome-tweak-tool</a>.</p>
+
+<p>Há também algumas extensões que já fazem parte da própria distribuição e são fornecidas pelo pacote <a href="https://software.opensuse.org/package/gnome-shell-extensions-common">gnome-shell-extensions-common</a>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-02-pt.jpg" title="O aplicativo Ajustes mostrando as extensões instaladas">
+<img src="/files/2019/04/gnome-extension-system-monitor-02-pt.jpg" alt="O aplicativo Ajustes mostrando as extensões instaladas" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>O aplicativo Ajustes mostrando as extensões instaladas</p>
+
+</em>
+
+</div>
+
+<p>Além disso, se você acessou o <em>site</em> <a href="https://extensions.gnome.org/">GNOME Shell Extensions</a>, talvez tenha visto o aviso:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-03.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><em>To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.</em></p>
+
+<p>(para controlar as extensões do GNOME Shell usando este <em>site</em> você deve instalar a integração do GNOME Shell que consiste em duas partes: extensão do navegador e aplicativo de mensagens nativas)</p>
+
+<p>Quanto à extensão do navegador, conforme o navegador que você usa, utilize os <em>links</em> a seguir para instalá-la:</p>
+
+<ul>
+  <li>Para <a href="https://www.google.com/chrome/">Google Chrome</a>, <a href="https://www.chromium.org/Home">Chromium</a>, <a href="https://www.opera.com/pt-br/">Opera</a> e <a href="https://vivaldi.com/">Vivaldi</a>: visite a <a href="https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep">Chrome Web Store</a>;</li>
+  <li>para <a href="https://www.mozilla.org/pt-BR/">Mozilla Firefox</a>: visite o <em>site</em> <a href="https://addons.mozilla.org/pt-BR/firefox/addon/gnome-shell-integration/">Mozilla Addons</a>.</li>
+</ul>
+
+<p>A segunda parte, que é o aplicativo, também é fornecida pela própria distribuição por meio do pacote <a href="https://software.opensuse.org/package/chrome-gnome-shell">chrome-gnome-shell</a>.</p>
+
+<p>Para instalar todos os pacotes necessários de uma vez só, execute o comando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in gnome-tweak-tool gnome-shell-extensions-common chrome-gnome-shell typelib-1_0-GTop-2_0 typelib-1_0-NetworkManager-1_0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>(já que o objetivo é instalar tudo de uma vez só, incluí os pacotes <a href="https://software.opensuse.org/package/typelib-1_0-GTop-2_0">typelib-1_0-GTop-2_0</a> e <a href="https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0">typelib-1_0-NetworkManager-1_0</a>, que são solicitados pela extensão System Monitor)</p>
+
+<p>Com tudo instalado, reinicie o computador (talvez seja suficiente fazer <em>logout</em> e <em>login</em>).</p>
+
+<p>Abra o navegador e visite mais uma vez o <em>site</em> <a href="https://extensions.gnome.org/">GNOME Shell Extensions</a>.</p>
+
+<p>Perceba que dessa vez o aviso não aparece.</p>
+
+<p>Agora você está pronto para instalar e usar extensões do GNOME!</p>
+
+<h2 id="instalando-a-extensão-system-monitor">Instalando a extensão System monitor</h2>
+
+<p>Para conseguir monitorar os recursos do sistema, a extensão System Monitor requer que os pacotes <a href="https://software.opensuse.org/package/typelib-1_0-GTop-2_0">typelib-1_0-GTop-2_0</a> e <a href="https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0">typelib-1_0-NetworkManager-1_0</a> estejam instalados. Já fizemos essa instalação no passo anterior.</p>
+
+<p>Acesse a página da extensão:</p>
+
+<ul>
+  <li><a href="https://extensions.gnome.org/extension/120/system-monitor/">system-monitor - GNOME Shell Extensions</a></li>
+</ul>
+
+<p>E clique na chave de liga e desliga:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-04.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Confirme o <em>download</em> e instalação da extensão clicando em <strong>Instalar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-05-pt.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Após a instalação, já é possível ver medidores de recursos na barra do topo do GNOME:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-06-pt.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-06-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na sequência, eles mostram:</p>
+
+<ul>
+  <li>consumo de processador (CPU),</li>
+  <li>consumo de memória, e</li>
+  <li>tráfego de rede.</li>
+</ul>
+
+<p>Clique nos medidores para ver mais informações:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-07-pt.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-07-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>Preferências</strong> para personalizar o que é exibido e como é exibido:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/04/gnome-extension-system-monitor-08-pt.jpg" title="">
+<img src="/files/2019/04/gnome-extension-system-monitor-08-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Eu costumo remover o monitor de tráfego de rede, deixando apenas CPU e memória.</p>
+
+<p>Caso queira desabilitar ou remover essa extensão (assim como qualquer extensão do GNOME), utilize o aplicativo <strong>Ajustes</strong>.</p>
+
+<p>Agora você pode monitorar a memória RAM em uso e não ser pego de surpresa: quando houver pouca memória disponível, feche programas, para que o computador não trave.</p>
+
+<p>Faça bom proveito!</p>
+
+<h2 id="referências">Referências</h2>
+
+<ul>
+  <li><a href="https://itsfoss.com/gnome-shell-extensions/">How to Use GNOME Shell Extensions - Complete Guide - It’s FOSS</a></li>
+  <li><a href="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation">Projects/GnomeShellIntegrationForChrome/Installation - GNOME Wiki!</a></li>
+  <li><a href="https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet">paradoxxxzero/gnome-shell-system-monitor-applet - GitHub</a></li>
+</ul>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        
+            <!-- Disqus -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Comentários
+                
+            </h2>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    
+                        this.language = "pt";
+                    
+                    this.page.url = 'https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/';
+                };
+
+                (function() {
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//kamarada.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>
+                <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+            </noscript>
+            <!-- Disqus End -->
+        
+    </article>
+</div><!-- .blog-post -->
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada é um projeto novo que visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style addthis_follow_buttons text-center">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamarada" class="addthis_button_twitter_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/pt/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <!-- Google AdSense -->
+<ins class="adsbygoogle" id="sidebar_ad_unit"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="7329324255"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        Copyright &copy; 2019 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do Android são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho GNOME, pode instalar a extensão System...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2019/04/gnome-extension-system-monitor-07-pt.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        
+            var disqus_config = function () {
+                this.language = "pt";
+            };
+        
+        var disqus_shortname = 'kamarada';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- Disqus End -->
+
+
+
+    <!-- Google AdSense -->
+    
+        <!-- Google AdSense -->
+<ins class="adsbygoogle" id="content_ad_unit_2"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="4375857858"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                    } else {
+                        $ad.remove();
+                    }
+                }
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+</body>
+</html>
