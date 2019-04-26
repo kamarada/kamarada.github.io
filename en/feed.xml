@@ -9,10 +9,182 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 17 Apr 2019 18:16:10 -0300</pubDate>
-        <lastBuildDate>Wed, 17 Apr 2019 18:16:10 -0300</lastBuildDate>
+        <pubDate>Fri, 26 Apr 2019 10:10:17 -0300</pubDate>
+        <lastBuildDate>Fri, 26 Apr 2019 10:10:17 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Monitor system resources with the GNOME System Monitor extension</title>
+                <description>&lt;p&gt;Are you the kind of user who consumes high memory? Browser with many tabs open, IDE, virtual machine, the &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; emulator are some examples of programs which can drain your computer resources. How to monitor resources to avoid a system crash? If you use the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop, you can install the &lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;System Monitor&lt;/a&gt; extension. How to do that is what you are going to see here.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; title=&quot;The GNOME System Monitor extension&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; alt=&quot;The GNOME System Monitor extension&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 450px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The GNOME System Monitor extension&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop environment focus on usability and essential features, has great stability and works flawlessly. On the other hand, it allows just a few customizations. Nothing that cannot be solved by the use of &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;extensions&lt;/a&gt;, which can be obtained from:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;https://extensions.gnome.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some of the GNOME extensions are very useful. Today I’m going to show you how to install the System Monitor extension, which shows system information such as CPU and memory usage in graphics on an easy and quick place to look at — the GNOME top bar.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-the-gnome-extensions-support&quot;&gt;Installing the GNOME extensions support&lt;/h2&gt;
+
+&lt;p&gt;To customize GNOME with extensions, you are going to use the &lt;a href=&quot;https://wiki.gnome.org/Apps/Tweaks&quot;&gt;&lt;strong&gt;Tweaks&lt;/strong&gt;&lt;/a&gt; app (not to be confused with the &lt;a href=&quot;https://wiki.gnome.org/Design/Apps/Settings&quot;&gt;&lt;strong&gt;Settings&lt;/strong&gt;&lt;/a&gt; app). If you use the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; distribution with GNOME, that app is installed by default. In case you need, it is provided by the &lt;a href=&quot;https://software.opensuse.org/package/gnome-tweak-tool&quot;&gt;gnome-tweak-tool&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;p&gt;Also there is a minimal set of extensions provided by the distribution itself in the &lt;a href=&quot;https://software.opensuse.org/package/gnome-shell-extensions-common&quot;&gt;gnome-shell-extensions-common&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-02-en.jpg&quot; title=&quot;The Tweaks app showing installed extensions&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-02-en.jpg&quot; alt=&quot;The Tweaks app showing installed extensions&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The Tweaks app showing installed extensions&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Besides that, if you have visited the GNOME extensions website, probably you have seen a message like this:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; title=&quot;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; alt=&quot;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To install the browser extension, you can simply click the link presented by the message itself, or click one of the following links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/&quot;&gt;Opera&lt;/a&gt; and &lt;a href=&quot;https://vivaldi.com/&quot;&gt;Vivaldi&lt;/a&gt;: visit the &lt;a href=&quot;https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep&quot;&gt;Chrome Web Store&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;for &lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Mozilla Firefox&lt;/a&gt;: visit the &lt;a href=&quot;https://addons.mozilla.org/firefox/addon/gnome-shell-integration/&quot;&gt;Mozilla Addons&lt;/a&gt; website.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The second part, which is the native host messaging application, is provided by the distribution too in the &lt;a href=&quot;https://software.opensuse.org/package/chrome-gnome-shell&quot;&gt;chrome-gnome-shell&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;p&gt;To install all the needed packages at once, run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-tweak-tool gnome-shell-extensions-common chrome-gnome-shell typelib-1_0-GTop-2_0 typelib-1_0-NetworkManager-1_0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(since the intention is to install all at once, I included the &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; and &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt; packages, which are needed by the System Monitor extension, as we are going to see)&lt;/p&gt;
+
+&lt;p&gt;Everything installed, reboot your computer (maybe it is enough to just logout and login).&lt;/p&gt;
+
+&lt;p&gt;Launch your browser and visit the &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt; website once more.&lt;/p&gt;
+
+&lt;p&gt;Note that message does not appear anymore.&lt;/p&gt;
+
+&lt;p&gt;Now you are ready to install and use GNOME extensions.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-the-system-monitor-extension&quot;&gt;Installing the System Monitor extension&lt;/h2&gt;
+
+&lt;p&gt;To be able to monitor system resouces, the System Monitor extension requires that the &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; and &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt; packages are installed. Fortunately, we have already installed them.&lt;/p&gt;
+
+&lt;p&gt;Go to the extension page:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;system-monitor - GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And click the on/off toggle:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Confirm you want to download and install the extension by clicking &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Once it’s installed, it already shows resource graphs on the GNOME top bar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;From left to right, they show:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU usage,&lt;/li&gt;
+  &lt;li&gt;memory usage, and&lt;/li&gt;
+  &lt;li&gt;network traffic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Click any of the graphs to see more info:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Preferences&lt;/strong&gt; to customize what is shown and how:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;I like to hide the network traffic monitor, leaving only the CPU and memory monitors.&lt;/p&gt;
+
+&lt;p&gt;In case you want to disable or remove that extension (as well as any other GNOME extension), use the &lt;strong&gt;Tweaks&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;p&gt;Now you can monitor how much memory you are using and prevent being taken by surprise: when you reach low memory available, close programs to avoid a system crash.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/gnome-shell-extensions/&quot;&gt;How to Use GNOME Shell Extensions - Complete Guide - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation&quot;&gt;Projects/GnomeShellIntegrationForChrome/Installation - GNOME Wiki!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet&quot;&gt;paradoxxxzero/gnome-shell-system-monitor-applet - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 26 Apr 2019 10:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/04/26/monitor-system-resources-with-the-gnome-system-monitor-extension/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/04/26/monitor-system-resources-with-the-gnome-system-monitor-extension/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Get the most out of GNOME syncing your Google account</title>
@@ -2612,140 +2784,6 @@ kamarada@desktop:~&amp;gt;
                 <pubDate>Thu, 15 Mar 2018 23:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Use Evolution to connect to Office 365 on Linux</title>
-                <description>&lt;p&gt;If you work at a company whose email is locally hosted on a &lt;a href=&quot;https://products.office.com/en-us/exchange&quot;&gt;Microsoft Exchange&lt;/a&gt; server or cloud hosted on &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, you can use traditional &lt;a href=&quot;https://en.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; email apps to manage email on your workstation. However, some additional features such as calendaring and contact management are available only if you connect by using the &lt;a href=&quot;https://www.microsoft.com/en-us&quot;&gt;Microsoft&lt;/a&gt;’s proprietary &lt;a href=&quot;https://technet.microsoft.com/en-us/library/dn551174(v=exchg.150).aspx&quot;&gt;Exchange ActiveSync&lt;/a&gt; protocol.&lt;/p&gt;
-
-&lt;p&gt;The good news is that in an Exchange company &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users don’t have to give up their favorite system to communicate with co-workers: here you are going to see how to connect &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt; to Exchange or Office 365 using &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;GNOME Online Accounts&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Evolution&lt;/strong&gt; is one of the most powerful &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Collaborative_software&quot;&gt;groupware&lt;/a&gt; clients out there. It is the default groupware client of the &lt;a href=&quot;https://www.gnome.org&quot;&gt;GNOME&lt;/a&gt; desktop environment and can be considered the Linux counterpart to &lt;a href=&quot;https://products.office.com/en-us/outlook&quot;&gt;Outlook&lt;/a&gt; for &lt;a href=&quot;https://www.microsoft.com/en-us/windows&quot;&gt;Windows&lt;/a&gt;. GNOME users setup their online accounts (such as Office 365) using the &lt;strong&gt;Settings&lt;/strong&gt; app and then can access them using GNOME integrated apps (like Evolution).&lt;/p&gt;
-
-&lt;p&gt;To enable Evolution to manage your Exchange or Office 365 email, make sure your system has the packages &lt;a href=&quot;https://software.opensuse.org/package/gnome-online-accounts&quot;&gt;gnome-online-accounts&lt;/a&gt; (it should have been installed by default if you use &lt;a href=&quot;https://www.opensuse.org&quot;&gt;openSUSE&lt;/a&gt; with GNOME) and &lt;a href=&quot;https://software.opensuse.org/package/evolution-ews&quot;&gt;evolution-ews&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-online-accounts evolution-ews
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To add your Exchange account, open the &lt;strong&gt;Settings&lt;/strong&gt; app and click on &lt;strong&gt;Online Accounts&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Online accounts are listed on the left. Click the &lt;strong&gt;add button&lt;/strong&gt; below:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-2-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Add Account&lt;/strong&gt; dialog box, choose &lt;strong&gt;Microsoft Exchange&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-3-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-3-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Expand the &lt;strong&gt;Custom&lt;/strong&gt; section so all fields are shown. Fill them with your account information:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;E-mail:&lt;/strong&gt; your e-mail address (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;your.name@example.com&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Password:&lt;/strong&gt; your e-mail account password&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Username:&lt;/strong&gt; your e-mail address once more&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;outlook.office365.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Those values may be different depending on how your company email has been set up. In case you are not able to add your account, contact your company’s network administrator.&lt;/p&gt;
-
-&lt;p&gt;When you are ready, click on &lt;strong&gt;Connect&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-4-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-4-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Your Exchange account is now listed besides your other online accounts, choose what you want to sync (by default, all features are enabled):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-5-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-5-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now you can close the &lt;strong&gt;Online Accounts&lt;/strong&gt; dialog box and open the &lt;strong&gt;Evolution&lt;/strong&gt; app. Note that now it shows:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-6-en.jpg&quot; title=&quot;Your mail&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-6-en.jpg&quot; alt=&quot;Your mail&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your mail&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-7-en.jpg&quot; title=&quot;Your contacts&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-7-en.jpg&quot; alt=&quot;Your contacts&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your contacts&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/09/evolution-office-365-8-en.jpg&quot; title=&quot;Your calendar&quot;&gt;
-&lt;img src=&quot;/files/2017/09/evolution-office-365-8-en.jpg&quot; alt=&quot;Your calendar&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Your calendar&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enjoy!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linux.com/learn/use-evolution-connect-microsoft-exchange-linux&quot;&gt;Use Evolution to Connect to Microsoft Exchange on Linux - Linux.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kb.wisc.edu/helpdesk/page.php?id=28462&quot;&gt;Office 365 (Evolution) - Configure Evolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 06 Sep 2017 20:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/</guid>
                 
                 
                     <category>en</category>
