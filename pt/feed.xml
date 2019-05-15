@@ -9,10 +9,257 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 10 May 2019 19:07:58 -0300</pubDate>
-        <lastBuildDate>Fri, 10 May 2019 19:07:58 -0300</lastBuildDate>
+        <pubDate>Tue, 14 May 2019 21:14:20 -0300</pubDate>
+        <lastBuildDate>Tue, 14 May 2019 21:14:20 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Como obter atualizações para o Linux openSUSE</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Programas de computador não são perfeitos: são feitos por nós, seres humanos. Com o tempo, vão sendo aperfeiçoados, seja por otimizações, adição de funcionalidades ou correções de falhas (&lt;em&gt;bugs&lt;/em&gt;). Existem falhas dos mais diversos tipos: erros de digitação, lentidões, travamentos, até brechas de segurança, que podem ser usadas por pessoas mal intencionadas para acessar seus arquivos pessoais. Por isso, é importante manter o computador sempre atualizado, utilizando as versões mais novas dos programas.&lt;/p&gt;
+
+&lt;p&gt;Felizmente, manter o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; sempre atualizado é fácil. É possível obter atualizações tanto pela interface gráfica quanto, para quem prefere, pela interface de linha de comando, como veremos.&lt;/p&gt;
+
+&lt;p&gt;Se você está usando um &lt;em&gt;desktop&lt;/em&gt; ou &lt;em&gt;notebook&lt;/em&gt;, pode optar pela interface gráfica ou textual. Se está administrando um servidor, provavelmente a interface textual é sua única opção.&lt;/p&gt;
+
+&lt;h2 id=&quot;tipos-de-atualizações&quot;&gt;Tipos de atualizações&lt;/h2&gt;
+
+&lt;p&gt;É curioso observar que a palavra &lt;strong&gt;atualização&lt;/strong&gt; no nosso português se refere a dois processos distintos, com nomes distintos em inglês:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;atualização de pacotes (&lt;em&gt;update&lt;/em&gt;): essa deve ser feita com frequência, sempre que houver atualizações e for possível instalá-las, não muda a versão da distribuição, normalmente atualiza poucos pacotes instalados; e&lt;/li&gt;
+  &lt;li&gt;atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;): essa normalmente é feita uma vez por ano, muda a versão da distribuição e atualiza todos os pacotes instalados.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Exemplos de ambos os casos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;fazendo um &lt;em&gt;update&lt;/em&gt;, você mantém a distribuição openSUSE Leap na mesma versão, 42.3, e atualiza o aplicativo &lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Firefox&lt;/a&gt; da versão 52.2 para a versão 52.8, junto com mais outros 10 pacotes;&lt;/li&gt;
+  &lt;li&gt;fazendo um &lt;em&gt;upgrade&lt;/em&gt;, você atualiza a distribuição openSUSE Leap da versão 42.3 para a versão 15.0, e atualiza o Firefox da versão 52.8 para a 60.0, o &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; da versão 5.4 para a 6.0, o &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; da versão 3.20 para a 3.26, além de outros 3 mil pacotes;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, veremos como atualizar os pacotes (&lt;em&gt;update&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;No próximo &lt;em&gt;post&lt;/em&gt;, veremos como atualizar a distribuição (&lt;em&gt;upgrade&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Atualmente, a distribuição openSUSE Leap está na versão 15.0. A próxima versão será a 15.1, com &lt;a href=&quot;https://progress.opensuse.org/projects/leap_151/roadmap&quot;&gt;lançamento previsto para 22 de maio&lt;/a&gt;. Por agora, você pode se preparar para a atualização da distribuição se certificando que possui as versões mais recentes dos pacotes para a distribuição atual. Esse é um dos pré-requisitos para atualizar a distribuição.&lt;/p&gt;
+
+&lt;h2 id=&quot;pela-interface-gráfica&quot;&gt;Pela interface gráfica&lt;/h2&gt;
+
+&lt;p&gt;Para obter atualizações para os pacotes instalados pela interface gráfica, você pode usar o aplicativo &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;De tempos em tempos, ele já busca atualizações automaticamente e notifica caso haja atualizações para instalar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Ver&lt;/strong&gt; na notificação para iniciar o aplicativo Atualizador de pacotes.&lt;/p&gt;
+
+&lt;p&gt;Caso não seja um momento oportuno para instalar atualizações, você pode clicar em &lt;strong&gt;Agora não&lt;/strong&gt;. Mas lembre-se de instalar as atualizações depois.&lt;/p&gt;
+
+&lt;p&gt;Para iniciar o Atualizador de pacotes manualmente, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, comece a digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;atualizador&lt;/code&gt; e clique no ícone do &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; você também pode acessar o &lt;strong&gt;panorama de Atividades&lt;/strong&gt; simplesmente movendo o ponteiro do &lt;em&gt;mouse&lt;/em&gt; para o canto superior esquerdo da tela (como se fosse sair da tela). Outra forma de acessar o panorama de Atividades é pressionar a tecla &lt;strong&gt;Super&lt;/strong&gt; (em alguns teclados, ela possui a bandeira do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;O Atualizador de pacotes verifica se há atualizações disponíveis e, se houver, as lista:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Certifique-se de que todas estão selecionadas e clique em &lt;strong&gt;Instalar atualizações&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Atualizador de pacotes começará a baixar as atualizações.&lt;/p&gt;
+
+&lt;p&gt;Se quiser, você pode acompanhar o andamento do processo de atualização:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em vez disso, se preferir, você pode continuar usando o computador normalmente enquanto as atualizações são baixadas e instaladas.&lt;/p&gt;
+
+&lt;p&gt;Ao final do processo, o Atualizador de pacotes informa que o sistema está atualizado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para sair do Atualizador de pacotes.&lt;/p&gt;
+
+&lt;p&gt;Normalmente, quando o processo de atualização acaba, não é necessário fazer mais nada, nem mesmo reiniciar o computador. As atualizações já passam a valer e você já as perceberá se abrir algum programa que foi atualizado.&lt;/p&gt;
+
+&lt;p&gt;Em alguns casos, é possível que o Atualizador de pacotes solicite a você reiniciar a sessão ou o computador. Se isso acontecer, siga as instruções na tela.&lt;/p&gt;
+
+&lt;!--
+&lt;div class='image no-ads-here text-center mb-3' itemscope itemtype='http://schema.org/ImageObject'&gt;
+&lt;a href='/files/2017/08/how-to-upgrade-to-42.3-05-pt.jpg' title=''&gt;
+&lt;img src='/files/2017/08/how-to-upgrade-to-42.3-05-pt.jpg' alt='' class='img-fluid img-thumbnail' itemprop='contentUrl'&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+--&gt;
+
+&lt;h2 id=&quot;pela-interface-de-linha-de-comando&quot;&gt;Pela interface de linha de comando&lt;/h2&gt;
+
+&lt;p&gt;Para obter atualizações atualizações para os pacotes instalados pela interface textual (linha de comando), você pode usar o gerenciador de pacotes &lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você não está acostumado à linha de comando, perceberá que não é difícil utilizá-la. Quase sempre, você pode usar a linha de comando sem abandonar a interface gráfica por meio do aplicativo &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/index.html.pt_BR&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt;. Para iniciá-lo, acesse o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; e clique em seu ícone:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O Terminal é iniciado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-02-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você usa Windows, talvez ache o Terminal parecido com o &lt;strong&gt;Prompt de Comando&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pela linha de comando, usuários comuns não são autorizados a instalar atualizações usando o &lt;strong&gt;zypper&lt;/strong&gt;. Somente o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Superusu%C3%A1rio&quot;&gt;superusuário&lt;/a&gt; (também conhecido por administrador ou usuário &lt;em&gt;root&lt;/em&gt;) pode usar o &lt;strong&gt;zypper&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para alternar da sua conta de usuário comum para o usuário &lt;em&gt;root&lt;/em&gt;, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você não está acostumado com essa notação, isso significa digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; e teclar &lt;strong&gt;Enter&lt;/strong&gt;. O cifrão (&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;) não deve ser digitado, ele apenas indica que o comando pode ser executado por qualquer usuário. A seguir, você verá exemplos de comandos que só podem ser executados pelo usuário &lt;em&gt;root&lt;/em&gt;. Esses são indicados por uma cerquilha (&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;) antes.&lt;/p&gt;
+
+&lt;p&gt;O comando &lt;strong&gt;su&lt;/strong&gt; pedirá a senha do usuário &lt;em&gt;root&lt;/em&gt;, que você deve fornecer para continuar. Digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Estava esperando que apareceriam asteriscos (&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;) enquanto você digitava a senha? Não se preocupe, na interface textual do Linux é assim mesmo: a senha não aparece enquanto é digitada, de forma alguma, nem mesmo camuflada com asteriscos.&lt;/p&gt;
+
+&lt;p&gt;Agora sim, como usuário &lt;em&gt;root&lt;/em&gt;, invoque o &lt;strong&gt;zypper&lt;/strong&gt; com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse comando fará o &lt;strong&gt;zypper&lt;/strong&gt; obter da Internet a lista de pacotes disponíveis:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-03-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-03-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Esse &lt;em&gt;ref&lt;/em&gt; vem do inglês &lt;em&gt;refresh&lt;/em&gt;, que significa atualizar — olha só, encontramos uma terceira tradução no inglês para o nosso “atualizar” em português!&lt;/p&gt;
+
+&lt;p&gt;Note que o &lt;strong&gt;zypper&lt;/strong&gt; indica o progresso do que faz. Quando terminar, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(esse &lt;em&gt;up&lt;/em&gt; vem do inglês &lt;em&gt;update&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;Esse comando fará com que o &lt;strong&gt;zypper&lt;/strong&gt; baixe e instale atualizações disponíveis, se houver:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-04-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-04-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-05-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-05-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; indica o que precisa fazer para deixar o sistema atualizado e pergunta se você deseja continuar. A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se é isso o que deseja, você pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e a atualização começará.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; mostra o andamento do processo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-06-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Normalmente, quando a atualização acaba, não é necessário fazer mais nada, nem reiniciar o computador. Mas note que ao final dessa atualização o &lt;strong&gt;zypper&lt;/strong&gt; cogitou reiniciar programas, porque arquivos que estavam sendo usados foram apagados:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-07-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-07-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nesse caso, mesmo que o &lt;strong&gt;zypper&lt;/strong&gt; não tenha dito para reiniciar o computador, como ele falou em “reiniciar”, recomendo que você reinicie o computador. Para isso, use o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(reiniciar, em inglês)&lt;/p&gt;
+
+&lt;p&gt;Quando voltar, seu sistema estará novo e limpo, sem risco de mau funcionamento.&lt;/p&gt;
+
+&lt;p&gt;Se lembre de verificar de tempos em tempos se há atualizações, já que usando a linha de comando o sistema não avisa a você quando há atualizações.&lt;/p&gt;
+
+&lt;p&gt;Resumindo, os comandos necessários para atualizar o sistema pela interface de linha de comando usando o &lt;strong&gt;zypper&lt;/strong&gt; são:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+# zypper ref
+# zypper up
+# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+                <pubDate>Tue, 14 May 2019 21:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Personalize o GNOME com temas</title>
@@ -2117,165 +2364,6 @@ gpg:                 aka &quot;Thomas Voegtlin &amp;lt;thomasv1@gmx.de&amp;gt;&q
                 <pubDate>Tue, 06 Nov 2018 18:30:00 -0200</pubDate>
                 <link>https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/11/06/criptografando-os-arquivos-do-dropbox-no-disco-com-veracrypt/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Mantenha a hora do Android sempre certa</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Diante da &lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;indefinição quanto ao início do horário de verão em 2018&lt;/a&gt;, muitas pessoas sofreram nas últimas 2 semanas com seus celulares se adiantando em 1 hora sozinhos. Ontem eu fiz um &lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;&lt;em&gt;post&lt;/em&gt;&lt;/a&gt; explicando como configurar seu &lt;a href=&quot;https://pt.wikipedia.org/wiki/IBM_PC&quot;&gt;computador pessoal (PC)&lt;/a&gt; com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; para se prevenir de situações como essas. Entendendo que &lt;a href=&quot;https://www.tecmundo.com.br/software/127038-android-linux-kernel.htm&quot;&gt;Android também é Linux&lt;/a&gt;, resolvi escrever outro &lt;em&gt;post&lt;/em&gt; explicando como configurar a data e a hora de dispositivos móveis (&lt;em&gt;smartphones&lt;/em&gt; e &lt;em&gt;tablets&lt;/em&gt;) com &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-o-que-aconteceu&quot;&gt;1) O que aconteceu&lt;/h2&gt;
-
-&lt;p&gt;Não vou explicar de novo nesse &lt;em&gt;post&lt;/em&gt; o que aconteceu, para detalhes leia o &lt;em&gt;post&lt;/em&gt; anterior:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/21/acordou-com-a-hora-do-computador-errada-entenda-o-que-aconteceu/&quot;&gt;Acordou com a hora do computador errada? Entenda o que aconteceu&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mas resumindo, desde o ano passado, o início do horário de verão no Brasil em 2018 já teve 3 mudanças: passou de 21/10 para 04/11, depois para 18/11, e por fim foi mantido em 04/11. Diante dessas mudanças, os celulares de muitas pessoas meio que enlouqueceram:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tecmundo.com.br/dispositivos-moveis/135170-iphone-adianta-relogio-para-o-horario-verao.htm&quot;&gt;Celulares da TIM ‘se apressam’ e adiantam o relógio para o horário de verão&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tecmundo.com.br/mercado/135399-celulares-erram-novo-entram-horario-verao-hora.htm&quot;&gt;Celulares erram de novo e entram em horário de verão antes da hora&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-como-saber-se-seu-dispositivo-foi-afetado&quot;&gt;2) Como saber se seu dispositivo foi afetado&lt;/h2&gt;
-
-&lt;p&gt;Você pode verificar se a data e a hora do seu dispositivo Android estão corretas acessando o &lt;em&gt;site&lt;/em&gt; do projeto &lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;, que mantém servidores de hora que informam a data e hora corretas no Brasil:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/ntpbr-hora-certa-android.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/ntpbr-hora-certa-android.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;3-como-se-prevenir-dessas-mudanças&quot;&gt;3) Como se prevenir dessas mudanças&lt;/h2&gt;
-
-&lt;p&gt;Geralmente é uma boa opção configurar o dispositivo Android para sincronizar a data e a hora com a rede (essa rede pode ser tanto a rede da operadora quanto a Internet). Com isso, você não precisa se preocupar com o início e o fim do horário de verão: seu dispositivo Android muda a data e hora automaticamente quando necessário.&lt;/p&gt;
-
-&lt;p&gt;Para fazer toda a configuração de data, hora e fuso horário do seu dispositivo Android de forma automática, toque em &lt;strong&gt;Configurar&lt;/strong&gt; &amp;gt; &lt;strong&gt;Sistema&lt;/strong&gt; &amp;gt; &lt;strong&gt;Data e hora&lt;/strong&gt; e certifique-se de que as opções &lt;strong&gt;Data e hora automáticas&lt;/strong&gt; e &lt;strong&gt;Fuso horário automático&lt;/strong&gt; estejam habilitadas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-1-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-1-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique se o dispositivo mostra o fuso horário correto na opção &lt;strong&gt;Selecionar fuso Horário&lt;/strong&gt;. No meu caso, ele mostra &lt;strong&gt;GMT-03:00 Horário Padrão de Brasília&lt;/strong&gt; porque estou no sul do Brasil, uma região que adota o horário de verão, assim como Brasília.&lt;/p&gt;
-
-&lt;p&gt;Verifique também se agora sua data e hora estão corretas.&lt;/p&gt;
-
-&lt;p&gt;Caso esteja tudo certo, pronto, não há mais o que fazer.&lt;/p&gt;
-
-&lt;p&gt;Caso contrário, perceba que o Android permite configurar manualmente a data e hora, ou o fuso horário, ou os dois. Você pode alterar manualmente apenas o que não estiver correto.&lt;/p&gt;
-
-&lt;p&gt;O mais comum é precisar mudar apenas o fuso horário: se você mora em uma região que não adota o horário de verão (Nordeste ou Norte), deve alterar o fuso horário para outro que também não adote o horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Consulte o mapa abaixo para saber se seu estado adota ou não o horário de verão:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2016/10/mapa-horario-de-verao-2016-2017.jpg&quot; title=&quot;Estados que adotam horário de verão no Brasil (referências: [G1](http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html) e [Decreto nº 8.112](http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm), mapa derivado do [mapa do Brasil em branco disponível na WikiMedia](https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg))&quot;&gt;
-&lt;img src=&quot;/files/2016/10/mapa-horario-de-verao-2016-2017.jpg&quot; alt=&quot;Estados que adotam horário de verão no Brasil (referências: [G1](http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html) e [Decreto nº 8.112](http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm), mapa derivado do [mapa do Brasil em branco disponível na WikiMedia](https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg))&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Estados que adotam horário de verão no Brasil (referências: &lt;a href=&quot;http://g1.globo.com/economia/noticia/2016/10/horario-de-verao-comeca-em-16-de-outubro-e-vai-ate-19-de-fevereiro.html&quot;&gt;G1&lt;/a&gt; e &lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/Decreto/D8112.htm&quot;&gt;Decreto nº 8.112&lt;/a&gt;, mapa derivado do &lt;a href=&quot;https://commons.wikimedia.org/wiki/File:Brazil_Blank_Map_light.svg&quot;&gt;mapa do Brasil em branco disponível na WikiMedia&lt;/a&gt;)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para configurar o fuso horário manualmente, desative a opção &lt;strong&gt;Fuso horário automático&lt;/strong&gt; e toque em &lt;strong&gt;Selecionar fuso horário&lt;/strong&gt;. Na tela seguinte, toque em &lt;strong&gt;Fuso horário&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-2-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-2-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione um fuso horário que não adote o horário de verão, por exemplo, &lt;strong&gt;Bahia&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-3-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-3-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que o Android confirma que esse fuso horário não adota o horário de verão (leia &lt;strong&gt;Sem horário de verão&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-4-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-4-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Toque no ícone de &lt;strong&gt;Voltar&lt;/strong&gt; no canto superior esquerdo da tela.&lt;/p&gt;
-
-&lt;p&gt;Não se espante se na tela &lt;strong&gt;Data e hora&lt;/strong&gt; o Android ainda mostra o fuso horário &lt;strong&gt;GMT-03:00 Horário Padrão de Brasília&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-5-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-5-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você tocar em &lt;strong&gt;Selecionar fuso horário&lt;/strong&gt; de novo verá que está selecionado o fuso horário da Bahia. Provavelmente ele guarda nas configurações que deve usar a mesma hora que Brasília, porém sem o horário de verão.&lt;/p&gt;
-
-&lt;p&gt;Agora que você mudou o fuso horário, verifique se sua data e hora estão corretas.&lt;/p&gt;
-
-&lt;p&gt;Se mesmo selecionando o fuso horário manualmente a data e hora estiverem incorretas, você terá que configurá-las manualmente.&lt;/p&gt;
-
-&lt;p&gt;Para configurar a data e hora manualmente, desative a opção &lt;strong&gt;Data e hora automáticas&lt;/strong&gt; e use as opções &lt;strong&gt;Definir data&lt;/strong&gt; e &lt;strong&gt;Definir hora&lt;/strong&gt; conforme necessário:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-6-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-6-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-7-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-7-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/10/howto-android-clock-8-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/10/howto-android-clock-8-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, como sua configuração agora é totalmente manual, lembre-se de sempre ajustar a data e hora quando o horário de verão começar e terminar.&lt;/p&gt;
-
-&lt;h2 id=&quot;referência&quot;&gt;Referência&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.androidcentral.com/why-wont-my-phone-keep-right-time&quot;&gt;How to fix the incorrect time on your Android phone - Android Central&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Mon, 22 Oct 2018 01:20:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/</guid>
                 
                 
                     <category>pt</category>
