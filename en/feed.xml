@@ -9,10 +9,245 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 14 May 2019 21:14:20 -0300</pubDate>
-        <lastBuildDate>Tue, 14 May 2019 21:14:20 -0300</lastBuildDate>
+        <pubDate>Mon, 20 May 2019 22:19:35 -0300</pubDate>
+        <lastBuildDate>Mon, 20 May 2019 22:19:35 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>How to get updates for openSUSE Linux</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Computer programs are not perfect: they are made by us, mere humans. As time passes, they are improved, be by optimizations, new features or bug fixes. Bugs can be of many kinds: typos, slowdowns, crashes or security vulnerabilities, which can be exploited by malicious people to get unauthorized access to your personal files. Therefore, it is important to keep your computer always up to date, using the latest software versions.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, keeping your &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; system always up to date is easy. You can get software updates using the graphical user interface (GUI) or the command line interface (CLI), as you are going to see.&lt;/p&gt;
+
+&lt;p&gt;If you are updating a desktop or laptop, you can choose between GUI or CLI. If you are updating a server, probably the CLI is the only option.&lt;/p&gt;
+
+&lt;h2 id=&quot;updating-vs-upgrading&quot;&gt;Updating vs upgrading&lt;/h2&gt;
+
+&lt;p&gt;Update and upgrade are two ways to replace old software by fresh software on your system. Let me clarify their differences:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;update:&lt;/strong&gt; move packages (usually a few) to new versions, staying on the current distribution release, it should be done frequently, always when package updates are available and it is possible to install them;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;upgrade:&lt;/strong&gt; update the whole system (usually all the packages) to move to the next distribution release.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, examples to illustrate both processes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;update:&lt;/strong&gt; staying on the same openSUSE Leap release, 42.3, you update the &lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Firefox&lt;/a&gt; app from version 52.2 to version 52.8, other 10 packages are updated as well;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;upgrade:&lt;/strong&gt; you move openSUSE Leap from version 42.3 to version 15.0, which implies updating Firefox from 52.8 to 60.0, &lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; from 5.4 to 6.0, &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; from 3.20 to 3.26 and other 3,000 packages are updated as well.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Today you are going to see how to update your system.&lt;/p&gt;
+
+&lt;p&gt;Soon, in another post, we are going to talk about upgrading.&lt;/p&gt;
+
+&lt;p&gt;Currently, the openSUSE Leap distribution is on version 15.0. The next version will be 15.1, &lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2019-05/msg00142.html&quot;&gt;which is planned to be released on May 22nd, 2019&lt;/a&gt;. By now, you can get ready for the upgrade by making sure the openSUSE release you are currently running is up to date. That is one of the prerequisites for upgrading.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-updates-using-the-gui&quot;&gt;Getting updates using the GUI&lt;/h2&gt;
+
+&lt;p&gt;To update your system using the GUI, you can use the &lt;strong&gt;Package Updater&lt;/strong&gt; app.&lt;/p&gt;
+
+&lt;p&gt;From time to time, the app itself automatically looks for software updates and notifies you if there are any to be installed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click the notification to launch the Package Updater app.&lt;/p&gt;
+
+&lt;p&gt;In case it’s not an appropriate moment to install updates, you can just dismiss the notification. But remember to install updates later.&lt;/p&gt;
+
+&lt;p&gt;To manually launch the Package Updater, click on &lt;strong&gt;Activities&lt;/strong&gt;, on the top-left screen corner, start typing &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;updater&lt;/code&gt; and click on the &lt;strong&gt;Package Updater&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; you can also access the &lt;strong&gt;Activities overview&lt;/strong&gt; by simply moving your mouse pointer to the top-left corner of the screen (as if you want to leave the screen). Another way to access the overview is pressing the &lt;strong&gt;Super&lt;/strong&gt; key (on some keyboards, it shows the &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; logo).&lt;/p&gt;
+
+&lt;p&gt;Package Updater looks for updates and list them, if there are any to be installed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure all updates are checked and click on &lt;strong&gt;Install Updates&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Package Updater will start to fetch updates.&lt;/p&gt;
+
+&lt;p&gt;If you want, you can monitor the update progress:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Instead, if you prefer, you can continue to use your computer as usual while updates are being downloaded and installed.&lt;/p&gt;
+
+&lt;p&gt;When the update process finishes, Package Updater informs that your system is up to date:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the Package Updater.&lt;/p&gt;
+
+&lt;p&gt;Usually after updating you don’t need to do anything else (e.g. restart). Updates are already applied and you can notice them if you open any program that has been updated.&lt;/p&gt;
+
+&lt;p&gt;In some cases, the Package Updater may ask you to restart your session or your computer:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If that happens, then follow the onscreen instructions.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-updates-using-the-cli&quot;&gt;Getting updates using the CLI&lt;/h2&gt;
+
+&lt;p&gt;To update your system using the CLI, you can use the &lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt; package manager.&lt;/p&gt;
+
+&lt;p&gt;If you are not familiar with the CLI, you are going to realize that it is not difficult to use. Almost always, you can use the CLI without actually leaving the desktop environment through the &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt; app. To launch it, open the &lt;strong&gt;Activities overview&lt;/strong&gt;, type &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; and click on its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Terminal is launched:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you are familiar with Windows, perhaps you think Terminal resembles Windows’ &lt;strong&gt;Command Prompt&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Not any user is allowed to install updates using &lt;strong&gt;zypper&lt;/strong&gt;, only the &lt;a href=&quot;https://en.wikipedia.org/wiki/Superuser&quot;&gt;superuser&lt;/a&gt; (also known as administrator or root user) is able to do that.&lt;/p&gt;
+
+&lt;p&gt;To switch from your normal user to the root user, run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are not used to that notation, it means type &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;. The dollar sign (&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;) is not part of the command and should not be typed, it only indicates the command can be run by any user. Soon you are going to see commands that need elevated privileges to be run (i.e. by the root user). Those are indicated by the hash sign (&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;su&lt;/strong&gt; command asks you the root password, which you must provide to go on. Type the root password and hit &lt;strong&gt;Enter&lt;/strong&gt;. Please note that nothing will appear on screen as you type the root password, this is intended.&lt;/p&gt;
+
+&lt;p&gt;Now, as the root user, call &lt;strong&gt;zypper&lt;/strong&gt; with the command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(you can think of that command as &lt;em&gt;refresh&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; will retrieve from the Internet the list of available packages:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that it shows the progress. When it is done, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(&lt;em&gt;update&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; will download and install available updates, if there are any:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It shows what needs to be done to update the system and asks if you agree. The default option is to continue (&lt;strong&gt;y&lt;/strong&gt;). If that’s what you want, you can just hit &lt;strong&gt;Enter&lt;/strong&gt; and update will begin.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; shows the update progress:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Usually, when the update process finishes, you don’t need to do anything else (e.g. restart). But note that at the end of this update &lt;strong&gt;zypper&lt;/strong&gt; considered restarting programs that were using files deleted during the update process:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/05/howto-update-cmd-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/05/howto-update-cmd-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In that case, even if &lt;strong&gt;zypper&lt;/strong&gt; has not asked you to restart your computer, as it said the word “restart”, I recommend you to do so. The command to do that is as simple as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When the system comes back, it will be fresh new and clear, without risk of malfunction.&lt;/p&gt;
+
+&lt;p&gt;Remember to check for software updates from time to time, as the command line interface does not notify you when there are updates available.&lt;/p&gt;
+
+&lt;p&gt;In short, the commands to update your system through the CLI using &lt;strong&gt;zypper&lt;/strong&gt; are:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+# zypper ref
+# zypper up
+# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+                <pubDate>Mon, 20 May 2019 22:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/05/20/how-to-get-updates-for-opensuse-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/05/20/how-to-get-updates-for-opensuse-linux/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Customize GNOME with themes</title>
@@ -2293,93 +2528,6 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
                 <pubDate>Fri, 26 Oct 2018 16:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2018/10/26/hp-printers-on-opensuse/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Based on Enterprise Code, Tested Millions of Times: openSUSE Leap 15 released</title>
-                <description>&lt;p&gt;&lt;strong&gt;Fresh community build on top of SUSE Linux Enterprise 15 brings huge variety of newest software, easy migration to SLE, transactional updates, server roles, scalable cloud images and Linux laptops&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Today’s major release of openSUSE Leap 15 is offering professional users, entrepreneurs and ISVs (Independent Software Vendors) a new, fresh and hardened code base for their workloads that supports modern hardware, based on a stable, community- and enterprise-based open-source GNU/Linux distribution – but developed with a modern, more secure, better tested and much more open open-source build system unique to SUSE and openSUSE.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-features&quot;&gt;New Features&lt;/h2&gt;
-
-&lt;p&gt;openSUSE Leap 15 now allows migration to SLE, brings a new partitioner, integrates the Groupware Kopano, moves to Firewalld – and also comes distributed by Linode (for Cloud and infrastructure setups) and on high-end hardware like Tuxedo Laptops (other Cloud and hardware vendors will follow). On top of that, Leap 15 introduces a system role selection with classic “server” or “transactional server” role with transactional updates and a read-only root file system. This brings in all the benefits of atomic updates to the full scope of deployments, from the Internet of Things (IoT) and embedded devices to classical server and desktop roles. Apart from that, Leap 15 has been continually optimized for cloud usage scenarios as virtualization guest and at the same time offers a great variety of desktops, including KDE and GNOME and features the return of Live images for simple test-driving.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-look-closely-aligned-with-sle&quot;&gt;New Look, closely aligned with SLE&lt;/h2&gt;
-
-&lt;p&gt;With a brand new look developed by the community, openSUSE Leap 15 brings plenty of community packages built on top of a core from &lt;a href=&quot;https://www.suse.com/products/server/&quot;&gt;SUSE Linux Enterprise (SLE)&lt;/a&gt; 15 sources, with the two major releases being built in parallel from the beginning for the first time. Leap 15 shares a common core with SLE 15, which is due for release in the coming months. The first release of Leap was version 42.1, and it was based on the first Service Pack (SP1) of SLE 12. Three years later SUSE’s enterprise version and openSUSE’s community version are now aligned at 15 with a fresh rebase.&lt;/p&gt;
-
-&lt;p&gt;“Having a community distribution that shares a common DNA with enterprise is the smart way to interact with the open-source ecosystem”, said Kai Dupke, long-time openSUSE user and senior product manager for SUSE Linux Enterprise 15. “Leap provides great flexibility and freedom of choice for developers and users”.&lt;/p&gt;
-
-&lt;h2 id=&quot;migration-to-enterprise-made-easy&quot;&gt;Migration to Enterprise made easy&lt;/h2&gt;
-
-&lt;p&gt;Consequently, for the first time, SUSE will support migration from openSUSE Leap server installations to SUSE Linux Enterprise, which makes it easy for system integrators to develop on Leap code and later move to an enterprise version for SLAs, certification, mass deployment, or extended Long Term Support.&lt;/p&gt;
-
-&lt;p&gt;“Upgrading to a commercial product can be complex for developers wanting to migrate a solution from a community Linux distribution to an enterprise distribution”, Dupke explains. “With Leap 15 SUSE Linux Enterprise Server 15, that journey is made easy. We know that the community is where the innovations happen, and Leap community developers now can easily broaden that scope into enterprise Linux, if needed. Leap 15 is offering the quickest and most flexible transition to enterprise service, support and maintenance”.&lt;/p&gt;
-
-&lt;h2 id=&quot;obs-openqa-better-tested-more-secure-and-more-open-than-others&quot;&gt;OBS, OpenQA: Better Tested, More Secure and More Open than Others&lt;/h2&gt;
-
-&lt;p&gt;Using the &lt;a href=&quot;https://build.opensuse.org/&quot;&gt;Open Build Service&lt;/a&gt; and &lt;a href=&quot;https://openqa.opensuse.org/&quot;&gt;openQA&lt;/a&gt;, openSUSE Leap has become the best and most tested Linux distribution, and it is built differently than any other distribution, using a much more secure development model than competitors.&lt;/p&gt;
-
-&lt;p&gt;The community distribution with its enterprise base system is developed in cooperation with SUSE developers using open source and openSUSE tools like the Open Build Service and openQA, which have &lt;a href=&quot;https://www.suse.com/c/celebrate-openqa-one-million-reasons-believe-testing/&quot;&gt;run more than a million test runs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The vibrant developer community, the availability of the open-source tools and the distribution alignment between Leap and SLE make it easy for developers to contribute to Leap and further drive technological innovations and open-source solutions.&lt;/p&gt;
-
-&lt;h2 id=&quot;all-standard-and-some-new-services-for-networks&quot;&gt;All Standard and Some New Services for Networks&lt;/h2&gt;
-
-&lt;p&gt;For all existing Leap users seamless updates to Leap 15 are available. Any migration is recommended to take place within the next six months. Like prior versions, System Administrators and small businesses can use Leap for hosting web and mail servers or for network management with DHCP, DNS, NTP, Samba, NFS, LDAP, and hundreds of other services.&lt;/p&gt;
-
-&lt;p&gt;File sharing and cloud services include software such as &lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; and even the groupware application suite &lt;a href=&quot;https://kopano.com/&quot;&gt;Kopano&lt;/a&gt; (formerly known as Zarafa) is part of the official Leap 15 repositories.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-installer-and-partitioner-moving-to-firewalld&quot;&gt;New Installer and Partitioner, Moving to Firewalld&lt;/h2&gt;
-
-&lt;p&gt;Leap 15 further improves one of openSUSE’s most powerful tools YaST. For example, the partitioner’s Libstorage-ng subsystem has been reworked, making it more powerful and reliable and taking ease-of-use to a new level. The same applies for the move from SuSEfirewall2 to the widely used firewall management tool Firewalld which provides better integration with dynamic network setups.&lt;/p&gt;
-
-&lt;p&gt;Administrators in need of mass deployments e.g. in cloud solutions will find helpful improvements in AutoYaST. Its profiles contain installation and configuration data to simplify unattended installations. The new AutoYaST version benefits from cleaned-up profiles, extended documentation and now supports the new partitioning features of libstorage-ng.&lt;/p&gt;
-
-&lt;h2 id=&quot;images-deployment-and-hardware-with-linode-and-tuxedo&quot;&gt;Images, Deployment and Hardware with Linode and Tuxedo&lt;/h2&gt;
-
-&lt;p&gt;Today’s public release of Leap 15 aren’t only released as DVD and Network ISO: &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt; and hardware vendor &lt;a href=&quot;https://www.tuxedocomputers.com/&quot;&gt;TUXEDO Computers&lt;/a&gt; have cloud images through of Leap ready, too. While the brand new TUXEDO InfinityBook Pro 13 is immediately available with Leap 15 preinstalled and ready-to-run, Linode has Leap available for all infrastructure needs. And there are more cloud images and hardware providers that will provide Leap 15 in the coming weeks, pre-installed or deployable.&lt;/p&gt;
-
-&lt;h2 id=&quot;atomic-updates-by-kubic-additional-building-blocks-for-professionals&quot;&gt;Atomic Updates by Kubic: Additional building blocks for professionals&lt;/h2&gt;
-
-&lt;p&gt;This release has a system role selection that offers a classic server role and a Transactional Server role. Contributed by openSUSE’s container platform project &lt;a href=&quot;https://en.opensuse.org/Kubic&quot;&gt;Kubic&lt;/a&gt;, this role uses transactional updates and a Read-Only Root Filesystem to provide Leap with all the benefits of atomic updates in a multitude of use cases, including container hosts, Internet of Things (IoT), and classic server functions with potential future applications also involving desktops.&lt;/p&gt;
-
-&lt;h2 id=&quot;built-to-scale&quot;&gt;Built to Scale&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/05/clear-748x1024.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/05/clear-748x1024.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;openSUSE Leap is also excellently suited and prepared for usage as a Virtual Machine (VM) or container guest, allowing professional users to efficiently run network services no matter whether it’s a single server or a data center.&lt;/p&gt;
-
-&lt;h2 id=&quot;any-desktop-and-live-images-available&quot;&gt;Any Desktop and Live Images available&lt;/h2&gt;
-
-&lt;p&gt;Users of openSUSE Leap can choose their favorite desktop environment, configuration and setup. The &lt;a href=&quot;https://en.opensuse.org/GNOME&quot;&gt;GNOME&lt;/a&gt; version in Leap is the same as the version used in SLE 15, now using &lt;a href=&quot;https://wayland.freedesktop.org/&quot;&gt;Wayland&lt;/a&gt; by default. &lt;a href=&quot;https://wiki.gnome.org/Apps/Builder&quot;&gt;GNOME Builder&lt;/a&gt; is available for Leap for the first time, allowing easy development for &lt;a href=&quot;https://wiki.gnome.org/Projects&quot;&gt;GNOME Projects&lt;/a&gt;. &lt;a href=&quot;https://en.opensuse.org/KDE&quot;&gt;KDE&lt;/a&gt; and the latest Plasma 5.12 Long-Term-Support version are also available for SLE 15 through &lt;a href=&quot;https://packagehub.suse.com/&quot;&gt;PackageHub&lt;/a&gt;, including all its community supported tools and applications. Leap offers the return of &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.0/live/&quot;&gt;Live Images&lt;/a&gt; for those mentioned above.&lt;/p&gt;
-
-&lt;h2 id=&quot;health-and-science&quot;&gt;Health and Science&lt;/h2&gt;
-
-&lt;p&gt;The Leap distribution supports the health, science, research and developer communities with packages like &lt;a href=&quot;http://health.gnu.org/&quot;&gt;GNU Health&lt;/a&gt;, which can help facilitate running the operations of a hospital and collecting vital patient data, and &lt;a href=&quot;https://www.qgis.org/&quot;&gt;QGIS&lt;/a&gt;, which allows researchers to create, edit, visualize, analyze and publish geospatial information.&lt;/p&gt;
-
-&lt;h2 id=&quot;platforms&quot;&gt;Platforms&lt;/h2&gt;
-
-&lt;p&gt;Leap works with X86_64 and deployment scenarios can be run for physical, virtual, host and guest, and cloud. Ports to other architectures like &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM64&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_Architecture&quot;&gt;POWER&lt;/a&gt; are in the works by the community.&lt;/p&gt;
-
-&lt;p&gt;Maintenance and security updates for the Leap 15 series are expected to last for at least three years. Users should update to the newest Leap 15 Service Packs (SP) within six months of each SP release to receive prudent updates. Service Pack updates are expected annually.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Adapted from the original news published by &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; at &lt;a href=&quot;https://news.opensuse.org/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-</description>
-                <pubDate>Fri, 25 May 2018 16:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/</guid>
                 
                 
                     <category>en</category>
