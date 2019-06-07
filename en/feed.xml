@@ -9,10 +9,209 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 03 Jun 2019 10:16:31 -0300</pubDate>
-        <lastBuildDate>Mon, 03 Jun 2019 10:16:31 -0300</lastBuildDate>
+        <pubDate>Fri, 07 Jun 2019 17:39:11 -0300</pubDate>
+        <lastBuildDate>Fri, 07 Jun 2019 17:39:11 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Read Gmail messages on Thunderbird</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-gmail.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-gmail.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.thunderbird.net/&quot;&gt;Thunderbird&lt;/a&gt; is a free email client developed by the &lt;a href=&quot;https://foundation.mozilla.org/&quot;&gt;Mozilla Foundation&lt;/a&gt;, the same foundation behind the well-known &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Firefox&lt;/a&gt; web browser. And &lt;a href=&quot;https://gmail.com/&quot;&gt;Gmail&lt;/a&gt; needs no introduction: it’s the free email service offered by the giant &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this post, you’ll see how to install Thunderbird and set it up to sync your Gmail messages.&lt;/p&gt;
+
+&lt;p&gt;Indeed people have preferred to use browsers instead of email clients to read and send messages, because it’s more practical. However, email clients provide us some interesting possibilities, which we’ll see in the next posts.&lt;/p&gt;
+
+&lt;!--
+
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (24/09/2018):&lt;/strong&gt;
+    
+&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+
+--&gt;
+
+&lt;h2 id=&quot;installing-thunderbird&quot;&gt;Installing Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;openSUSE distributes Thunderbird in the &lt;a href=&quot;https://software.opensuse.org/package/MozillaThunderbird&quot;&gt;MozillaThunderbird&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;p&gt;To install it, open &lt;strong&gt;Terminal&lt;/strong&gt; and run as &lt;em&gt;root&lt;/em&gt; (administrator):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaThunderbird MozillaThunderbird-translations-common
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;starting-thunderbird&quot;&gt;Starting Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;Once Thunderbird has been installed, launch it by the &lt;strong&gt;Activities overview&lt;/strong&gt; typing &lt;code class=&quot;highlighter-rouge&quot;&gt;Thunderbird&lt;/code&gt; and clicking its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;syncing-with-gmail&quot;&gt;Syncing with Gmail&lt;/h2&gt;
+
+&lt;p&gt;When launched for the first time, Thunderbird should show the account setup wizard:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you’re not in the setup wizard shown above, follow these steps to open it: in the Thunderbird start screen, below &lt;strong&gt;Set up an account&lt;/strong&gt;, click &lt;strong&gt;Email&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the setup wizard, enter your name, email address and password. You can check the &lt;strong&gt;Remember password&lt;/strong&gt; option, if you want. When you are ready, click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thunderbird searches for the settings to connect with Gmail in the Mozilla ISP database.&lt;/p&gt;
+
+&lt;p&gt;The setup wizard lets you choose whether you want to retrieve your emails via IMAP or POP:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Both &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&quot;&gt;IMAP&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Post_Office_Protocol&quot;&gt;POP3&lt;/a&gt; are standard protocols used by email clients to &lt;strong&gt;retrieve&lt;/strong&gt; email messages from a mail server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&quot;&gt;SMTP&lt;/a&gt; is a standard protocol used by email clients to &lt;strong&gt;send&lt;/strong&gt; email messages.&lt;/p&gt;
+
+&lt;p&gt;The main difference between IMAP and POP3 is that POP3 downloads messages to the client computer and does not sync them with the mail server anymore (i.e. if a message is deleted on the computer, it does not get deleted on the server, and vice versa).&lt;/p&gt;
+
+&lt;p&gt;In contrast, IMAP leave all messages on the server and download them as needed, keeping them in sync with the server (i.e. if a message is deleted on the computer, it is also deleted on the server, and vice versa). The IMAP protocol is an evolution of the POP3 protocol.&lt;/p&gt;
+
+&lt;p&gt;As IMAP leaves messages on the server, it allows for keeping email in sync across multiple devices (desktop, laptop, smartphones and tablets) and generally is recommended.&lt;/p&gt;
+
+&lt;p&gt;IMAP is also the option that Thunderbird brings selected by default.&lt;/p&gt;
+
+&lt;p&gt;In case Thunderbird does not find Gmail settings automatically, click &lt;strong&gt;Manual config&lt;/strong&gt; and enter them manually:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Incoming: IMAP (or POP3)
+    &lt;ul&gt;
+      &lt;li&gt;Server hostname: imap.gmail.com (or pop.gmail.com)&lt;/li&gt;
+      &lt;li&gt;Port: 993 (or 995)&lt;/li&gt;
+      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Outgoing: SMTP
+    &lt;ul&gt;
+      &lt;li&gt;Server hostname: smtp.gmail.com&lt;/li&gt;
+      &lt;li&gt;Port: 465&lt;/li&gt;
+      &lt;li&gt;SSL: SSL/TLS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you finish, click &lt;strong&gt;Done&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, Thunderbird opens a Gmail window, in which you enter your email, password and authorize Thunderbird to manage your email by clicking &lt;strong&gt;Allow&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the Thunderbird main window, note that your Gmail account is now listed by the left and your email messages are being retrieved:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;some-fine-tuning&quot;&gt;Some fine tuning&lt;/h2&gt;
+
+&lt;p&gt;Thunderbird shows the message pane by default. If you want to hide it, click the &lt;strong&gt;Menu&lt;/strong&gt; button, on the top right corner of the window, go to &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Layout&lt;/strong&gt; and uncheck the &lt;strong&gt;Message Pane&lt;/strong&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Without the message pane, to read an email message, double click it and it will be opened on a new tab.&lt;/p&gt;
+
+&lt;p&gt;Also, Thunderbird used to sort emails by oldest first. That seems to be fixed in newer versions. Just to make sure, click the &lt;strong&gt;Date&lt;/strong&gt; column repeatedly until newer emails are listed first (the same way Gmail does):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Another problem I noticed while using Thunderbird: it does not add the signature to forwarded emails by default. Let’s see how to adjust that.&lt;/p&gt;
+
+&lt;p&gt;Open the Thunderbird menu and go to &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Account Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the left panel, select &lt;strong&gt;Composition &amp;amp; Addressing&lt;/strong&gt;, then check the option &lt;strong&gt;Include signature for forwards&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;I hope it was helpful. Until next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7126229&quot;&gt;Use IMAP to check Gmail on other email clients - Gmail Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.google.com/mail/answer/7104828&quot;&gt;Read Gmail messages on other email clients using POP - Gmail Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.liquidweb.com/kb/how-to-set-up-email-in-thunderbird/&quot;&gt;Set Up a New Email Account in Thunderbird - Liquid Web&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 07 Jun 2019 14:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/06/07/read-gmail-messages-on-thunderbird/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/06/07/read-gmail-messages-on-thunderbird/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>How to upgrade from openSUSE Leap 15.0 to 15.1</title>
@@ -2504,214 +2703,6 @@ gpg: Good signature from &quot;openSUSE Project Signing Key &amp;lt;opensuse@ope
                 <pubDate>Thu, 08 Nov 2018 19:15:00 -0200</pubDate>
                 <link>https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Encrypting the Dropbox folder with VeraCrypt</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox&lt;/a&gt; is one of the most popular cloud services and one of a few that offer a sync client for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;. Recently, some of its users received a warning:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-01-en.jpg&quot; title=&quot;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-01-en.jpg&quot; alt=&quot;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Dropbox will stop syncing in 7 days. Move your Dropbox folder to a supported file system.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;My laptop dual-boots Linux and &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and I have installed the Dropbox sync client on both systems. My Dropbox folder was on a shared &lt;a href=&quot;https://en.wikipedia.org/wiki/NTFS&quot;&gt;NTFS&lt;/a&gt; partition.&lt;/p&gt;
-
-&lt;p&gt;But Dropbox has announced &lt;a href=&quot;https://www.dropboxforum.com/t5/Syncing-and-uploads/Linux-Dropbox-client-warn-me-that-it-ll-stop-syncing-in-Nov-why/m-p/290065/highlight/true#M42255&quot;&gt;on its forum&lt;/a&gt; that starting on Nov 7, 2018 supported &lt;a href=&quot;https://en.wikipedia.org/wiki/File_system&quot;&gt;file systems&lt;/a&gt; will be restricted to the most common ones for each operating system: NTFS for Windows, &lt;a href=&quot;https://en.wikipedia.org/wiki/HFS_Plus&quot;&gt;HFS+&lt;/a&gt; or &lt;a href=&quot;https://en.wikipedia.org/wiki/Apple_File_System&quot;&gt;APFS&lt;/a&gt; for &lt;a href=&quot;http://www.apple.com/macosx/&quot;&gt;Mac OS X&lt;/a&gt;, and clean (not encrypted) &lt;a href=&quot;https://en.wikipedia.org/wiki/Ext4&quot;&gt;Ext4&lt;/a&gt; for Linux. The move is intended to provide a stable and consistent experience. That’s not entirely bad news because chances are that your system already has an Ext4 partition.&lt;/p&gt;
-
-&lt;p&gt;Use the &lt;a href=&quot;https://gparted.org/&quot;&gt;&lt;strong&gt;GParted&lt;/strong&gt;&lt;/a&gt; application to look at your partitions and file systems:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Or, in case you prefer the command line interface, use the &lt;a href=&quot;https://www.gnu.org/software/fdisk/&quot;&gt;&lt;strong&gt;fdisk&lt;/strong&gt;&lt;/a&gt; command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# mount -l
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;None of my partitions are Ext4. So, at least in principle, I won’t be able to sync Dropbox on Linux, only on Windows, providing my Dropbox folder remains on the NTFS partition.&lt;/p&gt;
-
-&lt;p&gt;But I use Linux much more often than Windows, so I looked for an option to keep on syncing on Linux. I found a solution with the bonus of increased security: to store the Dropbox folder on an &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;encrypted VeraCrypt volume&lt;/a&gt;, which would secure the files in case I lose my laptop or it is stolen, for example.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.veracrypt.fr/&quot;&gt;VeraCrypt&lt;/a&gt; is a file encryption software about which I have already written:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;Encrypting files with VeraCrypt&lt;/a&gt; (by now in Portuguese and translated by &lt;a href=&quot;https://translate.google.com.br/&quot;&gt;Google Translate&lt;/a&gt;, the proper English version is on the way)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I strongly recommend that you read that post before going on.&lt;/p&gt;
-
-&lt;p&gt;An encrypted VeraCrypt volume may be an alternative for those who currently store the Dropbox folder on an encrypted Ext4 partition, because VeraCrypt encrypts files “behind the scenes”, in a way Dropbox is not aware that they are being encrypted.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; VeraCrypt only ensures confidentiality for the files on disk. For instance, if a malicious person knows your e-mail and password, he or she is able to access the same files by the &lt;a href=&quot;https://www.dropbox.com&quot;&gt;Dropbox website&lt;/a&gt; using a browser. VeraCrypt also does not dismiss the use of other security tools, such as antivirus and backup.&lt;/p&gt;
-
-&lt;p&gt;A disadvantage of that solution is that it requires the manual work of mounting the encrypted volume and starting the Dropbox client whenever it is necessary to sync. So I recommend that you read the entire post before acting, to decide whether my solution really helps you.&lt;/p&gt;
-
-&lt;h2 id=&quot;before-starting&quot;&gt;Before starting&lt;/h2&gt;
-
-&lt;p&gt;To avoid problems, make sure your files are synced. That is true if you click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; and read &lt;strong&gt;Up to date&lt;/strong&gt; on the menu that appears:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Also in that menu check the available space for your Dropbox account. I have 5.8GB of space. Usually new accounts start with 2GB.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-the-encrypted-volume&quot;&gt;Creating the encrypted volume&lt;/h2&gt;
-
-&lt;p&gt;Launch VeraCrypt and follow the &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt how-to&lt;/a&gt; to create an encrypted file container / standard volume. Here I’m going to highlight only some specifics of our Dropbox volume.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Volume Location&lt;/strong&gt; can be any, because that information is not visible to the Dropbox client. The volume itself is a file like any other, so it can be stored on that NTFS partition, for example, as long as it has available space, there is no problem.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Volume Size&lt;/strong&gt; must be equal to the available space for your Dropbox account (or bigger, to be safe):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As we specified a size bigger than 4GB, the Volume Creation Wizard asks about &lt;strong&gt;Large Files&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If you plan to store large files (larger than 4GB) in the volume, select the second option (&lt;strong&gt;I will store files larger than 4 GB on the volume&lt;/strong&gt;). Otherwise, select the first. In doubt, select the second. Click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Format Options&lt;/strong&gt; screen, the volume must be formatted with the &lt;strong&gt;Linux Ext4&lt;/strong&gt; filesystem:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Next&lt;/strong&gt;. The next screen asks about &lt;strong&gt;Cross-Platform Support&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As the volume is going to be used only on Linux, select the second option (&lt;strong&gt;I will mount the volume only on Linux&lt;/strong&gt;) and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;After creating the volume, mount it. Choose a slot and always mount the volume on the chosen slot, because you are going to inform the volume mount point to the Dropbox client. For instance, I chose the slot 10, so my volume mount point is &lt;code class=&quot;highlighter-rouge&quot;&gt;/mnt/veracrypt10&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;moving-the-dropbox-folder&quot;&gt;Moving the Dropbox folder&lt;/h2&gt;
-
-&lt;p&gt;Create a folder called &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; inside the encrypted volume.&lt;/p&gt;
-
-&lt;p&gt;Click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; in the &lt;strong&gt;system tray&lt;/strong&gt;, then click &lt;strong&gt;Preferences&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Dropbox Preferences&lt;/strong&gt; dialog box, select the &lt;strong&gt;Sync&lt;/strong&gt; tab and click &lt;strong&gt;Move&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Navigate into the encrypted volume mount point, select the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; folder and click &lt;strong&gt;Choose&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Let Dropbox move your folder and its contents to the new location:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A progress bar is shown during the moving.&lt;/p&gt;
-
-&lt;p&gt;When it finishes, there is one more change to do. Select the &lt;strong&gt;General&lt;/strong&gt; tab and uncheck &lt;strong&gt;Start Dropbox on system startup&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-13-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Dropbox Preferences&lt;/strong&gt; dialog box.&lt;/p&gt;
-
-&lt;h2 id=&quot;daily-usage&quot;&gt;Daily usage&lt;/h2&gt;
-
-&lt;p&gt;If you have read the entire &lt;a href=&quot;http://translate.google.com/translate?js=n&amp;amp;sl=pt&amp;amp;tl=en&amp;amp;u=https://kamarada.github.io/pt/2018/10/15/criptografia-de-arquivos-com-o-veracrypt/&quot;&gt;VeraCrypt how-to&lt;/a&gt; (I suppose you have), you know the volume should stay mounted only during use.&lt;/p&gt;
-
-&lt;p&gt;When you don’t need to use your Dropbox files anymore, quit the Dropbox client (click the &lt;strong&gt;Dropbox icon&lt;/strong&gt; and then click &lt;strong&gt;Quit Dropbox&lt;/strong&gt;) and unmount the volume (VeraCrypt calls that operation &lt;em&gt;dismount&lt;/em&gt;). Always quit the Dropbox client before unmounting the volume.&lt;/p&gt;
-
-&lt;p&gt;When you need to use your Dropbox files again, launch VeraCrypt, mount the volume and start the Dropbox client. In case you forget to mount the volume before starting the Dropbox client, it won’t find the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dropbox&lt;/code&gt; folder and complain about it:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/11/dropbox-veracrypt-14-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/11/dropbox-veracrypt-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/dropbox-linux-ext4-only/&quot;&gt;Dropbox To End Sync Support For All Filesystems Except Ext4 on Linux - It’s FOSS&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lifehacker.com/5794486/how-to-add-a-second-layer-of-encryption-to-dropbox&quot;&gt;How To Add a Second Layer of Encryption to Dropbox - Lifehacker&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/move-dropbox-folder&quot;&gt;Moving your Dropbox folder to a new location - Dropbox Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/help/desktop-web/system-requirements#desktop&quot;&gt;What are the system requirements to run Dropbox? - Dropbox Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 06 Nov 2018 23:59:00 -0200</pubDate>
-                <link>https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2018/11/06/encrypting-the-dropbox-folder-with-veracrypt/</guid>
                 
                 
                     <category>en</category>
