@@ -9,10 +9,91 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 07 Jun 2019 17:39:11 -0300</pubDate>
-        <lastBuildDate>Fri, 07 Jun 2019 17:39:11 -0300</lastBuildDate>
+        <pubDate>Tue, 18 Jun 2019 22:05:19 -0300</pubDate>
+        <lastBuildDate>Tue, 18 Jun 2019 22:05:19 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Como apagar de forma segura e definitiva todos os dados do disco rígido</title>
+                <description>&lt;p&gt;Você precisa apagar os dados de um HD, seja porque vai vendê-lo ou doá-lo, seja porque é um jornalista ou uma empresa de TI que precisa proteger os dados de acessos indevidos. Como fazer para destruir os arquivos do disco rígido de forma definitiva, de modo que não seja possível, mesmo para um especialista, recuperá-los? É o que você verá neste &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/wipe-disk.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/wipe-disk.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Destruir dados não é tão simples quanto mover arquivos para a lixeira (usando a tecla &lt;strong&gt;Delete&lt;/strong&gt;), deletá-los (&lt;strong&gt;Shift + Delete&lt;/strong&gt;) ou formatar sistemas de arquivos. Quando você deleta ou formata, o sistema operacional apenas apaga metadados, tornando aquela área do disco disponível para escrever outros arquivos. Mas os &lt;em&gt;bits&lt;/em&gt; permanecem onde estão e podem ser recuperados com o apoio de &lt;em&gt;software&lt;/em&gt; especializado.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://canaltech.com.br/hardware/apague-definitivamente-os-dados-de-seu-disco-rigido/&quot;&gt;método mais eficiente&lt;/a&gt; para destruir dados é &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;limpar o disco rígido&lt;/a&gt;. Isso é feito sobrescrevendo cada &lt;em&gt;bit&lt;/em&gt; do disco com novos dados.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, você pode substituir todos os &lt;em&gt;bits&lt;/em&gt; do disco por zeros — esse processo é conhecido como &lt;strong&gt;&lt;em&gt;zero fill&lt;/em&gt;&lt;/strong&gt; (preencher com zeros).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; certifique-se de qual HD vai limpar, para não correr o risco de limpar o HD errado, o que pode causar perda permanente de dados!&lt;/p&gt;
+
+&lt;p&gt;No &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, para preencher o HD com zeros, execute o comando a seguir (vou usar como exemplo o &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sda&lt;/code&gt;, altere conforme sua necessidade):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/zero of=/dev/sda status=progress
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para a maioria dos casos, isso já deve ser suficiente. Recuperar arquivos desse disco após esse procedimento pode exigir &lt;em&gt;software&lt;/em&gt;, &lt;em&gt;hardware&lt;/em&gt;, até pessoal especializado, custar caro e mesmo assim não ser garantido.&lt;/p&gt;
+
+&lt;p&gt;Se você precisa limpar justamente o HD que armazena o sistema operacional, saiba que é impossível fazê-lo com o próprio sistema em execução. Nesse caso, utilize um &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveUSB&lt;/a&gt; ou &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveDVD&lt;/a&gt; ou conecte o HD a outro computador para fazer a limpeza.&lt;/p&gt;
+
+&lt;p&gt;Se você é um paranóico da segurança, pode aumentar a segurança da limpeza preenchendo o disco com &lt;em&gt;bits&lt;/em&gt; aleatórios, em vez de zeros:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/urandom of=/dev/sda status=progress
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou repetir esse procedimento algumas vezes, em vez de executá-lo apenas uma vez:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# for i in {1..5}; do dd if=/dev/urandom of=/dev/sda status=progress; done
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do Arch Linux&lt;/a&gt; discute diversos procedimentos para limpeza segura de disco.&lt;/p&gt;
+
+&lt;p&gt;Se a informação armazenada no disco é muito confidencial, o guia de segurança &lt;a href=&quot;https://securityinabox.org/pt/guide/destroy-sensitive-information/&quot;&gt;Security in a Box&lt;/a&gt; recomenda fazer a limpeza com zeros e em seguida destruir fisicamente o disco (com golpes de martelo, por exemplo).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; use óculos de proteção e tome muito cuidado ao destruir um disco rígido por conta própria! Nunca toque fogo em um disco rígido, nunca coloque um disco rígido no microondas e nunca derrame ácido em um disco rígido.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; title=&quot;Imagem obtida no site [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot;&gt;
+&lt;img src=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; alt=&quot;Imagem obtida no site [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Imagem obtida no site &lt;a href=&quot;https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173&quot;&gt;Lifewire&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://super.abril.com.br/tecnologia/o-predio-secreto-do-google/&quot;&gt;A destruição física de HDs é usada pelo Google&lt;/a&gt; para proteger dados dos seus usuários.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://canaltech.com.br/hardware/apague-definitivamente-os-dados-de-seu-disco-rigido/&quot;&gt;Apague definitivamente os dados de seu disco rígido - Hardware - Canaltech&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;Securely wipe disk - ArchWiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://securityinabox.org/pt/guide/destroy-sensitive-information/&quot;&gt;Como destruir informações sensíveis - Security in a Box&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 18 Jun 2019 22:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como atualizar do openSUSE Leap 15.0 para o 15.1</title>
@@ -1888,214 +1969,6 @@ kamarada@meuservidor:~&amp;gt;
                 <pubDate>Wed, 19 Dec 2018 00:50:00 -0200</pubDate>
                 <link>https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Assinando documentos ODF e PDF com o LibreOffice</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você possui um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse &lt;em&gt;post&lt;/em&gt;, você verá como fazer isso com a suíte de escritório &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, que é capaz de assinar não só os documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt; criados na própria suíte, como documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt; quaisquer (mesmo os criados fora da suíte).&lt;/p&gt;
-
-&lt;p&gt;O LibreOffice utiliza a infraestrutura de certificados digitais do navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;. Portanto, antes de assinar documentos com o LibreOffice, você deve ter o Firefox instalado (normalmente já vem na distribuição) e configurado para usar seu certificado digital. Esses dois &lt;em&gt;posts&lt;/em&gt; mostram como fazer essa configuração:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;assinando-um-documento-odf&quot;&gt;Assinando um documento ODF&lt;/h2&gt;
-
-&lt;p&gt;O formato de documento aberto (do inglês &lt;em&gt;Open Document Format&lt;/em&gt; - &lt;a href=&quot;https://pt.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt;) é o formato de arquivo padrão do LibreOffice. Documentos ODF são identificados pelas extensões:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt; para documentos de texto (&lt;em&gt;&lt;strong&gt;t&lt;/strong&gt;ext&lt;/em&gt;), abertos com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/writer/&quot;&gt;Writer&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.ods&lt;/code&gt; para planilhas (&lt;em&gt;&lt;strong&gt;s&lt;/strong&gt;preadsheets&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/calc/&quot;&gt;Calc&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odp&lt;/code&gt; para apresentações de &lt;em&gt;slides&lt;/em&gt; (&lt;em&gt;&lt;strong&gt;p&lt;/strong&gt;resentations&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/impress/&quot;&gt;Impress&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odg&lt;/code&gt; para desenhos vetoriais (&lt;em&gt;&lt;strong&gt;g&lt;/strong&gt;raphic&lt;/em&gt;), abertos com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/draw/&quot;&gt;Draw&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odb&lt;/code&gt; para bases de dados (&lt;em&gt;data&lt;strong&gt;b&lt;/strong&gt;ase&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/base/&quot;&gt;Base&lt;/a&gt;; e&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odf&lt;/code&gt; para equações matemáticas (&lt;em&gt;&lt;strong&gt;f&lt;/strong&gt;ormula&lt;/em&gt;), abertas com o &lt;a href=&quot;https://pt-br.libreoffice.org/descubra/math/&quot;&gt;Math&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A seguir, vamos ver como assinar um documento de texto (extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt;) no LibreOffice Writer, mas os passos são os mesmos para qualquer aplicativo da suíte LibreOffice.&lt;/p&gt;
-
-&lt;p&gt;Vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e clique em &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Caso o documento ainda não esteja salvo, o LibreOffice alerta que é necessário salvar o documento para que ele possa ser assinado e pergunta se deseja salvar o documento. Clique em &lt;strong&gt;Sim&lt;/strong&gt; e salve o documento:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, clique em &lt;strong&gt;Assinar documento&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O LibreOffice solicita a senha PIN do &lt;em&gt;token&lt;/em&gt;. Informe-a e clique em OK.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Selecionar certificado&lt;/strong&gt;, selecione o certificado e clique em &lt;strong&gt;Assinar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, note que ela mostra a assinatura:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Fechar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;verificando-a-assinatura-de-um-documento-odf&quot;&gt;Verificando a assinatura de um documento ODF&lt;/h2&gt;
-
-&lt;p&gt;Quando você abre um documento ODF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt; na barra de estado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para verificar a assinatura, você pode clicar duas vezes no ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt;, na barra de estado, ou clicar no botão &lt;strong&gt;Mostrar assinaturas&lt;/strong&gt;, na notificação.&lt;/p&gt;
-
-&lt;p&gt;É aberta a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, na qual você pode selecionar uma assinatura e clicar em &lt;strong&gt;Exibir certificado&lt;/strong&gt; para ver mais informações sobre o certificado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A mensagem &lt;strong&gt;Este certificado foi validado&lt;/strong&gt; indica que o LibreOffice conseguiu estabelecer o &lt;strong&gt;Caminho da certificação&lt;/strong&gt; até o certificado de uma autoridade certificadora conhecida:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso é o mesmo que o navegador faz quando você acessa um &lt;em&gt;site&lt;/em&gt; HTTPS e ele exibe o cadeado verde. Explicamos hierarquia de certificados em &lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;modificando-um-documento-odf-assinado&quot;&gt;Modificando um documento ODF assinado&lt;/h2&gt;
-
-&lt;p&gt;Note que você até pode modificar um documento ODF assinado, mas na hora de salvar o LibreOffice avisa que removerá todas as assinaturas que o documento tinha:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Será necessário assinar o documento novamente.&lt;/p&gt;
-
-&lt;p&gt;Com isso, quem abrir um documento que foi assinado e depois modificado pode abrir a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e verificar que ele foi assinado em outra data e hora, possivelmente por outra pessoa.&lt;/p&gt;
-
-&lt;h2 id=&quot;exportando-um-documento-como-um-pdf-assinado&quot;&gt;Exportando um documento como um PDF assinado&lt;/h2&gt;
-
-&lt;p&gt;O formato de documento portável (&lt;em&gt;Portable Document Format&lt;/em&gt; - &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt;) foi desenvolvido pela &lt;a href=&quot;https://www.adobe.com/br/&quot;&gt;Adobe&lt;/a&gt; para representar documentos de forma independente do aplicativo, do &lt;em&gt;hardware&lt;/em&gt; e do sistema operacional. Era no início um formato proprietário, que depois foi aberto. É comum compartilhar documentos como PDF na Internet, porque esse formato previne a perda de formatação.&lt;/p&gt;
-
-&lt;p&gt;Para exportar um documento ODF como um PDF assinado, vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Exportar como&lt;/strong&gt; e clique em &lt;strong&gt;Exportar como PDF&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Abra a guia &lt;strong&gt;Assinaturas digitais&lt;/strong&gt; e em &lt;strong&gt;Certificado&lt;/strong&gt; clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Selecionar certificado&lt;/strong&gt;, selecione o certificado e clique em &lt;strong&gt;Assinar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por fim, clique em &lt;strong&gt;Exportar&lt;/strong&gt; e salve o documento PDF.&lt;/p&gt;
-
-&lt;h2 id=&quot;verificando-a-assinatura-de-um-documento-pdf&quot;&gt;Verificando a assinatura de um documento PDF&lt;/h2&gt;
-
-&lt;p&gt;Você pode abrir documentos PDF no LibreOffice usando o aplicativo Draw.&lt;/p&gt;
-
-&lt;p&gt;Quando você abre um documento PDF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt; na barra de estado (da mesma forma como ele faz com documentos ODF):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-12.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para verificar a assinatura, você pode clicar duas vezes no ícone &lt;strong&gt;Assinatura digital&lt;/strong&gt;, na barra de estado, ou clicar no botão &lt;strong&gt;Mostrar assinaturas&lt;/strong&gt;, na notificação.&lt;/p&gt;
-
-&lt;h2 id=&quot;assinando-um-documento-pdf-qualquer&quot;&gt;Assinando um documento PDF qualquer&lt;/h2&gt;
-
-&lt;p&gt;O LibreOffice consegue assinar documentos PDF criados não só pela própria suíte, como também quaisquer documentos PDF já existentes, ainda que criados por outros aplicativos.&lt;/p&gt;
-
-&lt;p&gt;Você pode iniciar a assinatura de um documento PDF a partir de qualquer aplicativo da suíte LibreOffice. Para isso, vá no menu &lt;strong&gt;Arquivo&lt;/strong&gt;, &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;, clique em &lt;strong&gt;Assinar um PDF já existente&lt;/strong&gt; e abra o documento PDF que deve ser assinado.&lt;/p&gt;
-
-&lt;p&gt;O documento PDF é aberto no LibreOffice Draw no modo somente leitura:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/12/libreoffice-signing-13.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/12/libreoffice-signing-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Assinar documento&lt;/strong&gt;. Aparece a caixa de diálogo &lt;strong&gt;Assinaturas digitais&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O resto do procedimento é semelhante ao da assinatura de documentos ODF.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/About_Digital_Signatures/pt-BR&quot;&gt;Sobre assinaturas digitais - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/Applying_Digital_Signatures/pt-BR&quot;&gt;Assinar com assinaturas digitais - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://vmiklos.hu/blog/pdf-sign.html&quot;&gt;Signing existing PDF files in LibreOffice&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sun, 16 Dec 2018 20:00:00 -0200</pubDate>
-                <link>https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/</guid>
                 
                 
                     <category>pt</category>
