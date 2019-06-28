@@ -210,11 +210,11 @@
     <div class="container">
         <div class="row">
             <div class='col-sm-8'>
-                <div class='gap-small'>
+                <!--<div class='gap-small'>
                     <a href='http://en.opensuse.org/Portal:15.1'>
                         <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
                     </a>
-                </div>
+                </div>-->
                 <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
@@ -236,7 +236,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2018-12-19" />
+                <meta itemprop="dateModified" content="2019-06-28" />
             </div>
             <div class='col-sm-6'>
                 
@@ -271,22 +271,44 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>Um <a href="https://pt.wikipedia.org/wiki/Certificado_digital">certificado digital</a> permite <strong>identificar</strong> e <strong>autenticar</strong> pessoas físicas, empresas ou computadores em <em>sites</em> e sistemas. Ele garante princípios da <a href="https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o">segurança da informação</a> às operações realizadas por meio dele, como <strong>autenticidade</strong> e <strong>não repúdio</strong>, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.</p>
+            
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (28/06/2019):</strong>
+    
+<p>O <em>post</em> foi revisado para se aproximar da <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">versão em inglês</a>, mais recente.</p>
 
-<p>Existem basicamente 2 tipos de certificado digital:</p>
+</div>
+
+<p>Um <a href="https://pt.wikipedia.org/wiki/Certificado_digital">certificado digital</a> permite <strong>identificar</strong> e <strong>autenticar</strong> pessoas físicas, empresas ou computadores em <em>sites</em> e sistemas. Ele garante princípios da <a href="https://pt.wikipedia.org/wiki/Seguran%C3%A7a_da_informa%C3%A7%C3%A3o">segurança da informação</a> às operações realizadas por meio dele, como <strong>autenticidade</strong> e <strong>não repúdio</strong>, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.</p>
+
+<p>A <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a> define <a href="https://www.iti.gov.br/images/repositorio/legislacao/documentos-principais/DOC-ICP-04_-_Versao_7.0_-_REQUISITOS_MINIMOS_PARA_P.C.-1_VERS%C3%83O_WEBTRUST-consolida%C3%A7%C3%A3o.pdf">11 tipos de certificados digitais</a>, dois quais 2 são mais comuns:</p>
 
 <ul>
-  <li>o <strong>Certificado A1</strong>, que é armazenado no computador (ou dispositivo móvel, como <em>smartphone</em> ou <em>tablet</em>) e tem validade de 1 ano; e</li>
-  <li>o <strong>Certificado A3</strong>, que é armazenado em uma mídia criptográfica (<a href="https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente">cartão inteligente</a> ou <a href="https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)">token</a>) e tem validade de 1 a 3 anos.</li>
+  <li>o <strong>Certificado A1</strong>, que é um arquivo armazenado no computador ou dispositivo móvel (como <em>smartphone</em> ou <em>tablet</em>) e tem validade de 1 ano; e</li>
+  <li>o <strong>Certificado A3</strong>, que é armazenado em uma mídia criptográfica, como um <a href="https://pt.wikipedia.org/wiki/Cart%C3%A3o_inteligente">cartão inteligente (<em>smart card</em>)</a> ou <a href="https://pt.wikipedia.org/wiki/Token_(chave_eletr%C3%B4nica)"><em>token</em></a>, e tem validade de 1 a 3 anos.</li>
 </ul>
 
+<p>Você precisa de uma leitora de cartão para usar um cartão inteligente. Um <em>token</em> possui a mesma tecnologia, mas é um dispositivo completo que você pode plugar diretamente ao computador (como se fosse uma leitora de cartão com um cartão não removível dentro).</p>
+
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/04/etoken.jpg" title="Um *token* parece um *pendrive*, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital">
-<img src="/files/2018/04/etoken.jpg" alt="Um *token* parece um *pendrive*, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/06/smart-card.jpg" title="Um cartão inteligente parece um cartão de crédito e requer o uso de uma leitora.">
+<img src="/files/2019/06/smart-card.jpg" alt="Um cartão inteligente parece um cartão de crédito e requer o uso de uma leitora." class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 <em class="caption" itemprop="description">
-<p>Um <em>token</em> parece um <em>pendrive</em>, mas é uma mídia criptográfica, serve apenas para armazenar um certificado digital</p>
+<p>Um cartão inteligente parece um cartão de crédito e requer o uso de uma leitora.</p>
+
+</em>
+
+</div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2018/04/etoken.jpg" title="Um token parece um pendrive, mas é uma mídia criptográfica: armazena apenas certificados digitais.">
+<img src="/files/2018/04/etoken.jpg" alt="Um token parece um pendrive, mas é uma mídia criptográfica: armazena apenas certificados digitais." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Um token parece um pendrive, mas é uma mídia criptográfica: armazena apenas certificados digitais.</p>
 
 </em>
 
@@ -303,13 +325,27 @@
   <li>Realizar transações bancárias com mais segurança.</li>
 </ul>
 
-<p>Para uma lista completa de tipos de certificados digitais e suas possíveis utilizações para pessoas físicas e jurídicas, consulte <a href="https://www.certisign.com.br/certificado-digital/indicacao-uso">esta página</a>.</p>
+<p>Para uma lista completa de tipos de certificados digitais e suas possíveis utilizações para pessoas físicas e jurídicas, consulte estas páginas:</p>
 
-<p>Há também os certificados digitais que identificam <em>sites</em>. Quando você acessa um <em>site</em> que apresenta um certificado digital, o navegador exibe o ícone de um cadeado verde, indicando que o <em>site</em> é autêntico e seguro. Já falamos um pouco sobre certificados de <em>sites</em> em <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">outro <em>post</em></a>.</p>
+<ul>
+  <li><a href="https://www.certisign.com.br/certificado-digital/indicacao-uso">Indicação de uso do Certificado Digital - Certisign</a></li>
+  <li><a href="https://www.iti.gov.br/certificado-digital/cases">Cases - Instituto Nacional de Tecnologia da Informação</a></li>
+</ul>
 
-<p>Neste <em>post</em>, você verá como utilizar um <em>token</em> para acessar um sistema do governo com certificado digital no <a href="https://www.opensuse.org/">Linux openSUSE</a>. Para referência, utilizo a versão <a href="https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/">15.0 Beta</a>.</p>
+<p>Há também os certificados digitais que identificam <em>sites</em>. Quando você acessa um <em>site</em> que apresenta um certificado válido, o navegador exibe o ícone de um cadeado verde, indicando que o <em>site</em> é autêntico e seguro. Já falamos sobre certificados de <em>sites</em> em <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">outro <em>post</em></a>.</p>
+
+<p>Neste <em>post</em>, você verá como utilizar um <em>token</em> para acessar um sistema do governo com certificado digital no <a href="https://www.opensuse.org/">Linux openSUSE</a>. Para referência futura, utilizo a versão <a href="https://news.opensuse.org/2018/01/31/opensuse-leap-15-reaches-beta-phase-snapshots/">15.0 Beta</a>.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (28/06/2019):</strong>
+    
+<p>O passo-a-passo permanece o mesmo para o <a href="/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/">openSUSE Leap 15.1</a>.</p>
+
+</div>
 
 <p>Na demonstração, vou utilizar um <em>token</em> USB igual ao da imagem, modelo <a href="https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/">eToken PRO</a>, da fabricante <a href="https://safenet.gemalto.com/">SafeNet</a> (antiga <a href="https://pt.wikipedia.org/wiki/Aladdin_Knowledge_Systems">Aladdin</a>).</p>
+
+<p>Cartões inteligentes e <em>tokens</em> são semelhantes em funcionamento, instalação e uso. Se você possui um cartão e uma leitora, pode seguir essas mesmas instruções.</p>
 
 <h2 id="instalando-os-pacotes-necessários">Instalando os pacotes necessários</h2>
 
@@ -507,7 +543,7 @@ Failed to connect to card: Card is invalid or cannot be handled
 
 <p>Vários <em>tokens</em> já são reconhecidos e funcionam bem com a dupla PC/SC e OpenSC, mas no caso específico do Aladdin/SafeNet eToken PRO é necessário instalar também um <em>software</em> proprietário da SafeNet, que é o <a href="https://safenet.gemalto.com/etoken-pki-client/">SafeNet Authentication Client</a>.</p>
 
-<p>O ideal é que você obtenha esse <em>software</em> da certificadora onde você adquiriu o <em>token</em>, mas você pode obtê-lo do <em>site</em> da <a href="https://www.soluti.com.br/">Soluti</a>, que é uma das certificadoras que suportam a utilização de Linux.</p>
+<p>O ideal é que você obtenha esse <em>software</em> da certificadora onde adquiriu o <em>token</em>, mas você pode obtê-lo do <em>site</em> da <a href="https://www.soluti.com.br/">Soluti</a>, que é uma certificadora que suporta a utilização de Linux.</p>
 
 <p>Acesse o <a href="https://www.soluti.com.br/"><em>site</em> da Soluti</a> e clique, na sequência, em:</p>
 
@@ -591,7 +627,7 @@ logout and login to apply changes
 
 <p>Reinicie o computador (fazer <em>logout</em> e <em>login</em> como sugere o <em>script</em> de instalação não funcionou ao menos para mim).</p>
 
-<p>Quando voltar, inicie o <strong>SafeNet Authentication Client Tools</strong> (o primeiro ícone):</p>
+<p>Quando voltar, inicie o <strong>SafeNet Authentication Client Tools</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/04/token-04-pt.jpg" title="">
@@ -599,6 +635,8 @@ logout and login to apply changes
 </a>
 
 </div>
+
+<p>(na dúvida, tente clicar em ambos os ícones, acontece comigo também)</p>
 
 <p>Observe que ele reconhece o <em>token</em> devidamente:</p>
 
@@ -613,7 +651,13 @@ logout and login to apply changes
 
 <p>Para poder utilizar o <em>token</em> no navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a>, vamos cadastrá-lo como um dispositivo de segurança.</p>
 
-<p>Para isso, com o Firefox aberto, abra o <strong>menu do Firefox</strong> e clique em <strong>Preferências</strong>.</p>
+<p>Antes, certifique-se de adicionar o certificado da sua Autoridade Certificadora ao navegador, do contrário o navegador não conseguirá verificar a hierarquia e validar seu certificado. Para mais informações, leia:</p>
+
+<ul>
+  <li><a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">Como instalar certificados de segurança no Linux</a></li>
+</ul>
+
+<p>Para cadastrar seu <em>token</em> como um dispositivo de segurança, com o Firefox aberto, abra o <strong>menu do Firefox</strong> e clique em <strong>Preferências</strong>.</p>
 
 <p>Depois, clique em <strong>Privacidade e Segurança</strong> e, por último, no botão <strong>Dispositivos de Segurança</strong>, no final:</p>
 
@@ -660,7 +704,11 @@ logout and login to apply changes
 
 <p>Alguns dos serviços mais úteis para pessoas físicas incluem consultar declarações e recibos já enviados do imposto de renda e <a href="http://g1.globo.com/economia/imposto-de-renda/2016/noticia/2016/05/contribuinte-ja-pode-saber-se-caiu-na-malha-fina-do-imposto-de-renda-2016.html">verificar se a declaração caiu na malha fina</a>, assim como <a href="http://economia.estadao.com.br/blogs/regina-pitoscia/sua-declaracao-ficou-em-malha-fina-acerte-logo-a-situacao/">tomar ações para regularizar a situação</a>.</p>
 
-<p><strong>Observação:</strong> o eCAC é um sistema do governo assinado com um certificado de segurança próprio. Para acessá-lo, você deve instalar o certificado da Autoridade Certificadora Raiz Brasileira. Se ainda não fez isso, veja como fazer <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">nesse <em>post</em></a>.</p>
+<p><strong>Observação:</strong> o eCAC é um sistema do governo assinado com um certificado de segurança próprio. Para acessá-lo, você deve instalar o certificado da Autoridade Certificadora Raiz Brasileira. Se ainda não fez isso, veja como fazer neste <em>post</em>:</p>
+
+<ul>
+  <li><a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">Como instalar certificados de segurança no Linux</a></li>
+</ul>
 
 <p>Para acessar o eCAC, certifique-se de que o <em>token</em> está conectado ao computador.</p>
 
@@ -709,13 +757,14 @@ logout and login to apply changes
 <p>Divirta-se bastante… (<em>have a lot of fun…</em>)</p>
 
 <div class="alert alert-success alert-update" role="alert">
-    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (26/10/2018):</strong>
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (28/06/2019):</strong>
     
 <p>Agora que configurou seu certificado digital, veja como pode usá-lo no openSUSE:</p>
 
 <ul>
   <li><a href="/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/">Como transmitir a declaração do Imposto de Renda com certificado digital no Linux openSUSE</a></li>
   <li><a href="/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/">Assinando e-mails enviados com certificado digital no Thunderbird</a></li>
+  <li><a href="/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">Assinando documentos ODF e PDF com o LibreOffice</a></li>
 </ul>
 
 </div>
@@ -727,7 +776,7 @@ logout and login to apply changes
   <li><a href="https://serasa.certificadodigital.com.br/o-que-e/">O que é Certificado Digital? - Serasa Experian</a></li>
   <li><a href="http://idg.receita.fazenda.gov.br/orientacao/tributaria/senhas-e-procuracoes/senhas/certificados-digitais">Certificados Digitais — Receita Federal</a></li>
   <li><a href="https://diadialinux.wordpress.com/2017/03/02/instalar-etoken-alladin-usar-sites-do-governo-com-certificado-digital-e-assinar-documentos-pdf/">Instalar eToken Alladin, usar sites do governo com certificado Digital e assinar documentos PDF — Dicas do cotidiano com linux</a></li>
-  <li><a href="https://www.mayrhofer.eu.org/aladdin-etoken-under-linux">Howto use Aladdin eToken under Linux - Rene Mayrhofer’s virtual home</a></li>
+  <li><a href="https://www.mayrhofer.eu.org/post/aladdin-etoken-under-linux/">Howto use Aladdin eToken under Linux - René Mayrhofer</a></li>
   <li><a href="https://www.suse.com/c/configuring-smart-card-authentication-suse-linux-enterprise/">Configuring Smart Card authentication on SUSE Linux Enterprise - SUSE Communities</a></li>
   <li><a href="https://github.com/OpenSC/OpenSC/wiki/Aladdin-eToken-PRO">Aladdin eToken PRO · OpenSC/OpenSC Wiki · GitHub</a></li>
   <li><a href="https://github.com/OpenSC/OpenSC/issues/461">Unsuported Aladdin eToken PRO USB 72k Java · Issue #461 · OpenSC/OpenSC · GitHub</a></li>
@@ -901,7 +950,7 @@ logout and login to apply changes
     </div>
 </footer>
 
-<meta itemprop="description" content="Um certificado digital permite identificar e autenticar pessoas físicas, empresas ou computadores em sites e sistemas. Ele garante princípios da segurança da informação às operações realizadas por meio dele, como autenticidade e não repúdio, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma.">
+<meta itemprop="description" content="Um certificado digital permite identificar e autenticar pessoas físicas, empresas ou computadores em sites e sistemas. Ele garante princípios da segurança da informação às operações realizadas por meio dele, como autenticidade e não repúdio, atribuindo-lhes validade jurídica e dispensando o reconhecimento de firma. Neste post, você verá como utilizar um token para acessar um sistema...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
