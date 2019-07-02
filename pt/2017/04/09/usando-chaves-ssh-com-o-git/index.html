@@ -25,7 +25,7 @@
         
     </title>
     <meta name="author" content="Antônio Vinícius">
-    <meta name="description" content="Esse post é para os desenvolvedores. Se você utiliza o sistema de controle de versão Git em conjunto com algum servidor como o GitHub ou o Bitbucket para hos...">
+    <meta name="description" content="     Atualização (02/07/2019):    Inclusão do GitLab e atualização das instruções para o Bitbucket.Esse post é para os desenvolvedores. Se você utiliza o sis...">
     <link rel="canonical" href="https://kamarada.github.io/pt/2017/04/09/usando-chaves-ssh-com-o-git/">
     <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
 
@@ -48,7 +48,7 @@
     
         <meta property="fb:page_id" content="1700979763454346" />
     
-    <meta property="og:description" content="Esse post é para os desenvolvedores. Se você utiliza o sistema de controle de versão Git em conjunto com algum servidor como o GitHub ou o Bitbucket para hos..." />
+    <meta property="og:description" content="     Atualização (02/07/2019):    Inclusão do GitLab e atualização das instruções para o Bitbucket.Esse post é para os desenvolvedores. Se você utiliza o sis..." />
     
         <meta property="og:image" content="https://kamarada.github.io/files/2017/04/git-ssh.png" />
     
@@ -126,7 +126,7 @@
             var addthis_share = {
                 url: 'https://kamarada.github.io/pt/2017/04/09/usando-chaves-ssh-com-o-git/',
                 title: document.title,
-                description: 'Esse post é para os desenvolvedores. Se você utiliza o sistema de controle de versão Git em conjunto com algum servidor como o GitHub ou o Bitbucket para hos...'
+                description: '     Atualização (02/07/2019):    Inclusão do GitLab e atualização das instruções para o Bitbucket.Esse post é para os desenvolvedores. Se você utiliza o sis...'
             };
         </script>
         <!-- End AddThis -->
@@ -232,7 +232,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2018-09-10" />
+                <meta itemprop="dateModified" content="2019-07-02" />
             </div>
             <div class='col-sm-6'>
                 
@@ -267,11 +267,17 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>Esse <em>post</em> é para os desenvolvedores. Se você utiliza o sistema de controle de versão <a href="https://git-scm.com/">Git</a> em conjunto com algum servidor como o <a href="https://github.com/">GitHub</a> ou o <a href="https://bitbucket.org/">Bitbucket</a> para hospedar e gerenciar seus projetos, deve saber que por padrão a conexão com esses servidores é feita pelo protocolo <a href="https://pt.wikipedia.org/wiki/Hyper_Text_Transfer_Protocol_Secure">HTTPS</a>. Isso obriga você a digitar usuário e senha toda vez que vai executar um comando como <code class="highlighter-rouge">git pull</code> ou <code class="highlighter-rouge">git push</code>.</p>
+            <div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (02/07/2019):</strong>
+    <p>Inclusão do <a href="https://gitlab.com/">GitLab</a> e atualização das instruções para o <a href="https://bitbucket.org/">Bitbucket</a>.</p>
 
-<p>Usando o protocolo <a href="https://pt.wikipedia.org/wiki/Secure_Shell">SSH</a>, você pode se conectar a servidores remotos e se autenticar para utilizar seus serviços. Tanto o GitHub como o Bitbucket permitem que o Git se conecte a seus servidores via SSH em vez de HTTPS. A conexão feita com criptografia de chaves dispensa o fornecimento de usuário e senha para cada comando.</p>
+</div>
 
-<p>Veremos nesse <em>post</em> como utilizar o GitHub e o Bitbucket com chaves SSH.</p>
+<p>Esse <em>post</em> é para os desenvolvedores. Se você utiliza o sistema de controle de versão <a href="https://git-scm.com/">Git</a> em conjunto com algum servidor como o <a href="https://github.com/">GitHub</a>, o <a href="https://gitlab.com/">GitLab</a> ou o <a href="https://bitbucket.org/">Bitbucket</a> para hospedar e gerenciar seus projetos, deve saber que por padrão a conexão com esses servidores é feita pelo protocolo <a href="https://pt.wikipedia.org/wiki/Hyper_Text_Transfer_Protocol_Secure">HTTPS</a>. Isso obriga você a digitar usuário e senha toda vez que vai executar um comando como <code class="highlighter-rouge">git pull</code> ou <code class="highlighter-rouge">git push</code>.</p>
+
+<p>Usando o protocolo <a href="https://pt.wikipedia.org/wiki/Secure_Shell">SSH</a>, você pode se conectar a servidores remotos e se autenticar para utilizar seus serviços. Os três servidores mencionados permitem ao Git se conectar via SSH em vez de HTTPS. A conexão feita com criptografia de chaves dispensa o fornecimento de usuário e senha para cada comando.</p>
+
+<p>Veremos nesse <em>post</em> como utilizar o GitHub, o GitLab e o Bitbucket com chaves SSH.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2017/04/git-ssh.png" title="">
@@ -467,15 +473,11 @@ seunomedeusuario@seucomputador:~&gt;
 </pre></td><td class="rouge-code"><pre>Identity added: /home/seunomedeusuario/.ssh/id_rsa (/home/seunomedeusuario/.ssh/id_rsa)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Feito isso, você já pode configurar a conexão via SSH com o GitHub ou o Bitbucket.</p>
+<h2 id="adicione-sua-chave-ssh-à-sua-conta">Adicione sua chave SSH à sua conta</h2>
 
-<h2 id="adicione-sua-chave-ssh-à-sua-conta-do-github">Adicione sua chave SSH à sua conta do GitHub</h2>
+<p>Com a chave SSH criada e adicionada ao agente, você já pode configurar a conexão via SSH. Vejamos como fazer isso para cada um dos três servidores: GitHub, GitLab e Bitbucket.</p>
 
-<p>Para se conectar ao GitHub utilizando SSH, você deve associar sua chave pública à sua conta do GitHub.</p>
-
-<p>Sua chave pública está no arquivo <code class="highlighter-rouge">~/.ssh/id_rsa.pub</code>.</p>
-
-<p>Para copiá-la, utilize o comando <strong>xclip</strong>:</p>
+<p>Nos três casos, o processo é semelhante. Comece copiando sua chave pública, que está no arquivo <code class="highlighter-rouge">~/.ssh/id_rsa.pub</code>, usando o comando <strong>xclip</strong>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub
@@ -488,6 +490,8 @@ seunomedeusuario@seucomputador:~&gt;
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre># zypper install xclip
 </pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="github">GitHub</h3>
 
 <p>Usando o navegador, acesse a página inicial do GitHub em <a href="https://github.com/">github.com</a> e entre na sua conta clicando em <strong>Sign in</strong>. No canto superior direito da página, clique na sua foto de perfil e depois em <strong>Settings</strong> (configurações):</p>
 
@@ -518,34 +522,22 @@ seunomedeusuario@seucomputador:~&gt;
 
 </div>
 
-<h2 id="adicione-sua-chave-ssh-à-sua-conta-do-bitbucket">Adicione sua chave SSH à sua conta do Bitbucket</h2>
+<h3 id="gitlab">GitLab</h3>
 
-<p>O processo para o Bitbucket é bastante semelhante.</p>
-
-<p>Copie sua chave pública utilizando o comando <strong>xclip</strong>:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>$ xclip -sel clip &lt; ~/.ssh/id_rsa.pub
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Usando o navegador, acesse a página inicial do Bitbucket em <a href="https://bitbucket.org/">bitbucket.org</a> e entre na sua conta clicando em <strong>Log in</strong>. No canto superior direito da página, clique na sua foto de perfil e depois em <strong>Bitbucket settings</strong> (configurações do Bitbucket):</p>
+<p>Usando o navegador, acesse a página inicial do GitLab em <a href="https://gitlab.com/">gitlab.com</a> e entre na sua conta clicando em <strong>Sign in</strong>. No canto superior direito da página, clique na sua foto de perfil e depois em <strong>Settings</strong> (configurações):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/04/git-ssh-04-pt.jpg" title="">
-<img src="/files/2017/04/git-ssh-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-01.jpg" title="">
+<img src="/files/2019/07/gitlab-ssh-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>Note que a interface do Bitbucket é traduzida, mas apenas em parte.</p>
-
-<p>Na barra lateral, na seção <strong>Segurança</strong>, clique em <strong>Chaves SSH</strong>. Depois, clique em <strong>Adicionar chave</strong>.</p>
-
-<p>Preencha o campo <strong>Label</strong> (rótulo) com um nome descritivo para a nova chave (pode ser, por exemplo, o nome do seu computador) e cole sua chave pública no campo <strong>Key</strong> (chave). Finalmente, clique em <strong>Adicionar chave</strong>:</p>
+<p>Na barra lateral, clique em <strong>SSH Keys</strong> (chaves SSH). Depois, cole sua chave pública no campo <strong>Key</strong> (chave). Preencha o campo <strong>Title</strong> (título) com um nome descritivo para a nova chave (pode ser, por exemplo, o nome do seu computador). Finalmente, clique em <strong>Add key</strong> (adicionar chave):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/04/git-ssh-05-pt.jpg" title="">
-<img src="/files/2017/04/git-ssh-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-02.jpg" title="">
+<img src="/files/2019/07/gitlab-ssh-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -553,15 +545,50 @@ seunomedeusuario@seucomputador:~&gt;
 <p>Agora a chave aparece na lista de chaves SSH associadas à conta:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/04/git-ssh-06-pt.jpg" title="">
-<img src="/files/2017/04/git-ssh-06-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-03.jpg" title="">
+<img src="/files/2019/07/gitlab-ssh-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h3 id="bitbucket">Bitbucket</h3>
+
+<p>Usando o navegador, acesse a página inicial do Bitbucket em <a href="https://bitbucket.org/">bitbucket.org</a> e entre na sua conta clicando em <strong>Log in</strong>. No canto inferior esquerdo da página, clique na sua foto de perfil e depois em <strong>Bitbucket settings</strong> (configurações do Bitbucket):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/bitbucket-ssh-01-pt.jpg" title="">
+<img src="/files/2019/07/bitbucket-ssh-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Você deve ter percebido que a interface do Bitbucket não é totalmente traduzida.</p>
+
+<p>Na barra lateral, na seção <strong>Segurança</strong>, clique em <strong>Chaves SSH</strong>. Depois, clique em <strong>Adicionar chave</strong>.</p>
+
+<p>Preencha o campo <strong>Label</strong> (rótulo) com um nome descritivo para a nova chave (pode ser, por exemplo, o nome do seu computador) e cole sua chave pública no campo <strong>Key</strong> (chave). Finalmente, clique em <strong>Adicionar chave</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/bitbucket-ssh-02-pt.jpg" title="">
+<img src="/files/2019/07/bitbucket-ssh-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Agora a chave aparece na lista de chaves SSH associadas à conta:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/bitbucket-ssh-03-pt.jpg" title="">
+<img src="/files/2019/07/bitbucket-ssh-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
 <h2 id="teste-a-conexão-via-ssh">Teste a conexão via SSH</h2>
 
-<p>Tanto no GitHub quanto no Bitbucket, é possível testar a conexão antes de usá-la propriamente com o Git.</p>
+<p>GitHub, GitLab e Bitbucket permitem que você teste a conexão antes de usá-la com o Git.</p>
+
+<h3 id="github-1">GitHub</h3>
 
 <p>Se você adicionou sua chave SSH à sua conta do GitHub, abra o terminal e execute:</p>
 
@@ -595,6 +622,28 @@ Are you sure you want to continue connecting (yes/no)?
 
 <p>Teste concluído com sucesso, você já pode utilizar o SSH com o GitHub.</p>
 
+<h3 id="gitlab-1">GitLab</h3>
+
+<p>Se você adicionou sua chave SSH à sua conta do GitLab, o teste é semelhante:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>$ ssh -T git@gitlab.com
+The authenticity of host 'gitlab.com (35.231.145.151)' can't be established.
+ECDSA key fingerprint is SHA256:HbW3g8zUjNSksFbqTiUWPWg2Bq1x8xdGUrliXFzSnUw.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'gitlab.com,35.231.145.151' (ECDSA) to the list of known hosts.
+Welcome to GitLab, @vinyanalista!
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Teste efetuado com sucesso, você já pode utilizar o SSH com o GitLab.</p>
+
+<h3 id="bitbucket-1">Bitbucket</h3>
+
 <p>Se você adicionou sua chave SSH à sua conta do Bitbucket, o teste é semelhante:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -619,9 +668,11 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 
 <h2 id="clone-um-repositório-via-ssh">Clone um repositório via SSH</h2>
 
-<p>Agora que sabemos que podemos conectar ao GitHub ou ao Bitbucket via SSH, vejamos como clonar um repositório utilizando o SSH em vez do HTTPS.</p>
+<p>Agora que sabemos que podemos conectar ao servidor via SSH, vejamos como clonar um repositório usando o SSH em vez do HTTPS.</p>
 
-<p>No GitHub, acesse o repositório de um projeto, clique em <strong>Clone or download</strong> e copie o <a href="https://pt.wikipedia.org/wiki/URL">URL</a> para clonar o repositório usando SSH:</p>
+<h3 id="github-2">GitHub</h3>
+
+<p>No <a href="https://github.com/">GitHub</a>, acesse o repositório de um projeto, clique em <strong>Clone or download</strong> e copie o <a href="https://pt.wikipedia.org/wiki/URL">URL</a> para clonar o repositório usando SSH:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2017/04/git-ssh-07-pt.jpg" title="">
@@ -647,16 +698,46 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 
 </div>
 
-<p>O processo é semelhante se você utiliza o Bitbucket.</p>
+<h3 id="gitlab-2">GitLab</h3>
 
-<p>No Bitbucket, acesse o repositório de um projeto e copie o URL para clonar o repositório usando SSH:</p>
+<p>No <a href="https://gitlab.com/">GitLab</a>, acesse o repositório de um projeto, clique em <strong>Clone</strong> e copie o URL para clonar o repositório usando SSH:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/04/git-ssh-09-pt.jpg" title="">
-<img src="/files/2017/04/git-ssh-09-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-04.jpg" title="">
+<img src="/files/2019/07/gitlab-ssh-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
+
+<p>O URL de um repositório do GitLab se parece com:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git@gitlab.com:seunomedeusuario/nomedoseuprojeto.git
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Abra o terminal e execute o comando <code class="highlighter-rouge">git clone</code> passando o URL copiado:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/gitlab-ssh-05.png" title="">
+<img src="/files/2019/07/gitlab-ssh-05.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Com o GitLab, o Git também clona o repositório via SSH sem pedir senha.</p>
+
+<h3 id="bitbucket-2">Bitbucket</h3>
+
+<p>No <a href="https://bitbucket.org/">Bitbucket</a>, acesse o repositório de um projeto, clique em <strong>Clonar</strong> e copie o comando para clonar o repositório usando SSH:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/bitbucket-ssh-04-pt.jpg" title="">
+<img src="/files/2019/07/bitbucket-ssh-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Note que, diferente do GitHub e do GitLab que informam o URL, o Bitbucket informa o comando <code class="highlighter-rouge">git clone</code> inteiro, contendo o URL.</p>
 
 <p>O URL de um repositório do Bitbucket se parece com:</p>
 
@@ -664,11 +745,11 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 </pre></td><td class="rouge-code"><pre>git@bitbucket.org:seunomedeusuario/nomedoseuprojeto.git
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Abra o terminal e execute o comando <code class="highlighter-rouge">git clone</code> passando o URL copiado:</p>
+<p>Abra o terminal, cole e execute o comando <code class="highlighter-rouge">git clone</code> copiado:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/04/git-ssh-10-pt.png" title="">
-<img src="/files/2017/04/git-ssh-10-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/bitbucket-ssh-05-pt.png" title="">
+<img src="/files/2019/07/bitbucket-ssh-05-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -693,22 +774,22 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>origin  https://github.com/seunomedeusuario/nomedoseuprojeto.git (fetch)
-origin  https://github.com/seunomedeusuario/nomedoseuprojeto.git (push)
+</pre></td><td class="rouge-code"><pre>origin  https://seuservidor/seunomedeusuario/nomedoseuprojeto.git (fetch)
+origin  https://seuservidor/seunomedeusuario/nomedoseuprojeto.git (push)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Mude o URL do seu repositório remoto com o comando:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>git remote set-url origin git@github.com:seunomedeusuario/nomedoseuprojeto.git
+</pre></td><td class="rouge-code"><pre>$ git remote set-url origin git@seuservidor:seunomedeusuario/nomedoseuprojeto.git
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Execute o comando <code class="highlighter-rouge">git remote -v</code> mais uma vez para verificar que o URL do repositório remoto foi alterado:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre>origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (fetch)
-origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (push)
+</pre></td><td class="rouge-code"><pre>origin  git@seuservidor:seunomedeusuario/nomedoseuprojeto.git (fetch)
+origin  git@seuservidor:seunomedeusuario/nomedoseuprojeto.git (push)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Pronto. Feito isso, o Git passará a utilizar o SSH em vez do HTTPS para sincronizar esse repositório local com o seu equivalente remoto.</p>
@@ -718,9 +799,10 @@ origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (push)
 <h2 id="referências">Referências</h2>
 
 <ul>
-  <li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/">Connecting to GitHub with SSH - User Documentation - GitHub</a></li>
-  <li><a href="https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html">Set up SSH for Git - Atlassian Documentation</a></li>
-  <li><a href="https://help.github.com/articles/changing-a-remote-s-url/">Changing a remote’s URL - User Documentation - GitHub</a></li>
+  <li><a href="https://help.github.com/en/articles/connecting-to-github-with-ssh">Connecting to GitHub with SSH - GitHub Help</a></li>
+  <li><a href="https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html">Set up an SSH key - Atlassian Documentation</a></li>
+  <li><a href="https://help.github.com/en/articles/changing-a-remotes-url">Changing a remote’s URL - GitHub Help</a></li>
+  <li><a href="https://docs.gitlab.com/ee/ssh/">GitLab and SSH keys - GitLab</a></li>
 </ul>
 
 
@@ -890,7 +972,7 @@ origin  git@github.com:seunomedeusuario/nomedoseuprojeto.git (push)
     </div>
 </footer>
 
-<meta itemprop="description" content="Esse post é para os desenvolvedores. Se você utiliza o sistema de controle de versão Git em conjunto com algum servidor como o GitHub ou o Bitbucket para hospedar e gerenciar seus projetos, deve saber que por padrão a conexão com esses servidores é feita pelo protocolo HTTPS. Isso obriga você a digitar usuário e...">
+<meta itemprop="description" content="Atualização (02/07/2019): Inclusão do GitLab e atualização das instruções para o Bitbucket.Esse post é para os desenvolvedores. Se você utiliza o sistema de controle de versão Git em conjunto com algum servidor como o GitHub, o GitLab ou o Bitbucket para hospedar e gerenciar seus projetos, deve saber que por padrão a conexão com esses...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
