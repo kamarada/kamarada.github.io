@@ -9,10 +9,326 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 02 Jul 2019 09:44:42 -0300</pubDate>
-        <lastBuildDate>Tue, 02 Jul 2019 09:44:42 -0300</lastBuildDate>
+        <pubDate>Tue, 02 Jul 2019 23:09:03 -0300</pubDate>
+        <lastBuildDate>Tue, 02 Jul 2019 23:09:03 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Sending digitally signed emails with Thunderbird</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Although webmails are today more popular than email clients, some interesting features are exclusive of those desktop apps. For instance, if you have a &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;digital certificate&lt;/a&gt;, you can digitally sign the emails you send, giving their recipients more confidence about their authenticity and integrity.&lt;/p&gt;
+
+&lt;p&gt;In this post, you are going to see you can do that using the &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt; email client.&lt;/p&gt;
+
+&lt;p&gt;Before starting, to get everyone on the same page, I recommend reading previous posts about digital certificates and Thunderbird:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;How to install website certificates on Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;Using smart cards on openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/06/07/read-gmail-messages-on-thunderbird/&quot;&gt;Read Gmail messages on Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installing-your-ca-certificate-on-thunderbird&quot;&gt;Installing your CA certificate on Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;Similarly as &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;we did&lt;/a&gt; with &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, first we need to add our CA certificate to our email client, otherwise it won’t be able to validate our certificate hierarchy.&lt;/p&gt;
+
+&lt;p&gt;Let’s see how to add a CA certificate to Thunderbird.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate, I’m going to import the certificate of the Brazilian root CA &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, as my certificate was issued by a CA that belongs to its hierarchy.&lt;/p&gt;
+
+&lt;p&gt;Pull down the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; (top right corner of the window) and click &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog, select the &lt;strong&gt;Advanced&lt;/strong&gt; tab, then the &lt;strong&gt;Certificates&lt;/strong&gt; tab below and click &lt;strong&gt;Manage Certificates&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog, select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
+
+&lt;p&gt;Check all the options to fully trust the Certificate Authority and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure your CA certificate appears listed and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt; to close the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-thunderbird-to-use-your-token&quot;&gt;Setting up Thunderbird to use your token&lt;/h2&gt;
+
+&lt;p&gt;Similarly as &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;we did&lt;/a&gt; with Firefox, now we set up Thunderbird to use our token.&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; and click &lt;strong&gt;Preferences&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog, select the &lt;strong&gt;Advanced&lt;/strong&gt; tab, then the &lt;strong&gt;Certificates&lt;/strong&gt; tab below and click &lt;strong&gt;Security Devices&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Device Manager&lt;/strong&gt; dialog, click &lt;strong&gt;Load&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next dialog box, fill in the &lt;strong&gt;Module Name&lt;/strong&gt; field with a name that identifies your token (for instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Fill in the &lt;strong&gt;Module filename&lt;/strong&gt; field with the path to your token’s library:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if your token is supported by OpenSC, type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;if you have a SafeNet token and needed to install SAC (like me), type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;for other token models, ask your token vendor or your certificate authority which path should be informed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you finish, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Your token is added to the list of &lt;strong&gt;Security Modules and Devices&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt; to close the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-digital-signing-on-thunderbird&quot;&gt;Setting up digital signing on Thunderbird&lt;/h2&gt;
+
+&lt;p&gt;The next step is to set up Thunderbird to sign the emails sent from our email account with our certificate.&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; and go to &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Account Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the left panel, among the account settings, select &lt;strong&gt;Security&lt;/strong&gt; and by the right, near &lt;strong&gt;Digital Signing&lt;/strong&gt;, click &lt;strong&gt;Select&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter the PIN for your token and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the certificate to be used for digital signing and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As we are going to set up criptography just for sending, not for replying, choose &lt;strong&gt;No&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Account Settings&lt;/strong&gt; dialog, in case you want to always sign the emails you send, check the &lt;strong&gt;Digitally sign messages (by default)&lt;/strong&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Account Settings&lt;/strong&gt; dialog and go back to the Thunderbird main window.&lt;/p&gt;
+
+&lt;p&gt;Right now, digital signing is set up and ready to be used!&lt;/p&gt;
+
+&lt;h2 id=&quot;sending-digitally-signed-emails&quot;&gt;Sending digitally signed emails&lt;/h2&gt;
+
+&lt;p&gt;On the Thunderbird main window, click the &lt;strong&gt;Write&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As usual, fill in the &lt;strong&gt;From&lt;/strong&gt; and &lt;strong&gt;To&lt;/strong&gt; fields and type the message body.&lt;/p&gt;
+
+&lt;p&gt;Before sending, open the &lt;strong&gt;Security&lt;/strong&gt; menu and make sure the &lt;strong&gt;Digitally Sign This Message&lt;/strong&gt; option is checked:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-14.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(if you have setup Thunderbird to always sign the emails you send, that option should be already checked by default)&lt;/p&gt;
+
+&lt;p&gt;When you finish, click &lt;strong&gt;Send&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thunderbird asks for the token PIN to sign the email right before sending.&lt;/p&gt;
+
+&lt;h2 id=&quot;checking-the-digital-signature-of-received-emails&quot;&gt;Checking the digital signature of received emails&lt;/h2&gt;
+
+&lt;p&gt;If the recipient uses Thunderbird, they can check the digital signature of the message:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-15.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-16.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-16.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If Thunderbird tells the digital signature is not valid, the recipient may be missing your CA certificate. They need to add that certificate to their Thunderbird installation following the instructions presented on this page. After doing that, back to the message window, Thunderbird will be able to validate the signature.&lt;/p&gt;
+
+&lt;p&gt;If the recipient uses a webmail, it may allow to check the digital signature of the message. For instance, that is possible with &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-17.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that Gmail does not trust a certificate that belongs to the hierarchy of the Brazilian root CA ICP-Brasil. Unfortunately, the definitive solution to this issue would require &lt;a href=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt; to install and trust the ICP-Brasil certificate on its servers.&lt;/p&gt;
+
+&lt;p&gt;As a workaround, you can click the &lt;strong&gt;Sender info&lt;/strong&gt; link and then click &lt;strong&gt;Download certificates&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-18.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Open the downloaded file (the sender certificate) and check its hierarchy by yourself:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;thunderbird-bug-certificate-could-not-be-found&quot;&gt;Thunderbird bug: certificate could not be found&lt;/h2&gt;
+
+&lt;p&gt;When trying to send a digitally signed email, you may face a Thunderbird bug:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=531073&quot;&gt;531073 - S/MIME certificate could not be found although it is available&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Instead of signing and sending the email, Thunderbird shows the following error message:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/thunderbird-token-bug-en.jpg&quot; title=&quot;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&quot;&gt;
+&lt;img src=&quot;/files/2019/07/thunderbird-token-bug-en.jpg&quot; alt=&quot;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That bug has been fixed on Thunderbird 69.0 (regular release) and 60.7.1 (&lt;a href=&quot;https://www.thunderbird.net/en-US/organizations/&quot;&gt;ESR&lt;/a&gt;), which has been made available for &lt;a href=&quot;/en/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt; users through a security update.&lt;/p&gt;
+
+&lt;p&gt;If you faced that bug, check for updates to your system. You can read more info here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;How to get updates for openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--
+
+If that happens, repeat the steps to set up Thunderbird to use your token: go to **Preferences**, select the **Advanced** tab, then the **Certificates** tab and click **Security Devices**. Thunderbird asks for the token PIN. Inform it and click **OK**.
+
+Now, close the **Preferences** dialog and go back to the message window.
+
+This time, you should be able to send the email. Thunderbird may not ask your token PIN.
+
+--&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nitrokey.com/documentation/smime-thunderbird&quot;&gt;S/MIME Email Encryption with Thunderbird - Nitrokey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.globalsign.com/customer/en/portal/articles/1214955-install-certificate---mozilla-thunderbird&quot;&gt;Install Certificate - Mozilla Thunderbird - GlobalSign&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.sectigo.com/Com_KnowledgeDetailPage?Id=kA01N000000zFNM&quot;&gt;Basics of email encryption, Export /Import email certificate and enable to use in Mozilla Thunderbird - Sectigo KnowledgeBase&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.mozilla.org/PSM:Changing_Trust_Settings&quot;&gt;PSM:Changing Trust Settings - MozillaWiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 02 Jul 2019 19:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Using smart cards on openSUSE Linux</title>
@@ -411,6 +727,17 @@ Failed to connect to card: Card is invalid or cannot be handled
 
 &lt;p&gt;Now you are ready to access websites with your smart card and use it in other applications.&lt;/p&gt;
 
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Jul 02, 2019):&lt;/strong&gt;
+    
+&lt;p&gt;See how you can use your digital certificate in openSUSE:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/&quot;&gt;Sending digitally signed emails with Thunderbird&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
 &lt;p&gt;Have a lot of fun!&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
@@ -531,22 +858,16 @@ Failed to connect to card: Card is invalid or cannot be handled
 
 &lt;p&gt;Indeed people have preferred to use browsers instead of email clients to read and send messages, because it’s more practical. However, email clients provide us some interesting possibilities, which we’ll see in the next posts.&lt;/p&gt;
 
-&lt;!--
-
-
 &lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (24/09/2018):&lt;/strong&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Jul 02, 2019):&lt;/strong&gt;
     
-&lt;p&gt;Como prometido, eis aqui um uso interessante para o cliente de &lt;em&gt;e-mail&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;As promised, here is an interesting use for the Thunderbird email client:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/&quot;&gt;Sending digitally signed emails with Thunderbird&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
-
-
---&gt;
 
 &lt;h2 id=&quot;installing-thunderbird&quot;&gt;Installing Thunderbird&lt;/h2&gt;
 
@@ -2039,217 +2360,6 @@ $ cp -r Yaru-MATE/Theme/* ~/.local/share/themes/
                 <pubDate>Wed, 10 Apr 2019 22:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/04/10/get-the-most-out-of-gnome-syncing-your-google-account/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/04/10/get-the-most-out-of-gnome-syncing-your-google-account/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Streaming from Linux to TV using Chromecast</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://store.google.com/product/chromecast&quot;&gt;Google Chromecast&lt;/a&gt; is a small device that, once connected to your Wi-Fi network and plugged into your TV’s &lt;a href=&quot;https://en.wikipedia.org/wiki/HDMI&quot;&gt;HDMI&lt;/a&gt; port, allows you to stream video, music, web pages or even your computer’s or mobile device’s whole screen content to the TV.&lt;/p&gt;
-
-&lt;p&gt;On &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, you can use the &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; web browser or its open equivalent, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, to stream (cast) to Chromecast. How to do that is what you are going to see here.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-your-chromecast-device&quot;&gt;Set up your Chromecast device&lt;/h2&gt;
-
-&lt;p&gt;Before we get started, make sure your Chromecast device is ready to receive streams.&lt;/p&gt;
-
-&lt;p&gt;It’s not possible to setup Chromecast using a computer. In case you haven’t setup your Chromecast yet, use a mobile device with &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; or &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt; to set it up.&lt;/p&gt;
-
-&lt;p&gt;For more information on how to do that, refer to the Chromecast help:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456&quot;&gt;Set up your Chromecast device - Chromecast Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It was possible in the past to setup Chromecast using a computer. That feature was &lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;discontinued&lt;/a&gt; when &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; released &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;Chrome version 72&lt;/a&gt; by &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;January, 2019&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;set-up-your-computer&quot;&gt;Set up your computer&lt;/h2&gt;
-
-&lt;p&gt;To stream from a computer to a Chromecast device, both must be on the same Wi-Fi network (for instance, your home Wi-Fi).&lt;/p&gt;
-
-&lt;p&gt;Besides that, you need to adjust some settings on your computer before your first streaming.&lt;/p&gt;
-
-&lt;p&gt;First, let’s open in the firewall the ports used by Chromecast to communicate with the computer. According to &lt;a href=&quot;https://blog.g3rt.nl/allow-google-chromecast-host-firewall-iptables.html&quot;&gt;this blog post&lt;/a&gt;, Chromecast uses the following ports:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;TCP 8008 and 8009; and&lt;/li&gt;
-  &lt;li&gt;UDP 32768 through 61000.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Starting with &lt;a href=&quot;/en/2018/05/25/based-on-enterprise-code-tested-millions-of-times-opensuse-leap-15-released/&quot;&gt;openSUSE Leap 15&lt;/a&gt;, openSUSE’s default firewall is &lt;a href=&quot;https://firewalld.org/&quot;&gt;&lt;strong&gt;firewalld&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To set it up, open the &lt;strong&gt;Firewall&lt;/strong&gt; app:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(you can click either icon)&lt;/p&gt;
-
-&lt;p&gt;It will ask you the administrator (&lt;em&gt;root&lt;/em&gt; user) password, which you must provide to continue.&lt;/p&gt;
-
-&lt;p&gt;Switch &lt;strong&gt;Configuration&lt;/strong&gt; (on top) to &lt;strong&gt;Permanent&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;Services&lt;/strong&gt; tab right below and click the &lt;strong&gt;Add Service&lt;/strong&gt; button.&lt;/p&gt;
-
-&lt;p&gt;In the &lt;strong&gt;Base Service Settings&lt;/strong&gt; dialog box, fill in the &lt;strong&gt;Name&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;chromecast&lt;/code&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Back to the main screen, select the just created &lt;strong&gt;chromecast&lt;/strong&gt; service, select the &lt;strong&gt;Ports&lt;/strong&gt; tab and click &lt;strong&gt;Add&lt;/strong&gt;. Fill in the &lt;strong&gt;Port / Port Range&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;8008-8009&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In &lt;strong&gt;Protocol&lt;/strong&gt;, choose &lt;strong&gt;tcp&lt;/strong&gt;. Then, click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Add the UDP ports the same way: click &lt;strong&gt;Add&lt;/strong&gt;. Fill in the &lt;strong&gt;Port / Port Range&lt;/strong&gt; field with &lt;code class=&quot;highlighter-rouge&quot;&gt;32768-61000&lt;/code&gt;. In &lt;strong&gt;Protocol&lt;/strong&gt;, choose &lt;strong&gt;udp&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;By now, your &lt;strong&gt;Firewall Configuration&lt;/strong&gt; window should look like this:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Open the &lt;strong&gt;Options&lt;/strong&gt; menu and click the &lt;strong&gt;Reload Firewalld&lt;/strong&gt; option:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;Zones&lt;/strong&gt; tab. Then, select the &lt;strong&gt;home&lt;/strong&gt; zone and in the &lt;strong&gt;Services&lt;/strong&gt; tab (there are two &lt;strong&gt;Services&lt;/strong&gt; tabs, now I refer to the one below) enable the &lt;strong&gt;chromecast&lt;/strong&gt; service:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Reload the firewall once more (&lt;strong&gt;Options&lt;/strong&gt;, &lt;strong&gt;Reload Firewalld&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Last, select the Wi-Fi connection by the left (&lt;strong&gt;wlan1&lt;/strong&gt;) and click &lt;strong&gt;Change Zone&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;home&lt;/strong&gt; zone and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In short, you have just (1) set up the firewall to allow connections between your computer and Chromecast devices when you’re at home and (2) said the Wi-Fi network you are now connected to is your home network.&lt;/p&gt;
-
-&lt;p&gt;You can classify different networks into different zones: home, work, public. By default, firewalld treats all new networks as public and allow just a few services, but I’m not going to dive into firewall details now.&lt;/p&gt;
-
-&lt;p&gt;If you use the Chromium open web browser, there is one more thing to do: by default, Chromium is setup to not search for Chromecast devices on the network.&lt;/p&gt;
-
-&lt;p&gt;To change that setting, open Chromium, go to &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome://flags/#load-media-router-component-extension&lt;/code&gt; and select &lt;strong&gt;Enabled&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Then, restart Chromium.&lt;/p&gt;
-
-&lt;p&gt;Now we are ready to cast!&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-cast-from-chrome--chromium&quot;&gt;How to cast from Chrome / Chromium&lt;/h2&gt;
-
-&lt;p&gt;Browse to the video or web page you want to cast, open the browser menu and click &lt;strong&gt;Cast&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Choose the Chromecast device you want to cast to:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now your TV should be playing audio and video cast from your computer through Chromecast. You can control the streaming by the browser:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-12-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Stop&lt;/strong&gt; when you no longer want to stream.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Hint:&lt;/strong&gt; pin the &lt;strong&gt;Cast&lt;/strong&gt; button to the browser toolbar by right-clicking it and then clicking &lt;strong&gt;Always show icon&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/chromecast-13-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/chromecast-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Follow Linux Kamarada to discover other ways you can have fun with Linux and Chromecast.&lt;/p&gt;
-
-&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456&quot;&gt;Set up your Chromecast device - Chromecast Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;Google killing desktop Chromecast setup for Mac and PC with Chrome 72 - 9to5Google&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/Chromium&quot;&gt;Chromium - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://firewalld.org/documentation/howto/add-a-service.html&quot;&gt;Documentation - HowTo - Add a Service - firewalld&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.thegeekdiary.com/5-useful-examples-of-firewall-cmd-command/&quot;&gt;5 Useful Examples of firewall-cmd command - The Geek Diary&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7&quot;&gt;How To Set Up a Firewall Using FirewallD on CentOS 7 - DigitalOcean&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/7249696&quot;&gt;Adding the Cast button to the Chrome toolbar - Chromecast Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Mon, 01 Apr 2019 22:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/</guid>
                 
                 
                     <category>en</category>
