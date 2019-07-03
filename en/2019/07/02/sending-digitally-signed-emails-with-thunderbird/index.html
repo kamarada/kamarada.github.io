@@ -232,7 +232,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-07-02" />
+                <meta itemprop="dateModified" content="2019-07-03" />
             </div>
             <div class='col-sm-6'>
                 
@@ -288,7 +288,7 @@
 
 <h2 id="installing-your-ca-certificate-on-thunderbird">Installing your CA certificate on Thunderbird</h2>
 
-<p>Similarly as <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">we did</a> with <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a>, first we need to add our CA certificate to our email client, otherwise it won’t be able to validate our certificate hierarchy.</p>
+<p>Similarly as <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">we did</a> with the <a href="https://www.mozilla.org/firefox/">Firefox</a> web browser, first we need to add our CA certificate to our Thunderbird email client, otherwise it won’t be able to validate our certificate hierarchy.</p>
 
 <p>Let’s see how to add a CA certificate to Thunderbird.</p>
 
@@ -297,8 +297,8 @@
 <p>Pull down the <strong>Thunderbird menu</strong> (top right corner of the window) and click <strong>Preferences</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-01.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-01-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-01-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -306,8 +306,8 @@
 <p>On the <strong>Thunderbird Preferences</strong> dialog, select the <strong>Advanced</strong> tab, then the <strong>Certificates</strong> tab below and click <strong>Manage Certificates</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-02.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-02-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-02-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -315,8 +315,8 @@
 <p>On the <strong>Certificate Manager</strong> dialog, select the <strong>Authorities</strong> tab and click <strong>Import</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-03.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-03-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-03-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -326,8 +326,8 @@
 <p>Check all the options to fully trust the Certificate Authority and click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-04.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-04-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-04-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -335,8 +335,8 @@
 <p>Make sure your CA certificate appears listed and click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-05.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-05-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-05-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -354,8 +354,8 @@
 <p>On the <strong>Device Manager</strong> dialog, click <strong>Load</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-06.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-06-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-06-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -365,16 +365,16 @@
 <p>Fill in the <strong>Module filename</strong> field with the path to your token’s library:</p>
 
 <ul>
-  <li>if your token is supported by OpenSC, type <code class="highlighter-rouge">/usr/lib64/opensc-pkcs11.so</code>;</li>
-  <li>if you have a SafeNet token and needed to install SAC (like me), type <code class="highlighter-rouge">/usr/lib64/libeToken.so</code>;</li>
+  <li>if your token is supported by <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">OpenSC</a>, type <code class="highlighter-rouge">/usr/lib64/opensc-pkcs11.so</code>;</li>
+  <li>if you have a SafeNet token and needed to install <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">SAC</a> (like me), type <code class="highlighter-rouge">/usr/lib64/libeToken.so</code>;</li>
   <li>for other token models, ask your token vendor or your certificate authority which path should be informed.</li>
 </ul>
 
 <p>When you finish, click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-07.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-07-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-07-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -382,8 +382,8 @@
 <p>Your token is added to the list of <strong>Security Modules and Devices</strong>. Click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-08.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-08-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-08-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -406,8 +406,8 @@
 <p>On the left panel, among the account settings, select <strong>Security</strong> and by the right, near <strong>Digital Signing</strong>, click <strong>Select</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-09.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-09-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-09-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -415,8 +415,8 @@
 <p>Enter the PIN for your token and click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-10.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-10.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-10-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-10-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -424,8 +424,8 @@
 <p>Select the certificate to be used for digital signing and click <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-11.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-11.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-11-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-11-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -433,8 +433,8 @@
 <p>As we are going to set up criptography just for sending, not for replying, choose <strong>No</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-12.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-12.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-12-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-12-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -450,24 +450,22 @@
 <p>On the Thunderbird main window, click the <strong>Write</strong> button:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-13.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-13.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-13-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-13-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>As usual, fill in the <strong>From</strong> and <strong>To</strong> fields and type the message body.</p>
+<p>As usual, fill in the <strong>From</strong>, <strong>To</strong> and <strong>Subject</strong> fields and type the message body.</p>
 
-<p>Before sending, open the <strong>Security</strong> menu and make sure the <strong>Digitally Sign This Message</strong> option is checked:</p>
+<p>Before sending, open the <strong>Security</strong> menu and make sure the <strong>Digitally Sign This Message</strong> option is checked (if you have setup Thunderbird to always sign the emails you send, that option should be already checked by default):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-14.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-14.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-14-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-14-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
-
-<p>(if you have setup Thunderbird to always sign the emails you send, that option should be already checked by default)</p>
 
 <p>When you finish, click <strong>Send</strong>.</p>
 
@@ -478,26 +476,26 @@
 <p>If the recipient uses Thunderbird, they can check the digital signature of the message:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-15.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-15.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-15-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-15-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-16.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-16.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-16-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-16-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
 
-<p>If Thunderbird tells the digital signature is not valid, the recipient may be missing your CA certificate. They need to add that certificate to their Thunderbird installation following the instructions presented on this page. After doing that, back to the message window, Thunderbird will be able to validate the signature.</p>
+<p>If Thunderbird tells the digital signature is not valid, the recipient may be missing your CA certificate. They need to add that certificate to their Thunderbird installation following the instructions presented on this page. After doing that, back to the message tab, Thunderbird will be able to validate the signature.</p>
 
 <p>If the recipient uses a webmail, it may allow to check the digital signature of the message. For instance, that is possible with <a href="https://gmail.com">Gmail</a>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-17.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-17.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-17-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-17-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -507,8 +505,8 @@
 <p>As a workaround, you can click the <strong>Sender info</strong> link and then click <strong>Download certificates</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-18.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-18.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-18-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-18-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -516,8 +514,8 @@
 <p>Open the downloaded file (the sender certificate) and check its hierarchy by yourself:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/thunderbird-token-19.jpg" title="">
-<img src="/files/2019/07/thunderbird-token-19.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/thunderbird-token-19-en.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-19-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>

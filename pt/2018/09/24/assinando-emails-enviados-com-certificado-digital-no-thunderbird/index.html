@@ -236,7 +236,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2018-09-24" />
+                <meta itemprop="dateModified" content="2019-07-03" />
             </div>
             <div class='col-sm-6'>
                 
@@ -278,7 +278,9 @@
 
 </div>
 
-<p>Embora hoje o <em>webmail</em> seja mais popular que o cliente de <em>e-mail</em>, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">certificado digital</a>, pode assinar os <em>e-mails</em> que envia para dar mais segurança a quem os recebe. Nesse <em>post</em>, você verá como fazer isso com o cliente de <em>e-mail</em> <a href="https://www.thunderbird.net">Mozilla Thunderbird</a>.</p>
+<p>Embora hoje o <em>webmail</em> seja mais popular que o cliente de <em>e-mail</em>, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">certificado digital</a>, pode assinar os <em>e-mails</em> que envia, conferindo-lhes mais segurança quanto a autenticidade e integridade.</p>
+
+<p>Nesse <em>post</em>, você verá como fazer isso com o cliente de <em>e-mail</em> <a href="https://www.thunderbird.net">Mozilla Thunderbird</a>.</p>
 
 <p>Antes, para deixar todo mundo na mesma página, recomendo a leitura de <em>posts</em> anteriores falando sobre certificados digitais e também sobre o Thunderbird:</p>
 
@@ -288,11 +290,20 @@
   <li><a href="/pt/2018/09/12/sincronizando-o-gmail-no-thunderbird/">Sincronizando o Gmail no Thunderbird</a></li>
 </ul>
 
-<h2 id="configurando-a-assinatura-digital-no-thunderbird">Configurando a assinatura digital no Thunderbird</h2>
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (03/07/2019):</strong>
+    
+<p>O <em>post</em> foi revisado para se aproximar da <a href="/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/">versão em inglês</a>, mais recente.</p>
 
-<p>Para poder utilizar o <em>token</em> no Thunderbird, vamos cadastrá-lo como um dispositivo de segurança.</p>
+</div>
 
-<p>Para isso, com o Thunderbird aberto, clique no botão <strong>Menu</strong>, no canto superior direito da janela, e depois clique em <strong>Preferências</strong>:</p>
+<h2 id="instalando-o-certificado-da-ac-no-thunderbird">Instalando o certificado da AC no Thunderbird</h2>
+
+<p>Da mesma forma como <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">fizemos</a> com o navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Firefox</a>, primeiro temos que adicionar o certificado da nossa Autoridade Certificadora ao cliente de <em>e-mail</em> Thunderbird. Do contrário, ele não conseguirá verificar a hierarquia e validar nosso certificado.</p>
+
+<p><a href="http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt">Clique aqui</a> para baixar o certificado de segurança da <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a>, a AC Raiz brasileira.</p>
+
+<p>Na tela principal do Thunderbird, clique no botão <strong>Menu</strong>, no canto superior direito da janela, e depois clique em <strong>Preferências</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/09/thunderbird-token-01.jpg" title="">
@@ -301,7 +312,55 @@
 
 </div>
 
-<p>Clique na aba <strong>Avançado</strong>, depois na aba <strong>Certificados</strong> e, por fim, no botão <strong>Dispositivos de segurança</strong>:</p>
+<p>Na caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique na aba <strong>Avançado</strong>, depois na aba <strong>Certificados</strong> e, por fim, no botão <strong>Gerenciar certificados</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/thunderbird-token-02-pt.jpg" title="">
+<img src="/files/2019/07/thunderbird-token-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na caixa de diálogo <strong>Gerenciador de certificados</strong>, selecione a aba <strong>Autoridades</strong> e clique no botão <strong>Importar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2018/09/thunderbird-token-15.jpg" title="">
+<img src="/files/2018/09/thunderbird-token-15.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Informe o caminho para o certificado que você baixou.</p>
+
+<p>Na caixa de diálogo seguinte, marque as três opções e clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/08/certificados-firefox-2.jpg" title="">
+<img src="/files/2017/08/certificados-firefox-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Verifique que a ICP-Brasil aparece na lista de autoridades certificadoras:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2018/09/thunderbird-token-16.png" title="">
+<img src="/files/2018/09/thunderbird-token-16.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>OK</strong>.</p>
+
+<p>De volta à caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique em <strong>Fechar</strong>.</p>
+
+<h2 id="configurando-o-token-no-thunderbird">Configurando o token no Thunderbird</h2>
+
+<p>Da mesma forma como <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">fizemos</a> com o Firefox, vamos agora cadastrar nosso <em>token</em> como um dispositivo de segurança no Thunderbird.</p>
+
+<p>Para isso, na tela principal, clique no botão <strong>Menu</strong> e depois no item <strong>Preferências</strong>.</p>
+
+<p>Na caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique na aba <strong>Avançado</strong>, depois na aba <strong>Certificados</strong> e, por fim, no botão <strong>Dispositivos de segurança</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/09/thunderbird-token-02.jpg" title="">
@@ -309,8 +368,6 @@
 </a>
 
 </div>
-
-<p>Se você configurou o navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a> para usar o <em>token</em>, como instruímos em <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">outro <em>post</em></a>, já deve ter percebido que o procedimento é semelhante.</p>
 
 <p>Na caixa de diálogo <strong>Gerenciador de dispositivos</strong>, clique em <strong>Carregar</strong>:</p>
 
@@ -351,9 +408,13 @@
 
 <p>Clique em <strong>OK</strong>.</p>
 
-<p>De volta à caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique em <strong>OK</strong>.</p>
+<p>De volta à caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique em <strong>Fechar</strong>.</p>
 
-<p>De volta à tela principal do Thunderbird, clique no botão <strong>Menu</strong>, aponte para <strong>Preferências</strong> e clique em <strong>Configurações de conta</strong>:</p>
+<h2 id="configurando-a-assinatura-digital-no-thunderbird">Configurando a assinatura digital no Thunderbird</h2>
+
+<p>O próximo passo é configurar o Thunderbird para assinar os <em>e-mails</em> que enviamos a partir da nossa conta com o nosso certificado.</p>
+
+<p>Na tela principal do Thunderbird, clique no botão <strong>Menu</strong>, aponte para <strong>Preferências</strong> e clique em <strong>Configurações de conta</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/09/thunderbird-gmail-10.jpg" title="">
@@ -402,7 +463,7 @@
 
 <p>Por fim, clique em <strong>OK</strong> para voltar à tela principal do Thunderbird.</p>
 
-<p>A assinatura digital está configurada e pronta para ser utilizada.</p>
+<p>A assinatura digital está configurada e pronta para ser usada.</p>
 
 <h2 id="enviando-e-mails-com-assinatura-digital">Enviando e-mails com assinatura digital</h2>
 
@@ -415,7 +476,7 @@
 
 </div>
 
-<p>Redija a mensagem normalmente.</p>
+<p>Como de costume, preencha os campos <strong>De</strong>, <strong>Para</strong> e <strong>Assunto</strong> e redija a mensagem.</p>
 
 <p>Antes de enviar, certifique-se de que a opção <strong>Assinar digitalmente</strong>, dentro do menu <strong>Segurança</strong>, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):</p>
 
@@ -439,7 +500,23 @@
 
 <h2 id="verificando-a-assinatura-digital-de-e-mails-recebidos">Verificando a assinatura digital de e-mails recebidos</h2>
 
-<p>Se o destinatário utiliza o cliente de <em>e-mail</em> Thunderbird, ele pode verificar a assinatura digital da mensagem:</p>
+<p>Se o destinatário usa o Thunderbird, ele pode verificar a assinatura digital da mensagem:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2018/09/thunderbird-token-17.jpg" title="">
+<img src="/files/2018/09/thunderbird-token-17.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2018/09/thunderbird-token-18.jpg" title="">
+<img src="/files/2018/09/thunderbird-token-18.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Pode ser que o Thunderbird não reconheça a assinatura, exibindo <strong>A assinatura digital não é válida</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/09/thunderbird-token-13.jpg" title="">
@@ -455,64 +532,7 @@
 
 </div>
 
-<p>Note que a princípio o Thunderbird não reconhece a assinatura, exibindo <strong>A assinatura digital não é válida</strong>. Isso pode acontecer porque ele não conhece o certificado da <a href="http://www.iti.gov.br/icp-brasil">Autoridade Certificadora Raiz brasileira</a>. Por tabela, ele não confia no certificado do remetente, que foi emitido por essa autoridade certificadora.</p>
-
-<p>Já tratamos de situação parecida que ocorre no navegador Firefox em <a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">outro <em>post</em></a> e a solução no caso do cliente de <em>e-mail</em> Thunderbird é semelhante.</p>
-
-<p>Primeiro, <a href="http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt">clique aqui</a> para baixar o certificado de segurança da Autoridade Certificadora Raiz brasileira.</p>
-
-<p>Depois, volte ao Thunderbird, clique no botão <strong>Menu</strong> e depois no item <strong>Preferências</strong>.</p>
-
-<p>Na caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique na aba <strong>Avançado</strong>, depois na aba <strong>Certificados</strong> e por fim no botão <strong>Gerenciar certificados</strong>.</p>
-
-<p>Na caixa de diálogo <strong>Gerenciador de certificados</strong>, clique no botão <strong>Importar</strong>:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/09/thunderbird-token-15.jpg" title="">
-<img src="/files/2018/09/thunderbird-token-15.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Informe o caminho para o certificado que você baixou.</p>
-
-<p>Na caixa de diálogo seguinte, marque as três opções e clique em <strong>OK</strong>:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2017/08/certificados-firefox-2.jpg" title="">
-<img src="/files/2017/08/certificados-firefox-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Verifique que a <a href="http://www.iti.gov.br/icp-brasil">ICP-Brasil</a> aparece na lista de autoridades certificadoras:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/09/thunderbird-token-16.png" title="">
-<img src="/files/2018/09/thunderbird-token-16.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Clique em <strong>OK</strong>.</p>
-
-<p>De volta à caixa de diálogo <strong>Preferências do Thunderbird</strong>, clique em <strong>OK</strong>.</p>
-
-<p>Pronto! Agora, se você voltar ao <em>e-mail</em>, perceberá que a assinatura é reconhecida:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/09/thunderbird-token-17.jpg" title="">
-<img src="/files/2018/09/thunderbird-token-17.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2018/09/thunderbird-token-18.jpg" title="">
-<img src="/files/2018/09/thunderbird-token-18.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
+<p>Se isso acontecer, é sinal que o destinatário não conhece o certificado da sua Autoridade Certificadora. Oriente-o instalar esse certificado, seguindo as instruções presentes nesta página. Feito isso, ao voltar à aba da mensagem, perceberá que a assinatura é reconhecida.</p>
 
 <p>Se o destinatário utiliza o <em>webmail</em>, pode ser que o <em>webmail</em> possibilite verificar a assinatura da mensagem, como o <a href="https://gmail.com">Gmail</a>, por exemplo, possibilita:</p>
 
@@ -542,6 +562,36 @@
 </a>
 
 </div>
+
+<h2 id="um-bug-do-thunderbird">Um bug do Thunderbird</h2>
+
+<p>Ao tentar enviar um <em>e-mail</em> com assinatura digital, você pode se deparar com um <em>bug</em> do Thunderbird:</p>
+
+<ul>
+  <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=531073">531073 - S/MIME certificate could not be found although it is available</a></li>
+</ul>
+
+<p>Em vez de assinar e enviar o <em>e-mail</em>, o Thunderbird mostra a seguinte mensagem de erro:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/thunderbird-token-bug-pt.jpg" title="Erro de envio de mensagem. Falha ao enviar a mensagem. Você especificou que esta mensagem deve ser assinada digitalmente. Entretanto ou o certificado está com a validade vencida ou o aplicativo não encontrou o certificado de assinatura especificado em suas configurações de contas.">
+<img src="/files/2019/07/thunderbird-token-bug-pt.jpg" alt="Erro de envio de mensagem. Falha ao enviar a mensagem. Você especificou que esta mensagem deve ser assinada digitalmente. Entretanto ou o certificado está com a validade vencida ou o aplicativo não encontrou o certificado de assinatura especificado em suas configurações de contas." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Erro de envio de mensagem. Falha ao enviar a mensagem. Você especificou que esta mensagem deve ser assinada digitalmente. Entretanto ou o certificado está com a validade vencida ou o aplicativo não encontrou o certificado de assinatura especificado em suas configurações de contas.</p>
+
+</em>
+
+</div>
+
+<p>Esse <em>bug</em> foi corrigido no Thunderbird 69.0 (versão regular) e 60.7.1 (versão com suporte estendido, <a href="https://www.thunderbird.net/pt-BR/organizations/">ESR</a>). Esse último foi disponibilizado para os usuários do <a href="/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/">openSUSE Leap 15.1</a> por meio de uma atualização de segurança.</p>
+
+<p>Se você foi afetado por esse <em>bug</em>, verifique se há atualizações disponíveis para o seu sistema. Para mais informações, leia:</p>
+
+<ul>
+  <li><a href="/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/">Como obter atualizações para o Linux openSUSE</a></li>
+</ul>
 
 <h2 id="referência">Referência</h2>
 
@@ -716,7 +766,7 @@
     </div>
 </footer>
 
-<meta itemprop="description" content="Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia para dar mais segurança a quem os recebe. Nesse post, você verá como fazer isso com o cliente de...">
+<meta itemprop="description" content="Embora hoje o webmail seja mais popular que o cliente de e-mail, algumas funcionalidades interessantes só são possíveis por meio desse aplicativo. Por exemplo, se você possui um certificado digital, pode assinar os e-mails que envia, conferindo-lhes mais segurança quanto a autenticidade e integridade. Nesse post, você verá como fazer isso com o cliente de...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
