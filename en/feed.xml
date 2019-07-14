@@ -9,10 +9,590 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 12 Jul 2019 02:18:27 -0300</pubDate>
-        <lastBuildDate>Fri, 12 Jul 2019 02:18:27 -0300</lastBuildDate>
+        <pubDate>Sun, 14 Jul 2019 19:47:21 -0300</pubDate>
+        <lastBuildDate>Sun, 14 Jul 2019 19:47:21 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Using Git with SSH keys</title>
+                <description>&lt;p&gt;Today’s post is for developers. If you use the &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; version control system with a service such as &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt; or &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt; to host and manage your projects source codes, you know that by default Git connects to remotes using the &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; protocol, which requires you to enter username and password every time you run a command such as &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt; protocol, you can connect and authenticate to servers to use their services. The three mentioned services allow Git to connect via SSH instead of HTTPS. Connecting with public key encryption dispenses typing username and password for every Git command.&lt;/p&gt;
+
+&lt;p&gt;You are going to see in this post how to use GitHub, GitLab and Bitbucket with SSH.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/04/git-ssh.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/04/git-ssh.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;make-sure-an-ssh-client-in-installed&quot;&gt;Make sure an SSH client in installed&lt;/h2&gt;
+
+&lt;p&gt;In order to connect using the SSH protocol, an SSH client must be installed on your system. If you use &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, it should be already installed by default.&lt;/p&gt;
+
+&lt;p&gt;Just to make sure, open the terminal and run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -V
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That command should output the version number of the SSH client being used:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;OpenSSH_7.9p1, OpenSSL 1.1.0i-fips  14 Aug 2018
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In case the system informs that the &lt;strong&gt;ssh&lt;/strong&gt; command was not found, you can install the &lt;a href=&quot;https://www.openssh.com/&quot;&gt;OpenSSH&lt;/a&gt; client running:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in openssh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;check-for-existing-ssh-keys&quot;&gt;Check for existing SSH keys&lt;/h2&gt;
+
+&lt;p&gt;To connect using the SSH protocol, you need an SSH key pair (one private and the other public). If you have never used SSH, you can safely skip this topic and move on to the next. If you have ever used SSH (for instance, to &lt;a href=&quot;/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/&quot;&gt;remotely access a server&lt;/a&gt;), probably you already have an SSH key pair, in which case you don’t need to generate a new key pair.&lt;/p&gt;
+
+&lt;p&gt;To see if existing SSH keys are present, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ls -lah ~/.ssh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That command should list the contents of the &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; folder, in which the SSH client stores its configuration files:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;total 28K
+drwx------  2 vinicius users   94 Mar 17 14:55 .
+drwxr-xr-x 54 vinicius users 4.0K Jul 14 02:44 ..
+-rw-------  1 vinicius users 2.5K Mar  1 23:41 authorized_keys
+-rw-r--r--  1 vinicius users   39 Dec 19  2018 config
+-rw-------  1 vinicius users 3.3K Jul 18  2018 id_rsa
+-rw-r--r--  1 vinicius users  748 Jul 18  2018 id_rsa.pub
+-rw-r--r--  1 vinicius users 4.7K Jul  5 01:57 known_hosts
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you receive an error that there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; directory or there are no files in it, don’t worry: it means you haven’t created an SSH key pair yet. If that is the case, proceed to the next topic.&lt;/p&gt;
+
+&lt;p&gt;By default, public SSH keys are named:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;id_dsa.pub;&lt;/li&gt;
+  &lt;li&gt;id_ecdsa.pub;&lt;/li&gt;
+  &lt;li&gt;id_ed25519.pub; or&lt;/li&gt;
+  &lt;li&gt;id_rsa.pub.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Inside my &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; folder, I have an SSH key pair (&lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt; is the public key and &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; is the private key) created a year ago (&lt;code class=&quot;highlighter-rouge&quot;&gt;Jul 18  2018&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;For security reasons, it is recommended that you generate a new SSH key pair at least once a year. If you already have an SSH key pair that was created more than a year ago, it is recommended that you proceed to the next topic.&lt;/p&gt;
+
+&lt;p&gt;If you already have an SSH key pair and want to reuse it, you can skip the next topic.&lt;/p&gt;
+
+&lt;h2 id=&quot;generate-a-new-ssh-key-pair&quot;&gt;Generate a new SSH key pair&lt;/h2&gt;
+
+&lt;p&gt;To generate a new SSH key pair, run the following command (replace &lt;code class=&quot;highlighter-rouge&quot;&gt;your_email@example.com&lt;/code&gt; with your email address):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/your_user_name/.ssh/id_rsa):
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It asks you where to save the private key (&lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Press &lt;strong&gt;Enter&lt;/strong&gt; to accept the default location.&lt;/p&gt;
+
+&lt;p&gt;If you already have a private key, it asks whether it should overwrite:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;/home/your_user_name/.ssh/id_rsa already exists.
+Overwrite (y/n)?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If that happens, type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, enter and re-enter a &lt;a href=&quot;https://en.wikipedia.org/wiki/Passphrase&quot;&gt;passphrase&lt;/a&gt; (think of it as a kind of password):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The SSH key pair is created in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The whole interaction should look similar to the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;your_user_name@your_host_name:~&amp;gt; ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/your_user_name/.ssh/id_rsa):
+/home/your_user_name/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/your_user_name/.ssh/id_rsa.
+Your public key has been saved in /home/your_user_name/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:CEnY8FOQmvISJpVp6oAlITemk1aWKRdViOFePP6/CKk your_email@example.com
+The key's randomart image is:
++---[RSA 4096]----+
+|o.=@X++.         |
+|o*@O++           |
+|=Bo+=+           |
+|Oo+ oo..         |
+|=+ . .. S        |
+|...   o          |
+| .   o .         |
+|    . . o        |
+|   E   . o.      |
++----[SHA256]-----+
+your_user_name@your_host_name:~&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;add-the-private-ssh-key-to-the-ssh-agent&quot;&gt;Add the private SSH key to the ssh-agent&lt;/h2&gt;
+
+&lt;p&gt;If you don’t want to type your passphrase each time you use your SSH keys, you need to add it to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Ssh-agent&quot;&gt;&lt;strong&gt;ssh-agent&lt;/strong&gt;&lt;/a&gt;, which is a program that runs in background while you are logged in to the system and stores your keys in memory.&lt;/p&gt;
+
+&lt;p&gt;To start the &lt;strong&gt;ssh-agent&lt;/strong&gt; in background, run the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ eval &quot;$(ssh-agent -s)&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That command outputs the &lt;strong&gt;ssh-agent&lt;/strong&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Process_identifier&quot;&gt;process identifier&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Agent pid 2887
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, add your SSH private key to the &lt;strong&gt;ssh-agent&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh-add ~/.ssh/id_rsa
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Type your passphrase and press &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Enter passphrase for /home/your_user_name/.ssh/id_rsa:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The command confirms that the private SSH key has been added to the &lt;strong&gt;ssh-agent&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Identity added: /home/your_user_name/.ssh/id_rsa (your_email@example.com)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;add-the-public-ssh-key-to-your-account&quot;&gt;Add the public SSH key to your account&lt;/h2&gt;
+
+&lt;p&gt;Once you have an SSH key and have added it to the &lt;strong&gt;ssh-agent&lt;/strong&gt;, you can set up connecting via SSH. Let’s see how to do that for each of the three servers: GitHub, GitLab and Bitbucket.&lt;/p&gt;
+
+&lt;p&gt;In all the three cases, the process is similar. Start by copying your public SSH key (&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_rsa.pub&lt;/code&gt;) file contents to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Clipboard_(computing)&quot;&gt;clipboard&lt;/a&gt; using the &lt;strong&gt;xclip&lt;/strong&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xclip -sel clip &amp;lt; ~/.ssh/id_rsa.pub
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/astrand/xclip&quot;&gt;&lt;strong&gt;xclip&lt;/strong&gt;&lt;/a&gt; is a command line utility that allows access to the graphical interface clipboard from the terminal. If it is not installed, you can install it running:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install xclip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;github&quot;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;Using a browser, go to the GitHub home page at &lt;a href=&quot;https://github.com/&quot;&gt;github.com&lt;/a&gt; and sign in to your account.&lt;/p&gt;
+
+&lt;p&gt;In the upper-right corner of the page, click your profile photo, then click &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/04/git-ssh-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/04/git-ssh-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the user settings sidebar, click &lt;strong&gt;SSH and GPG keys&lt;/strong&gt;. Then click &lt;strong&gt;New SSH key&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fill in the &lt;strong&gt;Title&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer) and paste your public key into the &lt;strong&gt;Key&lt;/strong&gt; field. Finally, click &lt;strong&gt;Add SSH key&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/04/git-ssh-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/04/git-ssh-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2017/04/git-ssh-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2017/04/git-ssh-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;gitlab&quot;&gt;GitLab&lt;/h3&gt;
+
+&lt;p&gt;Using a browser, go to the GitLab home page at &lt;a href=&quot;https://gitlab.com/&quot;&gt;gitlab.com&lt;/a&gt; and sign in to your account.&lt;/p&gt;
+
+&lt;p&gt;In the upper-right corner of the page, click your profile photo, then click &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/gitlab-ssh-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/gitlab-ssh-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the &lt;strong&gt;User Settings&lt;/strong&gt; sidebar, click &lt;strong&gt;SSH Keys&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Paste your public key in the &lt;strong&gt;Key&lt;/strong&gt; field. Fill in the &lt;strong&gt;Title&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer). Finally, click &lt;strong&gt;Add key&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/gitlab-ssh-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/gitlab-ssh-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/gitlab-ssh-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/gitlab-ssh-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;bitbucket&quot;&gt;Bitbucket&lt;/h3&gt;
+
+&lt;p&gt;Using a browser, go to the Bitbucket home page at &lt;a href=&quot;https://bitbucket.org/&quot;&gt;bitbucket.org&lt;/a&gt; and log in to your account.&lt;/p&gt;
+
+&lt;p&gt;In the lower-left corner of the page, click your profile photo, then click &lt;strong&gt;Bitbucket settings&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/bitbucket-ssh-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/bitbucket-ssh-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the &lt;strong&gt;Settings&lt;/strong&gt; sidebar, in the &lt;strong&gt;Security&lt;/strong&gt; section, click &lt;strong&gt;SSH keys&lt;/strong&gt;. Then, click &lt;strong&gt;Add key&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fill in the &lt;strong&gt;Label&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer) and paste your public key into the &lt;strong&gt;Key&lt;/strong&gt; field. Finally, click &lt;strong&gt;Add key&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/bitbucket-ssh-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/bitbucket-ssh-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/bitbucket-ssh-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/bitbucket-ssh-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;test-connecting-via-ssh&quot;&gt;Test connecting via SSH&lt;/h2&gt;
+
+&lt;p&gt;GitHub, GitLab and Bitbucket allow you to test whether SSH connection has been set up correctly before actually using it with Git.&lt;/p&gt;
+
+&lt;h3 id=&quot;github-1&quot;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;After you’ve added your SSH key to your GitHub account, open the terminal and run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@github.com
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That command attempts an &lt;a href=&quot;/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/&quot;&gt;SSH remote access&lt;/a&gt; to GitHub.&lt;/p&gt;
+
+&lt;p&gt;If that is the first time you connect to GitHub via SSH, the SSH client asks you if it can trust the public key of the GitHub server:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;The authenticity of host 'github.com (140.82.113.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;yes&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;. The SSH client adds GitHub to the list of trusted hosts:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once added to the list of known hosts, you won’t be asked about GitHub’s public key again.&lt;/p&gt;
+
+&lt;p&gt;As this remote access via SSH is provided by GitHub just for testing, not for actual use, the server informs that you have successfully authenticated and terminates the connection:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you completed the test successfully, now you can use SSH with GitHub.&lt;/p&gt;
+
+&lt;p&gt;The whole interaction should look similar to the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;your_user_name@your_host_name:~&amp;gt; ssh -T git@github.com
+The authenticity of host 'github.com (140.82.113.4)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
+Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
+your_user_name@your_host_name:~&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gitlab-1&quot;&gt;GitLab&lt;/h3&gt;
+
+&lt;p&gt;If you have added your SSH key to your GitLab account, the test is very similar:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@gitlab.com
+
+The authenticity of host 'gitlab.com (35.231.145.151)' can't be established.
+ECDSA key fingerprint is SHA256:HbW3g8zUjNSksFbqTiUWPWg2Bq1x8xdGUrliXFzSnUw.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'gitlab.com,35.231.145.151' (ECDSA) to the list of known hosts.
+Welcome to GitLab, @your_user_name!
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you completed the test successfully, now you can use SSH with GitLab.&lt;/p&gt;
+
+&lt;h3 id=&quot;bitbucket-1&quot;&gt;Bitbucket&lt;/h3&gt;
+
+&lt;p&gt;If you have added your SSH key to your Bitbucket account, the test is very similar:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@bitbucket.org
+
+The authenticity of host 'bitbucket.org (104.192.143.1)' can't be established.
+RSA key fingerprint is SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'bitbucket.org,104.192.143.1' (RSA) to the list of known hosts.
+logged in as your_user_name.
+
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you completed the test successfully, now you can use SSH with Bitbucket.&lt;/p&gt;
+
+&lt;h2 id=&quot;clone-a-repository-using-ssh&quot;&gt;Clone a repository using SSH&lt;/h2&gt;
+
+&lt;p&gt;Now that we’ve got our SSH keys set up, let’s see how to clone a Git repository using SSH instead of HTTPS.&lt;/p&gt;
+
+&lt;h3 id=&quot;github-2&quot;&gt;GitHub&lt;/h3&gt;
+
+&lt;p&gt;At &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone or download&lt;/strong&gt; and copy the &lt;a href=&quot;https://en.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; to clone the repository using SSH:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/git-ssh-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/git-ssh-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The URL of a GitHub repository looks like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@github.com:your_user_name/your_project_name.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Open the terminal and run the &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command passing the copied URL as argument.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; to paste into the terminal, use &lt;strong&gt;Ctrl + Shift + V&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that now Git clones the repository without asking for a password:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/git-ssh-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/git-ssh-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;gitlab-2&quot;&gt;GitLab&lt;/h3&gt;
+
+&lt;p&gt;At &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone&lt;/strong&gt; and copy the URL to clone the repository using SSH:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/gitlab-ssh-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/gitlab-ssh-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The URL of a GitLab repository looks like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@gitlab.com:your_user_name/your_project_name.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Open the terminal and run the &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command passing the copied URL as argument:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/gitlab-ssh-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/gitlab-ssh-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that now Git clones the repository without asking for a password.&lt;/p&gt;
+
+&lt;h3 id=&quot;bitbucket-2&quot;&gt;Bitbucket&lt;/h3&gt;
+
+&lt;p&gt;At &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone&lt;/strong&gt; and copy the command to clone the repository using SSH:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/bitbucket-ssh-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/bitbucket-ssh-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that, differently from GitHub and GitLab that present the URL, Bitbucket presents the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command, including the URL.&lt;/p&gt;
+
+&lt;p&gt;The URL of a Bitbucket repository looks like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@bitbucket.org:your_user_name/your_project_name.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Open the terminal, paste and run the command you copied from Bitbucket:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/bitbucket-ssh-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/bitbucket-ssh-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that now Git clones the repository without asking for a password.&lt;/p&gt;
+
+&lt;h2 id=&quot;reconfigure-existing-repositories-to-use-ssh&quot;&gt;Reconfigure existing repositories to use SSH&lt;/h2&gt;
+
+&lt;p&gt;The repositories we clone from now on using SSH will continue to use SSH for future Git commands such as &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;. But existing local repositories, previously cloned with HTTPS, will continue to use HTTPS, unless we set them up to use SSH.&lt;/p&gt;
+
+&lt;p&gt;To do that, open the terminal and change the current directory to a local repository.&lt;/p&gt;
+
+&lt;p&gt;List the existing remote repositories and their URLs with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git remote -v
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That command should output something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;origin  https://your_server/your_user_name/your_project_name.git (fetch)
+origin  https://your_server/your_user_name/your_project_name.git (push)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Change your remote repository’s URL with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git remote set-url origin git@your_server:your_user_name/your_project_name.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt; once more to verify that the remote repository’s URL has changed:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;origin  git@your_server:your_user_name/your_project_name.git (fetch)
+origin  git@your_server:your_user_name/your_project_name.git (push)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Great. That done, Git will use SSH, instead of HTTPS, to synchronize that local repository with its remote equivalent.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;I hope those tips can be useful to you as they have been to me since I started using Git. If you have any questions or trouble, don’t hesitate to comment! See you!&lt;/p&gt;
+
+&lt;p&gt;And always remember: have a lot of fun…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/connecting-to-github-with-ssh&quot;&gt;Connecting to GitHub with SSH - GitHub Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html&quot;&gt;Set up an SSH key - Atlassian Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/changing-a-remotes-url&quot;&gt;Changing a remote’s URL - GitHub Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.gitlab.com/ee/ssh/&quot;&gt;GitLab and SSH keys - GitLab&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 14 Jul 2019 19:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Sending digitally signed emails with Thunderbird</title>
@@ -2171,193 +2751,6 @@ $ cp -r Yaru-MATE/Theme/* ~/.local/share/themes/
                 <pubDate>Fri, 26 Apr 2019 10:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/04/26/monitor-system-resources-with-the-gnome-system-monitor-extension/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/04/26/monitor-system-resources-with-the-gnome-system-monitor-extension/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Get the most out of GNOME syncing your Google account</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Integrating your &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; account to the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop makes it more intelligent, productive and interesting, once you can have access to services like e-mail, calendar and files in the cloud straight from your desktop. Also, you can receive notifications from those services while using your computer. That integration is easy to setup, as you are going to see here.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;GNOME users setup their &lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;online accounts&lt;/a&gt; (such as &lt;a href=&quot;https://myaccount.google.com/&quot;&gt;Google accounts&lt;/a&gt;) using the &lt;strong&gt;Settings&lt;/strong&gt; app and then can access them using GNOME integrated apps.&lt;/p&gt;
-
-&lt;p&gt;If you work on a company or study at a school that provided you a &lt;a href=&quot;https://gsuite.google.com&quot;&gt;G Suite&lt;/a&gt; account, that account can be synced like any other Google account.&lt;/p&gt;
-
-&lt;p&gt;To add your Google (or G Suite) account to GNOME, open the &lt;strong&gt;Settings&lt;/strong&gt; app, click on &lt;strong&gt;Online Accounts&lt;/strong&gt; and then click on &lt;strong&gt;Google&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Sign in to your Google account (usually you inform your &lt;a href=&quot;https://gmail.com/&quot;&gt;Gmail&lt;/a&gt; address here):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Review the permissions GNOME is requesting and allow its access to your Google data:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Your account has been added and you can choose what you want to sync:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Or you can leave everything enabled (default).&lt;/p&gt;
-
-&lt;p&gt;Now you can close the &lt;strong&gt;Settings&lt;/strong&gt; app and open the many GNOME apps to see your Google data in them.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;&lt;strong&gt;Evolution&lt;/strong&gt;&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Collaborative_software&quot;&gt;groupware&lt;/a&gt; client shows your Gmail messages:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-05-en.jpg&quot; title=&quot;Evolution (e-mail)&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-05-en.jpg&quot; alt=&quot;Evolution (e-mail)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Evolution (e-mail)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt; is not integrated with GNOME online accounts. If you prefer Thunderbird to Evolution, you need to setup Gmail on Thunderbird.&lt;/p&gt;
-
-&lt;p&gt;Evolution is also capable of managing your &lt;a href=&quot;https://contacts.google.com/&quot;&gt;Google Contacts&lt;/a&gt; and your &lt;a href=&quot;https://calendar.google.com/&quot;&gt;Google Calendar&lt;/a&gt; events, but there are also specific apps for those. One of them is &lt;a href=&quot;https://wiki.gnome.org/Apps/Contacts&quot;&gt;&lt;strong&gt;Contacts&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-06-en.jpg&quot; title=&quot;Contacts&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-06-en.jpg&quot; alt=&quot;Contacts&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Contacts&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The other one is &lt;a href=&quot;https://wiki.gnome.org/Apps/Calendar&quot;&gt;&lt;strong&gt;Calendar&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-07-en.jpg&quot; title=&quot;Calendar&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-07-en.jpg&quot; alt=&quot;Calendar&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Calendar&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;You can also take a quick look at your Google Calendar events clicking on the &lt;strong&gt;date and time&lt;/strong&gt; entry in the GNOME &lt;strong&gt;top bar&lt;/strong&gt; and then clicking on a day in the calendar popup:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://wiki.gnome.org/Apps/Documents&quot;&gt;&lt;strong&gt;Documents&lt;/strong&gt;&lt;/a&gt; app shows your &lt;a href=&quot;https://docs.google.com/&quot;&gt;Google Docs&lt;/a&gt; documents:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-09-en.jpg&quot; title=&quot;Documents&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-09-en.jpg&quot; alt=&quot;Documents&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Documents&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;More generally, you can use the &lt;a href=&quot;https://wiki.gnome.org/Apps/Files&quot;&gt;&lt;strong&gt;Files&lt;/strong&gt;&lt;/a&gt; app to access your &lt;a href=&quot;https://drive.google.com/&quot;&gt;Google Drive&lt;/a&gt; files:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-10-en.jpg&quot; title=&quot;Files&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-10-en.jpg&quot; alt=&quot;Files&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Files&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Open up Files and notice an entry for your Google account. Click on that entry and Files will connect to Google Drive and list your files (that can take some time). You can open your files, edit, rename and delete them as if they were on your computer. When you are finished, close your files and click on &lt;strong&gt;Dismount&lt;/strong&gt;. Your Files disconnects from your Google Drive and remains disconnected until you click on that entry again.&lt;/p&gt;
-
-&lt;p&gt;Note that solution works differently, for instance, from the &lt;a href=&quot;https://www.dropbox.com/&quot;&gt;Dropbox&lt;/a&gt; client, which downloads all your files to the computer and allows you to work on them even when offline. GNOME Files downloads only the files you open and sends any changes immediately.&lt;/p&gt;
-
-&lt;p&gt;Não há um cliente oficial do Google Drive para Linux semelhante ao cliente para Dropbox.&lt;/p&gt;
-
-&lt;p&gt;Last but not least, if you have added any printer to &lt;a href=&quot;https://www.google.com/cloudprint&quot;&gt;Google Cloud Print&lt;/a&gt;, it appears on the list of available printers when you print any document:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-online-accounts-google-11-en.jpg&quot; title=&quot;Printers&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-online-accounts-google-11-en.jpg&quot; alt=&quot;Printers&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Printers&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Also is offered the option to save the document as &lt;a href=&quot;https://en.wikipedia.org/wiki/PDF&quot;&gt;PDF&lt;/a&gt; and send it to Google Drive.&lt;/p&gt;
-
-&lt;p&gt;The only GNOME app that I was not able to use with my Google account was &lt;a href=&quot;https://wiki.gnome.org/Apps/Photos&quot;&gt;&lt;strong&gt;Photos&lt;/strong&gt;&lt;/a&gt;, which probably should show my &lt;a href=&quot;https://photos.google.com/&quot;&gt;Google Photos&lt;/a&gt;, but it didn’t show them. That is &lt;a href=&quot;https://www.reddit.com/r/gnome/comments/60o9uv/online_accounts_google_photos/&quot;&gt;a known problem&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you work at a company whose e-mail is served by &lt;a href=&quot;https://products.office.com/exchange/email&quot;&gt;Microsoft Exchange&lt;/a&gt; or by &lt;a href=&quot;https://portal.office.com&quot;&gt;Office 365&lt;/a&gt;, note that you can also set it up as a GNOME online account. I showed how to do that on a previous post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2017/09/06/use-evolution-to-connect-to-office-365-on-linux/&quot;&gt;Use Evolution to connect to Office 365 on Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeOnlineAccounts&quot;&gt;GNOME Online Accounts - GNOME Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.techrepublic.com/article/how-to-connect-ubuntu-18-04-to-your-google-account/&quot;&gt;How to connect Ubuntu 18.04 to your Google account - TechRepublic&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.techrepublic.com/article/how-to-make-the-most-out-of-google-drive-on-gnome/&quot;&gt;How to make the most out of Google Drive on GNOME - TechRepublic&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-help/stable/accounts.html.en&quot;&gt;Online accounts - GNOME Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 10 Apr 2019 22:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/04/10/get-the-most-out-of-gnome-syncing-your-google-account/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/04/10/get-the-most-out-of-gnome-syncing-your-google-account/</guid>
                 
                 
                     <category>en</category>

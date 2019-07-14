@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -180,7 +184,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2017/04/09/usando-chaves-ssh-com-o-git/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -232,7 +236,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-07-03" />
+                <meta itemprop="dateModified" content="2019-07-14" />
             </div>
             <div class='col-sm-6'>
                 
@@ -596,9 +600,9 @@ seunomedeusuario@seucomputador:~&gt;
 </pre></td><td class="rouge-code"><pre>$ ssh -T git@github.com
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Com esse comando, você vai tentar acessar remotamente o servidor do GitHub.</p>
+<p>Com esse comando, você vai tentar <a href="/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/">acessar remotamente o servidor</a> do GitHub.</p>
 
-<p>Se você ainda não se conectou ao GitHub via SSH, o cliente SSH pergunta se pode confiar na chave fornecida pelo servidor do GitHub:</p>
+<p>Se você ainda não se conectou ao GitHub via SSH, o cliente SSH pergunta se pode confiar na chave pública fornecida pelo servidor do GitHub:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -622,6 +626,24 @@ Are you sure you want to continue connecting (yes/no)?
 
 <p>Teste concluído com sucesso, você já pode utilizar o SSH com o GitHub.</p>
 
+<p>Toda a interação deve gerar algo parecido com:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>seunomedeusuario@seucomputador:~&gt; ssh -T git@github.com
+The authenticity of host 'github.com (192.30.253.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+Hi seunomedeusuario! You've successfully authenticated, but GitHub does not provide shell access.
+seunomedeusuario@seucomputador:~&gt;
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <h3 id="gitlab-1">GitLab</h3>
 
 <p>Se você adicionou sua chave SSH à sua conta do GitLab, o teste é semelhante:</p>
@@ -632,12 +654,14 @@ Are you sure you want to continue connecting (yes/no)?
 4
 5
 6
+7
 </pre></td><td class="rouge-code"><pre>$ ssh -T git@gitlab.com
+
 The authenticity of host 'gitlab.com (35.231.145.151)' can't be established.
 ECDSA key fingerprint is SHA256:HbW3g8zUjNSksFbqTiUWPWg2Bq1x8xdGUrliXFzSnUw.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'gitlab.com,35.231.145.151' (ECDSA) to the list of known hosts.
-Welcome to GitLab, @vinyanalista!
+Welcome to GitLab, @seunomedeusuario!
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Teste efetuado com sucesso, você já pode utilizar o SSH com o GitLab.</p>
@@ -654,7 +678,9 @@ Welcome to GitLab, @vinyanalista!
 6
 7
 8
+9
 </pre></td><td class="rouge-code"><pre>$ ssh -T git@bitbucket.org
+
 The authenticity of host 'bitbucket.org (104.192.143.1)' can't be established.
 RSA key fingerprint is SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -703,8 +729,8 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 <p>No <a href="https://gitlab.com/">GitLab</a>, acesse o repositório de um projeto, clique em <strong>Clone</strong> e copie o URL para clonar o repositório usando SSH:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/gitlab-ssh-04.jpg" title="">
-<img src="/files/2019/07/gitlab-ssh-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-04-pt.jpg" title="">
+<img src="/files/2019/07/gitlab-ssh-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -718,8 +744,8 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 <p>Abra o terminal e execute o comando <code class="highlighter-rouge">git clone</code> passando o URL copiado:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/07/gitlab-ssh-05.png" title="">
-<img src="/files/2019/07/gitlab-ssh-05.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/07/gitlab-ssh-05-pt.png" title="">
+<img src="/files/2019/07/gitlab-ssh-05-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
