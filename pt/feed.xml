@@ -9,10 +9,226 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 21 Jul 2019 01:40:54 -0300</pubDate>
-        <lastBuildDate>Sun, 21 Jul 2019 01:40:54 -0300</lastBuildDate>
+        <pubDate>Tue, 23 Jul 2019 00:25:58 -0300</pubDate>
+        <lastBuildDate>Tue, 23 Jul 2019 00:25:58 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Integrando Open Build Service com GitHub</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você desenvolve &lt;em&gt;software&lt;/em&gt; para &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, deveria conhecer o &lt;a href=&quot;https://openbuildservice.org/&quot;&gt;&lt;strong&gt;Open Build Service (OBS)&lt;/strong&gt;&lt;/a&gt;. O que o torna uma ferramenta tão interessante? Extraído do seu &lt;a href=&quot;https://openbuildservice.org/&quot;&gt;&lt;em&gt;site&lt;/em&gt;&lt;/a&gt; (tradução livre minha):&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;O Open Build Service (OBS) é um sistema para compilar e distribuir pacotes binários a partir de códigos-fonte de forma automática, consistente e reprodutível. Você pode distribuir pacotes, assim como atualizações, &lt;em&gt;add-ons&lt;/em&gt;, &lt;em&gt;appliances&lt;/em&gt; e distribuições Linux inteiras para uma vasta gama de sistemas operacionais e arquiteturas de &lt;em&gt;hardware&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Na prática, você desenvolvedor pode enviar o código-fonte do seu &lt;em&gt;software&lt;/em&gt; para o OBS e obter pacotes prontos para instalar no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org&quot;&gt;Debian&lt;/a&gt;, &lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; e outras distribuições, assim como pacotes para &lt;a href=&quot;https://pt.wikipedia.org/wiki/X86&quot;&gt;i586&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/AMD64&quot;&gt;x86_64&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Arquitetura_ARM&quot;&gt;ARM&lt;/a&gt; e outras arquiteturas. Os usuários do &lt;em&gt;software&lt;/em&gt; podem baixar esses pacotes diretamente do OBS. Ele também é capaz de fazer &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;sistemas Live&lt;/a&gt;: você pode oferecer aos seus usuários a possibilidade de testar seu &lt;em&gt;software&lt;/em&gt; em um sistema limpo e controlado sem necessidade de instalação.&lt;/p&gt;
+
+&lt;p&gt;O OBS é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, de modo que você pode baixá-lo, instalá-lo em um servidor próprio e usá-lo localmente. Ou (mais facil) você pode usar o servidor de referência, disponível pública e gratuitamente em &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;. Esse servidor é usado principalmente para o desenvolvimento da distribuição openSUSE, mas também hospeda vários projetos comunitários.&lt;/p&gt;
+
+&lt;p&gt;Além disso, se você é um desenvolvedor, provavelmente conhece o &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; e o &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; — dispensam apresentações. E se eu te disser que você pode integrar o OBS com o GitHub de modo que seu &lt;em&gt;software&lt;/em&gt; seja sempre compilado, empacotado e disponibilizado para &lt;em&gt;download&lt;/em&gt; logo após um &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;? Ficou interessado?&lt;/p&gt;
+
+&lt;p&gt;Como configurar essa integração é o que você verá neste &lt;em&gt;post&lt;/em&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;começando-a-usar-o-obs&quot;&gt;Começando a usar o OBS&lt;/h2&gt;
+
+&lt;p&gt;Não vou falar sobre os conceitos básicos do OBS aqui, seria assunto para um &lt;em&gt;post&lt;/em&gt; inteiro. Para aprender o básico do OBS, consulte as páginas a seguir (em inglês):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/&quot;&gt;Documentation - Open Build Service&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Build_Service_Tutorial&quot;&gt;openSUSE:Build Service Tutorial - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vou assumir que você já consegue entrar (“fazer &lt;em&gt;login&lt;/em&gt;”) com sua conta do openSUSE em &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;. Se você ainda não tem uma conta, crie uma clicando no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;Sign Up&lt;/strong&gt; (inscrever-se) no topo da página.&lt;/p&gt;
+
+&lt;p&gt;Crie um pacote vazio para o seu &lt;em&gt;software&lt;/em&gt; no OBS. Aqui vou usar como exemplo o repositório &lt;a href=&quot;https://github.com/kamarada/patterns/tree/15.1-dev&quot;&gt;patterns&lt;/a&gt; do Linux Kamarada no GitHub, que no momento possui apenas um arquivo &lt;em&gt;spec&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você não sabe o que é um arquivo &lt;em&gt;spec&lt;/em&gt; e/ou é novo no empacotamento &lt;a href=&quot;https://pt.wikipedia.org/wiki/RPM_(software)&quot;&gt;RPM&lt;/a&gt;, leia (em inglês):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/index.html&quot;&gt;Fedora RPM Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Packaging_guidelines&quot;&gt;openSUSE:Packaging guidelines - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Também vou assumir que você instalou o &lt;a href=&quot;https://linux.die.net/man/1/osc&quot;&gt;&lt;strong&gt;osc&lt;/strong&gt;&lt;/a&gt; (o cliente de linha de comando do OBS) no seu computador. Se você usa openSUSE, pode instalar o &lt;strong&gt;osc&lt;/strong&gt; executando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install osc
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Crie uma cópia local (“faça &lt;em&gt;checkout&lt;/em&gt;”) do seu projeto pessoal (&lt;em&gt;home project&lt;/em&gt;) do OBS:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc checkout home:seu_nome_de_usuario
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Entre na pasta do pacote:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd home:seu_nome_de_usuario/nome_do_pacote
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora vamos integrar o OBS com o GitHub.&lt;/p&gt;
+
+&lt;h2 id=&quot;obs-obtendo-o-código-fonte-do-github&quot;&gt;OBS: obtendo o código-fonte do GitHub&lt;/h2&gt;
+
+&lt;p&gt;Usando o &lt;strong&gt;osc&lt;/strong&gt;, configure o serviço de código-fonte (&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html&quot;&gt;&lt;em&gt;source service&lt;/em&gt;&lt;/a&gt;) do OBS para obter o código-fonte do GitHub:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc add git://github.com/kamarada/patterns.git
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;É criado na pasta um arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_service&lt;/code&gt;. Abra-o e substitua seu conteúdo pelo seguinte:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;services&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;service&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;obs_scm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;scm&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;git&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;git://github.com/kamarada/patterns.git&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;revision&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;15.1-dev&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;extract&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;patterns-kamarada-gnome.spec&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/service&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/services&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note que estou usando o ramo (&lt;em&gt;branch&lt;/em&gt;) &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1-dev&lt;/code&gt;. Se você pretende usar o ramo &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; para o seu pacote, pode simplesmente omitir o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;revision&lt;/code&gt; (revisão).&lt;/p&gt;
+
+&lt;p&gt;Comite as alterações (“faça o &lt;em&gt;commit&lt;/em&gt;” das alterações):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc commit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Comitar para o OBS automaticamente dispara o serviço de código-fonte e o processo de compilação e empacotamento. Se você acessar &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;, verá que seu projeto está compilando (&lt;em&gt;building&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para que o GitHub possa disparar essas mesmas ações, você precisa gerar um &lt;em&gt;token&lt;/em&gt; de autorização (&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.authorization.token.html#id-1.7.18.4&quot;&gt;&lt;em&gt;authorization token&lt;/em&gt;&lt;/a&gt;) usando o &lt;strong&gt;osc&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc token --create home:seu_nome_de_usuario nome_do_pacote
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O comando retornará o &lt;em&gt;token&lt;/em&gt; e sua identificação (&lt;em&gt;id&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;status&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;code=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;Ok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;UmAsTrInGeNoRmEcOmSeUtOkEn&lt;span class=&quot;nt&quot;&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;data&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;4321&lt;span class=&quot;nt&quot;&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/status&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Como teste, você pode disparar manualmente a criação do seu pacote usando esse &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ osc token --trigger UmAsTrInGeNoRmEcOmSeUtOkEn
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se você acessar &lt;a href=&quot;https://build.opensuse.org&quot;&gt;build.opensuse.org&lt;/a&gt;, verá que seu projeto está compilando.&lt;/p&gt;
+
+&lt;h2 id=&quot;github-avisando-novos-commits-ao-obs&quot;&gt;GitHub: avisando novos commits ao OBS&lt;/h2&gt;
+
+&lt;p&gt;Queremos atualizar o código-fonte do nosso pacote no OBS toda vez que ele mudar no GitHub. Podemos fazer com que o GitHub dispare automaticamente essa atualização configurando um &lt;a href=&quot;https://developer.github.com/webhooks/&quot;&gt;&lt;em&gt;webhook&lt;/em&gt; do GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para fazer isso, execute os seguintes passos:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Entre (&lt;em&gt;sign in&lt;/em&gt;) no GitHub e vá até seu repositório (no meu caso, &lt;a href=&quot;https://github.com/kamarada/patterns&quot;&gt;https://github.com/kamarada/patterns&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Clique em &lt;strong&gt;Settings&lt;/strong&gt; (configurações)&lt;/li&gt;
+  &lt;li&gt;Clique em &lt;strong&gt;Webhooks&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Clique no botão &lt;strong&gt;Add webhook&lt;/strong&gt; (adicionar &lt;em&gt;webhook&lt;/em&gt;):&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Forneça os seguintes parâmetros:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Payload URL&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;https://build.opensuse.org/trigger/webhook?id=4321&lt;/code&gt; (endereço de carregamento, substitua &lt;code class=&quot;highlighter-rouge&quot;&gt;4321&lt;/code&gt; pela &lt;em&gt;id&lt;/em&gt; do seu &lt;em&gt;token&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Content type&lt;/strong&gt; (tipo do conteúdo): &lt;code class=&quot;highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt; (padrão)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Secret&lt;/strong&gt; (segredo, senha): &lt;code class=&quot;highlighter-rouge&quot;&gt;AcRaZyStRiNgWhIcHiSyOuRtOkeN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Deixe os outros parâmetros como estão, com seus valores padrão:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SSL verification&lt;/strong&gt;: Enable SSL verification (verificação SSL: habilitar)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Which events would you like to trigger this webhook?&lt;/strong&gt; Just the push event (que eventos você gostaria que disparassem este &lt;em&gt;webhook&lt;/em&gt;? Apenas o evento &lt;em&gt;push&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Active&lt;/strong&gt; (ativo)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finalmente, clique no botão verde &lt;strong&gt;Add webhook&lt;/strong&gt; (adicionar &lt;em&gt;webhook&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-3.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-3.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à página anterior, você pode ver o &lt;em&gt;webhook&lt;/em&gt; adicionado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/03/obs-and-github-4.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/03/obs-and-github-4.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A partir de agora, cada &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; para o GitHub irá disparar automaticamente uma reconstrução do pacote no OBS. Seu nome de usuário aparecerá no histórico do código-fonte do OBS, que pode ser verificado com o comando &lt;code class=&quot;highlighter-rouge&quot;&gt;osc log&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Divirta-se muito! (&lt;em&gt;Have a lot of fun!&lt;/em&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/openSUSE:Build_Service_Tutorial&quot;&gt;openSUSE:Build Service Tutorial - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/2013/11/22/source-update-via_token/&quot;&gt;Let github.com trigger your source update - OBS blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-buildservice/2018-05/msg00042.html&quot;&gt;OBS + GitHub - deprecation of GitHub Services - opensuse-buildservice Mailing List Archive&lt;/a&gt; (e a &lt;a href=&quot;https://lists.opensuse.org/opensuse-buildservice/2018-10/msg00034.html&quot;&gt;sequência&lt;/a&gt; alguns meses depois)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_scm_integration&quot;&gt;Integrating External Source Repositories - OBS Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html&quot;&gt;Using Source Services - OBS User Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.authorization.token.html#id-1.7.18.4&quot;&gt;OBS Token Authorization - OBS Reference Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/seccubus/obs_autobuild_test&quot;&gt;GitHub - seccubus/obs_autobuild_test: Test to see how you make OpenSUSE build services build automagically&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 23 Jul 2019 00:15:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/07/23/integrando-open-build-service-com-github/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/07/23/integrando-open-build-service-com-github/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>20 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 2</title>
@@ -2147,221 +2363,6 @@ $ cp -r Yaru-MATE/Theme/* ~/.local/share/themes/
                 <pubDate>Thu, 04 Apr 2019 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Transmitindo do Linux para a TV com Chromecast</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://store.google.com/product/chromecast&quot;&gt;Google Chromecast&lt;/a&gt; é um pequeno aparelho que, conectado à rede Wi-Fi e à TV por &lt;a href=&quot;https://pt.wikipedia.org/wiki/High-Definition_Multimedia_Interface&quot;&gt;HDMI&lt;/a&gt;, permite que você transmita músicas, vídeos, páginas da Internet ou até mesmo toda a tela do seu computador, &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt; para a TV.&lt;/p&gt;
-
-&lt;p&gt;No computador, você pode usar o navegador &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; ou o seu equivalente aberto, o &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, para fazer transmissões. Nessa página você vai aprender como fazer isso.&lt;/p&gt;
-
-&lt;h2 id=&quot;configuração-do-chromecast&quot;&gt;Configuração do Chromecast&lt;/h2&gt;
-
-&lt;p&gt;Antes de começar, certifique-se que seu Chromecast esteja pronto para receber transmissões.&lt;/p&gt;
-
-&lt;p&gt;Não é possível fazer a configuração inicial do Chromecast usando um computador. Caso seu Chromecast ainda não esteja pronto, você deve usar &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt; para configurá-lo.&lt;/p&gt;
-
-&lt;p&gt;Para mais informações, consulte a ajuda do Chromecast:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456?hl=pt-BR&quot;&gt;Configurar seu dispositivo Chromecast - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Já foi possível configurar um Chromecast usando um computador. Essa possibilidade foi &lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;descontinuada&lt;/a&gt; com o lançamento da &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;versão 72 do navegador Chrome&lt;/a&gt; em &lt;a href=&quot;https://chromereleases.googleblog.com/2019/01/stable-channel-update-for-desktop.html&quot;&gt;janeiro de 2019&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;configuração-do-computador&quot;&gt;Configuração do computador&lt;/h2&gt;
-
-&lt;p&gt;Para transmitir de um computador para o Chromecast, ambos devem estar conectados à mesma rede (a rede doméstica, por exemplo).&lt;/p&gt;
-
-&lt;p&gt;Além disso, é necessário fazer algumas configurações no computador antes da primeira transmissão. Uma delas é liberar no &lt;em&gt;firewall&lt;/em&gt; as portas usadas pelo Chromecast.&lt;/p&gt;
-
-&lt;p&gt;De acordo com &lt;a href=&quot;https://blog.g3rt.nl/allow-google-chromecast-host-firewall-iptables.html&quot;&gt;essa página&lt;/a&gt;, o Chromecast usa as portas:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;8008 e 8009 TCP; e&lt;/li&gt;
-  &lt;li&gt;32768 a 61000 UDP.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Desde o lançamento do openSUSE Leap 15, o &lt;em&gt;firewall&lt;/em&gt; padrão do openSUSE é o &lt;a href=&quot;https://firewalld.org/&quot;&gt;&lt;strong&gt;firewalld&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para configurá-lo, inicie o aplicativo &lt;strong&gt;Firewall&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(pode clicar em qualquer um dos dois ícones)&lt;/p&gt;
-
-&lt;p&gt;Será solicitada a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), você deve fornecê-la para continuar.&lt;/p&gt;
-
-&lt;p&gt;Mude o campo &lt;strong&gt;Configuração&lt;/strong&gt; (na parte de cima) para &lt;strong&gt;Permanente&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Logo abaixo, selecione a aba &lt;strong&gt;Serviços&lt;/strong&gt; e clique no botão &lt;strong&gt;Adicionar Serviço&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Configurações do serviço base&lt;/strong&gt;, informe em &lt;strong&gt;Nome:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;chromecast&lt;/code&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela principal, selecione o recém criado serviço &lt;strong&gt;chromecast&lt;/strong&gt;, selecione a aba &lt;strong&gt;Portas&lt;/strong&gt; e clique em &lt;strong&gt;Adicionar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;No campo &lt;strong&gt;Porta / Intervalo de portas&lt;/strong&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;8008-8009&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em &lt;strong&gt;Protocolo&lt;/strong&gt;, selecione &lt;strong&gt;tcp&lt;/strong&gt;. Depois, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Adicione as portas UDP da mesma forma: clique em &lt;strong&gt;Adicionar&lt;/strong&gt;. Em &lt;strong&gt;Porta / Intervalo de portas&lt;/strong&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;32768-61000&lt;/code&gt;. Em &lt;strong&gt;Protocolo&lt;/strong&gt;, selecione &lt;strong&gt;udp&lt;/strong&gt;. Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ao final, sua janela deve estar assim:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique no menu &lt;strong&gt;Opções&lt;/strong&gt; e depois, na opção &lt;strong&gt;Recarregar Firewalld&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione a aba &lt;strong&gt;Zonas&lt;/strong&gt;. Depois, selecione a zona &lt;strong&gt;home&lt;/strong&gt; (casa) e na aba &lt;strong&gt;Serviços&lt;/strong&gt; (há duas abas &lt;strong&gt;Serviços&lt;/strong&gt;, agora me refiro à de baixo), marque o serviço &lt;strong&gt;chromecast&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Recarregue o &lt;em&gt;firewall&lt;/em&gt; mais uma vez (menu &lt;strong&gt;Opções&lt;/strong&gt;, opção &lt;strong&gt;Recarregar Firewalld&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Por fim, selecione a conexão Wi-Fi à esquerda (&lt;strong&gt;wlan1&lt;/strong&gt;) e clique em &lt;strong&gt;Mudar Zona&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Selecione a zona &lt;strong&gt;home&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com isso, você liberou no &lt;em&gt;firewall&lt;/em&gt; conexões com dispositivos Chromecast em redes domésticas e informou que a rede atual é uma rede doméstica.&lt;/p&gt;
-
-&lt;p&gt;Você pode classificar diferentes redes em diferentes zonas: casa, trabalho, pública. Por padrão, todas as redes são tratadas como públicas e poucos serviços são liberados, mas não vou entrar em detalhes sobre &lt;em&gt;firewall&lt;/em&gt; agora.&lt;/p&gt;
-
-&lt;p&gt;Se você usa o navegador aberto Chromium, há mais uma configuração que precisa fazer. Por padrão, ele vem configurado para não procurar por dispositivos Chromecast na rede.&lt;/p&gt;
-
-&lt;p&gt;Vamos mudar isso. Abra o navegador, acesse o endereço &lt;code class=&quot;highlighter-rouge&quot;&gt;chrome://flags/#load-media-router-component-extension&lt;/code&gt; e selecione &lt;strong&gt;Enabled&lt;/strong&gt; (habilitado):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Reinicie o navegador.&lt;/p&gt;
-
-&lt;p&gt;Agora estamos prontos para transmitir!&lt;/p&gt;
-
-&lt;h2 id=&quot;como-transmitir&quot;&gt;Como transmitir&lt;/h2&gt;
-
-&lt;p&gt;Navegue até o vídeo ou página que deseja transmitir, abra o menu do navegador e clique na opção &lt;strong&gt;Transmitir&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique no &lt;strong&gt;Chromecast&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Feito isso, você pode controlar a transmissão pelo navegador:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Sua TV já deve ter som e imagem que vem do computador via Chromecast.&lt;/p&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Parar&lt;/strong&gt; quando não quiser mais transmitir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; para fixar o botão &lt;strong&gt;Transmitir&lt;/strong&gt; ao lado da barra de endereços, clique com o botão direito nele e depois em &lt;strong&gt;Sempre mostrar ícone&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/03/chromecast-13-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/03/chromecast-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Siga o Linux Kamarada para ver outras dicas de como usar seu computador com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; em conjunto com seu Chromecast.&lt;/p&gt;
-
-&lt;h1 id=&quot;referências&quot;&gt;Referências&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456?hl=pt-BR&quot;&gt;Configurar seu dispositivo Chromecast - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://9to5google.com/2018/12/30/chrome-72-killing-chromecast-setup-mac-windows/&quot;&gt;Google killing desktop Chromecast setup for Mac and PC with Chrome 72 - 9to5Google&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/Chromium&quot;&gt;Chromium - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://firewalld.org/documentation/howto/add-a-service.html&quot;&gt;Documentation - HowTo - Add a Service - firewalld&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.thegeekdiary.com/5-useful-examples-of-firewall-cmd-command/&quot;&gt;5 Useful Examples of firewall-cmd command - The Geek Diary&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7&quot;&gt;How To Set Up a Firewall Using FirewallD on CentOS 7 - DigitalOcean&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/7249696?hl=pt-BR&quot;&gt;Adicionar o botão Transmitir à barra de ferramentas do Chrome - Ajuda do Chromecast&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 26 Mar 2019 01:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/03/26/transmitindo-do-linux-para-a-tv-com-chromecast/</guid>
                 
                 
                     <category>pt</category>
