@@ -9,10 +9,252 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 23 Jul 2019 00:25:58 -0300</pubDate>
-        <lastBuildDate>Tue, 23 Jul 2019 00:25:58 -0300</lastBuildDate>
+        <pubDate>Sun, 11 Aug 2019 02:17:56 -0300</pubDate>
+        <lastBuildDate>Sun, 11 Aug 2019 02:17:56 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Como jogar Super Nintendo no openSUSE com o emulador Snes9x</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;&lt;strong&gt;Super Nintendo Entertainment System&lt;/strong&gt;&lt;/a&gt; (&lt;strong&gt;SNES&lt;/strong&gt;), mais conhecido simplesmente por &lt;strong&gt;Super Nintendo&lt;/strong&gt;, foi um console de &lt;em&gt;videogame&lt;/em&gt; de 16 &lt;em&gt;bits&lt;/em&gt; fabricado pela &lt;a href=&quot;https://www.nintendo.com/pt_BR/&quot;&gt;Nintendo&lt;/a&gt; durante a década de 90. Foi um sucesso à época, com quase 50 milhões de unidades vendidas e diversos jogos emplacados, como &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Mario_World&quot;&gt;Super Mario World&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Donkey_Kong_Country&quot;&gt;Donkey Kong Country&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Mario_Kart&quot;&gt;Super Mario Kart&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Street_Fighter_II&quot;&gt;Street Fighter&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/The_Legend_of_Zelda:_A_Link_to_the_Past&quot;&gt;Zelda&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Final_Fantasy_IV&quot;&gt;Final Fantasy&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Chrono_Trigger&quot;&gt;Chrono Trigger&lt;/a&gt; e outros.&lt;/p&gt;
+
+&lt;p&gt;Gostaria de relembrar algum desses clássicos? Sabia que há um programa próprio para isso, chamado de emulador?&lt;/p&gt;
+
+&lt;p&gt;Um &lt;strong&gt;emulador&lt;/strong&gt; é um programa que permite que seu computador execute programas feitos para outros dispositivos. Um emulador de um &lt;em&gt;videogame&lt;/em&gt; permite que seu computador rode os jogos feitos para aquele &lt;em&gt;videogame&lt;/em&gt;. Comumente, os arquivos que contém os jogos são chamados de &lt;strong&gt;ROMs&lt;/strong&gt;. No caso do Super Nintendo, a ROM seria o conteúdo do cartucho.&lt;/p&gt;
+
+&lt;p&gt;Existem alguns emuladores de Super Nintendo. Um dos mais conhecidos é o Snes9x.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;http://www.snes9x.com/&quot;&gt;&lt;strong&gt;Snes9x&lt;/strong&gt;&lt;/a&gt; é um emulador multi-plataforma capaz de emular a maioria dos jogos de Super Nintendo no computador. É um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; e seu código-fonte está disponível no &lt;a href=&quot;https://github.com/snes9xgit/snes9x&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e usar o Snes9x na distribuição Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;aviso-legal&quot;&gt;Aviso legal&lt;/h2&gt;
+
+&lt;p&gt;No Brasil, de acordo com a Lei de Programa de Computador (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/leis/l9609.htm&quot;&gt;Lei nº 9.609 de 1998&lt;/a&gt;), você só pode armazenar em seu computador ROMs de jogos que você comprou e que estejam sob sua posse. Disponibilizar ROMs para &lt;em&gt;download&lt;/em&gt; é uma violação de direitos autorais (“pirataria”), mas baixá-las, não (desde que você tenha os jogos originais).&lt;/p&gt;
+
+&lt;p&gt;Alguns &lt;em&gt;sites&lt;/em&gt; afirmam, erroneamente, que você pode baixar ROMs contanto que as apague dentro de 24 horas, mas isso não possui fundamento jurídico.&lt;/p&gt;
+
+&lt;p&gt;Na prática, como no Brasil ninguém fiscaliza o que você baixa, depende apenas da sua consciência baixar ou não baixar ROMs e quais ROMs baixar.&lt;/p&gt;
+
+&lt;p&gt;Aparentemente, não há problema legal quanto aos emuladores, pois até o momento nenhuma empresa conseguiu impedir sua distribuição. Os desenvolvedores alegam que usam engenharia reversa para criar os emuladores e, por isso, estão dentro da lei.&lt;/p&gt;
+
+&lt;h2 id=&quot;onde-baixar-roms&quot;&gt;Onde baixar ROMs&lt;/h2&gt;
+
+&lt;p&gt;Uma simples pesquisa em mecanismos de busca como o &lt;a href=&quot;https://www.google.com.br/search?q=roms+de+super+nintendo&quot;&gt;Google&lt;/a&gt; revela &lt;em&gt;sites&lt;/em&gt; que disponibilizam diversas &lt;a href=&quot;https://www.google.com.br/search?q=roms+de+super+nintendo&quot;&gt;ROMs de jogos para Super Nintendo para &lt;em&gt;download&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;requisitos-mínimos-do-snes9x&quot;&gt;Requisitos mínimos do Snes9x&lt;/h2&gt;
+
+&lt;p&gt;Para emular jogos de Super Nintendo no Linux usando o Snes9x você não precisa de um supercomputador. A &lt;a href=&quot;https://github.com/snes9xgit/snes9x/blob/master/unix/docs/readme_unix.html&quot;&gt;documentação&lt;/a&gt; fala em no mínimo um processador Pentium 2 300MHz com 16MB de memória RAM, ou um processador de 1GHz para uma experiência perfeita. Se seu computador tem 10 anos ou menos (pra dar uma noção, estamos falando de 2009, lançamento do &lt;a href=&quot;https://pt.wikipedia.org/wiki/Windows_7&quot;&gt;Windows 7&lt;/a&gt;), com certeza se encaixa nessas especificações.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-snes9x&quot;&gt;Instalando o Snes9x&lt;/h2&gt;
+
+&lt;p&gt;Você pode instalar o Snes9x no openSUSE de duas formas: pela interface gráfica, usando a instalação com 1 clique (&lt;em&gt;1-Click Install&lt;/em&gt;), ou pelo terminal, usando o gerenciador de pacotes &lt;strong&gt;zypper&lt;/strong&gt;. Escolha a que prefere.&lt;/p&gt;
+
+&lt;p&gt;Para instalar usando a instalação com 1 clique, clique no botão abaixo:&lt;/p&gt;
+
+&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/snes9x.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; Instalação com 1 clique&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Para instalar usando o terminal, primeiro adicione o repositório necessário:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f http://download.opensuse.org/repositories/Emulators/openSUSE_Leap_15.1/ emuladores
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, instale o pacote do Snes9x:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in snes9x
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Após a instalação, você já deve ser capaz de iniciar o emulador.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-o-snes9x&quot;&gt;Iniciando o Snes9x&lt;/h2&gt;
+
+&lt;p&gt;Se você possui um &lt;em&gt;joystick&lt;/em&gt; e pretende jogar com ele, conecte-o antes de iniciar o emulador.&lt;/p&gt;
+
+&lt;p&gt;Para iniciar o Snes9x, se você usa o ambiente &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, comece a digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;snes9x&lt;/code&gt; e clique no ícone do emulador:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-launching-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-launching-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-start-screen.png&quot; title=&quot;A tela inicial do Snes9x&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-start-screen.png&quot; alt=&quot;A tela inicial do Snes9x&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;A tela inicial do Snes9x&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurando-o-snes9x&quot;&gt;Configurando o Snes9x&lt;/h2&gt;
+
+&lt;p&gt;Existem algumas configurações que você precisa fazer antes de começar a jogar. Normalmente, elas são feitas apenas uma vez, no primeiro uso do emulador.&lt;/p&gt;
+
+&lt;h3 id=&quot;configuração-dos-controles&quot;&gt;Configuração dos controles&lt;/h3&gt;
+
+&lt;p&gt;Para acessar as configurações do Snes9x, abra o menu &lt;strong&gt;Options&lt;/strong&gt; e clique em &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-preferences.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-preferences.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para configurar os controles, selecione a aba &lt;strong&gt;Joypads&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-keyboard.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-keyboard.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa caixa de diálogo lista os botões do &lt;em&gt;joystick&lt;/em&gt; do Super Nintendo e os botões correspondentes no computador. Para associar um botão do Super Nintendo, clique no campo e pressione a tecla do teclado ou o botão do &lt;em&gt;joystick&lt;/em&gt; que deseja associar.&lt;/p&gt;
+
+&lt;p&gt;Por padrão, o Snes9x muda para o botão seguinte, permitindo que você atribua os 12 botões com agilidade. Comece associando o primeiro botão (&lt;strong&gt;Up&lt;/strong&gt;, cima). Depois que você associar o botão &lt;strong&gt;Up&lt;/strong&gt;, o Snes9x muda para &lt;strong&gt;Down&lt;/strong&gt; (baixo), depois para &lt;strong&gt;Left&lt;/strong&gt; (esquerda), depois &lt;strong&gt;Right&lt;/strong&gt; (direita), depois &lt;strong&gt;Start&lt;/strong&gt; (iniciar) e assim sucessivamente.&lt;/p&gt;
+
+&lt;p&gt;Se quiser uma sugestão de configuração, consulte essa imagem:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-setup.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-setup.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você for jogar a dois, para configurar os controles do segundo jogador, mude &lt;strong&gt;Joypad&lt;/strong&gt; para &lt;strong&gt;2&lt;/strong&gt; e repita o processo. Para o segundo jogador, vou usar um &lt;em&gt;joystick&lt;/em&gt; USB:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-joypad.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-joypad.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;configuração-do-som&quot;&gt;Configuração do som&lt;/h3&gt;
+
+&lt;p&gt;Precisamos fazer mais uma configuração antes de começar a jogar: indicar ao Snes9x qual sistema de som usar. No openSUSE, o sistema de som instalado por padrão é o &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/PulseAudio/&quot;&gt;PulseAudio&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Selecione a aba &lt;strong&gt;Sound&lt;/strong&gt;. Na opção &lt;strong&gt;Sound driver&lt;/strong&gt;, selecione &lt;strong&gt;PulseAudio&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-sound.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-sound.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para salvar as configurações e fechar a caixa de diálogo de preferências.&lt;/p&gt;
+
+&lt;h2 id=&quot;abrindo-uma-rom&quot;&gt;Abrindo uma ROM&lt;/h2&gt;
+
+&lt;p&gt;Para abrir uma ROM, abra o menu &lt;strong&gt;File&lt;/strong&gt; e clique em &lt;strong&gt;Open ROM Image&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-open-rom-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-open-rom-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Navegue até a pasta onde está a ROM que deseja jogar e dê dois cliques nela. Normalmente é um arquivo com a extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.smc&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.sfc&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-open-rom-2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-open-rom-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O jogo deve começar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-game-started.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-game-started.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;salvando-e-retomando&quot;&gt;Salvando e retomando&lt;/h2&gt;
+
+&lt;p&gt;Uma vantagem do emulador em relação ao &lt;em&gt;videogame&lt;/em&gt; é que você pode salvar o estado do jogo a qualquer momento, assim como retomar a qualquer momento do ponto em que salvou.&lt;/p&gt;
+
+&lt;p&gt;Jogando no Snes9x, você pode salvar da mesma forma que no Super Nintendo (usando o menu do próprio jogo), ou pode usar uma das 10 memórias que o emulador oferece.&lt;/p&gt;
+
+&lt;p&gt;Para salvar o estado do jogo, abra o menu &lt;strong&gt;File&lt;/strong&gt;, aponte para &lt;strong&gt;Save State&lt;/strong&gt; e escolha uma das memórias (&lt;em&gt;slots&lt;/em&gt;) disponíveis:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-save-state.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-save-state.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para retomar um estado previamente salvo, abra o menu &lt;strong&gt;File&lt;/strong&gt;, aponte para &lt;strong&gt;Load State&lt;/strong&gt; e escolha a memória que deseja retomar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-load-state.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-load-state.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para facilitar salvar e retomar, você pode criar atalhos do teclado para cada memória. Para isso, vá em &lt;strong&gt;Options&lt;/strong&gt;, &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Shortcuts&lt;/strong&gt;, &lt;strong&gt;Save states&lt;/strong&gt; e defina os atalhos de teclado, da mesma forma como definiu os controles:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-shortcuts.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-shortcuts.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Recomendo definir &lt;strong&gt;Shift + F1&lt;/strong&gt; para salvar na memória 0 e &lt;strong&gt;F1&lt;/strong&gt; para retomar da memória 0 e de forma análoga para as demais (para a memória 1, &lt;strong&gt;Shift + F2&lt;/strong&gt; e &lt;strong&gt;F2&lt;/strong&gt;, e assim sucessivamente).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se você usa um &lt;em&gt;joystick&lt;/em&gt; USB parecido com um &lt;em&gt;joystick&lt;/em&gt; de Playstation, deve ter notado que sobraram botões na configuração (ele tem mais botões que o &lt;em&gt;joystick&lt;/em&gt; do Super Nintendo). Você pode associar os botões &lt;strong&gt;L2&lt;/strong&gt; e &lt;strong&gt;R2&lt;/strong&gt; a salvar e retomar um estado.&lt;/p&gt;
+
+&lt;h2 id=&quot;tela-cheia&quot;&gt;Tela cheia&lt;/h2&gt;
+
+&lt;p&gt;Se quiser jogar em tela cheia, abra o menu &lt;strong&gt;View&lt;/strong&gt; e clique em &lt;strong&gt;Fullscreen&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para sair do moto tela cheia, pressione &lt;strong&gt;Esc&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Encerro minha parte por aqui. Agora é com você: boa diversão!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;Super Nintendo Entertainment System - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.memoriabit.com.br/emulando-velharias-como-jogar-games-do-snes-no-emulador-snes9x/&quot;&gt;Emulação: como jogar SNES no computador com o Snes9X - Memória BIT&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.memoriabit.com.br/snes9x-pt-br/&quot;&gt;Snes9xBR – emulador de Super Nintendo em português - Memória BIT&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pcigames.blogspot.com/2013/04/Configurando-o-emulador-Snes9x-para-melhor-grafico.html&quot;&gt;Configurando o emulador Snes9x para melhor gráfico - PC e Games&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fantasyanime.com/emuhelp/snes9x&quot;&gt;Snes9X Tutorial - Video Game Emulation for Newbies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Revista PC Emuladores, ano 1, nº 2, São Paulo, Editora Escala&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 11 Aug 2019 02:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/08/11/como-jogar-super-nintendo-no-opensuse-com-o-emulador-snes9x/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/08/11/como-jogar-super-nintendo-no-opensuse-com-o-emulador-snes9x/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Integrando Open Build Service com GitHub</title>
@@ -2192,177 +2434,6 @@ $ cp -r Yaru-MATE/Theme/* ~/.local/share/themes/
                 <pubDate>Tue, 09 Apr 2019 23:50:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/04/09/tire-o-maximo-proveito-do-gnome-sincronizando-sua-conta-do-google/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/04/09/tire-o-maximo-proveito-do-gnome-sincronizando-sua-conta-do-google/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Monitorando recursos do sistema com a extensão do GNOME System Monitor</title>
-                <description>&lt;p&gt;Você é do tipo que consome muita memória RAM? Navegador com várias guias abertas, ambiente de desenvolvimento, máquina virtual, emulador do &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; são alguns exemplos de programas que podem drenar recursos do seu computador. Como monitorá-los para prevenir o travamento do computador? Se você usa o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, pode instalar a extensão &lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;System Monitor&lt;/a&gt;. Como fazer isso é o que você verá nesse &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; title=&quot;A extensão do GNOME System Monitor&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-01.jpg&quot; alt=&quot;A extensão do GNOME System Monitor&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 450px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A extensão do GNOME System Monitor&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O ambiente GNOME foca na usabilidade e traz consigo apenas um conjunto essencial de recursos, em contrapartida apresenta um funcionamento bem estável. Mas você pode estendê-lo com &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;extensões&lt;/a&gt;, algumas bastante úteis. Caso ainda não conheça, visite:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hoje vou mostrar como instalar a extensão System Monitor (do inglês &lt;em&gt;monitor do sistema&lt;/em&gt;), que fornece de forma gráfica, rápida e acessível diversas informações sobre o desempenho e consumo de recursos do sistema. Dentre elas, o uso da memória RAM.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalando-o-suporte-a-extensões-do-gnome&quot;&gt;Instalando o suporte a extensões do GNOME&lt;/h2&gt;
-
-&lt;p&gt;Para personalizar o GNOME usando extensões, você vai precisar do aplicativo &lt;a href=&quot;https://wiki.gnome.org/Apps/Tweaks&quot;&gt;&lt;strong&gt;Ajustes&lt;/strong&gt;&lt;/a&gt; (&lt;em&gt;Tweaks&lt;/em&gt;, não confundir com o aplicativo &lt;a href=&quot;https://wiki.gnome.org/Design/Apps/Settings&quot;&gt;&lt;strong&gt;Configurações&lt;/strong&gt;&lt;/a&gt;, &lt;em&gt;Settings&lt;/em&gt;). Se você usa a distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; com o ambiente GNOME, esse aplicativo já vem instalado por padrão. Mas caso precise, ele é fornecido pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-tweak-tool&quot;&gt;gnome-tweak-tool&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Há também algumas extensões que já fazem parte da própria distribuição e são fornecidas pelo pacote &lt;a href=&quot;https://software.opensuse.org/package/gnome-shell-extensions-common&quot;&gt;gnome-shell-extensions-common&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; title=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-02-pt.jpg&quot; alt=&quot;O aplicativo Ajustes mostrando as extensões instaladas&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;O aplicativo Ajustes mostrando as extensões instaladas&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Além disso, se você acessou o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;, talvez tenha visto o aviso:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;To control GNOME Shell extensions using this site you must install GNOME Shell integration that consists of two parts: browser extension and native host messaging application.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;(para controlar as extensões do GNOME Shell usando este &lt;em&gt;site&lt;/em&gt; você deve instalar a integração do GNOME Shell que consiste em duas partes: extensão do navegador e aplicativo de mensagens nativas)&lt;/p&gt;
-
-&lt;p&gt;Quanto à extensão do navegador, você pode instalá-la clicando no &lt;em&gt;link&lt;/em&gt; apresentado pela própria mensagem, ou clicar em um dos &lt;em&gt;links&lt;/em&gt; a seguir, conforme o navegador que você usa:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;para &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.chromium.org/Home&quot;&gt;Chromium&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/pt-br/&quot;&gt;Opera&lt;/a&gt; e &lt;a href=&quot;https://vivaldi.com/&quot;&gt;Vivaldi&lt;/a&gt;: visite a &lt;a href=&quot;https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep&quot;&gt;Chrome Web Store&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;para &lt;a href=&quot;https://www.mozilla.org/pt-BR/&quot;&gt;Mozilla Firefox&lt;/a&gt;: visite o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://addons.mozilla.org/pt-BR/firefox/addon/gnome-shell-integration/&quot;&gt;Mozilla Addons&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A segunda parte, que é o aplicativo, também é fornecida pela própria distribuição por meio do pacote &lt;a href=&quot;https://software.opensuse.org/package/chrome-gnome-shell&quot;&gt;chrome-gnome-shell&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para instalar todos os pacotes necessários de uma vez só, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-tweak-tool gnome-shell-extensions-common chrome-gnome-shell typelib-1_0-GTop-2_0 typelib-1_0-NetworkManager-1_0
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(já que o objetivo é instalar tudo de uma vez só, incluí os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt;, que são solicitados pela extensão System Monitor)&lt;/p&gt;
-
-&lt;p&gt;Com tudo instalado, reinicie o computador (talvez seja suficiente fazer &lt;em&gt;logout&lt;/em&gt; e &lt;em&gt;login&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Abra o navegador e visite mais uma vez o &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://extensions.gnome.org/&quot;&gt;GNOME Shell Extensions&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Perceba que dessa vez o aviso não aparece.&lt;/p&gt;
-
-&lt;p&gt;Agora você está pronto para instalar e usar extensões do GNOME!&lt;/p&gt;
-
-&lt;h2 id=&quot;instalando-a-extensão-system-monitor&quot;&gt;Instalando a extensão System monitor&lt;/h2&gt;
-
-&lt;p&gt;Para conseguir monitorar os recursos do sistema, a extensão System Monitor requer que os pacotes &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-GTop-2_0&quot;&gt;typelib-1_0-GTop-2_0&lt;/a&gt; e &lt;a href=&quot;https://software.opensuse.org/package/typelib-1_0-NetworkManager-1_0&quot;&gt;typelib-1_0-NetworkManager-1_0&lt;/a&gt; estejam instalados. Já fizemos essa instalação no passo anterior.&lt;/p&gt;
-
-&lt;p&gt;Acesse a página da extensão:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://extensions.gnome.org/extension/120/system-monitor/&quot;&gt;system-monitor - GNOME Shell Extensions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;E clique na chave de liga e desliga:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Confirme o &lt;em&gt;download&lt;/em&gt; e instalação da extensão clicando em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Após a instalação, já é possível ver medidores de recursos na barra do topo do GNOME:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na sequência, eles mostram:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;consumo de processador (CPU),&lt;/li&gt;
-  &lt;li&gt;consumo de memória, e&lt;/li&gt;
-  &lt;li&gt;tráfego de rede.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Clique nos medidores para ver mais informações:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Preferências&lt;/strong&gt; para personalizar o que é exibido e como é exibido:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/04/gnome-extension-system-monitor-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Eu costumo remover o monitor de tráfego de rede, deixando apenas CPU e memória.&lt;/p&gt;
-
-&lt;p&gt;Caso queira desabilitar ou remover essa extensão (assim como qualquer extensão do GNOME), utilize o aplicativo &lt;strong&gt;Ajustes&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Agora você pode monitorar a memória RAM em uso e não ser pego de surpresa: quando houver pouca memória disponível, feche programas, para que o computador não trave.&lt;/p&gt;
-
-&lt;p&gt;Faça bom proveito!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/gnome-shell-extensions/&quot;&gt;How to Use GNOME Shell Extensions - Complete Guide - It’s FOSS&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation&quot;&gt;Projects/GnomeShellIntegrationForChrome/Installation - GNOME Wiki!&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet&quot;&gt;paradoxxxzero/gnome-shell-system-monitor-applet - GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Thu, 04 Apr 2019 23:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/</guid>
                 
                 
                     <category>pt</category>
