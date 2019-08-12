@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                20 apps you can use the same way on both Linux and Windows — part 2 - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="This post is the second of two presenting 20 apps which are available for both Linux and Windows, with a bonus at the end: I present some well-known services...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
+
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-08-12 09:30:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="This post is the second of two presenting 20 apps which are available for both Linux and Windows, with a bonus at the end: I present some well-known services..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2019/07/apps-linux-windows-2.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="20 apps you can use the same way on both Linux and Windows — part 2" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=4">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=4">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=4">
+    <meta name="msapplication-TileColor" content="#4caf50">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="/libs/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/libs/font-awesome/5.8.2/css/all.min.css">-->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <!--<script src="/libs/jquery/3.4.1/jquery.slim.min.js"></script>-->
+    <script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9+4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+    <!--<script src="/libs/popper.js/1.15.0/umd/popper.min.js"></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+    <!--<script src="/libs/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+    <!--<script src="/libs/bootstrap-material-design/4.1.2/js/bootstrap-material-design.min.js"></script>-->
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        <!-- AddThis -->
+        <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+        <script type="text/javascript">
+            var addthis_config = {
+                data_track_clickback: true,
+                data_track_addressbar: true,
+                
+                    ui_language: 'en'
+                
+            };
+            var addthis_share = {
+                url: 'https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/',
+                title: document.title,
+                description: 'This post is the second of two presenting 20 apps which are available for both Linux and Windows, with a bonus at the end: I present some well-known services...'
+            };
+        </script>
+        <!-- End AddThis -->
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+
+    <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download/leap/42.2/">Download</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline" id="search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control" id="search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number" id="search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
+                    <div class="dropdown-menu" aria-labelledby="language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-8'>
+                <!--<div class='gap-small'>
+                    <a href='http://en.opensuse.org/Portal:15.1'>
+                        <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                    </a>
+                </div>-->
+                <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/" itemprop="mainEntityOfPage url">
+                20 apps you can use the same way on both Linux and Windows — part 2
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-08-12">
+                    <a href="/2019/08/12/">
+                        
+    Aug 12, 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-08-12" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            <!-- Google AdSense -->
+<ins class="adsbygoogle" id="content_ad_unit_1"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="8945658251"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/apps-linux-windows-2.jpg" title="">
+<img src="/files/2019/07/apps-linux-windows-2.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>This post is the second of two presenting 20 apps which are available for both <a href="https://www.kernel.org/linux.html">Linux</a> and <a href="https://www.microsoft.com/windows/">Windows</a>. If you fell into this page, start reading the first part, in which I present the first 10 programs:</p>
+
+<ul>
+  <li><a href="/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/">20 apps you can use the same way on both Linux and Windows — part 1</a></li>
+</ul>
+
+<p>Everyone on the same page, now let’s go to the second part, which shows another 10 programs and has a bonus at the end: I present some well-known services which can be used directly from a web browser, without installing any app. Those services also work the same way on both Windows and Linux.</p>
+
+<h2 id="11-foxit-reader">11) Foxit Reader</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/foxit-reader.jpg" title="">
+<img src="/files/2019/07/foxit-reader.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.foxitsoftware.com/pdf-reader/">Foxit Reader</a> is a popular PDF reader developed by <a href="https://www.foxitsoftware.com/">Foxit Software</a>. Lightweight, fast and intuitive, it has many features that go beyond just opening and reading, such as commenting, highlighting, drawing and even digitally signing PDF documents.</p>
+
+<p>Foxit Reader is licensed as <a href="https://en.wikipedia.org/wiki/Proprietary_software">proprietary</a> <a href="https://en.wikipedia.org/wiki/Freeware">freeware</a>. To install it on both Linux and Windows, you need to download it from its website:</p>
+
+<ul>
+  <li><a href="https://www.foxitsoftware.com/pdf-reader/">https://www.foxitsoftware.com/pdf-reader/</a></li>
+</ul>
+
+<h2 id="12-telegram">12) Telegram</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/08/telegram-en.jpg" title="">
+<img src="/files/2019/08/telegram-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://telegram.org/">Telegram</a> is a messaging app available for computers, smartphones and tablets. Its users can send and receive text and audio messages, photos, videos, files, stickers and make voice calls. Besides those features, common to most instant messaging apps, Telegram has some features focused on security and privacy.</p>
+
+<p>Telegram is a controversial app, known for not disclosing user data to third parties, including governments. It has been already blocked on <a href="https://www.hongkongfp.com/2015/07/13/china-blocks-telegram-messenger-blamed-for-aiding-human-rights-lawyers/">China</a>, <a href="https://www.nytimes.com/2018/04/13/world/europe/russia-telegram-encryption.html">Russia</a> and <a href="https://www.nytimes.com/2018/05/01/world/middleeast/iran-telegram-app-russia.html">Iran</a>. In Brazil, it became known due to <a href="https://www.techspot.com/news/63179-brazilian-court-has-blocked-whatsapp-48-hours-15.html">WhatsApp court blockades</a>, during which people turned to Telegram as an alternative. Unlike <a href="https://www.whatsapp.com/">WhatsApp</a>, Telegram can be used on many devices at the same time.</p>
+
+<p>To install the Telegram app on <a href="https://www.opensuse.org/">openSUSE</a>, you can retrieve it from the official repositories, as it is a <a href="https://www.gnu.org/philosophy/free-sw.html">free software</a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in telegram-desktop
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install the Telegram app on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://telegram.org/">https://telegram.org/</a></li>
+</ul>
+
+<p>Windows users can also <a href="https://www.microsoft.com/en-US/search?q=telegram">download Telegram from Microsoft Store</a>.</p>
+
+<p><strong>Tip:</strong> actually you don’t need to install an app to use Telegram, you can use it from a web browser. Just go to <a href="https://web.telegram.org/">web.telegram.org</a>.</p>
+
+<h2 id="13-virtualbox">13) VirtualBox</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/virtualbox-en.jpg" title="">
+<img src="/files/2019/07/virtualbox-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source virtualization software developed by <a href="https://www.oracle.com/">Oracle</a>. It allows you to create virtual machines, on which you can install operating systems and applications. You are able to use two or more systems at the same time, as if you were using two or more computers, but physically sharing the same hardware (actually, you use only one computer).</p>
+
+<p>VirtualBox refers to the real machine (the one you use) as the <strong>host</strong> machine: it hosts the virtual machines, which are called <strong>guests</strong>.</p>
+
+<p>To install VirtualBox on the host machine, if the host operating system is openSUSE, run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in virtualbox virtualbox-qt
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>If the host operating system is Windows, download the VirtualBox installer from its website:</p>
+
+<ul>
+  <li><a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></li>
+</ul>
+
+<p>On the virtual machine, it is recommended to install the Guest Additions, which improve the integration between real and virtual machines through VirtualBox.</p>
+
+<p>If you have installed openSUSE on the virtual machine, run (on the virtual machine):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in virtualbox-guest-tools
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>If you have installed other operating system on the virtual machine (e.g. Windows or a Linux distribution other than openSUSE), to install Guest Additions, on the virtual machine window, open the <strong>Devices</strong> menu and click <strong>Insert Guest Additions CD image</strong>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/virtualbox-guest-additions-en.jpg" title="">
+<img src="/files/2019/07/virtualbox-guest-additions-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><strong>Tip:</strong> if you use Windows and want to try Linux, you can install VirtualBox on Windows, create a virtual machine, and install Linux on the virtual machine.</p>
+
+<h2 id="14-gimp">14) GIMP</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/gimp-en.jpg" title="">
+<img src="/files/2019/07/gimp-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.gimp.org/">GIMP</a> (GNU Image Manipulation Program) is a free and open-source cross-platform image editor used for creating, editing and retouching <a href="https://en.wikipedia.org/wiki/Raster_graphics">bitmap images</a> (e.g. <a href="https://en.wikipedia.org/wiki/Microsoft_Paint">Paint</a> bitmaps or digital photos in <a href="https://en.wikipedia.org/wiki/JPEG">JPG</a> files), free-form drawing, image compositing, converting between different image formats and more. Suitable for graphic designers, photographers and illustrators, it can be seen as a free alternative to <a href="https://www.adobe.com/products/photoshop/">Adobe Photoshop</a>.</p>
+
+<p>On openSUSE, you can retrieve GIMP from the official repositories, just run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in gimp
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install GIMP on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://www.gimp.org/">https://www.gimp.org/</a></li>
+</ul>
+
+<h2 id="15-inkscape">15) Inkscape</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/inkscape-en.jpg" title="">
+<img src="/files/2019/07/inkscape-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://inkscape.org/">Inkscape</a> is a free and open-source cross-platform <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphics</a> editor similar to <a href="https://www.coreldraw.com/">CorelDRAW</a>. What sets Inkscape apart is its use of <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>, an open standard vector image format, as its native format. Inkscape is able to export images to the <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> format, popular on the Internet, and import from many vector and bitmap formats such as JPG.</p>
+
+<p>On openSUSE, you can retrieve Inkscape from the official repositories, just run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in inkscape
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install Inkscape on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://inkscape.org/">https://inkscape.org/</a></li>
+</ul>
+
+<h2 id="16-audacity">16) Audacity</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/audacity-en.jpg" title="">
+<img src="/files/2019/07/audacity-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.audacityteam.org/">Audacity</a> is a free and open-source cross-platform multi-track audio editor and recorder. It can record, import, mix, cut and edit sound files, apply effects such as normalization, fade in, fade out and others and can be extended by installing plugins. Audacity has a very intuitive interface and is easy to use.</p>
+
+<p>On openSUSE, you can retrieve Audacity from the official repositories, just run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in audacity
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install Audacity on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://www.audacityteam.org/">https://www.audacityteam.org/</a></li>
+</ul>
+
+<h2 id="17-shotcut">17) Shotcut</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/08/shotcut-en.jpg" title="">
+<img src="/files/2019/08/shotcut-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://shotcut.org/">Shotcut</a> is a free and open-source cross-platform video editor. It has a simple interface and strikes a perfect balance between features and usability. Shotcut allows you to record directly from the webcam, import, cut, stream and export videos to various formats. A number of video and audio filters and special effects are available.</p>
+
+<p>On openSUSE, you can retrieve Shotcut from the official repositories, just run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in shotcut
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install Shotcut on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://shotcut.org/">https://shotcut.org/</a></li>
+</ul>
+
+<h2 id="18-tor-browser">18) Tor Browser</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/tor-browser-en.jpg" title="">
+<img src="/files/2019/07/tor-browser-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The <a href="https://www.torproject.org/">Tor Project</a> (an acronym for The Onion Router) maintains a free, worldwide, volunteer, decentralized network of tunnels — the Tor Network — through which private data from its users travels encrypted, anonymously, safely and free from censorship.</p>
+
+<p><a href="https://www.torproject.org/download/">Tor Browser</a> is a web browser based on <a href="https://mozilla.org/firefox">Mozilla Firefox</a> which routes all its traffic through the Tor Network for browsing anonymously and avoid online tracking. To the websites you visit, your internet traffic appears to come from a different IP address, often in a different country. Using the Tor Browser is the easiest way to connect to the Tor Network and circumvent online censorship by dictatorial governments or companies.</p>
+
+<p>On openSUSE, you can retrieve the Tor Browser from the official repositories, just run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in torbrowser-launcher
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install the Tor Browser on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://www.torproject.org/download/">https://www.torproject.org/download/</a></li>
+</ul>
+
+<h2 id="19-steam">19) Steam</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/steam-en.jpg" title="">
+<img src="/files/2019/07/steam-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://store.steampowered.com/">Steam</a> is a game distribution platform developed by <a href="https://www.valvesoftware.com/">Valve Corporation</a>. It currently offers nearly 30,000 games, which can be free or paid, made by big known companies or indies, played by over 100 million users, who can chat in-game and become friends (or enemies). If you are a developer, you can also release your own games.</p>
+
+<p>Some famous titles which can be downloaded from Steam include: <a href="https://store.steampowered.com/app/10/CounterStrike/">Counter-Strike</a>, <a href="https://store.steampowered.com/app/70/HalfLife/">Half-Life</a>, <a href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/">Grand Theft Auto V</a> and <a href="https://store.steampowered.com/app/570/Dota_2/">Dota 2</a>. Previously, those games were available only for Windows. Recently, with Steam, they became playable also on Linux.</p>
+
+<p>Steam is a proprietary freeware. It is available on the official non-free repository. To install Steam on openSUSE, first you need to add that repository, in case you don’t have it yet:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper addrepo -f -K -n "Non-OSS Repository" http://download.opensuse.org/distribution/leap/15.1/repo/non-oss/ repo-non-oss
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Then, to install Steam:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in steam
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install Steam on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://store.steampowered.com/about/">https://store.steampowered.com/about/</a></li>
+</ul>
+
+<h2 id="20-filezilla">20) FileZilla</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/filezilla-en.jpg" title="">
+<img src="/files/2019/07/filezilla-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://filezilla-project.org/">FileZilla</a> is a free and open-source cross-platform <a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>, <a href="https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol">SFTP</a> and <a href="https://en.wikipedia.org/wiki/FTPS">FTPS</a> client. Used mainly by web designers and webmasters who need to upload files to web servers using the FTP protocol, FileZilla features an intuitive graphical user interface and is easy to use.</p>
+
+<p>To install FileZilla on openSUSE, retrieve it from the official repositories:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in filezilla
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>To install FileZilla on Windows, download its installer from its website:</p>
+
+<ul>
+  <li><a href="https://filezilla-project.org/">https://filezilla-project.org/</a></li>
+</ul>
+
+<h2 id="bonus-apps-or-services">Bonus: apps or services?</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/netflix-en.jpg" title="">
+<img src="/files/2019/07/netflix-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Although available on the <a href="https://www.microsoft.com/en-US/store/">Microsoft Store</a>, some apps actually correspond to online services that can be used from a web browser:</p>
+
+<ul>
+  <li><a href="https://www.netflix.com/">Netflix</a></li>
+  <li><a href="https://web.whatsapp.com/">WhatsApp Web</a></li>
+  <li><a href="https://www.instagram.com/">Instagram</a></li>
+  <li><a href="https://facebook.com/">Facebook</a></li>
+  <li><a href="https://www.messenger.com/">Messenger</a></li>
+  <li><a href="https://web.telegram.org/">Telegram Web</a></li>
+  <li><a href="https://youtube.com/">YouTube</a></li>
+  <li><a href="https://slack.com/">Slack</a></li>
+  <li><a href="https://www.office.com/">Microsoft Office Online</a></li>
+  <li><a href="https://pinterest.com/">Pinterest</a></li>
+  <li><a href="https://trello.com/">Trello</a></li>
+  <li><a href="https://twitter.com/">Twitter</a></li>
+  <li><a href="https://evernote.com/">Evernote</a></li>
+</ul>
+
+<p>Those services don’t provide native apps for Linux, but you won’t really miss their apps if you open your web browser and access them.</p>
+
+<p>A service which is not available as an app for either Windows or Linux, but works perfectly on web browsers and deserves mention is <a href="https://docs.google.com/">Google Docs</a>.</p>
+
+<p><strong>Tip:</strong> bookmark the services you use in your web browser to access them faster.</p>
+
+<h2 id="references">References</h2>
+
+<p>To choose the applications and services presented here, I searched lists of popular or recommended programs for Windows:</p>
+
+<ul>
+  <li><a href="https://www.microsoft.com/en-US/store/most-popular/apps/pc">Most popular apps - Microsoft Store</a></li>
+  <li><a href="https://www.makeuseof.com/tag/getting-a-new-pc-12-must-have-applications-to-install-first/">New PC? 15 Must-Have Windows Applications You Should Install First</a></li>
+  <li><a href="https://www.techradar.com/news/software/applications/20-windows-7-free-apps-to-download-today-648954">20 of the best free Windows 7 apps 2019: bring your PC right up to date - TechRadar</a></li>
+  <li><a href="https://www.thewindowsclub.com/best-free-software-for-windows-10">Best free software for Windows 10 in 2019</a></li>
+</ul>
+
+<p>So I tried to write from the point of view of a Windows user who wonders whether familiar applications can be found on Linux.</p>
+
+<p>I hope this post helped you. Got any questions? Would you like to know more about any of those apps? Would you like to suggest any app? Please, write in the comments!</p>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        
+            <!-- Disqus -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Comments
+                
+            </h2>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    
+                        this.language = "en";
+                    
+                    this.page.url = 'https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/';
+                };
+
+                (function() {
+                    var d = document, s = d.createElement('script');
+
+                    s.src = '//kamaradaww.disqus.com/embed.js';
+
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>
+                <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+            </noscript>
+            <!-- Disqus End -->
+        
+    </article>
+</div><!-- .blog-post -->
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project is a new project that aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday usage be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style addthis_follow_buttons text-center">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://instagram.com/Kamarada_Linux" class="addthis_button_instagram_follow" addthis:userid="Kamarada_Linux" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <!-- Google AdSense -->
+<ins class="adsbygoogle" id="sidebar_ad_unit"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="7329324255"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="container">
+        Copyright &copy; 2019 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="This post is the second of two presenting 20 apps which are available for both Linux and Windows, with a bonus at the end: I present some well-known services which can be used directly from a web browser, without installing any app. Those services also work the same way on both Windows and Linux.">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2019/07/apps-linux-windows-2.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        
+            var disqus_config = function () {
+                this.language = "en";
+            };
+        
+        var disqus_shortname = 'kamaradaww';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- Disqus End -->
+
+
+
+    <!-- Google AdSense -->
+    
+        <!-- Google AdSense -->
+<ins class="adsbygoogle" id="content_ad_unit_2"
+    style="display:block"
+    data-ad-client="ca-pub-5193467168351289"
+    data-ad-slot="4375857858"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+<!-- End Google AdSense -->
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                    } else {
+                        $ad.remove();
+                    }
+                }
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+</body>
+</html>
