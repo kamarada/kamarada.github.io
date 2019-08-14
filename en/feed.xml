@@ -9,10 +9,263 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 12 Aug 2019 13:26:01 -0300</pubDate>
-        <lastBuildDate>Mon, 12 Aug 2019 13:26:01 -0300</lastBuildDate>
+        <pubDate>Wed, 14 Aug 2019 01:41:27 -0300</pubDate>
+        <lastBuildDate>Wed, 14 Aug 2019 01:41:27 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>How to play Super Nintendo games on openSUSE with the Snes9x emulator</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;&lt;strong&gt;Super Nintendo Entertainment System&lt;/strong&gt;&lt;/a&gt; (&lt;strong&gt;SNES&lt;/strong&gt;), better known simply as &lt;strong&gt;Super Nintendo&lt;/strong&gt;, was a 16-bit video game console made by &lt;a href=&quot;https://www.nintendo.com/&quot;&gt;Nintendo&lt;/a&gt; during the 90s. It was a success at the time, with almost 50 million units sold worldwide and many games made famous, such as &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/519824-super-mario-world&quot;&gt;Super Mario World&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/588282-donkey-kong-country&quot;&gt;Donkey Kong Country&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/588738-super-mario-kart&quot;&gt;Super Mario Kart&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/588700-street-fighter-ii&quot;&gt;Street Fighter&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/588436-the-legend-of-zelda-a-link-to-the-past&quot;&gt;Zelda&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/554041-final-fantasy-iii&quot;&gt;Final Fantasy&lt;/a&gt;, &lt;a href=&quot;https://gamefaqs.gamespot.com/snes/563538-chrono-trigger/data&quot;&gt;Chrono Trigger&lt;/a&gt; and others.&lt;/p&gt;
+
+&lt;p&gt;Would you like to remember any of those classics? Did you know it is possible using a program called emulator?&lt;/p&gt;
+
+&lt;p&gt;An &lt;strong&gt;emulator&lt;/strong&gt; is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for that video game. Files which contain games are called &lt;strong&gt;ROMs&lt;/strong&gt;. In the case of Super Nintendo, a ROM would contain the content dumped from a cartridge.&lt;/p&gt;
+
+&lt;p&gt;There are some Super Nintendo emulators out there. One of the most popular is Snes9x.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.snes9x.com/&quot;&gt;&lt;strong&gt;Snes9x&lt;/strong&gt;&lt;/a&gt; is a cross-platform emulator which allows you to play most games designed for Super Nintendo on your PC. It is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt; and its source code is available on &lt;a href=&quot;https://github.com/snes9xgit/snes9x&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here you are going to see how to install and use Snes9x on the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; Linux distribution.&lt;/p&gt;
+
+&lt;h2 id=&quot;disclaimer&quot;&gt;Disclaimer&lt;/h2&gt;
+
+&lt;p&gt;Are emulators and ROMs legal? There are a lot of questions (and answers) out there.&lt;/p&gt;
+
+&lt;p&gt;Emulators are generally considered legal because they themselves don’t violate any law. They usually are hobby projects distributed for free and don’t contain any proprietary code.&lt;/p&gt;
+
+&lt;p&gt;But emulators aren’t useful without ROMs. About the legality of ROMs, &lt;a href=&quot;https://www.howtogeek.com/howto/22721/how-to-play-your-favorite-retro-video-games-on-your-windows-pc/&quot;&gt;How-To Geek&lt;/a&gt; says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Broadly speaking, downloading a ROM for a game you do not own is not legal – just like downloading a pirated movie is not legal. Downloading a ROM for a game you do own, however, is hypothetically defensible – at least legally speaking. But there really isn’t caselaw here. What &lt;em&gt;is&lt;/em&gt; clear is that it’s illegal for websites to be offering ROMs for the public to download, which is why such sites are frequently shut down.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you want to know more about, I recommend you read the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fantasyanime.com/emuhelp/intro-to-emulation&quot;&gt;Chapter 1: Intro to Emulation Tutorial - Video Game Emulation for Newbies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/262758/is-downloading-retro-video-game-roms-ever-legal/&quot;&gt;Is Downloading Retro Video Game ROMs Ever Legal? - How-To Geek&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gaming.meta.stackexchange.com/q/795&quot;&gt;What exactly does the law state about emulation and ROMs? - Arqade Meta&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.lifehacker.com.au/2016/08/is-it-legal-to-play-retro-game-roms-on-emulators/&quot;&gt;Is It Legal To Play Retro Game ROMs On Emulators? - Lifehacker Australia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techradar.com/news/gaming/are-game-emulators-legal-1329264&quot;&gt;Are game emulators legal? - TechRadar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You should search how the laws of your country address that topic before going on. Here I just provide information about the emulator and I’m not responsible for how you use it.&lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-download-roms&quot;&gt;Where to download ROMs&lt;/h2&gt;
+
+&lt;p&gt;You won’t find any ROMs here. But a simple &lt;a href=&quot;https://www.google.com/search?q=super+nintendo+roms&quot;&gt;Google&lt;/a&gt; search shows you a lot of websites where you can find several &lt;a href=&quot;https://www.google.com/search?q=super+nintendo+roms&quot;&gt;Super Nintendo ROMs for download&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;snes9x-system-requirements&quot;&gt;Snes9x system requirements&lt;/h2&gt;
+
+&lt;p&gt;To emulate Super Nintendo on Linux using Snes9x you don’t need a supercomputer. &lt;a href=&quot;https://github.com/snes9xgit/snes9x/blob/master/unix/docs/readme_unix.html&quot;&gt;Snes9x documentation&lt;/a&gt; says it requires at least a Pentium 2 300MHz processor and 16MB of RAM, or a 1GHz processor for a perfect experience. As a reference, &lt;a href=&quot;https://en.wikipedia.org/wiki/Windows_7&quot;&gt;Windows 7&lt;/a&gt;, released on 2009, required at least a 1GHz processor. So, if you bought your computer on 2009 or later, almost certainly it fits those specifications.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-snes9x&quot;&gt;Installing Snes9x&lt;/h2&gt;
+
+&lt;p&gt;There are two different methods for installing Snes9x on openSUSE: from the graphical interface using 1-Click Install or from the terminal using the &lt;strong&gt;zypper&lt;/strong&gt; package manager — choose whichever method you prefer.&lt;/p&gt;
+
+&lt;p&gt;To install Snes9x using 1-Click Install, click the following button:&lt;/p&gt;
+
+&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/snes9x.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; 1-Click Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To install using the terminal, first add the needed repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f http://download.opensuse.org/repositories/Emulators/openSUSE_Leap_15.1/ emulators
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, install the Snes9x package:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in snes9x
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Right after installing, you should be able to launch the emulador.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-snes9x&quot;&gt;Starting Snes9x&lt;/h2&gt;
+
+&lt;p&gt;If you have a joypad and want to play with it, plug it in before starting the emulator.&lt;/p&gt;
+
+&lt;p&gt;To start Snes9x, if you use the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop environment, click &lt;strong&gt;Activities&lt;/strong&gt;, by the upper-left corner of the screen, start typing &lt;code class=&quot;highlighter-rouge&quot;&gt;snes9x&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-launching-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-launching-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-start-screen.png&quot; title=&quot;The Snes9x main screen&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-start-screen.png&quot; alt=&quot;The Snes9x main screen&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The Snes9x main screen&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;setting-up-snes9x&quot;&gt;Setting up Snes9x&lt;/h2&gt;
+
+&lt;p&gt;There are a few things you need to set up before you can start playing. Usually, they are set up just once, when using the emulator for the first time.&lt;/p&gt;
+
+&lt;p&gt;To access Snes9x settings, open the &lt;strong&gt;Options&lt;/strong&gt; menu and click &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-preferences.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-preferences.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;setting-up-controls&quot;&gt;Setting up controls&lt;/h3&gt;
+
+&lt;p&gt;To set up controls, select the &lt;strong&gt;Joypads&lt;/strong&gt; tab:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-keyboard.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-keyboard.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This dialog box lists the Super Nintendo joypad buttons and the corresponding keyboard keys or joypad buttons on your computer. To assign a SNES button to a PC key or button, click the field you want to change, then press the desired key or button.&lt;/p&gt;
+
+&lt;p&gt;By default, Snes9x will jump to the next button after the one you just assigned, allowing you to quickly assign all the 12 buttons. Start by assigning the first button: &lt;strong&gt;Up&lt;/strong&gt;. After you assign &lt;strong&gt;Up&lt;/strong&gt;, Snes9x will jump to &lt;strong&gt;Down&lt;/strong&gt;, then &lt;strong&gt;Left&lt;/strong&gt;, then &lt;strong&gt;Right&lt;/strong&gt;, then &lt;strong&gt;Start&lt;/strong&gt; and so on.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you need a suggestion of setup, take a look at the following image.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-setup.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-setup.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you are going to play two-player games, to set up the second player controls, switch &lt;strong&gt;Joypad&lt;/strong&gt; to &lt;strong&gt;2&lt;/strong&gt; and repeat the process. I have set up a USB joypad for the second player:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-joypad.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-joypad.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;setting-up-sound&quot;&gt;Setting up sound&lt;/h3&gt;
+
+&lt;p&gt;We need to set up one more thing before we can actually start playing: we need to tell Snes9x which sound system to use. By default, openSUSE uses &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/PulseAudio/&quot;&gt;PulseAudio&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Sound&lt;/strong&gt; tab and change &lt;strong&gt;Sound driver&lt;/strong&gt; to &lt;strong&gt;PulseAudio&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-sound.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-sound.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to save settings and close the &lt;strong&gt;Snes9x Preferences&lt;/strong&gt; dialog box.&lt;/p&gt;
+
+&lt;h2 id=&quot;opening-a-rom&quot;&gt;Opening a ROM&lt;/h2&gt;
+
+&lt;p&gt;To open a ROM, open the &lt;strong&gt;File&lt;/strong&gt; menu and click &lt;strong&gt;Open ROM Image&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-open-rom-1.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-open-rom-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Navigate to the folder where the ROM is and double click the ROM, which is usually a file with extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.smc&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.sfc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-open-rom-2-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-open-rom-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The game should start:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-game-started.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-game-started.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;saving-and-loading-game-states&quot;&gt;Saving and loading game states&lt;/h2&gt;
+
+&lt;p&gt;An advantage the emulator offers over the video game is that you can save the game state, as well as resume from where you saved it, at any time you want.&lt;/p&gt;
+
+&lt;p&gt;Playing on Snes9x, you can save the game state just like you would on Super Nintendo (using the game’s own menu), or you can use one of 10 slots available on the emulator.&lt;/p&gt;
+
+&lt;p&gt;To save the game state, open the &lt;strong&gt;File&lt;/strong&gt; menu, point to &lt;strong&gt;Save State&lt;/strong&gt; and choose one of the available slots:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-save-state.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-save-state.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To resume a previously saved state, open the &lt;strong&gt;File&lt;/strong&gt; menu, point to &lt;strong&gt;Load State&lt;/strong&gt; and choose the slot where your save resides:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-load-state.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-load-state.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To make it easier to save and load states, you can assign them keyboard shortcuts. To do so, go to &lt;strong&gt;Options&lt;/strong&gt;, &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Shortcuts&lt;/strong&gt;, and set up keyboard shortcuts the same way you set up controls:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/08/snes9x-shortcuts.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/08/snes9x-shortcuts.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;I suggest you assign &lt;strong&gt;Shift + F1&lt;/strong&gt; to save to &lt;strong&gt;Slot 0&lt;/strong&gt; and &lt;strong&gt;F1&lt;/strong&gt; to resume from &lt;strong&gt;Slot 0&lt;/strong&gt;, and likewise for the other slots (&lt;strong&gt;Shift + F2&lt;/strong&gt; and &lt;strong&gt;F2&lt;/strong&gt; to save to and load from &lt;strong&gt;Slot 1&lt;/strong&gt; and so on).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you use a USB joypad similar to a &lt;a href=&quot;https://www.playstation.com/&quot;&gt;Playstation&lt;/a&gt; joypad, which has more buttons than a Super Nintendo joypad, you may have noticed that two buttons have not been assigned during setup: &lt;strong&gt;L2&lt;/strong&gt; and &lt;strong&gt;R2&lt;/strong&gt;. Now you can assign them to save to and resume from some slot.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-screen&quot;&gt;Full screen&lt;/h2&gt;
+
+&lt;p&gt;If you want to play full screen, open the &lt;strong&gt;View&lt;/strong&gt; menu and click &lt;strong&gt;Fullscreen&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;To exit full screen mode, press &lt;strong&gt;Esc&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I finish my post here. Now it’s up to you: have a lot of fun!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;Super Nintendo Entertainment System - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/howto/22721/how-to-play-your-favorite-retro-video-games-on-your-windows-pc/&quot;&gt;How to Play Your Favorite NES, SNES, and Other Retro Games on Your PC with an Emulator - How-To Geek&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fantasyanime.com/emuhelp/snes9x&quot;&gt;Snes9X Tutorial - Video Game Emulation for Newbies&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 14 Aug 2019 01:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/08/14/how-to-play-super-nintendo-games-on-opensuse-with-the-snes9x-emulator/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/08/14/how-to-play-super-nintendo-games-on-opensuse-with-the-snes9x-emulator/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>20 apps you can use the same way on both Linux and Windows — part 2</title>
@@ -2870,241 +3123,6 @@ Failed to connect to card: Card is invalid or cannot be handled
                 <pubDate>Wed, 22 May 2019 10:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/05/22/opensuse-community-releases-leap-15-1-version/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/05/22/opensuse-community-releases-leap-15-1-version/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>How to get updates for openSUSE Linux</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Computer programs are not perfect: they are made by us, mere humans. As time passes, they are improved, be by optimizations, new features or bug fixes. Bugs can be of many kinds: typos, slowdowns, crashes or security vulnerabilities, which can be exploited by malicious people to get unauthorized access to your personal files. Therefore, it is important to keep your computer always up to date, using the latest software versions.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, keeping your &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; system always up to date is easy. You can get software updates using the graphical user interface (GUI) or the command line interface (CLI), as you are going to see.&lt;/p&gt;
-
-&lt;p&gt;If you are updating a desktop or laptop, you can choose between GUI or CLI. If you are updating a server, probably the CLI is the only option.&lt;/p&gt;
-
-&lt;h2 id=&quot;updating-vs-upgrading&quot;&gt;Updating vs upgrading&lt;/h2&gt;
-
-&lt;p&gt;Update and upgrade are two ways to replace old software by fresh software on your system. Let me clarify their differences:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;update:&lt;/strong&gt; move packages (usually a few) to new versions, staying on the current distribution release, it should be done frequently, always when package updates are available and it is possible to install them;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;upgrade:&lt;/strong&gt; update the whole system (usually all the packages) to move to the next distribution release.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now, examples to illustrate both processes:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;update:&lt;/strong&gt; staying on the same openSUSE Leap release, 42.3, you update the &lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Firefox&lt;/a&gt; app from version 52.2 to version 52.8, other 10 packages are updated as well;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;upgrade:&lt;/strong&gt; you move openSUSE Leap from version 42.3 to version 15.0, which implies updating Firefox from 52.8 to 60.0, &lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; from 5.4 to 6.0, &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; from 3.20 to 3.26 and other 3,000 packages are updated as well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Today you are going to see how to update your system.&lt;/p&gt;
-
-&lt;p&gt;Soon, in another post, we are going to talk about upgrading.&lt;/p&gt;
-
-&lt;p&gt;Currently, the openSUSE Leap distribution is on version 15.0. The next version will be 15.1, &lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2019-05/msg00142.html&quot;&gt;which is planned to be released on May 22nd, 2019&lt;/a&gt;. By now, you can get ready for the upgrade by making sure the openSUSE release you are currently running is up to date. That is one of the prerequisites for upgrading.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-updates-using-the-gui&quot;&gt;Getting updates using the GUI&lt;/h2&gt;
-
-&lt;p&gt;To update your system using the GUI, you can use the &lt;strong&gt;Package Updater&lt;/strong&gt; app.&lt;/p&gt;
-
-&lt;p&gt;From time to time, the app itself automatically looks for software updates and notifies you if there are any to be installed:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click the notification to launch the Package Updater app.&lt;/p&gt;
-
-&lt;p&gt;In case it’s not an appropriate moment to install updates, you can just dismiss the notification. But remember to install updates later.&lt;/p&gt;
-
-&lt;p&gt;To manually launch the Package Updater, click on &lt;strong&gt;Activities&lt;/strong&gt;, on the top-left screen corner, start typing &lt;code class=&quot;highlighter-rouge&quot;&gt;package&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;updater&lt;/code&gt; and click on the &lt;strong&gt;Package Updater&lt;/strong&gt; icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; you can also access the &lt;strong&gt;Activities overview&lt;/strong&gt; by simply moving your mouse pointer to the top-left corner of the screen (as if you want to leave the screen). Another way to access the overview is pressing the &lt;strong&gt;Super&lt;/strong&gt; key (on some keyboards, it shows the &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; logo).&lt;/p&gt;
-
-&lt;p&gt;Package Updater looks for updates and list them, if there are any to be installed:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Make sure all updates are checked and click on &lt;strong&gt;Install Updates&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Package Updater will start to fetch updates.&lt;/p&gt;
-
-&lt;p&gt;If you want, you can monitor the update progress:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Instead, if you prefer, you can continue to use your computer as usual while updates are being downloaded and installed.&lt;/p&gt;
-
-&lt;p&gt;When the update process finishes, Package Updater informs that your system is up to date:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the Package Updater.&lt;/p&gt;
-
-&lt;p&gt;Usually after updating you don’t need to do anything else (e.g. restart). Updates are already applied and you can notice them if you open any program that has been updated.&lt;/p&gt;
-
-&lt;p&gt;In some cases, the Package Updater may ask you to restart your session or your computer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If that happens, then follow the onscreen instructions.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-updates-using-the-cli&quot;&gt;Getting updates using the CLI&lt;/h2&gt;
-
-&lt;p&gt;To update your system using the CLI, you can use the &lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt; package manager.&lt;/p&gt;
-
-&lt;p&gt;If you are not familiar with the CLI, you are going to realize that it is not difficult to use. Almost always, you can use the CLI without actually leaving the desktop environment through the &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt; app. To launch it, open the &lt;strong&gt;Activities overview&lt;/strong&gt;, type &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; and click on its icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Terminal is launched:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If you are familiar with Windows, perhaps you think Terminal resembles Windows’ &lt;strong&gt;Command Prompt&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Not any user is allowed to install updates using &lt;strong&gt;zypper&lt;/strong&gt;, only the &lt;a href=&quot;https://en.wikipedia.org/wiki/Superuser&quot;&gt;superuser&lt;/a&gt; (also known as administrator or root user) is able to do that.&lt;/p&gt;
-
-&lt;p&gt;To switch from your normal user to the root user, run the following command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you are not used to that notation, it means type &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;. The dollar sign (&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;) is not part of the command and should not be typed, it only indicates the command can be run by any user. Soon you are going to see commands that need elevated privileges to be run (i.e. by the root user). Those are indicated by the hash sign (&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;su&lt;/strong&gt; command asks you the root password, which you must provide to go on. Type the root password and hit &lt;strong&gt;Enter&lt;/strong&gt;. Please note that nothing will appear on screen as you type the root password, this is intended.&lt;/p&gt;
-
-&lt;p&gt;Now, as the root user, call &lt;strong&gt;zypper&lt;/strong&gt; with the command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(you can think of that command as &lt;em&gt;refresh&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; will retrieve from the Internet the list of available packages:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that it shows the progress. When it is done, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(&lt;em&gt;update&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; will download and install available updates, if there are any:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It shows what needs to be done to update the system and asks if you agree. The default option is to continue (&lt;strong&gt;y&lt;/strong&gt;). If that’s what you want, you can just hit &lt;strong&gt;Enter&lt;/strong&gt; and update will begin.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; shows the update progress:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Usually, when the update process finishes, you don’t need to do anything else (e.g. restart). But note that at the end of this update &lt;strong&gt;zypper&lt;/strong&gt; considered restarting programs that were using files deleted during the update process:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In that case, even if &lt;strong&gt;zypper&lt;/strong&gt; has not asked you to restart your computer, as it said the word “restart”, I recommend you to do so. The command to do that is as simple as:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;When the system comes back, it will be fresh new and clear, without risk of malfunction.&lt;/p&gt;
-
-&lt;p&gt;Remember to check for software updates from time to time, as the command line interface does not notify you when there are updates available.&lt;/p&gt;
-
-&lt;p&gt;In short, the commands to update your system through the CLI using &lt;strong&gt;zypper&lt;/strong&gt; are:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-# zypper ref
-# zypper up
-# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-                <pubDate>Mon, 20 May 2019 22:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/05/20/how-to-get-updates-for-opensuse-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/05/20/how-to-get-updates-for-opensuse-linux/</guid>
                 
                 
                     <category>en</category>
