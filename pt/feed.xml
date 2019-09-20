@@ -9,10 +9,638 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 14 Sep 2019 11:33:42 -0300</pubDate>
-        <lastBuildDate>Sat, 14 Sep 2019 11:33:42 -0300</lastBuildDate>
+        <pubDate>Fri, 20 Sep 2019 11:07:12 -0300</pubDate>
+        <lastBuildDate>Fri, 20 Sep 2019 11:07:12 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Primeiros passos no Raspberry Pi com NOOBS e Raspbian</title>
+                <description>&lt;p&gt;O &lt;a href=&quot;https://www.raspberrypi.org/&quot;&gt;&lt;strong&gt;Raspberry Pi&lt;/strong&gt;&lt;/a&gt; é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela &lt;a href=&quot;https://www.raspberrypi.org/about/&quot;&gt;Raspberry Pi Foundation&lt;/a&gt;, uma ONG do Reino Unido que objetiva facilitar e promover o ensino de computação e a inclusão digital.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-credit-card.jpg&quot; title=&quot;Raspberry Pi: o computador do tamanho de um cartão de crédito&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-credit-card.jpg&quot; alt=&quot;Raspberry Pi: o computador do tamanho de um cartão de crédito&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Raspberry Pi: o computador do tamanho de um cartão de crédito&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Há quem use o Raspberry Pi para aprender e ensinar a programar, fazer projetos com &lt;em&gt;hardware&lt;/em&gt;, automações em casa, há usos até mesmo na indústria e pesquisa.&lt;/p&gt;
+
+&lt;p&gt;O Raspberry Pi fornece pinos que podem ser usados para fazer entrada e saída de forma genérica (GPIO, &lt;em&gt;general purpose input/output&lt;/em&gt;). Com esses pinos, é possível fazer experiências com componentes eletrônicos e Internet das Coisas (IoT, &lt;em&gt;Internet of Things&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Veja um exemplo curioso de automação: acoplado a sensores e motores apropriados, esse Raspberry Pi foi programado para abrir a porta quando o cachorro chega perto e late.&lt;/p&gt;
+
+&lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
+    &lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;https://www.youtube.com/embed/MWfl1Nl2WIM&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;arquitetura-arm&quot;&gt;Arquitetura ARM&lt;/h2&gt;
+
+&lt;p&gt;O Raspberry Pi é diferente dos computadores tradicionais não apenas no formato, mas também na &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Arquitetura_de_computadores&quot;&gt;arquitetura&lt;/a&gt;&lt;/strong&gt;, ou seja, &lt;em&gt;hardware&lt;/em&gt; e &lt;em&gt;software&lt;/em&gt; funcionam de forma totalmente diferente. Enquanto os &lt;em&gt;desktops&lt;/em&gt; e &lt;em&gt;notebooks&lt;/em&gt; são, na essência, iguais ao &lt;a href=&quot;https://pt.wikipedia.org/wiki/IBM_PC&quot;&gt;IBM PC&lt;/a&gt; lançado em 1981 e se baseiam nas arquiteturas &lt;a href=&quot;https://pt.wikipedia.org/wiki/X86&quot;&gt;x86&lt;/a&gt; (PCs de 32 &lt;em&gt;bits&lt;/em&gt;) ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/AMD64&quot;&gt;x86-64&lt;/a&gt; (PCs de 64 &lt;em&gt;bits&lt;/em&gt;), o Raspberry Pi se baseia na arquitetura &lt;a href=&quot;https://pt.wikipedia.org/wiki/Arquitetura_ARM&quot;&gt;ARM&lt;/a&gt;, a mesma usada por &lt;em&gt;smartphones&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/intl/pt-BR_br/&quot;&gt;Android&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na prática, isso significa que se você copiar um programa de um PC para um Raspberry Pi (ou vice-versa), não vai funcionar. O programa pode ter versões para ambos, mas são executáveis diferentes – por exemplo, &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; para PC e LibreOffice para Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;É possível instalar o &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; no Raspberry Pi e usá-lo como um &lt;em&gt;desktop&lt;/em&gt; para as tarefas do dia-a-dia – navegar na Internet, editar textos, etc. Como fazer isso é o assunto desse &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;raspberry-pi-4-b&quot;&gt;Raspberry Pi 4 B&lt;/h2&gt;
+
+&lt;p&gt;O primeiro Raspberry Pi foi lançado em 2012 e desde então já foram fabricados &lt;a href=&quot;https://www.raspberrypi.org/products/&quot;&gt;vários modelos e variações&lt;/a&gt;. Atualmente, ele se encontra na quarta geração, com o &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/&quot;&gt;Raspberry Pi 4&lt;/a&gt;, lançado em julho. Geralmente, as gerações apresentam um modelo A e um modelo B. O modelo A é uma variação mais barata, com menos memória RAM e menos portas (como USB e Ethernet). Por enquanto, a quarta geração possui apenas o modelo B.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;Raspberry Pi 4 modelo B&lt;/strong&gt; possui as seguintes especificações:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;chip&lt;/em&gt; Broadcom BCM2711
+    &lt;ul&gt;
+      &lt;li&gt;quatro núcleos (&lt;em&gt;quad core&lt;/em&gt;) Cortex-A72&lt;/li&gt;
+      &lt;li&gt;frequência de 1,5GHz&lt;/li&gt;
+      &lt;li&gt;arquitetura ARM v8 de 64 &lt;em&gt;bits&lt;/em&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;variações com 1GB, 2GB ou 4GB de memória RAM DDR4&lt;/li&gt;
+  &lt;li&gt;rede Wi-Fi IEEE 802.11ac (conecta a redes de 2,4GHz e 5GHz)&lt;/li&gt;
+  &lt;li&gt;Bluetooth 5.0&lt;/li&gt;
+  &lt;li&gt;rede Ethernet Gigabit&lt;/li&gt;
+  &lt;li&gt;2 portas USB 3.0 e 2 portas USB 2.0&lt;/li&gt;
+  &lt;li&gt;2 portas micro-HDMI para conectar até 2 monitores ou TVs de resolução até 4K cada&lt;/li&gt;
+  &lt;li&gt;saída de som para conectar caixa de som ou fone de ouvido estéreo usando &lt;em&gt;plug&lt;/em&gt; P2&lt;/li&gt;
+  &lt;li&gt;compartimento para cartão de memória micro-SD (usado para armazenar o sistema operacional, programas e arquivos pessoais)&lt;/li&gt;
+  &lt;li&gt;40 pinos GPIO (entrada e saída de propósito geral)&lt;/li&gt;
+  &lt;li&gt;e mais!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot; id=&quot;components&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-components.jpg&quot; title=&quot;Imagem extraída do site [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-components.jpg&quot; alt=&quot;Imagem extraída do site [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Imagem extraída do site &lt;a href=&quot;http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/&quot;&gt;Electronics-Lab&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se quiser conferir as especificações técnicas desse modelo em mais detalhes, acesse o &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/&quot;&gt;&lt;em&gt;site&lt;/em&gt; do Raspberry Pi&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;quanto-custa&quot;&gt;Quanto custa?&lt;/h2&gt;
+
+&lt;p&gt;O preço de entrada do Raspberry Pi sempre foi 35 dólares (o equivalente a 145 reais, no momento da escrita). Esse é o preço do Raspberry Pi 4 B com 1GB de RAM.&lt;/p&gt;
+
+&lt;p&gt;Observe que esse é o preço apenas da placa do Raspberry Pi. Além dela, é necessário comprar: a fonte de alimentação, um cartão de memória micro-SD e um cabo micro-HDMI. Além disso, é opcional, mas recomendado, comprar uma capa (&lt;em&gt;case&lt;/em&gt;) para proteger a placa.&lt;/p&gt;
+
+&lt;p&gt;Você pode comprar a placa e os acessórios separadamente ou comprar um &lt;em&gt;kit&lt;/em&gt; que já vem com tudo que é preciso, que foi o que eu fiz (mais detalhes adiante).&lt;/p&gt;
+
+&lt;p&gt;Se você já tem um computador, então provavelmente tem &lt;em&gt;mouse&lt;/em&gt;, teclado e monitor. É possível utilizá-los com o Raspberry Pi, que tem portas USB e HDMI. Senão, é necessário comprá-los também.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Curiosidade:&lt;/strong&gt; já houve modelos do Raspberry Pi ainda mais baratos que 35 dólares. O mais barato lançado até então foi o &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-zero/&quot;&gt;Raspberry Pi Zero&lt;/a&gt;, que custa apenas 5 dólares (20 reais). Ele é uma derivação do primeiro Raspberry Pi, mas ainda menor e mais barato.&lt;/p&gt;
+
+&lt;h2 id=&quot;onde-comprar&quot;&gt;Onde comprar?&lt;/h2&gt;
+
+&lt;p&gt;Diversas lojas vendem o Raspberry Pi e acessórios e &lt;em&gt;kits&lt;/em&gt; dele. Mas há algumas lojas reconhecidas pela Raspberry Pi Foundation como revendedores aprovados (&lt;em&gt;approved resellers&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;No Brasil, o revendedor aprovado do Raspberry Pi é o &lt;a href=&quot;https://www.filipeflop.com/&quot;&gt;FilipeFlop&lt;/a&gt;. Infelizmente, ele ainda não vende o Raspberry Pi 4 B. O modelo mais recente que ele oferece no momento é o &lt;a href=&quot;https://www.filipeflop.com/produto/raspberry-pi-3-a/&quot;&gt;Raspberry Pi 3 A+&lt;/a&gt;. Simulei uma compra: a placa, a capa, a fonte de alimentação e o cartão de memória custariam no total R$ 362,60. Para o meu CEP, a entrega sairia de graça e levaria 4 dias úteis.&lt;/p&gt;
+
+&lt;p&gt;Eu comprei meu Raspberry Pi 4 B de um revendedor aprovado na China, a &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;JunRoc Store&lt;/a&gt;, por meio do &lt;em&gt;site&lt;/em&gt; de compras &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;AliExpress&lt;/a&gt; (uma espécie de Mercado Livre chinês). Eu comprei um &lt;em&gt;kit&lt;/em&gt; que contém a variação do Raspberry Pi 4 B com mais memória RAM (4GB) e mais:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cartão de memória micro-SD de 16GB&lt;/li&gt;
+  &lt;li&gt;capa de acrílico com ventoinha (&lt;em&gt;fan&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;leitor de cartão (para conectar o cartão de memória ao computador)&lt;/li&gt;
+  &lt;li&gt;dissipadores de calor (&lt;em&gt;heat sinks&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;fonte de alimentação&lt;/li&gt;
+  &lt;li&gt;cabo de vídeo micro-HDMI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-kit.jpg&quot; title=&quot;Um [kit do Raspberry Pi 4](http://bit.ly/kamarada-rpi-4b) é a melhor opção para quem está começando.&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-kit.jpg&quot; alt=&quot;Um [kit do Raspberry Pi 4](http://bit.ly/kamarada-rpi-4b) é a melhor opção para quem está começando.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Um &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;kit do Raspberry Pi 4&lt;/a&gt; é a melhor opção para quem está começando.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Me custou ao todo R$ 370,29 (valor total, já somando inclusive o IOF do cartão de crédito referente a compra internacional). Fiz a compra em 26 de agosto. Chegou na minha casa em 17 de setembro, tudo em perfeito estado e funcionando bem. Recomendo!&lt;/p&gt;
+
+&lt;p&gt;Se for comprar &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;no mesmo lugar que eu comprei&lt;/a&gt;, observe que pelo mesmo anúncio é possível comprar 6 variações: apenas a placa do Raspberry Pi 4 B com 1GB, 2GB ou 4GB de RAM ou os 3 &lt;em&gt;kits&lt;/em&gt; correspondentes. Atente-se na hora de selecionar a variação que deseja.&lt;/p&gt;
+
+&lt;h2 id=&quot;raspbian-debian-para-raspberry&quot;&gt;Raspbian: Debian para Raspberry&lt;/h2&gt;
+
+&lt;p&gt;No momento da escrita, a distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; suporta a família de computadores Raspberry Pi até a terceira geração:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi&quot;&gt;Raspberry Pi 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi2&quot;&gt;Raspberry Pi 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi3&quot;&gt;Raspberry Pi 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A quarta geração (Raspberry Pi 4) ainda não é suportada, como você pode ver nesses &lt;em&gt;links&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forums.opensuse.org/showthread.php/536541-Can-Raspberry-Pi-4-run-openSUSE-LEAP-15-1/page2&quot;&gt;LEAP 15.1 Can Raspberry Pi 4 run openSUSE LEAP 15.1? - openSUSE Forums&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/openSUSE/comments/c6xvnr/raspberry_pi_4/&quot;&gt;Raspberry Pi 4? - openSUSE reddit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?t=244248&quot;&gt;Raspberry Pi 4 and openSUSE LEAP 15.1? - Raspberry Pi Forums&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por isso, embora normalmente os &lt;em&gt;posts&lt;/em&gt; que faço aqui sejam verdes da cor do openSUSE, o &lt;em&gt;post&lt;/em&gt; de hoje será vermelho, porque vamos falar de outra distribuição Linux: Raspbian!&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O nome &lt;strong&gt;&lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;&lt;/strong&gt; é a combinação de Raspberry Pi e Debian: resumidamente, o Raspbian é uma versão da distribuição Debian portada e otimizada para o Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;&lt;a href=&quot;https://www.debian.org/index.pt.html&quot;&gt;Debian&lt;/a&gt;&lt;/strong&gt; é uma das maiores e mais antigas distribuições Linux, existe desde 1993. Introduziu o formato de empacotamento DEB (análogo ao RPM usado pelo openSUSE). É focada em estabilidade: fornece apenas versões bem testadas (geralmente antigas) de programas e a atualização da distribuição normalmente ocorre sem erros. Se você fizer uma árvore genealógica das distribuições Linux, o Debian será uma das que estarão no topo: deu origem ao &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; e ao &lt;a href=&quot;http://www.knopper.net/knoppix/index-en.html&quot;&gt;Knoppix&lt;/a&gt;, que por sua vez deram origem a várias distribuições, dentre elas as brasileiras &lt;a href=&quot;https://www.hardware.com.br/kurumin/&quot;&gt;Kurumin&lt;/a&gt; (descontinuada) e &lt;a href=&quot;https://www.biglinux.com.br/&quot;&gt;BigLinux&lt;/a&gt;, e o Raspbian.&lt;/p&gt;
+
+&lt;h2 id=&quot;noobs-o-instalador-do-raspbian&quot;&gt;NOOBS: o instalador do Raspbian&lt;/h2&gt;
+
+&lt;p&gt;Como estamos começando a mexer no Raspberry Pi, vamos instalar o sistema operacional usando o método recomendado pelo &lt;em&gt;site&lt;/em&gt; oficial do Raspberry Pi, que é o &lt;strong&gt;NOOBS&lt;/strong&gt; – &lt;em&gt;New Out Of the Box Software&lt;/em&gt; (“novo &lt;em&gt;software&lt;/em&gt; de fábrica”, em uma tradução livre, também parece um trocadilho com a gíria &lt;em&gt;noob&lt;/em&gt;, que quer dizer “novato”).&lt;/p&gt;
+
+&lt;p&gt;O NOOBS é o instalador que instala o Raspbian no cartão de memória. É a forma mais fácil de instalar o sistema operacional no Raspberry Pi. Além do Raspbian, o NOOBS também pode ser usado para instalar a distribuição &lt;a href=&quot;https://libreelec.tv/&quot;&gt;LibreELEC&lt;/a&gt;, focada em multimídia.&lt;/p&gt;
+
+&lt;p&gt;Há lojas que vendem cartões de memória que já vem com o NOOBS. Como no &lt;em&gt;kit&lt;/em&gt; que eu comprei veio um cartão de memória lacrado, tive que baixar o NOOBS manualmente para o cartão de memória. Vou mostrar como fazer isso.&lt;/p&gt;
+
+&lt;p&gt;Se o Raspberry Pi é seu primeiro computador e você não dispõe de outro computador para preparar o cartão de memória, você deve comprar um cartão que já vem com o NOOBS.&lt;/p&gt;
+
+&lt;p&gt;Chega de conversa, vamos por a mão na massa!&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-o-noobs&quot;&gt;Baixando o NOOBS&lt;/h2&gt;
+
+&lt;p&gt;Visite a página &lt;a href=&quot;https://www.raspberrypi.org/downloads&quot;&gt;Downloads&lt;/a&gt; do &lt;em&gt;site&lt;/em&gt; do Raspberry Pi. Clique no &lt;em&gt;link&lt;/em&gt; para o NOOBS:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-download-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-download-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Download ZIP&lt;/strong&gt;, abaixo de &lt;strong&gt;NOOBS&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-download-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-download-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você vai baixar um arquivo que já contém o NOOBS e o Raspbian para instalação &lt;em&gt;offline&lt;/em&gt;. O arquivo é grande (2,3GB), você pode tomar um café enquanto espera o &lt;em&gt;download&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Há também o &lt;strong&gt;NOOBS Lite&lt;/strong&gt;, que contém apenas o NOOBS. Se você optasse por esse arquivo, o Raspbian seria baixado durante a instalação. Aqui, optamos por baixar tudo de uma vez.&lt;/p&gt;
+
+&lt;p&gt;Atente-se ao nome do arquivo – &lt;code class=&quot;highlighter-rouge&quot;&gt;NOOBS_v3_2_0.zip&lt;/code&gt; – e onde ele foi baixado – normalmente, por padrão, na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;Downloads&lt;/code&gt; dentro da pasta pessoal.&lt;/p&gt;
+
+&lt;h2 id=&quot;verificando-a-integridade-do-download&quot;&gt;Verificando a integridade do download&lt;/h2&gt;
+
+&lt;p&gt;Normalmente, terminamos de baixar um arquivo da Internet e já o usamos. Em alguns casos, antes de usar o arquivo, é importante verificar se ele foi baixado corretamente. Especialmente nesse caso, em que estamos baixando um sistema operacional. Podemos evitar problemas fazendo uma breve &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;verificação de integridade&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Abra o aplicativo &lt;strong&gt;Terminal&lt;/strong&gt; e execute o comando &lt;strong&gt;sha256sum&lt;/strong&gt;, passando como argumento o caminho para o arquivo baixado:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sha256sum Downloads/NOOBS_v3_2_0.zip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O programa demora um tempo calculando a soma de verificação do arquivo e a exibe (é um número extenso em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sistema_de_numera%C3%A7%C3%A3o_hexadecimal&quot;&gt;hexadecimal&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;d05bd794368ccfb516a9e7116d1c659c3d139f4393ee1f4450900080e877434e  Downloads/NOOBS_v3_2_0.zip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Compare essa soma SHA-256 com a exibida na página onde você baixou o NOOBS:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-sha256-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-sha256-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se as somas conferem, o arquivo foi baixado corretamente: é seguro continuar e usá-lo.&lt;/p&gt;
+
+&lt;p&gt;Se as somas diferem, algo deu errado (por exemplo, sua conexão com a Internet pode ter caído no meio do &lt;em&gt;download&lt;/em&gt;). Nesse caso, exclua o arquivo e tente baixá-lo de novo.&lt;/p&gt;
+
+&lt;p&gt;Aqui, escrevi resumidamente o que precisamos saber hoje sobre verificação de integridade para instalar o Raspbian. Caso queira saber mais sobre o assunto, leia o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;Verificação de integridade e autenticidade com SHA-256 e GPG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;formatando-o-cartão-de-memória&quot;&gt;Formatando o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;O cartão de memória deve ser formatado com o sistema de arquivos FAT32. A maioria dos cartões de memória já vem de fábrica formatados com esse sistema – inclusive o que veio no &lt;em&gt;kit&lt;/em&gt; que eu comprei. Mas não custa formatar, especialmente se você vai reaproveitar um cartão que já possui. Nesse caso, observe que a formatação apagará tudo que estiver no cartão, talvez você queira fazer um &lt;em&gt;backup&lt;/em&gt; antes de continuar para não perder dados.&lt;/p&gt;
+
+&lt;p&gt;Conecte ao computador o cartão de memória que será formatado. Para isso, pode ser necessário usar um leitor de cartão – o &lt;em&gt;kit&lt;/em&gt; indicado vem com um.&lt;/p&gt;
+
+&lt;p&gt;Recomendo que você remova quaisquer outros dispositivos de armazenamento (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos).&lt;/p&gt;
+
+&lt;p&gt;Abra o aplicativo &lt;strong&gt;GParted&lt;/strong&gt;. Ele solicita a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), que você deve fornecer para continuar. O GParted demora um pouco verificando os dispositivos. Quando ele terminar, selecione o cartão de memória no canto superior direito:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique com o botão direito na única partição do cartão de memória (pode ser no gráfico ou na lista) e clique em &lt;strong&gt;Desmontar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique mais uma vez com o botão direito na partição, aponte para &lt;strong&gt;Formatar para&lt;/strong&gt; e clique em &lt;strong&gt;fat32&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique no botão &lt;strong&gt;Aplicar todas as operações&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Leia a mensagem de alerta. Depois, clique em &lt;strong&gt;Aplicar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ao final da formatação, clique em &lt;strong&gt;Fechar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feche também o GParted.&lt;/p&gt;
+
+&lt;h2 id=&quot;extraindo-o-noobs-para-o-cartão-de-memória&quot;&gt;Extraindo o NOOBS para o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;Abra o arquivo compactado do NOOBS que você baixou. Ele deve ser aberto com o aplicativo &lt;strong&gt;Gerenciador de compactação&lt;/strong&gt;. Clique em &lt;strong&gt;Extrair&lt;/strong&gt;, no canto superior esquerdo da janela:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Certifique-se de que a opção &lt;strong&gt;Todos os arquivos&lt;/strong&gt; esteja selecionada (padrão). Selecione o cartão de memória (para mim, ele aparece como &lt;strong&gt;Volume 16GB&lt;/strong&gt;) e clique no botão &lt;strong&gt;Extrair&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde a extração do NOOBS para o cartão de memória:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso pode demorar. É outra oportunidade de tomar um café!&lt;/p&gt;
+
+&lt;p&gt;Ao final da extração, clique em &lt;strong&gt;Fechar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feche também o Gerenciador de compactação.&lt;/p&gt;
+
+&lt;h2 id=&quot;removendo-o-cartão-de-memória&quot;&gt;Removendo o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;O cartão de memória está pronto para ser usado no Raspberry Pi. É hora de removê-lo do computador.&lt;/p&gt;
+
+&lt;p&gt;Para isso, abra o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt; e, ao lado do cartão, clique no botão &lt;strong&gt;Desmontar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/eject-sdcard-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/eject-sdcard-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde aparecer a notificação informando que o dispositivo pode ser removido:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/eject-sdcard-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/eject-sdcard-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois que ela aparecer, remova o cartão de memória do computador e insira-o no Raspberry Pi. Observe que o compartimento para cartão fica do lado de baixo da placa.&lt;/p&gt;
+
+&lt;h2 id=&quot;conectando-tudo-ao-raspberry-pi&quot;&gt;Conectando tudo ao Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;Agora conecte tudo ao Raspberry Pi: insira o cartão de memória, conecte o monitor (ou a TV) usando o cabo HDMI, o teclado e &lt;em&gt;mouse&lt;/em&gt; às portas USB e o cabo de rede Ethernet se for usar a rede cabeada. Deixe por último a fonte de alimentação:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-connections-pt.jpg&quot; title=&quot;Imagem adaptada da página [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-connections-pt.jpg&quot; alt=&quot;Imagem adaptada da página [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Imagem adaptada da página &lt;a href=&quot;https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4&quot;&gt;Setting up your Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;ligando-o-raspberry-pi&quot;&gt;Ligando o Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;O Raspberry Pi não tem um botão ou um interruptor de liga/desliga: conecte a fonte de alimentação a uma tomada na parede e depois ao Raspberry Pi e ele ligará.&lt;/p&gt;
+
+&lt;p&gt;Duas luzes LED acendem na placa do Raspberry Pi: uma indicando que ele está ligado à energia (PWR) e outra pisca, indicando que ele está acessando o cartão de memória (ACT).&lt;/p&gt;
+
+&lt;p&gt;Após um tempo carregando, o Raspberry Pi apresentará a tela inicial do NOOBS.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-raspbian&quot;&gt;Instalando o Raspbian&lt;/h2&gt;
+
+&lt;p&gt;Na tela inicial do NOOBS, embaixo, no campo &lt;strong&gt;Language&lt;/strong&gt; (idioma), selecione &lt;strong&gt;português europeu&lt;/strong&gt; (não há tradução do instalador para o português brasileiro):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois, selecione na lista a distribuição &lt;strong&gt;Raspbian&lt;/strong&gt; e clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Confirmar&lt;/strong&gt;, clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde a instalação do Raspbian:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O instalador passa vários &lt;em&gt;slides&lt;/em&gt; apresentando o Raspbian. Você pode ver esses &lt;em&gt;slides&lt;/em&gt; enquanto… toma um café!&lt;/p&gt;
+
+&lt;p&gt;Ao final da instalação, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O Raspberry Pi será reiniciado e carregará dessa vez o Raspbian, não mais o NOOBS.&lt;/p&gt;
+
+&lt;h2 id=&quot;configurando-o-raspbian&quot;&gt;Configurando o Raspbian&lt;/h2&gt;
+
+&lt;p&gt;Ao ser iniciado pela primeira vez, o Raspbian apresenta um assistente de configuração:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;As telas são autoexplicativas. É uma pena que não possuam tradução para o português…&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar) para começar a configuração.&lt;/p&gt;
+
+&lt;p&gt;Selecione seu país (&lt;strong&gt;Country&lt;/strong&gt;), idioma (&lt;strong&gt;Language&lt;/strong&gt;) e fuso horário (&lt;strong&gt;Timezone&lt;/strong&gt;) e clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar) de novo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Crie uma nova senha para seu Raspberry Pi. Digite-a nos dois campos e clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se pretende se conectar a uma rede Wi-Fi, selecione-a na lista e clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar). Senão, clique em &lt;strong&gt;Skip&lt;/strong&gt; (pular):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso você tenha selecionado uma rede Wi-Fi, digite a senha dela e clique em &lt;strong&gt;Next&lt;/strong&gt; (avançar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O instalador oferece verificar, baixar e instalar atualizações para o sistema. Nesse momento também são obtidas as traduções para os programas, embora isso não esteja escrito na tela. Clique em &lt;strong&gt;Skip&lt;/strong&gt; (pular) se preferir fazer você mesmo manualmente em outro momento ou em &lt;strong&gt;Next&lt;/strong&gt; (avançar, o que eu recomendo) para deixar o instalador fazer agora:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você optou por baixar as atualizações agora, aguarde o processo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(haja café! hehehe)&lt;/p&gt;
+
+&lt;p&gt;Quando a atualização terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por fim, clique em &lt;strong&gt;Restart&lt;/strong&gt; (reiniciar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando o Raspberry Pi terminar de reiniciar, o sistema operacional estará novinho em folha, com todas as atualizações e traduções instaladas.&lt;/p&gt;
+
+&lt;h2 id=&quot;desligando-o-raspberry-pi&quot;&gt;Desligando o Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;Embora o Raspberry Pi não tenha um botão de liga/desliga, o Raspbian tem um comando para desligar. Usá-lo é necessário para que o sistema operacional desmonte corretamente os sistemas de arquivos e evite perda de dados. Portanto, desligar um Raspberry Pi não é análogo a ligar (se fosse, seria só puxar a fonte de alimentação).&lt;/p&gt;
+
+&lt;p&gt;Para desligar o Raspberry Pi, abra o menu de aplicativos e clique em &lt;strong&gt;Shutdown&lt;/strong&gt; (desligar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-shutdown-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-shutdown-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Shutdown options&lt;/strong&gt; (opções de desligamento), clique em &lt;strong&gt;Shutdown&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-shutdown-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-shutdown-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde até que o Raspberry Pi desligue completamente. Repare nas luzes LED: primeiro a PWR apaga e a ACT pisca, depois a ACT paga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; portas micro-USB tendem a ser frágeis. Por isso, dê preferência a remover a fonte de alimentação da tomada em vez de removê-la do Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&quot;terminando-a-montagem&quot;&gt;Terminando a montagem&lt;/h2&gt;
+
+&lt;p&gt;Como eu disse, eu comprei um &lt;em&gt;kit&lt;/em&gt; que inclui dissipadores de calor, ventoinha e capa de acrílico. Eu preferi instalar o sistema e testar a placa (solta na mesa mesmo) antes de completar a montagem porque pensei que o teste era mais prioritário. No AliExpress, o comprador tem até 15 dias para abrir uma disputa com o vendedor após o recebimento do produto. Se algo estivesse errado, eu já reclamaria. Felizmente, tudo funcionou bem.&lt;/p&gt;
+
+&lt;p&gt;Quanto aos dissipadores de calor, não encontrei instrução de como instalá-los. Instalei cada dissipador no &lt;em&gt;chip&lt;/em&gt; que aparentava ter o mesmo tamanho. Assim, cobri com os dissipadores o processador, a memória RAM e o controlador USB:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-heat-sinks.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-heat-sinks.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode confrontar essa foto com o &lt;a href=&quot;#components&quot;&gt;diagrama de componentes&lt;/a&gt; do início.&lt;/p&gt;
+
+&lt;p&gt;A ventoinha deve ser ligada nos pinos de propósito geral. O fio da fase (vermelho) deve ser conectado ao pino 4 e o fio terra (preto) deve ser conectado ao pino 6. A fase também é indicada por uma seta no encaixe de plástico:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-fan.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-fan.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso não tenha dado para identificar os pinos pelas fotos, esse diagrama pode ajudar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-pinout.jpg&quot; title=&quot;Imagem extraída do site [Raspberry Pi GPIO Pinout](https://pinout.xyz/)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-pinout.jpg&quot; alt=&quot;Imagem extraída do site [Raspberry Pi GPIO Pinout](https://pinout.xyz/)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Imagem extraída do site &lt;a href=&quot;https://pinout.xyz/&quot;&gt;Raspberry Pi GPIO Pinout&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Foi super fácil instalar a capa de acrílico: exceto pela ventoinha que foi aparafusada (enrosquei com a mão mesmo), o resto foi tudo encaixado. Não foi preciso sequer aparafusar a placa: ela ficou justa na capa, que foi feita sob medida.&lt;/p&gt;
+
+&lt;h2 id=&quot;isso-é-tudo-pessoal&quot;&gt;Isso é tudo, pessoal!&lt;/h2&gt;
+
+&lt;p&gt;Agora que o Raspberry Pi e o Raspbian estão prontos, é só usar!&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-case.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-case.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 440px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-final-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-final-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na sequência, recomendo a leitura do guia &lt;a href=&quot;https://projects.raspberrypi.org/pt-BR/projects/raspberry-pi-using&quot;&gt;Utilizando o Raspberry Pi&lt;/a&gt;. Esse, felizmente, tem tradução para o português brasileiro.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opensource.com/resources/raspberry-pi&quot;&gt;What is a Raspberry Pi? - Opensource.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up&quot;&gt;Setting up your Raspberry Pi&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/&quot;&gt;NOOBS For Raspberry Pi – Rants &amp;amp; Raves – The Blog!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/turn-on-raspberry-pi/&quot;&gt;How To Turn On And Shutdown The Raspberry Pi - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/&quot;&gt;Raspberry Pi 4 - A Look Under the Hood and How to Make most of it - Electronics-Lab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/AVfvhEJ9XD0?t=770&quot;&gt;Raspberry Pi 4 Cooling - ExplainingComputers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pinout.xyz/&quot;&gt;Raspberry Pi GPIO Pinout&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi-spy.co.uk/2013/02/raspberry-pi-status-leds-explained/&quot;&gt;Raspberry Pi Status LEDs Explained - Raspberry Pi Spy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 20 Sep 2019 10:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Primeira versão beta da distribuição Linux Kamarada</title>
@@ -142,7 +770,7 @@
 
 &lt;/div&gt;
 
-&lt;p&gt;No momento, a distribuição openSUSE suporta a família Raspberry Pi até o modelo &lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi3&quot;&gt;Raspberry Pi 3&lt;/a&gt;. O modelo mais novo, o &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/&quot;&gt;Raspberry Pi 4&lt;/a&gt;, lançado em julho desse ano, ainda não é suportado pelo openSUSE. Eu &lt;a href=&quot;http://s.click.aliexpress.com/e/KkS77oEk&quot;&gt;já comprei o meu&lt;/a&gt; e desejo ajudar o Projeto openSUSE a portar a distribuição para ele. Estou aguardando ele chegar para iniciar os trabalhos.&lt;/p&gt;
+&lt;p&gt;No momento, a distribuição openSUSE suporta a família Raspberry Pi até o modelo &lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi3&quot;&gt;Raspberry Pi 3&lt;/a&gt;. O modelo mais novo, o &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/&quot;&gt;Raspberry Pi 4&lt;/a&gt;, lançado em julho desse ano, ainda não é suportado pelo openSUSE. Eu &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;já comprei o meu&lt;/a&gt; e desejo ajudar o Projeto openSUSE a portar a distribuição para ele. Estou aguardando ele chegar para iniciar os trabalhos.&lt;/p&gt;
 
 &lt;h2 id=&quot;em-que-o-linux-kamarada-difere-do-opensuse&quot;&gt;Em que o Linux Kamarada difere do openSUSE?&lt;/h2&gt;
 
@@ -2169,250 +2797,6 @@
                 <pubDate>Wed, 22 May 2019 23:59:59 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como obter atualizações para o Linux openSUSE</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Programas de computador não são perfeitos: são feitos por nós, seres humanos. Com o tempo, vão sendo aperfeiçoados, seja por otimizações, adição de funcionalidades ou correções de falhas (&lt;em&gt;bugs&lt;/em&gt;). Existem falhas dos mais diversos tipos: erros de digitação, lentidões, travamentos, até brechas de segurança, que podem ser usadas por pessoas mal intencionadas para acessar seus arquivos pessoais. Por isso, é importante manter o computador sempre atualizado, utilizando as versões mais novas dos programas.&lt;/p&gt;
-
-&lt;p&gt;Felizmente, manter o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; sempre atualizado é fácil. É possível obter atualizações tanto pela interface gráfica quanto, para quem prefere, pela interface de linha de comando, como veremos.&lt;/p&gt;
-
-&lt;p&gt;Se você está usando um &lt;em&gt;desktop&lt;/em&gt; ou &lt;em&gt;notebook&lt;/em&gt;, pode optar pela interface gráfica ou textual. Se está administrando um servidor, provavelmente a interface textual é sua única opção.&lt;/p&gt;
-
-&lt;h2 id=&quot;tipos-de-atualizações&quot;&gt;Tipos de atualizações&lt;/h2&gt;
-
-&lt;p&gt;É curioso observar que a palavra &lt;strong&gt;atualização&lt;/strong&gt; no nosso português se refere a dois processos distintos, com nomes distintos em inglês:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;atualização de pacotes (&lt;em&gt;update&lt;/em&gt;): essa deve ser feita com frequência, sempre que houver atualizações e for possível instalá-las, não muda a versão da distribuição, normalmente atualiza poucos pacotes instalados; e&lt;/li&gt;
-  &lt;li&gt;atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;): essa normalmente é feita uma vez por ano, muda a versão da distribuição e atualiza todos os pacotes instalados.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Exemplos de ambos os casos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;fazendo um &lt;em&gt;update&lt;/em&gt;, você mantém a distribuição openSUSE Leap na mesma versão, 42.3, e atualiza o aplicativo &lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Firefox&lt;/a&gt; da versão 52.2 para a versão 52.8, junto com mais outros 10 pacotes;&lt;/li&gt;
-  &lt;li&gt;fazendo um &lt;em&gt;upgrade&lt;/em&gt;, você atualiza a distribuição openSUSE Leap da versão 42.3 para a versão 15.0, e atualiza o Firefox da versão 52.8 para a 60.0, o &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; da versão 5.4 para a 6.0, o &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; da versão 3.20 para a 3.26, além de outros 3 mil pacotes;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt;, veremos como atualizar os pacotes (&lt;em&gt;update&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;No próximo &lt;em&gt;post&lt;/em&gt;, veremos como atualizar a distribuição (&lt;em&gt;upgrade&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Atualmente, a distribuição openSUSE Leap está na versão 15.0. A próxima versão será a 15.1, com &lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2019-05/msg00142.html&quot;&gt;lançamento previsto para 22 de maio&lt;/a&gt;. Por agora, você pode se preparar para a atualização da distribuição se certificando que possui as versões mais recentes dos pacotes para a distribuição atual. Esse é um dos pré-requisitos para atualizar a distribuição.&lt;/p&gt;
-
-&lt;h2 id=&quot;pela-interface-gráfica&quot;&gt;Pela interface gráfica&lt;/h2&gt;
-
-&lt;p&gt;Para obter atualizações para os pacotes instalados pela interface gráfica, você pode usar o aplicativo &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;De tempos em tempos, ele já busca atualizações automaticamente e notifica caso haja atualizações para instalar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Ver&lt;/strong&gt; na notificação para iniciar o aplicativo Atualizador de pacotes.&lt;/p&gt;
-
-&lt;p&gt;Caso não seja um momento oportuno para instalar atualizações, você pode clicar em &lt;strong&gt;Agora não&lt;/strong&gt;. Mas lembre-se de instalar as atualizações depois.&lt;/p&gt;
-
-&lt;p&gt;Para iniciar o Atualizador de pacotes manualmente, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, comece a digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;atualizador&lt;/code&gt; e clique no ícone do &lt;strong&gt;Atualizador de pacotes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; você também pode acessar o &lt;strong&gt;panorama de Atividades&lt;/strong&gt; simplesmente movendo o ponteiro do &lt;em&gt;mouse&lt;/em&gt; para o canto superior esquerdo da tela (como se fosse sair da tela). Outra forma de acessar o panorama de Atividades é pressionar a tecla &lt;strong&gt;Super&lt;/strong&gt; (em alguns teclados, ela possui a bandeira do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;O Atualizador de pacotes verifica se há atualizações disponíveis e, se houver, as lista:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Certifique-se de que todas estão selecionadas e clique em &lt;strong&gt;Instalar atualizações&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Atualizador de pacotes começará a baixar as atualizações.&lt;/p&gt;
-
-&lt;p&gt;Se quiser, você pode acompanhar o andamento do processo de atualização:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em vez disso, se preferir, você pode continuar usando o computador normalmente enquanto as atualizações são baixadas e instaladas.&lt;/p&gt;
-
-&lt;p&gt;Ao final do processo, o Atualizador de pacotes informa que o sistema está atualizado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para sair do Atualizador de pacotes.&lt;/p&gt;
-
-&lt;p&gt;Normalmente, quando o processo de atualização acaba, não é necessário fazer mais nada, nem mesmo reiniciar o computador. As atualizações já passam a valer e você já as perceberá se abrir algum programa que foi atualizado.&lt;/p&gt;
-
-&lt;p&gt;Em alguns casos, é possível que o Atualizador de pacotes solicite a você reiniciar a sessão ou o computador. Se isso acontecer, siga as instruções na tela:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;pela-interface-de-linha-de-comando&quot;&gt;Pela interface de linha de comando&lt;/h2&gt;
-
-&lt;p&gt;Para obter atualizações atualizações para os pacotes instalados pela interface textual (linha de comando), você pode usar o gerenciador de pacotes &lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;&lt;strong&gt;zypper&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se você não está acostumado à linha de comando, perceberá que não é difícil utilizá-la. Quase sempre, você pode usar a linha de comando sem abandonar a interface gráfica por meio do aplicativo &lt;a href=&quot;https://help.gnome.org/users/gnome-terminal/stable/index.html.pt_BR&quot;&gt;&lt;strong&gt;Terminal&lt;/strong&gt;&lt;/a&gt;. Para iniciá-lo, acesse o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;terminal&lt;/code&gt; e clique em seu ícone:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Terminal é iniciado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-02-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você usa Windows, talvez ache o Terminal parecido com o &lt;strong&gt;Prompt de Comando&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pela linha de comando, usuários comuns não são autorizados a instalar atualizações usando o &lt;strong&gt;zypper&lt;/strong&gt;. Somente o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Superusu%C3%A1rio&quot;&gt;superusuário&lt;/a&gt; (também conhecido por administrador ou usuário &lt;em&gt;root&lt;/em&gt;) pode usar o &lt;strong&gt;zypper&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para alternar da sua conta de usuário comum para o usuário &lt;em&gt;root&lt;/em&gt;, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se você não está acostumado com essa notação, isso significa digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;su&lt;/code&gt; e teclar &lt;strong&gt;Enter&lt;/strong&gt;. O cifrão (&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;) não deve ser digitado, ele apenas indica que o comando pode ser executado por qualquer usuário. A seguir, você verá exemplos de comandos que só podem ser executados pelo usuário &lt;em&gt;root&lt;/em&gt;. Esses são indicados por uma cerquilha (&lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;) antes.&lt;/p&gt;
-
-&lt;p&gt;O comando &lt;strong&gt;su&lt;/strong&gt; pedirá a senha do usuário &lt;em&gt;root&lt;/em&gt;, que você deve fornecer para continuar. Digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Estava esperando que apareceriam asteriscos (&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;) enquanto você digitava a senha? Não se preocupe, na interface textual do Linux é assim mesmo: a senha não aparece enquanto é digitada, de forma alguma, nem mesmo camuflada com asteriscos.&lt;/p&gt;
-
-&lt;p&gt;Agora sim, como usuário &lt;em&gt;root&lt;/em&gt;, invoque o &lt;strong&gt;zypper&lt;/strong&gt; com o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Esse comando fará o &lt;strong&gt;zypper&lt;/strong&gt; obter da Internet a lista de pacotes disponíveis:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-03-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-03-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse &lt;em&gt;ref&lt;/em&gt; vem do inglês &lt;em&gt;refresh&lt;/em&gt;, que significa atualizar — olha só, encontramos uma terceira tradução no inglês para o nosso “atualizar” em português!&lt;/p&gt;
-
-&lt;p&gt;Note que o &lt;strong&gt;zypper&lt;/strong&gt; indica o progresso do que faz. Quando terminar, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(esse &lt;em&gt;up&lt;/em&gt; vem do inglês &lt;em&gt;update&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;Esse comando fará com que o &lt;strong&gt;zypper&lt;/strong&gt; baixe e instale atualizações disponíveis, se houver:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-04-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-04-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-05-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-05-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; indica o que precisa fazer para deixar o sistema atualizado e pergunta se você deseja continuar. A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se é isso o que deseja, você pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e a atualização começará.&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; mostra o andamento do processo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-06-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Normalmente, quando a atualização acaba, não é necessário fazer mais nada, nem reiniciar o computador. Mas note que ao final dessa atualização o &lt;strong&gt;zypper&lt;/strong&gt; cogitou reiniciar programas, porque arquivos que estavam sendo usados foram apagados:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-cmd-07-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-cmd-07-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse caso, mesmo que o &lt;strong&gt;zypper&lt;/strong&gt; não tenha dito para reiniciar o computador, como ele falou em “reiniciar”, recomendo que você reinicie o computador. Para isso, use o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(reiniciar, em inglês)&lt;/p&gt;
-
-&lt;p&gt;Quando voltar, seu sistema estará novo e limpo, sem risco de mau funcionamento.&lt;/p&gt;
-
-&lt;p&gt;Se lembre de verificar de tempos em tempos se há atualizações, já que usando a linha de comando o sistema não avisa a você quando há atualizações.&lt;/p&gt;
-
-&lt;p&gt;Resumindo, os comandos necessários para atualizar o sistema pela interface de linha de comando usando o &lt;strong&gt;zypper&lt;/strong&gt; são:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-# zypper ref
-# zypper up
-# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-                <pubDate>Tue, 14 May 2019 21:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/</guid>
                 
                 
                     <category>pt</category>
