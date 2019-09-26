@@ -9,10 +9,296 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 20 Sep 2019 11:07:12 -0300</pubDate>
-        <lastBuildDate>Fri, 20 Sep 2019 11:07:12 -0300</lastBuildDate>
+        <pubDate>Thu, 26 Sep 2019 01:28:54 -0300</pubDate>
+        <lastBuildDate>Thu, 26 Sep 2019 01:28:54 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Configurando certificado digital no navegador Google Chrome / Chromium</title>
+                <description>&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, veremos como configurar o navegador &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; para o uso de certificados digitais armazenados em mídias criptográficas, tais como &lt;em&gt;tokens&lt;/em&gt; e cartões inteligentes (&lt;em&gt;smart cards&lt;/em&gt;). As instruções apresentadas aqui também valem para o navegador &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, que nada mais é do que o &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; no qual o Chrome se baseia. Como teste, acessaremos um sistema do governo usando o navegador recém-configurado.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;pré-requisitos&quot;&gt;Pré-requisitos&lt;/h2&gt;
+
+&lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;: aqui você verá como instalar o certificado da AC no Chrome&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;: aqui você verá como instalar os programas necessários para o &lt;em&gt;token&lt;/em&gt; funcionar (não é necessário ler a parte que fala sobre a configuração do navegador, que é o que faremos aqui, só que no Chrome, em vez do &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, que foi usado naquele &lt;em&gt;post&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;configurando-o-token-no-chrome&quot;&gt;Configurando o token no Chrome&lt;/h2&gt;
+
+&lt;p&gt;A configuração do Chrome para o uso de certificados digitais é semelhante à do Firefox, porém o Chrome não dispõe de uma interface gráfica para realizá-la, motivo pelo qual faremos todo o procedimento usando a linha de comando.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, comece abrindo o terminal e instalando as &lt;a href=&quot;https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/NSS/Tools&quot;&gt;ferramentas NSS da Mozilla&lt;/a&gt; (é possível que já estejam instaladas em seu sistema):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in mozilla-nss-tools
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, certifique-se que está em sua pasta pessoal (&lt;em&gt;home&lt;/em&gt;) e execute o comando a seguir (fazendo as devidas substituições) para adicionar o &lt;em&gt;token&lt;/em&gt; à lista de dispositivos e módulos de segurança:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ modutil -dbdir sql:.pki/nssdb/ -add &quot;nome_do_token&quot; -libfile /caminho/para/biblioteca
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No lugar de &lt;code class=&quot;highlighter-rouge&quot;&gt;nome_do_token&lt;/code&gt;, digite um nome para identificar o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;No lugar de &lt;code class=&quot;highlighter-rouge&quot;&gt;/caminho/para/biblioteca&lt;/code&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para mim, que uso atualmente um &lt;em&gt;token&lt;/em&gt; &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/etoken-5110-usb-token/&quot;&gt;SafeNet eToken 5110&lt;/a&gt;, o comando ficou assim:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ modutil -dbdir sql:.pki/nssdb/ -add &quot;eToken&quot; -libfile /usr/lib64/libeToken.so
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O programa &lt;strong&gt;modutil&lt;/strong&gt; alerta que é necessário fechar o navegador:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;WARNING: Performing this operation while the browser is running could cause
+corruption of your security databases. If the browser is currently running,
+you should exit browser before continuing this operation. Type
+'q &amp;lt;enter&amp;gt;' to abort, or &amp;lt;enter&amp;gt; to continue:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feche quaisquer navegadores abertos e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Quando o programa encerrar, pode reabrir o(s) navegador(es):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Module &quot;eToken&quot; added to database.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você pode verificar que o &lt;em&gt;token&lt;/em&gt; foi adicionado com sucesso conferindo a lista de dispositivos e módulos de segurança:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ modutil -dbdir sql:.pki/nssdb/ -list
+
+Listing of PKCS #11 Modules
+-----------------------------------------------------------
+  1. NSS Internal PKCS #11 Module
+	   uri: pkcs11:library-manufacturer=Mozilla%20Foundation;library-description=NSS%20Internal%20Crypto%20Services;library-version=3.45
+	 slots: 2 slots attached
+	status: loaded
+
+	 slot: NSS Internal Cryptographic Services
+	token: NSS Generic Crypto Services
+	  uri: pkcs11:token=NSS%20Generic%20Crypto%20Services;manufacturer=Mozilla%20Foundation;serial=0000000000000000;model=NSS%203
+
+	 slot: NSS User Private Key and Certificate Services
+	token: NSS Certificate DB
+	  uri: pkcs11:token=NSS%20Certificate%20DB;manufacturer=Mozilla%20Foundation;serial=0000000000000000;model=NSS%203
+
+  2. eToken
+	library name: /usr/lib64/libeToken.so
+	   uri: pkcs11:library-manufacturer=SafeNet,%20Inc.;library-description=SafeNet%20eToken%20PKCS%2311;library-version=9.0
+	 slots: 10 slots attached
+	status: loaded
+
+	 slot: AKS ifdh [eToken 5110 SC] 00 00
+	token: Vinicius
+	  uri: pkcs11:token=Vinicius;manufacturer=SafeNet,%20Inc.;serial=026a102c;model=eToken
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 0
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 1
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 2
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 3
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+-----------------------------------------------------------
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;acessando-o-sistema-ecac&quot;&gt;Acessando o sistema eCAC&lt;/h2&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; é um sistema da &lt;a href=&quot;http://idg.receita.fazenda.gov.br/&quot;&gt;Receita Federal&lt;/a&gt; que disponibiliza pela Internet &lt;a href=&quot;http://www.receita.fazenda.gov.br/aplicacoes/ATBHE/servicos-ecac/default.aspx&quot;&gt;vários serviços&lt;/a&gt; para pessoas físicas e jurídicas, antes disponíveis apenas presencialmente. É possível acessá-lo por meio de um código de acesso gerado na hora, mas menos serviços estão disponíveis por esse meio, que é menos seguro. A totalidade dos serviços está disponível apenas para quem o acessa com certificado digital.&lt;/p&gt;
+
+&lt;p&gt;Alguns dos serviços mais úteis para pessoas físicas incluem consultar declarações e recibos já enviados do imposto de renda e &lt;a href=&quot;http://g1.globo.com/economia/imposto-de-renda/2016/noticia/2016/05/contribuinte-ja-pode-saber-se-caiu-na-malha-fina-do-imposto-de-renda-2016.html&quot;&gt;verificar se a declaração caiu na malha fina&lt;/a&gt;, assim como &lt;a href=&quot;http://economia.estadao.com.br/blogs/regina-pitoscia/sua-declaracao-ficou-em-malha-fina-acerte-logo-a-situacao/&quot;&gt;tomar ações para regularizar a situação&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; o eCAC é um sistema do governo assinado com um certificado de segurança próprio. Para acessá-lo, você deve instalar o certificado da Autoridade Certificadora Raiz Brasileira. Se ainda não fez isso, veja como fazer neste &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para acessar o eCAC, certifique-se de que o &lt;em&gt;token&lt;/em&gt; está conectado ao computador.&lt;/p&gt;
+
+&lt;p&gt;Depois, clique no &lt;em&gt;link&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;https://cav.receita.fazenda.gov.br/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Na tela de &lt;em&gt;login&lt;/em&gt;, clique em &lt;strong&gt;Certificado Digital&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite a senha PIN do &lt;em&gt;token&lt;/em&gt; e clique em &lt;strong&gt;Desbloquear&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Confirme o certificado a ser utilizado e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Já dentro do sistema, verifique suas informações na parte superior da tela:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Pronto! Agora você está no ambiente seguro da Receita Federal e sabe que configurou corretamente seu certificado digital no Google Chrome!&lt;/p&gt;
+
+&lt;p&gt;Divirta-se bastante… (&lt;em&gt;have a lot of fun…&lt;/em&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;posts-relacionados&quot;&gt;Posts relacionados&lt;/h2&gt;
+
+&lt;p&gt;Agora que configurou seu certificado digital, veja como pode usá-lo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/como-transmitir-a-declaracao-do-imposto-de-renda-com-certificado-digital-no-linux-opensuse/&quot;&gt;Como transmitir a declaração do Imposto de Renda com certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;Assinando e-mails enviados com certificado digital no Thunderbird&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/&quot;&gt;Assinando documentos ODF e PDF com o LibreOffice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/12/19/ssh-com-autenticacao-em-dois-fatores-usando-certificado-digital/&quot;&gt;SSH com autenticação em dois fatores usando certificado digital&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/CommonAccessCard#Google_Chrome.2FChromium_Setup&quot;&gt;CommonAccessCard - Community Help Wiki - Ubuntu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://homepage.ruhr-uni-bochum.de/jan.holthuis/posts/smartcard-authentification-in-chrome&quot;&gt;Smartcard authentification in Chromium - Jan Holthuis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Thu, 26 Sep 2019 01:15:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Primeiros passos no Raspberry Pi com NOOBS e Raspbian</title>
@@ -2648,155 +2934,6 @@
                 <pubDate>Sun, 26 May 2019 13:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Comunidade openSUSE lança a versão 15.1 da distribuição Leap</title>
-                <description>&lt;p&gt;&lt;em&gt;Esta é uma tradução não oficial da notícia originalmente publicada por &lt;a href=&quot;https://news.opensuse.org/author/ddemaio/&quot;&gt;Douglas DeMaio&lt;/a&gt; no site &lt;a href=&quot;https://news.opensuse.org/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/Leap15.1Branding-768x432.jpeg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/Leap15.1Branding-768x432.jpeg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Leap 15.1 traz suporte a mais dispositivos de &lt;em&gt;hardware&lt;/em&gt;, &lt;em&gt;drivers&lt;/em&gt; e melhorias na instalação&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nuremberga, Alemanha&lt;/strong&gt; – Hoje o lançamento do openSUSE Leap 15.1 traz para usuários profissionais, empresários e ISVs (&lt;em&gt;Independent Software Vendors&lt;/em&gt;) suporte atualizado para o &lt;em&gt;hardware&lt;/em&gt; moderno.&lt;/p&gt;
-
-&lt;p&gt;As funcionalidades do YaST e do instalador foram melhoradas na versão 15.1 da distribuição Leap.&lt;/p&gt;
-
-&lt;p&gt;“Continuidade e estabilidade é o que estamos fornecendo aos usuários com o Leap 15.1”, disse Haris Sehic, um membro da comunidade openSUSE. “Com o Leap 15, nós introduzimos um enorme número de novas funcionalidades e inovações em segurança, performance, ferramentas e áreas de trabalho. Tendo em mente o quão estável, eficiente e confiável o Leap se tornou, com esta versão nós conseguimos manter o nível de qualidade ao ponto que nossos usuários domésticos e de pequenas empresas podem, na verdade mais do que nunca, se beneficiar da base empresarial de uma distribuição Linux openSUSE. Vamos continuar a nos divertir bastante!”&lt;/p&gt;
-
-&lt;p&gt;As versões da distribuição Leap são escaláveis e tanto o &lt;em&gt;desktop&lt;/em&gt; quanto o servidor são igualmente importantes para as cargas de trabalho dos usuários profissionais, o que se reflete no menu de instalação, assim como na quantidade de pacotes oferecidos e dispositivos de &lt;em&gt;hardware&lt;/em&gt; suportados pela distribuição. O openSUSE Leap é bem adequado e preparado para uso como uma máquina virtual (VM) ou convidado de contêiner, permitindo a usuários profissionais prover serviços de rede de forma eficiente, independentemente de ser um único servidor ou um &lt;em&gt;data center&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Usuários profissionais, administradores de sistemas e desenvolvedores podem confiar na qualidade do processo de desenvolvimento da distribuição Leap. Uma distribuição moderna, segura, mantida e altamente testada é construída usando o sistema de compilação de código aberto único ao SUSE e openSUSE, que é o Open Build Service, junto com o teste automatizado da ferramenta openQA.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-há-de-novo&quot;&gt;O que há de novo&lt;/h2&gt;
-
-&lt;p&gt;Uma nova da pilha de gráficos inteiramente atualizada está disponível para essa distribuição GNU/Linux estável, de código aberto e baseada em trabalho comunitário e empresarial. O &lt;em&gt;hardware&lt;/em&gt; gráfico suportado pelo &lt;em&gt;kernel&lt;/em&gt; Linux 4.19 foi portado para o Leap 15.1, que usa o &lt;em&gt;kernel&lt;/em&gt; Linux 4.12, suporta &lt;em&gt;drivers&lt;/em&gt; gráficos adicionais para Unidades de Processamento Gráfico (GPUs) e melhora o suporte ao &lt;em&gt;chipset&lt;/em&gt; AMD Vega.&lt;/p&gt;
-
-&lt;p&gt;A virtualização da GPU se tornou bastante popular entre fabricantes como AMD, Intel e Nvidia e o Leap 15.1 ajuda a entregar a implementação e o suporte dessas soluções para ambientes virtualizados e na nuvem.&lt;/p&gt;
-
-&lt;p&gt;O Leap 15.1 agora usará o Network Manager por padrão tanto para &lt;em&gt;notebooks&lt;/em&gt; quanto &lt;em&gt;desktops&lt;/em&gt; – antes, apenas os &lt;em&gt;notebooks&lt;/em&gt; usavam o Network Manager por padrão. Servidores continuarão a usar por padrão o Wicked, o sistema avançado de configuração de rede do openSUSE. Essa nova versão adiciona alguns &lt;em&gt;drivers&lt;/em&gt; Wi-Fi populares para placas de rede sem fio mais modernas. Uma mudança que se aplica tanto ao Wicked quanto ao Network Manager é que o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/resolv.conf&lt;/code&gt;, o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;yp.conf&lt;/code&gt; e mais alguns arquivos de configuração são &lt;em&gt;links&lt;/em&gt; para arquivos em &lt;code class=&quot;highlighter-rouge&quot;&gt;/run&lt;/code&gt; e são gerenciados pelo netconfig.&lt;/p&gt;
-
-&lt;p&gt;O gerenciamento de serviços do sistema no YaST foi remodelado para aproveitar muitas das funcionalidades oferecidas pelo systemd nessa área.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalação-e-configuração-melhoradas&quot;&gt;Instalação e configuração melhoradas&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/1yast.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/1yast.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Aprimoramentos foram feitos no YaST para melhorar o gerenciamento de serviços. O Firewalld pode ser gerenciado no modo texto. Há uma nova interface de usuário para gerenciar o Firewalld, incluindo suporte ao AutoYaST. Administradores de sistema terão melhor controle com fórmulas do Salt no módulo yast2-configuration-management, e o gerenciamento de chaves SSH por usuário tornará as tarefas dos administradores muito mais agradáveis.&lt;/p&gt;
-
-&lt;p&gt;O YaST vem com um Particionador melhorado, que agora pode automaticamente formatar discos inteiros sem tabelas de partição, criar MD RAIDs de &lt;em&gt;software&lt;/em&gt; sobre discos inteiros, criar partições dentro de um MD RAID de &lt;em&gt;software&lt;/em&gt; e muitas outras combinações. O AutoYaST também suporta todas essas combinações. O YaST agora apresenta melhores propostas de particionamento em vários cenários, como sistemas com discos pequenos ou sistemas com vários discos, facilitando o particionamento para profissionais Linux.&lt;/p&gt;
-
-&lt;p&gt;O Leap 15.1 traz novos ícones do YaST criados pela comunidade.&lt;/p&gt;
-
-&lt;p&gt;A equipe do YaST trabalhou duro para melhorar a experiência do usuário em telas 4K (HiDPI), que agora são detectadas automaticamente e fazem com que a interface gráfica seja redimensionada, conferindo ao instalador um belo e novo visual.&lt;/p&gt;
-
-&lt;h2 id=&quot;segurança-e-manutenção&quot;&gt;Segurança e manutenção&lt;/h2&gt;
-
-&lt;p&gt;Atualizações de manutenção tanto do Leap 15 quanto do SUSE Linux Enterprise 15 foram herdadas pelo Leap 15.1. A equipe de segurança lança atualizações rápidas para o Leap 15.1. Quanto às atualizações de manutenção, cerca de 10 a 20% são contribuídas pela comunidade.&lt;/p&gt;
-
-&lt;p&gt;Há uma opção de teste no YaST para usuários que desejarem testar atualizações de manutenção antes de ser lançadas. O repositório de testes permite aos usuários testar as atualizações sete dias antes de elas irem para o repositório de atualizações.&lt;/p&gt;
-
-&lt;p&gt;Versões menores da série Leap 15 tem um ciclo de vida de manutenção e segurança de cerca de 18 meses, uma vez que versões menores são lançadas mais ou menos uma vez por ano. Usuários do openSUSE Leap 15.0, que foi lançado em 25 de maio de 2018, devem atualizar para o Leap 15.1 dentro dos próximos 6 meses. Espera-se que a série 15 do Leap alcance uma estimativa de 36 meses de atualizações de manutenção e segurança.&lt;/p&gt;
-
-&lt;h2 id=&quot;imagens-implantação-e-hardware-com-linode-slimbooks-e-tuxedo&quot;&gt;Imagens, implantação e hardware com Linode, Slimbooks e Tuxedo&lt;/h2&gt;
-
-&lt;p&gt;O Leap 15.1 continua a adicionar mais fornecedores de hardware: as companhias Slimbook e TUXEDO Computers oferecerão a opção de comprar computadores com o Leap 15.1 pré-instalado. Imagens do Leap para a nuvem do Linode já estão disponíveis hoje e prontas para todas as necessidades de infraestrutura.&lt;/p&gt;
-
-&lt;p&gt;Os computadores da TUXEDO Computers foram uma importante parte dos testes de referência do openSUSE Leap 15.1.&lt;/p&gt;
-
-&lt;p&gt;“Nós compartilhamos a crença fundamental que o usuário deve ter a melhor experiência de usuário que podemos oferecer”, disse Herbert Feiler, CEO da TUXEDO Computers. “O openSUSE Leap 15.1 é a consistente continuidade e aprimoramento do Linux estável para usuários finais. Por isso, é claro que continuamos a oferecer o openSUSE pré-instalado em todos os &lt;em&gt;notebooks&lt;/em&gt; e PCs da TUXEDO”, acrescenta Feiler.&lt;/p&gt;
-
-&lt;p&gt;Serviços de armazenamento na nuvem, como Amazon Web Services, Azure e OpenStack, oferecerão imagens do Leap 15.1 nas próximas semanas. A série 15 do Leap é continuamente otimizada para cenários de uso virtualizado na nuvem tanto como hospedeiro quanto como convidado.&lt;/p&gt;
-
-&lt;h2 id=&quot;ambientes-de-trabalho&quot;&gt;Ambientes de trabalho&lt;/h2&gt;
-
-&lt;p&gt;O Leap oferece uma boa variedade de ambientes de trabalho para Linux, incluindo os tradicionais KDE e GNOME, assim como o eficiente Xfce. Usuários podem escolher seu ambiente de trabalho, configuração e fluxo de trabalho preferidos. O GNOME 3.26 e a versão com suporte estendido (LTS) do KDE Plasma 5.12 estão tanto no Leap 15.0 quanto no Leap 15.1. Usuários empresariais do SLE 15 também podem obter o KDE e outras ferramentas e pacotes da comunidade por meio do &lt;a href=&quot;https://packagehub.suse.com/&quot;&gt;PackageHub&lt;/a&gt;. Imagens Live do KDE e GNOME estão disponíveis para um simples &lt;em&gt;test drive&lt;/em&gt; na guia &lt;strong&gt;Live&lt;/strong&gt; da distribuição &lt;strong&gt;Leap&lt;/strong&gt; em &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.1/live/&quot;&gt;software.opensuse.org&lt;/a&gt;. Uma imagem de recuperação (&lt;em&gt;Rescue LiveCD&lt;/em&gt;) também está disponível &lt;a href=&quot;https://download.opensuse.org/distribution/leap/15.1/live/&quot;&gt;nessa mesma página&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;contêineres&quot;&gt;Contêineres&lt;/h2&gt;
-
-&lt;p&gt;O Leap 15.1 está repleto de tecnologias de conteinerização, como o Singularity, que traz contêineres e reprodutibilidade para a computação científica e a computação de alto desempenho (HPC). O Singularity apareceu pela primeira vez na distribuição Leap na versão 42.3 e provê recursos para criar os menores contêineres possíveis e executá-los como ambientes de apenas uma aplicação. Esta é também a primeira versão do Leap a trazer o gerenciador Podman e a ferramenta de criação de imagens Buildah, usados por padrão no openSUSE Kubic. Em conjunto, eles fornecem uma alternativa mais leve e resiliente ao Docker e adicionam funcionalidades únicas.&lt;/p&gt;
-
-&lt;h2 id=&quot;gamers-e-designers&quot;&gt;Gamers e designers&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Web designers&lt;/em&gt; e publicitários digitais podem usar a mais nova pilha de gráficos com a atualização de versão menor da biblioteca gráfica Mesa 3D. Também podem usar ferramentas de código aberto como o Blender, programa de criação em 3D, para criar animações intrigantes e cativantes.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Gamers&lt;/em&gt;, amantes de música e ouvintes de &lt;em&gt;podcasts&lt;/em&gt; podem aproveitar os melhoramentos do áudio de alta definição, &lt;em&gt;drivers&lt;/em&gt; de áudio USB portados e atualizações de &lt;em&gt;software&lt;/em&gt; feitas para os cartões de memória MultiMedia Card (MMC) e embedded MMC (e-MMC).&lt;/p&gt;
-
-&lt;h2 id=&quot;migração-facilitada-para-o-enterprise&quot;&gt;Migração facilitada para o Enterprise&lt;/h2&gt;
-
-&lt;p&gt;O openSUSE Leap 15.1 traz vários pacotes comunitários construídos sobre o núcleo do SUSE Linux Enterprise (SLE) 15 SP1. O núcleo comum compartilhado e o alinhamento com o SLE facilitam migrações para o produto corporativo da SUSE para profissionais que queiram estender o ciclo de vida de manutenção e segurança, uma vez passado o ciclo de vida do Leap. Migrar da versão comunitária do Leap para o SUSE Linux Enterprise é uma opção disponível para quem desejar migrar. A migração de servidores com openSUSE Leap para o SUSE Linux Enterprise é fácil para os integradores de sistema que trabalham sobre o código do Leap e podem decidir migrar para uma versão corporativa para SLAs, certificação, implantação em massa ou suporte estendido. As instruções sobre como fazer isso usando o pacote SUSEConnect e a documentação do SUSE podem ser encontradas &lt;a href=&quot;https://www.suse.com/documentation/sles-15/book_sle_upgrade/data/sec_upgrade-online_opensuse_to_sle.html&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;todos-os-serviços-de-rede-padronizados-e-mais-alguns-existentes&quot;&gt;Todos os serviços de rede padronizados e mais alguns existentes&lt;/h2&gt;
-
-&lt;p&gt;Como nas versões anteriores, administradores de sistemas e pequenas empresas podem usar o Leap em servidores &lt;em&gt;web&lt;/em&gt; e de &lt;em&gt;e-mail&lt;/em&gt; ou para gerenciamento da rede com DHCP, DNS, NTP, Samba, NFS, LDAP e centenas de outros serviços.&lt;/p&gt;
-
-&lt;p&gt;Serviços de compartilhamento de arquivos e nuvem incluem &lt;em&gt;software&lt;/em&gt; como o &lt;a href=&quot;https://nextcloud.com/&quot;&gt;NextCloud&lt;/a&gt; e até a suíte de aplicativos de &lt;em&gt;groupware&lt;/em&gt; &lt;a href=&quot;https://kopano.com/&quot;&gt;Kopano&lt;/a&gt; (antes conhecida como Zarafa) é parte dos repositórios oficiais do Leap 15.1.&lt;/p&gt;
-
-&lt;p&gt;O Leap 15.1 também introduz a configuração automática do SSH por padrão nas instalações dos tipos “Servidor” e “Servidor Transacional”, facilitando o trabalho no servidor logo após a instalação.&lt;/p&gt;
-
-&lt;h2 id=&quot;saúde-e-ciência&quot;&gt;Saúde e ciência&lt;/h2&gt;
-
-&lt;p&gt;A distribuição Leap suporta as comunidades de saúde, ciência, pesquisa e desenvolvimento.&lt;/p&gt;
-
-&lt;p&gt;O GNU Health, o sistema de gerenciamento de informações hospitalares ganhador de prêmios, vem na versão 3.4.x, que introduz o Federation Server, gnuhealth-thalamus. Foi adicionado um &lt;em&gt;script&lt;/em&gt; de configuração do GNU Health chamado openSUSE-gnuhealth-setup para facilitar a instalação de um novo sistema para usuários menos experientes.&lt;/p&gt;
-
-&lt;p&gt;Resolva numericamente problemas lineares e não-lineares e realize outros experimentos numéricos usando uma linguagem que é em grande parte compatível com o MATLAB por meio do GNU Octave.&lt;/p&gt;
-
-&lt;p&gt;Ou use o sistema de informação geográfica gratuito e de código aberto &lt;a href=&quot;https://www.qgis.org/&quot;&gt;QGIS&lt;/a&gt; para criar, editar, visualizar, analisar e publicar informações geoespaciais.&lt;/p&gt;
-
-&lt;p&gt;O Leap tem muito mais pacotes, como o sistema algébrico computacional (CAS) para problemas em teoria dos corpos chamado Cadabra, o simulador interativo de física Step e o pacote de tabela periódica Kalzium.&lt;/p&gt;
-
-&lt;h2 id=&quot;arquiteturas&quot;&gt;Arquiteturas&lt;/h2&gt;
-
-&lt;p&gt;O Leap trabalha com a arquitetura x86_64 e pode ser instalado em computadores físicos, virtuais, hospedeiro e convidado, e na nuvem. Portes para outras arquiteturas como &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM64&lt;/a&gt; e &lt;a href=&quot;https://en.wikipedia.org/wiki/Power_Architecture&quot;&gt;POWER&lt;/a&gt; estão sendo desenvolvidos pela comunidade.&lt;/p&gt;
-
-&lt;p&gt;A instalação do openSUSE no Raspberry Pi de arquitetura ARM64 foi simplificada para uma imagem e é personalizável. O openSUSE Leap 15.1 é o primeiro sistema operacional de propósito geral a suportar uma experiência Linux padrão completa no Raspberry Pi. Não há necessidade de usar uma imagem ISO específica para instalar o openSUSE no Raspberry Pi. A imagem padrão e não modificada do openSUSE pode ser instalada, assim como é instalada em qualquer outro computador. O instalador detecta e propõe as configurações padrão. O Raspberry Pi precisa de uma partição muito específica contendo o &lt;em&gt;firmware&lt;/em&gt; do sistema. É importante que o instalador detecte essa partição específica, preserve-a e monte-a em &lt;code class=&quot;highlighter-rouge&quot;&gt;/boot/vc&lt;/code&gt; para permitir que o sistema operacional realize atualizações do &lt;em&gt;firmware&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;baixe-o-opensuse-leap-151&quot;&gt;Baixe o openSUSE Leap 15.1&lt;/h2&gt;
-
-&lt;p&gt;Para baixar a imagem ISO, acesse: &lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;https://software.opensuse.org/distributions/leap&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;dúvidas&quot;&gt;Dúvidas&lt;/h2&gt;
-
-&lt;p&gt;Caso você tenha alguma dúvida sobre a distribuição ou acredita que talvez tenha encontrado um &lt;em&gt;bug&lt;/em&gt;, pergunte em um dos seguintes canais (em inglês):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://t.me/openSUSE_group&quot;&gt;https://t.me/openSUSE_group&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-support/&quot;&gt;https://lists.opensuse.org/opensuse-support/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://discordapp.com/invite/openSUSE&quot;&gt;https://discordapp.com/invite/openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Há também os canais em português:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://t.me/opensusebr&quot;&gt;https://t.me/opensusebr&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-pt/&quot;&gt;https://lists.opensuse.org/opensuse-pt/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;participe&quot;&gt;Participe&lt;/h2&gt;
-
-&lt;p&gt;Se você gostaria de ajudar o Projeto openSUSE, veja a lista de formas como você pode contribuir em: &lt;a href=&quot;https://rootco.de/2016-04-03-opensuse-and-you/&quot;&gt;https://rootco.de/2016-04-03-opensuse-and-you/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;O Projeto openSUSE é uma comunidade ao redor do mundo que promove o uso do Linux em todos os lugares. Ele cria duas das melhores distribuições Linux do mundo: a Tumbleweed, atualizada continuamente (&lt;em&gt;rolling-release&lt;/em&gt;), e a Leap, distribuição híbrida de empresa e comunidade. O openSUSE trabalha continuamente de maneira conjunta, aberta, transparente e amigável como parte da comunidade internacional de &lt;em&gt;software&lt;/em&gt; livre e de código aberto (&lt;em&gt;Free and Open Source Software&lt;/em&gt; – FOSS). O projeto é comandado por sua comunidade e depende das contribuições de pessoas que trabalham como testadores, escritores, tradutores, especialistas em usabilidade, artistas, embaixadores ou desenvolvedores. O projeto abrange uma ampla variedade de tecnologias, pessoas com diferentes níveis de conhecimentos, que falam diferentes línguas e possuem diversas raízes culturais. Saiba mais sobre o Projeto openSUSE em &lt;a href=&quot;https://opensuse.org&quot;&gt;opensuse.org&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-                <pubDate>Wed, 22 May 2019 23:59:59 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/</guid>
                 
                 
                     <category>pt</category>
