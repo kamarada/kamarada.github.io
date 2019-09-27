@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 26 Sep 2019 01:28:54 -0300</pubDate>
-        <lastBuildDate>Thu, 26 Sep 2019 01:28:54 -0300</lastBuildDate>
+        <pubDate>Thu, 26 Sep 2019 23:37:29 -0300</pubDate>
+        <lastBuildDate>Thu, 26 Sep 2019 23:37:29 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
         
@@ -25,18 +25,22 @@
 
 &lt;/div&gt;
 
+&lt;p&gt;Para referência futura, aqui uso o &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada 15.1 Beta&lt;/a&gt; (baseado no &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt;).&lt;/p&gt;
+
 &lt;h2 id=&quot;pré-requisitos&quot;&gt;Pré-requisitos&lt;/h2&gt;
 
 &lt;p&gt;Antes, para deixar todo mundo na mesma página, recomendo a leitura de &lt;em&gt;posts&lt;/em&gt; anteriores falando sobre certificados digitais:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;: aqui você verá como instalar o certificado da AC no Chrome&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;: aqui você verá como instalar os programas necessários para o &lt;em&gt;token&lt;/em&gt; funcionar (não é necessário ler a parte que fala sobre a configuração do navegador, que é o que faremos aqui, só que no Chrome, em vez do &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, que foi usado naquele &lt;em&gt;post&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;: aqui você verá como instalar os programas necessários para o &lt;em&gt;token&lt;/em&gt; funcionar (não é necessário ler a partir da parte que fala sobre a configuração do navegador, que é o que faremos aqui, só que no Chrome, em vez do &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt;, que foi usado naquele &lt;em&gt;post&lt;/em&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;configurando-o-token-no-chrome&quot;&gt;Configurando o token no Chrome&lt;/h2&gt;
 
 &lt;p&gt;A configuração do Chrome para o uso de certificados digitais é semelhante à do Firefox, porém o Chrome não dispõe de uma interface gráfica para realizá-la, motivo pelo qual faremos todo o procedimento usando a linha de comando.&lt;/p&gt;
+
+&lt;p&gt;Conecte seu &lt;em&gt;token&lt;/em&gt; antes de continuar.&lt;/p&gt;
 
 &lt;p&gt;Primeiro, comece abrindo o terminal e instalando as &lt;a href=&quot;https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/NSS/Tools&quot;&gt;ferramentas NSS da Mozilla&lt;/a&gt; (é possível que já estejam instaladas em seu sistema):&lt;/p&gt;
 
@@ -47,7 +51,9 @@
 &lt;p&gt;Depois, certifique-se que está em sua pasta pessoal (&lt;em&gt;home&lt;/em&gt;) e execute o comando a seguir (fazendo as devidas substituições) para adicionar o &lt;em&gt;token&lt;/em&gt; à lista de dispositivos e módulos de segurança:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ modutil -dbdir sql:.pki/nssdb/ -add &quot;nome_do_token&quot; -libfile /caminho/para/biblioteca
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd
+$ modutil -dbdir sql:.pki/nssdb/ -add &quot;nome_do_token&quot; -libfile /caminho/para/biblioteca
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;No lugar de &lt;code class=&quot;highlighter-rouge&quot;&gt;nome_do_token&lt;/code&gt;, digite um nome para identificar o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
@@ -262,8 +268,8 @@ Listing of PKCS #11 Modules
 &lt;p&gt;Já dentro do sistema, verifique suas informações na parte superior da tela:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/09/chrome-token-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/09/chrome-token-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;a href=&quot;/files/2019/09/chrome-token-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/chrome-token-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
 &lt;/a&gt;
 
 &lt;/div&gt;

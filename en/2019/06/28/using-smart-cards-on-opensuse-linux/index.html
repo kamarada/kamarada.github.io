@@ -242,7 +242,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-07-02" />
+                <meta itemprop="dateModified" content="2019-09-26" />
             </div>
             <div class='col-sm-6'>
                 
@@ -560,6 +560,14 @@ Failed to connect to card: Card is invalid or cannot be handled
 
 </div>
 
+<p>I don’t know why that RPM package does not declare some libraries it requires. You need to install them manually:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># zypper in libcrypto43 openssl
+# ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.6
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>Then, to start SAC, click on <strong>Activities</strong>, on the top-left screen corner, start typing <code class="highlighter-rouge">safenet</code> and click on the <strong>SafeNet Authentication Client Tools</strong> icon:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -591,6 +599,13 @@ Failed to connect to card: Card is invalid or cannot be handled
 </ul>
 
 <p>Let’s see how to set up the <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a> browser to use your token.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Update (26/09/2019):</strong>
+    
+<p>If you are looking for instructions for either <a href="https://www.google.com/chrome/">Google Chrome</a> or <a href="https://www.chromium.org/">Chromium</a> browsers, <a href="/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">click here</a>.</p>
+
+</div>
 
 <p>Start <strong>Mozilla Firefox</strong>. Open the <strong>Firefox menu</strong> (top right corner of the window) and click <strong>Preferences</strong>.</p>
 
