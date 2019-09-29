@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -190,7 +194,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -242,7 +246,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-09-20" />
+                <meta itemprop="dateModified" content="2019-09-29" />
             </div>
             <div class='col-sm-6'>
                 
@@ -277,7 +281,15 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>O <a href="https://www.raspberrypi.org/"><strong>Raspberry Pi</strong></a> é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela <a href="https://www.raspberrypi.org/about/">Raspberry Pi Foundation</a>, uma ONG do Reino Unido que objetiva facilitar e promover o ensino de computação e a inclusão digital.</p>
+            
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (29/09/2019):</strong>
+    
+<p>O <em>post</em> foi revisado para se aproximar da <a href="/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">versão em inglês</a>, mais recente.</p>
+
+</div>
+
+<p>O <a href="https://www.raspberrypi.org/"><strong>Raspberry Pi</strong></a> é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela <a href="https://www.raspberrypi.org/about/">Raspberry Pi Foundation</a>, uma ONG do Reino Unido que objetiva facilitar e promover o ensino de computação e a inclusão digital.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/raspberry-pi-4-credit-card.jpg" title="Raspberry Pi: o computador do tamanho de um cartão de crédito">
@@ -301,6 +313,8 @@
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MWfl1Nl2WIM" allowfullscreen=""></iframe>
 </div>
 
+<p><strong>Curiosidade:</strong> o nome <a href="https://en.wikipedia.org/wiki/Raspberry">Raspberry</a> (<a href="https://pt.wikipedia.org/wiki/Framboesa">framboesa</a>, em inglês) vem de uma tradição de usar nomes de frutas na computação – veja, por exemplo, a <a href="https://www.apple.com/br/">Apple</a> (maçã) – e Pi vem da linguagem de programação <a href="https://www.python.org/">Python</a>, a ideia inicial era criar um computador que pudesse ser programado usando essa linguagem. Há quem acredite que Pi tem relação também com o <a href="https://pt.wikipedia.org/wiki/Pi">número π</a> (3,14…) ou que Raspberry Pi seja um trocadilho com <em>raspberry pie</em> (torta de framboesa).</p>
+
 <h2 id="arquitetura-arm">Arquitetura ARM</h2>
 
 <p>O Raspberry Pi é diferente dos computadores tradicionais não apenas no formato, mas também na <strong><a href="https://pt.wikipedia.org/wiki/Arquitetura_de_computadores">arquitetura</a></strong>, ou seja, <em>hardware</em> e <em>software</em> funcionam de forma totalmente diferente. Enquanto os <em>desktops</em> e <em>notebooks</em> são, na essência, iguais ao <a href="https://pt.wikipedia.org/wiki/IBM_PC">IBM PC</a> lançado em 1981 e se baseiam nas arquiteturas <a href="https://pt.wikipedia.org/wiki/X86">x86</a> (PCs de 32 <em>bits</em>) ou <a href="https://pt.wikipedia.org/wiki/AMD64">x86-64</a> (PCs de 64 <em>bits</em>), o Raspberry Pi se baseia na arquitetura <a href="https://pt.wikipedia.org/wiki/Arquitetura_ARM">ARM</a>, a mesma usada por <em>smartphones</em> com <a href="https://www.android.com/intl/pt-BR_br/">Android</a>.</p>
@@ -309,18 +323,18 @@
 
 <p>É possível instalar o <a href="https://www.vivaolinux.com.br/linux/">Linux</a> no Raspberry Pi e usá-lo como um <em>desktop</em> para as tarefas do dia-a-dia – navegar na Internet, editar textos, etc. Como fazer isso é o assunto desse <em>post</em>.</p>
 
-<h2 id="raspberry-pi-4-b">Raspberry Pi 4 B</h2>
+<h2 id="raspberry-pi-4-modelo-b">Raspberry Pi 4 Modelo B</h2>
 
-<p>O primeiro Raspberry Pi foi lançado em 2012 e desde então já foram fabricados <a href="https://www.raspberrypi.org/products/">vários modelos e variações</a>. Atualmente, ele se encontra na quarta geração, com o <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">Raspberry Pi 4</a>, lançado em julho. Geralmente, as gerações apresentam um modelo A e um modelo B. O modelo A é uma variação mais barata, com menos memória RAM e menos portas (como USB e Ethernet). Por enquanto, a quarta geração possui apenas o modelo B.</p>
+<p>O primeiro Raspberry Pi foi lançado em 2012 e desde então já foram fabricados <a href="https://www.raspberrypi.org/products/">vários modelos e variações</a>. Atualmente, ele se encontra na quarta geração, com o <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">Raspberry Pi 4</a>, lançado em julho. Geralmente, as gerações apresentam um Modelo A e um Modelo B. O Modelo A é uma variação mais barata, com menos memória RAM e menos portas (como USB e Ethernet). Por enquanto, a quarta geração possui apenas o Modelo B.</p>
 
-<p>O <strong>Raspberry Pi 4 modelo B</strong> possui as seguintes especificações:</p>
+<p>O <strong>Raspberry Pi 4 Modelo B</strong> possui as seguintes <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/">especificações</a>:</p>
 
 <ul>
-  <li><em>chip</em> Broadcom BCM2711
+  <li>processador Broadcom BCM2711, do tipo <a href="https://pt.wikipedia.org/wiki/System-on-a-chip"><em>system-on-a-chip</em></a> (SoC)
     <ul>
       <li>quatro núcleos (<em>quad core</em>) Cortex-A72</li>
       <li>frequência de 1,5GHz</li>
-      <li>arquitetura ARM v8 de 64 <em>bits</em></li>
+      <li>arquitetura ARMv8 de 64 <em>bits</em></li>
     </ul>
   </li>
   <li>variações com 1GB, 2GB ou 4GB de memória RAM DDR4</li>
@@ -349,15 +363,25 @@
 
 <p>Se quiser conferir as especificações técnicas desse modelo em mais detalhes, acesse o <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/"><em>site</em> do Raspberry Pi</a>.</p>
 
+<h2 id="qual-variação-escolher">Qual variação escolher?</h2>
+
+<p>O Raspberry Pi 4 B vem com 1GB, 2GB, ou 4GB of RAM.</p>
+
+<p>Para a maioria dos fins educacionais e uso em projetos como <em>hobby</em>, 1GB é suficiente.</p>
+
+<p>Para usar como um <em>desktop</em>, pelo menos 2GB é recomendado.</p>
+
+<p>É importante que você escolha a quantidade certa de RAM antes de comprar um Raspberry Pi, porque não é possível expandi-la depois, uma vez que a memória RAM é soldada na placa e não pode ser substituída.</p>
+
 <h2 id="quanto-custa">Quanto custa?</h2>
 
 <p>O preço de entrada do Raspberry Pi sempre foi 35 dólares (o equivalente a 145 reais, no momento da escrita). Esse é o preço do Raspberry Pi 4 B com 1GB de RAM.</p>
 
-<p>Observe que esse é o preço apenas da placa do Raspberry Pi. Além dela, é necessário comprar: a fonte de alimentação, um cartão de memória micro-SD e um cabo micro-HDMI. Além disso, é opcional, mas recomendado, comprar uma capa (<em>case</em>) para proteger a placa.</p>
+<p>Observe que esse é o preço apenas da placa do Raspberry Pi. Além dela, é necessário comprar a fonte de alimentação, um cartão de memória micro-SD com capacidade de pelo menos 8GB e um cabo micro-HDMI. Além disso, é opcional, mas recomendado, comprar uma capa (<em>case</em>) para proteger a placa.</p>
 
 <p>Você pode comprar a placa e os acessórios separadamente ou comprar um <em>kit</em> que já vem com tudo que é preciso, que foi o que eu fiz (mais detalhes adiante).</p>
 
-<p>Se você já tem um computador, então provavelmente tem <em>mouse</em>, teclado e monitor. É possível utilizá-los com o Raspberry Pi, que tem portas USB e HDMI. Senão, é necessário comprá-los também.</p>
+<p>Se você já tem um computador, então provavelmente tem <em>mouse</em>, teclado e monitor. Você pode usá-los com o Raspberry Pi, que tem portas USB e HDMI. Senão, é necessário comprá-los também. Se você tem uma TV com entrada HDMI, pode usá-la no lugar do monitor.</p>
 
 <p><strong>Curiosidade:</strong> já houve modelos do Raspberry Pi ainda mais baratos que 35 dólares. O mais barato lançado até então foi o <a href="https://www.raspberrypi.org/products/raspberry-pi-zero/">Raspberry Pi Zero</a>, que custa apenas 5 dólares (20 reais). Ele é uma derivação do primeiro Raspberry Pi, mas ainda menor e mais barato.</p>
 
@@ -372,10 +396,10 @@
 <ul>
   <li>cartão de memória micro-SD de 16GB</li>
   <li>capa de acrílico com ventoinha (<em>fan</em>)</li>
-  <li>leitor de cartão (para conectar o cartão de memória ao computador)</li>
+  <li>leitor de cartão de memória USB</li>
   <li>dissipadores de calor (<em>heat sinks</em>)</li>
   <li>fonte de alimentação</li>
-  <li>cabo de vídeo micro-HDMI</li>
+  <li>cabo de vídeo micro-HDMI para HDMI</li>
 </ul>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
@@ -394,7 +418,7 @@
 
 <p>Se for comprar <a href="http://bit.ly/kamarada-rpi-4b">no mesmo lugar que eu comprei</a>, observe que pelo mesmo anúncio é possível comprar 6 variações: apenas a placa do Raspberry Pi 4 B com 1GB, 2GB ou 4GB de RAM ou os 3 <em>kits</em> correspondentes. Atente-se na hora de selecionar a variação que deseja.</p>
 
-<h2 id="raspbian-debian-para-raspberry">Raspbian: Debian para Raspberry</h2>
+<h2 id="raspbian-debian-para-raspberry-pi">Raspbian: Debian para Raspberry Pi</h2>
 
 <p>No momento da escrita, a distribuição <a href="https://www.opensuse.org/">openSUSE</a> suporta a família de computadores Raspberry Pi até a terceira geração:</p>
 
@@ -412,7 +436,20 @@
   <li><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=244248">Raspberry Pi 4 and openSUSE LEAP 15.1? - Raspberry Pi Forums</a></li>
 </ul>
 
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (29/09/2019):</strong>
+    
+<p>Os trabalhos para que o openSUSE suporte o Raspberry Pi 4 já começaram:</p>
+
+<ul>
+  <li><a href="https://lists.opensuse.org/opensuse-arm/2019-09/msg00037.html">[opensuse-arm] Raspberry Pi 4 Model B - openSUSE Mailinglist Archives</a></li>
+</ul>
+
+</div>
+
 <p>Por isso, embora normalmente os <em>posts</em> que faço aqui sejam verdes da cor do openSUSE, o <em>post</em> de hoje será vermelho, porque vamos falar de outra distribuição Linux: Raspbian!</p>
+
+<p>O nome <strong><a href="http://www.raspbian.org/">Raspbian</a></strong> é a combinação de Raspberry Pi e Debian: resumidamente, o Raspbian é uma versão da distribuição Debian portada e otimizada para o Raspberry Pi.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/raspbian.jpg" title="">
@@ -421,15 +458,13 @@
 
 </div>
 
-<p>O nome <strong><a href="http://www.raspbian.org/">Raspbian</a></strong> é a combinação de Raspberry Pi e Debian: resumidamente, o Raspbian é uma versão da distribuição Debian portada e otimizada para o Raspberry Pi.</p>
-
 <p>O <strong><a href="https://www.debian.org/index.pt.html">Debian</a></strong> é uma das maiores e mais antigas distribuições Linux, existe desde 1993. Introduziu o formato de empacotamento DEB (análogo ao RPM usado pelo openSUSE). É focada em estabilidade: fornece apenas versões bem testadas (geralmente antigas) de programas e a atualização da distribuição normalmente ocorre sem erros. Se você fizer uma árvore genealógica das distribuições Linux, o Debian será uma das que estarão no topo: deu origem ao <a href="https://ubuntu.com/">Ubuntu</a> e ao <a href="http://www.knopper.net/knoppix/index-en.html">Knoppix</a>, que por sua vez deram origem a várias distribuições, dentre elas as brasileiras <a href="https://www.hardware.com.br/kurumin/">Kurumin</a> (descontinuada) e <a href="https://www.biglinux.com.br/">BigLinux</a>, e o Raspbian.</p>
 
 <h2 id="noobs-o-instalador-do-raspbian">NOOBS: o instalador do Raspbian</h2>
 
-<p>Como estamos começando a mexer no Raspberry Pi, vamos instalar o sistema operacional usando o método recomendado pelo <em>site</em> oficial do Raspberry Pi, que é o <strong>NOOBS</strong> – <em>New Out Of the Box Software</em> (“novo <em>software</em> de fábrica”, em uma tradução livre, também parece um trocadilho com a gíria <em>noob</em>, que quer dizer “novato”).</p>
+<p>Como estamos começando a mexer no Raspberry Pi, vamos instalar o sistema operacional usando o método recomendado pelo <em>site</em> oficial do Raspberry Pi, que é o NOOBS.</p>
 
-<p>O NOOBS é o instalador que instala o Raspbian no cartão de memória. É a forma mais fácil de instalar o sistema operacional no Raspberry Pi. Além do Raspbian, o NOOBS também pode ser usado para instalar a distribuição <a href="https://libreelec.tv/">LibreELEC</a>, focada em multimídia.</p>
+<p><strong><a href="https://www.raspberrypi.org/documentation/installation/noobs.md">NOOBS</a></strong> – <em>New Out Of the Box Software</em> (“novo <em>software</em> de fábrica”, em uma tradução livre), mas também parece um trocadilho com a gíria <em>noob</em>, que quer dizer “novato” – é o instalador que instala o Raspbian no cartão de memória. É a forma mais fácil de instalar o sistema operacional no Raspberry Pi. Além do Raspbian, o NOOBS também pode ser usado para instalar a distribuição <a href="https://libreelec.tv/">LibreELEC</a>, focada em multimídia.</p>
 
 <p>Há lojas que vendem cartões de memória que já vem com o NOOBS. Como no <em>kit</em> que eu comprei veio um cartão de memória lacrado, tive que baixar o NOOBS manualmente para o cartão de memória. Vou mostrar como fazer isso.</p>
 
@@ -439,7 +474,7 @@
 
 <h2 id="baixando-o-noobs">Baixando o NOOBS</h2>
 
-<p>Visite a página <a href="https://www.raspberrypi.org/downloads">Downloads</a> do <em>site</em> do Raspberry Pi. Clique no <em>link</em> para o NOOBS:</p>
+<p>Visite a página <a href="https://www.raspberrypi.org/downloads">Downloads</a> do <em>site</em> do Raspberry Pi. Clique no <em>link</em> para o <strong>NOOBS</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/noobs-download-01.jpg" title="">
@@ -473,7 +508,7 @@
 </pre></td><td class="rouge-code"><pre>$ sha256sum Downloads/NOOBS_v3_2_0.zip
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>O programa demora um tempo calculando a soma de verificação do arquivo e a exibe (é um número extenso em <a href="https://pt.wikipedia.org/wiki/Sistema_de_numera%C3%A7%C3%A3o_hexadecimal">hexadecimal</a>):</p>
+<p>O programa demora um tempo calculando a soma de verificação do arquivo e a exibe (é um número extenso em hexadecimal):</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>d05bd794368ccfb516a9e7116d1c659c3d139f4393ee1f4450900080e877434e  Downloads/NOOBS_v3_2_0.zip
@@ -542,7 +577,7 @@
 
 </div>
 
-<p>Leia a mensagem de alerta. Depois, clique em <strong>Aplicar</strong>:</p>
+<p>Leia atentamente a mensagem de alerta. Depois, clique em <strong>Aplicar</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/format-sd-card-05-pt.jpg" title="">
@@ -646,19 +681,19 @@
 
 <h2 id="ligando-o-raspberry-pi">Ligando o Raspberry Pi</h2>
 
-<p>O Raspberry Pi não tem um botão ou um interruptor de liga/desliga: conecte a fonte de alimentação a uma tomada na parede e depois ao Raspberry Pi e ele ligará.</p>
+<p>O Raspberry Pi não tem um botão ou um interruptor de liga/desliga: conecte a fonte de alimentação ao Raspberry Pi e depois a uma tomada na parede e ele ligará.</p>
 
 <p>Duas luzes LED acendem na placa do Raspberry Pi: uma indicando que ele está ligado à energia (PWR) e outra pisca, indicando que ele está acessando o cartão de memória (ACT).</p>
 
-<p>Após um tempo carregando, o Raspberry Pi apresentará a tela inicial do NOOBS.</p>
-
 <h2 id="instalando-o-raspbian">Instalando o Raspbian</h2>
+
+<p>Após um tempo carregando, o Raspberry Pi apresentará a tela inicial do NOOBS.</p>
 
 <p>Na tela inicial do NOOBS, embaixo, no campo <strong>Language</strong> (idioma), selecione <strong>português europeu</strong> (não há tradução do instalador para o português brasileiro):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/09/noobs-setup-01-pt.jpg" title="">
-<img src="/files/2019/09/noobs-setup-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/09/noobs-setup-01.jpg" title="">
+<img src="/files/2019/09/noobs-setup-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -754,7 +789,7 @@
 
 </div>
 
-<p>O instalador oferece verificar, baixar e instalar atualizações para o sistema. Nesse momento também são obtidas as traduções para os programas, embora isso não esteja escrito na tela. Clique em <strong>Skip</strong> (pular) se preferir fazer você mesmo manualmente em outro momento ou em <strong>Next</strong> (avançar, o que eu recomendo) para deixar o instalador fazer agora:</p>
+<p>O assistente oferece verificar, baixar e instalar atualizações para o sistema. Nesse momento também são obtidas as traduções para os programas, embora isso não esteja escrito na tela. Clique em <strong>Skip</strong> (pular) se preferir fazer você mesmo manualmente em outro momento ou em <strong>Next</strong> (avançar, o que eu recomendo) para deixar o assistente fazer agora:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/raspbian-wizard-06.jpg" title="">
@@ -798,7 +833,7 @@
 
 <p>Embora o Raspberry Pi não tenha um botão de liga/desliga, o Raspbian tem um comando para desligar. Usá-lo é necessário para que o sistema operacional desmonte corretamente os sistemas de arquivos e evite perda de dados. Portanto, desligar um Raspberry Pi não é análogo a ligar (se fosse, seria só puxar a fonte de alimentação).</p>
 
-<p>Para desligar o Raspberry Pi, abra o menu de aplicativos e clique em <strong>Shutdown</strong> (desligar):</p>
+<p>Para desligar o Raspberry Pi com segurança, abra o <strong>menu de aplicativos</strong>, clicando no ícone do Raspberry Pi, no canto superior esquerdo da tela, e clique em <strong>Shutdown</strong> (desligar):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/raspbian-shutdown-01-pt.jpg" title="">
@@ -816,15 +851,15 @@
 
 </div>
 
-<p>Aguarde até que o Raspberry Pi desligue completamente. Repare nas luzes LED: primeiro a PWR apaga e a ACT pisca, depois a ACT paga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.</p>
+<p><strong>Aguarde</strong> até que o Raspberry Pi desligue completamente. Repare nas luzes LED: primeiro a PWR apaga e a ACT pisca, depois a ACT paga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.</p>
 
 <p><strong>Observação:</strong> portas micro-USB tendem a ser frágeis. Por isso, dê preferência a remover a fonte de alimentação da tomada em vez de removê-la do Raspberry Pi.</p>
 
 <h2 id="terminando-a-montagem">Terminando a montagem</h2>
 
-<p>Como eu disse, eu comprei um <em>kit</em> que inclui dissipadores de calor, ventoinha e capa de acrílico. Eu preferi instalar o sistema e testar a placa (solta na mesa mesmo) antes de completar a montagem porque pensei que o teste era mais prioritário. No AliExpress, o comprador tem até 15 dias para abrir uma disputa com o vendedor após o recebimento do produto. Se algo estivesse errado, eu já reclamaria. Felizmente, tudo funcionou bem.</p>
+<p>Como eu disse, eu comprei no AliExpress um <em>kit</em> que inclui dissipadores de calor, ventoinha e capa de acrílico. No AliExpress, caso tenha algum problema com a compra, o comprador tem até 15 dias após o recebimento do produto para abrir uma disputa com o vendedor. Por isso, eu preferi instalar o sistema e testar a placa (solta na mesa mesmo) antes de completar a montagem. Felizmente, tudo funcionou bem.</p>
 
-<p>Quanto aos dissipadores de calor, não encontrei instrução de como instalá-los. Instalei cada dissipador no <em>chip</em> que aparentava ter o mesmo tamanho. Assim, cobri com os dissipadores o processador, a memória RAM e o controlador USB:</p>
+<p>Instalei cada dissipador de calor no <em>chip</em> de mesmo tamanho. Assim, colei os dissipadores no processador, na memória RAM e no controlador USB. Caso você tenha dificuldade em localizar esses <em>chips</em>, compare esta foto com o <a href="#components">diagrama de componentes</a> do início:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/09/raspberry-pi-4-heat-sinks.jpg" title="">
@@ -832,8 +867,6 @@
 </a>
 
 </div>
-
-<p>Você pode confrontar essa foto com o <a href="#components">diagrama de componentes</a> do início.</p>
 
 <p>A ventoinha deve ser ligada nos pinos de propósito geral. O fio da fase (vermelho) deve ser conectado ao pino 4 e o fio terra (preto) deve ser conectado ao pino 6. A fase também é indicada por uma seta no encaixe de plástico:</p>
 
@@ -878,16 +911,20 @@
 
 </div>
 
+<p>O Raspbian usa por padrão a área de trabalho <a href="https://www.raspberrypi.org/blog/introducing-pixel/">PIXEL</a>, baseada no <a href="https://lxde.org/">LXDE</a>, com o gerenciador de janelas <a href="http://openbox.org/">Openbox</a>.</p>
+
 <p>Na sequência, recomendo a leitura do guia <a href="https://projects.raspberrypi.org/pt-BR/projects/raspberry-pi-using">Utilizando o Raspberry Pi</a>. Esse, felizmente, tem tradução para o português brasileiro.</p>
 
 <h2 id="referências">Referências</h2>
 
 <ul>
   <li><a href="https://opensource.com/resources/raspberry-pi">What is a Raspberry Pi? - Opensource.com</a></li>
+  <li><a href="https://www.techspot.com/article/531-eben-upton-interview/">Interview with Raspberry’s Founder Eben Upton - TechSpot</a></li>
   <li><a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">Setting up your Raspberry Pi</a></li>
   <li><a href="http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/">NOOBS For Raspberry Pi – Rants &amp; Raves – The Blog!</a></li>
   <li><a href="https://itsfoss.com/turn-on-raspberry-pi/">How To Turn On And Shutdown The Raspberry Pi - It’s FOSS</a></li>
   <li><a href="http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/">Raspberry Pi 4 - A Look Under the Hood and How to Make most of it - Electronics-Lab</a></li>
+  <li><a href="https://youtu.be/E-4GaAz7XNM">How to Install Heatsinks on the Raspberry Pi 4 (CanaKit) + Temperature Performance Comparison - Edje Electronics</a></li>
   <li><a href="https://youtu.be/AVfvhEJ9XD0?t=770">Raspberry Pi 4 Cooling - ExplainingComputers</a></li>
   <li><a href="https://pinout.xyz/">Raspberry Pi GPIO Pinout</a></li>
   <li><a href="https://www.raspberrypi-spy.co.uk/2013/02/raspberry-pi-status-leds-explained/">Raspberry Pi Status LEDs Explained - Raspberry Pi Spy</a></li>

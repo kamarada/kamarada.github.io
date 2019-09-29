@@ -9,10 +9,666 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 26 Sep 2019 23:37:29 -0300</pubDate>
-        <lastBuildDate>Thu, 26 Sep 2019 23:37:29 -0300</lastBuildDate>
+        <pubDate>Sun, 29 Sep 2019 12:19:38 -0300</pubDate>
+        <lastBuildDate>Sun, 29 Sep 2019 12:19:38 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Getting started on Raspberry Pi with NOOBS and Raspbian</title>
+                <description>&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/&quot;&gt;&lt;strong&gt;Raspberry Pi&lt;/strong&gt;&lt;/a&gt; is a low-cost, credit-card sized, single-board computer developed by the &lt;a href=&quot;https://www.raspberrypi.org/about/&quot;&gt;Raspberry Pi Foundation&lt;/a&gt;, a UK-based charity that aims to facilitate and promote teaching of basic computer science and digital inclusion.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-credit-card.jpg&quot; title=&quot;Raspberry Pi: the low cost, credit-card sized, single-board computer&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-credit-card.jpg&quot; alt=&quot;Raspberry Pi: the low cost, credit-card sized, single-board computer&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Raspberry Pi: the low cost, credit-card sized, single-board computer&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;There are people using Raspberry Pi to learn and teach programming skills, build hardware projects, do home automation, it has uses even on industry and research.&lt;/p&gt;
+
+&lt;p&gt;Raspberry Pi provides a set of GPIO (general purpose input/output) pins that allow you to control electronic components for physical computing and explore the Internet of Things (IoT).&lt;/p&gt;
+
+&lt;p&gt;Here is an interesting example of home automation: a bark activated automatic door opener made with Raspberry Pi and a few electronic components.&lt;/p&gt;
+
+&lt;div class=&quot;embed-responsive embed-responsive-16by9&quot;&gt;
+    &lt;iframe class=&quot;embed-responsive-item&quot; src=&quot;https://www.youtube.com/embed/MWfl1Nl2WIM&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Fun fact:&lt;/strong&gt; the name &lt;a href=&quot;https://en.wikipedia.org/wiki/Raspberry&quot;&gt;Raspberry&lt;/a&gt; is a reference to a fruit naming tradition in the old days of microcomputers. A lot of computer companies were named after fruits – e.g. &lt;a href=&quot;https://www.apple.com/&quot;&gt;Apple&lt;/a&gt;. Pi is a reference to the &lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; programming language. The initial idea was to create a computer that could be programmed only using that language. Some people believe that Pi may be also related to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Pi&quot;&gt;number π&lt;/a&gt; (3.14…) or that Raspberry Pi is a pun with &lt;em&gt;raspberry pie&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;arm-architecture&quot;&gt;ARM architecture&lt;/h2&gt;
+
+&lt;p&gt;Raspberry Pi is different from a traditional computer not only in size, but also in &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Computer_architecture&quot;&gt;architecture&lt;/a&gt;&lt;/strong&gt;. That means that their hardware and software work totally differently. While most today’s desktops and laptops are, in essence, equal to the first &lt;a href=&quot;https://en.wikipedia.org/wiki/IBM_Personal_Computer&quot;&gt;IBM PC&lt;/a&gt;, released in 1981, and are based on &lt;a href=&quot;https://en.wikipedia.org/wiki/X86&quot;&gt;x86&lt;/a&gt; (32-bit PCs) or &lt;a href=&quot;https://en.wikipedia.org/wiki/X86-64&quot;&gt;x86-64&lt;/a&gt; (64-bit PCs) architectures, Raspberry Pi is based on &lt;a href=&quot;https://en.wikipedia.org/wiki/ARM_architecture&quot;&gt;ARM&lt;/a&gt; architecture, on which most &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; smartphones are based too.&lt;/p&gt;
+
+&lt;p&gt;In practice, that means that if you copy a program from a PC to a Raspberry Pi (or vice-versa), it won’t work. A program may provide versions for both architectures, but they are different executables – for instance, &lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; for PC and LibreOffice for Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;It is possible to install &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; on Raspberry Pi and use it as a desktop for everyday tasks – surfing the Internet, editing texts, etc. How to do that is what you are going to see here.&lt;/p&gt;
+
+&lt;h2 id=&quot;raspberry-pi-4-model-b&quot;&gt;Raspberry Pi 4 Model B&lt;/h2&gt;
+
+&lt;p&gt;The Raspberry Pi launched in 2012 and there have been &lt;a href=&quot;https://www.raspberrypi.org/products/&quot;&gt;several generations and variations&lt;/a&gt; released since then. It is currently in its fourth generation with the &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/&quot;&gt;Raspberry Pi 4&lt;/a&gt;, released in July. There has generally been a Model A and a Model B of most generations. Model A is a cheaper variant and tends to have reduced RAM and ports like USB and Ethernet. Until now, only a Model B has been released of the fourth generation.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Raspberry Pi 4 Model B&lt;/strong&gt; has the following &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/&quot;&gt;specifications&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Broadcom BCM2711 &lt;a href=&quot;https://en.wikipedia.org/wiki/System-on-a-chip&quot;&gt;&lt;em&gt;system-on-a-chip&lt;/em&gt;&lt;/a&gt; (SoC) processor
+    &lt;ul&gt;
+      &lt;li&gt;quad core Cortex-A72&lt;/li&gt;
+      &lt;li&gt;1.5GHz clock&lt;/li&gt;
+      &lt;li&gt;64-bit ARMv8 architecture&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;1GB, 2GB or 4GB DDR4 RAM (depending on the variation)&lt;/li&gt;
+  &lt;li&gt;IEEE 802.11ac Wi-Fi network (it is able to connect to 2.4GHz or 5GHz networks)&lt;/li&gt;
+  &lt;li&gt;Bluetooth 5.0&lt;/li&gt;
+  &lt;li&gt;Gigabit Ethernet network&lt;/li&gt;
+  &lt;li&gt;2 USB 3.0 ports and 2 USB 2.0 ports&lt;/li&gt;
+  &lt;li&gt;2 micro-HDMI ports to connect up to two 4K screens at once&lt;/li&gt;
+  &lt;li&gt;stereo analog audio output to connect a 3.5mm jack speaker or headset&lt;/li&gt;
+  &lt;li&gt;micro-SD card slot for loading operating system and data storage&lt;/li&gt;
+  &lt;li&gt;40 GPIO pins&lt;/li&gt;
+  &lt;li&gt;and more!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot; id=&quot;components&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-components.jpg&quot; title=&quot;Source: [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-components.jpg&quot; alt=&quot;Source: [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Source: &lt;a href=&quot;http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/&quot;&gt;Electronics-Lab&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you want to see Raspberry Pi 4 Model B tech specs in more detail, please visit the &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/&quot;&gt;Raspberry Pi website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-advice-on-the-amount-of-ram&quot;&gt;An advice on the amount of RAM&lt;/h2&gt;
+
+&lt;p&gt;Raspberry Pi 4 Model B comes with either 1GB, 2GB, or 4GB of RAM.&lt;/p&gt;
+
+&lt;p&gt;For most educational purposes and many hobbyist projects, 1GB is enough.&lt;/p&gt;
+
+&lt;p&gt;For use as a desktop computer, at least 2GB is recommended.&lt;/p&gt;
+
+&lt;p&gt;It is important that you choose the right amount of RAM before buying a Raspberry Pi, because it is not possible to expand it later, as RAM is soldered in the board and can’t be replaced.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-much-is-it&quot;&gt;How much is it?&lt;/h2&gt;
+
+&lt;p&gt;The entry price for Raspberry Pi has always been 35 dollars. That gets you the base variant of Raspberry Pi 4 B with 1GB of RAM.&lt;/p&gt;
+
+&lt;p&gt;But note that $35 is the price of the standalone board. In addition, it is necessary to buy the power supply, a micro-SD card with a capacity of at least 8GB and a micro-HDMI cable. Also, it is optional, but recommended, to buy a case to protect the board.&lt;/p&gt;
+
+&lt;p&gt;You can buy board and accessories separately, or together as a kit which comes with everything needed. That’s what I did (more on that below).&lt;/p&gt;
+
+&lt;p&gt;If you already own a computer, then probably you have keyboard, mouse and monitor. You can use them with Raspberry Pi, which has USB and HDMI ports. If Raspberry Pi is your first computer, you need to buy them too. If you have a TV with HDMI input, you can use it in place of a monitor.&lt;/p&gt;
+
+&lt;p&gt;Just out of curiosity, there has been Raspberry Pi models even cheaper than $35. The cheapest model launched so far is &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-zero/&quot;&gt;Raspberry Pi Zero&lt;/a&gt;, which costs only $5. It is a spinoff of the original Raspberry Pi, but even smaller and cheaper.&lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-buy&quot;&gt;Where to buy?&lt;/h2&gt;
+
+&lt;p&gt;Several stores sell Raspberry Pi, accessories and kits. But there are some stores recognized by the Raspberry Pi Foundation as approved resellers. You can check the Raspberry Pi website for &lt;a href=&quot;https://www.raspberrypi.org/products/raspberry-pi-4-model-b/&quot;&gt;approved resellers that sell Raspberry Pi 4 B in your country&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Brazilian approved reseller, &lt;a href=&quot;https://www.filipeflop.com/&quot;&gt;FilipeFlop&lt;/a&gt;, does not sell Raspberry Pi 4 B yet.&lt;/p&gt;
+
+&lt;p&gt;I myself bought my Raspberry Pi 4 B from a Chinese approved reseller, the &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;JunRoc Store&lt;/a&gt;, through &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;AliExpress&lt;/a&gt;, a Chinese shopping website similar to Amazon or eBay.&lt;/p&gt;
+
+&lt;p&gt;I bought a kit that includes the Raspberry Pi 4 B variation with more RAM (4GB) and:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a 16GB micro-SD card,&lt;/li&gt;
+  &lt;li&gt;an acrylic shell case with fan,&lt;/li&gt;
+  &lt;li&gt;a USB card reader,&lt;/li&gt;
+  &lt;li&gt;heat sinks,&lt;/li&gt;
+  &lt;li&gt;a power supply, and&lt;/li&gt;
+  &lt;li&gt;a micro-HDMI to HDMI video cable.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-kit.jpg&quot; title=&quot;A [Raspberry Pi 4 kit](http://bit.ly/kamarada-rpi-4b) is the best option for those getting started.&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-kit.jpg&quot; alt=&quot;A [Raspberry Pi 4 kit](http://bit.ly/kamarada-rpi-4b) is the best option for those getting started.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;A &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;Raspberry Pi 4 kit&lt;/a&gt; is the best option for those getting started.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It cost me a total of $86.19. I ordered it on August 26 and it arrived on September 17.&lt;/p&gt;
+
+&lt;p&gt;If you are going to buy from &lt;a href=&quot;http://bit.ly/kamarada-rpi-4b&quot;&gt;the same reseller I bought&lt;/a&gt;, please note that the same ad offers you 6 different bundles: the Raspberry Pi 4 B standalone board with 1GB, 2GB or 4GB RAM or the corresponding kits. Pay attention to select the bundle you want.&lt;/p&gt;
+
+&lt;h2 id=&quot;raspbian-debian-for-raspberry-pi&quot;&gt;Raspbian: Debian for Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; currently supports the Raspberry Pi family up to the third generation:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi&quot;&gt;Raspberry Pi 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi2&quot;&gt;Raspberry Pi 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi3&quot;&gt;Raspberry Pi 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The fourth generation (Raspberry Pi 4) is not yet supported, as you can see on these links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forums.opensuse.org/showthread.php/536541-Can-Raspberry-Pi-4-run-openSUSE-LEAP-15-1/page2&quot;&gt;LEAP 15.1 Can Raspberry Pi 4 run openSUSE LEAP 15.1? - openSUSE Forums&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/openSUSE/comments/c6xvnr/raspberry_pi_4/&quot;&gt;Raspberry Pi 4? - openSUSE reddit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org/forums/viewtopic.php?t=244248&quot;&gt;Raspberry Pi 4 and openSUSE LEAP 15.1? - Raspberry Pi Forums&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even though support is on the way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-arm/2019-09/msg00037.html&quot;&gt;[opensuse-arm] Raspberry Pi 4 Model B - openSUSE Mailinglist Archives&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, although usually this blog is green because of openSUSE, today’s post is going to be red, because we are going to talk about another Linux distribution: Raspbian!&lt;/p&gt;
+
+&lt;p&gt;The name &lt;strong&gt;&lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;&lt;/strong&gt; is the combination of Raspberry Pi and Debian: in short, Raspbian is a port of the Debian distribution optimized for Raspberry Pi.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;&lt;/strong&gt; is one of the oldest and biggest Linux distributions available. It was begun in 1993 and introduced the DEB packaging format (analogous to the RPM packaging that openSUSE uses). Debian is focused on stability: it provides only well-tested (usually old) versions of programs, and distribution upgrades usually occurs without errors. If you make a family tree of Linux distros, Debian will be one of the top ones: many other distributions have been created from the Debian codebase, including &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;http://www.knopper.net/knoppix/index-en.html&quot;&gt;Knoppix&lt;/a&gt; and Raspbian.&lt;/p&gt;
+
+&lt;h2 id=&quot;noobs-the-raspbian-installer&quot;&gt;NOOBS: the Raspbian installer&lt;/h2&gt;
+
+&lt;p&gt;As we are getting started with Raspberry Pi, we are going to install its operating system using the recommended method according to the Raspberry Pi website, which is NOOBS.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/noobs.md&quot;&gt;NOOBS&lt;/a&gt;&lt;/strong&gt; – stands for New Out Of The Box Software, but it also seems like a pun with &lt;em&gt;noob&lt;/em&gt; (a slang which means “newbie”) – is the installer that installs Raspbian on the SD card and is designed to be very easy to use. In addition to Raspbian, NOOBS can also be used to install &lt;a href=&quot;https://libreelec.tv/&quot;&gt;LibreELEC&lt;/a&gt;, a multimedia-focused Linux distribution.&lt;/p&gt;
+
+&lt;p&gt;Many sellers supply SD cards with pre-installed NOOBS. Since the kit I bought included a sealed SD card, I had to manually download NOOBS to it. I’m going to show you how to do that.&lt;/p&gt;
+
+&lt;p&gt;If Raspberry Pi is your first computer and you don’t have another computer to set up the SD card, you should purchase an SD card with pre-installed NOOBS.&lt;/p&gt;
+
+&lt;p&gt;That’s enough: no more talking, let’s roll up our sleeves and start!&lt;/p&gt;
+
+&lt;h2 id=&quot;downloading-noobs&quot;&gt;Downloading NOOBS&lt;/h2&gt;
+
+&lt;p&gt;Visit the Raspberry Pi &lt;a href=&quot;https://www.raspberrypi.org/downloads&quot;&gt;Downloads&lt;/a&gt; page. Click the box linking to &lt;strong&gt;NOOBS&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-download-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-download-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Download ZIP&lt;/strong&gt;, below &lt;strong&gt;NOOBS&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-download-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-download-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Doing that, you are going to download an archive which contains the operating system installer (NOOBS) together with the operating system itself (Raspbian) ready for an offline install. It is a large file (2.3GB), so you may want to make a cup of coffee for waiting.&lt;/p&gt;
+
+&lt;p&gt;There is also &lt;strong&gt;NOOBS Lite&lt;/strong&gt;. It contains only the installer without Raspbian pre-loaded, which is downloaded during installation. I chose to simplify and download everything needed at once.&lt;/p&gt;
+
+&lt;p&gt;Make sure to pay attention to the file name – &lt;code class=&quot;highlighter-rouge&quot;&gt;NOOBS_v3_2_0.zip&lt;/code&gt; – and where you save it – usually, downloaded files are saved on the &lt;code class=&quot;highlighter-rouge&quot;&gt;Downloads&lt;/code&gt; folder inside the user’s home.&lt;/p&gt;
+
+&lt;h2 id=&quot;verifying-the-integrity-of-the-downloaded-archive&quot;&gt;Verifying the integrity of the downloaded archive&lt;/h2&gt;
+
+&lt;p&gt;Usually when we download a file we just open it right after it finishes downloading. But, in some cases, it is important to verify that the file has been downloaded correctly – especially in this case, as we are downloading an operating system! We can avoid serious trouble by simply doing a quick &lt;a href=&quot;/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;integrity check&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Open a terminal window and run the &lt;strong&gt;sha256sum&lt;/strong&gt; utility informing the downloaded file path:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sha256sum Downloads/NOOBS_v3_2_0.zip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It takes some time computing the archive checksum and shows it as a large hexadecimal number:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;d05bd794368ccfb516a9e7116d1c659c3d139f4393ee1f4450900080e877434e  Downloads/NOOBS_v3_2_0.zip
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Compare the calculated SHA-256 checksum against the expected checksum presented on the page from where you downloaded NOOBS:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-sha256-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-sha256-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If they match, the archive has been downloaded successfully, so it is safe to go on and use it.&lt;/p&gt;
+
+&lt;p&gt;If there is difference between the computed and the expected checksums, something went wrong (e.g. your Internet connection may have dropped out during downloading). In that case, delete the archive and try downloading it again.&lt;/p&gt;
+
+&lt;p&gt;Here, I briefly wrote what we needed to know today about integrity checking to install Raspbian. If you want to know more about it, read this post:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;Verifying data integrity and authenticity using SHA-256 and GPG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;formatting-the-sd-card&quot;&gt;Formatting the SD card&lt;/h2&gt;
+
+&lt;p&gt;The SD card needs to be formatted with the FAT32 file system. Most cards come with this formatting from factory – including the one which came on the kit I have bought. But it doesn’t hurt to format, especially if you are going to reuse an SD card you already have.&lt;/p&gt;
+
+&lt;p&gt;Note that anything currently stored on the SD card will be overwritten during formatting. So, if the card currently has any files on it, you may wish to back those files up first to not lose them permanently.&lt;/p&gt;
+
+&lt;p&gt;Remove from your computer or laptop any external storage device other than the SD card which will be formated (USB sticks, external HDDs, etc.) to avoid the risk of formatting the wrong device (and permanently losing files).&lt;/p&gt;
+
+&lt;p&gt;Insert the SD card into the computer or laptop’s SD card slot. You may need to use a micro-SD card reader like the one included in the suggested kit.&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;GParted&lt;/strong&gt; app. It asks you the administrator (root user) password, which you must inform to proceed. GParted takes some time scanning devices. When it is ready, select your SD card by the upper-right corner of the window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Right-click the only partition of the SD card (either on the graph or on the list) and click &lt;strong&gt;Unmount&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Right-click the SD card partition once more, point to &lt;strong&gt;Format to&lt;/strong&gt; and click &lt;strong&gt;fat32&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Apply All Operations&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Read the alert message carefully. Then, click &lt;strong&gt;Apply&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When formatting completes, click &lt;strong&gt;Close&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/format-sd-card-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/format-sd-card-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Close GParted as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;extracting-noobs-to-the-sd-card&quot;&gt;Extracting NOOBS to the SD card&lt;/h2&gt;
+
+&lt;p&gt;Open the NOOBS archive you have downloaded. It should be opened with the &lt;strong&gt;Archive Manager&lt;/strong&gt; app. Click the &lt;strong&gt;Extract&lt;/strong&gt; button by the upper-left corner of the window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure the &lt;strong&gt;All files&lt;/strong&gt; option is selected (by default, it is). Select the memory card (for me, it appeared as &lt;strong&gt;16 GB Volume&lt;/strong&gt;) and click the &lt;strong&gt;Extract&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait while NOOBS is extracted to the SD card:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This process may take some minutes. It’s another opportunity to get yourself a cup of coffee!&lt;/p&gt;
+
+&lt;p&gt;When it finishes, click &lt;strong&gt;Close&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-extract-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-extract-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Close Archive Manager as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;removing-the-sd-card&quot;&gt;Removing the SD card&lt;/h2&gt;
+
+&lt;p&gt;The SD card is now ready for use on your Raspberry Pi. It’s time to remove it from your PC.&lt;/p&gt;
+
+&lt;p&gt;To safely remove the SD card, open the &lt;strong&gt;Files&lt;/strong&gt; app. Locate the SD card in the sidebar. It should have a small eject icon next to it. Click that icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/eject-sdcard-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/eject-sdcard-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait until the notification informing that the device can be removed appears:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/eject-sdcard-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/eject-sdcard-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now you can actually remove the SD card from your PC and insert it into your Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;Note that the micro-SD card slot is underneath your Raspberry Pi.&lt;/p&gt;
+
+&lt;h2 id=&quot;connecting-everything-to-the-raspberry-pi&quot;&gt;Connecting everything to the Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;Now get everything connected to your Raspberry Pi: insert the SD card, connect the monitor (or TV) using an HDMI cable, connect the keyboard and the mouse to the USB ports and the Ethernet cable, in case you are going to use a wired network. Leave the power supply last.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-connections-en.jpg&quot; title=&quot;Source: [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-connections-en.jpg&quot; alt=&quot;Source: [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Source: &lt;a href=&quot;https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4&quot;&gt;Setting up your Raspberry Pi&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;turning-the-raspberry-pi-on&quot;&gt;Turning the Raspberry Pi on&lt;/h2&gt;
+
+&lt;p&gt;Your Raspberry Pi doesn’t have a power button or switch: plug the USB power supply to your Raspberry Pi’s power port, then plug the power supply into a socket and it will turn on.&lt;/p&gt;
+
+&lt;p&gt;Two status LEDs light up on the Raspberry Pi: one indicates that it is connected to power (PWR) and the other flashes indicating SD card activity (ACT).&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-raspbian&quot;&gt;Installing Raspbian&lt;/h2&gt;
+
+&lt;p&gt;After a while loading, Raspberry Pi presents the NOOBS start screen.&lt;/p&gt;
+
+&lt;p&gt;It is possible to change the &lt;strong&gt;Language&lt;/strong&gt; using the combobox at the bottom of the screen:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Just to show you the installation procedure, I’m going to proceed with the default language, which is &lt;strong&gt;English (UK)&lt;/strong&gt;. You may switch to a different language if you want.&lt;/p&gt;
+
+&lt;p&gt;Then, check the box for &lt;strong&gt;Raspbian&lt;/strong&gt; and click &lt;strong&gt;Install&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Confirm&lt;/strong&gt; dialog box, click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait for Raspbian to install:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;While the filesystem is being created on the SD card, the installer shows some slides introducing Raspbian. You can watch that slideshow… having a cup of coffee!&lt;/p&gt;
+
+&lt;p&gt;When the installation finishes, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/noobs-setup-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/noobs-setup-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Your Raspberry Pi will restart and Raspbian will then boot up.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-raspbian&quot;&gt;Setting up Raspbian&lt;/h2&gt;
+
+&lt;p&gt;When Raspbian is started for the first time, a configuration wizard pops up:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Its screens are self explanatory and will guide you through the initial setup.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Next&lt;/strong&gt; to start the setup.&lt;/p&gt;
+
+&lt;p&gt;Set your &lt;strong&gt;Country&lt;/strong&gt;, &lt;strong&gt;Language&lt;/strong&gt; and &lt;strong&gt;Timezone&lt;/strong&gt;, then click &lt;strong&gt;Next&lt;/strong&gt; again:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Think of a new password for your Raspberry Pi. Enter it on both text fields and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you want to connect to a Wi-Fi network, select it from the list and click &lt;strong&gt;Next&lt;/strong&gt;. Otherwise, click &lt;strong&gt;Skip&lt;/strong&gt; to continue setup without connecting to a Wi-Fi network:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-04.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In case you have selected a Wi-Fi network, now enter its password and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The wizard offers to check for updates to the system, download and install them, if there are any. The wizard will also retrieve any needed translations, although the screen does not tell you that. Click &lt;strong&gt;Skip&lt;/strong&gt; if you prefer to do all of that yourself manually later or click &lt;strong&gt;Next&lt;/strong&gt; (what I recommend) to let the wizard do all of that for you now:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you let the wizard download updates, that might take a while:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(do you still have coffee? hehehe)&lt;/p&gt;
+
+&lt;p&gt;When the update finishes, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Finally, click &lt;strong&gt;Restart&lt;/strong&gt; to finish the setup:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-wizard-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-wizard-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When your Raspberry Pi finishes restarting, it will have a brand new operating system ready for use, with all the updates and translations installed.&lt;/p&gt;
+
+&lt;h2 id=&quot;shutting-down-the-raspberry-pi&quot;&gt;Shutting down the Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;Even though Raspberry Pi does not have a power button, Raspbian has a shutdown command. It is important that you use it, so the operating system can properly unmount filesystems and prevent data loss. Therefore, turning the Raspberry Pi off is not the opposite of turning it on (if it were, you would just pull the power supply).&lt;/p&gt;
+
+&lt;p&gt;To safely shutdown the Raspberry Pi, open the &lt;strong&gt;applications menu&lt;/strong&gt;, by clicking the icon with the Raspberry Pi logo, by the upper-left corner of the screen, and click &lt;strong&gt;Shutdown&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-shutdown-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-shutdown-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Shutdown options&lt;/strong&gt; dialog box, click &lt;strong&gt;Shutdown&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-shutdown-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-shutdown-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Once the shutdown process has started, &lt;strong&gt;wait&lt;/strong&gt; until it completely finishes. Observe the LED lights: for a moment, the PWR LED goes out and the ACT LED flashes, then the ACT LED turns off definitely and only the PWR LED stays on, indicating that the Raspberry Pi has power, but is doing nothing. Then, you can safely cut the power.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; micro-USB ports tend to be fragile, hence prefer to remove the power supply from the socket instead of unplugging it from the micro-USB port.&lt;/p&gt;
+
+&lt;h2 id=&quot;assembling-the-case&quot;&gt;Assembling the case&lt;/h2&gt;
+
+&lt;p&gt;As I said, I bought on AliExpress a kit that includes heat sinks, a fan and an acrylic shell case. When buying on AliExpress, in case anything goes wrong, the buyer has up to 15 days upon receipt of the product to open a dispute. That’s why I opted to install the system and test the board before assembling everything up. Fortunately, everything worked fine.&lt;/p&gt;
+
+&lt;p&gt;As for the heat sinks, I installed each of them on the chip that looked the same size. So, I put the heat sinks on the processor, the RAM, and the USB controller. In case you need help locating those chips, try comparing this photo with the &lt;a href=&quot;#components&quot;&gt;component diagram&lt;/a&gt; at the beginning:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-heat-sinks.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-heat-sinks.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Plug the fan into the GPIO pins: connect the phase wire (red) to the pin 4 and the ground wire (black) to the pin 6. The phase wire is also indicated by an arrow on the plastic socket:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-fan.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-fan.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In case that photo didn’t help you identify which pins to use, try this diagram:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-pinout.jpg&quot; title=&quot;Source: [Raspberry Pi GPIO Pinout](https://pinout.xyz/)&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-pinout.jpg&quot; alt=&quot;Source: [Raspberry Pi GPIO Pinout](https://pinout.xyz/)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Source: &lt;a href=&quot;https://pinout.xyz/&quot;&gt;Raspberry Pi GPIO Pinout&lt;/a&gt;&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It was very easy to install the acrylic shell case: except for the fan that was screwed on (I did it simply by hand), the six acrylic panels were all attached to each other. There was no need to screw the card, which fit tightly into the case.&lt;/p&gt;
+
+&lt;h2 id=&quot;thats-all-folks&quot;&gt;That’s all, folks!&lt;/h2&gt;
+
+&lt;p&gt;Now that both Raspberry Pi and Raspbian are ready, it’s time to use them!&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspberry-pi-4-case.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspberry-pi-4-case.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 440px&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/09/raspbian-final-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/09/raspbian-final-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By default, Raspbian uses the &lt;a href=&quot;https://www.raspberrypi.org/blog/introducing-pixel/&quot;&gt;PIXEL&lt;/a&gt; desktop environment (a fork of &lt;a href=&quot;https://lxde.org/&quot;&gt;LXDE&lt;/a&gt;) and the &lt;a href=&quot;http://openbox.org/&quot;&gt;Openbox&lt;/a&gt; window manager.&lt;/p&gt;
+
+&lt;p&gt;I suggest you continue your reading at the &lt;a href=&quot;https://projects.raspberrypi.org/en/projects/raspberry-pi-using&quot;&gt;Using your Raspberry Pi&lt;/a&gt; guide.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opensource.com/resources/raspberry-pi&quot;&gt;What is a Raspberry Pi? - Opensource.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techspot.com/article/531-eben-upton-interview/&quot;&gt;Interview with Raspberry’s Founder Eben Upton - TechSpot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up&quot;&gt;Setting up your Raspberry Pi&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/&quot;&gt;NOOBS For Raspberry Pi – Rants &amp;amp; Raves – The Blog!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/turn-on-raspberry-pi/&quot;&gt;How To Turn On And Shutdown The Raspberry Pi - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/&quot;&gt;Raspberry Pi 4 - A Look Under the Hood and How to Make most of it - Electronics-Lab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/E-4GaAz7XNM&quot;&gt;How to Install Heatsinks on the Raspberry Pi 4 (CanaKit) + Temperature Performance Comparison - Edje Electronics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/AVfvhEJ9XD0?t=770&quot;&gt;Raspberry Pi 4 Cooling - ExplainingComputers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pinout.xyz/&quot;&gt;Raspberry Pi GPIO Pinout&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi-spy.co.uk/2013/02/raspberry-pi-status-leds-explained/&quot;&gt;Raspberry Pi Status LEDs Explained - Raspberry Pi Spy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 29 Sep 2019 12:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Setting up smart card authentication on Google Chrome / Chromium</title>
@@ -2926,85 +3582,6 @@ Failed to connect to card: Card is invalid or cannot be handled
                 <pubDate>Fri, 28 Jun 2019 01:45:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/06/28/using-smart-cards-on-opensuse-linux/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/06/28/using-smart-cards-on-opensuse-linux/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>The safest way to completely erase an entire hard disk</title>
-                <description>&lt;p&gt;You need to erase an entire HD, be because you are going to sell or give away an old computer, or because you are a journalist or an IT company that needs to protect data from ending up in wrong hands. What you can do to destroy files on that HD in a definitive, unrecoverable way?&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/wipe-disk.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/wipe-disk.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Truly destroying data is not actually as simple as moving files to the recycle bin (using &lt;strong&gt;Delete&lt;/strong&gt;), deleting files (&lt;strong&gt;Shift + Delete&lt;/strong&gt;) or formatting filesystems. When you delete or format, the operating system only erases metadata, making that disk area available to write other files. But the actual bits of the files remain and can be recovered using specialized software.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173&quot;&gt;The most effective way&lt;/a&gt; of destroying data is &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;wiping a disk&lt;/a&gt; and that is done by writing new data over every single bit. For instance, you can replace all of the hard disk bits with zeroes — a process known as &lt;strong&gt;zero fill&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; be careful to not zero fill the wrong disk, which may cause permanent data loss!&lt;/p&gt;
-
-&lt;p&gt;Using &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, run the following command to zero fill a disk (I’m using &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sda&lt;/code&gt; as example, remember to change it as you need):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/zero of=/dev/sda status=progress
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For most cases, that should be enough. After that command, recovering files from that disk may require specialized software, specialized hardware, IT experts and it may not be cheap nor guaranteed.&lt;/p&gt;
-
-&lt;p&gt;Please note that it is not possible to wipe the disk that holds the operating system while it is running. If you need to wipe that particular disk, the easiest way to get around this issue is to use &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;Live media&lt;/a&gt; or to remove the disk and plug it to another computer to wipe it.&lt;/p&gt;
-
-&lt;p&gt;If you are a security freak, you can perform a safer wiping by filling the disc with random bits instead of zeroes:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/urandom of=/dev/sda status=progress
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Or you can wipe the disk a few times, instead of wiping it just once:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# for i in {1..5}; do dd if=/dev/urandom of=/dev/sda status=progress; done
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;Arch Linux wiki&lt;/a&gt; discusses alternative ways to securely wipe an entire disk.&lt;/p&gt;
-
-&lt;p&gt;If you store very sensitive information on a disk, &lt;a href=&quot;https://securityinabox.org/en/guide/destroy-sensitive-information/&quot;&gt;Security in a Box&lt;/a&gt;, a website about digital security tools and tactics, recommends that you wipe the entire disk then phisically destroy the disc itself (using a hammer, for example).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; wear safety goggles and take great caution ​when destroying a hard drive yourself. Never burn a hard drive, put a hard drive in a microwave, or pour acid on a hard drive.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; title=&quot;Source: [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot;&gt;
-&lt;img src=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; alt=&quot;Source: [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Source: &lt;a href=&quot;https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173&quot;&gt;Lifewire&lt;/a&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;For instance, &lt;a href=&quot;https://www.networkworld.com/article/2202487/google-crushes--shreds-old-hard-drives-to-prevent-data-leakage.html&quot;&gt;Google shreds old hard drives&lt;/a&gt; to prevent leakage of customer data.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173&quot;&gt;3 100% Effective Ways to Completely Erase a Hard Drive - Lifewire&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;Securely wipe disk - ArchWiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://securityinabox.org/en/guide/destroy-sensitive-information/&quot;&gt;Destroy sensitive information - Security in a Box&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 18 Jun 2019 22:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/06/18/the-safest-way-to-completely-erase-an-entire-hard-disk/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/06/18/the-safest-way-to-completely-erase-an-entire-hard-disk/</guid>
                 
                 
                     <category>en</category>
