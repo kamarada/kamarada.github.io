@@ -9,10 +9,352 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 03 Oct 2019 00:48:05 -0300</pubDate>
-        <lastBuildDate>Thu, 03 Oct 2019 00:48:05 -0300</lastBuildDate>
+        <pubDate>Tue, 08 Oct 2019 01:46:00 -0300</pubDate>
+        <lastBuildDate>Tue, 08 Oct 2019 01:46:00 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/virtualbox-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/virtualbox-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; permite que você use o &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; dentro de uma janela, como um programa no sistema operacional que você já usa. Com essa facilidade, você pode ter seu primeiro contato com o Linux sem precisar instalá-lo no computador ou mesmo reiniciar para usar um &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveDVD/USB&lt;/a&gt;: quer usar o Linux? Só iniciar o programa. Terminou de usar? Só fechar a janela.&lt;/p&gt;
+
+&lt;p&gt;Na verdade essa “janela”, explicada assim de forma simplificada, tecnicamente falando é uma &lt;strong&gt;máquina virtual&lt;/strong&gt; (do inglês &lt;em&gt;virtual machine&lt;/em&gt;, comumente abreviada por &lt;strong&gt;VM&lt;/strong&gt;): é um computador que, fisicamente falando, não existe, mas pode ser usado para instalar sistemas operacionais e aplicativos. O sistema operacional (SO) que está na máquina virtual “pensa” que está em um computador “de verdade”.&lt;/p&gt;
+
+&lt;p&gt;Seu computador (que, fisicamente falando, existe, portanto é chamado de &lt;strong&gt;máquina real&lt;/strong&gt;) pode executar várias máquinas virtuais ao mesmo tempo (contanto que haja memória RAM e espaço em disco suficientes). Na prática, isso quer dizer que você pode usar vários SOs ao mesmo tempo. Por exemplo: você pode usar &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e Linux ao mesmo tempo.&lt;/p&gt;
+
+&lt;p&gt;O sistema operacional da máquina real é chamado de &lt;strong&gt;hospedeiro&lt;/strong&gt; (&lt;em&gt;host&lt;/em&gt;): ele hospeda as máquinas virtuais, cujos SOs são chamados de &lt;strong&gt;convidados&lt;/strong&gt; (&lt;em&gt;guests&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Essa tecnologia é chamada de &lt;strong&gt;virtualização&lt;/strong&gt;. E o VirtualBox nada mais é que um programa que permite a você fazer virtualização de forma fácil em seu computador.&lt;/p&gt;
+
+&lt;p&gt;Já falamos um pouco sobre o VirtualBox no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/&quot;&gt;20 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O VirtualBox é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, gratuito e multi-plataforma de virtualização desenvolvido pela &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt;. Ele pode ser instalado no seu &lt;a href=&quot;https://pt.wikipedia.org/wiki/IBM_PC&quot;&gt;PC&lt;/a&gt;, quer você use Windows, &lt;a href=&quot;http://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt;, Linux ou &lt;a href=&quot;https://www.oracle.com/solaris/&quot;&gt;Solaris&lt;/a&gt;, e suporta diversos sistemas operacionais convidados, incluindo, mas não limitado a: Windows (3.x, 95, 98, NT, 2000, XP, Server 2003, Vista, 7, 8, 8.1, 10, Server 2008, Server 2012, Server 2016), DOS, Linux (2.4, 2.6, 3.x e 4.x), Solaris, OpenSolaris, OS/2 e OpenBSD.&lt;/p&gt;
+
+&lt;p&gt;Hoje veremos como instalar o VirtualBox no Windows, criar uma máquina virtual e iniciar nela uma &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;imagem &lt;em&gt;live&lt;/em&gt;&lt;/a&gt; do Linux. Vou usar como exemplo a distribuição &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;, cuja imagem &lt;em&gt;live&lt;/em&gt; pode ser baixada na página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;parte-1-de-3&quot;&gt;Parte 1 de 3&lt;/h2&gt;
+
+&lt;p&gt;Para o &lt;em&gt;post&lt;/em&gt; não ficar muito extenso, decidi dividi-lo em três partes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;nessa primeira parte, veremos como instalar o VirtualBox no Windows e o básico de como usá-lo para iniciar o Linux dentro de uma máquina virtual;&lt;/li&gt;
+  &lt;li&gt;na segunda parte, veremos como instalar o VirtualBox no Linux;&lt;/li&gt;
+  &lt;li&gt;na terceira parte, veremos algumas dicas para uso diário do VirtualBox.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Essa sequência de &lt;em&gt;posts&lt;/em&gt; é dedicada principalmente a usuários de Windows que ainda não tiveram seu primeiro contato com o Linux e desejam experimentá-lo por meio do VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;Se você já usa Linux, também pode instalar o VirtualBox para experimentar outra distribuição ou mesmo para outras finalidades.&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-o-virtualbox-no-windows&quot;&gt;Baixando o VirtualBox no Windows&lt;/h2&gt;
+
+&lt;p&gt;Para baixar o instalador do VirtualBox para Windows, acesse o &lt;em&gt;site&lt;/em&gt; oficial do VirtualBox em:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E clique no botão &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Abaixo de &lt;em&gt;VirtualBox binaries&lt;/em&gt; (binários do VirtualBox), clique em &lt;em&gt;Windows hosts&lt;/em&gt; (computadores com Windows):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;em&gt;download&lt;/em&gt; do instalador começa.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-virtualbox-no-windows&quot;&gt;Instalando o VirtualBox no Windows&lt;/h2&gt;
+
+&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, inicie o instalador.&lt;/p&gt;
+
+&lt;p&gt;Pode conduzir a instalação do “jeito clássico” do Windows (avançar, avançar, avançar — &lt;em&gt;next&lt;/em&gt;, &lt;em&gt;next&lt;/em&gt;, &lt;em&gt;next&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Há um momento em que o Windows pede confirmação para instalar &lt;em&gt;drivers&lt;/em&gt; para o VirtualBox. Pode confirmar a instalação clicando em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ao final, clique em &lt;em&gt;Finish&lt;/em&gt; (concluir):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;criando-uma-nova-máquina-virtual&quot;&gt;Criando uma nova máquina virtual&lt;/h2&gt;
+
+&lt;p&gt;Essa é a tela inicial do VirtualBox, por enquanto sem nenhuma máquina virtual:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para criar uma máquina virtual, clique no botão &lt;strong&gt;Novo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;É iniciado o assistente &lt;strong&gt;Criar Máquina Virtual&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite um &lt;strong&gt;Nome&lt;/strong&gt; para a máquina virtual. Por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Perceba que, ao digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;, o assistente sugere as configurações dos campos &lt;strong&gt;Tipo&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt; — e &lt;strong&gt;Versão&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE (64-bit)&lt;/code&gt;. Se quisesse, você poderia ter digitado outro nome (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;Teste do Linux&lt;/code&gt;) e preenchido esses outros campos manualmente.&lt;/p&gt;
+
+&lt;p&gt;Com relação ao nome, o importante é que faça sentido pra você e identifique a VM.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Próximo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, informe a quantidade de memória RAM que deseja reservar para a VM:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No exemplo da imagem, minha máquina real dispõe de 16GB de RAM e eu decidi reservar 2GB para a máquina virtual. Com isso, o sistema operacional convidado “pensará” que está sendo executado em um computador com 2GB de RAM. Já o SO hospedeiro poderá usar apenas 14GB de RAM para executar outros programas e máquinas virtuais.&lt;/p&gt;
+
+&lt;p&gt;Divida a memória RAM de modo que não falte memória nem para a máquina virtual, nem para a máquina real. Na tela, a barra verde indica o limite de memória considerado seguro. No exemplo, algo em torno de 10,5GB (fazendo as contas, 2/3 ou 66% do total de 16GB).&lt;/p&gt;
+
+&lt;p&gt;Observe que a quantidade de RAM é expressa em MB (2 GB x 1024 = 2048 MB).&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Próximo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, podemos criar um disco rígido virtual para a VM:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Um disco rígido virtual, do ponto de vista do SO hospedeiro, é um arquivo grande, como um ZIP. Do ponto de vista do SO convidado, é como um HDD ou SSD de verdade.&lt;/p&gt;
+
+&lt;p&gt;Como vamos usar uma imagem &lt;em&gt;live&lt;/em&gt;, por enquanto não precisamos realmente criar um disco rígido virtual para experimentar o Linux. Veremos como criar um disco rígido virtual depois.&lt;/p&gt;
+
+&lt;p&gt;Selecione a opção &lt;strong&gt;Não acrescentar um disco rígido virtual&lt;/strong&gt; e clique em &lt;strong&gt;Criar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Continuar&lt;/strong&gt; para ignorar a advertência do VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora a tela inicial do VirtualBox mostra a sua primeira máquina virtual:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Veja que você pode configurar várias características da máquina virtual (memória, tela, armazenamento, áudio, rede, etc.) de modo a imitar um computador de verdade.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserindo-a-imagem-iso-no-leitor-de-dvd-virtual&quot;&gt;Inserindo a imagem ISO no leitor de DVD virtual&lt;/h2&gt;
+
+&lt;p&gt;Vamos inserir a imagem ISO no leitor de DVD da máquina virtual, como quem insere um DVD em um leitor de DVD de um computador de verdade.&lt;/p&gt;
+
+&lt;p&gt;Para isso, na tela inicial, que mostra as configurações da VM, clique em &lt;strong&gt;Armazenamento&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;À esquerda, em &lt;strong&gt;Dispositivos de Armazenamento&lt;/strong&gt;, dentro da &lt;strong&gt;Controladora IDE&lt;/strong&gt;, selecione o leitor de DVD que aparece como &lt;strong&gt;Vazio&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;À direita, clique no ícone da mídia e depois, no menu que aparece, clique em &lt;strong&gt;Selecionar Arquivo de Disco Óptico Virtual&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Selecione a imagem ISO da distribuição Linux que você baixou e clique em &lt;strong&gt;Abrir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Configurações&lt;/strong&gt; e voltar para a tela inicial do VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-e-usando-a-máquina-virtual&quot;&gt;Iniciando e usando a máquina virtual&lt;/h2&gt;
+
+&lt;p&gt;Para iniciar a máquina virtual, clique no botão &lt;strong&gt;Iniciar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-14-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-14-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso equivale, em um computador de verdade, a apertar o botão de ligar.&lt;/p&gt;
+
+&lt;p&gt;O VirtualBox abre uma nova janela para a máquina virtual, que vai iniciar o sistema operacional (“dar &lt;em&gt;boot&lt;/em&gt;”, na gíria técnica), assim como faria um computador de verdade:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-15-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O que apareceria no monitor de um computador de verdade aparece na janela da VM.&lt;/p&gt;
+
+&lt;p&gt;Quando o sistema terminar de iniciar, você verá sua área de trabalho e já poderá usá-lo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Além de exibir a imagem, a janela da VM também permite que você interaja com a VM: para controlá-la, clique na janela, o &lt;em&gt;mouse&lt;/em&gt; e o teclado passam a ser capturados pelo VirtualBox e podem ser usados apenas dentro da VM.&lt;/p&gt;
+
+&lt;p&gt;Para devolver o controle à máquina real, o VirtualBox reserva uma tecla especial no teclado, que ele chama de &lt;strong&gt;tecla Hospedeiro&lt;/strong&gt; (tecla &lt;em&gt;Host&lt;/em&gt;). Por padrão, ela é a tecla &lt;strong&gt;Ctrl direita&lt;/strong&gt;. Pressione a tecla Hospedeiro e o &lt;em&gt;mouse&lt;/em&gt; e teclado voltam a controlar a máquina real.&lt;/p&gt;
+
+&lt;p&gt;A tecla Hospedeiro é exibida no canto inferior direito da janela da VM:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-17.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-17.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso o SO convidado informe que suporta &lt;strong&gt;integração do ponteiro de &lt;em&gt;mouse&lt;/em&gt;&lt;/strong&gt;, isso significa que você pode deslizar o ponteiro do &lt;em&gt;mouse&lt;/em&gt; livremente entre a janela da máquina virtual e demais janelas abertas na máquina real, sem necessidade de clicar na janela da VM para capturar o &lt;em&gt;mouse&lt;/em&gt; ou apertar a tecla Hospedeiro para liberá-lo.&lt;/p&gt;
+
+&lt;p&gt;Quando usado dentro de uma VM do VirtualBox como SO convidado, o Linux Kamarada ativa essa integração por padrão, tornando mais natural e fácil o uso da VM.&lt;/p&gt;
+
+&lt;p&gt;Caso deseje, você pode alterar a tecla Hospedeiro nas configurações do VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;desligando-a-máquina-virtual&quot;&gt;Desligando a máquina virtual&lt;/h2&gt;
+
+&lt;p&gt;Quando terminar de usar a máquina virtual, desligue-a normalmente, da mesma forma como você faria em uma máquina real. Se na VM você está usando o Linux Kamarada, que vem por padrão com a área de trabalho &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, para desligar a VM, clique no &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, e depois, no menu que aparece, clique no ícone &lt;strong&gt;Desligar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-18-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso a máquina virtual trave e você precise forçar seu desligamento, clique no botão de fechar (como se fosse fechar a janela) e o VirtualBox perguntará o que deseja fazer:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-19-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-19-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione &lt;strong&gt;Desligar a máquina&lt;/strong&gt; em clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Isso equivale, em um computador de verdade, a apertar e segurar o botão de ligar/desligar por alguns segundos, até que o computador desligue (de modo forçado).&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-o-virtualbox-no-windows&quot;&gt;Iniciando o VirtualBox no Windows&lt;/h2&gt;
+
+&lt;p&gt;Se você seguiu à risca esse tutorial, teve o VirtualBox iniciado pelo próprio instalador.&lt;/p&gt;
+
+&lt;p&gt;Quando quiser iniciá-lo manualmente, dê dois cliques no atalho na Área de Trabalho:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ou abra o &lt;strong&gt;menu Iniciar&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; e clique em seu ícone:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-21-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-21-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;continua&quot;&gt;Continua…&lt;/h2&gt;
+
+&lt;p&gt;Na segunda parte, veremos como instalar o VirtualBox no Linux. Até lá!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Para referência futura, aqui utilizei as seguintes versões de &lt;em&gt;softwares&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Microsoft Windows 10, versão 1903&lt;/li&gt;
+  &lt;li&gt;Oracle VM VirtualBox 6.0.12&lt;/li&gt;
+  &lt;li&gt;Linux Kamarada 15.1 Beta&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Todas são as versões mais recentes no momento da escrita.&lt;/p&gt;
+
+&lt;p&gt;Para escrever esse &lt;em&gt;post&lt;/em&gt;, consultei o manual do VirtualBox:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html&quot;&gt;Oracle VM VirtualBox - User Manual - Chapter 1 - First Steps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 08 Oct 2019 01:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Configurando certificado digital no navegador Google Chrome / Chromium</title>
@@ -2540,439 +2882,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Tue, 18 Jun 2019 22:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como atualizar do openSUSE Leap 15.0 para o 15.1</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-00-pt.png&quot; title=&quot;openSUSE Leap 15.1 já está disponível&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-00-pt.png&quot; alt=&quot;openSUSE Leap 15.1 já está disponível&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;openSUSE Leap 15.1 já está disponível&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A versão atual da distribuição &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt;, a 15.1, &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;foi lançada quarta-feira, 22 de maio&lt;/a&gt;. Usuários da versão anterior, a 15.0, já podem atualizar (fazer o &lt;em&gt;upgrade&lt;/em&gt;) para a nova versão.&lt;/p&gt;
-
-&lt;p&gt;Se você já utiliza o openSUSE há algum tempo, sabe que atualizar de uma versão para outra é fácil e tranquilo. Se você conheceu o openSUSE na versão 15.0, vai perceber isso agora.&lt;/p&gt;
-
-&lt;p&gt;O passo a passo para atualização que apresento aqui é o que utilizei no meu computador e que aprendi lendo a &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do openSUSE&lt;/a&gt;. Ele é praticamente o mesmo desde que comecei a utilizar o openSUSE. Você mesmo pode verificar isso comparando os &lt;em&gt;posts&lt;/em&gt; anteriores:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/&quot;&gt;Como atualizar do openSUSE Leap 42.1 para o 42.2&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/&quot;&gt;Como atualizar do openSUSE Leap 42.2 para o 42.3&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Eu não escrevi sobre a atualização do openSUSE Leap 42.3 para o 15.0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Neste &lt;em&gt;post&lt;/em&gt; você verá como atualizar seu openSUSE Leap da versão 15.0 para a 15.1.&lt;/p&gt;
-
-&lt;h2 id=&quot;algumas-observações&quot;&gt;Algumas observações&lt;/h2&gt;
-
-&lt;p&gt;O &lt;em&gt;upgrade&lt;/em&gt; no openSUSE é um procedimento seguro, que deve funcionar para a maioria dos casos, mas que requer alguns cuidados.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve estar utilizando a versão imediatamente anterior do openSUSE.&lt;/strong&gt; Isso quer dizer que se você pretende atualizar para a versão 15.1, deve estar usando agora a versão 15.0. Saltos de versões não são suportados. Podem funcionar, mas não há garantia. Portanto, se você utiliza a versão 42.3, por exemplo, é melhor que primeiro atualize para a versão 15.0, para então atualizar para a versão 15.1.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sua instalação do openSUSE deve estar atualizada&lt;/strong&gt; com as versões mais recentes dos pacotes lançadas até o momento. Observe que há dois tipos de atualização: neste &lt;em&gt;post&lt;/em&gt;, você vai ver como atualizar a distribuição (&lt;em&gt;upgrade&lt;/em&gt;), mas antes você deve atualizar os pacotes (&lt;em&gt;update&lt;/em&gt;). Para mais informações sobre os dois tipos de atualizações e como atualizar os pacotes, consulte o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve se informar sobre a versão do openSUSE que vai instalar.&lt;/strong&gt; Consulte as &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/15.1/RELEASE-NOTES.pt_BR.html&quot;&gt;notas de lançamento&lt;/a&gt;, que descrevem o que muda na nova versão e listam alguns &lt;em&gt;bugs&lt;/em&gt; conhecidos, como preveni-los e/ou solucioná-los.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você deve fazer uma cópia de segurança (&lt;em&gt;backup&lt;/em&gt;) de arquivos importantes.&lt;/strong&gt; apesar de a atualização do openSUSE ser segura (fazendo lembrar, para quem conhece, a atualização do &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;), não quer dizer que seja perfeita. Ganhar na loteria é difícil, mas uma hora alguém ganha. Algo dar errado na atualização é difícil, especialmente se você toma todos os cuidados, mas pode acontecer. Eu, particularmente, já atualizei algumas vezes sem problema. Nunca é demais fazer uma cópia dos seus arquivos pessoais por precaução, especialmente se a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; não está em uma partição reservada. Se o computador não pode ficar parado por muito tempo (um servidor, por exemplo), considere fazer uma cópia de todo o sistema, a fim de restaurá-la imediatamente caso algo não funcione como esperado.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Você não deve utilizar repositórios não oficiais (de terceiros) durante a atualização.&lt;/strong&gt; Antes de começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), removeremos os &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt;. É possível que isso ocasione a remoção também de programas de terceiros. Você pode devolvê-los depois. Isso não quer dizer que não seja possível atualizar com esses repositórios presentes, mas usar apenas os &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;repositórios oficiais&lt;/a&gt; é mais garantido. A base do sistema será atualizada para uma nova base estável, sólida, confiável. Depois, sobre essa base, você poderá instalar o que quiser. Faça diferente dessa recomendação apenas se souber o que está fazendo.&lt;/p&gt;
-
-&lt;p&gt;Recomendo também que você leia toda essa página antes de começar de fato a agir. Para organizá-la melhor, vou dividi-la em 6 etapas. Conhecendo todo o processo, você terá condição de agendá-lo melhor. Você pode até fazer outras coisas usando o computador enquanto segue o passo a passo, mas depois que começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), só poderá usar o computador quando ela for concluída.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-atualização-dos-pacotes-update&quot;&gt;1) Atualização dos pacotes (&lt;em&gt;update&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Certifique-se de que sua instalação do openSUSE está atualizada. Para isso:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;se você obtém atualizações pela interface gráfica, abra o Atualizador de pacotes, ele deve informar que o sistema está totalmente atualizado:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-update-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;se você utiliza a interface de linha de comando, execute o comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt; como &lt;em&gt;root&lt;/em&gt;, ele deve informar que não há o que fazer:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-01-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-01-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para mais informações sobre atualização dos pacotes (&lt;em&gt;update&lt;/em&gt;), consulte o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-backup-dos-repositórios-atuais&quot;&gt;2) &lt;em&gt;Backup&lt;/em&gt; dos repositórios atuais&lt;/h2&gt;
-
-&lt;p&gt;Essa etapa, na verdade, é opcional.&lt;/p&gt;
-
-&lt;p&gt;Talvez você queira fazer &lt;em&gt;backup&lt;/em&gt; da sua lista atual de repositórios para devolvê-la depois da atualização. O openSUSE guarda as configurações de repositórios na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/repos.d&lt;/code&gt;, sendo um arquivo de texto para cada repositório.&lt;/p&gt;
-
-&lt;p&gt;Vamos copiar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d&lt;/code&gt;, em &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp&lt;/code&gt;, para outra no mesmo lugar, chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;. Para isso, utilizaremos a interface de linha de comando.&lt;/p&gt;
-
-&lt;p&gt;Se não já o fez, alterne do seu usuário para o usuário &lt;em&gt;root&lt;/em&gt; executando o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Forneça a senha do usuário &lt;em&gt;root&lt;/em&gt; para continuar.&lt;/p&gt;
-
-&lt;p&gt;Se você já fez alguma atualização de versão seguindo algum de nossos tutoriais, talvez ainda tenha o &lt;em&gt;backup&lt;/em&gt; antigo guardado. Se esse é o seu caso, execute o comando a seguir para excluir a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Então, ordene a cópia:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.antigos
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você ainda não fez &lt;em&gt;backup&lt;/em&gt; dos seus arquivos pessoais e/ou do seu sistema, considere fazê-lo agora.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-faxina-dos-repositórios&quot;&gt;3) Faxina dos repositórios&lt;/h2&gt;
-
-&lt;p&gt;Como expliquei antes, durante a atualização utilizaremos apenas os repositórios oficiais. Mais especificamente, apenas dois deles:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE-Leap-15.1-OSS&lt;/strong&gt;: o repositório principal da distribuição, contém apenas &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; de código aberto&lt;/a&gt; (do inglês &lt;em&gt;open source sofware&lt;/em&gt;, OSS).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE-Leap-15.1-Update&lt;/strong&gt;: contém atualizações (&lt;em&gt;updates&lt;/em&gt;) oficiais para os pacotes do repositório OSS.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;URL: &lt;a href=&quot;http://download.opensuse.org/update/leap/15.1/oss/&quot;&gt;http://download.opensuse.org/update/leap/15.1/oss/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Vamos fazer uma faxina nos repositórios, excluindo quaisquer outros repositórios configurados (vamos excluir inclusive quaisquer repositórios de terceiros).&lt;/p&gt;
-
-&lt;p&gt;Acesse o Centro de Controle do YaST. Para isso, acesse o &lt;strong&gt;panorama de Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone do YaST:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Será solicitada a você a senha do usuário &lt;em&gt;root&lt;/em&gt;. Digite-a e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na categoria &lt;strong&gt;Software&lt;/strong&gt;, clique em &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-05-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-05-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à lista de repositórios do seu sistema:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para cada repositório que não seja o &lt;strong&gt;openSUSE-Leap-15.0-OSS&lt;/strong&gt; ou o &lt;strong&gt;openSUSE-Leap-15.0-Update&lt;/strong&gt; , selecione o repositório na lista e clique em &lt;strong&gt;Remover&lt;/strong&gt; (não é erro de digitação, estamos falando dos repositórios que você usa, que ainda são os da versão 15.0).&lt;/p&gt;
-
-&lt;p&gt;Aparecerá uma mensagem de confirmação. Clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça isso com todos os repositórios até que só sobrem os repositórios &lt;strong&gt;openSUSE-Leap-15.0-OSS&lt;/strong&gt; e &lt;strong&gt;openSUSE-Leap-15.0-Update&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esses repositórios podem estar com nomes diferentes no seu computador. Se esse for o caso, você pode se orientar pela &lt;a href=&quot;https://pt.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; em vez do nome. Se não encontrá-los, não tem problema: apague todos os repositórios e já adicione os novos a seguir.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-repositórios-da-nova-versão&quot;&gt;4) Repositórios da nova versão&lt;/h2&gt;
-
-&lt;p&gt;Vamos agora mudar para os repositórios da nova versão.&lt;/p&gt;
-
-&lt;p&gt;Selecione o repositório &lt;strong&gt;openSUSE-Leap-15.0-OSS&lt;/strong&gt; e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Substitua &lt;code class=&quot;highlighter-rouge&quot;&gt;15.0&lt;/code&gt; por &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1&lt;/code&gt; onde houver e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Faça o mesmo procedimento para o repositório &lt;strong&gt;openSUSE-Leap-15.0-Update&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ao final, sua lista de repositórios deve estar assim:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para gravar as alterações. Pode fechar o YaST.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-download-dos-pacotes&quot;&gt;5) &lt;em&gt;Download&lt;/em&gt; dos pacotes&lt;/h2&gt;
-
-&lt;p&gt;Já podemos começar a baixar os pacotes da nova versão do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;De volta à interface de linha de comando, obtenha da Internet a lista de pacotes dos novos repositórios:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper dup --download-only
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(&lt;em&gt;distribution upgrade&lt;/em&gt;, atualização da distribuição, &lt;em&gt;download only&lt;/em&gt;, apenas baixar)&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ele passa um tempo “pensando” e logo depois mostra o que precisa fazer para atualizar o openSUSE para a próxima versão e pergunta se você deseja continuar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que essa lista de ações é semelhante à produzida pelo comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt;, apresentado no &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre atualização de pacotes&lt;/a&gt;. No entanto, como agora estamos fazendo uma atualização de distribuição, a lista do que precisa ser feito é bem maior.&lt;/p&gt;
-
-&lt;p&gt;Confira essa lista com cuidado. Você pode ir para cima ou para baixo utilizando a barra de rolagem à direita da tela ou a roda (&lt;em&gt;scroll&lt;/em&gt;) do &lt;em&gt;mouse&lt;/em&gt;, se utiliza o Terminal, ou as combinações de teclas &lt;strong&gt;Shift + Page Up&lt;/strong&gt; ou &lt;strong&gt;Shift + Page Down&lt;/strong&gt;, se está em uma interface puramente textual (elas também funcionam no Terminal).&lt;/p&gt;
-
-&lt;p&gt;A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se você concorda, pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e o &lt;em&gt;download&lt;/em&gt; dos novos pacotes começará. Enquanto isso, você pode utilizar seu computador normalmente. A atualização propriamente dita ainda não começou.&lt;/p&gt;
-
-&lt;p&gt;Observe que o &lt;strong&gt;zypper&lt;/strong&gt; apenas baixa os pacotes, ele não inicia a atualização:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-13-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso porque ordenamos a ele por ora apenas baixar os pacotes.&lt;/p&gt;
-
-&lt;p&gt;Termine o que está fazendo e salve os arquivos abertos para iniciarmos a atualização da distribuição. Note que ela pode levar alguns (vários) minutos e você só poderá voltar a usar o computador quando ela for concluída.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-atualização-da-distribuição-upgrade&quot;&gt;6) Atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;)&lt;/h2&gt;
-
-&lt;p&gt;Agora que já baixamos os pacotes necessários para atualizar nosso openSUSE Leap da versão 15.0 para a 15.1, vamos sair da interface gráfica e utilizar a linha de comando para realizar a instalação. Aqui, você não poderá utilizar o Terminal.&lt;/p&gt;
-
-&lt;p&gt;Isso é necessário porque inclusive a própria interface gráfica será atualizada. Se estivermos utilizando a interface gráfica durante a atualização, pode ser que o sistema trave no meio da processo e as consequências disso são imprevisíveis.&lt;/p&gt;
-
-&lt;p&gt;Considere abrir essa página em outro computador, em um &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt;, imprimi-la ou anotar o que vai fazer.&lt;/p&gt;
-
-&lt;p&gt;Se o openSUSE que você vai atualizar está em um &lt;em&gt;notebook&lt;/em&gt;, certifique-se de que ele esteja com a bateria completamente carregada e conectado à fonte de alimentação. Não desconecte a bateria ou a fonte durante a atualização. Vamos prevenir qualquer possibilidade de problema.&lt;/p&gt;
-
-&lt;p&gt;Encerre sua sessão (&lt;em&gt;logout&lt;/em&gt;). Para isso, clique no &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, clique no seu nome de usuário e escolha a opção &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-14-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-14-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você será apresentado à tela de &lt;em&gt;login&lt;/em&gt;, onde você poderia informar seu nome de usuário e senha caso quisesse iniciar uma nova sessão na interface gráfica:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-15-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Mas não é isso que queremos. Aperte a combinação de teclas &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; para alternar para uma interface puramente textual:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-16.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-16.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Caso isso seja novidade para você, saiba que o Linux disponibiliza seis &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;consoles&lt;/a&gt; (terminais) além da interface gráfica. Você pode usar as teclas de &lt;strong&gt;F1&lt;/strong&gt; a &lt;strong&gt;F6&lt;/strong&gt; na mesma combinação (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; e assim por diante) para alternar entre os consoles, assim como pressionar &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; para retornar à interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Vamos permanecer no primeiro console.&lt;/p&gt;
-
-&lt;p&gt;Entre com o usuário &lt;em&gt;root&lt;/em&gt;. Para isso, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Depois, digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Vamos alternar do nível de execução (&lt;a href=&quot;http://www.hardware.com.br/termos/runlevel&quot;&gt;&lt;em&gt;runlevel&lt;/em&gt;&lt;/a&gt;) 5, nível padrão, no qual o sistema nos provê interface gráfica, para o nível de execução 3, no qual temos apenas a interface de linha de comando e conexão de rede.&lt;/p&gt;
-
-&lt;p&gt;Para &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;alterar o nível de execução&lt;/a&gt; para 3, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# init 3
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Finalmente, vamos realizar a atualização de distribuição propriamente dita. Para isso, execute o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --no-refresh dup
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-17.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-17.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O argumento &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-refresh&lt;/code&gt; faz com que o &lt;strong&gt;zypper&lt;/strong&gt; não atualize a lista de pacotes dos repositórios. Com isso, garantimos que ele não tente baixar mais algum pacote além dos que nós já baixamos. Isso pode ser útil especialmente em &lt;em&gt;notebooks&lt;/em&gt;, que podem perder a conexão com a rede Wi-Fi ao sair da interface gráfica.&lt;/p&gt;
-
-&lt;p&gt;Como antes, o &lt;strong&gt;zypper&lt;/strong&gt; vai processar a atualização e mostrar o que vai fazer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-18.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-18.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que todos os pacotes que ele precisa já foram baixados: ao final ele mostra “&lt;em&gt;Overall download size: 0 B. Already cached: 2.12 GiB.&lt;/em&gt;” (Tamanho geral do &lt;em&gt;download&lt;/em&gt;: 0 B. Já em cache: 2,12 GiB).&lt;/p&gt;
-
-&lt;p&gt;Apenas pressione &lt;strong&gt;Enter&lt;/strong&gt; para que a atualização comece.&lt;/p&gt;
-
-&lt;p&gt;Ele pula o &lt;em&gt;download&lt;/em&gt; dos pacotes e já vai direto para a instalação:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-19.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-19.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A atualização da distribuição pode demorar alguns (vários) minutos.&lt;/p&gt;
-
-&lt;p&gt;Quando ela terminar, o &lt;strong&gt;zypper&lt;/strong&gt; vai sugerir reiniciar. É o que vamos fazer executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-20.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-20.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;pronto&quot;&gt;Pronto&lt;/h2&gt;
-
-&lt;p&gt;Se você conseguiu fazer tudo até aqui, seu computador já está com o openSUSE Leap 15.1.&lt;/p&gt;
-
-&lt;p&gt;Observe que o menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt;, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui Windows e Linux instalados na mesma máquina), já está diferente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-21.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-21.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;E &lt;em&gt;voilà&lt;/em&gt;! O openSUSE Leap 15.1 está instalado e pronto para uso!&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/05/howto-upgrade-to-15.1-22-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/05/howto-upgrade-to-15.1-22-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Verifique se está tudo no lugar.&lt;/p&gt;
-
-&lt;p&gt;Agora você pode devolver os repositórios que excluiu, lembrando de fazer os devidos ajustes em relação à versão do openSUSE, mudando de &lt;code class=&quot;highlighter-rouge&quot;&gt;15.0&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1&lt;/code&gt; onde for necessário. Pela interface de linha de comando é fácil:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sed -i 's/15.0/15.1/g' /etc/zypp/repos.d.antigos/*
-# mv /etc/zypp/repos.d.antigos/* /etc/zypp/repos.d/
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Feito isso, você pode excluir o &lt;em&gt;backup&lt;/em&gt; da sua antiga lista de repositórios:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos/
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você também pode tentar instalar qualquer programa que por ventura tenha sido removido durante a atualização.&lt;/p&gt;
-
-&lt;p&gt;Se lembre de regularmente &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;verificar se há atualizações (&lt;em&gt;updates&lt;/em&gt;)&lt;/a&gt; para sua nova distribuição.&lt;/p&gt;
-
-&lt;p&gt;Se você encontrou alguma dificuldade durante a atualização ou possui alguma dúvida, não deixe de comentar!&lt;/p&gt;
-
-&lt;p&gt;Até a próxima!&lt;/p&gt;
-
-</description>
-                <pubDate>Sun, 26 May 2019 13:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/</guid>
                 
                 
                     <category>pt</category>
