@@ -9,10 +9,351 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 08 Oct 2019 01:46:00 -0300</pubDate>
-        <lastBuildDate>Tue, 08 Oct 2019 01:46:00 -0300</lastBuildDate>
+        <pubDate>Thu, 10 Oct 2019 22:45:12 -0300</pubDate>
+        <lastBuildDate>Thu, 10 Oct 2019 22:45:12 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>VirtualBox: the easiest way to try Linux without installing it</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/07/virtualbox-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/07/virtualbox-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; allows you to use &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; within a window, just like you use any other app on your familiar operating system. Do you want to use Linux? Just start it. Finished using? Just close it. That is handy because you can have your first contact with Linux without actually installing it. It is even handier than a &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;LiveDVD/USB&lt;/a&gt;, because to use live media you need to reboot.&lt;/p&gt;
+
+&lt;p&gt;By “window”, I meant to simplify it, so that you could have a picture of how it looks like. But actually that “window”, technically speaking, is a &lt;strong&gt;virtual machine&lt;/strong&gt; (often abbreviated as &lt;strong&gt;VM&lt;/strong&gt;): it is an emulated computer created by software. It provides similar functionality to a physical machine, so that you can install operating systems and apps on it. The operating system (OS) installed on a virtual machine “believes” it is installed on a “real” computer.&lt;/p&gt;
+
+&lt;p&gt;Your computer (which is a physical machine and is, in contrast, called a &lt;strong&gt;real machine&lt;/strong&gt;) can run many virtual machines at the same time (as long as the needed amounts of RAM and disk space are available). In practice, that means you can use multiple OSes at the same time. For example, you can use both &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and Linux at the same time.&lt;/p&gt;
+
+&lt;p&gt;The operating system of the real machine is called &lt;strong&gt;host operating system&lt;/strong&gt; (&lt;strong&gt;host OS&lt;/strong&gt;): it hosts the virtual machine, whose operating system is called &lt;strong&gt;guest operating system&lt;/strong&gt; (&lt;strong&gt;guest OS&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;This technology is called &lt;strong&gt;virtualization&lt;/strong&gt;. And put simply, VirtualBox is a software that provides you an user-friendly way to do virtualization using your personal computer.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;free and open-source&lt;/a&gt; cross-platform virtualization software developed by &lt;a href=&quot;https://www.oracle.com/&quot;&gt;Oracle&lt;/a&gt;. It can be installed on your &lt;a href=&quot;https://en.wikipedia.org/wiki/IBM_Personal_Computer&quot;&gt;PC&lt;/a&gt;, whether you use Windows, &lt;a href=&quot;https://www.apple.com/macos/&quot;&gt;macOS&lt;/a&gt;, Linux or &lt;a href=&quot;https://www.oracle.com/solaris/&quot;&gt;Solaris&lt;/a&gt;, and it supports a large number of guest operating systems, including, but not limited to: Windows (3.x, 95, 98, NT, 2000, XP, Server 2003, Vista, 7, 8, 8.1, 10, Server 2008, Server 2012 and Server 2016), DOS, Linux (2.4, 2.6, 3.x and 4.x), Solaris, OpenSolaris, OS/2 and OpenBSD.&lt;/p&gt;
+
+&lt;p&gt;We already talked a little about VirtualBox in another post:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/&quot;&gt;20 apps you can use the same way on both Linux and Windows — part 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Today we are going to see how to install VirtualBox on Windows, create a virtual machine and boot a Linux &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt; on it. To demonstrate how to do that, I’m going to use the &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Kamarada&lt;/a&gt; Linux distribution, which you get on the &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h2 id=&quot;part-1-of-3&quot;&gt;Part 1 of 3&lt;/h2&gt;
+
+&lt;p&gt;For the post not to be too long, I decided to split it into three parts:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;in this first part, you are going to install VirtualBox on Windows, learn its basics and start using Linux inside a virtual machine;&lt;/li&gt;
+  &lt;li&gt;in the second part, you will see how to install VirtualBox on Linux;&lt;/li&gt;
+  &lt;li&gt;in the third part, you will see some useful tips for using VirtualBox daily.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This sequence of posts is devoted mainly to Windows users who haven’t had their first contact with Linux yet and want to try it using the safety of VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;If you already use Linux, you may want to install VirtualBox to try another distribution. VirtualBox can be useful for &lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html#virt-why-useful&quot;&gt;other purposes&lt;/a&gt; too.&lt;/p&gt;
+
+&lt;h2 id=&quot;downloading-virtualbox-for-windows&quot;&gt;Downloading VirtualBox for Windows&lt;/h2&gt;
+
+&lt;p&gt;Download the VirtualBox installer going to its official website at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt; banner:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Below &lt;strong&gt;VirtualBox binaries&lt;/strong&gt;, click &lt;strong&gt;Windows hosts&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The download starts.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-virtualbox-on-windows&quot;&gt;Installing VirtualBox on Windows&lt;/h2&gt;
+
+&lt;p&gt;Run the installer when the download is complete.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can install VirtualBox just like you install most programs on Windows (next, next, next).&lt;/p&gt;
+
+&lt;p&gt;During installation, Windows prompts you whether to install drivers for VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Allow it by clicking &lt;strong&gt;Install&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;At the end, click &lt;strong&gt;Finish&lt;/strong&gt; to exit the installation wizard and start VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;creating-a-new-virtual-machine&quot;&gt;Creating a new virtual machine&lt;/h2&gt;
+
+&lt;p&gt;This is the VirtualBox start screen, so far without any virtual machine:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To create a new virtual machine, click the &lt;strong&gt;New&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Create Virtual Machine&lt;/strong&gt; wizard is started:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Give the virtual machine a &lt;strong&gt;Name&lt;/strong&gt;. For instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that when you type &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;, the wizard suggests the settings &lt;strong&gt;Type&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt; — and &lt;strong&gt;Version&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE (64-bit)&lt;/code&gt;. If you wanted, you could have given another name to the virtual machine (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;Testing Linux&lt;/code&gt;) and filled those other fields manually. Regarding the name, what really matters is that it makes sense for you and helps you identify the VM.&lt;/p&gt;
+
+&lt;p&gt;When you are finished, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the next page, inform the amount of RAM you want to reserve for the VM:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the image example, my real machine has a total of 16GB of RAM (16384MB) and I decided to reserve 2GB for the VM. In the future, when I start this VM, the guest OS will “believe” that it is running on a computer with 2GB of RAM, while the host OS will have 14GB left for all the other software (including any other virtual machines).&lt;/p&gt;
+
+&lt;p&gt;Split the RAM so that there is enough memory for both the real and the virtual machines. Mind the green bar, which indicates the maximum amount of memory considered to be safe to reserve for the VM. In the example, that limit is somewhere around 10.5GB (doing the maths, 2/3 or 66% of the 16GB total).&lt;/p&gt;
+
+&lt;p&gt;Note that the amount of RAM to be allocated is expressed in MB (2GB x 1024 = 2048MB).&lt;/p&gt;
+
+&lt;p&gt;When you are finished, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the next page, we can create a virtual hard disk for the VM:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A virtual hard disk, from the host OS perspective, is a large file, such as a ZIP archive. But VirtualBox presents it to the VM as if it were a physical HDD or SSD.&lt;/p&gt;
+
+&lt;p&gt;Since we are going to use a live image, for now we don’t really need to create a virtual hard disk to try Linux. We’ll see how to create a virtual hard disk later.&lt;/p&gt;
+
+&lt;p&gt;Then, choose &lt;strong&gt;Do not add a virtual hard disk&lt;/strong&gt; and click &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Continue&lt;/strong&gt; to ignore the VirtualBox warning:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now the VirtualBox start screen shows your first virtual machine:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that you can configure every aspect of the virtual machine (memory, display, storage, audio, network, etc.) to mimic a physical machine.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserting-the-iso-image-into-the-virtual-dvd-drive&quot;&gt;Inserting the ISO image into the virtual DVD drive&lt;/h2&gt;
+
+&lt;p&gt;Let’s insert the ISO image of the Linux distribution into the virtual DVD drive of the virtual machine, as if we were inserting a DVD into the DVD drive of a physical machine.&lt;/p&gt;
+
+&lt;p&gt;On the VirtualBox start screen, which shows the virtual machine settings, click &lt;strong&gt;Storage&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;By the left, under &lt;strong&gt;Storage Devices&lt;/strong&gt;, within the &lt;strong&gt;Controller: IDE&lt;/strong&gt;, select the DVD drive that appears as &lt;strong&gt;Empty&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By the right, click the media icon and then, on the drop-down menu that appears, click &lt;strong&gt;Choose Virtual Optical Disk File&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select the ISO image of the Linux distribution you downloaded and click &lt;strong&gt;Open&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Settings&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-and-using-the-virtual-machine&quot;&gt;Starting and using the virtual machine&lt;/h2&gt;
+
+&lt;p&gt;To start the virtual machine, click the &lt;strong&gt;Start&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-14-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(doing that is similar to pressing the power button of a physical machine)&lt;/p&gt;
+
+&lt;p&gt;VirtualBox opens a new window for the virtual machine, which starts to boot the operating system up, just like a physical machine would do:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-15-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-15-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Everything which would normally be seen on the virtual machine’s monitor is shown in the window.&lt;/p&gt;
+
+&lt;p&gt;When the system finishes booting up, you will see the desktop and can start using it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-16-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-16-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In addition to displaying image, the VM window also allows you to interact with the VM: to control the VM, click on the window, then the keyboard and the mouse are now “owned” by the VM and can be used only within it.&lt;/p&gt;
+
+&lt;p&gt;To return ownership of keyboard and mouse to the host OS, VirtualBox reserves a special key on the keyboard: it is called the &lt;strong&gt;Host key&lt;/strong&gt; and it is, by default, the &lt;strong&gt;right Ctrl&lt;/strong&gt; key. Press the Host key, then keyboard and mouse are now owned by the host OS again.&lt;/p&gt;
+
+&lt;p&gt;The current setting for the Host key is always displayed at the bottom right of your VM window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-17.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-17.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In case the guest OS reports that it supports &lt;strong&gt;mouse pointer integration&lt;/strong&gt;, that means you can move the mouse pointer freely between the virtual machine window and other opened windows on the host OS, you don’t need to click on the VM window to capture the mouse, nor hit the Host key to release it.&lt;/p&gt;
+
+&lt;p&gt;When used within a VirtualBox VM as a guest OS, Linux Kamarada enables mouse pointer integration by default, making the VM usage a lot more seamless.&lt;/p&gt;
+
+&lt;p&gt;You can change the default Host key in the VirtualBox preferences, if you want.&lt;/p&gt;
+
+&lt;h2 id=&quot;shutting-the-virtual-machine-down&quot;&gt;Shutting the virtual machine down&lt;/h2&gt;
+
+&lt;p&gt;When you are finished using the virtual machine, shut it down as usual, in the same way you would shutdown a physical machine. In case your guest OS is Linux Kamarada, which comes with the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop out-of-the-box, to shut the VM down, click the &lt;strong&gt;system menu&lt;/strong&gt;, in the upper right corner of the VM screen, and then click the &lt;strong&gt;Shutdown&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-18-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-18-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In case the virtual machine freezes and you need to forcibly shut it down, click the close button of the VM window (as if you were closing the window) and VirtualBox will ask you what you want to do, choose &lt;strong&gt;Power off the machine&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-19-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-19-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(doing that is similar to pressing and holding the power button of a physical machine for a few seconds until it forcibly shuts down)&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-virtualbox-on-windows&quot;&gt;Starting VirtualBox on Windows&lt;/h2&gt;
+
+&lt;p&gt;If you have strictly followed this tutorial, you had VirtualBox started by its own installer.&lt;/p&gt;
+
+&lt;p&gt;To start VirtualBox yourself, you can double-click its desktop shortcut:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Or open the &lt;strong&gt;Start menu&lt;/strong&gt;, type &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-21-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-21-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;to-be-continued&quot;&gt;To be continued…&lt;/h2&gt;
+
+&lt;p&gt;In part 2, we are going to see how to install VirtualBox on Linux. See you!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;For future reference, here I used the following software versions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Microsoft Windows 10&lt;/li&gt;
+  &lt;li&gt;Oracle VM VirtualBox 6.0.12&lt;/li&gt;
+  &lt;li&gt;Linux Kamarada 15.1 Beta Build 16.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of them are the latest versions at the time of writing.&lt;/p&gt;
+
+&lt;p&gt;To write this post, I consulted:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://techterms.com/definition/virtual_machine&quot;&gt;Virtual Machine definition - TechTerms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html&quot;&gt;Oracle VM VirtualBox - User Manual - Chapter 1 - First Steps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Thu, 10 Oct 2019 22:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Getting started on Raspberry Pi with NOOBS and Raspbian</title>
@@ -3133,455 +3474,6 @@ This time, you should be able to send the email. Thunderbird may not ask your to
                 <pubDate>Tue, 02 Jul 2019 19:50:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Using smart cards on openSUSE Linux</title>
-                <description>&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Public_key_certificate&quot;&gt;Digital certificates&lt;/a&gt; are used to &lt;strong&gt;identify&lt;/strong&gt; and &lt;strong&gt;authenticate&lt;/strong&gt; individuals, companies or computers on websites and systems. They ensure basic principles of &lt;a href=&quot;https://en.wikipedia.org/wiki/Information_security&quot;&gt;information security&lt;/a&gt;, such as &lt;strong&gt;authenticity&lt;/strong&gt; and &lt;strong&gt;non-repudiation&lt;/strong&gt;, to data signed with them. Digitally signed documents are as legally valid as handwritten signed documents.&lt;/p&gt;
-
-&lt;p&gt;Digital certificates can be stored:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;as files in computers or mobile devices (common file extensions include &lt;code class=&quot;highlighter-rouge&quot;&gt;.crt&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.cer&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;.pem&lt;/code&gt;); or&lt;/li&gt;
-  &lt;li&gt;in criptographic media, such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Smart_card&quot;&gt;smart cards&lt;/a&gt; (which look like credit cards) or &lt;a href=&quot;https://en.wikipedia.org/wiki/Security_token&quot;&gt;tokens&lt;/a&gt; (which look like USB sticks).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You need a smart card reader to use smart cards. USB tokens are standalone devices with a smart card chip inside (like a smart card reader with one non-removable smart card present).&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/smart-card.jpg&quot; title=&quot;A smart card and a smart card reader.&quot;&gt;
-&lt;img src=&quot;/files/2019/06/smart-card.jpg&quot; alt=&quot;A smart card and a smart card reader.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A smart card and a smart card reader.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/safenet-etoken-5110-fips.jpg&quot; title=&quot;A USB token looks like a USB stick, but it is a criptographic medium: it stores only digital certificates.&quot;&gt;
-&lt;img src=&quot;/files/2019/06/safenet-etoken-5110-fips.jpg&quot; alt=&quot;A USB token looks like a USB stick, but it is a criptographic medium: it stores only digital certificates.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A USB token looks like a USB stick, but it is a criptographic medium: it stores only digital certificates.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Many government and military websites require you to log in using a digital certificate.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.defense.gov/&quot;&gt;US Department of Defense (DoD)&lt;/a&gt; limits access to many of its websites to be via a &lt;a href=&quot;https://en.wikipedia.org/wiki/Common_Access_Card&quot;&gt;Common Access Card (CAC)&lt;/a&gt;, a kind of smart card.&lt;/p&gt;
-
-&lt;p&gt;In Brazil, an example such a website is &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt;, a system of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Secretaria_da_Receita_Federal_do_Brasil&quot;&gt;Receita Federal (the Brazilian federal revenue service agency)&lt;/a&gt;. Using that system, Brazilian citizens can consult information regarding their income tax declaration and refund, for instance.&lt;/p&gt;
-
-&lt;p&gt;There are also certificates that identify websites. When you visit a website that presents a valid digital certificate, your browser displays a green lock icon, indicating the page is authentic and secure. We have already talked about website certificates in &lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;another post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this post, you are going to see how to install support for smart cards and tokens on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE Linux&lt;/a&gt; and how to log in to a government system using a digital certificate.&lt;/p&gt;
-
-&lt;p&gt;For future reference, here I use the &lt;a href=&quot;/en/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt; distribution.&lt;/p&gt;
-
-&lt;p&gt;I’m going to use the USB token presented on the image above, an &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/etoken-5110-usb-token/&quot;&gt;eToken 5110&lt;/a&gt;, made by &lt;a href=&quot;https://safenet.gemalto.com/&quot;&gt;SafeNet&lt;/a&gt; (previously, &lt;a href=&quot;https://en.wikipedia.org/wiki/Aladdin_Knowledge_Systems&quot;&gt;Aladdin&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Smart cards and USB tokens are similar in functionality, installation and use, so through this post I refer to them interchangeably.&lt;/p&gt;
-
-&lt;h2 id=&quot;installing-the-needed-packages&quot;&gt;Installing the needed packages&lt;/h2&gt;
-
-&lt;p&gt;On Linux, support for smart cards is provided mainly by the &lt;a href=&quot;https://pcsclite.apdu.fr/&quot;&gt;PC/SC&lt;/a&gt; and &lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki&quot;&gt;OpenSC&lt;/a&gt; softwares.&lt;/p&gt;
-
-&lt;p&gt;openSUSE users can install them running (as root):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in opensc pcsc-ccid pcsc-lite pcsc-tools
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Start the PC/SC service, which makes smart cards available to applications:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl start pcscd
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Also, enable the PC/SC service, so that it always gets started with the system:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl enable pcscd
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can verify the PC/SC service is running with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl status pcscd
-● pcscd.service - PC/SC Smart Card Daemon
-   Loaded: loaded (/usr/lib/systemd/system/pcscd.service; indirect; vendor preset: disabled)
-   Active: active (running) since Mon 2019-05-27 22:22:27 -03; 1h 23min ago
-     Docs: man:pcscd(8)
- Main PID: 25347 (pcscd)
-    Tasks: 8 (limit: 4915)
-   CGroup: /system.slice/pcscd.service
-           └─25347 /usr/sbin/pcscd --foreground
-
-May 27 22:22:27 viny-notebook systemd[1]: Started PC/SC Smart Card Daemon.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Plug in your token and make sure it is recognized as a USB device:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ lsusb
-Bus 003 Device 002: ID 8087:8001 Intel Corp.
-Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 001 Device 007: ID 0bda:0129 Realtek Semiconductor Corp. RTS5129 Card Reader Controller
-Bus 001 Device 006: ID 1bcf:2c81 Sunplus Innovation Technology Inc.
-Bus 001 Device 005: ID 8087:0a2b Intel Corp.
-Bus 001 Device 009: ID 0529:0620 Aladdin Knowledge Systems Token JC
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;My token appears in the penultimate line (&lt;code class=&quot;highlighter-rouge&quot;&gt;0529:0620&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Verify that PC/SC recognizes your token with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ pcsc_scan
-Using reader plug'n play mechanism
-Scanning present readers...
-0: AKS ifdh [eToken 5110 SC] 00 00
-
-Mon May 27 23:53:00 2019
- Reader 0: AKS ifdh [eToken 5110 SC] 00 00
-  Event number: 0
-  Card state: Card inserted, Shared Mode,
-  ATR: 3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
-
-ATR: 3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
-+ TS = 3B --&amp;gt; Direct Convention
-+ T0 = D5, Y(1): 1101, K: 5 (historical bytes)
-  TA(1) = 18 --&amp;gt; Fi=372, Di=12, 31 cycles/ETU
-    129032 bits/s at 4 MHz, fMax for Fi = 5 MHz =&amp;gt; 161290 bits/s
-  TC(1) = 00 --&amp;gt; Extra guard time: 0
-  TD(1) = 81 --&amp;gt; Y(i+1) = 1000, Protocol T = 1
------
-  TD(2) = 31 --&amp;gt; Y(i+1) = 0011, Protocol T = 1
------
-  TA(3) = FE --&amp;gt; IFSC: 254
-  TB(3) = 7D --&amp;gt; Block Waiting Integer: 7 - Character Waiting Integer: 13
-+ Historical bytes: 80 73 C8 21 10
-  Category indicator byte: 80 (compact TLV data object)
-    Tag: 7, len: 3 (card capabilities)
-      Selection methods: C8
-        - DF selection by full DF name
-        - DF selection by partial DF name
-        - Implicit DF selection
-      Data coding byte: 21
-        - Behaviour of write functions: proprietary
-        - Value 'FF' for the first byte of BER-TLV tag fields: invalid
-        - Data unit in quartets: 2
-      Command chaining, length fields and logical channels: 10
-        - Logical channel number assignment: by the card
-        - Maximum number of logical channels: 1
-+ TCK = F4 (correct checksum)
-
-Possibly identified card (using /usr/share/pcsc/smartcard_list.txt):
-3B D5 18 00 81 31 FE 7D 80 73 C8 21 10 F4
-	Bank of Lithuania Identification card
-	Gemalto SafeNet eToken Java Based Cards
-	https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command does not stop, hit &lt;strong&gt;Ctrl + C&lt;/strong&gt; to interrupt it.&lt;/p&gt;
-
-&lt;p&gt;Check if OpenSC finds your token:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ opensc-tool -l
-# Detected readers (pcsc)
-Nr.  Card  Features  Name
-0    Yes             AKS ifdh [eToken 5110 SC] 00 00
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;specifics-of-aladdin--safenet-tokens&quot;&gt;Specifics of Aladdin / SafeNet tokens&lt;/h3&gt;
-
-&lt;p&gt;PC/SC and OpenSC are able to recognize SafeNet tokens, but not to manage them:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ opensc-tool -n
-Using reader with a card: AKS ifdh [eToken 5110 SC] 00 00
-Unsupported card
-
-$ opensc-tool -r 0 -f
-SELECT FILE failed: Incorrect parameters in APDU
-
-$ pkcs15-tool --reader 0 --list-pins
-Failed to connect to card: Card is invalid or cannot be handled
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Installing PC/SC and OpenSC, you should be ready to use most tokens, but to use SafeNet tokens you also need &lt;a href=&quot;https://safenet.gemalto.com/etoken-pki-client/&quot;&gt;SafeNet Authentication Client (SAC)&lt;/a&gt;, which is a proprietary software.&lt;/p&gt;
-
-&lt;p&gt;Ideally, you should get SAC from your token vendor, or from your certificate authority. In case they don’t provide you a Linux compatible version, you can &lt;a href=&quot;https://www.google.com/search?q=SafeNet+Authentication+Client+for+Linux&quot;&gt;google&lt;/a&gt; one.&lt;/p&gt;
-
-&lt;p&gt;I found a RPM package on &lt;a href=&quot;https://support.comodo.com/index.php?/Knowledgebase/Article/View/1211/0/safenet-download-for-ev-codesigning-certificates&quot;&gt;Comodo knowledgebase&lt;/a&gt;. Here, I’m going to use it.&lt;/p&gt;
-
-&lt;p&gt;Open &lt;a href=&quot;https://support.comodo.com/index.php?/Knowledgebase/Article/View/1211/0/safenet-download-for-ev-codesigning-certificates&quot;&gt;this page&lt;/a&gt; and click on &lt;strong&gt;SafeNetAuthenticationClient-9.0.43-0_amd64.rpm&lt;/strong&gt;, by the end:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Install the downloaded RPM package using YaST’s &lt;strong&gt;Install/Remove Software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;I don’t know why that RPM package does not declare some libraries it requires. You need to install them manually:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in libcrypto43 openssl
-# ln -s /usr/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.6
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, to start SAC, click on &lt;strong&gt;Activities&lt;/strong&gt;, on the top-left screen corner, start typing &lt;code class=&quot;highlighter-rouge&quot;&gt;safenet&lt;/code&gt; and click on the &lt;strong&gt;SafeNet Authentication Client Tools&lt;/strong&gt; icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(in doubt, try clicking both icons, it happens to me too)&lt;/p&gt;
-
-&lt;p&gt;Note that SAC correctly recognizes your token:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;setting-up-the-browser-to-use-your-token&quot;&gt;Setting up the browser to use your token&lt;/h2&gt;
-
-&lt;p&gt;In order to log in to a website using your token, you need to set up your browser first.&lt;/p&gt;
-
-&lt;p&gt;Before that, make sure to add your CA certificate to your browser, otherwise it won’t be able to validate your certificate hierarchy. For more information, please read:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;How to install website certificates on Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let’s see how to set up the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; browser to use your token.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (26/09/2019):&lt;/strong&gt;
-    
-&lt;p&gt;If you are looking for instructions for either &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; or &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt; browsers, &lt;a href=&quot;/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/&quot;&gt;click here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Start &lt;strong&gt;Mozilla Firefox&lt;/strong&gt;. Open the &lt;strong&gt;Firefox menu&lt;/strong&gt; (top right corner of the window) and click &lt;strong&gt;Preferences&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;By the left, select &lt;strong&gt;Privacy &amp;amp; Security&lt;/strong&gt;. Scroll down and click the &lt;strong&gt;Security Devices&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Device Manager&lt;/strong&gt; dialog box, click &lt;strong&gt;Load&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the next dialog box, fill in the &lt;strong&gt;Module Name&lt;/strong&gt; field with a name that identifies your token (for instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Fill in the &lt;strong&gt;Module filename&lt;/strong&gt; field with the path to your token’s library:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if your token is supported by OpenSC, type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;if you have a SafeNet token and needed to install SAC (like me), type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;for other token models, ask your token vendor or your certificate authority which path should be informed.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Your token is added to the list of &lt;strong&gt;Security Modules and Devices&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;logging-in-to-a-website-using-a-digital-certificate&quot;&gt;Logging in to a website using a digital certificate&lt;/h2&gt;
-
-&lt;p&gt;Let’s see how to access a smart card enabled website with Mozilla Firefox.&lt;/p&gt;
-
-&lt;p&gt;As I live in Brazil, I’m going to use Brazilian &lt;a href=&quot;https://cav.receita.fazenda.gov.br/&quot;&gt;eCAC&lt;/a&gt; as example. Use whatever smart card enabled website you may have access.&lt;/p&gt;
-
-&lt;p&gt;Make sure your smart card is plugged in.&lt;/p&gt;
-
-&lt;p&gt;Navigate to your chosen website and choose to log in using your digital certificate.&lt;/p&gt;
-
-&lt;p&gt;Enter the PIN for your smart card and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the certificate to use and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Check the website displays your information and you successfully logged in:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/token-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/token-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now you are ready to access websites with your smart card and use it in other applications.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Jul 02, 2019):&lt;/strong&gt;
-    
-&lt;p&gt;See how you can use your digital certificate in openSUSE:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/&quot;&gt;Sending digitally signed emails with Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Have a lot of fun!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/DoD_Common_Access_Card_(CAC)_Reader&quot;&gt;DoD Common Access Card (CAC) Reader - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.suse.com/c/configuring-smart-card-authentication-suse-linux-enterprise/&quot;&gt;Configuring Smart Card authentication on SUSE Linux Enterprise - SUSE Communities&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fedoramagazine.org/use-dod-smartcards-access-cac-enabled-websites/&quot;&gt;Use a DoD smartcard to access CAC enabled websites - Fedora Magazine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/Aladdin-eToken-PRO&quot;&gt;Aladdin eToken PRO · OpenSC/OpenSC Wiki · GitHub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/issues/461&quot;&gt;Unsuported Aladdin eToken PRO USB 72k Java · Issue #461 · OpenSC/OpenSC · GitHub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.eci.bce.ec/documents/10180/1296229/007-012830-001_SAC_9+0_GA_Admin_Guide_Windows_WLM_Revision+B.pdf/772eaaae-bb6b-49bc-922b-50ec77cfdbf9&quot;&gt;SafeNet Authentication Client Administrator’s Guide&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/Installing-OpenSC-PKCS%2311-Module-in-Firefox,-Step-by-Step&quot;&gt;Installing OpenSC PKCS#11 Module in Firefox, Step by Step · OpenSC/OpenSC Wiki · GitHub&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.ssl.com/Knowledgebase/Article/View/19/0/der-vs-crt-vs-cer-vs-pem-certificates-and-how-to-convert-them&quot;&gt;DER vs. CRT vs. CER vs. PEM Certificates and How To Convert Them&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mayrhofer.eu.org/post/aladdin-etoken-under-linux/&quot;&gt;Howto use Aladdin eToken under Linux - René Mayrhofer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Fri, 28 Jun 2019 01:45:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/06/28/using-smart-cards-on-opensuse-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/06/28/using-smart-cards-on-opensuse-linux/</guid>
                 
                 
                     <category>en</category>

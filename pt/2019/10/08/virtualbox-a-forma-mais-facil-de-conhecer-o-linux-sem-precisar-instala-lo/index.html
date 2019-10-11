@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -190,7 +194,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -242,7 +246,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-10-08" />
+                <meta itemprop="dateModified" content="2019-10-10" />
             </div>
             <div class='col-sm-6'>
                 
@@ -284,7 +288,7 @@
 
 </div>
 
-<p>O <a href="https://www.virtualbox.org/">VirtualBox</a> permite que você use o <a href="http://www.vivaolinux.com.br/linux/">Linux</a> dentro de uma janela, como um programa no sistema operacional que você já usa. Com essa facilidade, você pode ter seu primeiro contato com o Linux sem precisar instalá-lo no computador ou mesmo reiniciar para usar um <a href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">LiveDVD/USB</a>: quer usar o Linux? Só iniciar o programa. Terminou de usar? Só fechar a janela.</p>
+<p>O <a href="https://www.virtualbox.org/">VirtualBox</a> permite que você use o <a href="https://www.vivaolinux.com.br/linux/">Linux</a> dentro de uma janela, como um programa no sistema operacional que você já usa. Com essa facilidade, você pode ter seu primeiro contato com o Linux sem precisar instalá-lo ou mesmo reiniciar o computador para usar um <a href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">LiveDVD/USB</a>: quer usar o Linux? Só iniciar o programa. Terminou de usar? Só fechar a janela.</p>
 
 <p>Na verdade essa “janela”, explicada assim de forma simplificada, tecnicamente falando é uma <strong>máquina virtual</strong> (do inglês <em>virtual machine</em>, comumente abreviada por <strong>VM</strong>): é um computador que, fisicamente falando, não existe, mas pode ser usado para instalar sistemas operacionais e aplicativos. O sistema operacional (SO) que está na máquina virtual “pensa” que está em um computador “de verdade”.</p>
 
@@ -294,13 +298,13 @@
 
 <p>Essa tecnologia é chamada de <strong>virtualização</strong>. E o VirtualBox nada mais é que um programa que permite a você fazer virtualização de forma fácil em seu computador.</p>
 
+<p>O VirtualBox é um <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a>, gratuito e multi-plataforma de virtualização desenvolvido pela <a href="https://www.oracle.com/br/">Oracle</a>. Ele pode ser instalado no seu <a href="https://pt.wikipedia.org/wiki/IBM_PC">PC</a>, quer você use Windows, <a href="https://www.apple.com/br/macos/">macOS</a>, Linux ou <a href="https://www.oracle.com/solaris/">Solaris</a>, e suporta diversos sistemas operacionais convidados, incluindo, mas não limitado a: Windows (3.x, 95, 98, NT, 2000, XP, Server 2003, Vista, 7, 8, 8.1, 10, Server 2008, Server 2012, Server 2016), DOS, Linux (2.4, 2.6, 3.x e 4.x), Solaris, OpenSolaris, OS/2 e OpenBSD.</p>
+
 <p>Já falamos um pouco sobre o VirtualBox no <em>post</em>:</p>
 
 <ul>
   <li><a href="/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/">20 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 2</a></li>
 </ul>
-
-<p>O VirtualBox é um <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a>, gratuito e multi-plataforma de virtualização desenvolvido pela <a href="https://www.oracle.com/br/">Oracle</a>. Ele pode ser instalado no seu <a href="https://pt.wikipedia.org/wiki/IBM_PC">PC</a>, quer você use Windows, <a href="http://www.apple.com/br/macos/">macOS</a>, Linux ou <a href="https://www.oracle.com/solaris/">Solaris</a>, e suporta diversos sistemas operacionais convidados, incluindo, mas não limitado a: Windows (3.x, 95, 98, NT, 2000, XP, Server 2003, Vista, 7, 8, 8.1, 10, Server 2008, Server 2012, Server 2016), DOS, Linux (2.4, 2.6, 3.x e 4.x), Solaris, OpenSolaris, OS/2 e OpenBSD.</p>
 
 <p>Hoje veremos como instalar o VirtualBox no Windows, criar uma máquina virtual e iniciar nela uma <a href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">imagem <em>live</em></a> do Linux. Vou usar como exemplo a distribuição <a href="/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/">Linux Kamarada</a>, cuja imagem <em>live</em> pode ser baixada na página <a href="/pt/download">Download</a>.</p>
 
@@ -316,7 +320,7 @@
 
 <p>Essa sequência de <em>posts</em> é dedicada principalmente a usuários de Windows que ainda não tiveram seu primeiro contato com o Linux e desejam experimentá-lo por meio do VirtualBox.</p>
 
-<p>Se você já usa Linux, também pode instalar o VirtualBox para experimentar outra distribuição ou mesmo para outras finalidades.</p>
+<p>Se você já usa Linux, também pode instalar o VirtualBox para experimentar outra distribuição ou mesmo para <a href="https://www.virtualbox.org/manual/ch01.html#virt-why-useful">outras finalidades</a>.</p>
 
 <h2 id="baixando-o-virtualbox-no-windows">Baixando o VirtualBox no Windows</h2>
 
@@ -326,7 +330,7 @@
   <li><a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a></li>
 </ul>
 
-<p>E clique no botão <strong>Download VirtualBox 6.0</strong>:</p>
+<p>E clique no <em>banner</em> <strong>Download VirtualBox 6.0</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-01.jpg" title="">
@@ -416,7 +420,7 @@
 
 </div>
 
-<p>No exemplo da imagem, minha máquina real dispõe de 16GB de RAM e eu decidi reservar 2GB para a máquina virtual. Com isso, o sistema operacional convidado “pensará” que está sendo executado em um computador com 2GB de RAM. Já o SO hospedeiro poderá usar apenas 14GB de RAM para executar outros programas e máquinas virtuais.</p>
+<p>No exemplo da imagem, minha máquina real tem um total de 16GB de RAM (16384MB) e eu decidi reservar 2GB para a VM. No futuro, enquanto eu estiver usando essa VM, o SO convidado “pensará” que está sendo executado em um computador com 2GB de RAM e restarão 14GB de RAM para o SO hospedeiro executar programas e outras máquinas virtuais.</p>
 
 <p>Divida a memória RAM de modo que não falte memória nem para a máquina virtual, nem para a máquina real. Na tela, a barra verde indica o limite de memória considerado seguro. No exemplo, algo em torno de 10,5GB (fazendo as contas, 2/3 ou 66% do total de 16GB).</p>
 
@@ -461,7 +465,7 @@
 
 <h2 id="inserindo-a-imagem-iso-no-leitor-de-dvd-virtual">Inserindo a imagem ISO no leitor de DVD virtual</h2>
 
-<p>Vamos inserir a imagem ISO no leitor de DVD da máquina virtual, como quem insere um DVD em um leitor de DVD de um computador de verdade.</p>
+<p>Vamos inserir a imagem ISO da distribuição Linux no leitor de DVD da máquina virtual, como quem insere um DVD em um leitor de DVD de um computador de verdade.</p>
 
 <p>Para isso, na tela inicial, que mostra as configurações da VM, clique em <strong>Armazenamento</strong>.</p>
 
@@ -541,7 +545,7 @@
 
 <h2 id="desligando-a-máquina-virtual">Desligando a máquina virtual</h2>
 
-<p>Quando terminar de usar a máquina virtual, desligue-a normalmente, da mesma forma como você faria em uma máquina real. Se na VM você está usando o Linux Kamarada, que vem por padrão com a área de trabalho <a href="https://br.gnome.org/">GNOME</a>, para desligar a VM, clique no <strong>menu do sistema</strong>, no canto superior direito da tela, e depois, no menu que aparece, clique no ícone <strong>Desligar</strong>:</p>
+<p>Quando terminar de usar a máquina virtual, desligue-a normalmente, da mesma forma como você faria em uma máquina real. Se seu SO convidado é o Linux Kamarada, que vem por padrão com a área de trabalho <a href="https://br.gnome.org/">GNOME</a>, para desligar a VM, clique no <strong>menu do sistema</strong>, no canto superior direito da tela da VM, e depois, no menu que aparece, clique no ícone <strong>Desligar</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-18-pt.jpg" title="">
@@ -550,7 +554,7 @@
 
 </div>
 
-<p>Caso a máquina virtual trave e você precise forçar seu desligamento, clique no botão de fechar (como se fosse fechar a janela) e o VirtualBox perguntará o que deseja fazer:</p>
+<p>Caso a máquina virtual trave e você precise forçar seu desligamento, clique no botão de fechar da janela da VM (como se fosse fechar a janela) e o VirtualBox perguntará o que deseja fazer, selecione <strong>Desligar a máquina</strong> em clique em <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-19-pt.png" title="">
@@ -558,8 +562,6 @@
 </a>
 
 </div>
-
-<p>Selecione <strong>Desligar a máquina</strong> em clique em <strong>OK</strong>.</p>
 
 <p>Isso equivale, em um computador de verdade, a apertar e segurar o botão de ligar/desligar por alguns segundos, até que o computador desligue (de modo forçado).</p>
 
@@ -596,7 +598,7 @@
 <ul>
   <li>Microsoft Windows 10, versão 1903</li>
   <li>Oracle VM VirtualBox 6.0.12</li>
-  <li>Linux Kamarada 15.1 Beta</li>
+  <li>Linux Kamarada 15.1 Beta Build 16.1</li>
 </ul>
 
 <p>Todas são as versões mais recentes no momento da escrita.</p>
@@ -805,7 +807,7 @@
     </div>
 </footer>
 
-<meta itemprop="description" content="O VirtualBox permite que você use o Linux dentro de uma janela, como um programa no sistema operacional que você já usa. Com essa facilidade, você pode ter seu primeiro contato com o Linux sem precisar instalá-lo no computador ou mesmo reiniciar para usar um LiveDVD/USB: quer usar o Linux? Só iniciar o programa. Terminou...">
+<meta itemprop="description" content="O VirtualBox permite que você use o Linux dentro de uma janela, como um programa no sistema operacional que você já usa. Com essa facilidade, você pode ter seu primeiro contato com o Linux sem precisar instalá-lo ou mesmo reiniciar o computador para usar um LiveDVD/USB: quer usar o Linux? Só iniciar o programa. Terminou...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
