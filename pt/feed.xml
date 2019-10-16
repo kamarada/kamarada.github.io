@@ -9,10 +9,444 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 10 Oct 2019 22:45:12 -0300</pubDate>
-        <lastBuildDate>Thu, 10 Oct 2019 22:45:12 -0300</lastBuildDate>
+        <pubDate>Wed, 16 Oct 2019 03:03:58 -0300</pubDate>
+        <lastBuildDate>Wed, 16 Oct 2019 03:03:58 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Instalando o VirtualBox no Linux</title>
+                <description>&lt;p&gt;Nessa parte 2 de uma trilogia de &lt;em&gt;posts&lt;/em&gt; sobre o &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox&lt;/a&gt;, você verá como instalá-lo no &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;. As distribuições mais populares receberão uma atenção especial, e ao final serão mostradas instruções genéricas, que devem funcionar para instalações Linux em geral.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Na &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;parte 1&lt;/a&gt;, vimos o que é o VirtualBox, o que é virtualização, como instalar o VirtualBox no Windows, como criar uma máquina virtual e como usá-la para experimentar o Linux.&lt;/p&gt;
+
+&lt;p&gt;Caso você tenha caído aqui de paraquedas, comece sua leitura pela parte 1:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Agora, veremos como instalar o VirtualBox no Linux.&lt;/p&gt;
+
+&lt;p&gt;Normalmente, eu falaria aqui da distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; (que equivale a falar da recente &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;, baseada no openSUSE). Mas, como o objetivo é mostrar como você pode experimentar o Linux sem sair do sistema que você já usa, falaremos hoje do openSUSE e de outras distribuições Linux também. Faz sentido, pense: pode ser que você já use Linux, mas use outra distribuição e queira experimentar o Linux Kamarada, por exemplo.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-no-ubuntu-e-derivadas&quot;&gt;VirtualBox no Ubuntu e derivadas&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o VirtualBox no &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; e em distribuições derivadas, dentre as quais temos: &lt;a href=&quot;https://linuxmint.com/&quot;&gt;Linux Mint&lt;/a&gt;, &lt;a href=&quot;https://elementary.io/&quot;&gt;elementary OS&lt;/a&gt;, &lt;a href=&quot;https://zorinos.com/&quot;&gt;Zorin OS&lt;/a&gt; e as brasileiras &lt;a href=&quot;https://www.biglinux.com.br/&quot;&gt;BigLinux&lt;/a&gt; e &lt;a href=&quot;http://linuxeducacional.c3sl.ufpr.br/&quot;&gt;Linux Educacional&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A distribuição Ubuntu disponibiliza o VirtualBox no repositório oficial  &lt;strong&gt;multiverse&lt;/strong&gt;. Obtê-lo desse repositório é a forma mais fácil de instalar o VirtualBox no Ubuntu e derivados. A versão disponibilizada nesse repositório é sempre a mais recente ou próxima dela.&lt;/p&gt;
+
+&lt;p&gt;Comece habilitando o repositório multiverse. O modo mais fácil de fazer isso é abrindo o aplicativo &lt;strong&gt;Programas e atualizações&lt;/strong&gt; e marcando a opção &lt;strong&gt;Aplicativos restritos por copyright ou questões legais (multiverse)&lt;/strong&gt;, na aba &lt;strong&gt;Aplicativos Ubuntu&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-22-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-22-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Fechar&lt;/strong&gt;. Como você mudou a configuração de repositórios, o sistema sugere atualizar a lista de pacotes disponíveis. No aviso que aparece, clique em &lt;strong&gt;Recarregar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-23-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-23-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você prefere usar o terminal, essas mesmas duas ações podem ser feitas com os comandos:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo add-apt-repository multiverse
+$ sudo apt update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Com o repositório multiverse habilitado e a lista de pacotes atualizada, para instalar o VirtualBox usando a interface gráfica, abra o aplicativo &lt;strong&gt;Software Ubuntu&lt;/strong&gt;, pesquise por &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt;, clique na única opção que aparece e depois clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-24-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-24-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O sistema avisa quando a instalação termina e o aplicativo já pode ser usado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-25-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-25-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você prefere instalar o VirtualBox pelo terminal, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt install virtualbox virtualbox-qt
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Com o VirtualBox instalado, para iniciá-lo, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-26-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-26-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aparece a tela inicial do VirtualBox, por enquanto sem nenhuma máquina virtual:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-27-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-27-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora você pode seguir o mesmo passo-a-passo que vimos na &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;parte 1&lt;/a&gt; para criar uma máquina virtual e rodar o Linux nela.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-no-debian-e-derivadas&quot;&gt;VirtualBox no Debian e derivadas&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o VirtualBox no &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e em distribuições derivadas, dentre as quais podemos mencionar: &lt;a href=&quot;https://mxlinux.org/&quot;&gt;MX Linux&lt;/a&gt;, &lt;a href=&quot;https://www.deepin.org/pb/&quot;&gt;deepin&lt;/a&gt; e &lt;a href=&quot;http://www.knopper.net/knoppix/index-en.html&quot;&gt;KNOPPIX&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A distribuição Debian não disponibiliza o VirtualBox em seus repositórios oficiais. É necessário adicionar o repositório do VirtualBox, o que pode ser feito com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo add-apt-repository 'deb https://download.virtualbox.org/virtualbox/debian buster contrib'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(caso use outra versão do Debian, mude &lt;code class=&quot;highlighter-rouge&quot;&gt;buster&lt;/code&gt; por seu codinome, por exemplo: &lt;code class=&quot;highlighter-rouge&quot;&gt;stretch&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Além disso, importe a chave do repositório do VirtualBox para confiar nele:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Atualize a lista de pacotes disponíveis:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E instale o VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt install virtualbox-6.0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.&lt;/p&gt;
+
+&lt;p&gt;Esse repositório sempre disponibiliza a versão mais recente do VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;Se sua instalação não possuir o comando &lt;strong&gt;&lt;a href=&quot;https://manpages.debian.org/buster/software-properties-common/add-apt-repository.1.en.html&quot;&gt;add-apt-repository&lt;/a&gt;&lt;/strong&gt;, tente essa alternativa:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo bash -c &quot;echo 'deb https://download.virtualbox.org/virtualbox/debian buster contrib' &amp;gt;&amp;gt; /etc/apt/sources.list&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou abra o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt; usando um editor de texto (por exemplo, o &lt;strong&gt;&lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt;&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo nano /etc/apt/sources.list
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Adicione a seguinte linha ao final e salve:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;deb https://download.virtualbox.org/virtualbox/debian buster contrib
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;virtualbox-no-opensuse-e-derivadas&quot;&gt;VirtualBox no openSUSE e derivadas&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o VirtualBox no &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;, que é baseado na distribuição &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Outro derivado brasileiro do openSUSE que merece menção é o &lt;a href=&quot;https://www.regataos.com.br/&quot;&gt;RegataOS&lt;/a&gt;. As instruções a seguir também devem funcionar no &lt;a href=&quot;https://www.suse.com/pt-br/&quot;&gt;SUSE Linux Enterprise&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A distribuição openSUSE disponibiliza a versão mais recente do VirtualBox em seus repositórios oficiais.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o VirtualBox usando a interface gráfica, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;software&lt;/code&gt; e clique em &lt;strong&gt;Gerenciamento de software&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-28-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-28-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde a lista de pacotes disponíveis ser atualizada:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-29-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-29-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No campo de texto, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; e clique em &lt;strong&gt;Pesquisar&lt;/strong&gt; (ou tecle &lt;strong&gt;Enter&lt;/strong&gt;), marque o pacote &lt;strong&gt;virtualbox&lt;/strong&gt; para instalação e clique em &lt;strong&gt;Aceitar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-30-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-30-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O sistema informa que pacotes necessários serão instalados, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-31-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-31-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde o &lt;em&gt;download&lt;/em&gt; e instalação dos pacotes:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-32-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-32-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando a instalação terminar, clique em &lt;strong&gt;Concluir&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-33-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-33-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você prefere instalar o VirtualBox pelo terminal, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo zypper ref
+$ sudo zypper in virtualbox
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Com o VirtualBox instalado, para iniciá-lo, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; e clique no ícone do aplicativo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-34-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-34-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso sua conta de usuário não pertença ao grupo de usuários &lt;code class=&quot;highlighter-rouge&quot;&gt;vboxusers&lt;/code&gt;, aparece essa mensagem de erro, clique em &lt;strong&gt;OK&lt;/strong&gt; para fechá-la:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-35-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-35-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;    max-height: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Usando o menu &lt;strong&gt;Atividades&lt;/strong&gt;, abra o &lt;strong&gt;Gerenciamento de usuários e grupos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Selecione sua conta de usuário na lista e clique em &lt;strong&gt;Editar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-36-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-36-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Mude para a guia &lt;strong&gt;Detalhes&lt;/strong&gt;, em &lt;strong&gt;Grupos Adicionais&lt;/strong&gt; selecione o grupo &lt;strong&gt;vboxusers&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-37-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-37-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; novamente para sair do &lt;strong&gt;Gerenciamento de usuários e grupos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Encerre sua sessão e faça &lt;em&gt;log in&lt;/em&gt; novamente para o sistema perceber seu novo grupo.&lt;/p&gt;
+
+&lt;p&gt;Inicie o VirtualBox novamente. O sistema pergunta se deseja habilitar o acesso a dispositivos USB (&lt;em&gt;USB passthrough&lt;/em&gt;), essa mensagem aparece apenas no primeiro uso do VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-38-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-38-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 430px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A menos que você seja aficionado por segurança, creio que não há porque se preocupar. Clique em &lt;strong&gt;Enable&lt;/strong&gt; para seguir.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, chegamos à tela inicial do VirtualBox, por enquanto sem nenhuma máquina virtual:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-39-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-39-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora você pode seguir o mesmo passo-a-passo que vimos na &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;parte 1&lt;/a&gt; para criar uma máquina virtual e rodar o Linux nela. Divirta-se bastante! (&lt;em&gt;have a lot of fun!&lt;/em&gt;)&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-no-fedora-e-relacionadas&quot;&gt;VirtualBox no Fedora e relacionadas&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o VirtualBox no &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;. As instruções a seguir também devem funcionar em distribuições relacionadas, como o &lt;a href=&quot;https://www.redhat.com/pt-br&quot;&gt;Red Hat Enterprise Linux&lt;/a&gt; e o &lt;a href=&quot;https://centos.org/&quot;&gt;CentOS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A distribuição Fedora não disponibiliza o VirtualBox em seus repositórios oficiais. É necessário adicionar o repositório do VirtualBox, o que pode ser feito com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf config-manager --add-repo https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Atualize a lista de pacotes disponíveis:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Após baixar a lista de pacotes do repositório do VirtualBox, o sistema pergunta se deseja importar a chave do repositório:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Fedora Modular 30 - x86_64                                        4.8 kB/s | 3.0 kB     00:00    
+Fedora Modular 30 - x86_64 - Updates                              5.2 kB/s | 2.8 kB     00:00    
+Fedora 30 - x86_64 - Updates                                      6.5 kB/s | 3.5 kB     00:00    
+Fedora 30 - x86_64                                                6.3 kB/s | 3.1 kB     00:00    
+Fedora 30 - x86_64 - VirtualBox                                   468  B/s | 181  B     00:00    
+Fedora 30 - x86_64 - VirtualBox                                   1.6 kB/s | 1.7 kB     00:01    
+Importing GPG key 0x98AB5139:
+ Userid     : &quot;Oracle Corporation (VirtualBox archive signing key) &amp;lt;info@virtualbox.org&amp;gt;&quot;
+ Fingerprint: 7B0F AB3A 13B9 0743 5925 D9C9 5442 2A4B 98AB 5139
+ From       : https://www.virtualbox.org/download/oracle_vbox.asc
+Is this ok [y/N]:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Responda que “sim” digitando &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; (de &lt;em&gt;yes&lt;/em&gt;, sim em inglês) e teclando &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Is this ok [y/N]: y
+Fedora 30 - x86_64 - VirtualBox                                   255 kB/s |  84 kB     00:00    
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Instale alguns pacotes que o VirtualBox usa para compilar módulos para o &lt;em&gt;kernel&lt;/em&gt; no Fedora:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf install @development-tools
+$ sudo dnf install kernel-devel kernel-headers dkms elfutils-libelf-devel qt5-qtx11extras
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E, por fim, instale o VirtualBox propriamente dito:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf install VirtualBox-6.0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.&lt;/p&gt;
+
+&lt;p&gt;Esse repositório sempre disponibiliza a versão mais recente do VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-no-arch-linux-e-no-manjaro&quot;&gt;VirtualBox no Arch Linux e no Manjaro&lt;/h2&gt;
+
+&lt;p&gt;Vejamos como instalar o VirtualBox no &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch Linux&lt;/a&gt; e no seu derivado &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A distribuição Arch Linux disponibiliza o VirtualBox em seu repositório oficial. Devido à sua natureza &lt;a href=&quot;https://pt.wikipedia.org/wiki/Rolling_release&quot;&gt;&lt;em&gt;rolling release&lt;/em&gt;&lt;/a&gt; (lançamento contínuo, em inglês, significa que novas versões de programas são disponibilizadas assim que lançadas), esse repositório sempre contém a versão mais recente do VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o VirtualBox no Arch Linux ou no Manjaro, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo pacman -Sy virtualbox $(pacman -Qsq &quot;^linux&quot; | grep &quot;^linux[0-9]*[-rt]*$&quot; | awk '{print $1&quot;-virtualbox-host-modules&quot;}' ORS=' ')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-em-outras-distribuições&quot;&gt;VirtualBox em outras distribuições&lt;/h2&gt;
+
+&lt;p&gt;Assim como o &lt;em&gt;site&lt;/em&gt; do VirtualBox disponibiliza um instalador para Windows, ele também disponibiliza pacotes para as distribuições Linux mais populares e um instalador genérico, que possibilita para instalar o VirtualBox em qualquer sistema Linux.&lt;/p&gt;
+
+&lt;p&gt;Acesse o &lt;em&gt;site&lt;/em&gt; oficial do VirtualBox em:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E clique no &lt;em&gt;banner&lt;/em&gt; &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na página seguinte, abaixo de &lt;em&gt;VirtualBox binaries&lt;/em&gt; (binários do VirtualBox), clique em &lt;em&gt;Linux distributions&lt;/em&gt; (distribuições Linux).&lt;/p&gt;
+
+&lt;p&gt;Nessa página, clique no &lt;em&gt;link&lt;/em&gt; correspondente à distribuição que você usa (note que ela pode não estar na lista, mas ser baseada em uma das que estão):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-40-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-40-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Uma vez baixado o pacote, use a ferramenta apropriada da sua distribuição para instalá-lo.&lt;/p&gt;
+
+&lt;p&gt;Alternativamente, você pode baixar o instalador genérico clicando com o botão direito em &lt;em&gt;All distributions&lt;/em&gt; (todas as distribuições, o último &lt;em&gt;link&lt;/em&gt;) e usando &lt;strong&gt;Salvar link como&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Uma vez baixado o instalador genérico, execute-o a partir do terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ chmod +x Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
+$ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Na dúvida, verifique se a distribuição que você usa fornece instruções sobre como instalar o VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Para referência futura, aqui utilizei as seguintes versões de &lt;em&gt;softwares&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ubuntu 19.04 (Disco Dingo) com VirtualBox 6.0.6&lt;/li&gt;
+  &lt;li&gt;Debian 10.1 (Buster) com VirtualBox 6.0.14&lt;/li&gt;
+  &lt;li&gt;Linux Kamarada 15.1 Beta Build 16.1 com VirtualBox 6.0.12&lt;/li&gt;
+  &lt;li&gt;Fedora Workstation 30 com VirtualBox 6.0.14&lt;/li&gt;
+  &lt;li&gt;Manjaro GNOME 18.1.1 com VirtualBox 6.0.12&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Todas as distribuições são as versões mais recentes no momento da escrita.&lt;/p&gt;
+
+&lt;p&gt;Para escrever esse &lt;em&gt;post&lt;/em&gt;, consultei os seguintes textos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/wiki/Linux_Downloads&quot;&gt;Linux Downloads - Oracle VM VirtualBox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/ch02.html#install-linux-host&quot;&gt;Oracle VM VirtualBox - User Manual - Chapter 2 - Installation Details&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/a/89100/560233&quot;&gt;package management - How do I enable the “multiverse” repository? - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/ubuntu-repositories/&quot;&gt;How to Enable Universe and Multiverse Repositories in Ubuntu - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cyberciti.biz/faq/how-to-install-virtualbox-on-fedora-linux/&quot;&gt;How to install VirtualBox 6 on Fedora Linux 29 - nixCraft&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.fedoraproject.org/en-US/quick-docs/adding-or-removing-software-repositories-in-fedora/&quot;&gt;Adding or removing software repositories in Fedora - Fedora Docs Site&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.manjaro.org/index.php?title=VirtualBox#Installing_Virtualbox_on_Manjaro&quot;&gt;VirtualBox - Manjaro Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/VirtualBox&quot;&gt;VirtualBox - ArchWiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 16 Oct 2019 03:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/10/16/instalando-o-virtualbox-no-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/16/instalando-o-virtualbox-no-linux/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo</title>
@@ -49,7 +483,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;nessa primeira parte, veremos como instalar o VirtualBox no Windows e o básico de como usá-lo para iniciar o Linux dentro de uma máquina virtual;&lt;/li&gt;
-  &lt;li&gt;na segunda parte, veremos como instalar o VirtualBox no Linux;&lt;/li&gt;
+  &lt;li&gt;na &lt;a href=&quot;/pt/2019/10/16/instalando-o-virtualbox-no-linux/&quot;&gt;segunda parte&lt;/a&gt;, veremos como instalar o VirtualBox no Linux;&lt;/li&gt;
   &lt;li&gt;na terceira parte, veremos algumas dicas para uso diário do VirtualBox.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -324,7 +758,14 @@
 
 &lt;h2 id=&quot;continua&quot;&gt;Continua…&lt;/h2&gt;
 
-&lt;p&gt;Na segunda parte, veremos como instalar o VirtualBox no Linux. Até lá!&lt;/p&gt;
+&lt;p&gt;Na &lt;a href=&quot;/pt/2019/10/16/instalando-o-virtualbox-no-linux/&quot;&gt;segunda parte&lt;/a&gt;, veremos como instalar o VirtualBox no Linux. Até lá!&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (16/10/2019):&lt;/strong&gt;
+    
+&lt;p&gt;A &lt;a href=&quot;/pt/2019/10/16/instalando-o-virtualbox-no-linux/&quot;&gt;segunda parte&lt;/a&gt; já está disponível!&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
 
@@ -2799,87 +3240,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Fri, 05 Jul 2019 01:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como apagar de forma segura e definitiva todos os dados do disco rígido</title>
-                <description>&lt;p&gt;Você precisa apagar os dados de um HD, seja porque vai vendê-lo ou doá-lo, seja porque é um jornalista ou uma empresa de TI que precisa proteger os dados de acessos indevidos. Como fazer para destruir os arquivos do disco rígido de forma definitiva, de modo que não seja possível, mesmo para um especialista, recuperá-los? É o que você verá neste &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/wipe-disk.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/wipe-disk.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Destruir dados não é tão simples quanto mover arquivos para a lixeira (usando a tecla &lt;strong&gt;Delete&lt;/strong&gt;), deletá-los (&lt;strong&gt;Shift + Delete&lt;/strong&gt;) ou formatar sistemas de arquivos. Quando você deleta ou formata, o sistema operacional apenas apaga metadados, tornando aquela área do disco disponível para escrever outros arquivos. Mas os &lt;em&gt;bits&lt;/em&gt; permanecem onde estão e podem ser recuperados com o apoio de &lt;em&gt;software&lt;/em&gt; especializado.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://canaltech.com.br/hardware/apague-definitivamente-os-dados-de-seu-disco-rigido/&quot;&gt;método mais eficiente&lt;/a&gt; para destruir dados é &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;limpar o disco rígido&lt;/a&gt;. Isso é feito sobrescrevendo cada &lt;em&gt;bit&lt;/em&gt; do disco com novos dados.&lt;/p&gt;
-
-&lt;p&gt;Por exemplo, você pode substituir todos os &lt;em&gt;bits&lt;/em&gt; do disco por zeros — esse processo é conhecido como &lt;strong&gt;&lt;em&gt;zero fill&lt;/em&gt;&lt;/strong&gt; (preencher com zeros).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; certifique-se de qual HD vai limpar, para não correr o risco de limpar o HD errado, o que pode causar perda permanente de dados!&lt;/p&gt;
-
-&lt;p&gt;No &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, para preencher o HD com zeros, execute o comando a seguir (vou usar como exemplo o &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sda&lt;/code&gt;, altere conforme sua necessidade):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/zero of=/dev/sda status=progress
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para a maioria dos casos, isso já deve ser suficiente. Recuperar arquivos desse disco após esse procedimento pode exigir &lt;em&gt;software&lt;/em&gt;, &lt;em&gt;hardware&lt;/em&gt;, até pessoal especializado, custar caro e mesmo assim não ser garantido.&lt;/p&gt;
-
-&lt;p&gt;Se você precisa limpar justamente o HD que armazena o sistema operacional, saiba que é impossível fazê-lo com o próprio sistema em execução. Nesse caso, utilize um &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveUSB&lt;/a&gt; ou &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;LiveDVD&lt;/a&gt; ou conecte o HD a outro computador para fazer a limpeza.&lt;/p&gt;
-
-&lt;p&gt;Se você é um paranóico da segurança, pode aumentar a segurança da limpeza preenchendo o disco com &lt;em&gt;bits&lt;/em&gt; aleatórios, em vez de zeros:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# dd if=/dev/urandom of=/dev/sda status=progress
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ou repetir esse procedimento algumas vezes, em vez de executá-lo apenas uma vez:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# for i in {1..5}; do dd if=/dev/urandom of=/dev/sda status=progress; done
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do Arch Linux&lt;/a&gt; discute diversos procedimentos para limpeza segura de disco.&lt;/p&gt;
-
-&lt;p&gt;Se a informação armazenada no disco é muito confidencial, o guia de segurança &lt;a href=&quot;https://securityinabox.org/pt/guide/destroy-sensitive-information/&quot;&gt;Security in a Box&lt;/a&gt; recomenda fazer a limpeza com zeros e em seguida destruir fisicamente o disco (com golpes de martelo, por exemplo).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; use óculos de proteção e tome muito cuidado ao destruir um disco rígido por conta própria! Nunca toque fogo em um disco rígido, nunca coloque um disco rígido no microondas e nunca derrame ácido em um disco rígido.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; title=&quot;Imagem obtida no site [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot;&gt;
-&lt;img src=&quot;/files/2019/06/destroy-a-hard-drive.jpg&quot; alt=&quot;Imagem obtida no site [Lifewire](https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Imagem obtida no site &lt;a href=&quot;https://www.lifewire.com/how-to-completely-erase-a-hard-drive-2626173&quot;&gt;Lifewire&lt;/a&gt;&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://super.abril.com.br/tecnologia/o-predio-secreto-do-google/&quot;&gt;A destruição física de HDs é usada pelo Google&lt;/a&gt; para proteger dados dos seus usuários.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://canaltech.com.br/hardware/apague-definitivamente-os-dados-de-seu-disco-rigido/&quot;&gt;Apague definitivamente os dados de seu disco rígido - Hardware - Canaltech&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/Securely_wipe_disk&quot;&gt;Securely wipe disk - ArchWiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://securityinabox.org/pt/guide/destroy-sensitive-information/&quot;&gt;Como destruir informações sensíveis - Security in a Box&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 18 Jun 2019 22:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/06/18/como-apagar-de-forma-segura-e-definitiva-todos-os-dados-do-disco-rigido/</guid>
                 
                 
                     <category>pt</category>
