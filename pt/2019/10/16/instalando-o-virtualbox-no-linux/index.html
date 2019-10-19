@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -190,7 +194,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/10/16/instalando-o-virtualbox-no-linux/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -242,7 +246,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-10-16" />
+                <meta itemprop="dateModified" content="2019-10-19" />
             </div>
             <div class='col-sm-6'>
                 
@@ -281,7 +285,7 @@
 
 <!--more-->
 
-<p>Na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>, vimos o que é o VirtualBox, o que é virtualização, como instalar o VirtualBox no Windows, como criar uma máquina virtual e como usá-la para experimentar o Linux.</p>
+<p>Na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>, vimos o que é virtualização, o que é o VirtualBox, como instalar o VirtualBox no Windows, como criar uma máquina virtual e como usá-la para experimentar o Linux.</p>
 
 <p>Caso você tenha caído aqui de paraquedas, comece sua leitura pela parte 1:</p>
 
@@ -297,7 +301,14 @@
 
 <p>Vejamos como instalar o VirtualBox no <a href="https://ubuntu.com/">Ubuntu</a> e em distribuições derivadas, dentre as quais temos: <a href="https://linuxmint.com/">Linux Mint</a>, <a href="https://elementary.io/">elementary OS</a>, <a href="https://zorinos.com/">Zorin OS</a> e as brasileiras <a href="https://www.biglinux.com.br/">BigLinux</a> e <a href="http://linuxeducacional.c3sl.ufpr.br/">Linux Educacional</a>.</p>
 
-<p>A distribuição Ubuntu disponibiliza o VirtualBox no repositório oficial  <strong>multiverse</strong>. Obtê-lo desse repositório é a forma mais fácil de instalar o VirtualBox no Ubuntu e derivados. A versão disponibilizada nesse repositório é sempre a mais recente ou próxima dela.</p>
+<p>A distribuição Ubuntu disponibiliza o VirtualBox no repositório oficial <strong>multiverse</strong>. Obtê-lo desse repositório é a forma mais fácil de instalar o VirtualBox no Ubuntu e derivados. A versão disponibilizada nesse repositório é sempre a mais recente ou próxima dela.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (19/10/2019):</strong>
+    
+<p>O Ubuntu 19.10 (Eoan Ermine) foi lançado em 17/10, justo 1 dia depois da publicação deste <em>post</em> (16/10). Deu pena mantê-lo desatualizado por 1 dia. Assim, achei por bem atualizar as imagens. As instruções continuam as mesmas.</p>
+
+</div>
 
 <p>Comece habilitando o repositório multiverse. O modo mais fácil de fazer isso é abrindo o aplicativo <strong>Programas e atualizações</strong> e marcando a opção <strong>Aplicativos restritos por copyright ou questões legais (multiverse)</strong>, na aba <strong>Aplicativos Ubuntu</strong>:</p>
 
@@ -399,7 +410,7 @@ $ sudo apt update
 </pre></td><td class="rouge-code"><pre>$ sudo apt install virtualbox-6.0
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.</p>
+<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo (veja instruções na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>).</p>
 
 <p>Esse repositório sempre disponibiliza a versão mais recente do VirtualBox.</p>
 
@@ -425,7 +436,7 @@ $ sudo apt update
 
 <p>Vejamos como instalar o VirtualBox no <a href="/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/">Linux Kamarada</a>, que é baseado na distribuição <a href="https://www.opensuse.org/">openSUSE</a>. Outro derivado brasileiro do openSUSE que merece menção é o <a href="https://www.regataos.com.br/">RegataOS</a>. As instruções a seguir também devem funcionar no <a href="https://www.suse.com/pt-br/">SUSE Linux Enterprise</a>.</p>
 
-<p>A distribuição openSUSE disponibiliza a versão mais recente do VirtualBox em seus repositórios oficiais.</p>
+<p>A distribuição openSUSE disponibiliza a versão mais recente do VirtualBox em seus repositórios oficiais (ou uma versão próxima da mais recente).</p>
 
 <p>Para instalar o VirtualBox usando a interface gráfica, abra o menu <strong>Atividades</strong>, no canto superior esquerdo da tela, digite <code class="highlighter-rouge">software</code> e clique em <strong>Gerenciamento de software</strong>:</p>
 
@@ -445,7 +456,7 @@ $ sudo apt update
 
 </div>
 
-<p>No campo de texto, digite <code class="highlighter-rouge">virtualbox</code> e clique em <strong>Pesquisar</strong> (ou tecle <strong>Enter</strong>), marque o pacote <strong>virtualbox</strong> para instalação e clique em <strong>Aceitar</strong>:</p>
+<p>No campo de texto, digite <code class="highlighter-rouge">virtualbox</code> e clique no botão <strong>Pesquisar</strong> (ou tecle <strong>Enter</strong>), marque o pacote <strong>virtualbox</strong> para instalação e clique em <strong>Aceitar</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-30-pt.jpg" title="">
@@ -501,8 +512,8 @@ $ sudo zypper in virtualbox
 <p>Caso sua conta de usuário não pertença ao grupo de usuários <code class="highlighter-rouge">vboxusers</code>, aparece essa mensagem de erro, clique em <strong>OK</strong> para fechá-la:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/10/virtualbox-35-pt.jpg" title="">
-<img src="/files/2019/10/virtualbox-35-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="    max-height: 200px;" />
+<a href="/files/2019/10/virtualbox-35.jpg" title="">
+<img src="/files/2019/10/virtualbox-35.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style=" max-height: 200px;" />
 </a>
 
 </div>
@@ -534,8 +545,8 @@ $ sudo zypper in virtualbox
 <p>Inicie o VirtualBox novamente. O sistema pergunta se deseja habilitar o acesso a dispositivos USB (<em>USB passthrough</em>), essa mensagem aparece apenas no primeiro uso do VirtualBox:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/10/virtualbox-38-pt.jpg" title="">
-<img src="/files/2019/10/virtualbox-38-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 430px;" />
+<a href="/files/2019/10/virtualbox-38.jpg" title="">
+<img src="/files/2019/10/virtualbox-38.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 430px;" />
 </a>
 
 </div>
@@ -617,7 +628,7 @@ $ sudo dnf install kernel-devel kernel-headers dkms elfutils-libelf-devel qt5-qt
 </pre></td><td class="rouge-code"><pre>$ sudo dnf install VirtualBox-6.0
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.</p>
+<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo (veja instruções na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>).</p>
 
 <p>Esse repositório sempre disponibiliza a versão mais recente do VirtualBox.</p>
 
@@ -633,7 +644,7 @@ $ sudo dnf install kernel-devel kernel-headers dkms elfutils-libelf-devel qt5-qt
 </pre></td><td class="rouge-code"><pre>$ sudo pacman -Sy virtualbox $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk '{print $1"-virtualbox-host-modules"}' ORS=' ')
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo.</p>
+<p>Feito isso, você já pode iniciar o VirtualBox e começar a usá-lo (veja instruções na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>).</p>
 
 <h2 id="virtualbox-em-outras-distribuições">VirtualBox em outras distribuições</h2>
 
@@ -652,8 +663,8 @@ $ sudo dnf install kernel-devel kernel-headers dkms elfutils-libelf-devel qt5-qt
 <p>Nessa página, clique no <em>link</em> correspondente à distribuição que você usa (note que ela pode não estar na lista, mas ser baseada em uma das que estão):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/10/virtualbox-40-pt.jpg" title="">
-<img src="/files/2019/10/virtualbox-40-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/10/virtualbox-40.jpg" title="">
+<img src="/files/2019/10/virtualbox-40.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -683,8 +694,8 @@ $ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
 <p>Para referência futura, aqui utilizei as seguintes versões de <em>softwares</em>:</p>
 
 <ul>
-  <li>Ubuntu 19.04 (Disco Dingo) com VirtualBox 6.0.6</li>
-  <li>Debian 10.1 (Buster) com VirtualBox 6.0.14</li>
+  <li>Ubuntu 19.10 (Eoan Ermine) com VirtualBox 6.0.14</li>
+  <li>Debian 10.1.0 (Buster) com VirtualBox 6.0.14</li>
   <li>Linux Kamarada 15.1 Beta Build 16.1 com VirtualBox 6.0.12</li>
   <li>Fedora Workstation 30 com VirtualBox 6.0.14</li>
   <li>Manjaro GNOME 18.1.1 com VirtualBox 6.0.12</li>

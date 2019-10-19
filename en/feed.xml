@@ -9,10 +9,452 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 17 Oct 2019 14:28:06 -0300</pubDate>
-        <lastBuildDate>Thu, 17 Oct 2019 14:28:06 -0300</lastBuildDate>
-        <generator>Jekyll v3.8.6</generator>
+        <pubDate>Sat, 19 Oct 2019 11:19:11 -0300</pubDate>
+        <lastBuildDate>Sat, 19 Oct 2019 11:19:11 -0300</lastBuildDate>
+        <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Installing VirtualBox on Linux</title>
+                <description>&lt;p&gt;This is the part 2 of our trilogy of posts about &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox&lt;/a&gt;! You are going to see how to install it on &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;. I focused on the most popular distributions, but if you don’t use any of them, in the end you will find generic instructions, which should work on most Linux systems.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;In &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;, you’ve seen what virtualization is, what VirtualBox is, how to install VirtualBox on Windows, how to create a virtual machine and how to use it to try Linux.&lt;/p&gt;
+
+&lt;p&gt;If you fell into this page, start reading the first part:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now let’s see how to install VirtualBox on Linux.&lt;/p&gt;
+
+&lt;p&gt;Usually I write about the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; distribution (which is equivalent to writing about the recently released openSUSE-based &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Linux Kamarada&lt;/a&gt;). But this sequence of posts aims to show you how you can try Linux without leaving your current operating system, which can be a Linux distribution other than openSUSE. So, today, we are going to talk about openSUSE, but also about some other Linux distributions as well.&lt;/p&gt;
+
+&lt;p&gt;Maybe you are reading about &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Linux Kamarada&lt;/a&gt;, thinking of giving it a try… who knows?&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-on-ubuntu-and-derivatives&quot;&gt;VirtualBox on Ubuntu and derivatives&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to install VirtualBox on &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; and its derivatives, among which we can highlight: &lt;a href=&quot;https://linuxmint.com/&quot;&gt;Linux Mint&lt;/a&gt;, &lt;a href=&quot;https://elementary.io/&quot;&gt;elementary OS&lt;/a&gt; and &lt;a href=&quot;https://zorinos.com/&quot;&gt;Zorin OS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The easiest way for Ubuntu users to install VirtualBox is to retrieve it from the official &lt;strong&gt;multiverse&lt;/strong&gt; repository, which always provides the latest version of VirtualBox (or a version close to the latest).&lt;/p&gt;
+
+&lt;p&gt;Start by enabling the multiverse repository. The easiest way to do this is by opening the &lt;strong&gt;Software &amp;amp; Updates&lt;/strong&gt; app and checking the &lt;strong&gt;Software restricted by copyright or legal issues (multiverse)&lt;/strong&gt; option on the &lt;strong&gt;Ubuntu Software&lt;/strong&gt; tab:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-22-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-22-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt;. As you changed the repository configuration, the system suggests refreshing the list of available packages. On the dialog that appears, click &lt;strong&gt;Reload&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-23-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-23-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you prefer to use the terminal, you can achieve the same result with these commands:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo add-apt-repository multiverse
+$ sudo apt update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With the multiverse repository enabled and the package list updated, to install VirtualBox using the graphical interface, open the &lt;strong&gt;Ubuntu Software&lt;/strong&gt; app, search for &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt;, click the only item that appears and then click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-24-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-24-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Download and installation begins, the system notifies you when the app is ready to be used:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-25-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-25-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you prefer to install VirtualBox using the terminal, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt install virtualbox virtualbox-qt
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With VirtualBox installed, to start it, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, by the upper-left corner of the screen, type &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-26-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-26-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The VirtualBox start screen appears, so far without any virtual machine:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-27-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-27-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now you can create a virtual machine and run Linux on it following the same how-to presented in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-on-debian-and-derivatives&quot;&gt;VirtualBox on Debian and derivatives&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to install VirtualBox on &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; and its derivatives, among which we can highlight: &lt;a href=&quot;https://mxlinux.org/&quot;&gt;MX Linux&lt;/a&gt;, &lt;a href=&quot;https://www.deepin.org/&quot;&gt;deepin&lt;/a&gt; and &lt;a href=&quot;http://www.knopper.net/knoppix/index-en.html&quot;&gt;KNOPPIX&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Debian does not provide VirtualBox on its official repositories. Debian users must add the repository maintained by VirtualBox, which can be done running the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo add-apt-repository 'deb https://download.virtualbox.org/virtualbox/debian buster contrib'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(if you use another Debian release, replace &lt;code class=&quot;highlighter-rouge&quot;&gt;buster&lt;/code&gt; by its codename, for instance: &lt;code class=&quot;highlighter-rouge&quot;&gt;stretch&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Also, download and import the Oracle public key, so that VirtualBox packages can be validated:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Refresh the list of available packages:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And install VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo apt install virtualbox-6.0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If everything went well, now you can start VirtualBox and use it (see instructions in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;That repository always provides the latest version of VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;In case your installation does not have the &lt;strong&gt;&lt;a href=&quot;https://manpages.debian.org/buster/software-properties-common/add-apt-repository.1.en.html&quot;&gt;add-apt-repository&lt;/a&gt;&lt;/strong&gt; command, try this alternative:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo bash -c &quot;echo 'deb https://download.virtualbox.org/virtualbox/debian buster contrib' &amp;gt;&amp;gt; /etc/apt/sources.list&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or open the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/apt/sources.list&lt;/code&gt; file using you favorite text editor (e.g. &lt;strong&gt;&lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt;&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo nano /etc/apt/sources.list
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the following line and save:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;deb https://download.virtualbox.org/virtualbox/debian buster contrib
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;virtualbox-on-opensuse-and-derivatives&quot;&gt;VirtualBox on openSUSE and derivatives&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to install VirtualBox on &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Linux Kamarada&lt;/a&gt;, which is based on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. The following instructions should also work on &lt;a href=&quot;https://www.suse.com/&quot;&gt;SUSE Linux Enterprise&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The easiest way for openSUSE users to install VirtualBox is to retrieve it from the official &lt;strong&gt;OSS&lt;/strong&gt; repository, which always provides the latest version of VirtualBox (or a version close to the latest).&lt;/p&gt;
+
+&lt;p&gt;To install VirtualBox using the graphical interface, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, by the upper-left corner of the screen, type &lt;code class=&quot;highlighter-rouge&quot;&gt;software&lt;/code&gt; and click &lt;strong&gt;Software Management&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-28-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-28-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait for the list of available packages to be refreshed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-29-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-29-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Fill in the text field with &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt;, click the &lt;strong&gt;Search&lt;/strong&gt; button (or just hit &lt;strong&gt;Enter&lt;/strong&gt;), mark the &lt;strong&gt;virtualbox&lt;/strong&gt; package for installation and click &lt;strong&gt;Accept&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-30-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-30-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The system informs you that additional required packages are going to be installed, click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-31-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-31-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait while packages are downloaded and installed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-32-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-32-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When the installation is finished, click &lt;strong&gt;Finish&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-33-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-33-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you prefer to install VirtualBox using the terminal, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo zypper ref
+$ sudo zypper in virtualbox
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With VirtualBox installed, to start it, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, type &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-34-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-34-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If your user account does not belong to the &lt;code class=&quot;highlighter-rouge&quot;&gt;vboxusers&lt;/code&gt; user group, the following error message appears, click &lt;strong&gt;OK&lt;/strong&gt; to close it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-35.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-35.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot; max-height: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Using the &lt;strong&gt;Activities&lt;/strong&gt; menu, open the &lt;strong&gt;User and Group Management&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select your user account from the list and click &lt;strong&gt;Edit&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-36-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-36-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Switch to the &lt;strong&gt;Details&lt;/strong&gt; tab. Under &lt;strong&gt;Additional Groups&lt;/strong&gt;, select the &lt;strong&gt;vboxusers&lt;/strong&gt; group and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-37-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-37-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; once again to quit the &lt;strong&gt;User and Group Management&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Log out and log in again for the system to notice your new user group.&lt;/p&gt;
+
+&lt;p&gt;Start VirtualBox again. This time, it asks you whether to enable USB passthrough, this message appears only the first time you use VirtualBox:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-38.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-38.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 430px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Unless you are a “security paranoid”, I think there is no reason to worry. Click &lt;strong&gt;Enable&lt;/strong&gt; to proceed.&lt;/p&gt;
+
+&lt;p&gt;Finally, we’ve got to the VirtualBox start screen, so far without any virtual machine:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-39-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-39-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now you can create a virtual machine and run Linux on it following the same how-to presented in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;. And don’t forget: have a lot of fun!&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-on-fedora-and-related&quot;&gt;VirtualBox on Fedora and related&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to install VirtualBox on &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt;. The following instructions should also work on related distributions, such as &lt;a href=&quot;https://www.redhat.com/&quot;&gt;Red Hat Enterprise Linux&lt;/a&gt; and &lt;a href=&quot;https://centos.org/&quot;&gt;CentOS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fedora does not provide VirtualBox on its official repositories. Fedora users must add the repository maintained by VirtualBox, which can be done running the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf config-manager --add-repo https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Refresh the list of available packages:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf update
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After downloading the VirtualBox repository package list, the system asks whether to import the Oracle public key:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Fedora Modular 30 - x86_64                                        4.8 kB/s | 3.0 kB     00:00    
+Fedora Modular 30 - x86_64 - Updates                              5.2 kB/s | 2.8 kB     00:00    
+Fedora 30 - x86_64 - Updates                                      6.5 kB/s | 3.5 kB     00:00    
+Fedora 30 - x86_64                                                6.3 kB/s | 3.1 kB     00:00    
+Fedora 30 - x86_64 - VirtualBox                                   468  B/s | 181  B     00:00    
+Fedora 30 - x86_64 - VirtualBox                                   1.6 kB/s | 1.7 kB     00:01    
+Importing GPG key 0x98AB5139:
+ Userid     : &quot;Oracle Corporation (VirtualBox archive signing key) &amp;lt;info@virtualbox.org&amp;gt;&quot;
+ Fingerprint: 7B0F AB3A 13B9 0743 5925 D9C9 5442 2A4B 98AB 5139
+ From       : https://www.virtualbox.org/download/oracle_vbox.asc
+Is this ok [y/N]:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; (meaning “yes”) and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Is this ok [y/N]: y
+Fedora 30 - x86_64 - VirtualBox                                   255 kB/s |  84 kB     00:00    
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install some packages that VirtualBox needs to compile kernel modules on Fedora:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf install @development-tools
+$ sudo dnf install kernel-devel kernel-headers dkms elfutils-libelf-devel qt5-qtx11extras
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And finally, install VirtualBox itself:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo dnf install VirtualBox-6.0
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If everything went well, now you can start VirtualBox and use it (see instructions in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;That repository always provides the latest version of VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-on-arch-linux-and-manjaro&quot;&gt;VirtualBox on Arch Linux and Manjaro&lt;/h2&gt;
+
+&lt;p&gt;Let’s see how to install VirtualBox on &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch Linux&lt;/a&gt; and its derivative &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The easiest way for Arch users to install VirtualBox is to retrieve it from the official repository of the distribution. Due to its &lt;a href=&quot;https://en.wikipedia.org/wiki/Rolling_release&quot;&gt;rolling release&lt;/a&gt; nature, that repository always provides the latest version of VirtualBox.&lt;/p&gt;
+
+&lt;p&gt;To install VirtualBox on Arch or Manjaro, just run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo pacman -Sy virtualbox $(pacman -Qsq &quot;^linux&quot; | grep &quot;^linux[0-9]*[-rt]*$&quot; | awk '{print $1&quot;-virtualbox-host-modules&quot;}' ORS=' ')
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If everything went well, now you can start VirtualBox and use it (see instructions in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualbox-on-other-distributions&quot;&gt;VirtualBox on other distributions&lt;/h2&gt;
+
+&lt;p&gt;Just as the VirtualBox website provides a Windows installer, it also provides packages for the most popular Linux distributions and a generic installer which can be used to install VirtualBox on any Linux system.&lt;/p&gt;
+
+&lt;p&gt;Go to the official VirtualBox website at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt; banner.&lt;/p&gt;
+
+&lt;p&gt;On the next page, under &lt;strong&gt;VirtualBox binaries&lt;/strong&gt;, click &lt;strong&gt;Linux distributions&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On this page, click the link corresponding to the distribution you use (note that it may not be on the list, but it may be based on one of those):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-40.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-40.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Once you have downloaded the package, use your distribution appropriate tool to install it.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download the generic installer by right-clicking &lt;strong&gt;All distributions&lt;/strong&gt; (the last link) and using &lt;strong&gt;Save link as&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you have downloaded the generic installer, run it using the terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ chmod +x Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
+$ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are in doubt, search your distribution documentation for instructions on how to install VirtualBox.&lt;/p&gt;
+
+&lt;h2 id=&quot;there-is-more-to-come&quot;&gt;There is more to come…&lt;/h2&gt;
+
+&lt;p&gt;Now, Windows and Linux users are all on the same page: we already know how to install VirtualBox on the operating systems we use and we are able to create virtual machines.&lt;/p&gt;
+
+&lt;p&gt;In part 3, we are going to see how to create a virtual hard disk and install Linux on the virtual machine, as well as tips for using VirtualBox daily.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;For future reference, here I used the following software versions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ubuntu 19.10 (Eoan Ermine) with VirtualBox 6.0.14&lt;/li&gt;
+  &lt;li&gt;Debian 10.1.0 (Buster) with VirtualBox 6.0.14&lt;/li&gt;
+  &lt;li&gt;Linux Kamarada 15.1 Beta Build 16.1 with VirtualBox 6.0.12&lt;/li&gt;
+  &lt;li&gt;Fedora Workstation 30 with VirtualBox 6.0.14&lt;/li&gt;
+  &lt;li&gt;Manjaro GNOME 18.1.1 with VirtualBox 6.0.12&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of them are the latest versions at the time of writing.&lt;/p&gt;
+
+&lt;p&gt;To write this post, I consulted:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/wiki/Linux_Downloads&quot;&gt;Linux Downloads - Oracle VM VirtualBox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/ch02.html#install-linux-host&quot;&gt;Oracle VM VirtualBox - User Manual - Chapter 2 - Installation Details&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/a/89100/560233&quot;&gt;package management - How do I enable the “multiverse” repository? - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://itsfoss.com/ubuntu-repositories/&quot;&gt;How to Enable Universe and Multiverse Repositories in Ubuntu - It’s FOSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cyberciti.biz/faq/how-to-install-virtualbox-on-fedora-linux/&quot;&gt;How to install VirtualBox 6 on Fedora Linux 29 - nixCraft&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.fedoraproject.org/en-US/quick-docs/adding-or-removing-software-repositories-in-fedora/&quot;&gt;Adding or removing software repositories in Fedora - Fedora Docs Site&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.manjaro.org/index.php?title=VirtualBox#Installing_Virtualbox_on_Manjaro&quot;&gt;VirtualBox - Manjaro Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.archlinux.org/index.php/VirtualBox&quot;&gt;VirtualBox - ArchWiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 19 Oct 2019 11:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>VirtualBox: the easiest way to try Linux without installing it</title>
@@ -49,7 +491,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;in this first part, you are going to install VirtualBox on Windows, learn its basics and start using Linux inside a virtual machine;&lt;/li&gt;
-  &lt;li&gt;in the second part, you will see how to install VirtualBox on Linux;&lt;/li&gt;
+  &lt;li&gt;in the &lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;second part&lt;/a&gt;, you will see how to install VirtualBox on Linux;&lt;/li&gt;
   &lt;li&gt;in the third part, you will see some useful tips for using VirtualBox daily.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -74,7 +516,7 @@
 
 &lt;/div&gt;
 
-&lt;p&gt;Below &lt;strong&gt;VirtualBox binaries&lt;/strong&gt;, click &lt;strong&gt;Windows hosts&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Under &lt;strong&gt;VirtualBox binaries&lt;/strong&gt;, click &lt;strong&gt;Windows hosts&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2019/10/virtualbox-02.jpg&quot; title=&quot;&quot;&gt;
@@ -324,7 +766,13 @@
 
 &lt;h2 id=&quot;to-be-continued&quot;&gt;To be continued…&lt;/h2&gt;
 
-&lt;p&gt;In part 2, we are going to see how to install VirtualBox on Linux. See you!&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;part 2&lt;/a&gt;, we are going to see how to install VirtualBox on Linux. See you!&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Oct 19, 2019):&lt;/strong&gt;
+    &lt;p&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Part 2 is here! (click)&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -2002,6 +2450,17 @@ Listing of PKCS #11 Modules
   &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Oct 19, 2019):&lt;/strong&gt;
+    
+&lt;p&gt;Do you want to know more about installing and using VirtualBox on both Linux and Windows? Check these out:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Installing VirtualBox on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
 &lt;p&gt;On the virtual machine, it is recommended to install the Guest Additions, which improve the integration between real and virtual machines through VirtualBox.&lt;/p&gt;
 
 &lt;p&gt;If you have installed openSUSE on the virtual machine, run (on the virtual machine):&lt;/p&gt;
@@ -3189,320 +3648,6 @@ origin  git@your_server:your_user_name/your_project_name.git (push)
                 <pubDate>Sun, 14 Jul 2019 19:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Sending digitally signed emails with Thunderbird</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2018/09/thunderbird-token.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2018/09/thunderbird-token.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 340px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Although webmails are today more popular than email clients, some interesting features are exclusive of those desktop apps. For instance, if you have a &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;digital certificate&lt;/a&gt;, you can digitally sign the emails you send, giving their recipients more confidence about their authenticity and integrity.&lt;/p&gt;
-
-&lt;p&gt;In this post, you are going to see you can do that using the &lt;a href=&quot;https://www.thunderbird.net&quot;&gt;Mozilla Thunderbird&lt;/a&gt; email client.&lt;/p&gt;
-
-&lt;p&gt;Before starting, to get everyone on the same page, I recommend reading previous posts about digital certificates and Thunderbird:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;How to install website certificates on Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;Using smart cards on openSUSE Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/06/07/read-gmail-messages-on-thunderbird/&quot;&gt;Read Gmail messages on Thunderbird&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;installing-your-ca-certificate-on-thunderbird&quot;&gt;Installing your CA certificate on Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;Similarly as &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;we did&lt;/a&gt; with the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Firefox&lt;/a&gt; web browser, first we need to add our CA certificate to our Thunderbird email client, otherwise it won’t be able to validate our certificate hierarchy.&lt;/p&gt;
-
-&lt;p&gt;Let’s see how to add a CA certificate to Thunderbird.&lt;/p&gt;
-
-&lt;p&gt;To demonstrate, I’m going to import the certificate of the Brazilian root CA &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, as my certificate was issued by a CA that belongs to its hierarchy.&lt;/p&gt;
-
-&lt;p&gt;Pull down the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; (top right corner of the window) and click &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog, select the &lt;strong&gt;Advanced&lt;/strong&gt; tab, then the &lt;strong&gt;Certificates&lt;/strong&gt; tab below and click &lt;strong&gt;Manage Certificates&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Certificate Manager&lt;/strong&gt; dialog, select the &lt;strong&gt;Authorities&lt;/strong&gt; tab and click &lt;strong&gt;Import&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the CA certificate file you want to import.&lt;/p&gt;
-
-&lt;p&gt;Check all the options to fully trust the Certificate Authority and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Make sure your CA certificate appears listed and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt; to close the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog.&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-thunderbird-to-use-your-token&quot;&gt;Setting up Thunderbird to use your token&lt;/h2&gt;
-
-&lt;p&gt;Similarly as &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;we did&lt;/a&gt; with Firefox, now we set up Thunderbird to use our token.&lt;/p&gt;
-
-&lt;p&gt;Open the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; and click &lt;strong&gt;Preferences&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog, select the &lt;strong&gt;Advanced&lt;/strong&gt; tab, then the &lt;strong&gt;Certificates&lt;/strong&gt; tab below and click &lt;strong&gt;Security Devices&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Device Manager&lt;/strong&gt; dialog, click &lt;strong&gt;Load&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the next dialog box, fill in the &lt;strong&gt;Module Name&lt;/strong&gt; field with a name that identifies your token (for instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Fill in the &lt;strong&gt;Module filename&lt;/strong&gt; field with the path to your token’s library:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if your token is supported by &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;OpenSC&lt;/a&gt;, type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;if you have a SafeNet token and needed to install &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;SAC&lt;/a&gt; (like me), type &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;for other token models, ask your token vendor or your certificate authority which path should be informed.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Your token is added to the list of &lt;strong&gt;Security Modules and Devices&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt; to close the &lt;strong&gt;Thunderbird Preferences&lt;/strong&gt; dialog.&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-up-digital-signing-on-thunderbird&quot;&gt;Setting up digital signing on Thunderbird&lt;/h2&gt;
-
-&lt;p&gt;The next step is to set up Thunderbird to sign the emails sent from our email account with our certificate.&lt;/p&gt;
-
-&lt;p&gt;Open the &lt;strong&gt;Thunderbird menu&lt;/strong&gt; and go to &lt;strong&gt;Preferences&lt;/strong&gt;, &lt;strong&gt;Account Settings&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/06/thunderbird-gmail-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the left panel, among the account settings, select &lt;strong&gt;Security&lt;/strong&gt; and by the right, near &lt;strong&gt;Digital Signing&lt;/strong&gt;, click &lt;strong&gt;Select&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enter the PIN for your token and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the certificate to be used for digital signing and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As we are going to set up criptography just for sending, not for replying, choose &lt;strong&gt;No&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-12-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Back to the &lt;strong&gt;Account Settings&lt;/strong&gt; dialog, in case you want to always sign the emails you send, check the &lt;strong&gt;Digitally sign messages (by default)&lt;/strong&gt; option.&lt;/p&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Account Settings&lt;/strong&gt; dialog and go back to the Thunderbird main window.&lt;/p&gt;
-
-&lt;p&gt;Right now, digital signing is set up and ready to be used!&lt;/p&gt;
-
-&lt;h2 id=&quot;sending-digitally-signed-emails&quot;&gt;Sending digitally signed emails&lt;/h2&gt;
-
-&lt;p&gt;On the Thunderbird main window, click the &lt;strong&gt;Write&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-13-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As usual, fill in the &lt;strong&gt;From&lt;/strong&gt;, &lt;strong&gt;To&lt;/strong&gt; and &lt;strong&gt;Subject&lt;/strong&gt; fields and type the message body.&lt;/p&gt;
-
-&lt;p&gt;Before sending, open the &lt;strong&gt;Security&lt;/strong&gt; menu and make sure the &lt;strong&gt;Digitally Sign This Message&lt;/strong&gt; option is checked (if you have setup Thunderbird to always sign the emails you send, that option should be already checked by default):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-14-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;When you finish, click &lt;strong&gt;Send&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Thunderbird asks for the token PIN to sign the email right before sending.&lt;/p&gt;
-
-&lt;h2 id=&quot;checking-the-digital-signature-of-received-emails&quot;&gt;Checking the digital signature of received emails&lt;/h2&gt;
-
-&lt;p&gt;If the recipient uses Thunderbird, they can check the digital signature of the message:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-15-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-15-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-16-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-16-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If Thunderbird tells the digital signature is not valid, the recipient may be missing your CA certificate. They need to add that certificate to their Thunderbird installation following the instructions presented on this page. After doing that, back to the message tab, Thunderbird will be able to validate the signature.&lt;/p&gt;
-
-&lt;p&gt;If the recipient uses a webmail, it may allow to check the digital signature of the message. For instance, that is possible with &lt;a href=&quot;https://gmail.com&quot;&gt;Gmail&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-17-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-17-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that Gmail does not trust a certificate that belongs to the hierarchy of the Brazilian root CA ICP-Brasil. Unfortunately, the definitive solution to this issue would require &lt;a href=&quot;https://www.google.com&quot;&gt;Google&lt;/a&gt; to install and trust the ICP-Brasil certificate on its servers.&lt;/p&gt;
-
-&lt;p&gt;As a workaround, you can click the &lt;strong&gt;Sender info&lt;/strong&gt; link and then click &lt;strong&gt;Download certificates&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-18-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-18-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Open the downloaded file (the sender certificate) and check its hierarchy by yourself:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-19-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-19-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;thunderbird-bug-certificate-could-not-be-found&quot;&gt;Thunderbird bug: certificate could not be found&lt;/h2&gt;
-
-&lt;p&gt;When trying to send a digitally signed email, you may face a Thunderbird bug:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=531073&quot;&gt;531073 - S/MIME certificate could not be found although it is available&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Instead of signing and sending the email, Thunderbird shows the following error message:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/thunderbird-token-bug-en.jpg&quot; title=&quot;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&quot;&gt;
-&lt;img src=&quot;/files/2019/07/thunderbird-token-bug-en.jpg&quot; alt=&quot;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Send Message Error. Sending of message failed. You specified that this message should be digitally signed, but the application either failed to find the signing certificate specified in your Mail &amp;amp; Newsgroup Account Settings, or the certificate has expired.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That bug has been fixed on Thunderbird 69.0 (regular release) and 60.7.1 (&lt;a href=&quot;https://www.thunderbird.net/en-US/organizations/&quot;&gt;ESR&lt;/a&gt;), which has been made available for &lt;a href=&quot;/en/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt; users through a security update.&lt;/p&gt;
-
-&lt;p&gt;If you faced that bug, check for updates to your system. You can read more info here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;How to get updates for openSUSE Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--
-
-If that happens, repeat the steps to set up Thunderbird to use your token: go to **Preferences**, select the **Advanced** tab, then the **Certificates** tab and click **Security Devices**. Thunderbird asks for the token PIN. Inform it and click **OK**.
-
-Now, close the **Preferences** dialog and go back to the message window.
-
-This time, you should be able to send the email. Thunderbird may not ask your token PIN.
-
---&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nitrokey.com/documentation/smime-thunderbird&quot;&gt;S/MIME Email Encryption with Thunderbird - Nitrokey&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.globalsign.com/customer/en/portal/articles/1214955-install-certificate---mozilla-thunderbird&quot;&gt;Install Certificate - Mozilla Thunderbird - GlobalSign&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.sectigo.com/Com_KnowledgeDetailPage?Id=kA01N000000zFNM&quot;&gt;Basics of email encryption, Export /Import email certificate and enable to use in Mozilla Thunderbird - Sectigo KnowledgeBase&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.mozilla.org/PSM:Changing_Trust_Settings&quot;&gt;PSM:Changing Trust Settings - MozillaWiki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 02 Jul 2019 19:50:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/</guid>
                 
                 
                     <category>en</category>
