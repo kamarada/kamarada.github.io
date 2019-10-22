@@ -9,10 +9,169 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 19 Oct 2019 11:19:11 -0300</pubDate>
-        <lastBuildDate>Sat, 19 Oct 2019 11:19:11 -0300</lastBuildDate>
+        <pubDate>Mon, 21 Oct 2019 22:45:38 -0300</pubDate>
+        <lastBuildDate>Mon, 21 Oct 2019 22:45:38 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Não temos mais horário de verão: seu computador já sabe disso?</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/horario-de-verao-2019.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/horario-de-verao-2019.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A partir desse ano, o Brasil não adota mais o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Hor%C3%A1rio_de_ver%C3%A3o&quot;&gt;&lt;strong&gt;horário de verão&lt;/strong&gt;&lt;/a&gt;, que é a prática de adiantar os relógios em 1 hora durante o verão. A mudança foi oficializada pelo &lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9772.htm&quot;&gt;Decreto nº 9.772&lt;/a&gt;, assinado pelo presidente Jair Bolsonaro em abril. Se seu sistema está bem configurado e atualizado, já está ciente dessa alteração e não adiantou — e nem adiantará mais — o relógio.&lt;/p&gt;
+
+&lt;p&gt;No entanto, alguns sistemas desatualizados adiantaram o relógio nesse domingo 20/10/2019. Isso indica que ainda estão configurados de acordo com a antepenúltima norma (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2013/Decreto/D8112.htm&quot;&gt;Decreto nº 8.112&lt;/a&gt;, de 30/09/2013), pela qual o início do horário de verão seria no terceiro domingo de outubro.&lt;/p&gt;
+
+&lt;p&gt;Mas mesmo que a hora do seu sistema esteja certa agora, se ele estiver desatualizado, possivelmente adiantará o relógio no primeiro domingo de novembro (03/11/2019), que seria o início do horário de verão, pela norma anterior (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2017/Decreto/D9242.htm&quot;&gt;Decreto nº 9.242&lt;/a&gt;, de 15/12/2017).&lt;/p&gt;
+
+&lt;p&gt;Você verá nesse &lt;em&gt;post&lt;/em&gt; como conferir e ajustar as configurações de data, hora e fuso horário, como verificar a configuração do horário de verão, e como atualizar seu sistema para que ele obtenha as últimas alterações e a data e hora estejam sempre certas!&lt;/p&gt;
+
+&lt;h2 id=&quot;onde-conferir-a-data-e-hora-certas&quot;&gt;Onde conferir a data e hora certas&lt;/h2&gt;
+
+&lt;p&gt;Para verificar se a data e a hora do seu computador estão certas, você pode acessar o &lt;em&gt;site&lt;/em&gt; do projeto &lt;strong&gt;&lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;&lt;/strong&gt;, que mantém servidores de hora que podem ser consultados por computadores para sincronizar seus relógios:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/ntpbr-hora-certa.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/ntpbr-hora-certa.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurações-de-data-hora-e-fuso-horário&quot;&gt;Configurações de data, hora e fuso horário&lt;/h2&gt;
+
+&lt;p&gt;Você pode verificar as configurações de data, hora e fuso horário executando o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ timedatectl
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Que deve retornar algo parecido com:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;      Local time: seg 2019-10-21 14:35:46 -03
+  Universal time: seg 2019-10-21 17:35:46 UTC
+        RTC time: seg 2019-10-21 14:35:46
+       Time zone: America/Sao_Paulo (-03, -0300)
+ Network time on: no
+NTP synchronized: no
+ RTC in local TZ: yes
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse exemplo, o sistema obedece ao fuso horário (&lt;em&gt;time zone&lt;/em&gt;) &lt;strong&gt;América/São Paulo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ou, se você usa a distribuição Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; (ou uma distribuição derivada, como é o caso do &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;) e prefere a interface gráfica, pode conferir as configurações de data, hora e fuso horário abrindo o módulo &lt;strong&gt;Data e hora&lt;/strong&gt; do YaST:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/yast-data-e-hora.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/yast-data-e-hora.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O sistema operacional pode sincronizar data e hora com a Internet usando o protocolo &lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;NTP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Veja como configurar data, hora, fuso horário e sincronização via NTP no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;Mantenha a hora do seu computador sempre certa com o NTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você usa um sistema que não recebe mais atualizações (por exemplo, um computador de 32 &lt;em&gt;bits&lt;/em&gt; com o &lt;a href=&quot;https://en.opensuse.org/Portal:13.2&quot;&gt;openSUSE 13.2&lt;/a&gt;), para desativar o horário de verão, utilize um fuso horário que historicamente não adotou o horário de verão (por exemplo, o fuso horário de &lt;strong&gt;Maceió&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;configuração-do-horário-de-verão&quot;&gt;Configuração do horário de verão&lt;/h2&gt;
+
+&lt;p&gt;A data e hora podem ser obtidas da Internet, mas o início e o fim do horário de verão são programados na configuração do fuso horário, que é fixada no sistema operacional.&lt;/p&gt;
+
+&lt;p&gt;No caso do openSUSE e do Linux Kamarada, o pacote que contém essa programação é o &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/timezone&quot;&gt;timezone&lt;/a&gt;&lt;/strong&gt;, que normalmente vem instalado por padrão.&lt;/p&gt;
+
+&lt;p&gt;Para verificar o início e o fim do horário de verão no fuso horário atual, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zdump -v /etc/localtime | tail
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Usamos o comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/1/tail&quot;&gt;tail&lt;/a&gt;&lt;/strong&gt; para obter apenas as últimas linhas da saída:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;/etc/localtime  Sun Oct 15 02:59:59 2017 UT = Sat Oct 14 23:59:59 2017 -03 isdst=0 gmtoff=-10800
+/etc/localtime  Sun Oct 15 03:00:00 2017 UT = Sun Oct 15 01:00:00 2017 -02 isdst=1 gmtoff=-7200
+/etc/localtime  Sun Feb 18 01:59:59 2018 UT = Sat Feb 17 23:59:59 2018 -02 isdst=1 gmtoff=-7200
+/etc/localtime  Sun Feb 18 02:00:00 2018 UT = Sat Feb 17 23:00:00 2018 -03 isdst=0 gmtoff=-10800
+/etc/localtime  Sun Nov  4 02:59:59 2018 UT = Sat Nov  3 23:59:59 2018 -03 isdst=0 gmtoff=-10800
+/etc/localtime  Sun Nov  4 03:00:00 2018 UT = Sun Nov  4 01:00:00 2018 -02 isdst=1 gmtoff=-7200
+/etc/localtime  Sun Feb 17 01:59:59 2019 UT = Sat Feb 16 23:59:59 2019 -02 isdst=1 gmtoff=-7200
+/etc/localtime  Sun Feb 17 02:00:00 2019 UT = Sat Feb 16 23:00:00 2019 -03 isdst=0 gmtoff=-10800
+/etc/localtime  9223372036854689407 = NULL
+/etc/localtime  9223372036854775807 = NULL
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Interpretando a saída desse comando, temos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;início do horário de verão em 2017 na virada de 14/10 para 15/10&lt;/li&gt;
+  &lt;li&gt;fim do horário de verão em 2018 em 17/02&lt;/li&gt;
+  &lt;li&gt;início do horário de verão em 2018 na virada de 03/11 para 04/11&lt;/li&gt;
+  &lt;li&gt;fim do horário de verão em 2019 em 16/02&lt;/li&gt;
+  &lt;li&gt;nenhuma outra alteração a partir de então&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se sua configuração aparece diferente disso, é sinal que seu sistema está desatualizado.&lt;/p&gt;
+
+&lt;h2 id=&quot;mantenha-seu-sistema-atualizado&quot;&gt;Mantenha seu sistema atualizado&lt;/h2&gt;
+
+&lt;p&gt;O pacote &lt;strong&gt;timezone&lt;/strong&gt; recebe atualizações conforme as regras do horário de verão mudam.&lt;/p&gt;
+
+&lt;p&gt;Por esse e outros motivos, é importante manter o sistema sempre atualizado, com as versões mais novas dos programas e pacotes.&lt;/p&gt;
+
+&lt;p&gt;Veja como obter atualizações para o openSUSE e para o Linux Kamarada no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;posts-relacionados-e-referências&quot;&gt;Posts relacionados e referências&lt;/h2&gt;
+
+&lt;p&gt;Aqui normalmente eu falo de &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; em &lt;em&gt;desktops&lt;/em&gt; e servidores, mas considerando que &lt;a href=&quot;https://www.tecmundo.com.br/software/127038-android-linux-kernel.htm&quot;&gt;Android também é Linux&lt;/a&gt;, no ano passado escrevi um &lt;em&gt;post&lt;/em&gt; explicando como configurar data, hora e fuso horário em &lt;em&gt;smartphones&lt;/em&gt; e &lt;em&gt;tablets&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/intl/pt-BR_br/&quot;&gt;Android&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/&quot;&gt;Mantenha a hora do Android sempre certa&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se quiser saber mais sobre o fim do horário de verão no Brasil, leia:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://g1.globo.com/politica/noticia/2019/04/25/bolsonaro-assina-decreto-que-acaba-com-o-horario-de-verao.ghtml&quot;&gt;Bolsonaro assina decreto que acaba com o horário de verão - G1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Mon, 21 Oct 2019 22:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/10/21/nao-temos-mais-horario-de-verao-seu-computador-ja-sabe-disso/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/21/nao-temos-mais-horario-de-verao-seu-computador-ja-sabe-disso/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Instalando o VirtualBox no Linux</title>
@@ -2932,367 +3091,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Fri, 12 Jul 2019 02:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>18 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 1</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/apps-linux-windows.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/apps-linux-windows.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Talvez você não dê uma chance ao &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te disser que existem pelo menos 18 aplicativos populares no &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; que também podem ser usados do mesmo jeito no Linux, um sistema &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;livre&lt;/a&gt; e gratuito, se anima de experimentar?&lt;/p&gt;
-
-&lt;p&gt;Perceba que não estou falando de &lt;strong&gt;alternativas&lt;/strong&gt; do Linux para aplicativos do Windows: falo dos &lt;strong&gt;mesmos aplicativos&lt;/strong&gt; sendo usados &lt;strong&gt;da mesma forma&lt;/strong&gt; nos dois sistemas!&lt;/p&gt;
-
-&lt;p&gt;Caso deseje migrar para o Linux, você pode inclusive começar a usar esses aplicativos no sistema operacional que já lhe é familiar, facilitando a mudança.&lt;/p&gt;
-
-&lt;p&gt;Os aplicativos que vou mostrar aqui são:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;multi-plataforma:&lt;/strong&gt; são feitos para vários sistemas, a exemplo de Linux e Windows, mas alguns também estão disponíveis para outros sistemas, como &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; e &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;conhecidos:&lt;/strong&gt; populares, há muita informação sobre eles na Internet;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;gratuitos:&lt;/strong&gt; podem ser usados sem custo, alguns possuem funcionalidades adicionais que podem ser compradas;&lt;/li&gt;
-  &lt;li&gt;em sua maioria, &lt;strong&gt;livres&lt;/strong&gt;: oferecem as quatro liberdades essenciais dos &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; livres&lt;/a&gt; — seja livre para usar, estudar o &lt;a href=&quot;https://www.codigofonte.com.br/artigos/o-que-e-codigo-fonte&quot;&gt;código-fonte&lt;/a&gt;, modificar e distribuir como quiser; e&lt;/li&gt;
-  &lt;li&gt;em sua maioria, podem ser obtidos facilmente do &lt;strong&gt;repositório&lt;/strong&gt; da própria distribuição.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Aqui vou focar na distribuição Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, que é a que eu uso e recomendo, mas esses programas podem ser facilmente instalados em outras distribuições.&lt;/p&gt;
-
-&lt;p&gt;Para o &lt;em&gt;post&lt;/em&gt; não ficar muito grande, decidi dividi-lo em duas partes.&lt;/p&gt;
-
-&lt;p&gt;Sem mais delongas, vejamos os programas selecionados!&lt;/p&gt;
-
-&lt;h2 id=&quot;1-mozilla-firefox&quot;&gt;1) Mozilla Firefox&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/mozilla-firefox-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/mozilla-firefox-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://mozilla.org/firefox&quot;&gt;Mozilla Firefox&lt;/a&gt; é um navegador gratuito, livre e multi-plataforma desenvolvido pela &lt;a href=&quot;https://foundation.mozilla.org/&quot;&gt;Fundação Mozilla&lt;/a&gt; com ajuda de centenas de colaboradores. A intenção da fundação é desenvolver um navegador leve, seguro, intuitivo e altamente extensível.&lt;/p&gt;
-
-&lt;p&gt;Segundo o &lt;a href=&quot;http://gs.statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;, serviço que analisa o tráfego da &lt;em&gt;web&lt;/em&gt; desde 1999, atualmente o Firefox é usado por cerca de 9,78% dos usuários de &lt;em&gt;desktop&lt;/em&gt; do mundo e 6,14% dos usuários de &lt;em&gt;desktop&lt;/em&gt; brasileiros. É o navegador padrão das distribuições Linux mais populares.&lt;/p&gt;
-
-&lt;p&gt;A distribuição &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt; utiliza uma versão do Firefox desenvolvida especialmente para grandes organizações (como empresas, universidades e órgãos públicos) chamada &lt;a href=&quot;https://www.mozilla.org/en-US/firefox/organizations/&quot;&gt;ESR&lt;/a&gt; (&lt;em&gt;Extended Support Release&lt;/em&gt;, versão com suporte estendido). Essa versão recebe atualizações de segurança sempre, mas novas funcionalidades apenas de tempos em tempos. Portanto, é atualizada com menor frequência.&lt;/p&gt;
-
-&lt;p&gt;Você já deve ter o Firefox instalado no openSUSE, mas caso precise instalá-lo manualmente:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaFirefox MozillaFirefox-translations-common MozillaFirefox-branding-openSUSE
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para instalar o Firefox no Windows, baixe o instalador de um dos seguintes &lt;em&gt;links&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Versão padrão (no momento da escrita, a 67.0.4):
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/new/&quot;&gt;https://www.mozilla.org/pt-BR/firefox/new/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Versão ESR (60.7.2):
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/organizations/all/&quot;&gt;https://www.mozilla.org/pt-BR/firefox/organizations/all/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-google-chrome&quot;&gt;2) Google Chrome&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/google-chrome-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/google-chrome-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; é um navegador &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_propriet%C3%A1rio&quot;&gt;proprietário&lt;/a&gt; desenvolvido pela companhia &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt;. É gratuito, multi-plataforma e apresenta uma interface minimalista.&lt;/p&gt;
-
-&lt;p&gt;Segundo o StatCounter, atualmente o Chrome é o navegador mais usado no mundo (70% dos usuários de &lt;em&gt;desktop&lt;/em&gt;) e também no Brasil (85% dos usuários de &lt;em&gt;desktop&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;https://www.google.com/chrome/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Por ser um &lt;em&gt;software&lt;/em&gt; proprietário, o Chrome não é disponibilizado nos repositórios oficiais das distribuições Linux. O que talvez muitas pessoas não saibam é que a base do Chrome é um navegador livre chamado &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;. O Chrome nada mais é que a base do Chromium acrescida de componentes proprietários inseridos pelo Google.&lt;/p&gt;
-
-&lt;p&gt;Se você quiser instalar o Chromium no openSUSE, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in chromium
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O Chrome é mais comum que o Chromium no Windows, mas caso você queira usar o Chromium no Windows, este &lt;em&gt;site&lt;/em&gt; disponibiliza instaladores:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://chromium.woolyss.com/&quot;&gt;https://chromium.woolyss.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;3-libreoffice&quot;&gt;3) LibreOffice&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/libreoffice-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/libreoffice-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; é uma suíte de aplicativos de escritório livre e gratuita. Vem instalada por padrão nas distribuições Linux mais populares. Utiliza o formato padronizado &lt;a href=&quot;http://www.opendocument.com.br/project-definition&quot;&gt;OpenDocument&lt;/a&gt; e também é compatível com os formatos do &lt;a href=&quot;https://www.office.com/&quot;&gt;Microsoft Office&lt;/a&gt;, além de outros formatos mais antigos. O LibreOffice surgiu como uma ramificação do projeto original &lt;a href=&quot;https://www.openoffice.org/pt-br/&quot;&gt;OpenOffice&lt;/a&gt;, que aqui no Brasil era chamado de &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Conheca-o-OpenOffice.org-e-o-BrOffice.org?pagina=3&quot;&gt;BrOffice&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Você já deve ter o LibreOffice instalado no openSUSE, mas caso precise instalá-lo manualmente, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in libreoffice-{writer,calc,impress,draw,base,math,l10n-pt_BR}
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para instalar o LibreOffice no Windows, baixe o instalador do &lt;em&gt;site&lt;/em&gt; do LibreOffice:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;https://pt-br.libreoffice.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;4-dropbox&quot;&gt;4) Dropbox&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/dropbox-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/dropbox-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.dropbox.com/pt_BR/&quot;&gt;Dropbox&lt;/a&gt; é um serviço de armazenamento de arquivos na nuvem. Ele disponibiliza um programa cliente que cria uma pasta chamada Dropbox no computador e sincroniza os arquivos dessa pasta com os arquivos que estão na nuvem. O plano gratuito oferece 2GB de espaço. Há planos individuais e para empresas que oferecem mais espaço e recursos.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; inscreva-se no Dropbox por &lt;a href=&quot;https://db.tt/4VzN0K26&quot;&gt;este &lt;em&gt;link&lt;/em&gt; de indicação&lt;/a&gt; e ganhe 500MB de espaço extra!&lt;/p&gt;
-
-&lt;p&gt;Para instalar o cliente do Dropbox no Windows, baixe o instalador do &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/pt_BR/&quot;&gt;https://www.dropbox.com/pt_BR/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para instalar o cliente do Dropbox no openSUSE, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in dropbox
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ao abrir o Dropbox pela primeira vez, ele baixará parte do cliente que é proprietária.&lt;/p&gt;
-
-&lt;p&gt;Se você usa o ambiente de trabalho &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, instale também a integração com o gerenciador de arquivos, para que o estado da sincronização de pastas e arquivos seja exibido em seus ícones:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in nautilus-extension-dropbox
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Também observe que &lt;a href=&quot;https://www.omgubuntu.co.uk/2017/09/will-you-miss-gnome-legacy-tray&quot;&gt;o GNOME não exibe ícones da área de notificação&lt;/a&gt; por padrão. Você pode instalar a extensão &lt;a href=&quot;https://extensions.gnome.org/extension/1031/topicons/&quot;&gt;TopIcons Plus&lt;/a&gt; para que o ícone do Dropbox seja exibido na barra do topo, próximo ao relógio.&lt;/p&gt;
-
-&lt;p&gt;Se você não sabe instalar extensões do GNOME, veja como fazer isso no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/&quot;&gt;Monitorando recursos do sistema com a extensão do GNOME System Monitor&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;5-skype&quot;&gt;5) Skype&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/skype-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/skype-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.skype.com/pt-br/&quot;&gt;Skype&lt;/a&gt; é um programa que permite enviar mensagens e fazer ligações de voz e vídeo pela Internet, tanto gratuitamente, entre usuários do Skype, quanto a preços acessíveis, do Skype para telefones fixos ou celulares em qualquer lugar do mundo.&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.skype.com/pt-br/&quot;&gt;https://www.skype.com/pt-br/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No Windows, também é possível &lt;a href=&quot;https://www.microsoft.com/pt-br/search?q=skype&quot;&gt;baixar o Skype pela Microsoft Store&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-teamviewer&quot;&gt;6) TeamViewer&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/teamviewer-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/teamviewer-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.teamviewer.com/pt-br/&quot;&gt;TeamViewer&lt;/a&gt; é um serviço de acesso remoto, compartilhamento de área de trabalho, conferência online e transferência de arquivos entre computadores. É possível, a partir de um computador ou dispositivo móvel, visualizar a tela de outro computador ou dispositivo móvel e também controlá-lo. O uso pessoal é gratuito, há planos para empresas.&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.teamviewer.com/pt-br/&quot;&gt;https://www.teamviewer.com/pt-br/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;7-vlc&quot;&gt;7) VLC&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/vlc-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/vlc-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;VLC&lt;/a&gt; é um reprodutor multimídia livre e gratuito que reproduz a maioria dos arquivos de mídia (por exemplo, &lt;a href=&quot;https://pt.wikipedia.org/wiki/MP3&quot;&gt;MP3&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/DivX&quot;&gt;DivX&lt;/a&gt;), mídias (CD, DVD, Blu-ray) e transmissões pela rede (&lt;em&gt;streamings&lt;/em&gt;). Eu considero o VLC o “canivete suíço” multimídia: se há algum arquivo de mídia que o VLC não consegue abrir, provavelmente nenhum outro programa consegue!&lt;/p&gt;
-
-&lt;p&gt;Para instalar o VLC no Windows, baixe o instalador do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;https://www.videolan.org/vlc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No openSUSE, como o VLC é um &lt;em&gt;software&lt;/em&gt; livre, pode ser obtido dos repositórios oficiais:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in vlc vlc-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;No entanto, o pacote disponibilizado pelo openSUSE suporta apenas formatos multimídia livres (por exemplo, &lt;a href=&quot;https://pt.wikipedia.org/wiki/XviD&quot;&gt;Xvid&lt;/a&gt;). Portanto, não consegue reproduzir muitos arquivos.&lt;/p&gt;
-
-&lt;p&gt;A dica é baixar o VLC do repositório do projeto &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt;, que disponibiliza o pacote &lt;a href=&quot;http://packman.links2linux.com/package/vlc&quot;&gt;vlc-codecs&lt;/a&gt;, que contém os &lt;a href=&quot;https://pt.wikipedia.org/wiki/Codec&quot;&gt;&lt;em&gt;codecs&lt;/em&gt;&lt;/a&gt; que não são empacotados pelo openSUSE:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfK -p 90 -n &quot;Packman Repository&quot; http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.1/ packman
-# zypper in vlc vlc-lang vlc-codecs
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;8-spotify&quot;&gt;8) Spotify&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/spotify-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/spotify-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.spotify.com/br/&quot;&gt;Spotify&lt;/a&gt; é o serviço de &lt;em&gt;streaming&lt;/em&gt; de música e &lt;em&gt;podcasts&lt;/em&gt; mais popular do mundo. É um serviço &lt;em&gt;freemium&lt;/em&gt; (mistura de &lt;em&gt;free&lt;/em&gt; — gratuito — com &lt;em&gt;premium&lt;/em&gt;): todos os recursos básicos podem ser usados de graça, com propagandas, ou é possível pagar uma assinatura para ter acesso a recursos adicionais, como maior qualidade e possibilidade de baixar as músicas.&lt;/p&gt;
-
-&lt;p&gt;Para instalar o cliente do Spotify no Windows, baixe o instalador do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.spotify.com/br/&quot;&gt;https://www.spotify.com/br/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No Windows, também é possível &lt;a href=&quot;https://www.microsoft.com/pt-br/search?q=spotify&quot;&gt;baixar o Spotify pela Microsoft Store&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Há um &lt;a href=&quot;https://www.spotify.com/br/download/linux/&quot;&gt;cliente do Spotify para Linux&lt;/a&gt; que pode ser instalado pelo &lt;a href=&quot;https://snapcraft.io/&quot;&gt;Snap&lt;/a&gt;, um gerenciador de pacotes independente de distribuição.&lt;/p&gt;
-
-&lt;p&gt;Para instalar o Snap:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Leap_15.1 snap
-# zypper in snapd
-# systemctl enable snapd
-# systemctl start snapd
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois, para instalar o cliente do Spotify para Linux:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ snap install spotify
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;9-java&quot;&gt;9) Java&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/java-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/java-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;Java&lt;/a&gt; não é propriamente um programa, mas uma linguagem de programação, na qual vários programas são desenvolvidos. Para usar programas feitos em Java, é necessário instalar o ambiente de execução do Java (do inglês &lt;em&gt;Java Runtime Environment&lt;/em&gt;, JRE), também conhecido como máquina virtual Java (&lt;em&gt;Java Virtual Machine&lt;/em&gt;, JVM). Normalmente quando as pessoas falam em “instalar o Java”, elas querem dizer “instalar o JRE”.&lt;/p&gt;
-
-&lt;p&gt;Há duas versões do JRE, ambas gratuitas e multi-plataforma: uma livre, fornecida pelo projeto &lt;a href=&quot;https://openjdk.java.net/&quot;&gt;OpenJDK&lt;/a&gt;, e outra proprietária, fornecida pela empresa &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;No Windows, normalmente é instalado o JRE da Oracle, que pode ser baixado do &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.java.com/pt_BR/&quot;&gt;https://www.java.com/pt_BR/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No Linux, é mais fácil instalar o JRE do OpenJDK, que pode ser obtido dos repositórios oficiais das distribuições. Para instalá-lo no openSUSE, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in java-openjdk
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Alguns programas, como o Imposto de Renda e os módulos de segurança de alguns bancos, como Banco do Brasil e Caixa, exigem que o JRE da Oracle esteja instalado no computador.&lt;/p&gt;
-
-&lt;p&gt;Para mais informações sobre o JRE da Oracle e os programas citados no Linux, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/&quot;&gt;Como instalar o Java da Oracle no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/&quot;&gt;Como instalar o programa do Imposto de Renda 2017 no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/&quot;&gt;Como acessar o netbanking do Banco do Brasil no openSUSE&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/&quot;&gt;Como acessar o netbanking da Caixa no openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;10-pdf-split-and-merge-pdfsam&quot;&gt;10) PDF Split and Merge (PDFsam)&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/pdfsam-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/pdfsam-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pdfsam.org/pt/&quot;&gt;PDF Split and Merge&lt;/a&gt;, também conhecido como PDFsam, é um programa que permite manipular documentos em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt;. A edição Basic é livre e gratuita e contempla todas as funcionalidades mais básicas, como dividir um documento em partes (seja pela quantidade de páginas, seja pelo tamanho do arquivo em &lt;em&gt;bytes&lt;/em&gt;), unir documentos, girar ou extrair páginas. Há edições comerciais com funcionalidades adicionais.&lt;/p&gt;
-
-&lt;p&gt;Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pdfsam.org/pt/&quot;&gt;https://pdfsam.org/pt/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;continua&quot;&gt;Continua…&lt;/h2&gt;
-
-&lt;p&gt;Na parte 2, veremos mais programas feitos tanto para Linux quanto para Windows.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (12/07/2019):&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&quot;/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/&quot;&gt;A segunda parte já está aqui! (clique para acessá-la)&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;p&gt;Para escolher os aplicativos, consultei páginas que listam programas populares ou indicados para usuários de Windows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/pt-br/store/most-popular/apps/pc&quot;&gt;Aplicativos mais populares - Microsoft Store&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.baixaki.com.br/top-semanal.htm&quot;&gt;Top Semanal de Downloads para Windows - Baixaki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.makeuseof.com/tag/getting-a-new-pc-12-must-have-applications-to-install-first/&quot;&gt;New PC? 15 Must-Have Windows Applications You Should Install First&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.techradar.com/news/software/applications/20-windows-7-free-apps-to-download-today-648954&quot;&gt;20 of the best free Windows 7 apps 2019: bring your PC right up to date - TechRadar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.thewindowsclub.com/best-free-software-for-windows-10&quot;&gt;Best free software for Windows 10 in 2019&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Portanto, tentei escrever do ponto de vista de alguém que usa Windows e se pergunta se existem os mesmos aplicativos no Linux.&lt;/p&gt;
-
-&lt;p&gt;Espero que tenha ajudado. Ficou com alguma dúvida? Gostaria de sugerir algum programa para a próxima parte ou futuros textos? Escreva nos comentários!&lt;/p&gt;
-
-</description>
-                <pubDate>Fri, 05 Jul 2019 01:40:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/</guid>
                 
                 
                     <category>pt</category>
