@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -190,7 +194,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/10/30/dicas-para-usar-o-virtualbox-no-dia-a-dia/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -242,7 +246,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-10-30" />
+                <meta itemprop="dateModified" content="2019-11-01" />
             </div>
             <div class='col-sm-6'>
                 
@@ -290,7 +294,7 @@
 
 <p>Nos textos anteriores, vimos o que é virtualização, o que é o VirtualBox, como instalá-lo no <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e no Linux, como criar uma máquina virtual e como usá-la para experimentar o Linux.</p>
 
-<p>Caso você tenha caído aqui de paraquedas, recomento que leia os textos anteriores:</p>
+<p>Caso você tenha caído aqui de paraquedas, recomendo que leia os textos anteriores:</p>
 
 <ul>
   <li><a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo</a></li>
@@ -317,7 +321,7 @@
 
 <p>Em uma máquina virtual do VirtualBox, o leitor de DVD virtual fica vazio. Para iniciar a VM novamente, você teria que mais uma vez inserir a imagem ISO no leitor de DVD virtual, como vimos na <a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">parte 1</a>. Se você está iniciando a VM várias vezes pela mídia <em>live</em>, ter que reinserir a imagem ISO toda hora é desnecessariamente trabalhoso.</p>
 
-<p>Felizmente, o VirtualBox tem uma opção para prevenir a ejeção da mídia. Para ativá-la, selecione a máquina virtual na tela inicial, clique em <strong>Configurações</strong>, abra a seção <strong>Armazenamento</strong>, selecione o leitor de DVD e ative a opção <strong>LiveCD/DVD</strong>:</p>
+<p>Felizmente, o VirtualBox tem uma opção para prevenir a ejeção da mídia. Para ativá-la, selecione a máquina virtual na tela inicial, clique em <strong>Configurações</strong>, abra a seção <strong>Armazenamento</strong>, selecione o leitor de DVD virtual e ative a opção <strong>LiveCD/DVD</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-42-pt.jpg" title="">
@@ -365,7 +369,7 @@
 
 <ul>
   <li>criar um arquivo do tamanho total do disco (por exemplo, um disco de 20GB seria, já de início, um arquivo de 20GB) — opção <strong>Tamanho Fixo</strong> — ou</li>
-  <li>criar um arquivo do tamanho dos dados de fato armazenados (o arquivo começa pequeno e cresce conforme o disco é usado, até o limite de 20GB) — opção <strong>Dinamicamente alocado</strong>.</li>
+  <li>criar um arquivo do tamanho dos dados de fato armazenados (o arquivo começa pequeno e cresce conforme o disco virtual é usado, até o limite de 20GB) — opção <strong>Dinamicamente alocado</strong>.</li>
 </ul>
 
 <p>Eu recomendo que você mantenha selecionada a opção <strong>Dinamicamente alocado</strong> e clique em <strong>Próximo</strong>:</p>
@@ -386,13 +390,13 @@
 
 </div>
 
-<p>Pronto: disco rígido virtual criado. De volta à caixa de diálogo <strong>Configurações</strong>, clique em <strong>OK</strong> para fechá-la e voltar para a tela inicial do VirtualBox.</p>
+<p>Pronto: disco rígido virtual criado e pronto para ser usado. De volta à caixa de diálogo <strong>Configurações</strong>, clique em <strong>OK</strong> para fechá-la e voltar para a tela inicial do VirtualBox.</p>
 
 <h2 id="instalando-o-linux-na-máquina-virtual">Instalando o Linux na máquina virtual</h2>
 
-<p>Certifique-se que a imagem ISO está no leitor de DVD virtual e inicie a VM.</p>
+<p>Certifique-se que a imagem ISO do Linux está no leitor de DVD virtual e inicie a VM.</p>
 
-<p>Para iniciar a instalação do Linux Kamarada, inicie o instalador clicando em seu ícone na <em>dock</em>:</p>
+<p>Inicie o instalador do Linux Kamarada clicando em seu ícone na <em>dock</em>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-48-pt.jpg" title="">
@@ -583,7 +587,7 @@ PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.219/0.496/0.697/0.173 ms
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>(pressione <strong>Ctrl + C</strong> para interromper o comando)</p>
+<p>(pressione <strong>Ctrl + C</strong> para interromper o comando <strong><a href="https://linux.die.net/man/8/ping">ping</a></strong>)</p>
 
 <p>Funciona. Agora tente do SO hospedeiro “pingar” a máquina virtual:</p>
 
@@ -605,7 +609,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 <p>Mas o VirtualBox é bastante flexível em como ele virtualiza a rede e oferece outros modos.</p>
 
-<p>O modo que eu costumo usar é o modo <strong>ponte</strong> (<em><a href="https://pt.wikipedia.org/wiki/Bridge_(redes_de_computadores)">bridge</a></em>): nesse modo, o VirtualBox envia requisições de rede usando a placa de rede da máquina real diretamente, sem passar pelo <em>software</em> de rede do SO hospedeiro. Na prática, é como se a máquina real e a máquina virtual estivessem conectadas diretamente ao <em>modem</em> de casa. O hospedeiro deixa de estar “entre” o convidado e a rede e passa a estar “do lado” do convidado.</p>
+<p>O modo que eu costumo usar é o modo <strong>ponte</strong> (<em><a href="https://pt.wikipedia.org/wiki/Bridge_(redes_de_computadores)">bridge</a></em>): nesse modo, o VirtualBox envia requisições de rede do SO convidado usando a placa de rede da máquina real diretamente, sem passar pelo <em>software</em> de rede do SO hospedeiro. Na prática, é como se a máquina real e a máquina virtual estivessem conectadas diretamente ao <em>modem</em> de casa. O hospedeiro deixa de estar “entre” o convidado e a rede e passa a estar “do lado” do convidado.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-63-pt.jpg" title="">
@@ -640,7 +644,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 <p>O <em>software</em> VirtualBox é dividido em duas partes: um pacote principal, com todos os componentes de <a href="https://pt.wikipedia.org/wiki/Software_de_código_aberto">código aberto</a> licenciados sob a <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.pt-br.html">GPLv2</a>, e um <strong>pacote de extensões</strong> (<em>Extension Pack</em>), com alguns componentes adicionais proprietários da <a href="https://www.oracle.com/br/">Oracle</a>.</p>
 
-<p>Para mim, a principal vantagem de instalar as extensões é poder virtualizar portas USB 2.0 e 3.0 (o pacote principal suporta apenas USB 1.1). O pacote de extensões adiciona mais algumas funcionalidades, que você pode conferir no <a href="https://www.virtualbox.org/manual/ch01.html#intro-installing">manual do VirtualBox</a>, se desejar.</p>
+<p>Para mim, a principal vantagem de instalar as extensões é poder virtualizar portas USB 2.0 e USB 3.0 (o pacote principal suporta apenas USB 1.1). O pacote de extensões adiciona mais algumas funcionalidades, que você pode conferir no <a href="https://www.virtualbox.org/manual/ch01.html#intro-installing">manual do VirtualBox</a>, se desejar.</p>
 
 <p>O pacote principal foi o que baixamos e instalamos nos <em>posts</em> anteriores.</p>
 
@@ -749,7 +753,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 <p>Se o SO convidado é o Linux Kamarada, saiba que os adicionais para convidado já vem instalados por padrão.</p>
 
-<p>Se o SO convidado é o openSUSE, a forma mais fácil de instalar os adicionais para convidado é obtê-los dos repositórios oficiais da distribuição, o que pode ser feito executando o comando a seguir (no SO convidado):</p>
+<p>Se o SO convidado é o openSUSE, a forma mais fácil de instalar os adicionais para convidado é obtê-los dos repositórios oficiais da distribuição, o que pode ser feito executando o comando a seguir (no SO convidado, como <em>root</em>):</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre># zypper in virtualbox-guest-{tools,x11}
@@ -764,7 +768,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 </div>
 
-<p>Se o SO convidado é o Windows, o instalador dos adicionais para convidado deve ser iniciado automaticamente quando a imagem ISO é inserida, ou você pode iniciá-lo a partir do leitor de DVD virtual:</p>
+<p>Se o SO convidado é o Windows, o instalador dos adicionais para convidado deve ser iniciado automaticamente quando a imagem ISO é inserida, ou você pode iniciá-lo manualmente a partir do leitor de DVD virtual:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-76-pt.jpg" title="">
@@ -773,7 +777,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 </div>
 
-<p>Se o SO convidado é o Ubuntu, o sistema pergunta se deseja instalar os adicionais para convidado quando a imagem ISO é inserida:</p>
+<p>Se o SO convidado é o Ubuntu, o sistema pergunta se deseja executar o instalador dos adicionais para convidado quando a imagem ISO é inserida:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-77-pt.jpg" title="">
@@ -784,7 +788,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 <p>Se precisar de mais informações sobre como instalar os adicionais para convidado, consulte a documentação do SO convidado ou o <a href="https://www.virtualbox.org/manual/ch04.html#guestadd-install">manual do VirtualBox</a>.</p>
 
-<p><strong>Observação:</strong> se o SO hospedeiro é o openSUSE, o VirtualBox não vem com a imagem ISO dos adicionais para convidado e pergunta se você deseja baixá-la.</p>
+<p><strong>Observação:</strong> se o SO hospedeiro é o Linux Kamarada ou o openSUSE, o VirtualBox não vem com a imagem ISO dos adicionais para convidado e pergunta se você deseja baixá-la.</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/10/virtualbox-78-pt.jpg" title="">
@@ -796,9 +800,14 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 <p>Clicando em <strong>Baixar</strong>, o <em>download</em> é iniciado, mas sempre termina com erro:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2019/10/virtualbox-79-pt.jpg" title="">
-<img src="/files/2019/10/virtualbox-79-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2019/10/virtualbox-79-pt.jpg" title="A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida.">
+<img src="/files/2019/10/virtualbox-79-pt.jpg" alt="A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida." class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
+
+<em class="caption" itemprop="description">
+<p>A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida.</p>
+
+</em>
 
 </div>
 
@@ -822,7 +831,7 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
 
 <p>Por exemplo, se a máquina virtual roda o Linux Kamarada com uma resolução de 1024x768 e você redimensiona a janela da máquina virtual tornando-a 100 <em>pixels</em> mais larga, os adicionais para convidado ajustam a resolução da tela automaticamente para 1124x768.</p>
 
-<p><strong>Observação:</strong> se seu SO convidado é o Linux Kamarada ou o openSUSE, pode ser que você redimensione a janela e a resolução não seja ajustada de imediato.</p>
+<p><strong>Observação:</strong> se o SO convidado é o Linux Kamarada ou o openSUSE, pode ser que você redimensione a janela da VM e a resolução não seja ajustada de imediato.</p>
 
 <p>Esse é outro <em>bug</em> conhecido do openSUSE:</p>
 

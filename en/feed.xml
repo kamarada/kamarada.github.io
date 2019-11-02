@@ -9,10 +9,637 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 30 Oct 2019 23:54:09 -0300</pubDate>
-        <lastBuildDate>Wed, 30 Oct 2019 23:54:09 -0300</lastBuildDate>
+        <pubDate>Fri, 01 Nov 2019 23:04:41 -0300</pubDate>
+        <lastBuildDate>Fri, 01 Nov 2019 23:04:41 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Tips for using VirtualBox every day</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This is the part 3 of our trilogy of posts about &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox&lt;/a&gt;! You are going to see how to create a virtual hard disk and install &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; on the virtual machine, as well as tips for using VirtualBox daily. As the guest operating system, I’m going to use the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;-based &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Kamarada&lt;/a&gt; Linux distribution.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;In the previous posts, you’ve seen what virtualization is, what VirtualBox is, how to install it on &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and Linux, how to create a virtual machine and how to use it to try Linux.&lt;/p&gt;
+
+&lt;p&gt;If you fell into this page, I recommend that you start your reading from the previous posts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Installing VirtualBox on Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;prevent-livecddvd-ejection&quot;&gt;Prevent LiveCD/DVD ejection&lt;/h2&gt;
+
+&lt;p&gt;Some guest operating systems, such as &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, eject &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live media&lt;/a&gt; on shutdown:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-41.jpg&quot; title=&quot;Please remove the installation medium, then press Enter&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-41.jpg&quot; alt=&quot;Please remove the installation medium, then press Enter&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Please remove the installation medium, then press Enter&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On a physical computer, the LiveDVD would now be ejected.&lt;/p&gt;
+
+&lt;p&gt;On a VirtualBox virtual machine, the virtual DVD drive becomes empty. To start the VM again, you would have to reinsert the ISO image into the virtual DVD drive, as we have seen in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;. If you repeatedly start the VM with live media, having to reinsert the ISO image every time is unnecessarily laborious.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, VirtualBox provides an option to prevent live media ejection. To enable it, select the virtual machine on the VirtualBox start screen, click &lt;strong&gt;Settings&lt;/strong&gt;, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the virtual DVD drive and enable the &lt;strong&gt;LiveCD/DVD&lt;/strong&gt; option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-42-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-42-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;From now on, when you shut the VM down, live media will no longer be removed. You can start the VM again without having to manually reinsert the ISO image.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-virtual-hard-disk&quot;&gt;Creating a virtual hard disk&lt;/h2&gt;
+
+&lt;p&gt;If you have followed this trilogy of posts about VirtualBox, until now you have booted Linux on the virtual machine from a &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt;. That way, any changes you make to the guest OS are lost when you shut the VM down. For having a first contact with Linux, a live image is great, but using Linux on a daily basis doesn’t look like that.&lt;/p&gt;
+
+&lt;p&gt;To get a better idea of how it is to use Linux on a real computer, let’s install Linux on the virtual machine. Before doing that, we need to create a virtual hard disk.&lt;/p&gt;
+
+&lt;p&gt;With the VM shutdown, select it on the VirtualBox start screen, click &lt;strong&gt;Settings&lt;/strong&gt;, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the &lt;strong&gt;Controller: SATA&lt;/strong&gt; and click the &lt;strong&gt;Add hard disk&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-43-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-43-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;VirtualBox asks if you want to create a new disk or use an existing one. Click &lt;strong&gt;Create new disk&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-44-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-44-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;VirtualBox supports some types of virtual hard disks. Probably you don’t want to use this disk with other virtualization software, so keep the VirtualBox native format &lt;strong&gt;VDI (VirtualBox Disk Image)&lt;/strong&gt; selected and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-45-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-45-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A virtual hard disk, from the host OS point of view, is a file. You can choose between:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create a &lt;strong&gt;Fixed size&lt;/strong&gt; file, which immediately has the same size as the virtual disk’s wanted capacity (e.g. for a 10GB virtual disk, VirtualBox creates a 10GB file), or&lt;/li&gt;
+  &lt;li&gt;create a &lt;strong&gt;Dynamically allocated&lt;/strong&gt; file, which has the same size as the virtual disk space actually in use (this file is initially very small and grows in size when the guest OS stores new data, limited to the maximum capacity chosen).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I recommend that you keep the &lt;strong&gt;Dynamically allocated&lt;/strong&gt; option selected and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-46-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-46-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter a file path and size for the virtual hard disk — 20GB is enough to install Linux Kamarada (or openSUSE) and test it with comfort — and click &lt;strong&gt;Create&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-47-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-47-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That’s it: virtual hard disk created and ready to be used. Back to the &lt;strong&gt;Settings&lt;/strong&gt; dialog box, click &lt;strong&gt;OK&lt;/strong&gt; to close it and return to the VirtualBox start screen.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-linux-on-the-virtual-machine&quot;&gt;Installing Linux on the virtual machine&lt;/h2&gt;
+
+&lt;p&gt;Make sure the Linux ISO image is in the virtual DVD drive and start the virtual machine.&lt;/p&gt;
+
+&lt;p&gt;Start the Linux Kamarada installer by clicking its icon on the dock:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-48-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-48-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(just out of curiosity, the installer is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt; called &lt;a href=&quot;https://calamares.io/&quot;&gt;Calamares&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;On the first installer screen, select your language (for the purpose of this post, I’m going to stay with the default &lt;strong&gt;American English&lt;/strong&gt;) and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the second screen, &lt;strong&gt;Partitions&lt;/strong&gt;, you can partition the hard disk. Since you are going to use this virtual machine just to try Linux and it will be the sole system installed on the virtual disk, you don’t need not worry about partitioning, just choose to &lt;strong&gt;Erase disk&lt;/strong&gt; and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-49-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-49-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, &lt;strong&gt;Summary&lt;/strong&gt;, the installer summarizes the installation settings. Make sure everything is alright and click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-50-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-50-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that we reached the point of no return: once the installation has started, you cannot undo changes made to the disk. Click &lt;strong&gt;Install Now&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-51-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-51-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Wait for the installation of Linux Kamarada, which may take a few minutes:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-52-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-52-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can go have a coffee and come back later.&lt;/p&gt;
+
+&lt;p&gt;When installation is finished, &lt;strong&gt;do not&lt;/strong&gt; check &lt;strong&gt;Restart now&lt;/strong&gt;, click &lt;strong&gt;Done&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-53-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-53-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Shut the virtual machine down as usual (as we have seen in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Remove the ISO image from the virtual DVD drive (as if you were ejecting a DVD from a physical computer DVD drive). To do that, access the virtual machine settings, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the virtual DVD drive, click the media icon and then, on the drop-down menu that appears, click &lt;strong&gt;Remove Disk from Virtual Drive&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-54-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-54-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Settings&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
+
+&lt;p&gt;Now start the virtual machine. This time, it will boot from the virtual hard disk.&lt;/p&gt;
+
+&lt;p&gt;On the first use, Linux Kamarada presents a wizard to assist you on some basic configuration:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-55-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-55-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(just out of curiosity, that wizard is a &lt;a href=&quot;https://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; module called &lt;a href=&quot;https://en.opensuse.org/YaST_Firstboot&quot;&gt;Firstboot&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;On the first screen of the wizard, select your &lt;strong&gt;Language&lt;/strong&gt; and &lt;strong&gt;Keyboard Layout&lt;/strong&gt; and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the welcome screen, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-56-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-56-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, you are presented to the &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;openSUSE Leap license&lt;/a&gt;, which is the same license adopted by Linux Kamarada. You don’t need to worry about this license: since openSUSE is a free software, its license does not limit your use. You can read it just to know your rights as an openSUSE / Linux Kamarada user. When you finish, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-57-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-57-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, &lt;strong&gt;Clock and Time Zone&lt;/strong&gt;, adjust your time zone, date and time settings as needed and then click &lt;strong&gt;Next&lt;/strong&gt; (tip: if you need to change the time zone, click the map):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-58-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-58-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, you are going to create an user account for you. Enter your full name and the desired username and password. To make it easier to use the VM, I recommend checking the &lt;strong&gt;Use this password for system administrator&lt;/strong&gt; and &lt;strong&gt;Automatic Login&lt;/strong&gt; options. When you finish, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-59-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-59-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the last wizard screen, just click &lt;strong&gt;Finish&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-60-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-60-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That’s it! Linux Kamarada is installed on the virtual machine and ready to be used:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-61-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-61-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now let’s take a look at some tips that can make using VirtualBox easier and more interesting.&lt;/p&gt;
+
+&lt;h2 id=&quot;bridged-virtual-networking-mode&quot;&gt;Bridged virtual networking mode&lt;/h2&gt;
+
+&lt;p&gt;Depending on what you want to do, you may need the virtual machine to communicate with other devices on the local network, such as a printer or a file server.&lt;/p&gt;
+
+&lt;p&gt;If you haven’t changed the default virtual machine networking settings, you may have noticed that the virtual machine can communicate with the local network, but the opposite is not true (other local network devices are not able to reach the virtual machine).&lt;/p&gt;
+
+&lt;p&gt;In case you haven’t noticed it, run a simple test: on the guest OS, open the terminal and find out the IP address of the virtual machine by running the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ip -c a
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-62-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-62-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;For instance, my virtual machine has been given the IP address &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.2.15/24&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the host OS, find out the IP address of the real machine. For instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.10/24&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Back to the guest OS terminal, &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ping&quot;&gt;ping&lt;/a&gt;&lt;/strong&gt; your real machine:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.0.10
+PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=63 time=0.219 ms
+64 bytes from 10.0.0.10: icmp_seq=2 ttl=63 time=0.535 ms
+64 bytes from 10.0.0.10: icmp_seq=3 ttl=63 time=0.697 ms
+64 bytes from 10.0.0.10: icmp_seq=4 ttl=63 time=0.534 ms
+^C
+--- 10.0.0.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3052ms
+rtt min/avg/max/mdev = 0.219/0.496/0.697/0.173 ms
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(press &lt;strong&gt;Ctrl + C&lt;/strong&gt; to stop the &lt;strong&gt;ping&lt;/strong&gt; command)&lt;/p&gt;
+
+&lt;p&gt;It works. Now from the host OS try to &lt;strong&gt;ping&lt;/strong&gt; the virtual machine:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.2.15
+PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
+^C
+--- 10.0.2.15 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3053ms
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It does not work.&lt;/p&gt;
+
+&lt;p&gt;That happens because VirtualBox by default enables one virtual network adapter for the virtual machine and selects the &lt;strong&gt;NAT&lt;/strong&gt; (&lt;a href=&quot;https://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;Network Address Translation&lt;/a&gt;) mode for it. This way the guest OS can connect to the outside world using the host OS network stack, which translates guest network requests as if they were from the host. The guest is able to reach local network, but local network is not able to reach the guest, only the host at most. That is similar to what your ISP router does to your home computer: your computer is able to browse the web, but the world is not able to reach your home computer, only your modem at most.&lt;/p&gt;
+
+&lt;p&gt;NAT is the simplest VirtualBox networking mode. Usually it does not require any configuration on either the host or the guest. Also, it is sufficient for browsing the web, downloading files, etc. For those reasons, it is the default networking mode and is good for most use cases.&lt;/p&gt;
+
+&lt;p&gt;However, VirtualBox is extremely flexible in how it virtualizes networking and provides other modes.&lt;/p&gt;
+
+&lt;p&gt;Besides NAT, other mode I often use is &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bridging_(networking)&quot;&gt;bridge&lt;/a&gt;&lt;/strong&gt;: using this mode, VirtualBox sends guest OS network requests using the real machine’s network adapter directly, circumventing the host OS network stack. In practice, it is as if the real machine and the virtual machine were connected directly to the same router. The host is no longer “between” the guest and the router, but “besides” the guest.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-63-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-63-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To enable bridged networking, with the VM shut down, access the VM settings, open the &lt;strong&gt;Network&lt;/strong&gt; section, and change the &lt;strong&gt;Attached to&lt;/strong&gt; option to &lt;strong&gt;Bridged adapter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-64-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-64-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In case the real machine has more than one network adapter, you can select which one is going to be bridged with the virtual network adapter on the &lt;strong&gt;Name&lt;/strong&gt; field right below:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-65-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-65-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When you are finished, click &lt;strong&gt;OK&lt;/strong&gt;. Start the virtual machine and repeat the previous tests. Note that the virtual machine now receives an IP address from the same network as the real machine, which in its turn can now ping the virtual machine.&lt;/p&gt;
+
+&lt;p&gt;In addition to NAT and bridged adapter, VirtualBox provides other networking modes, which may be useful for other use cases. If you want to learn more about VirtualBox networking modes, take a look at the &lt;a href=&quot;https://www.virtualbox.org/manual/ch06.html&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;extension-pack&quot;&gt;Extension Pack&lt;/h2&gt;
+
+&lt;p&gt;The VirtualBox software is split into two components: a base package, which consists of all &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; components licensed under the &lt;a href=&quot;https://www.gnu.org/licenses/old-licenses/gpl-2.0.html&quot;&gt;GPLv2&lt;/a&gt;, and an &lt;strong&gt;Extension Pack&lt;/strong&gt;, with some additional &lt;a href=&quot;https://www.oracle.com/&quot;&gt;Oracle&lt;/a&gt; proprietary components which extend the functionality of the base package.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, the main advantage of installing the Extension Pack is being able to virtualize USB 2.0 and USB 3.0 ports (the base package only supports USB 1.1). The Extension Pack adds some other features, which are listed on the &lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html#intro-installing&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The base package was what we downloaded and installed in previous posts.&lt;/p&gt;
+
+&lt;p&gt;To download the Extension Pack, go to the VirtualBox official website at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And click the &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt; banner.&lt;/p&gt;
+
+&lt;p&gt;On the next page, under &lt;strong&gt;Oracle VM VirtualBox Extension Pack&lt;/strong&gt;, click &lt;strong&gt;All supported platforms&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-66.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-66.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are going to download a file with a &lt;code class=&quot;highlighter-rouge&quot;&gt;.vbox-extpack&lt;/code&gt; extension.&lt;/p&gt;
+
+&lt;p&gt;If your host OS is Windows, you need to start VirtualBox as an administrator:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-67-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-67-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If your host OS is Linux, that is not needed: ​​you can start VirtualBox as usual.&lt;/p&gt;
+
+&lt;p&gt;Then, open the &lt;strong&gt;File&lt;/strong&gt; menu and click &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-68-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-68-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By the left, select &lt;strong&gt;Extensions&lt;/strong&gt;. By the right, click the &lt;strong&gt;Add&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-69-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-69-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the Extension Pack file you downloaded and click &lt;strong&gt;Open&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-70-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-70-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the confirmation dialog box, click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-71-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-71-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Read the Extension Pack license (or at least scroll it until the end) and click &lt;strong&gt;I Agree&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-72-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-72-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now, if you are using Linux, you are asked the administrator (&lt;em&gt;root&lt;/em&gt; user) password, which you must provide to continue.&lt;/p&gt;
+
+&lt;p&gt;VirtualBox reports that the Extension Pack has been installed successfully, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-73-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-73-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that the Extension Pack now appears in the list of installed extensions:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-74-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-74-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Preferences&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; you should always use the same version of Extension Pack as your installed version of VirtualBox. When you update VirtualBox to a new version, go to the VirtualBox official website, download and install the equivalent version of the Extension Pack.&lt;/p&gt;
+
+&lt;h2 id=&quot;guest-additions&quot;&gt;Guest Additions&lt;/h2&gt;
+
+&lt;p&gt;VirtualBox offers drivers that can be installed &lt;em&gt;inside&lt;/em&gt; a virtual machine to improve performance of the guest OS and provide closer integration between host and guest systems with the addition of extra features. These drivers are called &lt;strong&gt;Guest Additions&lt;/strong&gt;. It is recommended to install them so the VM usage becomes faster and more convenient.&lt;/p&gt;
+
+&lt;p&gt;If the guest OS is Linux Kamarada, good news: Guest Additions come installed out-of-the-box.&lt;/p&gt;
+
+&lt;p&gt;If the guest OS is openSUSE, the easiest way to install Guest Additions is to get them from the official distribution repositories, which can be done by running the following command (on the guest OS, as root):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in virtualbox-guest-{tools,x11}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In general, VirtualBox provides an ISO image with Guest Additions ready for installation on Windows or Linux. On the VM window, open the &lt;strong&gt;Devices&lt;/strong&gt; menu and click &lt;strong&gt;Insert Guest Additions CD image&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-75-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-75-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If the guest OS is Windows, the Guest Additions installer should be started automatically when the ISO image is inserted. If not, you can manually start it from the virtual DVD drive:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-76-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-76-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If the guest OS is Ubuntu, the system asks whether you want to run the Guest Additions installer when the ISO image is inserted:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-77-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-77-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you need more information on how to install Guest Additions, refer to the guest OS documentation or the &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html#guestadd-install&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if the host OS is Linux Kamarada or openSUSE, VirtualBox does not come with the Guest Additions ISO image and asks you permission to download it.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-78-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-78-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clicking &lt;strong&gt;Download&lt;/strong&gt;, the download is started, but it always ends with an error:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-79-en.jpg&quot; title=&quot;The network operation failed with the following error: During network request: Unknown reason.&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-79-en.jpg&quot; alt=&quot;The network operation failed with the following error: During network request: Unknown reason.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The network operation failed with the following error: During network request: Unknown reason.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This is a known openSUSE bug and there are people already working on it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1132102&quot;&gt;Bug 1132102 - VirtualBox 6.0.x guest addition ISO download failed&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While it is not fixed, a possible workaround is to manually download the Guest Additions ISO image and then manually insert it into the virtual DVD drive.&lt;/p&gt;
+
+&lt;p&gt;You can download the Guest Additions ISO image at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://download.virtualbox.org/virtualbox/&quot;&gt;http://download.virtualbox.org/virtualbox/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;resizing-the-virtual-machines-window&quot;&gt;Resizing the virtual machine’s window&lt;/h3&gt;
+
+&lt;p&gt;With Guest Additions installed, when you resize the VM window, the guest OS display resolution is automatically adjusted, as if you had manually entered an arbitrary resolution in the guest OS video settings. This allows you to use virtually any display resolution in the VM, even if it’s not one of the most common resolutions (such as 1024x768, 1366x768, 1920x1080, etc).&lt;/p&gt;
+
+&lt;p&gt;For example, if the VM runs Linux Kamarada as guest with a resolution of 1024x768 pixels and you then resize the VM window to make it 100 pixels wider, the Guest Additions will automatically adjust the Linux Kamarada display resolution to 1124x768.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if the guest OS is Linux Kamarada or openSUSE, it may happen that you resize the VM window and the guest resolution is not automatically adjusted.&lt;/p&gt;
+
+&lt;p&gt;This is another known openSUSE bug:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1151896&quot;&gt;Bug 1151896 - Leap 15.1 guest cant change screen resolution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A possible workaround is to shut the VM down, access the VM settings, open the &lt;strong&gt;Display&lt;/strong&gt; section and change the &lt;strong&gt;Graphics Controller&lt;/strong&gt; from the default controller (&lt;strong&gt;VMSVGA&lt;/strong&gt;) to any of the others (&lt;strong&gt;VBoxVGA&lt;/strong&gt; or &lt;strong&gt;VBoxSVGA&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-80-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-80-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Another option, if you don’t want to restart the VM, is to run (on the guest OS, as root):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# VBoxClient --vmsvga
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That done, resizing the VM window should cause the guest resolution to be adjusted as expected.&lt;/p&gt;
+
+&lt;h3 id=&quot;shared-clipboard&quot;&gt;Shared clipboard&lt;/h3&gt;
+
+&lt;p&gt;With Guest Additions installed, you can share the clipboard of the guest with that of the host. Doing so makes it possible to copy and paste text from the virtual machine to the real machine and vice versa.&lt;/p&gt;
+
+&lt;p&gt;To enable clipboard sharing, on the VM window, open the &lt;strong&gt;Devices&lt;/strong&gt; menu, then the &lt;strong&gt;Shared Clipboard&lt;/strong&gt; submenu and finally select &lt;strong&gt;Bidirectional&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-81-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-81-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Do you know how you can use this facility? For example, you can open a Linux how-to on your favorite web browser on the host OS and copy commands to the Linux terminal on the guest OS:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/10/virtualbox-82-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/10/virtualbox-82-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Those two Guest Additions features are just the ones I use the most. If you want to know other features provided by Guest Additions, take a look at the &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;thats-all-folks&quot;&gt;That’s all, folks!&lt;/h2&gt;
+
+&lt;p&gt;In this trilogy of posts about VirtualBox, I shared what I believe to be the basics to get started and top tips for using this virtualization software on a daily basis. Maybe the concept of a virtual machine is new to you, but you may have noticed that the VirtualBox interface is very intuitive: as you use it, you realize how it works, and questions that eventually come up fade away with practice.&lt;/p&gt;
+
+&lt;p&gt;I hope this text was helpful. If you have any questions, don’t hesitate to comment!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;To write this post, I consulted the VirtualBox User Manual:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/&quot;&gt;Oracle VM VirtualBox - User Manual&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 01 Nov 2019 22:40:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Installing VirtualBox on Linux</title>
@@ -20,7 +647,7 @@
 
 &lt;!--more--&gt;
 
-&lt;p&gt;In &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;, you’ve seen what virtualization is, what VirtualBox is, how to install VirtualBox on Windows, how to create a virtual machine and how to use it to try Linux.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;, you’ve seen what virtualization is, what VirtualBox is, how to install VirtualBox on &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;, how to create a virtual machine and how to use it to try Linux.&lt;/p&gt;
 
 &lt;p&gt;If you fell into this page, start reading the first part:&lt;/p&gt;
 
@@ -417,7 +1044,13 @@ $ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
 
 &lt;p&gt;Now, Windows and Linux users are all on the same page: we already know how to install VirtualBox on the operating systems we use and we are able to create virtual machines.&lt;/p&gt;
 
-&lt;p&gt;In part 3, we are going to see how to create a virtual hard disk and install Linux on the virtual machine, as well as tips for using VirtualBox daily.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&quot;/en/2019/11/01/tips-for-using-virtualbox-every-day/&quot;&gt;part 3&lt;/a&gt;, we are going to see how to create a virtual hard disk and install Linux on the virtual machine, as well as tips for using VirtualBox daily.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Nov 01, 2019):&lt;/strong&gt;
+    &lt;p&gt;&lt;a href=&quot;/en/2019/11/01/tips-for-using-virtualbox-every-day/&quot;&gt;Part 3 is here! (click)&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -492,7 +1125,7 @@ $ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
 &lt;ol&gt;
   &lt;li&gt;in this first part, you are going to install VirtualBox on Windows, learn its basics and start using Linux inside a virtual machine;&lt;/li&gt;
   &lt;li&gt;in the &lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;second part&lt;/a&gt;, you will see how to install VirtualBox on Linux;&lt;/li&gt;
-  &lt;li&gt;in the third part, you will see some useful tips for using VirtualBox daily.&lt;/li&gt;
+  &lt;li&gt;in the &lt;a href=&quot;/en/2019/11/01/tips-for-using-virtualbox-every-day/&quot;&gt;third part&lt;/a&gt;, you will see some useful tips for using VirtualBox daily.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;This sequence of posts is devoted mainly to Windows users who haven’t had their first contact with Linux yet and want to try it using the safety of VirtualBox.&lt;/p&gt;
@@ -721,6 +1354,13 @@ $ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
 &lt;p&gt;You can change the default Host key in the VirtualBox preferences, if you want.&lt;/p&gt;
 
 &lt;h2 id=&quot;shutting-the-virtual-machine-down&quot;&gt;Shutting the virtual machine down&lt;/h2&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; as you are using a Linux &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt;, &lt;strong&gt;any changes you make to the guest operating system will be lost when you shut the virtual machine down&lt;/strong&gt;. If you created any file on the virtual machine you think is important to keep, send it by email or upload it to some cloud storage service, such as &lt;a href=&quot;https://db.tt/4VzN0K26&quot;&gt;Dropbox&lt;/a&gt; or &lt;a href=&quot;https://drive.google.com/&quot;&gt;Google Drive&lt;/a&gt;, before shutting the virtual machine down.&lt;/p&gt;
+
+
+&lt;/div&gt;
 
 &lt;p&gt;When you are finished using the virtual machine, shut it down as usual, in the same way you would shutdown a physical machine. In case your guest OS is Linux Kamarada, which comes with the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop out-of-the-box, to shut the VM down, click the &lt;strong&gt;system menu&lt;/strong&gt;, in the upper right corner of the VM screen, and then click the &lt;strong&gt;Shutdown&lt;/strong&gt; icon:&lt;/p&gt;
 
@@ -2450,17 +3090,6 @@ Listing of PKCS #11 Modules
   &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Oct 19, 2019):&lt;/strong&gt;
-    
-&lt;p&gt;Do you want to know more about installing and using VirtualBox on both Linux and Windows? Check these out:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Installing VirtualBox on Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-
 &lt;p&gt;On the virtual machine, it is recommended to install the Guest Additions, which improve the integration between real and virtual machines through VirtualBox.&lt;/p&gt;
 
 &lt;p&gt;If you have installed openSUSE on the virtual machine, run (on the virtual machine):&lt;/p&gt;
@@ -2479,6 +3108,18 @@ Listing of PKCS #11 Modules
 &lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you use Windows and want to try Linux, you can install VirtualBox on Windows, create a virtual machine, and install Linux on the virtual machine.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Nov 01, 2019):&lt;/strong&gt;
+    
+&lt;p&gt;Do you want to know more about installing and using VirtualBox on both Linux and Windows? Check these out:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Installing VirtualBox on Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/11/01/tips-for-using-virtualbox-every-day/&quot;&gt;Tips for using VirtualBox every day&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;14-gimp&quot;&gt;14) GIMP&lt;/h2&gt;
 
@@ -3068,586 +3709,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Sat, 20 Jul 2019 16:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Using Git with SSH keys</title>
-                <description>&lt;p&gt;Today’s post is for developers. If you use the &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; version control system with a service such as &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt; or &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt; to host and manage your projects source codes, you know that by default Git connects to remotes using the &lt;a href=&quot;https://en.wikipedia.org/wiki/HTTPS&quot;&gt;HTTPS&lt;/a&gt; protocol, which requires you to enter username and password every time you run a command such as &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt; protocol, you can connect and authenticate to servers to use their services. The three mentioned services allow Git to connect via SSH instead of HTTPS. Connecting with public key encryption dispenses typing username and password for every Git command.&lt;/p&gt;
-
-&lt;p&gt;You are going to see in this post how to use GitHub, GitLab and Bitbucket with SSH.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/04/git-ssh.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/04/git-ssh.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;make-sure-an-ssh-client-in-installed&quot;&gt;Make sure an SSH client in installed&lt;/h2&gt;
-
-&lt;p&gt;In order to connect using the SSH protocol, an SSH client must be installed on your system. If you use &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, it should be already installed by default.&lt;/p&gt;
-
-&lt;p&gt;Just to make sure, open the terminal and run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -V
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command should output the version number of the SSH client being used:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;OpenSSH_7.9p1, OpenSSL 1.1.0i-fips  14 Aug 2018
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In case the system informs that the &lt;strong&gt;ssh&lt;/strong&gt; command was not found, you can install the &lt;a href=&quot;https://www.openssh.com/&quot;&gt;OpenSSH&lt;/a&gt; client running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in openssh
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;check-for-existing-ssh-keys&quot;&gt;Check for existing SSH keys&lt;/h2&gt;
-
-&lt;p&gt;To connect using the SSH protocol, you need an SSH key pair (one private and the other public). If you have never used SSH, you can safely skip this topic and move on to the next. If you have ever used SSH (for instance, to &lt;a href=&quot;/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/&quot;&gt;remotely access a server&lt;/a&gt;), probably you already have an SSH key pair, in which case you don’t need to generate a new key pair.&lt;/p&gt;
-
-&lt;p&gt;To see if existing SSH keys are present, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ls -lah ~/.ssh
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command should list the contents of the &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; folder, in which the SSH client stores its configuration files:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;total 28K
-drwx------  2 vinicius users   94 Mar 17 14:55 .
-drwxr-xr-x 54 vinicius users 4.0K Jul 14 02:44 ..
--rw-------  1 vinicius users 2.5K Mar  1 23:41 authorized_keys
--rw-r--r--  1 vinicius users   39 Dec 19  2018 config
--rw-------  1 vinicius users 3.3K Jul 18  2018 id_rsa
--rw-r--r--  1 vinicius users  748 Jul 18  2018 id_rsa.pub
--rw-r--r--  1 vinicius users 4.7K Jul  5 01:57 known_hosts
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you receive an error that there is no &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; directory or there are no files in it, don’t worry: it means you haven’t created an SSH key pair yet. If that is the case, proceed to the next topic.&lt;/p&gt;
-
-&lt;p&gt;By default, public SSH keys are named:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;id_dsa.pub;&lt;/li&gt;
-  &lt;li&gt;id_ecdsa.pub;&lt;/li&gt;
-  &lt;li&gt;id_ed25519.pub; or&lt;/li&gt;
-  &lt;li&gt;id_rsa.pub.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Inside my &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt; folder, I have an SSH key pair (&lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt; is the public key and &lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; is the private key) created a year ago (&lt;code class=&quot;highlighter-rouge&quot;&gt;Jul 18  2018&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;For security reasons, it is recommended that you generate a new SSH key pair at least once a year. If you already have an SSH key pair that was created more than a year ago, it is recommended that you proceed to the next topic.&lt;/p&gt;
-
-&lt;p&gt;If you already have an SSH key pair and want to reuse it, you can skip the next topic.&lt;/p&gt;
-
-&lt;h2 id=&quot;generate-a-new-ssh-key-pair&quot;&gt;Generate a new SSH key pair&lt;/h2&gt;
-
-&lt;p&gt;To generate a new SSH key pair, run the following command (replace &lt;code class=&quot;highlighter-rouge&quot;&gt;your_email@example.com&lt;/code&gt; with your email address):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
-
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/your_user_name/.ssh/id_rsa):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It asks you where to save the private key (&lt;code class=&quot;highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Press &lt;strong&gt;Enter&lt;/strong&gt; to accept the default location.&lt;/p&gt;
-
-&lt;p&gt;If you already have a private key, it asks whether it should overwrite:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;/home/your_user_name/.ssh/id_rsa already exists.
-Overwrite (y/n)?
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If that happens, type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then, enter and re-enter a &lt;a href=&quot;https://en.wikipedia.org/wiki/Passphrase&quot;&gt;passphrase&lt;/a&gt; (think of it as a kind of password):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The SSH key pair is created in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The whole interaction should look similar to the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;your_user_name@your_host_name:~&amp;gt; ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/your_user_name/.ssh/id_rsa):
-/home/your_user_name/.ssh/id_rsa already exists.
-Overwrite (y/n)? y
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /home/your_user_name/.ssh/id_rsa.
-Your public key has been saved in /home/your_user_name/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:CEnY8FOQmvISJpVp6oAlITemk1aWKRdViOFePP6/CKk your_email@example.com
-The key's randomart image is:
-+---[RSA 4096]----+
-|o.=@X++.         |
-|o*@O++           |
-|=Bo+=+           |
-|Oo+ oo..         |
-|=+ . .. S        |
-|...   o          |
-| .   o .         |
-|    . . o        |
-|   E   . o.      |
-+----[SHA256]-----+
-your_user_name@your_host_name:~&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;add-the-private-ssh-key-to-the-ssh-agent&quot;&gt;Add the private SSH key to the ssh-agent&lt;/h2&gt;
-
-&lt;p&gt;If you don’t want to type your passphrase each time you use your SSH keys, you need to add it to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Ssh-agent&quot;&gt;&lt;strong&gt;ssh-agent&lt;/strong&gt;&lt;/a&gt;, which is a program that runs in background while you are logged in to the system and stores your keys in memory.&lt;/p&gt;
-
-&lt;p&gt;To start the &lt;strong&gt;ssh-agent&lt;/strong&gt; in background, run the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ eval &quot;$(ssh-agent -s)&quot;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command outputs the &lt;strong&gt;ssh-agent&lt;/strong&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Process_identifier&quot;&gt;process identifier&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Agent pid 2887
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, add your SSH private key to the &lt;strong&gt;ssh-agent&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh-add ~/.ssh/id_rsa
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Type your passphrase and press &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Enter passphrase for /home/your_user_name/.ssh/id_rsa:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The command confirms that the private SSH key has been added to the &lt;strong&gt;ssh-agent&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Identity added: /home/your_user_name/.ssh/id_rsa (your_email@example.com)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;add-the-public-ssh-key-to-your-account&quot;&gt;Add the public SSH key to your account&lt;/h2&gt;
-
-&lt;p&gt;Once you have an SSH key and have added it to the &lt;strong&gt;ssh-agent&lt;/strong&gt;, you can set up connecting via SSH. Let’s see how to do that for each of the three servers: GitHub, GitLab and Bitbucket.&lt;/p&gt;
-
-&lt;p&gt;In all the three cases, the process is similar. Start by copying your public SSH key (&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.ssh/id_rsa.pub&lt;/code&gt;) file contents to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Clipboard_(computing)&quot;&gt;clipboard&lt;/a&gt; using the &lt;strong&gt;xclip&lt;/strong&gt; command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xclip -sel clip &amp;lt; ~/.ssh/id_rsa.pub
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/astrand/xclip&quot;&gt;&lt;strong&gt;xclip&lt;/strong&gt;&lt;/a&gt; is a command line utility that allows access to the graphical interface clipboard from the terminal. If it is not installed, you can install it running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install xclip
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;github&quot;&gt;GitHub&lt;/h3&gt;
-
-&lt;p&gt;Using a browser, go to the GitHub home page at &lt;a href=&quot;https://github.com/&quot;&gt;github.com&lt;/a&gt; and sign in to your account.&lt;/p&gt;
-
-&lt;p&gt;In the upper-right corner of the page, click your profile photo, then click &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/04/git-ssh-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/04/git-ssh-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In the user settings sidebar, click &lt;strong&gt;SSH and GPG keys&lt;/strong&gt;. Then click &lt;strong&gt;New SSH key&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Fill in the &lt;strong&gt;Title&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer) and paste your public key into the &lt;strong&gt;Key&lt;/strong&gt; field. Finally, click &lt;strong&gt;Add SSH key&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/04/git-ssh-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/04/git-ssh-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2017/04/git-ssh-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2017/04/git-ssh-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;gitlab&quot;&gt;GitLab&lt;/h3&gt;
-
-&lt;p&gt;Using a browser, go to the GitLab home page at &lt;a href=&quot;https://gitlab.com/&quot;&gt;gitlab.com&lt;/a&gt; and sign in to your account.&lt;/p&gt;
-
-&lt;p&gt;In the upper-right corner of the page, click your profile photo, then click &lt;strong&gt;Settings&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/gitlab-ssh-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/gitlab-ssh-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In the &lt;strong&gt;User Settings&lt;/strong&gt; sidebar, click &lt;strong&gt;SSH Keys&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Paste your public key in the &lt;strong&gt;Key&lt;/strong&gt; field. Fill in the &lt;strong&gt;Title&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer). Finally, click &lt;strong&gt;Add key&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/gitlab-ssh-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/gitlab-ssh-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/gitlab-ssh-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/gitlab-ssh-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;bitbucket&quot;&gt;Bitbucket&lt;/h3&gt;
-
-&lt;p&gt;Using a browser, go to the Bitbucket home page at &lt;a href=&quot;https://bitbucket.org/&quot;&gt;bitbucket.org&lt;/a&gt; and log in to your account.&lt;/p&gt;
-
-&lt;p&gt;In the lower-left corner of the page, click your profile photo, then click &lt;strong&gt;Bitbucket settings&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/bitbucket-ssh-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/bitbucket-ssh-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In the &lt;strong&gt;Settings&lt;/strong&gt; sidebar, in the &lt;strong&gt;Security&lt;/strong&gt; section, click &lt;strong&gt;SSH keys&lt;/strong&gt;. Then, click &lt;strong&gt;Add key&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Fill in the &lt;strong&gt;Label&lt;/strong&gt; field with a descriptive label for the new key (for example, the name of your computer) and paste your public key into the &lt;strong&gt;Key&lt;/strong&gt; field. Finally, click &lt;strong&gt;Add key&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/bitbucket-ssh-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/bitbucket-ssh-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now the key appears in the list of SSH keys associated with your account:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/bitbucket-ssh-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/bitbucket-ssh-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;test-connecting-via-ssh&quot;&gt;Test connecting via SSH&lt;/h2&gt;
-
-&lt;p&gt;GitHub, GitLab and Bitbucket allow you to test whether SSH connection has been set up correctly before actually using it with Git.&lt;/p&gt;
-
-&lt;h3 id=&quot;github-1&quot;&gt;GitHub&lt;/h3&gt;
-
-&lt;p&gt;After you’ve added your SSH key to your GitHub account, open the terminal and run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@github.com
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command attempts an &lt;a href=&quot;/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/&quot;&gt;SSH remote access&lt;/a&gt; to GitHub.&lt;/p&gt;
-
-&lt;p&gt;If that is the first time you connect to GitHub via SSH, the SSH client asks you if it can trust the public key of the GitHub server:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;The authenticity of host 'github.com (140.82.113.4)' can't be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no)?
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;yes&lt;/code&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;. The SSH client adds GitHub to the list of trusted hosts:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once added to the list of known hosts, you won’t be asked about GitHub’s public key again.&lt;/p&gt;
-
-&lt;p&gt;As this remote access via SSH is provided by GitHub just for testing, not for actual use, the server informs that you have successfully authenticated and terminates the connection:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you completed the test successfully, now you can use SSH with GitHub.&lt;/p&gt;
-
-&lt;p&gt;The whole interaction should look similar to the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;your_user_name@your_host_name:~&amp;gt; ssh -T git@github.com
-The authenticity of host 'github.com (140.82.113.4)' can't be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known hosts.
-Hi your_user_name! You've successfully authenticated, but GitHub does not provide shell access.
-your_user_name@your_host_name:~&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;gitlab-1&quot;&gt;GitLab&lt;/h3&gt;
-
-&lt;p&gt;If you have added your SSH key to your GitLab account, the test is very similar:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@gitlab.com
-
-The authenticity of host 'gitlab.com (35.231.145.151)' can't be established.
-ECDSA key fingerprint is SHA256:HbW3g8zUjNSksFbqTiUWPWg2Bq1x8xdGUrliXFzSnUw.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'gitlab.com,35.231.145.151' (ECDSA) to the list of known hosts.
-Welcome to GitLab, @your_user_name!
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you completed the test successfully, now you can use SSH with GitLab.&lt;/p&gt;
-
-&lt;h3 id=&quot;bitbucket-1&quot;&gt;Bitbucket&lt;/h3&gt;
-
-&lt;p&gt;If you have added your SSH key to your Bitbucket account, the test is very similar:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ssh -T git@bitbucket.org
-
-The authenticity of host 'bitbucket.org (104.192.143.1)' can't be established.
-RSA key fingerprint is SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'bitbucket.org,104.192.143.1' (RSA) to the list of known hosts.
-logged in as your_user_name.
-
-You can use git or hg to connect to Bitbucket. Shell access is disabled.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you completed the test successfully, now you can use SSH with Bitbucket.&lt;/p&gt;
-
-&lt;h2 id=&quot;clone-a-repository-using-ssh&quot;&gt;Clone a repository using SSH&lt;/h2&gt;
-
-&lt;p&gt;Now that we’ve got our SSH keys set up, let’s see how to clone a Git repository using SSH instead of HTTPS.&lt;/p&gt;
-
-&lt;h3 id=&quot;github-2&quot;&gt;GitHub&lt;/h3&gt;
-
-&lt;p&gt;At &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone or download&lt;/strong&gt; and copy the &lt;a href=&quot;https://en.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; to clone the repository using SSH:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/git-ssh-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/git-ssh-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The URL of a GitHub repository looks like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@github.com:your_user_name/your_project_name.git
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the terminal and run the &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command passing the copied URL as argument.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; to paste into the terminal, use &lt;strong&gt;Ctrl + Shift + V&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note that now Git clones the repository without asking for a password:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/git-ssh-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/git-ssh-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;gitlab-2&quot;&gt;GitLab&lt;/h3&gt;
-
-&lt;p&gt;At &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone&lt;/strong&gt; and copy the URL to clone the repository using SSH:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/gitlab-ssh-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/gitlab-ssh-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The URL of a GitLab repository looks like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@gitlab.com:your_user_name/your_project_name.git
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the terminal and run the &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command passing the copied URL as argument:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/gitlab-ssh-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/gitlab-ssh-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that now Git clones the repository without asking for a password.&lt;/p&gt;
-
-&lt;h3 id=&quot;bitbucket-2&quot;&gt;Bitbucket&lt;/h3&gt;
-
-&lt;p&gt;At &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt;, go to a project’s repository, click &lt;strong&gt;Clone&lt;/strong&gt; and copy the command to clone the repository using SSH:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/bitbucket-ssh-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/bitbucket-ssh-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that, differently from GitHub and GitLab that present the URL, Bitbucket presents the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;git clone&lt;/code&gt; command, including the URL.&lt;/p&gt;
-
-&lt;p&gt;The URL of a Bitbucket repository looks like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git@bitbucket.org:your_user_name/your_project_name.git
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the terminal, paste and run the command you copied from Bitbucket:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/bitbucket-ssh-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/bitbucket-ssh-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that now Git clones the repository without asking for a password.&lt;/p&gt;
-
-&lt;h2 id=&quot;reconfigure-existing-repositories-to-use-ssh&quot;&gt;Reconfigure existing repositories to use SSH&lt;/h2&gt;
-
-&lt;p&gt;The repositories we clone from now on using SSH will continue to use SSH for future Git commands such as &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;. But existing local repositories, previously cloned with HTTPS, will continue to use HTTPS, unless we set them up to use SSH.&lt;/p&gt;
-
-&lt;p&gt;To do that, open the terminal and change the current directory to a local repository.&lt;/p&gt;
-
-&lt;p&gt;List the existing remote repositories and their URLs with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git remote -v
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That command should output something like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;origin  https://your_server/your_user_name/your_project_name.git (fetch)
-origin  https://your_server/your_user_name/your_project_name.git (push)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Change your remote repository’s URL with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git remote set-url origin git@your_server:your_user_name/your_project_name.git
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote -v&lt;/code&gt; once more to verify that the remote repository’s URL has changed:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;origin  git@your_server:your_user_name/your_project_name.git (fetch)
-origin  git@your_server:your_user_name/your_project_name.git (push)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Great. That done, Git will use SSH, instead of HTTPS, to synchronize that local repository with its remote equivalent.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;I hope those tips can be useful to you as they have been to me since I started using Git. If you have any questions or trouble, don’t hesitate to comment! See you!&lt;/p&gt;
-
-&lt;p&gt;And always remember: have a lot of fun…&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/connecting-to-github-with-ssh&quot;&gt;Connecting to GitHub with SSH - GitHub Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html&quot;&gt;Set up an SSH key - Atlassian Documentation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.github.com/en/articles/changing-a-remotes-url&quot;&gt;Changing a remote’s URL - GitHub Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.gitlab.com/ee/ssh/&quot;&gt;GitLab and SSH keys - GitLab&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sun, 14 Jul 2019 19:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/14/using-git-with-ssh-keys/</guid>
                 
                 
                     <category>en</category>
