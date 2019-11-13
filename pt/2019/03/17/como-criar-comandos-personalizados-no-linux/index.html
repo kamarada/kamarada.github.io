@@ -79,9 +79,9 @@
     
         <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
         <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
     <link rel="stylesheet" href="/assets/css/syntax.css">
     <link rel="stylesheet" href="/assets/css/main.css">
 
@@ -144,18 +144,24 @@
         <!-- End Facebook SDK -->
     
 
-    <!-- Fixed navbar -->
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
         <a class="navbar-brand" href="/">
             
                 Linux Kamarada
             
         </a>
-
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav m-auto">
@@ -173,20 +179,20 @@
                     
                 
             </ul>
-            <form action="/pt/buscar/" class="form-inline" id="search-form" method="get" role="search">
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
                 
                 
                 <div class="input-group">
-                    <input class="form-control" id="search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary btn-number" id="search-button" type="submit">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="dropdown-toggle" id="language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></span></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language-button">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
                         
                         
                             <h6 class="dropdown-header">English</h6>
@@ -214,16 +220,63 @@
     </div><!--.container-->
 </nav>
 
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
 
-    <div class="container">
-        <div class="row">
-            <div class='col-sm-8'>
-                <!--<div class='gap-small'>
-                    <a href='http://en.opensuse.org/Portal:15.1'>
-                        <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
-                    </a>
-                </div>-->
-                <div class="blog-post card mb-3">
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.1'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
             <a class="blog-post-link" href="/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/" itemprop="mainEntityOfPage url">
@@ -421,42 +474,44 @@ $ mkdir bin
         
 
         
-            <!-- Disqus -->
-            <div class="gap"></div>
-            <h2>
-                
-                    Comentários
-                
-            </h2>
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
                     
-                        this.language = "pt";
+                        Comentários
                     
-                    this.page.url = 'https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/';
-                };
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/';
+                    };
 
-                (function() {
-                    var d = document, s = d.createElement('script');
+                    (function() {
+                        var d = document, s = d.createElement('script');
 
-                    s.src = '//kamarada.disqus.com/embed.js';
+                        s.src = '//kamarada.disqus.com/embed.js';
 
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>
-                <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
-            </noscript>
-            <!-- Disqus End -->
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
         
     </article>
 </div><!-- .blog-post -->
 
-            </div>
-            <div class="col-sm-4">
-                <div class="card mb-3" id="about">
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
     <div class="card-header">
       <h3>
           <a name="about"></a>
@@ -589,11 +644,11 @@ $ mkdir bin
     </div><!-- .card-body -->
 </div><!-- .card -->
 
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <footer class="footer">
+            <footer class="footer">
     <div class="container">
         Copyright &copy; 2019 <a href='#author'>Antônio Vinícius</a>. Todos os direitos reservados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
     </div>
@@ -696,7 +751,46 @@ $ mkdir bin
 
 
 
-    
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2019/03/17/como-criar-comandos-personalizados-no-linux/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
 
 </body>
 </html>
