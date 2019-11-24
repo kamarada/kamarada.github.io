@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 18 Nov 2019 20:49:58 -0300</pubDate>
-        <lastBuildDate>Mon, 18 Nov 2019 20:49:58 -0300</lastBuildDate>
+        <pubDate>Sun, 24 Nov 2019 15:58:28 -0300</pubDate>
+        <lastBuildDate>Sun, 24 Nov 2019 15:58:28 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
         
@@ -50,7 +50,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;filtro de pacotes&lt;/strong&gt; (&lt;em&gt;packet filter&lt;/em&gt;): atua nas camadas 2 (rede) e 3 (transporte), permite ou bloqueia pacotes com base em suas características (endereço/porta/interface de origem/destino, protocolo usado — se é TCP, UDP, ICMP, etc). É o tipo de &lt;em&gt;firewall&lt;/em&gt; mais antigo, simples e limitado, mas já oferece um nível de segurança significativo.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;firewall&lt;/em&gt; de aplicação&lt;/strong&gt;, mais conhecido como &lt;strong&gt;&lt;em&gt;proxy&lt;/em&gt;&lt;/strong&gt;: atua na camada 4 (aplicação) e é capaz de bloquear pacotes com base em seu conteúdo. Por exemplo, um &lt;em&gt;proxy&lt;/em&gt; HTTP consegue bloquear o acesso a uma página se ela contiver determinada palavra no &lt;em&gt;link&lt;/em&gt;, ou se ela é conhecida por apresentar pirataria, jogo, pornografia, &lt;em&gt;malware&lt;/em&gt;, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;firewall&lt;/em&gt; de aplicação&lt;/strong&gt;, mais conhecido como &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Proxy&quot;&gt;proxy&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;: atua na camada 4 (aplicação) e é capaz de bloquear pacotes com base em seu conteúdo. Por exemplo, um &lt;em&gt;proxy&lt;/em&gt; HTTP consegue bloquear o acesso a uma página se ela contiver determinada palavra no &lt;em&gt;link&lt;/em&gt;, ou se ela é conhecida por apresentar pirataria, jogo, pornografia, &lt;em&gt;malware&lt;/em&gt;, etc.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;como-é-o-firewall-no-linux&quot;&gt;Como é o firewall no Linux&lt;/h2&gt;
@@ -63,7 +63,7 @@
 
 &lt;p&gt;A versão original do módulo &lt;code class=&quot;highlighter-rouge&quot;&gt;ip_tables&lt;/code&gt; e da ferramenta &lt;strong&gt;iptables&lt;/strong&gt; lida apenas com IPv4. Existem também os análogos &lt;code class=&quot;highlighter-rouge&quot;&gt;ip6_tables&lt;/code&gt; e &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ip6tables&quot;&gt;ip6tables&lt;/a&gt;&lt;/strong&gt; para lidar com IPv6.&lt;/p&gt;
 
-&lt;p&gt;Algumas distribuições trazem uma ferramenta alternativa para configurar o &lt;em&gt;firewall&lt;/em&gt; que é o &lt;strong&gt;&lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;&lt;/strong&gt;, que pode ser usada tanto pela linha de comando quanto pela interface gráfica (que algumas pessoas podem achar mais fácil de usar). Por padrão, o openSUSE vem com o &lt;strong&gt;iptables&lt;/strong&gt; e o &lt;strong&gt;firewalld&lt;/strong&gt; quando instalado em &lt;em&gt;desktops&lt;/em&gt;, mas apenas com o &lt;strong&gt;iptables&lt;/strong&gt; (sem o &lt;strong&gt;firewalld&lt;/strong&gt;) quando instalado em servidores. O Linux Kamarada, que é focado em &lt;em&gt;desktops&lt;/em&gt; e usuários iniciantes de Linux, também traz o &lt;strong&gt;iptables&lt;/strong&gt; e o &lt;strong&gt;firewalld&lt;/strong&gt; instalados por padrão.&lt;/p&gt;
+&lt;p&gt;Muitas distribuições trazem ferramentas alternativas para configurar o &lt;em&gt;firewall&lt;/em&gt;, como o &lt;strong&gt;&lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;&lt;/strong&gt;, que pode ser usado tanto pela linha de comando quanto pela interface gráfica (que algumas pessoas podem achar mais fácil de usar). Por padrão, o openSUSE vem com o &lt;strong&gt;iptables&lt;/strong&gt; e o &lt;strong&gt;firewalld&lt;/strong&gt; quando instalado em &lt;em&gt;desktops&lt;/em&gt;, mas apenas com o &lt;strong&gt;iptables&lt;/strong&gt; (sem o &lt;strong&gt;firewalld&lt;/strong&gt;) quando instalado em servidores. O Linux Kamarada, que é focado em &lt;em&gt;desktops&lt;/em&gt; e usuários iniciantes de Linux, também traz o &lt;strong&gt;iptables&lt;/strong&gt; e o &lt;strong&gt;firewalld&lt;/strong&gt; instalados por padrão.&lt;/p&gt;
 
 &lt;p&gt;Hoje, vamos falar apenas do &lt;strong&gt;iptables&lt;/strong&gt;. Oportunamente, podemos falar do &lt;strong&gt;firewalld&lt;/strong&gt;, mas já mencionamos ele em um &lt;em&gt;post&lt;/em&gt;, se você quiser ter uma ideia de como é a tela dele, veja:&lt;/p&gt;
 
@@ -96,9 +96,9 @@
 
 &lt;p&gt;Note que os nomes das &lt;em&gt;chains&lt;/em&gt; são sensíveis à capitalização (&lt;em&gt;case sensitive&lt;/em&gt;). Portanto, &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;input&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;Input&lt;/code&gt;, por exemplo, seriam 3 &lt;em&gt;chains&lt;/em&gt; diferentes. As &lt;em&gt;chains&lt;/em&gt; predefinidas do &lt;strong&gt;iptables&lt;/strong&gt; são sempre escritas em caixa alta (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;).&lt;/p&gt;
 
-&lt;p&gt;Quando recebe um pacote, o &lt;em&gt;firewall&lt;/em&gt; analisa as regras buscando uma regra que descreva aquele pacote. As regras são analisadas na ordem em que foram inseridas na &lt;em&gt;chain&lt;/em&gt;. Quando o &lt;em&gt;firewall&lt;/em&gt; analisa uma regra, se o pacote não corresponde à descrição, ele passa para a próxima regra. Se o pacote corresponde, então o &lt;em&gt;firewall&lt;/em&gt; verifica na regra para onde enviar o pacote, que é o &lt;strong&gt;&lt;em&gt;target&lt;/em&gt;&lt;/strong&gt; (alvo).&lt;/p&gt;
+&lt;p&gt;Quando recebe um pacote, o &lt;strong&gt;iptables&lt;/strong&gt; analisa as regras buscando uma regra que descreva aquele pacote. As regras são analisadas na ordem em que foram inseridas na &lt;em&gt;chain&lt;/em&gt;. Quando o &lt;strong&gt;iptables&lt;/strong&gt; analisa uma regra, se o pacote não corresponde à descrição, ele passa para a próxima regra. Se o pacote corresponde, então o &lt;strong&gt;iptables&lt;/strong&gt; verifica na regra para onde enviar o pacote, que é o &lt;strong&gt;&lt;em&gt;target&lt;/em&gt;&lt;/strong&gt; (alvo).&lt;/p&gt;
 
-&lt;p&gt;O &lt;em&gt;target&lt;/em&gt; pode ser o nome de uma &lt;em&gt;chain&lt;/em&gt; do usuário — nesse caso, o &lt;em&gt;firewall&lt;/em&gt; vai continuar analisando as regras dessa &lt;em&gt;chain&lt;/em&gt; — ou pode ser um desses valores especiais, que informam ao &lt;strong&gt;iptables&lt;/strong&gt; o que fazer com o pacote imediatamente:&lt;/p&gt;
+&lt;p&gt;O &lt;em&gt;target&lt;/em&gt; pode ser o nome de uma &lt;em&gt;chain&lt;/em&gt; do usuário — nesse caso, o &lt;strong&gt;iptables&lt;/strong&gt; vai continuar analisando as regras dessa &lt;em&gt;chain&lt;/em&gt; — ou pode ser um desses valores especiais, diante dos quais o &lt;strong&gt;iptables&lt;/strong&gt; para de analisar as regras da &lt;em&gt;chain&lt;/em&gt; atual e age sobre o pacote imediatamente:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;: aceitar o pacote, deixá-lo (permiti-lo) passar&lt;/li&gt;
@@ -107,7 +107,7 @@
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RETURN&lt;/code&gt;: interrompe o processamento das regras da &lt;em&gt;chain&lt;/em&gt; atual e retorna o processamento das regras para a regra seguinte na &lt;em&gt;chain&lt;/em&gt; anterior (a que chamou a &lt;em&gt;chain&lt;/em&gt; atual)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Por fim, se o &lt;em&gt;firewall&lt;/em&gt; já analisou todas as regras da &lt;em&gt;chain&lt;/em&gt; e não encontrou uma regra que descreve o pacote, ele vai adotar a &lt;strong&gt;política padrão&lt;/strong&gt; predefinida para aquela &lt;em&gt;chain&lt;/em&gt;, que pode ser somente um dos quatro &lt;em&gt;targets&lt;/em&gt; especiais acima.&lt;/p&gt;
+&lt;p&gt;Por fim, se o &lt;strong&gt;iptables&lt;/strong&gt; já analisou todas as regras da &lt;em&gt;chain&lt;/em&gt; e não encontrou uma regra que descreve o pacote, ele vai adotar a &lt;strong&gt;política padrão&lt;/strong&gt; predefinida para aquela &lt;em&gt;chain&lt;/em&gt;, que pode ser somente um dos quatro &lt;em&gt;targets&lt;/em&gt; especiais acima.&lt;/p&gt;
 
 &lt;p&gt;Há ainda o &lt;em&gt;target&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt;, que é semelhante ao &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;, mas só pode ser usado em regras das &lt;em&gt;chains&lt;/em&gt; da tabela &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;. Falaremos mais sobre o &lt;em&gt;target&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; adiante.&lt;/p&gt;
 
@@ -147,7 +147,7 @@ target     prot opt source               destination
 
 &lt;p&gt;Essa é a configuração padrão do &lt;strong&gt;iptables&lt;/strong&gt;: a política padrão (&lt;em&gt;policy&lt;/em&gt;) de todas as &lt;em&gt;chains&lt;/em&gt; é aceitar (&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;) e elas não possuem regras de antemão. Ou seja, qualquer pacote que deseja entrar no sistema ou sair dele, o &lt;strong&gt;iptables&lt;/strong&gt; deixa passar.&lt;/p&gt;
 
-&lt;p&gt;Se a saída para você é diferente, é possível que o administrador já tenha adicionado regras, que a distribuição que você usa tenha outra configuração padrão, ou que você esteja usando o &lt;strong&gt;firewalld&lt;/strong&gt;, que cria suas próprias &lt;em&gt;chains&lt;/em&gt; no &lt;strong&gt;iptables&lt;/strong&gt;. Veremos como excluir essas regras.&lt;/p&gt;
+&lt;p&gt;Se a saída para você é diferente, é possível que o administrador já tenha adicionado regras, que a distribuição que você usa tenha outra configuração padrão, ou que você esteja usando o &lt;strong&gt;firewalld&lt;/strong&gt;, que cria suas próprias &lt;em&gt;chains&lt;/em&gt;. A seguir, veremos como excluir essas regras.&lt;/p&gt;
 
 &lt;p&gt;Por padrão, são listadas as regras da tabela &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;. Para listar as regras de outra tabela, adicione o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;--table&lt;/code&gt;) seguido do nome da tabela. Por exemplo:&lt;/p&gt;
 
@@ -192,7 +192,9 @@ target     prot opt source               destination
 &lt;p&gt;Como a ordem das regras importa para o &lt;strong&gt;iptables&lt;/strong&gt;, é comum iniciar sua configuração excluindo quaisquer regras que estejam em uso.&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-Não teste os comandos desse tutorial em um servidor que você acessa remotamente via SSH: você corre o risco de perder o acesso ao servidor.
+
+&lt;p&gt;&lt;strong&gt;Não&lt;/strong&gt; teste os comandos desse tutorial em um servidor que você acessa remotamente via SSH: você corre o risco de perder o acesso ao servidor.&lt;/p&gt;
+
 &lt;/div&gt;
 
 &lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
@@ -202,7 +204,7 @@ Não teste os comandos desse tutorial em um servidor que você acessa remotament
 &lt;p&gt;Para mais informações, leia:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kamarada.github.io/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
@@ -304,10 +306,10 @@ rtt min/avg/max/mdev = 0.036/0.071/0.106/0.035 ms
 
 &lt;ul&gt;
   &lt;li&gt;como nos comandos anteriores, poderíamos usar o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; para especificar uma tabela, como não fizemos isso, usamos a tabela &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; por padrão&lt;/li&gt;
-  &lt;li&gt;o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-A&lt;/code&gt; inicia a adição de uma nova regra&lt;/li&gt;
+  &lt;li&gt;o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-A&lt;/code&gt; inicia a adição de uma nova regra ao final da &lt;em&gt;chain&lt;/em&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt; é a &lt;em&gt;chain&lt;/em&gt; onde a regra está sendo adicionada — nesse caso, estamos interessados nos pacotes que chegam à máquina&lt;/li&gt;
   &lt;li&gt;o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; (poderia ser também &lt;code class=&quot;highlighter-rouge&quot;&gt;--dst&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;--destination&lt;/code&gt;) indica o destino — nesse caso, filtramos pacotes com destino a &lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1&lt;/code&gt; (a própria máquina)&lt;/li&gt;
-  &lt;li&gt;o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-j&lt;/code&gt; (poderia ser também &lt;code class=&quot;highlighter-rouge&quot;&gt;--jump&lt;/code&gt;) indica o que fazer com o pacote (o &lt;em&gt;target&lt;/em&gt;) — nesse caso, descartar (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-j&lt;/code&gt; (poderia ser também &lt;code class=&quot;highlighter-rouge&quot;&gt;--jump&lt;/code&gt;) indica o que fazer com o pacote (o &lt;em&gt;target&lt;/em&gt;) — nesse caso, descartar (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Agora, depois de adicionada a regra, tente novamente usar o &lt;strong&gt;ping&lt;/strong&gt;:&lt;/p&gt;
@@ -324,7 +326,7 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 2 packets transmitted, 0 received, 100% packet loss, time 1006ms
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Viu só? Não funcionou. O &lt;strong&gt;iptables&lt;/strong&gt; está bloqueando esse pacote com base na regra que acabamos de adicionar.&lt;/p&gt;
+&lt;p&gt;Viu só? Não funcionou. O &lt;strong&gt;iptables&lt;/strong&gt; está bloqueando esses pacotes com base na regra que acabamos de adicionar.&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
 
@@ -382,7 +384,7 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
   &lt;li&gt;&lt;strong&gt;destino:&lt;/strong&gt; já vimos o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;--dst&lt;/code&gt;, ou &lt;code class=&quot;highlighter-rouge&quot;&gt;--destination&lt;/code&gt;), que permite filtrar um pacote pelo seu destino, que pode ser expresso na forma de:
     &lt;ul&gt;
       &lt;li&gt;o endereço IP de um &lt;em&gt;host&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.35&lt;/code&gt;);&lt;/li&gt;
-      &lt;li&gt;o endereço IP de uma rede/sub-rede acompanhado da máscara de rede, em notação tradicional (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/255.255.255.0&lt;/code&gt;) ou &lt;a href=&quot;https://doc.m0n0.ch/quickstartpc/intro-CIDR.html&quot;&gt;CIDR&lt;/a&gt;  (&lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/24&lt;/code&gt;);&lt;/li&gt;
+      &lt;li&gt;o endereço IP de uma rede/sub-rede acompanhado da máscara de rede, em notação tradicional (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/255.255.255.0&lt;/code&gt;) ou &lt;a href=&quot;https://doc.m0n0.ch/quickstartpc/intro-CIDR.html&quot;&gt;CIDR&lt;/a&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/24&lt;/code&gt;);&lt;/li&gt;
       &lt;li&gt;nome de rede (&lt;em&gt;hostname&lt;/em&gt;, por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt;); ou&lt;/li&gt;
       &lt;li&gt;nome de domínio completo (do inglês &lt;em&gt;fully qualified domain name&lt;/em&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/FQDN&quot;&gt;FQDN&lt;/a&gt;, por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;www.facebook.com&lt;/code&gt;).&lt;/li&gt;
     &lt;/ul&gt;
@@ -480,7 +482,7 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
   &lt;li&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables&quot;&gt;iptables(8) - Linux man page&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;A seguinte lista também pode ser útil enquanto estiver criando regras:&lt;/p&gt;
+&lt;p&gt;A seguinte lista de portas também pode ser útil enquanto estiver criando regras:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Lista_de_portas_dos_protocolos_TCP_e_UDP&quot;&gt;Lista de portas dos protocolos TCP e UDP - Wikipédia&lt;/a&gt;&lt;/li&gt;
@@ -646,7 +648,7 @@ iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&
 
 &lt;p&gt;Em distribuições com &lt;strong&gt;&lt;a href=&quot;https://freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd&lt;/a&gt;&lt;/strong&gt;, como é o caso do openSUSE e do Linux Kamarada, a melhor forma de executar um &lt;em&gt;script&lt;/em&gt; como o &lt;code class=&quot;highlighter-rouge&quot;&gt;meu-firewall.sh&lt;/code&gt; durante o &lt;em&gt;boot&lt;/em&gt; é criar um serviço.&lt;/p&gt;
 
-&lt;p&gt;Crie um serviço do &lt;strong&gt;systemd&lt;/strong&gt; chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;meu-firewall.service&lt;/code&gt; na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/&lt;/code&gt; usando seu editor de texto preferido:&lt;/p&gt;
+&lt;p&gt;Por exemplo, crie um serviço do &lt;strong&gt;systemd&lt;/strong&gt; chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;meu-firewall.service&lt;/code&gt; na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/&lt;/code&gt; usando seu editor de texto preferido:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# nano /etc/systemd/system/meu-firewall.service
@@ -704,8 +706,8 @@ WantedBy=default.target
   &lt;li&gt;&lt;a href=&quot;https://guiafoca.org/cgs/guia/avancado/ch-fw-iptables.html&quot;&gt;Guia Foca GNU/Linux - Firewall iptables&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.infowester.com/firewall.php&quot;&gt;O que é firewall? - Conceito, tipos e arquiteturas - InfoWester&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/artigo/IPTables-Desvendando-o-misterio&quot;&gt;IPTables - Desvendando o mistério - Viva o Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.suse.com/c/basic-iptables-tutorial/&quot;&gt;Basic iptables Tutorial - SUSE Communities&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables&quot;&gt;iptables(8) - Linux man page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.suse.com/c/basic-iptables-tutorial/&quot;&gt;Basic iptables Tutorial - SUSE Communities&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.cyberciti.biz/tips/howto-block-ipaddress-with-iptables-firewall.html&quot;&gt;Linux Iptables block incoming access to selected or specific ip address - nixCraft&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/dica/DROP-ou-REJECT-no-iptables&quot;&gt;DROP ou REJECT no iptables? - Viva o Linux&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://linuxconfig.org/how-to-automatically-execute-shell-script-at-startup-boot-on-systemd-linux&quot;&gt;How to automatically execute shell script at startup boot on systemd Linux - LinuxConfig.org&lt;/a&gt;&lt;/li&gt;

@@ -9,10 +9,720 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 18 Nov 2019 20:49:58 -0300</pubDate>
-        <lastBuildDate>Mon, 18 Nov 2019 20:49:58 -0300</lastBuildDate>
+        <pubDate>Sun, 24 Nov 2019 15:58:28 -0300</pubDate>
+        <lastBuildDate>Sun, 24 Nov 2019 15:58:28 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Protect yourself with the iptables firewall</title>
+                <description>&lt;p&gt;We haven’t talked about servers for a while… Today we are going to talk about &lt;strong&gt;security&lt;/strong&gt; thinking on servers first, but on desktops too, either at home or at work. The Internet has made it much easier to access, send and share information. But together with the pros, come the cons: besides convenience, the Internet also brought a lot of risks and threats. A security solution that can be employed to prevent attacks and intrusions is the firewall.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;firewall&lt;/strong&gt; is a software that monitors incoming and outgoing network packets and allows or blocks specific packets based on predefined security rules.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/iptables.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/iptables.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If analogies help you understand concepts, think of a firewall as a party security that checks people’s IDs and allows them to enter the party only if they are on the guest list.&lt;/p&gt;
+
+&lt;p&gt;Actually, there are also hardware-based firewalls, or mixed hardware and software solutions, but usually a firewall is a software installed on a server or desktop.&lt;/p&gt;
+
+&lt;p&gt;Depending on where a firewall is positioned, it can assume different roles. It can be installed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on any server (e.g. a web server) or desktop (e.g. a workstation) to protect the server or desktop itself;&lt;/li&gt;
+  &lt;li&gt;on a server positioned between the local network and the Internet, to protect the local network; or&lt;/li&gt;
+  &lt;li&gt;on a server that acts as a router among multiple internal networks, to protect them.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/firewall-places.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/firewall-places.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;According to the layer of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Internet_protocol_suite&quot;&gt;TCP/IP model&lt;/a&gt; in which they operate, firewalls can be classified into:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;packet filters:&lt;/strong&gt; act on the layers 2 (network) and 3 (transport) and are capable of filtering packets by source/destination address/port/interface, protocol (whether it is TCP, UDP, ICMP, etc). Packet filters date back to the first known firewalls. They are the simpler and more limited type of firewall, but already offer a significant level of security.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;application firewalls&lt;/strong&gt;, better known as &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Proxy_server&quot;&gt;proxies&lt;/a&gt;&lt;/strong&gt;: act on the layer 4 (application) and are capable of filtering packets based on their content. For instance, an HTTP proxy can block access to a page if there is a particular word in the URL, or if the requested website is known for piracy, gambling, pornography, malware, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-is-the-firewall-on-linux&quot;&gt;How is the firewall on Linux?&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://www.kernel.org/&quot;&gt;Linux kernel&lt;/a&gt; comes with a built-in firewall, which is the &lt;code class=&quot;highlighter-rouge&quot;&gt;ip_tables&lt;/code&gt; module. To manage it, we use the &lt;strong&gt;&lt;a href=&quot;https://netfilter.org/projects/iptables/&quot;&gt;iptables&lt;/a&gt;&lt;/strong&gt; command line tool.&lt;/p&gt;
+
+&lt;p&gt;Usually, people make things simpler and refer to both the kernel module and the command line tool as &lt;strong&gt;iptables&lt;/strong&gt;, as if they were the same thing. Let’s do the same here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;iptables&lt;/strong&gt; is primarily a packet filter, but it has modules that extend its functionality and allow it to act on the application layer. It comes pre-installed by default on most Linux distributions, including &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Linux Kamarada&lt;/a&gt; and &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. That means we can just start using &lt;strong&gt;iptables&lt;/strong&gt;: we don’t need to install anything before.&lt;/p&gt;
+
+&lt;p&gt;The original &lt;code class=&quot;highlighter-rouge&quot;&gt;ip_tables&lt;/code&gt; module and &lt;strong&gt;iptables&lt;/strong&gt; tool only handle IPv4. There are also &lt;code class=&quot;highlighter-rouge&quot;&gt;ip6_tables&lt;/code&gt; and &lt;strong&gt;ip6tables&lt;/strong&gt; for dealing with IPv6.&lt;/p&gt;
+
+&lt;p&gt;Many distributions provide alternative tools for managing the kernel built-in firewall. &lt;strong&gt;&lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;&lt;/strong&gt; is a notable one and can be used from both the command line and the graphical user interface (which some people may find it easier to use). By default, new openSUSE installations come with &lt;strong&gt;iptables&lt;/strong&gt; and &lt;strong&gt;firewalld&lt;/strong&gt; on desktops, but only with &lt;strong&gt;iptables&lt;/strong&gt; (without &lt;strong&gt;firewalld&lt;/strong&gt;) on servers. Linux Kamarada, which is intended for desktops and beginner Linux users, also comes out-of-the-box with &lt;strong&gt;iptables&lt;/strong&gt; and &lt;strong&gt;firewalld&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Today, we are going to focus on &lt;strong&gt;iptables&lt;/strong&gt;. Perhaps another time we can talk about &lt;strong&gt;firewalld&lt;/strong&gt;. We already mentioned it in another post. So, if you want to get an idea of what it looks like, see:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/&quot;&gt;Streaming from Linux to TV using Chromecast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basic-concepts&quot;&gt;Basic concepts&lt;/h2&gt;
+
+&lt;p&gt;To understand how &lt;strong&gt;iptables&lt;/strong&gt; works, you need to know what are: rules, chains, tables, targets, and default policy.&lt;/p&gt;
+
+&lt;p&gt;A firewall &lt;strong&gt;rule&lt;/strong&gt; specifies criteria for a packet (source/destination address/port/interface, protocol, etc.) and what to do with a packet that matches (such as block or allow).&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;chain&lt;/strong&gt; is a list of rules. &lt;strong&gt;iptables&lt;/strong&gt; has its predefined chains and the user can also create their own chains.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tables&lt;/strong&gt; are sets of chains. &lt;strong&gt;iptables&lt;/strong&gt; has four tables that are used at different times, detailed below: &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;nat&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mangle&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;raw&lt;/code&gt;. Each table contains a number of built-in chains and may also contain user-defined chains. Today let’s focus on the &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; table. Another time we can talk about the other ones.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt;: this is the default table, it contains 3 built-in chains:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;: queried when packets arrive at the machine&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;OUTPUT&lt;/code&gt;: queried when packets should leave the machine&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FORWARD&lt;/code&gt;: queried when packets are to be routed through the machine (forwarded from one network interface to another, or from one machine to another through the current machine)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nat&lt;/code&gt;: this table is used to do &lt;a href=&quot;https://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;NAT&lt;/a&gt; (Network Address Translation), it contains 3 built-in chains: &lt;code class=&quot;highlighter-rouge&quot;&gt;PREROUTING&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;OUTPUT&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;POSTROUTING&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mangle&lt;/code&gt;: this table is used for specialized packet alteration, such as modifying the type of service (&lt;a href=&quot;https://en.wikipedia.org/wiki/Type_of_service&quot;&gt;ToS&lt;/a&gt;) field, it contains 5 built-in chains: &lt;code class=&quot;highlighter-rouge&quot;&gt;PREROUTING&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;OUTPUT&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;FORWARD&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;POSTROUTING&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;raw&lt;/code&gt;: this table is queried by &lt;strong&gt;iptables&lt;/strong&gt; before the others and is used mainly for configuring exemptions from connection tracking, it contains 2 built-in chains: &lt;code class=&quot;highlighter-rouge&quot;&gt;PREROUTING&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;OUTPUT&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that chain names are case sensitive (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;input&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Input&lt;/code&gt; would be 3 different chains). Built-in chains names are always written in uppercase (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;When &lt;strong&gt;iptables&lt;/strong&gt; receives a packet, it looks for a rule that describes that packet. Rules are examined in the order they were added to the chain. If the packet does not match the current rule, the next one in the chain is examined. If the packet does match, then &lt;strong&gt;iptables&lt;/strong&gt; does what the rule says to do with the packet, which is called the &lt;strong&gt;target&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The target can be the name of a user-defined chain — in which case &lt;strong&gt;iptables&lt;/strong&gt; continues processing the rules of that chain — or one of the following special values, which cause &lt;strong&gt;iptables&lt;/strong&gt; to stop processing the current chain rules and take immediate action on the packet:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;: let the packet through&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;: discard (delete, ignore) the packet — in practice, it means to block the packet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;QUEUE&lt;/code&gt;: pass the packet to a userspace process (outside the kernel) that will process the packet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RETURN&lt;/code&gt;: stop traversing the current chain and resume at the next rule in the previous (calling) chain&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, if &lt;strong&gt;iptables&lt;/strong&gt; reaches the end of a built-in chain and no rule that matches the packet was found, the target specified by the &lt;strong&gt;default policy&lt;/strong&gt; of the chain determines the fate of the packet. Only one of those four special targets can be set as default policy for a built-in chain.&lt;/p&gt;
+
+&lt;p&gt;There is also the &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; target, which is similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;, but can be used only in &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; chains rules. More about the &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; target later.&lt;/p&gt;
+
+&lt;p&gt;Does all of that sound confusing to you? Don’t worry: let’s get our hands dirty and everything will become clearer.&lt;/p&gt;
+
+&lt;h2 id=&quot;listing-current-rules&quot;&gt;Listing current rules&lt;/h2&gt;
+
+&lt;p&gt;We haven’t added any rules yet, but does our firewall have any rules already? Let’s see!&lt;/p&gt;
+
+&lt;p&gt;To list the rules currently in use by &lt;strong&gt;iptables&lt;/strong&gt;, run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -L
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Today we are going to use only the command line interface and almost all commands will be run with administrator privileges (i.e. as root). I suppose you already have some familiarity with Linux and the &lt;a href=&quot;http://opensuse-guide.org/command.php&quot;&gt;terminal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The output of the above command should look something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is the default &lt;strong&gt;iptables&lt;/strong&gt; setup: all chains have a default policy of &lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt; and no rules beforehand, which means that all incoming and outgoing traffic is allowed.&lt;/p&gt;
+
+&lt;p&gt;If that output is different for you, maybe the system administrator has already added rules, the Linux distribution you use has another default setting, or you are using &lt;strong&gt;firewalld&lt;/strong&gt;, which creates its own chains. Next we are going to see how to delete these rules.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; table is considered by default if no table is specified. To list rules of another table, add the &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; parameter (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--table&lt;/code&gt;) followed by the table name. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -t nat -L
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Also, if no chain is selected, all chains are listed. To list rules of a specific chain only, add its name to the end of the command. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -t mangle -L FORWARD
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;deleting-all-current-rules&quot;&gt;Deleting all current rules&lt;/h2&gt;
+
+&lt;p&gt;Keep in mind that the order of your rules matters. So, it’s common to start setting up &lt;strong&gt;iptables&lt;/strong&gt; by deleting any rules currently in use.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Do not&lt;/strong&gt; try running the commands in this tutorial on a remote server that you access via SSH: you will risk losing access to the server.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;To follow this tutorial, I recommend that you use a virtual machine. Doing that, you don’t modify your server or desktop firewall settings.&lt;/p&gt;
+
+&lt;p&gt;For more information, read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To delete all the rules currently in use, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -F
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Actually by default all the chains in the &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; table are flushed if no table or chain are given.&lt;/p&gt;
+
+&lt;p&gt;In that sense, the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables -F&lt;/code&gt; command is similar to the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables -L&lt;/code&gt; command:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to flush chains of another table, add the &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; parameter followed by the table name, and&lt;/li&gt;
+  &lt;li&gt;to flush only a specific chain, add its name to the end of the command.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -t nat -F
+# iptables -t mangle -F POSTROUTING
+
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;deleting-all-user-defined-chains&quot;&gt;Deleting all user-defined chains&lt;/h2&gt;
+
+&lt;p&gt;Besides deleting rules, it’s also common to start deleting any user-defined chains.&lt;/p&gt;
+
+&lt;p&gt;To delete all user-defined chains in the &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; table, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -X
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Even if you haven’t created any chains yourself, if &lt;strong&gt;firewalld&lt;/strong&gt; is running, that command deletes chains created by &lt;strong&gt;firewalld&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Similarly to previous commands, to specify a table, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; parameter, and to delete only a specific chain, add its name to the end of the command.&lt;/p&gt;
+
+&lt;p&gt;Note that it’s not possible to delete built-in chains, only user-defined chains.&lt;/p&gt;
+
+&lt;p&gt;In short, a complete &lt;strong&gt;iptables&lt;/strong&gt; cleanup can be achieved running the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -F
+# iptables -X
+# iptables -t nat -F
+# iptables -t nat -X
+# iptables -t mangle -F
+# iptables -t mangle -X
+# iptables -t raw -F
+# iptables -t raw -X
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After that cleanup, if you list current rules (&lt;code class=&quot;highlighter-rouge&quot;&gt;iptables -L&lt;/code&gt;), surely you will see the default &lt;strong&gt;iptables&lt;/strong&gt; setup.&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-rules&quot;&gt;Adding rules&lt;/h2&gt;
+
+&lt;p&gt;Now let’s get to the most interesting part: let’s add our first rule to &lt;strong&gt;iptables&lt;/strong&gt;. As an example, let’s add a rule to block access to the machine itself (&lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Before that, &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ping&quot;&gt;ping&lt;/a&gt;&lt;/strong&gt; the machine itself and make sure it works (use &lt;strong&gt;Ctrl + C&lt;/strong&gt; to interrupt it):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 127.0.0.1
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.036 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.106 ms
+^C
+--- 127.0.0.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1010ms
+rtt min/avg/max/mdev = 0.036/0.071/0.106/0.035 ms
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then add the rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -d 127.0.0.1 -j DROP
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s examine what each part of this command does:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;filter&lt;/code&gt; table is being considered, as we aren’t specifying a table (as with previous commands, we could use the &lt;code class=&quot;highlighter-rouge&quot;&gt;-t&lt;/code&gt; parameter to specify a table)&lt;/li&gt;
+  &lt;li&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;-A&lt;/code&gt; parameter tells &lt;strong&gt;iptables&lt;/strong&gt; to append the rule to the end of the selected chain&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt; is the chain where the rule is being added — in this case, we are interested in the packets arriving at the machine&lt;/li&gt;
+  &lt;li&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; parameter (it could also be written &lt;code class=&quot;highlighter-rouge&quot;&gt;--dst&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;--destination&lt;/code&gt;) specifies the destination — in this case, we want to filter packets destined for &lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1&lt;/code&gt; (the machine itself)&lt;/li&gt;
+  &lt;li&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;-j&lt;/code&gt; parameter (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--jump&lt;/code&gt;) indicates what to do with a packet that matches the rule (the target) — in this case, discard (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, after adding the rule, try pinging again:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 127.0.0.1
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+^C
+--- 127.0.0.1 ping statistics ---
+2 packets transmitted, 0 received, 100% packet loss, time 1006ms
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Did you see? It didn’t work. &lt;strong&gt;iptables&lt;/strong&gt; is blocking these packets based on the rule we just added.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the above rule has been used for didatic purposes only. Never block access to the machine itself, unless you know what you are doing, because many applications use TCP sockets to make connections.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That said, let’s undo the addition of the above rule before continuing:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -F
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;setting-the-default-policy-for-a-chain&quot;&gt;Setting the default policy for a chain&lt;/h2&gt;
+
+&lt;p&gt;Between flushing tables and adding rules, I usually set the default policy for the chains. Using the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables -L&lt;/code&gt; command, we saw that the default &lt;strong&gt;iptables&lt;/strong&gt; setting is to allow all traffic in all chains (default policy of &lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Usually, when we adopt a permissive default policy (&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;) for a chain, we add restrictive rules (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt;) to that chain, i.e. rules determine what to block and everything else is allowed.&lt;/p&gt;
+
+&lt;p&gt;Conversely, when we adopt a restrictive default policy (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;) for a chain, we add permissive rules (&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;) to that chain, i.e. rules determine what to allow and everything else is blocked.&lt;/p&gt;
+
+&lt;p&gt;For most chains, a permissive default policy (&lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;) is considered insecure. At least for the &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt; chain, consider using a restrictive default policy (&lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;). Thus, you only need to allow services that are considered secure and don’t risk forgetting to block any unwanted accesses.&lt;/p&gt;
+
+&lt;p&gt;To set the default policy for a chain, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;iptables -P&lt;/code&gt; command followed by the chain name and the target you would like to be the default policy. Examples:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -P FORWARD DROP
+# iptables -P INPUT DROP
+# iptables -P OUTPUT ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you run the three commands above, something may stop working, e.g. your browser becomes unable to access websites. That happens because network traffic generally needs to be two-way — outgoing and incoming, request and response — to work properly. In this case, although the request is sent (the default policy for the &lt;code class=&quot;highlighter-rouge&quot;&gt;OUTPUT&lt;/code&gt; chain is &lt;code class=&quot;highlighter-rouge&quot;&gt;ACCEPT&lt;/code&gt;), the response is dropped (default policy for &lt;code class=&quot;highlighter-rouge&quot;&gt;INPUT&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;). To prevent such cases, I usually add the following rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is a “ready recipe” I found on the Internet to accept connections that have already been established. This rule tells &lt;strong&gt;iptables&lt;/strong&gt; to allow responses to requests initiated by the machine itself.&lt;/p&gt;
+
+&lt;p&gt;Note that default policies are set for built-in (non-user-defined) chains only.&lt;/p&gt;
+
+&lt;h2 id=&quot;describing-packets&quot;&gt;Describing packets&lt;/h2&gt;
+
+&lt;p&gt;Let’s take a look at some parameters we can use to describe packets when writing rules, as well as examples of valid rules.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; following rules are just examples, you shouldn’t simply copy and paste them to your server or desktop, adapt them according to your needs.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;destination:&lt;/strong&gt; we’ve already seen the &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--dst&lt;/code&gt;, or &lt;code class=&quot;highlighter-rouge&quot;&gt;--destination&lt;/code&gt;) parameter, which lets you filter a packet by its destination, which can be:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;a host IP address (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.35&lt;/code&gt;);&lt;/li&gt;
+      &lt;li&gt;a network/subnet IP address followed by the network mask, either in common notation (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/255.255.255.0&lt;/code&gt;) or in &lt;a href=&quot;https://doc.m0n0.ch/quickstartpc/intro-CIDR.html&quot;&gt;CIDR&lt;/a&gt; notation (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.0/24&lt;/code&gt;);&lt;/li&gt;
+      &lt;li&gt;a hostname (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;www&lt;/code&gt;); or&lt;/li&gt;
+      &lt;li&gt;a fully qualified domain name (&lt;a href=&quot;https://en.wikipedia.org/wiki/Fully_qualified_domain_name&quot;&gt;FQDN&lt;/a&gt;, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;www.facebook.com&lt;/code&gt;).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A OUTPUT -d 157.240.12.35 -j REJECT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(it reads: all packets leaving this machine destined for &lt;code class=&quot;highlighter-rouge&quot;&gt;157.240.12.35&lt;/code&gt; must be rejected — it’s one of the IP addresses assigned to &lt;code class=&quot;highlighter-rouge&quot;&gt;www.facebook.com&lt;/code&gt;, but note that blocking access to Facebook is actually not that simple, this rule is just an example)&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; even though you can use names to write rules, that is a really bad idea, prefer to use IP addresses (imagine what can happen if your DNS server goes down — or worse, if it gets hacked).&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;source:&lt;/strong&gt; similarly, the &lt;code class=&quot;highlighter-rouge&quot;&gt;-s&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--src&lt;/code&gt;, or &lt;code class=&quot;highlighter-rouge&quot;&gt;--source&lt;/code&gt;) parameter lets you filter a packet by its source, which can be described the same way as the destination.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -s 222.187.224.200 -j DROP
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(all packets trying to enter this machine coming from &lt;code class=&quot;highlighter-rouge&quot;&gt;222.187.224.200&lt;/code&gt; must be discarded — once, this IP address was trying to attack a server I was administering, I don’t know if this address is still used for attacks)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;source interface:&lt;/strong&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--in-interface&lt;/code&gt;) parameter lets you filter a packet by the network interface via which it was received (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;eth0&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -i lo -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(all packets received on the &lt;a href=&quot;https://en.wikipedia.org/wiki/Loopback&quot;&gt;loopback interface&lt;/a&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;lo&lt;/code&gt; — must be allowed)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;destination interface:&lt;/strong&gt; similarly, the &lt;code class=&quot;highlighter-rouge&quot;&gt;-o&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--out-interface&lt;/code&gt;) parameter lets you filter a packet by the network interface via which it is going to be sent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A FORWARD -i eth0 -o eth1 -j DROP
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(discard all packets that try to pass from the &lt;code class=&quot;highlighter-rouge&quot;&gt;eth0&lt;/code&gt; interface to the &lt;code class=&quot;highlighter-rouge&quot;&gt;eth1&lt;/code&gt; interface)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;protocol:&lt;/strong&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--protocol&lt;/code&gt;) parameter lets you filter a packet by its protocol, which can be one of TCP, UDP or ICMP, written in uppercase or lowercase.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -p icmp -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(allow all ICMP packets — e.g. &lt;strong&gt;ping&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;source port:&lt;/strong&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;--sport&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--source-port&lt;/code&gt;) parameter lets you filter a packet by its source port, this parameter can only be used in conjunction with &lt;code class=&quot;highlighter-rouge&quot;&gt;-p tcp&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;-p udp&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;destination port:&lt;/strong&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;--dport&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;--destination-port&lt;/code&gt;) parameter lets you filter a packet by its destination port, this parameter can only be used in conjunction with &lt;code class=&quot;highlighter-rouge&quot;&gt;-p tcp&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;-p udp&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -p tcp --dport 22 -i eth0 -j ACCEPT
+# iptables -A INPUT -p udp --dport 22 -i eth0 -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(allow all incoming TCP and UDP packets received on the &lt;code class=&quot;highlighter-rouge&quot;&gt;eth0&lt;/code&gt; interface destined for port 22 — which is the default port of the SSH service)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; all of the above parameters can be negated by usign an exclamation sign (&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;) before.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A INPUT -p tcp --dport 22 ! -i eth0 -j DROP
+# iptables -A INPUT -p udp --dport 22 ! -i eth0 -j DROP
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(discard all incoming TCP and UDP packets destined for port 22 received on an interface &lt;strong&gt;other than&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;eth0&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Knowing these parameters, you are already able to write many rules, but &lt;strong&gt;iptables&lt;/strong&gt; provides even more options. For the complete list, refer to the &lt;strong&gt;iptables&lt;/strong&gt; man page:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ man iptables
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or, if you prefer to read it using your web browser:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables&quot;&gt;iptables(8) - Linux man page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following port list may also be useful when writing rules:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers&quot;&gt;List of TCP and UDP port numbers - Wikipédia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-the-difference-between-drop-and-reject&quot;&gt;What is the difference between DROP and REJECT?&lt;/h2&gt;
+
+&lt;p&gt;At this point you may be wondering this.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; targets are similar in that both block the packet (both don’t let the packet through). But the &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt; target silently discards the packet, the sender does not get a response and “feels” ignored, while the &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; target responds to the connection request with a “connection refused” error message.&lt;/p&gt;
+
+&lt;p&gt;You can see the difference between &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; outlined in the figure at the beginning of the post.&lt;/p&gt;
+
+&lt;p&gt;Let’s test that difference. Add the following rule using the &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt; target:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -A OUTPUT -d kamarada.github.io -j DROP
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now try to access &lt;a href=&quot;https://kamarada.github.io/&quot;&gt;kamarada.github.io&lt;/a&gt; using your favorite web browser (I suggest you open that link in a new tab). After a long time trying to connect, the browser reports that the site couldn’t be reached because it took too long to respond:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/iptables-drop-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/iptables-drop-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Delete that rule (to delete only a specific rule, you can repeat it by changing &lt;code class=&quot;highlighter-rouge&quot;&gt;-A&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;-D&lt;/code&gt;) and add another rule, this time using the &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; target:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables -D OUTPUT -d kamarada.github.io -j DROP
+# iptables -A OUTPUT -d kamarada.github.io -j REJECT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now refresh that tab. The browser immediately reports that the connection was &lt;strong&gt;refused&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/iptables-reject-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/iptables-reject-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depending on your intention, it may be more interesting to use one or the other target. For instance, I would use &lt;code class=&quot;highlighter-rouge&quot;&gt;REJECT&lt;/code&gt; to block websites from an office network, because a more emphatic message would be displayed for the users, but to block unwanted types of access from the outside world I would use &lt;code class=&quot;highlighter-rouge&quot;&gt;DROP&lt;/code&gt;, because an eventual attacker would not receive a response and would feel like “shooting in the dark”.&lt;/p&gt;
+
+&lt;h2 id=&quot;saving-and-restoring-rules&quot;&gt;Saving and restoring rules&lt;/h2&gt;
+
+&lt;p&gt;Rules are stored in the kernel and start to be applied as soon as &lt;strong&gt;iptables&lt;/strong&gt; commands are executed, but they are ephemeral, i.e. they are lost if the system is rebooted.&lt;/p&gt;
+
+&lt;p&gt;Two tools that you can use to save and restore rules are &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables-save&quot;&gt;iptables-save&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables-restore&quot;&gt;iptables-restore&lt;/a&gt;&lt;/strong&gt;, respectively.&lt;/p&gt;
+
+&lt;p&gt;To save the rules currently in use, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables-save &amp;gt; /path/to/file
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To restore rules from a previously created file, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# iptables-restore &amp;lt; /path/to/file
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuring-iptables-with-shell-script&quot;&gt;Configuring iptables with shell script&lt;/h2&gt;
+
+&lt;p&gt;Although &lt;strong&gt;iptables-save&lt;/strong&gt; and &lt;strong&gt;iptables-restore&lt;/strong&gt; are convenient, the most common way to set up &lt;strong&gt;iptables&lt;/strong&gt; (erase rules, set default policies, add rules) is to write a shell script. It is more readable and easier to document and maintain.&lt;/p&gt;
+
+&lt;p&gt;For example, create a script named &lt;code class=&quot;highlighter-rouge&quot;&gt;my-firewall.sh&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/sbin/&lt;/code&gt; folder using your favorite text editor (I’m going to use &lt;strong&gt;&lt;a href=&quot;https://www.nano-editor.org/&quot;&gt;nano&lt;/a&gt;&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# nano /usr/local/sbin/my-firewall.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Copy and paste the following content (&lt;strong&gt;hint:&lt;/strong&gt; to paste into the terminal, use &lt;strong&gt;Ctrl + Shift + V&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ex&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Cleanup&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; nat &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; nat &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; mangle &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; mangle &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; raw &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; raw &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Default policy: block all incoming connections&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; FORWARD DROP
+iptables &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; INPUT DROP
+iptables &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; OUTPUT ACCEPT
+
+&lt;span class=&quot;c&quot;&gt;# Allow previously established connections&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; state &lt;span class=&quot;nt&quot;&gt;--state&lt;/span&gt; ESTABLISHED,RELATED &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+
+&lt;span class=&quot;c&quot;&gt;# Allow loopback connections&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; lo &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+
+&lt;span class=&quot;c&quot;&gt;# SSH (port 22/TCP,UDP)&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; tcp &lt;span class=&quot;nt&quot;&gt;--dport&lt;/span&gt; 22 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; udp &lt;span class=&quot;nt&quot;&gt;--dport&lt;/span&gt; 22 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+
+&lt;span class=&quot;c&quot;&gt;# HTTP (port 80/TCP)&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; tcp &lt;span class=&quot;nt&quot;&gt;--dport&lt;/span&gt; 80 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+
+&lt;p&gt;This script is a very simple template designed for a web server. Remember to adapt it to your needs.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Change the file permissions so that only the root user is allowed to run the script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# chmod 744 /usr/local/sbin/my-firewall.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it! Now, when you need to set up &lt;strong&gt;iptables&lt;/strong&gt;, just run the script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# /usr/local/sbin/my-firewall.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When you need to change the firewall rules, edit the script and run it again.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-iptables-at-boot&quot;&gt;Starting iptables at boot&lt;/h2&gt;
+
+&lt;p&gt;For our firewall to be perfect, just one thing is missing: rules must be set up at boot time, together with the operating system, networking and services.&lt;/p&gt;
+
+&lt;p&gt;On &lt;strong&gt;&lt;a href=&quot;https://freedesktop.org/wiki/Software/systemd/&quot;&gt;systemd&lt;/a&gt;&lt;/strong&gt; distributions, such as openSUSE and Linux Kamarada, the best way to run a script such as &lt;code class=&quot;highlighter-rouge&quot;&gt;my-firewall.sh&lt;/code&gt; at boot time is to create a service.&lt;/p&gt;
+
+&lt;p&gt;For example, create a systemd service called &lt;code class=&quot;highlighter-rouge&quot;&gt;my-firewall.service&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/&lt;/code&gt; folder using your favorite text editor:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# nano /etc/systemd/system/my-firewall.service
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Copy and paste the following content:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;[Unit]
+After=network.target
+
+[Service]
+ExecStart=/usr/local/sbin/my-firewall.sh
+
+[Install]
+WantedBy=default.target
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Adjust the file permissions:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# chmod 664 /etc/systemd/system/my-firewall.service
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install and enable the service so that it starts at next boot:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl daemon-reload
+# systemctl enable my-firewall
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to test your service before rebooting, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl start my-firewall
+# iptables -L
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it! The next time you reboot your system, &lt;strong&gt;systemd&lt;/strong&gt; will start the service that runs the script that configures &lt;strong&gt;iptables&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;I hope this text was helpful. If you have read it all, now you have enough knowledge to deploy &lt;strong&gt;iptables&lt;/strong&gt; on your servers. If you want to know more, you can read these:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Firewall_(computing)&quot;&gt;Firewall (computing) - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://linux.die.net/man/8/iptables&quot;&gt;iptables(8) - Linux man page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands&quot;&gt;Iptables Essentials: Common Firewall Rules and Commands - DigitalOcean&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/&quot;&gt;Control Network Traffic with iptables - Linode&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.suse.com/c/basic-iptables-tutorial/&quot;&gt;Basic iptables Tutorial - SUSE Communities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cyberciti.biz/tips/howto-block-ipaddress-with-iptables-firewall.html&quot;&gt;Linux Iptables block incoming access to selected or specific ip address - nixCraft&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://linuxconfig.org/how-to-automatically-execute-shell-script-at-startup-boot-on-systemd-linux&quot;&gt;How to automatically execute shell script at startup boot on systemd Linux - LinuxConfig.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 24 Nov 2019 15:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Tips for using VirtualBox every day</title>
@@ -3344,371 +4054,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Mon, 12 Aug 2019 09:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>20 apps you can use the same way on both Linux and Windows — part 1</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/apps-linux-windows.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/apps-linux-windows.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Maybe you don’t give &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; a chance because you are afraid of not knowing how to use the system, or of not finding the applications you use everyday. What if I tell you that that there are at least 20 popular &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; apps which can be used the same way also on Linux, a free and open-source operating system, would that encourage you to try it?&lt;/p&gt;
-
-&lt;p&gt;Please note that I’m not talking about Linux &lt;strong&gt;alternatives&lt;/strong&gt; to Windows applications: I’m talking about using &lt;strong&gt;the same applications&lt;/strong&gt; in exactly the same way on both systems!&lt;/p&gt;
-
-&lt;p&gt;In case you want to switch to Linux, you can start using these applications in your familiar operating system. Switching later will be that much easier.&lt;/p&gt;
-
-&lt;p&gt;The applications that I’m going to show here share in common:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;they are &lt;strong&gt;cross-platform:&lt;/strong&gt; available for use in various operating systems, such as Linux and Windows, some are also available for other systems such as &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; and &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;they are &lt;strong&gt;well-known&lt;/strong&gt;, popular softwares: you can find a lot of information about them on the Internet;&lt;/li&gt;
-  &lt;li&gt;they are &lt;strong&gt;free:&lt;/strong&gt; can be used without cost, but some offer additional, paid features;&lt;/li&gt;
-  &lt;li&gt;most of them are also free (as in “freedom”): users of &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;&lt;strong&gt;free softwares&lt;/strong&gt;&lt;/a&gt; (also called &lt;em&gt;libre&lt;/em&gt; softwares) have the freedom to run, copy, distribute, study, change and improve those software as they wish, access to their &lt;a href=&quot;https://en.wikipedia.org/wiki/Source_code&quot;&gt;source code&lt;/a&gt; is given;&lt;/li&gt;
-  &lt;li&gt;also most of them can be easily downloaded from official &lt;strong&gt;repositories&lt;/strong&gt; of the Linux distributions.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Softwares that are free in both senses (as in “free beer” and “free speech”) are called &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;FOSS — free and open-source softwares&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here I’m going to focus on the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; Linux distribution, because it’s the one I use and recommend, but these programs can be easily installed on other distributions.&lt;/p&gt;
-
-&lt;p&gt;I decided to split the post in two parts so it does not get too big.&lt;/p&gt;
-
-&lt;p&gt;I won’t make you wait any longer: let’s see the selected apps!&lt;/p&gt;
-
-&lt;h2 id=&quot;1-mozilla-firefox&quot;&gt;1) Mozilla Firefox&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/mozilla-firefox-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/mozilla-firefox-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://mozilla.org/firefox&quot;&gt;Mozilla Firefox&lt;/a&gt; is a free, open-source and cross-platform web browser developed by the &lt;a href=&quot;https://foundation.mozilla.org/&quot;&gt;Mozilla Foundation&lt;/a&gt; with the help of hundreds of collaborators. It aims to be a lightweight, secure, intuitive and highly extensible browser.&lt;/p&gt;
-
-&lt;p&gt;According to &lt;a href=&quot;http://gs.statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;, a web traffic analysis website, currently Firefox is used by about 9.76% of desktop users worldwide. It is the default browser on most Linux distributions.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt; comes with an &lt;a href=&quot;https://www.mozilla.org/firefox/organizations/&quot;&gt;Extended Support Release&lt;/a&gt; of Firefox, designed for use by organizations including schools, universities, businesses, public agencies and others who do mass deployments, cannot update frequently (i.e. on a monthly basis) and need longer support cycles. Point releases contain security updates only and coincide with regular Firefox releases. Functional enhancements come only on major releases, roughly yearly.&lt;/p&gt;
-
-&lt;p&gt;Firefox should be already installed on openSUSE, but in case you need to install it, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in MozillaFirefox MozillaFirefox-branding-openSUSE
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To install Firefox on Windows, download its installer from one of these links:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Regular release, the version most people use (at the time of writing, 67.0.4):
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/firefox/new/&quot;&gt;https://www.mozilla.org/firefox/new/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Extended Support Release, the same version openSUSE uses (60.7.2):
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/firefox/organizations/&quot;&gt;https://www.mozilla.org/firefox/organizations/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-google-chrome&quot;&gt;2) Google Chrome&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/google-chrome-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/google-chrome-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; is a cross-platform web browser developed by &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt;. It is licensed as &lt;a href=&quot;https://en.wikipedia.org/wiki/Proprietary_software&quot;&gt;proprietary&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Freeware&quot;&gt;freeware&lt;/a&gt; and features a minimalist interface.&lt;/p&gt;
-
-&lt;p&gt;According to StatCounter, Chrome is currently the most used web browser in the world, with 70% of market share among desktop users.&lt;/p&gt;
-
-&lt;p&gt;To install Chrome on both Linux and Windows, you need to download it from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;https://www.google.com/chrome/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Chrome is not offered by Linux distributions because it is proprietary. What perhaps many people don’t know is that most of Chrome’s source code comes from Google’s open-source &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt; project. Chrome is nothing more than the Chromium web browser bundled with a number of proprietary features added by Google.&lt;/p&gt;
-
-&lt;p&gt;If you want to install Chromium on openSUSE, just run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in chromium
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It is not usual to install Chromium on Windows, but if you want to, this website provides Chromium installers for Windows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://chromium.woolyss.com/&quot;&gt;https://chromium.woolyss.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;3-libreoffice&quot;&gt;3) LibreOffice&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/libreoffice-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/libreoffice-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; is a free and open-source suite of office applications developed by &lt;a href=&quot;https://www.documentfoundation.org/&quot;&gt;The Document Foundation&lt;/a&gt;. It is the default office suite of most popular Linux distributions. It uses the international standard &lt;a href=&quot;http://www.opendocument.com.br/project-definition&quot;&gt;OpenDocument&lt;/a&gt; file format (ODF) as its native format to save documents for all of its applications, but it’s also compatible with &lt;a href=&quot;https://www.office.com/&quot;&gt;Microsoft Office&lt;/a&gt; formats, as well as other formats. LibreOffice started as a fork of the &lt;a href=&quot;https://www.openoffice.org/&quot;&gt;OpenOffice&lt;/a&gt; project, then developed by &lt;a href=&quot;https://www.oracle.com/&quot;&gt;Oracle&lt;/a&gt;, now developed by &lt;a href=&quot;https://www.apache.org/&quot;&gt;The Apache Foundation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;LibreOffice should be already installed on openSUSE, but in case you need to install it, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in libreoffice-{writer,calc,impress,draw,base,math}
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To install LibreOffice on Windows, download its installer from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;https://www.libreoffice.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;4-dropbox&quot;&gt;4) Dropbox&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/dropbox-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/dropbox-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.dropbox.com/&quot;&gt;Dropbox&lt;/a&gt; is a file hosting service. It offers a client software which creates a folder named Dropbox on the computer and synchronizes files in that folder with the cloud. Dropbox is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Freemium&quot;&gt;freemium&lt;/a&gt; (free + premium) service: you start with 2GB of storage space for free and can optionally subscribe to individual or corporate paid plans with more space and features.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; join Dropbox using &lt;a href=&quot;https://db.tt/4VzN0K26&quot;&gt;this referral link&lt;/a&gt; and earn 500MB of bonus space!&lt;/p&gt;
-
-&lt;p&gt;To install the Dropbox client on Windows, download its installer from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/&quot;&gt;https://www.dropbox.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To install the Dropbox client on openSUSE, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in dropbox
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;When you launch Dropbox for the first time, it will download the proprietary part of the client.&lt;/p&gt;
-
-&lt;p&gt;If you use the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop environment, you should also install the file manager plugin, which provides features like sync indicators and context menu actions:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in nautilus-extension-dropbox
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Also note that &lt;a href=&quot;https://www.omgubuntu.co.uk/2017/09/will-you-miss-gnome-legacy-tray&quot;&gt;GNOME does not display system tray icons&lt;/a&gt; by default. You can install the &lt;a href=&quot;https://extensions.gnome.org/extension/1031/topicons/&quot;&gt;TopIcons Plus&lt;/a&gt; extension to put the Dropbox icon in the top bar, next to the clock.&lt;/p&gt;
-
-&lt;p&gt;If you don’t know how to install GNOME extensions, take a look at this post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/04/26/monitor-system-resources-with-the-gnome-system-monitor-extension/&quot;&gt;Monitor system resources with the GNOME System Monitor extension&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;5-skype&quot;&gt;5) Skype&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/skype-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/skype-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.skype.com/&quot;&gt;Skype&lt;/a&gt; is an app that allows you to send text messages and make voice and video calls over the Internet. Calls are free among Skype users, but it is also possible to call landlines or mobile phones anywhere in the world at affordable prices.&lt;/p&gt;
-
-&lt;p&gt;To install Skype on both Linux and Windows, you need to download it from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.skype.com/&quot;&gt;https://www.skype.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Windows users can also &lt;a href=&quot;https://www.microsoft.com/en-US/search?q=skype&quot;&gt;download Skype from Microsoft Store&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-teamviewer&quot;&gt;6) TeamViewer&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/teamviewer-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/teamviewer-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.teamviewer.com/&quot;&gt;TeamViewer&lt;/a&gt; is a remote desktop tool which features remote control, desktop sharing, web conferencing and file transfer between computers. Using a desktop computer or a mobile device, TeamViewer allows you to view the screen of another computer or device and also control it. TeamViewer is free for personal use, companies must buy a subscription.&lt;/p&gt;
-
-&lt;p&gt;To install TeamViewer on both Linux and Windows, you need to download it from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.teamviewer.com/&quot;&gt;https://www.teamviewer.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;7-vlc&quot;&gt;7) VLC&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/vlc-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/vlc-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;VLC&lt;/a&gt; is a free and open-source cross-platform multimedia player that plays most multimedia files (e.g. &lt;a href=&quot;https://en.wikipedia.org/wiki/MP3&quot;&gt;MP3&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/DivX&quot;&gt;DivX&lt;/a&gt;), optical media (CD, DVD, Blu-ray) and various streaming protocols.&lt;/p&gt;
-
-&lt;p&gt;I think of VLC as a Swiss Army knife multimedia player: if there is any multimedia file that VLC cannot open, probably no other can!&lt;/p&gt;
-
-&lt;p&gt;To install VLC on Windows, download its installer from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;https://www.videolan.org/vlc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On openSUSE, as VLC is a free software, it is available on the official repositories:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in vlc vlc-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;However, the package provided by openSUSE contain &lt;a href=&quot;https://en.wikipedia.org/wiki/Codec&quot;&gt;codecs&lt;/a&gt; only for free multimedia formats (e.g. &lt;a href=&quot;https://en.wikipedia.org/wiki/Xvid&quot;&gt;Xvid&lt;/a&gt;). Therefore, it is not able to play many multimedia files.&lt;/p&gt;
-
-&lt;p&gt;The tip is to download VLC from the &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt; repository. It provides the &lt;a href=&quot;http://packman.links2linux.com/package/vlc&quot;&gt;vlc-codecs&lt;/a&gt; package, which contains codecs that are not available in the stock openSUSE distribution:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfK -p 90 -n &quot;Packman Repository&quot; http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.1/ packman
-# zypper in vlc vlc-lang vlc-codecs
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;8-spotify&quot;&gt;8) Spotify&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/spotify-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/spotify-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.spotify.com/&quot;&gt;Spotify&lt;/a&gt; is one of the most popular podcast and music streaming services around the world. It’s a freemium service: basic features are free with advertisements, while additional features, such as improved streaming quality and ability to download music for offline listening, are offered via paid subscriptions.&lt;/p&gt;
-
-&lt;p&gt;To install the Spotify client on Windows, download its installer from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.spotify.com/&quot;&gt;https://www.spotify.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Windows users can also &lt;a href=&quot;https://www.microsoft.com/en-US/search?q=spotify&quot;&gt;download Spotify from Microsoft Store&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There is a &lt;a href=&quot;https://www.spotify.com/download/linux/&quot;&gt;Spotify client for Linux&lt;/a&gt; which can be installed using &lt;a href=&quot;https://snapcraft.io/&quot;&gt;Snap&lt;/a&gt;, a distribution-agnostic package manager.&lt;/p&gt;
-
-&lt;p&gt;First, to install Snap on openSUSE, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Leap_15.1 snap
-# zypper in snapd
-# systemctl enable snapd
-# systemctl start snapd
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, to install the Spotify client for Linux, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ snap install spotify
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;9-pdf-split-and-merge-pdfsam&quot;&gt;9) PDF Split and Merge (PDFsam)&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/pdfsam-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/pdfsam-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pdfsam.org/&quot;&gt;PDF Split and Merge&lt;/a&gt;, also known as PDFsam, is an application that allows you to manipulate PDF documents. The Basic edition is free and open-source and includes all the most basic features, such as split (either by page numbers or by size in bytes), merge, rotate or extract pages from PDF files. There are commercial editions with additional features.&lt;/p&gt;
-
-&lt;p&gt;To install PDFsam on both Linux and Windows, you need to download it from its website:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pdfsam.org/&quot;&gt;https://pdfsam.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;PDFsam is a Java-based application, which brings us to the tenth software of this first part.&lt;/p&gt;
-
-&lt;h2 id=&quot;10-java&quot;&gt;10) Java&lt;/h2&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/java-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/java-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.java.com/&quot;&gt;Java&lt;/a&gt; is not properly an app, but a programming language, in which several applications are developed. To use applications built on Java, you need to install a Java Runtime Environment (JRE), also known as Java Virtual Machine (JVM). Usually when people say “you need to install Java”, they mean “you need to install a JRE”.&lt;/p&gt;
-
-&lt;p&gt;There are two major implementations of JRE, both cross-platform: one free and open-source, provided by the OpenJDK project, which is the official reference implementation, and another licensed as proprietary freeware, provided by Oracle.&lt;/p&gt;
-
-&lt;p&gt;Usually Windows users install the Oracle JRE, which can be downloaded from:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.java.com/&quot;&gt;https://www.java.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For Linux users it is easier to install the OpenJDK JRE, which is provided by Linux distributions themselves. To install it in openSUSE, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in java-openjdk
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Actually, newer versions of PDFsam does not require you to install a JRE, because they are packaged with an embedded JRE.&lt;/p&gt;
-
-&lt;p&gt;Some programs may require you to install specifically the Oracle JRE (e.g. personal banking).&lt;/p&gt;
-
-&lt;p&gt;If you need help to install the Oracle JRE on openSUSE, take a look at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Installing_Java#Java_Runtime_Environment_Install_using_Oracle.27s_RPM&quot;&gt;SDB:Installing Java - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;to-be-continued&quot;&gt;To be continued…&lt;/h2&gt;
-
-&lt;p&gt;In part 2, we are going to see more apps made for both Linux and Windows.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Ago 12, 2019):&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&quot;/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/&quot;&gt;Part 2 is here! (click)&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;To choose the applications presented here, I searched lists of popular or recommended programs for Windows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/en-us/store/most-popular/apps/pc&quot;&gt;Most popular apps - Microsoft Store&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.makeuseof.com/tag/getting-a-new-pc-12-must-have-applications-to-install-first/&quot;&gt;New PC? 15 Must-Have Windows Applications You Should Install First&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.techradar.com/news/software/applications/20-windows-7-free-apps-to-download-today-648954&quot;&gt;20 of the best free Windows 7 apps 2019: bring your PC right up to date - TechRadar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.thewindowsclub.com/best-free-software-for-windows-10&quot;&gt;Best free software for Windows 10 in 2019&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So I tried to write from the point of view of a Windows user who wonders whether familiar applications can be found on Linux.&lt;/p&gt;
-
-&lt;p&gt;I hope this post helped you. Got any questions? Would you like to suggest any app? Please, write in the comments!&lt;/p&gt;
-
-</description>
-                <pubDate>Sat, 20 Jul 2019 16:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/</guid>
                 
                 
                     <category>en</category>
