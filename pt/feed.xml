@@ -9,10 +9,286 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 24 Nov 2019 15:58:28 -0300</pubDate>
-        <lastBuildDate>Sun, 24 Nov 2019 15:58:28 -0300</lastBuildDate>
+        <pubDate>Wed, 27 Nov 2019 22:55:05 -0300</pubDate>
+        <lastBuildDate>Wed, 27 Nov 2019 22:55:05 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Dica de Git: merge e diff facilitados pela interface gráfica com Meld e Atom</title>
+                <description>&lt;p&gt;Dica para desenvolvedores que usam &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;: já sentiu dificuldade ao fazer um &lt;em&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&quot;&gt;merge&lt;/a&gt;&lt;/em&gt;? Sabia que é possível resolver conflitos com o auxílio de interfaces gráficas que facilitam bastante o trabalho? Hoje veremos dois aplicativos que podem nos ajudar a resolver conflitos: o editor de texto &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; e a ferramenta de &lt;em&gt;diff&lt;/em&gt; e &lt;em&gt;merge&lt;/em&gt; &lt;a href=&quot;https://meldmerge.org/&quot;&gt;Meld&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;fazendo-merge-e-resolvendo-conflitos&quot;&gt;Fazendo merge e resolvendo conflitos&lt;/h2&gt;
+
+&lt;p&gt;Antes da dica propriamente dita, para garantir que estamos todos na mesma página, vejamos como normalmente se faz &lt;a href=&quot;https://git-scm.com/docs/git-merge&quot;&gt;&lt;strong&gt;git merge&lt;/strong&gt;&lt;/a&gt; e se resolve conflitos.&lt;/p&gt;
+
+&lt;p&gt;Imagine que você e um colega trabalham em um projeto de desenvolvimento e usam um repositório do Git para armazenar o código-fonte. Além do &lt;em&gt;branch&lt;/em&gt; principal (&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;), cada um possui seu próprio &lt;em&gt;branch&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;antonio&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;jose&lt;/code&gt;). Ao terminar o desenvolvimento de uma funcionalidade, cada um deve fazer &lt;em&gt;merge&lt;/em&gt; do seu &lt;em&gt;branch&lt;/em&gt; para o &lt;em&gt;branch&lt;/em&gt; principal.&lt;/p&gt;
+
+&lt;p&gt;Imagine também que vocês trabalharam em paralelo no mesmo arquivo, editando linhas próximas (ou as mesmas linhas), mas seu colega fez &lt;em&gt;merge&lt;/em&gt; com o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; primeiro. Quando você fizer &lt;em&gt;merge&lt;/em&gt; do seu &lt;em&gt;branch&lt;/em&gt; com o &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;, o Git acusará um conflito de arquivo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/git-merge-conflict-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/git-merge-conflict-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Um exemplo que aconteceu comigo na vida real, ao trazer atualizações do &lt;em&gt;upstream&lt;/em&gt; para um &lt;em&gt;fork&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git checkout master1
+$ git merge upstream1
+Auto-merging publish.sh
+Auto-merging libs/popper.js/1.16.0/umd/popper.js
+...
+Auto-merging _layouts/post.html
+Auto-merging _layouts/default.html
+Auto-merging _includes/sidebar.html
+Auto-merging _includes/head.html
+CONFLICT (content): Merge conflict in _includes/head.html
+Auto-merging _includes/footer.html
+CONFLICT (content): Merge conflict in _includes/footer.html
+Automatic merge failed; fix conflicts and then commit the result.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git status
+On branch master1
+You have unmerged paths.
+  (fix conflicts and run &quot;git commit&quot;)
+  (use &quot;git merge --abort&quot; to abort the merge)
+
+Changes to be committed:
+
+	modified:   _includes/adsense.html
+	modified:   _includes/sidebar.html
+...
+	new file:   libs/popper.js/1.16.0/umd/popper.min.js.map
+	modified:   publish.sh
+
+Unmerged paths:
+  (use &quot;git add/rm &amp;lt;file&amp;gt;...&quot; as appropriate to mark resolution)
+
+	both modified:   _includes/footer.html
+	both modified:   _includes/head.html
+	deleted by us:   _posts/2015-08-25-welcome-to-jekyll.markdown
+	both modified:   assets/css/main.css
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Em caso de conflito durante o &lt;em&gt;merge&lt;/em&gt;, você deve editar os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar &lt;a href=&quot;https://git-scm.com/docs/git-commit&quot;&gt;&lt;strong&gt;git commit&lt;/strong&gt;&lt;/a&gt; para concluir o &lt;em&gt;merge&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;resolvendo-conflitos-com-o-atom&quot;&gt;Resolvendo conflitos com o Atom&lt;/h2&gt;
+
+&lt;p&gt;Se você ainda não conhece, o &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; é um editor de texto feito pelo &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, por desenvolvedores e para desenvolvedores. Possui muitas funcionalidades, é bastante inteligente já em sua configuração padrão, mas pode receber extensões. O Atom faz lembrar o &lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;Sublime Text&lt;/a&gt;, mas é &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; e gratuito.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o Atom no &lt;a href=&quot;TODO&quot;&gt;Linux Kamarada&lt;/a&gt; ou no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, baixe e instale o pacote RPM do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://atom.io/&quot;&gt;https://atom.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ao abrir um arquivo conflituoso com o Atom, ele permite facilmente escolher entre uma versão ou outra das linhas, basta clicar no botão &lt;strong&gt;Use me&lt;/strong&gt; referente à versão desejada:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/atom.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/atom.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que a decisão não precisa ser binária: você pode escolher uma das versões e editá-la para obter um meio termo. O que importa é o conteúdo final do arquivo na hora de salvar.&lt;/p&gt;
+
+&lt;h2 id=&quot;resolvendo-conflitos-com-o-meld&quot;&gt;Resolvendo conflitos com o Meld&lt;/h2&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://meldmerge.org/&quot;&gt;Meld&lt;/a&gt; é uma ferramenta gráfica de &lt;em&gt;diff&lt;/em&gt; e &lt;em&gt;merge&lt;/em&gt; feita para desenvolvedores. Permite comparar arquivos e pastas em duas ou três vias e suporta vários sistemas de controle de versão, dentre eles o Git. Para instalar o Meld no Linux Kamarada ou no openSUSE, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in meld meld-lang
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usá-lo integrado ao Git.&lt;/p&gt;
+
+&lt;p&gt;Para resolver conflitos com o Meld, execute o comando &lt;a href=&quot;https://git-scm.com/docs/git-mergetool&quot;&gt;&lt;strong&gt;git mergetool&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git mergetool
+
+This message is displayed because 'merge.tool' is not configured.
+See 'git mergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+meld opendiff kdiff3 tkdiff xxdiff tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
+Merging:
+_includes/footer.html
+_includes/head.html
+_posts/2015-08-25-welcome-to-jekyll.markdown
+assets/css/main.css
+
+Normal merge conflict for '_includes/footer.html':
+  {local}: modified file
+  {remote}: modified file
+Hit return to start merge resolution tool (meld):
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A função do comando &lt;strong&gt;git mergetool&lt;/strong&gt; é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é a que ele sugere usar. Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld.&lt;/p&gt;
+
+&lt;p&gt;O Meld abre o arquivo conflituoso em três vias: a versão anterior do &lt;em&gt;branch&lt;/em&gt; atual à esquerda (nesse exemplo, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;), a versão mesclada no meio (esse é o resultado que irá no &lt;em&gt;commit&lt;/em&gt; do &lt;em&gt;merge&lt;/em&gt;), e a versão do &lt;em&gt;branch&lt;/em&gt; que está sendo mesclado à direita (&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/git-mergetool-meld-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/git-mergetool-meld-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode usar as setas ao lado das linhas para copiar trechos de código de um lado para o outro.&lt;/p&gt;
+
+&lt;p&gt;Note que também no Meld as decisões não precisam ser binárias: você pode simplesmente posicionar o cursor na via do meio e começar a digitar. A versão final do arquivo mesclado será tudo que estiver na via do meio, não importando se o conteúdo veio da via da esquerda, da via da direita ou se foi digitado à mão.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar de resolver o conflito, clique em &lt;strong&gt;Salvar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para que o Git sempre use o Meld para resolver conflitos sem perguntar qual ferramenta usar, execute os comandos a seguir:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git config --global merge.tool meld
+$ git config --global mergetool.prompt false
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, aquela mensagem comprida não aparecerá mais: ao executar &lt;strong&gt;git mergetool&lt;/strong&gt;, o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Além de resolver conflitos, o Meld pode ser usado para comparar versões de arquivos controladas pelo Git.&lt;/p&gt;
+
+&lt;h2 id=&quot;comparando-versões-de-arquivos&quot;&gt;Comparando versões de arquivos&lt;/h2&gt;
+
+&lt;p&gt;Para comparar versões de um mesmo arquivo (por exemplo, qual a diferença entre um arquivo em um &lt;em&gt;branch&lt;/em&gt; e esse mesmo arquivo em outro &lt;em&gt;branch&lt;/em&gt;, ou o que mudou em um arquivo entre dois &lt;em&gt;commits&lt;/em&gt;), você pode usar o comando &lt;a href=&quot;https://git-scm.com/docs/git-diff&quot;&gt;&lt;strong&gt;git diff&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git checkout master1
+$ git diff upstream1 -- _includes/footer.html
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse exemplo, queremos saber o que mudou no arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/footer.html&lt;/code&gt; do &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt; (especificado como referência inicial) para o &lt;em&gt;branch&lt;/em&gt; atual (&lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/git-diff-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/git-diff-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Talvez usando o Meld essa comparação fique mais interessante. Vejamos.&lt;/p&gt;
+
+&lt;h2 id=&quot;comparando-versões-de-arquivos-com-o-meld&quot;&gt;Comparando versões de arquivos com o Meld&lt;/h2&gt;
+
+&lt;p&gt;Como se fosse uma mistura do &lt;strong&gt;git diff&lt;/strong&gt; com o &lt;strong&gt;git mergetool&lt;/strong&gt; é o comando &lt;a href=&quot;https://git-scm.com/docs/git-difftool&quot;&gt;&lt;strong&gt;git difftool&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git difftool upstream1 -- _includes/footer.html
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;De forma semelhante, no primeiro uso ele alerta que não foi configurado e pergunta se deseja iniciar o Meld:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+meld opendiff kdiff3 tkdiff xxdiff kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
+
+Viewing (1/1): '_includes/footer.html'
+Launch 'meld' [Y/n]?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld. Dessa vez, ele faz uma comparação em duas vias: à esquerda, é exibida a versão especificada como referência (nesse caso, a versão do &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;), e à direita, é exibida a versão do &lt;em&gt;branch&lt;/em&gt; atual (nesse caso, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2019/11/git-difftool-meld-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2019/11/git-difftool-meld-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Configurar o &lt;strong&gt;git difftool&lt;/strong&gt; para sempre usar o Meld sem perguntar também é parecido:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git config --global diff.tool meld
+$ git config --global difftool.prompt false
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&quot;&gt;Git - Basic Branching and Merging&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://imasters.com.br/desenvolvimento/git-diffs-e-merges-mais-praticos-com-o-meld&quot;&gt;Git diffs e merges mais práticos com o Meld - iMasters&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fedoramagazine.org/compare-files-with-these-graphical-diff-tools-in-fedora/&quot;&gt;Compare files with these graphical diff tools in Fedora - Fedora Magazine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/39925108/1657502&quot;&gt;Setting up and using Meld as your git difftool and mergetool - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 27 Nov 2019 22:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Proteja-se com o firewall iptables</title>
@@ -3631,248 +3907,6 @@ Listing of PKCS #11 Modules
                 <pubDate>Fri, 30 Aug 2019 01:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/08/30/vlc-como-reproduzir-videos-em-tela-cheia-no-segundo-monitor/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/08/30/vlc-como-reproduzir-videos-em-tela-cheia-no-segundo-monitor/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Como jogar Super Nintendo no openSUSE com o emulador Snes9x</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;&lt;strong&gt;Super Nintendo Entertainment System&lt;/strong&gt;&lt;/a&gt; (&lt;strong&gt;SNES&lt;/strong&gt;), mais conhecido simplesmente por &lt;strong&gt;Super Nintendo&lt;/strong&gt;, foi um console de &lt;em&gt;videogame&lt;/em&gt; de 16 &lt;em&gt;bits&lt;/em&gt; fabricado pela &lt;a href=&quot;https://www.nintendo.com/pt_BR/&quot;&gt;Nintendo&lt;/a&gt; durante a década de 90. Foi um sucesso à época, com quase 50 milhões de unidades vendidas e diversos jogos emplacados, como &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Mario_World&quot;&gt;Super Mario World&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Donkey_Kong_Country&quot;&gt;Donkey Kong Country&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Mario_Kart&quot;&gt;Super Mario Kart&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Street_Fighter_II&quot;&gt;Street Fighter&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/The_Legend_of_Zelda:_A_Link_to_the_Past&quot;&gt;Zelda&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Final_Fantasy_IV&quot;&gt;Final Fantasy&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Chrono_Trigger&quot;&gt;Chrono Trigger&lt;/a&gt; e outros.&lt;/p&gt;
-
-&lt;p&gt;Gostaria de relembrar algum desses clássicos? Sabia que há um programa próprio para isso, chamado de emulador?&lt;/p&gt;
-
-&lt;p&gt;Um &lt;strong&gt;emulador&lt;/strong&gt; é um programa que permite que seu computador execute programas feitos para outro dispositivo. Um emulador de um &lt;em&gt;videogame&lt;/em&gt; permite que seu computador rode os jogos feitos para aquele &lt;em&gt;videogame&lt;/em&gt;. Comumente, os arquivos que contém os jogos são chamados de &lt;strong&gt;ROMs&lt;/strong&gt;. No caso do Super Nintendo, a ROM seria o conteúdo do cartucho.&lt;/p&gt;
-
-&lt;p&gt;Existem alguns emuladores de Super Nintendo. Um dos mais conhecidos é o Snes9x.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;http://www.snes9x.com/&quot;&gt;&lt;strong&gt;Snes9x&lt;/strong&gt;&lt;/a&gt; é um emulador multi-plataforma capaz de emular a maioria dos jogos de Super Nintendo no computador. É um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; e seu código-fonte está disponível no &lt;a href=&quot;https://github.com/snes9xgit/snes9x&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Nesse &lt;em&gt;post&lt;/em&gt;, você verá como instalar e usar o Snes9x na distribuição Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;aviso-legal&quot;&gt;Aviso legal&lt;/h2&gt;
-
-&lt;p&gt;No Brasil, de acordo com a Lei de Programa de Computador (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/leis/l9609.htm&quot;&gt;Lei nº 9.609 de 1998&lt;/a&gt;), você só pode armazenar em seu computador ROMs de jogos que você comprou e que estejam sob sua posse. Disponibilizar ROMs para &lt;em&gt;download&lt;/em&gt; é uma violação de direitos autorais (“pirataria”), mas baixá-las, não (desde que você tenha os jogos originais).&lt;/p&gt;
-
-&lt;p&gt;Alguns &lt;em&gt;sites&lt;/em&gt; afirmam, erroneamente, que você pode baixar ROMs contanto que as apague dentro de 24 horas, mas isso não possui fundamento jurídico.&lt;/p&gt;
-
-&lt;p&gt;Na prática, como no Brasil ninguém fiscaliza o que você baixa, depende apenas da sua consciência baixar ou não baixar ROMs e quais ROMs baixar.&lt;/p&gt;
-
-&lt;p&gt;Aparentemente, não há problema legal quanto aos emuladores, pois até o momento nenhuma empresa conseguiu impedir sua distribuição. Os desenvolvedores alegam que usam engenharia reversa para criar os emuladores e, por isso, estão dentro da lei.&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-baixar-roms&quot;&gt;Onde baixar ROMs&lt;/h2&gt;
-
-&lt;p&gt;Você não vai encontrar ROMs aqui. Pesquise em mecanismos de busca como o &lt;a href=&quot;https://www.google.com.br/search?q=roms+de+super+nintendo&quot;&gt;Google&lt;/a&gt; &lt;em&gt;sites&lt;/em&gt; que disponibilizam &lt;a href=&quot;https://www.google.com.br/search?q=roms+de+super+nintendo&quot;&gt;ROMs de Super Nintendo para &lt;em&gt;download&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;requisitos-de-sistema-do-snes9x&quot;&gt;Requisitos de sistema do Snes9x&lt;/h2&gt;
-
-&lt;p&gt;Para emular jogos de Super Nintendo no Linux usando o Snes9x você não precisa de um supercomputador. A &lt;a href=&quot;https://github.com/snes9xgit/snes9x/blob/master/unix/docs/readme_unix.html&quot;&gt;documentação&lt;/a&gt; fala em no mínimo um processador Pentium 2 300MHz com 16MB de memória RAM, ou um processador de 1GHz para uma experiência perfeita. Se seu computador tem 10 anos ou menos (pra dar uma noção, estamos falando de 2009, lançamento do &lt;a href=&quot;https://pt.wikipedia.org/wiki/Windows_7&quot;&gt;Windows 7&lt;/a&gt;), com certeza se encaixa nessas especificações.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalando-o-snes9x&quot;&gt;Instalando o Snes9x&lt;/h2&gt;
-
-&lt;p&gt;Você pode instalar o Snes9x no openSUSE de duas formas: pela interface gráfica, usando a instalação com 1 clique (&lt;em&gt;1-Click Install&lt;/em&gt;), ou pelo terminal, usando o gerenciador de pacotes &lt;strong&gt;zypper&lt;/strong&gt;. Escolha a que prefere.&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando a instalação com 1 clique, clique no botão abaixo:&lt;/p&gt;
-
-&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/snes9x.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; Instalação com 1 clique&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando o terminal, primeiro adicione o repositório necessário:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f http://download.opensuse.org/repositories/Emulators/openSUSE_Leap_15.1/ emuladores
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois, instale o pacote do Snes9x:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in snes9x
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Após a instalação, você já deve ser capaz de iniciar o emulador.&lt;/p&gt;
-
-&lt;h2 id=&quot;iniciando-o-snes9x&quot;&gt;Iniciando o Snes9x&lt;/h2&gt;
-
-&lt;p&gt;Se você possui um &lt;em&gt;joystick&lt;/em&gt; e pretende jogar com ele, conecte-o antes de iniciar o emulador.&lt;/p&gt;
-
-&lt;p&gt;Para iniciar o Snes9x, se você usa o ambiente &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, comece a digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;snes9x&lt;/code&gt; e clique no ícone do emulador:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-launching-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-launching-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-start-screen-pt.png&quot; title=&quot;A tela inicial do Snes9x&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-start-screen-pt.png&quot; alt=&quot;A tela inicial do Snes9x&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A tela inicial do Snes9x&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;configurando-o-snes9x&quot;&gt;Configurando o Snes9x&lt;/h2&gt;
-
-&lt;p&gt;Existem algumas configurações que você precisa fazer antes de começar a jogar. Normalmente, elas são feitas apenas uma vez, no primeiro uso do emulador.&lt;/p&gt;
-
-&lt;p&gt;Para acessar as configurações do Snes9x, abra o menu &lt;strong&gt;Opções&lt;/strong&gt; e clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-preferences-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-preferences-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;configuração-dos-controles&quot;&gt;Configuração dos controles&lt;/h3&gt;
-
-&lt;p&gt;Para configurar os controles, selecione a aba &lt;strong&gt;Controles&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-keyboard-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-keyboard-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Essa caixa de diálogo lista os botões do &lt;em&gt;joystick&lt;/em&gt; do Super Nintendo e os botões correspondentes no computador. Para associar um botão do Super Nintendo, clique no campo e pressione a tecla do teclado ou o botão do &lt;em&gt;joystick&lt;/em&gt; que deseja associar.&lt;/p&gt;
-
-&lt;p&gt;Por padrão, o Snes9x muda para o botão seguinte, permitindo que você atribua os 12 botões com agilidade. Comece associando o primeiro botão (&lt;strong&gt;Cima&lt;/strong&gt;). Depois que você associar o botão &lt;strong&gt;Cima&lt;/strong&gt;, o Snes9x muda para o botão &lt;strong&gt;Baixo&lt;/strong&gt;, depois para &lt;strong&gt;Esquerda&lt;/strong&gt;, depois &lt;strong&gt;Direita&lt;/strong&gt;, depois &lt;strong&gt;Start&lt;/strong&gt; e assim sucessivamente.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se quiser uma sugestão de configuração, consulte essa imagem:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-setup.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-setup.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você for jogar a dois, para configurar os controles do segundo jogador, mude &lt;strong&gt;Controle&lt;/strong&gt; para &lt;strong&gt;2&lt;/strong&gt; e repita o processo. Para o segundo jogador, vou usar um &lt;em&gt;joystick&lt;/em&gt; USB:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-joypad-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-joypad-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;configuração-do-som&quot;&gt;Configuração do som&lt;/h3&gt;
-
-&lt;p&gt;Precisamos fazer mais uma configuração antes de começar a jogar: indicar ao Snes9x qual sistema de som usar. No openSUSE, o sistema de som instalado por padrão é o &lt;a href=&quot;https://www.freedesktop.org/wiki/Software/PulseAudio/&quot;&gt;PulseAudio&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Selecione a aba &lt;strong&gt;Som&lt;/strong&gt;. Na opção &lt;strong&gt;Driver de som&lt;/strong&gt;, selecione &lt;strong&gt;PulseAudio&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-sound-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-sound-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para salvar as configurações e fechar a caixa de diálogo de preferências.&lt;/p&gt;
-
-&lt;h2 id=&quot;abrindo-uma-rom&quot;&gt;Abrindo uma ROM&lt;/h2&gt;
-
-&lt;p&gt;Para abrir uma ROM, abra o menu &lt;strong&gt;Arquivo&lt;/strong&gt; e clique em &lt;strong&gt;Open ROM Image&lt;/strong&gt; (faltou a tradução):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-open-rom-1-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-open-rom-1-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Navegue até a pasta onde está a ROM que deseja jogar e dê dois cliques nela. Normalmente é um arquivo com a extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.smc&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.sfc&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-open-rom-2-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-open-rom-2-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O jogo deve começar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-game-started-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-game-started-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;salvando-e-retomando&quot;&gt;Salvando e retomando&lt;/h2&gt;
-
-&lt;p&gt;Uma vantagem do emulador em relação ao &lt;em&gt;videogame&lt;/em&gt; é que você pode salvar o estado do jogo a qualquer momento, assim como retomar a qualquer momento do ponto em que salvou.&lt;/p&gt;
-
-&lt;p&gt;Jogando no Snes9x, você pode salvar da mesma forma que no Super Nintendo (usando o menu do próprio jogo), ou pode usar uma das 10 memórias que o emulador oferece.&lt;/p&gt;
-
-&lt;p&gt;Para salvar o estado do jogo, abra o menu &lt;strong&gt;Arquivo&lt;/strong&gt;, aponte para &lt;strong&gt;Salvar estado&lt;/strong&gt; e escolha uma das memórias (&lt;em&gt;slots&lt;/em&gt;) disponíveis:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-save-state-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-save-state-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para retomar um estado previamente salvo, abra o menu &lt;strong&gt;Arquivo&lt;/strong&gt;, aponte para &lt;strong&gt;Carregar estado&lt;/strong&gt; e escolha a memória que deseja retomar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-load-state-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-load-state-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para facilitar salvar e retomar, você pode criar atalhos do teclado para cada memória. Para isso, vá em &lt;strong&gt;Opções&lt;/strong&gt;, &lt;strong&gt;Preferências&lt;/strong&gt;, &lt;strong&gt;Atalhos&lt;/strong&gt;, &lt;strong&gt;Estados salvos&lt;/strong&gt; e defina os atalhos de teclado, da mesma forma como definiu os controles:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/08/snes9x-shortcuts-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/08/snes9x-shortcuts-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Recomendo definir &lt;strong&gt;Shift + F1&lt;/strong&gt; para salvar na memória 0 e &lt;strong&gt;F1&lt;/strong&gt; para retomar da memória 0 e de forma análoga para as demais (para a memória 1, &lt;strong&gt;Shift + F2&lt;/strong&gt; e &lt;strong&gt;F2&lt;/strong&gt;, e assim sucessivamente).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; se você usa um &lt;em&gt;joystick&lt;/em&gt; USB parecido com um &lt;em&gt;joystick&lt;/em&gt; de &lt;a href=&quot;https://www.playstation.com/pt-br/&quot;&gt;Playstation&lt;/a&gt;, deve ter notado que sobraram botões na configuração (ele tem mais botões que o &lt;em&gt;joystick&lt;/em&gt; do Super Nintendo). Você pode associar os botões &lt;strong&gt;L2&lt;/strong&gt; e &lt;strong&gt;R2&lt;/strong&gt; a salvar e retomar um estado.&lt;/p&gt;
-
-&lt;h2 id=&quot;tela-cheia&quot;&gt;Tela cheia&lt;/h2&gt;
-
-&lt;p&gt;Se quiser jogar em tela cheia, abra o menu &lt;strong&gt;Visualizar&lt;/strong&gt; e clique em &lt;strong&gt;Tela cheia&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para sair do modo tela cheia, pressione &lt;strong&gt;Esc&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Encerro minha parte por aqui. Agora é com você: boa diversão!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;Super Nintendo Entertainment System - Wikipedia&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.memoriabit.com.br/emulando-velharias-como-jogar-games-do-snes-no-emulador-snes9x/&quot;&gt;Emulação: como jogar SNES no computador com o Snes9X - Memória BIT&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.memoriabit.com.br/snes9x-pt-br/&quot;&gt;Snes9xBR – emulador de Super Nintendo em português - Memória BIT&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://pcigames.blogspot.com/2013/04/Configurando-o-emulador-Snes9x-para-melhor-grafico.html&quot;&gt;Configurando o emulador Snes9x para melhor gráfico - PC e Games&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.fantasyanime.com/emuhelp/snes9x&quot;&gt;Snes9X Tutorial - Video Game Emulation for Newbies&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Revista PC Emuladores, ano 1, nº 2, São Paulo, Editora Escala&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sun, 11 Aug 2019 02:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/08/11/como-jogar-super-nintendo-no-opensuse-com-o-emulador-snes9x/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/08/11/como-jogar-super-nintendo-no-opensuse-com-o-emulador-snes9x/</guid>
                 
                 
                     <category>pt</category>
