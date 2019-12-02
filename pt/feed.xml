@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 28 Nov 2019 07:37:48 -0300</pubDate>
-        <lastBuildDate>Thu, 28 Nov 2019 07:37:48 -0300</lastBuildDate>
+        <pubDate>Mon, 02 Dec 2019 20:10:12 -0300</pubDate>
+        <lastBuildDate>Mon, 02 Dec 2019 20:10:12 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
         
@@ -109,7 +109,7 @@ Unmerged paths:
 	both modified:   assets/css/main.css
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Em caso de conflito durante o &lt;em&gt;merge&lt;/em&gt;, você deve editar os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar &lt;a href=&quot;https://git-scm.com/docs/git-commit&quot;&gt;&lt;strong&gt;git commit&lt;/strong&gt;&lt;/a&gt; para concluir o &lt;em&gt;merge&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Em caso de conflito durante o &lt;em&gt;merge&lt;/em&gt;, você deve editar manualmente os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar &lt;a href=&quot;https://git-scm.com/docs/git-commit&quot;&gt;&lt;strong&gt;git commit&lt;/strong&gt;&lt;/a&gt; para concluir o &lt;em&gt;merge&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;resolvendo-conflitos-com-o-atom&quot;&gt;Resolvendo conflitos com o Atom&lt;/h2&gt;
 
@@ -140,7 +140,7 @@ Unmerged paths:
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in meld meld-lang
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usá-lo integrado ao Git.&lt;/p&gt;
+&lt;p&gt;Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos ou pastas que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usar o Meld integrado ao Git.&lt;/p&gt;
 
 &lt;p&gt;Para resolver conflitos com o Meld, execute o comando &lt;a href=&quot;https://git-scm.com/docs/git-mergetool&quot;&gt;&lt;strong&gt;git mergetool&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
 
@@ -178,9 +178,9 @@ Normal merge conflict for '_includes/footer.html':
 Hit return to start merge resolution tool (meld):
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;A função do comando &lt;strong&gt;git mergetool&lt;/strong&gt; é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é a que ele sugere usar. Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld.&lt;/p&gt;
+&lt;p&gt;A função do comando &lt;strong&gt;git mergetool&lt;/strong&gt; é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é também a que ele sugere usar. Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld.&lt;/p&gt;
 
-&lt;p&gt;O Meld abre o arquivo conflituoso em três vias: a versão anterior do &lt;em&gt;branch&lt;/em&gt; atual à esquerda (nesse exemplo, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;), a versão mesclada no meio (esse é o resultado que irá no &lt;em&gt;commit&lt;/em&gt; do &lt;em&gt;merge&lt;/em&gt;), e a versão do &lt;em&gt;branch&lt;/em&gt; que está sendo mesclado à direita (&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;):&lt;/p&gt;
+&lt;p&gt;O Meld abre o arquivo conflituoso em três vias: à esquerda, a versão anterior do &lt;em&gt;branch&lt;/em&gt; atual (nesse exemplo, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;); no meio, a versão mesclada (esse é o resultado que irá no &lt;em&gt;commit&lt;/em&gt; do &lt;em&gt;merge&lt;/em&gt;); e à direita, a versão do &lt;em&gt;branch&lt;/em&gt; que está sendo mesclado (&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;):&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2019/11/git-mergetool-meld-pt.png&quot; title=&quot;&quot;&gt;
@@ -203,7 +203,7 @@ Hit return to start merge resolution tool (meld):
 $ git config --global mergetool.prompt false
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Feito isso, aquela mensagem comprida não aparecerá mais: ao executar &lt;strong&gt;git mergetool&lt;/strong&gt;, o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;Feito isso, aquela mensagem comprida não aparecerá mais ao executar &lt;strong&gt;git mergetool&lt;/strong&gt;: o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
 
 &lt;p&gt;Além de resolver conflitos, o Meld pode ser usado para comparar versões de arquivos controladas pelo Git.&lt;/p&gt;
 

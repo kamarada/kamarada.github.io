@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Git Pro Tip: merge and diff made easier with GUI tools Meld and Atom - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="Here is a tip for developers using Git: have you ever had a hard time merging branches? Did you know that there are GUI tools to resolve conflicts? They can ...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
+
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-12-02 20:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Here is a tip for developers using Git: have you ever had a hard time merging branches? Did you know that there are GUI tools to resolve conflicts? They can ..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2019/11/git-mergetool-meld-en.png" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Git Pro Tip: merge and diff made easier with GUI tools Meld and Atom" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=4">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=4">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=4">
+    <meta name="msapplication-TileColor" content="#4caf50">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/',
+                    title: document.title,
+                    description: 'Here is a tip for developers using Git: have you ever had a hard time merging branches? Did you know that there are GUI tools to resolve conflicts? They can ...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.1'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/" itemprop="mainEntityOfPage url">
+                Git Pro Tip: merge and diff made easier with GUI tools Meld and Atom
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-12-02">
+                    <a href="/2019/12/02/">
+                        
+    Dec 2, 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-12-02" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>Here is a tip for developers using <a href="https://git-scm.com/">Git</a>: have you ever had a hard time <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">merging</a> branches? Did you know that there are GUI tools to resolve conflicts? They can make your job a lot easier. Today we are going to take a look at two of them: the <a href="https://atom.io/">Atom</a> text editor and the <a href="https://meldmerge.org/">Meld</a> diff and merge tool.</p>
+
+<!--more-->
+
+<h2 id="merging-and-resolving-conflicts">Merging and resolving conflicts</h2>
+
+<p>Before going to the tip itself, to make sure that everyone is on the same page, let’s see how commonly <a href="https://git-scm.com/docs/git-merge"><strong>git merge</strong></a> is used, conflicts happen and are solved.</p>
+
+<p>Imagine that you and a coworker are working on a development project and the team use a Git repository to store the source code. In addition to the <code class="highlighter-rouge">master</code> branch, each developer has their own branch (e.g. <code class="highlighter-rouge">antonio</code> and <code class="highlighter-rouge">john</code>). While you are developing a feature, you commit to your branch. When you are finished, you merge your branch into the <code class="highlighter-rouge">master</code> branch.</p>
+
+<p>Imagine also that you and your colleague are working in parallel on the same file, editing the same part of the file (or even the same lines), but your colleague merged his <code class="highlighter-rouge">john</code> branch into the <code class="highlighter-rouge">master</code> branch before you. When you try to merge your branch, Git accuses a file conflict:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/11/git-merge-conflict-en.png" title="">
+<img src="/files/2019/11/git-merge-conflict-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>I’ll give you an example that happened to me in real life once, while merging upstream changes to a fork:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>$ git checkout master1
+$ git merge upstream1
+Auto-merging publish.sh
+Auto-merging libs/popper.js/1.16.0/umd/popper.js
+...
+Auto-merging _layouts/post.html
+Auto-merging _layouts/default.html
+Auto-merging _includes/sidebar.html
+Auto-merging _includes/head.html
+CONFLICT (content): Merge conflict in _includes/head.html
+Auto-merging _includes/footer.html
+CONFLICT (content): Merge conflict in _includes/footer.html
+Automatic merge failed; fix conflicts and then commit the result.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>$ git status
+On branch master1
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+
+	modified:   _includes/adsense.html
+	modified:   _includes/sidebar.html
+...
+	new file:   libs/popper.js/1.16.0/umd/popper.min.js.map
+	modified:   publish.sh
+
+Unmerged paths:
+  (use "git add/rm &lt;file&gt;..." as appropriate to mark resolution)
+
+	both modified:   _includes/footer.html
+	both modified:   _includes/head.html
+	deleted by us:   _posts/2015-08-25-welcome-to-jekyll.markdown
+	both modified:   assets/css/main.css
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In case of a merge conflict, you need to manually edit the conflicting files, comparing the changes you and your colleague made and deciding on the final version of the files, and then run <a href="https://git-scm.com/docs/git-commit"><strong>git commit</strong></a> to finalize the merge commit.</p>
+
+<h2 id="resolving-conflicts-with-atom">Resolving conflicts with Atom</h2>
+
+<p>If you don’t know it already, <a href="https://atom.io/">Atom</a> is a text editor made by <a href="https://github.com/">GitHub</a>, by developers and for developers. In its default configuration, it’s already featureful and quite smart, but you can add features to it by packages. Atom resembles <a href="https://www.sublimetext.com/">Sublime Text</a>, but Atom is <a href="https://www.gnu.org/philosophy/free-sw.html">free software</a> (in terms of both liberty and price).</p>
+
+<p>To install Atom on either <a href="/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/">Linux Kamarada</a> or <a href="https://www.opensuse.org/">openSUSE</a>, download and install the RPM package from its official website:</p>
+
+<ul>
+  <li><a href="https://atom.io/">https://atom.io/</a></li>
+</ul>
+
+<p>When you open a conflicting file with Atom, it allows you to easily choose between one or the other version of the conflicting lines by simply clicking the <strong>Use me</strong> button for the desired one:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/11/atom.png" title="">
+<img src="/files/2019/11/atom.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Note that you don’t need to be binary: you can choose one of the versions and edit it to achieve an in-between version. What matters is what ends up in the file when you save it.</p>
+
+<h2 id="resolving-conflicts-with-meld">Resolving conflicts with Meld</h2>
+
+<p><a href="https://meldmerge.org/">Meld</a> is a visual diff and merge tool targeted at developers. It helps you compare files and folders in two or three ways and supports many popular version control systems, including Git.</p>
+
+<p>To install Meld on either Linux Kamarada or openSUSE, run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in meld
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can use Meld standalone by opening the app and selecting the files or folders you want to compare, but I won’t go into detail about its basic usage, because our goal here is to see how to use Meld integrated with Git.</p>
+
+<p>To resolve merge conflicts using Meld, run <a href="https://git-scm.com/docs/git-mergetool"><strong>git mergetool</strong></a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>$ git mergetool
+
+This message is displayed because 'merge.tool' is not configured.
+See 'git mergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+meld opendiff kdiff3 tkdiff xxdiff tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
+Merging:
+_includes/footer.html
+_includes/head.html
+_posts/2015-08-25-welcome-to-jekyll.markdown
+assets/css/main.css
+
+Normal merge conflict for '_includes/footer.html':
+  {local}: modified file
+  {remote}: modified file
+Hit return to start merge resolution tool (meld):
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>The <strong>git mergetool</strong> command fires up an appropriate visual merge tool and walks you through the conflicts. It displays that long message on the first run because we have not yet set up a merge tool. Note that it supports several tools, including Meld, which is the first on the list and is also the one it suggests using. Hit <strong>Enter</strong> to start Meld.</p>
+
+<p>Meld opens the conflicting file in three ways: by the left, the previous version in the current branch (in this example, the <code class="highlighter-rouge">master1</code> branch); in the middle, the merged version (this is the one which is going to be commited); and by the right, the version in the branch being merged (<code class="highlighter-rouge">upstream1</code>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/11/git-mergetool-meld-en.png" title="">
+<img src="/files/2019/11/git-mergetool-meld-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>You can use the arrows next to the lines to copy code snippets from one version to the other.</p>
+
+<p>Note that, as Atom, Meld does not impose you take binary decisions: you can simply place the cursor in the middle view and start typing. The final version of the merged file will be anything which is in the middle view, it does not matter if the content came from the left view, the right view, or was typed by hand.</p>
+
+<p>When you are finished resolving the conflict, click <strong>Save</strong>.</p>
+
+<p>To set up Git to always use Meld to resolve conflicts without asking which tool to use, run the following commands:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ git config --global merge.tool meld
+$ git config --global mergetool.prompt false
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>With that done, that long message will no longer appear when you run <strong>git mergetool</strong>: Git will indicate which file you are merging and will already open Meld (you won’t need to hit <strong>Enter</strong>).</p>
+
+<p>Besides resolving merge conflicts, Meld can be used to compare revisions of files controlled by Git.</p>
+
+<h2 id="comparing-file-revisions">Comparing file revisions</h2>
+
+<p>To compare revisions of the same file (i.e. to show the changes between a file in one branch and that same file in another branch, or changes made to a file between two commits), you can use the <a href="https://git-scm.com/docs/git-diff"><strong>git diff</strong></a> command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ git checkout master1
+$ git diff upstream1 -- _includes/footer.html
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>In this example, we want to know what changed in the <code class="highlighter-rouge">_includes/footer.html</code> file from the named branch (<code class="highlighter-rouge">upstream1</code>) to the current branch (<code class="highlighter-rouge">master1</code>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/11/git-diff-en.png" title="">
+<img src="/files/2019/11/git-diff-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Maybe using Meld this comparison is going to be shown in a more interesting way. Let’s see.</p>
+
+<h2 id="comparing-file-revisions-with-meld">Comparing file revisions with Meld</h2>
+
+<p>Imagine kind of a mix between <strong>git diff</strong> and <strong>git mergetool</strong>. That’s the <a href="https://git-scm.com/docs/git-difftool"><strong>git difftool</strong></a> command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ git difftool upstream1 -- _includes/footer.html
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Similarly, on the first use it alerts it has not been set up yet and asks if you want to start Meld:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+meld opendiff kdiff3 tkdiff xxdiff kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
+
+Viewing (1/1): '_includes/footer.html'
+Launch 'meld' [Y/n]?
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Hit <strong>Enter</strong> to start Meld. This time, it does a two-way comparison: by the left is displayed the revision in the named branch (in this example, the <code class="highlighter-rouge">upstream1</code> branch), and by the right is displayed the revision in the current branch (<code class="highlighter-rouge">master1</code>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/11/git-difftool-meld-en.png" title="">
+<img src="/files/2019/11/git-difftool-meld-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Setting up <strong>git difftool</strong> to always use Meld without asking is also similar:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ git config --global diff.tool meld
+$ git config --global difftool.prompt false
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging">Git - Basic Branching and Merging</a></li>
+  <li><a href="https://fedoramagazine.org/compare-files-with-these-graphical-diff-tools-in-fedora/">Compare files with these graphical diff tools in Fedora - Fedora Magazine</a></li>
+  <li><a href="https://stackoverflow.com/a/39925108/1657502">Setting up and using Meld as your git difftool and mergetool - Stack Overflow</a></li>
+</ul>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style addthis_follow_buttons text-center">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://instagram.com/Kamarada_Linux" class="addthis_button_instagram_follow" addthis:userid="Kamarada_Linux" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyright &copy; 2019 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Here is a tip for developers using Git: have you ever had a hard time merging branches? Did you know that there are GUI tools to resolve conflicts? They can make your job a lot easier. Today we are going to take a look at two of them: the Atom text editor and the Meld...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2019/11/git-mergetool-meld-en.png"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                    } else {
+                        $ad.remove();
+                    }
+                }
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>

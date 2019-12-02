@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -198,7 +202,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -297,7 +301,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2019-11-28" />
+                <meta itemprop="dateModified" content="2019-12-02" />
             </div>
             <div class='col-sm-6'>
                 
@@ -427,7 +431,7 @@ Unmerged paths:
 	both modified:   assets/css/main.css
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Em caso de conflito durante o <em>merge</em>, você deve editar os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar <a href="https://git-scm.com/docs/git-commit"><strong>git commit</strong></a> para concluir o <em>merge</em>.</p>
+<p>Em caso de conflito durante o <em>merge</em>, você deve editar manualmente os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar <a href="https://git-scm.com/docs/git-commit"><strong>git commit</strong></a> para concluir o <em>merge</em>.</p>
 
 <h2 id="resolvendo-conflitos-com-o-atom">Resolvendo conflitos com o Atom</h2>
 
@@ -458,7 +462,7 @@ Unmerged paths:
 </pre></td><td class="rouge-code"><pre># zypper in meld meld-lang
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usá-lo integrado ao Git.</p>
+<p>Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos ou pastas que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usar o Meld integrado ao Git.</p>
 
 <p>Para resolver conflitos com o Meld, execute o comando <a href="https://git-scm.com/docs/git-mergetool"><strong>git mergetool</strong></a>:</p>
 
@@ -496,9 +500,9 @@ Normal merge conflict for '_includes/footer.html':
 Hit return to start merge resolution tool (meld):
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>A função do comando <strong>git mergetool</strong> é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é a que ele sugere usar. Tecle <strong>Enter</strong> para iniciar o Meld.</p>
+<p>A função do comando <strong>git mergetool</strong> é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é também a que ele sugere usar. Tecle <strong>Enter</strong> para iniciar o Meld.</p>
 
-<p>O Meld abre o arquivo conflituoso em três vias: a versão anterior do <em>branch</em> atual à esquerda (nesse exemplo, o <em>branch</em> <code class="highlighter-rouge">master1</code>), a versão mesclada no meio (esse é o resultado que irá no <em>commit</em> do <em>merge</em>), e a versão do <em>branch</em> que está sendo mesclado à direita (<code class="highlighter-rouge">upstream1</code>):</p>
+<p>O Meld abre o arquivo conflituoso em três vias: à esquerda, a versão anterior do <em>branch</em> atual (nesse exemplo, o <em>branch</em> <code class="highlighter-rouge">master1</code>); no meio, a versão mesclada (esse é o resultado que irá no <em>commit</em> do <em>merge</em>); e à direita, a versão do <em>branch</em> que está sendo mesclado (<code class="highlighter-rouge">upstream1</code>):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2019/11/git-mergetool-meld-pt.png" title="">
@@ -521,7 +525,7 @@ Hit return to start merge resolution tool (meld):
 $ git config --global mergetool.prompt false
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Feito isso, aquela mensagem comprida não aparecerá mais: ao executar <strong>git mergetool</strong>, o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar <strong>Enter</strong>).</p>
+<p>Feito isso, aquela mensagem comprida não aparecerá mais ao executar <strong>git mergetool</strong>: o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar <strong>Enter</strong>).</p>
 
 <p>Além de resolver conflitos, o Meld pode ser usado para comparar versões de arquivos controladas pelo Git.</p>
 
@@ -922,7 +926,7 @@ $ git config --global difftool.prompt false
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2019/12/02/git-pro-tip-merge-and-diff-made-easier-with-gui-tools-meld-and-atom/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
