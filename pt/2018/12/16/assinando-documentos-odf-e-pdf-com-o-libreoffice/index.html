@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -198,7 +202,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -297,7 +301,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2018-12-19" />
+                <meta itemprop="dateModified" content="2020-03-13" />
             </div>
             <div class='col-sm-6'>
                 
@@ -343,12 +347,31 @@
 
 <p>Se você possui um <a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">certificado digital</a>, pode assinar documentos antes de enviá-los para dar mais segurança a quem os recebe. Nesse <em>post</em>, você verá como fazer isso com a suíte de escritório <a href="https://pt-br.libreoffice.org/">LibreOffice</a>, que é capaz de assinar não só os documentos <a href="https://pt.wikipedia.org/wiki/OpenDocument">ODF</a> criados na própria suíte, como documentos <a href="https://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a> quaisquer (mesmo os criados fora da suíte).</p>
 
-<p>O LibreOffice utiliza a infraestrutura de certificados digitais do navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a>. Portanto, antes de assinar documentos com o LibreOffice, você deve ter o Firefox instalado (normalmente já vem na distribuição) e configurado para usar seu certificado digital. Esses dois <em>posts</em> mostram como fazer essa configuração:</p>
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (13/03/2020):</strong>
+    
+<p>O <em>post</em> foi revisado para se aproximar da <a href="/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/">versão em inglês</a>, mais recente. Essa nova versão menciona o <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">Linux Kamarada 15.1</a> e mostra como configurar o LibreOffice para usar os certificados do Chromium.</p>
+
+</div>
+
+<p>Embora seja capaz de assinar documentos, o LibreOffice não possui sua própria infraestrutura de assinatura. Em vez disso, ele usa a infraestrutura do navegador para assinar documentos.</p>
+
+<p>Por padrão, o LibreOffice procura por certificados e mídias criptográficas na configuração do <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a>. Portanto, se você usa o Firefox, precisa configurá-lo para usar seu certificado digital antes de assinar documentos com o LibreOffice. Esses <em>posts</em> podem te ajudar:</p>
 
 <ul>
   <li><a href="/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/">Como instalar certificados de segurança no Linux</a></li>
   <li><a href="/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/">Configurando certificado digital no Linux openSUSE</a></li>
 </ul>
+
+<p>O <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">Linux Kamarada 15.1</a> traz o <a href="https://www.chromium.org/">Chromium</a> como navegador padrão. Se você usa o Chromium (ou um navegador baseado no Chromium, como <a href="https://www.google.com/chrome/">Google Chrome</a>, <a href="https://www.opera.com/pt-br">Opera</a>, <a href="https://vivaldi.com/pt-br/">Vivaldi</a> ou <a href="https://brave.com/">Brave</a>), é possível configurar o LibreOffice para usá-lo em vez do Firefox. Mas, também nesse caso, você precisa configurar seu navegador primeiro:</p>
+
+<ul>
+  <li><a href="/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/">Configurando certificado digital no navegador Google Chrome / Chromium</a></li>
+</ul>
+
+<p>Depois disso, veja no final deste <em>post</em> como configurar o LibreOffice para usar o Chromium.</p>
+
+<p>Todo mundo na mesma página (<em>tokens</em> e navegadores configurados), vamos para o LibreOffice!</p>
 
 <h2 id="assinando-um-documento-odf">Assinando um documento ODF</h2>
 
@@ -425,6 +448,8 @@
 
 </div>
 
+<p>Com isso, você sabe que está vendo o documento original: ele foi assinado e depois da assinatura não foi mais modificado.</p>
+
 <p>Para verificar a assinatura, você pode clicar duas vezes no ícone <strong>Assinatura digital</strong>, na barra de estado, ou clicar no botão <strong>Mostrar assinaturas</strong>, na notificação.</p>
 
 <p>É aberta a caixa de diálogo <strong>Assinaturas digitais</strong>, na qual você pode selecionar uma assinatura e clicar em <strong>Exibir certificado</strong> para ver mais informações sobre o certificado:</p>
@@ -449,7 +474,7 @@
 
 <h2 id="modificando-um-documento-odf-assinado">Modificando um documento ODF assinado</h2>
 
-<p>Note que você até pode modificar um documento ODF assinado, mas na hora de salvar o LibreOffice avisa que removerá todas as assinaturas que o documento tinha:</p>
+<p>Você até pode modificar um documento ODF assinado, mas na hora de salvar o LibreOffice avisa que as assinaturas que o documento tinha não são mais válidas e serão removidas:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/12/libreoffice-signing-09.jpg" title="">
@@ -458,15 +483,15 @@
 
 </div>
 
-<p>Será necessário assinar o documento novamente.</p>
+<p>Se quiser que o documento continue assinado, você terá que assiná-lo novamente depois de salvar.</p>
 
-<p>Com isso, quem abrir um documento que foi assinado e depois modificado pode abrir a caixa de diálogo <strong>Assinaturas digitais</strong> e verificar que ele foi assinado em outra data e hora, possivelmente por outra pessoa.</p>
+<p>Com isso, quem teve acesso à versão anterior do documento pode verificar sua assinatura digital (abrindo a caixa de diálogo <strong>Assinaturas digitais</strong>) e perceber que ele foi assinado novamente em outra data e hora, possivelmente por outra pessoa.</p>
 
 <h2 id="exportando-um-documento-como-um-pdf-assinado">Exportando um documento como um PDF assinado</h2>
 
 <p>O formato de documento portável (<em>Portable Document Format</em> - <a href="https://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a>) foi desenvolvido pela <a href="https://www.adobe.com/br/">Adobe</a> para representar documentos de forma independente do aplicativo, do <em>hardware</em> e do sistema operacional. Era no início um formato proprietário, que depois foi aberto. É comum compartilhar documentos como PDF na Internet, porque esse formato previne a perda de formatação.</p>
 
-<p>Para exportar um documento ODF como um PDF assinado, vá no menu <strong>Arquivo</strong>, <strong>Exportar como</strong> e clique em <strong>Exportar como PDF</strong>:</p>
+<p>Para exportar um documento ODF (que não precisa ter sido previamente assinado) como um PDF assinado, vá no menu <strong>Arquivo</strong>, <strong>Exportar como</strong> e clique em <strong>Exportar como PDF</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/12/libreoffice-signing-10.jpg" title="">
@@ -492,7 +517,7 @@
 
 <p>Você pode abrir documentos PDF no LibreOffice usando o aplicativo Draw.</p>
 
-<p>Quando você abre um documento PDF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone <strong>Assinatura digital</strong> na barra de estado (da mesma forma como ele faz com documentos ODF):</p>
+<p>Quando você abre um documento PDF assinado, o LibreOffice avisa que o documento está assinado, além de exibir o ícone <strong>Assinatura digital</strong> na barra de estado (da mesma forma como ele faz com documentos ODF assinados):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2018/12/libreoffice-signing-12.jpg" title="">
@@ -518,16 +543,66 @@
 
 </div>
 
-<p>Clique em <strong>Assinar documento</strong>. Aparece a caixa de diálogo <strong>Assinaturas digitais</strong>.</p>
+<p>Clique em <strong>Assinar documento</strong>. Aparece a caixa de diálogo <strong>Assinaturas digitais</strong>. A partir dela, você pode assinar o documento PDF da mesma forma como assinaria um documento ODF.</p>
 
-<p>O resto do procedimento é semelhante ao da assinatura de documentos ODF.</p>
+<h2 id="configurando-o-libreoffice-para-usar-os-certificados-do-chromium">Configurando o LibreOffice para usar os certificados do Chromium</h2>
+
+<p>Se você usa o navegador Chromium, não precisa instalar e configurar o Firefox para assinar documentos com o LibreOffice: você pode configurar o LibreOffice para usar os certificados do Chromium.</p>
+
+<p>Para fazer isso, abra o menu <strong>Ferramentas</strong> e clique em <strong>Opções</strong>.</p>
+
+<p>Na árvore de opções à esquerda, expanda <strong>LibreOffice</strong> e selecione <strong>Segurança</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/libreoffice-cert-chrome-01-pt.jpg" title="">
+<img src="/files/2020/03/libreoffice-cert-chrome-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>À direita, em <strong>Caminho do certificado</strong>, clique no botão <strong>Certificado</strong>.</p>
+
+<p>Na caixa de diálogo <strong>Caminho do certificado</strong>, clique em <strong>Adicionar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/libreoffice-cert-chrome-02-pt.jpg" title="">
+<img src="/files/2020/03/libreoffice-cert-chrome-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O Chromium armazena suas configurações de certificados em <code class="highlighter-rouge">~/.pki/nssdb/</code>.</p>
+
+<p>Na caixa de diálogo <strong>Selecione o caminho</strong>, pressione <strong>Ctrl + L</strong> para informar manualmente a localização, digite <code class="highlighter-rouge">~/.pki/nssdb/</code> e clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/libreoffice-cert-chrome-03-pt.jpg" title="">
+<img src="/files/2020/03/libreoffice-cert-chrome-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>De volta à caixa de diálogo <strong>Caminho do certificado</strong>, clique em <strong>OK</strong> para fechá-la:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/libreoffice-cert-chrome-04-pt.jpg" title="">
+<img src="/files/2020/03/libreoffice-cert-chrome-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>De volta à caixa de diálogo <strong>Opções</strong>, clique em <strong>OK</strong> para fechá-la.</p>
+
+<p>Reinicie o LibreOffice e faça bom proveito!</p>
 
 <h2 id="referências">Referências</h2>
 
 <ul>
-  <li><a href="https://help.libreoffice.org/Common/About_Digital_Signatures/pt-BR">Sobre assinaturas digitais - LibreOffice Help</a></li>
   <li><a href="https://help.libreoffice.org/Common/Applying_Digital_Signatures/pt-BR">Assinar com assinaturas digitais - LibreOffice Help</a></li>
+  <li><a href="https://help.libreoffice.org/Common/Digital_Signatures/pt-BR">Assinaturas digitais - LibreOffice Help</a></li>
+  <li><a href="https://help.libreoffice.org/Common/About_Digital_Signatures/pt-BR">Sobre assinaturas digitais - LibreOffice Help</a></li>
   <li><a href="https://vmiklos.hu/blog/pdf-sign.html">Signing existing PDF files in LibreOffice</a></li>
+  <li><a href="https://askubuntu.com/a/1212197/560233">firefox - How do I make a digital certificate available to LibreOffice Writer for digital signatures? - Ask Ubuntu</a></li>
 </ul>
 
 
@@ -854,7 +929,7 @@
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2018/12/16/assinando-documentos-odf-e-pdf-com-o-libreoffice/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     

@@ -9,10 +9,280 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 10 Mar 2020 00:04:44 -0300</pubDate>
-        <lastBuildDate>Tue, 10 Mar 2020 00:04:44 -0300</lastBuildDate>
+        <pubDate>Fri, 13 Mar 2020 21:51:47 -0300</pubDate>
+        <lastBuildDate>Fri, 13 Mar 2020 21:51:47 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Signing ODF and PDF documents with LibreOffice</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/12/libreoffice-signing.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/12/libreoffice-signing.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you have a &lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;digital certificate&lt;/a&gt;, you can sign documents before sending them, so that who receives them feels confident about their authenticity and integrity. Today you are going to see how to do that with the &lt;a href=&quot;https://www.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; office suite, which is able to sign not only &lt;a href=&quot;https://en.wikipedia.org/wiki/OpenDocument&quot;&gt;ODF&lt;/a&gt; documents created by itself, but also any &lt;a href=&quot;https://en.wikipedia.org/wiki/PDF&quot;&gt;PDF&lt;/a&gt; documents (even those created by other programs).&lt;/p&gt;
+
+&lt;p&gt;Although capable of signing, LibreOffice does not have its own public key infrastructure. Instead, it uses the infrastructure of a web browser to sign documents.&lt;/p&gt;
+
+&lt;p&gt;By default, LibreOffice looks for certificates and cryptographic media in the &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; configuration. So, if you use Firefox, you need to set it up before signing documents with LibreOffice. These two posts show how you can get everything working:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;How to install website certificates on Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/06/28/using-smart-cards-on-opensuse-linux/&quot;&gt;Using smart cards on openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt; brings &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt; as default web browser. If you use Chromium (or a Chromium-based browser, such as &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/&quot;&gt;Opera&lt;/a&gt;, &lt;a href=&quot;https://vivaldi.com/&quot;&gt;Vivaldi&lt;/a&gt; or &lt;a href=&quot;https://brave.com/&quot;&gt;Brave&lt;/a&gt;), you can set up LibreOffice to use it instead of Firefox. But also in that case your browser must be setup first:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/&quot;&gt;Setting up smart card authentication on Google Chrome / Chromium&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then, refer to the end of this post to see how to set up LibreOffice to use Chromium.&lt;/p&gt;
+
+&lt;p&gt;Everyone on the same page (tokens and browsers setup), let’s move on to LibreOffice!&lt;/p&gt;
+
+&lt;h2 id=&quot;signing-an-odf-document&quot;&gt;Signing an ODF document&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/OpenDocument&quot;&gt;Open Document Format (ODF)&lt;/a&gt; is the default file format for LibreOffice. The most common filename extensions used for Open Document files are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt; for &lt;em&gt;&lt;strong&gt;t&lt;/strong&gt;ext&lt;/em&gt; documents, opened with &lt;a href=&quot;https://www.libreoffice.org/discover/writer/&quot;&gt;Writer&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.ods&lt;/code&gt; for &lt;em&gt;&lt;strong&gt;s&lt;/strong&gt;preadsheets&lt;/em&gt;, opened with &lt;a href=&quot;https://www.libreoffice.org/discover/calc/&quot;&gt;Calc&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odp&lt;/code&gt; for &lt;em&gt;&lt;strong&gt;p&lt;/strong&gt;resentations&lt;/em&gt;, opened with &lt;a href=&quot;https://www.libreoffice.org/discover/impress/&quot;&gt;Impress&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odg&lt;/code&gt; for &lt;em&gt;&lt;strong&gt;g&lt;/strong&gt;raphics&lt;/em&gt; (diagrams, vector images), opened with &lt;a href=&quot;https://www.libreoffice.org/discover/draw/&quot;&gt;Draw&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odb&lt;/code&gt; for &lt;em&gt;data&lt;strong&gt;b&lt;/strong&gt;ases&lt;/em&gt;, opened with &lt;a href=&quot;https://www.libreoffice.org/discover/base/&quot;&gt;Base&lt;/a&gt;; and&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.odf&lt;/code&gt; for mathematical equations (&lt;em&gt;&lt;strong&gt;f&lt;/strong&gt;ormulas&lt;/em&gt;), opened with &lt;a href=&quot;https://www.libreoffice.org/discover/math/&quot;&gt;Math&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s see how to sign a text document (a &lt;code class=&quot;highlighter-rouge&quot;&gt;.odt&lt;/code&gt; file) with LibreOffice Writer (steps are similar for any application of the LibreOffice suite).&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;File&lt;/strong&gt; menu, &lt;strong&gt;Digital Signatures&lt;/strong&gt; submenu, and click &lt;strong&gt;Digital Signatures&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you haven’t previously saved the document, LibreOffice alerts you that it has to be saved before it can be signed, and asks if you want to save it. Click &lt;strong&gt;Yes&lt;/strong&gt; and save the document:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Digital Signatures&lt;/strong&gt; dialog box, click &lt;strong&gt;Sign Document&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;LibreOffice asks for your token’s PIN password. Type it and click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Select Certificate&lt;/strong&gt; dialog box, choose the certificate to be used to sign and click &lt;strong&gt;Sign&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Digital Signatures&lt;/strong&gt; dialog, note that the digital signature of the document is shown:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-05-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-05-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Close&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;checking-the-digital-signature-of-an-odf-document&quot;&gt;Checking the digital signature of an ODF document&lt;/h2&gt;
+
+&lt;p&gt;When you open a signed ODF document, LibreOffice informs that the document is signed. In other words, you are seeing the original, unchanged document. It also shows the &lt;strong&gt;Digital Signature&lt;/strong&gt; icon on the status bar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To view the digital signature of the document, you can either double-click the &lt;strong&gt;Digital Signature&lt;/strong&gt; icon on the status bar, or click the &lt;strong&gt;Show Signatures&lt;/strong&gt; button on the alert.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Digital Signatures&lt;/strong&gt; dialog box, you can select a signature and click &lt;strong&gt;View Certificate&lt;/strong&gt; to see more information about the signer:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The message &lt;strong&gt;This certificate is validated&lt;/strong&gt; indicates that LibreOffice was able to establish the &lt;strong&gt;Certification Path&lt;/strong&gt; up to the certificate of a known certification authority:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That is similar to a web browser displaying a lock icon when you access an HTTPS website. I explained the certificate hierarchy in &lt;a href=&quot;/en/2018/10/30/how-to-install-website-certificates-on-linux/&quot;&gt;another post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;modifying-a-signed-odf-document&quot;&gt;Modifying a signed ODF document&lt;/h2&gt;
+
+&lt;p&gt;Note that although you can modify a signed ODF document, when you save it, LibreOffice warns you that the existing signatures are not valid anymore and will be removed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you want to keep the document signed, after saving you will need to sign it again.&lt;/p&gt;
+
+&lt;p&gt;Thus, anyone who had access to the previous version of the document can check its digital signature (by opening the &lt;strong&gt;Digital Signatures&lt;/strong&gt; dialog box) and notice that it was signed again at a different date and time, possibly by another person.&lt;/p&gt;
+
+&lt;h2 id=&quot;exporting-a-document-as-a-signed-pdf&quot;&gt;Exporting a document as a signed PDF&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://en.wikipedia.org/wiki/PDF&quot;&gt;Portable Document Format (PDF)&lt;/a&gt; has been developed by &lt;a href=&quot;https://www.adobe.com/&quot;&gt;Adobe&lt;/a&gt; to present documents, including text formatting and images, in a manner independent of application software, hardware and operating systems. It was initially a proprietary format, which was later released as an open standard. PDF is a common format for sharing final versions of files, because it prevents loss of formatting.&lt;/p&gt;
+
+&lt;p&gt;To export an ODF document as a signed PDF (please note that ODF document does not need to be previously signed), go to the &lt;strong&gt;File&lt;/strong&gt; menu, &lt;strong&gt;Export As&lt;/strong&gt; submenu and click &lt;strong&gt;Export as PDF&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Switch to the &lt;strong&gt;Digital Signatures&lt;/strong&gt; tab and, under &lt;strong&gt;Certificate&lt;/strong&gt;, click &lt;strong&gt;Select&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Select Certificate&lt;/strong&gt; dialog box, choose the certificate to be used to sign and click &lt;strong&gt;Sign&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, click &lt;strong&gt;Export&lt;/strong&gt; and save the PDF document.&lt;/p&gt;
+
+&lt;h2 id=&quot;checking-the-digital-signature-of-a-pdf-document&quot;&gt;Checking the digital signature of a PDF document&lt;/h2&gt;
+
+&lt;p&gt;LibreOffice Draw can open PDF documents.&lt;/p&gt;
+
+&lt;p&gt;When you open a signed PDF document, LibreOffice Draw notifies you that the document is signed, it also shows the &lt;strong&gt;Digital Signature&lt;/strong&gt; icon on the status bar (just as it does with signed ODF documents):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To view the signature, you can either double-click the &lt;strong&gt;Digital Signature&lt;/strong&gt; icon on the status bar, or click the &lt;strong&gt;Show Signatures&lt;/strong&gt; button on the alert.&lt;/p&gt;
+
+&lt;h2 id=&quot;signing-an-existing-pdf-document&quot;&gt;Signing an existing PDF document&lt;/h2&gt;
+
+&lt;p&gt;LibreOffice is able to sign PDF documents created not only by the office suite itself, but also any existing PDF documents, even those created by other applications (outside LibreOffice).&lt;/p&gt;
+
+&lt;p&gt;You can sign an existing PDF document from any application of the LibreOffice suite: just go to the &lt;strong&gt;File&lt;/strong&gt; menu, &lt;strong&gt;Digital Signatures&lt;/strong&gt; submenu, click &lt;strong&gt;Sign Existing PDF&lt;/strong&gt; and open the PDF document that you want to sign. LibreOffice Draw opens the document in read-only mode:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-signing-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-signing-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Sign Document&lt;/strong&gt;. LibreOffice Draw presents the &lt;strong&gt;Digital Signatures&lt;/strong&gt; dialog box.&lt;/p&gt;
+
+&lt;p&gt;Now you can sign the PDF document the same way you would sign an ODF document.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-libreoffice-to-use-chromium-certificates&quot;&gt;Setting up LibreOffice to use Chromium certificates&lt;/h2&gt;
+
+&lt;p&gt;Chromium users don’t need to install and set up Firefox to sign documents with LibreOffice: they can set up LibreOffice to use the Chromium public key infrastructure.&lt;/p&gt;
+
+&lt;p&gt;To do that, open the &lt;strong&gt;Tools&lt;/strong&gt; menu and click &lt;strong&gt;Options&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the tree by the left, expand &lt;strong&gt;LibreOffice&lt;/strong&gt;, then select &lt;strong&gt;Security&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-cert-chrome-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-cert-chrome-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By the right, under &lt;strong&gt;Certificate Path&lt;/strong&gt;, click the &lt;strong&gt;Certificate&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Certificate Path&lt;/strong&gt; dialog box, click &lt;strong&gt;Add&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-cert-chrome-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-cert-chrome-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Chromium stores its certificate configuration in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.pki/nssdb/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Select Path&lt;/strong&gt; dialog box, press &lt;strong&gt;Ctrl + L&lt;/strong&gt; to manually enter the location, type &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.pki/nssdb/&lt;/code&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-cert-chrome-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-cert-chrome-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Certificate Path&lt;/strong&gt; dialog box, click &lt;strong&gt;OK&lt;/strong&gt; to close it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/libreoffice-cert-chrome-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/libreoffice-cert-chrome-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Options&lt;/strong&gt; dialog box, click &lt;strong&gt;OK&lt;/strong&gt; to close it.&lt;/p&gt;
+
+&lt;p&gt;Restart LibreOffice and you are ready to go!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/Applying_Digital_Signatures&quot;&gt;Applying Digital Signatures - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/Digital_Signatures&quot;&gt;Digital Signatures - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.libreoffice.org/Common/About_Digital_Signatures&quot;&gt;About Digital Signatures - LibreOffice Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vmiklos.hu/blog/pdf-sign.html&quot;&gt;Signing existing PDF files in LibreOffice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://askubuntu.com/a/1212197/560233&quot;&gt;firefox - How do I make a digital certificate available to LibreOffice Writer for digital signatures? - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 13 Mar 2020 21:10:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/03/13/signing-odf-and-pdf-documents-with-libreoffice/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Kamarada 15.1 comes with everything you need to use Linux everyday</title>
@@ -4909,360 +5179,6 @@ $ sudo Downloads/VirtualBox-6.0.12-133076-Linux_amd64.run
                 <pubDate>Sat, 19 Oct 2019 11:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/10/19/installing-virtualbox-on-linux/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>VirtualBox: the easiest way to try Linux without installing it</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/07/virtualbox-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/07/virtualbox-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; allows you to use &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; within a window, just like you use any other app on your familiar operating system. Do you want to use Linux? Just start it. Finished using? Just close it. That is handy because you can have your first contact with Linux without actually installing it. It is even handier than a &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;LiveDVD/USB&lt;/a&gt;, because to use live media you need to reboot.&lt;/p&gt;
-
-&lt;p&gt;By “window”, I meant to simplify it, so that you could have a picture of how it looks like. But actually that “window”, technically speaking, is a &lt;strong&gt;virtual machine&lt;/strong&gt; (often abbreviated as &lt;strong&gt;VM&lt;/strong&gt;): it is an emulated computer created by software. It provides similar functionality to a physical machine, so that you can install operating systems and apps on it. The operating system (OS) installed on a virtual machine “believes” it is installed on a “real” computer.&lt;/p&gt;
-
-&lt;p&gt;Your computer (which is a physical machine and is, in contrast, called a &lt;strong&gt;real machine&lt;/strong&gt;) can run many virtual machines at the same time (as long as the needed amounts of RAM and disk space are available). In practice, that means you can use multiple OSes at the same time. For example, you can use both &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and Linux at the same time.&lt;/p&gt;
-
-&lt;p&gt;The operating system of the real machine is called &lt;strong&gt;host operating system&lt;/strong&gt; (&lt;strong&gt;host OS&lt;/strong&gt;): it hosts the virtual machine, whose operating system is called &lt;strong&gt;guest operating system&lt;/strong&gt; (&lt;strong&gt;guest OS&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;This technology is called &lt;strong&gt;virtualization&lt;/strong&gt;. And put simply, VirtualBox is a software that provides you an user-friendly way to do virtualization using your personal computer.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;free and open-source&lt;/a&gt; cross-platform virtualization software developed by &lt;a href=&quot;https://www.oracle.com/&quot;&gt;Oracle&lt;/a&gt;. It can be installed on your &lt;a href=&quot;https://en.wikipedia.org/wiki/IBM_Personal_Computer&quot;&gt;PC&lt;/a&gt;, whether you use Windows, &lt;a href=&quot;https://www.apple.com/macos/&quot;&gt;macOS&lt;/a&gt;, Linux or &lt;a href=&quot;https://www.oracle.com/solaris/&quot;&gt;Solaris&lt;/a&gt;, and it supports a large number of guest operating systems, including, but not limited to: Windows (3.x, 95, 98, NT, 2000, XP, Server 2003, Vista, 7, 8, 8.1, 10, Server 2008, Server 2012 and Server 2016), DOS, Linux (2.4, 2.6, 3.x and 4.x), Solaris, OpenSolaris, OS/2 and OpenBSD.&lt;/p&gt;
-
-&lt;p&gt;We already talked a little about VirtualBox in another post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/&quot;&gt;20 apps you can use the same way on both Linux and Windows — part 2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Today we are going to see how to install VirtualBox on Windows, create a virtual machine and boot a Linux &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt; on it. To demonstrate how to do that, I’m going to use the &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Kamarada&lt;/a&gt; Linux distribution, which you get on the &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page.&lt;/p&gt;
-
-&lt;h2 id=&quot;part-1-of-3&quot;&gt;Part 1 of 3&lt;/h2&gt;
-
-&lt;p&gt;For the post not to be too long, I decided to split it into three parts:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;in this first part, you are going to install VirtualBox on Windows, learn its basics and start using Linux inside a virtual machine;&lt;/li&gt;
-  &lt;li&gt;in the &lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;second part&lt;/a&gt;, you will see how to install VirtualBox on Linux;&lt;/li&gt;
-  &lt;li&gt;in the &lt;a href=&quot;/en/2019/11/01/tips-for-using-virtualbox-every-day/&quot;&gt;third part&lt;/a&gt;, you will see some useful tips for using VirtualBox daily.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This sequence of posts is devoted mainly to Windows users who haven’t had their first contact with Linux yet and want to try it using the safety of VirtualBox.&lt;/p&gt;
-
-&lt;p&gt;If you already use Linux, you may want to install VirtualBox to try another distribution. VirtualBox can be useful for &lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html#virt-why-useful&quot;&gt;other purposes&lt;/a&gt; too.&lt;/p&gt;
-
-&lt;h2 id=&quot;downloading-virtualbox-for-windows&quot;&gt;Downloading VirtualBox for Windows&lt;/h2&gt;
-
-&lt;p&gt;Download the VirtualBox installer going to its official website at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Click the &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt; banner:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Under &lt;strong&gt;VirtualBox binaries&lt;/strong&gt;, click &lt;strong&gt;Windows hosts&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The download starts.&lt;/p&gt;
-
-&lt;h2 id=&quot;installing-virtualbox-on-windows&quot;&gt;Installing VirtualBox on Windows&lt;/h2&gt;
-
-&lt;p&gt;Run the installer when the download is complete.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;You can install VirtualBox just like you install most programs on Windows (next, next, next).&lt;/p&gt;
-
-&lt;p&gt;During installation, Windows prompts you whether to install drivers for VirtualBox:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Allow it by clicking &lt;strong&gt;Install&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;At the end, click &lt;strong&gt;Finish&lt;/strong&gt; to exit the installation wizard and start VirtualBox:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;creating-a-new-virtual-machine&quot;&gt;Creating a new virtual machine&lt;/h2&gt;
-
-&lt;p&gt;This is the VirtualBox start screen, so far without any virtual machine:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;To create a new virtual machine, click the &lt;strong&gt;New&lt;/strong&gt; button.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Create Virtual Machine&lt;/strong&gt; wizard is started:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Give the virtual machine a &lt;strong&gt;Name&lt;/strong&gt;. For instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note that when you type &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE&lt;/code&gt;, the wizard suggests the settings &lt;strong&gt;Type&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;Linux&lt;/code&gt; — and &lt;strong&gt;Version&lt;/strong&gt; — &lt;code class=&quot;highlighter-rouge&quot;&gt;openSUSE (64-bit)&lt;/code&gt;. If you wanted, you could have given another name to the virtual machine (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;Testing Linux&lt;/code&gt;) and filled those other fields manually. Regarding the name, what really matters is that it makes sense for you and helps you identify the VM.&lt;/p&gt;
-
-&lt;p&gt;When you are finished, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the next page, inform the amount of RAM you want to reserve for the VM:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In the image example, my real machine has a total of 16GB of RAM (16384MB) and I decided to reserve 2GB for the VM. In the future, when I start this VM, the guest OS will “believe” that it is running on a computer with 2GB of RAM, while the host OS will have 14GB left for all the other software (including any other virtual machines).&lt;/p&gt;
-
-&lt;p&gt;Split the RAM so that there is enough memory for both the real and the virtual machines. Mind the green bar, which indicates the maximum amount of memory considered to be safe to reserve for the VM. In the example, that limit is somewhere around 10.5GB (doing the maths, 2/3 or 66% of the 16GB total).&lt;/p&gt;
-
-&lt;p&gt;Note that the amount of RAM to be allocated is expressed in MB (2GB x 1024 = 2048MB).&lt;/p&gt;
-
-&lt;p&gt;When you are finished, click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the next page, we can create a virtual hard disk for the VM:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A virtual hard disk, from the host OS perspective, is a large file, such as a ZIP archive. But VirtualBox presents it to the VM as if it were a physical HDD or SSD.&lt;/p&gt;
-
-&lt;p&gt;Since we are going to use a live image, for now we don’t really need to create a virtual hard disk to try Linux. We’ll see how to create a virtual hard disk later.&lt;/p&gt;
-
-&lt;p&gt;Then, choose &lt;strong&gt;Do not add a virtual hard disk&lt;/strong&gt; and click &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Click &lt;strong&gt;Continue&lt;/strong&gt; to ignore the VirtualBox warning:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now the VirtualBox start screen shows your first virtual machine:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that you can configure every aspect of the virtual machine (memory, display, storage, audio, network, etc.) to mimic a physical machine.&lt;/p&gt;
-
-&lt;h2 id=&quot;inserting-the-iso-image-into-the-virtual-dvd-drive&quot;&gt;Inserting the ISO image into the virtual DVD drive&lt;/h2&gt;
-
-&lt;p&gt;Let’s insert the ISO image of the Linux distribution into the virtual DVD drive of the virtual machine, as if we were inserting a DVD into the DVD drive of a physical machine.&lt;/p&gt;
-
-&lt;p&gt;On the VirtualBox start screen, which shows the virtual machine settings, click &lt;strong&gt;Storage&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;By the left, under &lt;strong&gt;Storage Devices&lt;/strong&gt;, within the &lt;strong&gt;Controller: IDE&lt;/strong&gt;, select the DVD drive that appears as &lt;strong&gt;Empty&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-12-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;By the right, click the media icon and then, on the drop-down menu that appears, click &lt;strong&gt;Choose Virtual Optical Disk File&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Select the ISO image of the Linux distribution you downloaded and click &lt;strong&gt;Open&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-13-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Settings&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
-
-&lt;h2 id=&quot;starting-and-using-the-virtual-machine&quot;&gt;Starting and using the virtual machine&lt;/h2&gt;
-
-&lt;p&gt;To start the virtual machine, click the &lt;strong&gt;Start&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-14-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(doing that is similar to pressing the power button of a physical machine)&lt;/p&gt;
-
-&lt;p&gt;VirtualBox opens a new window for the virtual machine, which starts to boot the operating system up, just like a physical machine would do:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-15-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-15-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Everything which would normally be seen on the virtual machine’s monitor is shown in the window.&lt;/p&gt;
-
-&lt;p&gt;When the system finishes booting up, you will see the desktop and can start using it:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-16-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-16-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In addition to displaying image, the VM window also allows you to interact with the VM: to control the VM, click on the window, then the keyboard and the mouse are now “owned” by the VM and can be used only within it.&lt;/p&gt;
-
-&lt;p&gt;To return ownership of keyboard and mouse to the host OS, VirtualBox reserves a special key on the keyboard: it is called the &lt;strong&gt;Host key&lt;/strong&gt; and it is, by default, the &lt;strong&gt;right Ctrl&lt;/strong&gt; key. Press the Host key, then keyboard and mouse are now owned by the host OS again.&lt;/p&gt;
-
-&lt;p&gt;The current setting for the Host key is always displayed at the bottom right of your VM window:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-17.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-17.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In case the guest OS reports that it supports &lt;strong&gt;mouse pointer integration&lt;/strong&gt;, that means you can move the mouse pointer freely between the virtual machine window and other opened windows on the host OS, you don’t need to click on the VM window to capture the mouse, nor hit the Host key to release it.&lt;/p&gt;
-
-&lt;p&gt;When used within a VirtualBox VM as a guest OS, Linux Kamarada enables mouse pointer integration by default, making the VM usage a lot more seamless.&lt;/p&gt;
-
-&lt;p&gt;You can change the default Host key in the VirtualBox preferences, if you want.&lt;/p&gt;
-
-&lt;h2 id=&quot;shutting-the-virtual-machine-down&quot;&gt;Shutting the virtual machine down&lt;/h2&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-
-&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; as you are using a Linux &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt;, &lt;strong&gt;any changes you make to the guest operating system will be lost when you shut the virtual machine down&lt;/strong&gt;. If you created any file on the virtual machine you think is important to keep, send it by email or upload it to some cloud storage service, such as &lt;a href=&quot;https://db.tt/4VzN0K26&quot;&gt;Dropbox&lt;/a&gt; or &lt;a href=&quot;https://drive.google.com/&quot;&gt;Google Drive&lt;/a&gt;, before shutting the virtual machine down.&lt;/p&gt;
-
-
-&lt;/div&gt;
-
-&lt;p&gt;When you are finished using the virtual machine, shut it down as usual, in the same way you would shutdown a physical machine. In case your guest OS is Linux Kamarada, which comes with the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop out-of-the-box, to shut the VM down, click the &lt;strong&gt;system menu&lt;/strong&gt;, in the upper right corner of the VM screen, and then click the &lt;strong&gt;Shutdown&lt;/strong&gt; icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-18-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-18-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In case the virtual machine freezes and you need to forcibly shut it down, click the close button of the VM window (as if you were closing the window) and VirtualBox will ask you what you want to do, choose &lt;strong&gt;Power off the machine&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-19-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-19-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(doing that is similar to pressing and holding the power button of a physical machine for a few seconds until it forcibly shuts down)&lt;/p&gt;
-
-&lt;h2 id=&quot;starting-virtualbox-on-windows&quot;&gt;Starting VirtualBox on Windows&lt;/h2&gt;
-
-&lt;p&gt;If you have strictly followed this tutorial, you had VirtualBox started by its own installer.&lt;/p&gt;
-
-&lt;p&gt;To start VirtualBox yourself, you can double-click its desktop shortcut:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-20.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Or open the &lt;strong&gt;Start menu&lt;/strong&gt;, type &lt;code class=&quot;highlighter-rouge&quot;&gt;virtualbox&lt;/code&gt; and click its icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-21-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-21-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;to-be-continued&quot;&gt;To be continued…&lt;/h2&gt;
-
-&lt;p&gt;In &lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;part 2&lt;/a&gt;, we are going to see how to install VirtualBox on Linux. See you!&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Update (Oct 19, 2019):&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Part 2 is here! (click)&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;For future reference, here I used the following software versions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Microsoft Windows 10&lt;/li&gt;
-  &lt;li&gt;Oracle VM VirtualBox 6.0.12&lt;/li&gt;
-  &lt;li&gt;Linux Kamarada 15.1 Beta Build 16.1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All of them are the latest versions at the time of writing.&lt;/p&gt;
-
-&lt;p&gt;To write this post, I consulted:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://techterms.com/definition/virtual_machine&quot;&gt;Virtual Machine definition - TechTerms&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html&quot;&gt;Oracle VM VirtualBox - User Manual - Chapter 1 - First Steps&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Thu, 10 Oct 2019 22:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/</guid>
                 
                 
                     <category>en</category>
