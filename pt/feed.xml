@@ -9,10 +9,205 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 13 Mar 2020 21:51:47 -0300</pubDate>
-        <lastBuildDate>Fri, 13 Mar 2020 21:51:47 -0300</lastBuildDate>
+        <pubDate>Tue, 17 Mar 2020 00:55:43 -0300</pubDate>
+        <lastBuildDate>Tue, 17 Mar 2020 00:55:43 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Como conectar a uma VPN do GlobalProtect</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/globalprotect.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/globalprotect.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.paloaltonetworks.com/products/globalprotect&quot;&gt;GlobalProtect&lt;/a&gt; é um tipo de &lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;rede privada virtual (VPN)&lt;/a&gt; que integra os &lt;em&gt;firewalls&lt;/em&gt; da &lt;a href=&quot;https://www.paloaltonetworks.com/&quot;&gt;Palo Alto Networks&lt;/a&gt;. Você trabalha remotamente em uma empresa que requer que você use esse tipo de VPN? Veja aqui como instalar o &lt;em&gt;software&lt;/em&gt; necessário e se conectar no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; e também no &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;VPNs são usadas por organizações (por exemplo, empresas, universidades) para permitir que pessoas (funcionários, alunos) se conectem remotamente às suas redes. Uma VPN provê uma conexão criptografada entre seu computador em casa e a rede da empresa ou universidade. Se você quiser saber mais sobre VPNs, leia o início desse &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;Como conectar a uma VPN do OpenVPN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Naquela ocasião, falamos sobre o OpenVPN, outro tipo de VPN.&lt;/p&gt;
+
+&lt;p&gt;Hoje, vamos falar sobre o GlobalProtect.&lt;/p&gt;
+
+&lt;p&gt;Usuários de &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; dispõem de duas opções para se conectar a VPNs do GlobalProtect:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;o cliente aberto do OpenConnect, fornecido pelas próprias distribuições Linux; ou&lt;/li&gt;
+  &lt;li&gt;o cliente oficial (proprietário) do GlobalProtect, fornecido pela Palo Alto Networks.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Adianto que não consegui fazer o cliente oficial funcionar. Portanto, menciono apenas para que você saiba que ele existe.&lt;/p&gt;
+
+&lt;h2 id=&quot;opção-1-cliente-aberto-do-openconnect&quot;&gt;Opção 1: cliente aberto do OpenConnect&lt;/h2&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.infradead.org/openconnect/&quot;&gt;OpenConnect&lt;/a&gt; é um cliente de VPNs criado inicialmente para suportar a VPN &lt;a href=&quot;http://www.cisco.com/go/asm&quot;&gt;Cisco AnyConnect&lt;/a&gt;, mas que depois passou a suportar também a &lt;a href=&quot;https://www.pulsesecure.net/products/connect-secure/&quot;&gt;Pulse Connect Secure&lt;/a&gt; e a Palo Alto Networks GlobalProtect. O suporte a esta última veio com a versão 8.00, &lt;a href=&quot;https://lists.infradead.org/pipermail/openconnect-devel/2019-January/005178.html&quot;&gt;lançada em 04/01/2019&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;instalação&quot;&gt;Instalação&lt;/h3&gt;
+
+&lt;p&gt;A distribuição &lt;a href=&quot;https://en.opensuse.org/Portal:Tumbleweed&quot;&gt;openSUSE Tumbleweed&lt;/a&gt;, versão &lt;em&gt;rolling release&lt;/em&gt; do openSUSE, disponibiliza em seus repositórios oficiais a versão 8.05 do OpenConnect. Se você usa essa distribuição, para instalar o OpenConnect, basta executar:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in openconnect
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Já a distribuição &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt;, versão tradicional do openSUSE (com lançamentos regulares), disponibiliza em seus repositórios oficiais a versão 7.08 do OpenConnect.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt; (baseado no openSUSE Leap 15.1) traz o OpenConnect 7.08 pré-instalado.&lt;/p&gt;
+
+&lt;p&gt;Nesses dois casos, você deve atualizar o OpenConnect para a versão 8.05, que pode ser obtida do repositório &lt;em&gt;network&lt;/em&gt; (rede, em inglês).&lt;/p&gt;
+
+&lt;p&gt;Para isso, primeiro adicione o repositório &lt;em&gt;network&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/network/openSUSE_Leap_15.1/ network
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Então, instale o OpenConnect (informando que deseja baixá-lo do repositório &lt;em&gt;network&lt;/em&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in network:openconnect
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;OpenConnect instalado e atualizado, todos na mesma página, vejamos como usá-lo.&lt;/p&gt;
+
+&lt;h3 id=&quot;uso&quot;&gt;Uso&lt;/h3&gt;
+
+&lt;p&gt;Para se conectar à VPN, tenha em mãos as seguintes informações:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;servidor do GlobalProtect, na forma de um endereço IP ou de um nome de domínio completo (do inglês &lt;em&gt;fully qualified domain name&lt;/em&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/FQDN&quot;&gt;FQDN&lt;/a&gt;);&lt;/li&gt;
+  &lt;li&gt;nome de usuário; e&lt;/li&gt;
+  &lt;li&gt;senha.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se não as souber, questione-as ao administrador de rede ou à equipe de TI da organização.&lt;/p&gt;
+
+&lt;p&gt;Abra uma janela do terminal (reserve uma janela do terminal só para isso) e execute o comando a seguir, fazendo as devidas substituições:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo openconnect --protocol=gp servidor.do.global.protect -u nome-de-usuario
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Digite a senha de administrador (usuário &lt;em&gt;root&lt;/em&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;[sudo] senha para root:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, quando solicitado, digite a senha para acessar a VPN:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;POST https://vpn.XXXXXXXX.br/ssl-vpn/prelogin.esp?tmp=tmp&amp;amp;clientVer=4100&amp;amp;clientos=Linux
+Conectado a 200.XXXXX.4:443
+Negociação SSL com vpn.XXXXXXXX.br
+Conectado a HTTPS em vpn.XXXXXXXX.br
+Digite o seu usuário e senha:
+Senha:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A conexão é estabelecida e o programa informa o endereço IP que você obteve na VPN:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;POST https://vpn.XXXXXXXX.br/ssl-vpn/login.esp
+Login GlobalProtect retornou authentication-source=auth-seq_ad-local-vpn
+POST https://vpn.XXXXXXXX.br/ssl-vpn/getconfig.esp
+A sessão vai expirar após 43200 minutos.
+Tempo limite do túnel (intervalo de renovação de chave) é 180 minutos.
+Tempo limite de ociosidade é 180 minutos.
+Nenhum MTU foi recebido. Calculado 1422 para ESP tunnel
+POST https://vpn.XXXXXXXX.br/ssl-vpn/hipreportcheck.esp
+Conectado como 10.22.0.68, usando SSL, com ESP em progresso
+Sessão ESP estabelecida com o servidor
+Túnel ESP conectado; saindo do loop principal de HTTPS.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.22.0.68&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;O comando não termina: fica em execução por tempo indefinido. A conexão será mantida enquanto o programa estiver em execução (por isso eu aconselhei reservar uma janela do terminal só para ele).&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/globalprotect-connected-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/globalprotect-connected-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Durante esse tempo, você pode acessar do seu computador os sistemas internos da organização como se nela estivesse.&lt;/p&gt;
+
+&lt;p&gt;Quando não precisar mais da VPN e quiser desconectar, tecle &lt;strong&gt;Ctrl + C&lt;/strong&gt; para interromper o comando (e a conexão):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;^CPOST https://vpn.XXXXXXXX.br/ssl-vpn/logout.esp
+Negociação SSL com vpn.XXXXXXXX.br
+Conectado a HTTPS em vpn.XXXXXXXX.br
+Desconexão feita com sucesso
+RTNETLINK answers: No such process
+RTNETLINK answers: No such process
+RTNETLINK answers: No such process
+RTNETLINK answers: No such process
+Usuário cancelado (SIGINT/SIGTERM); saindo.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;opção-2-cliente-oficial-do-globalprotect&quot;&gt;Opção 2: cliente oficial do GlobalProtect&lt;/h2&gt;
+
+&lt;p&gt;A Palo Alto Networks fornece um &lt;a href=&quot;https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux.html&quot;&gt;aplicativo do GlobalProtect para Linux&lt;/a&gt; em duas versões: interface de linha de comando (CLI) e interface gráfica (GUI). Idealmente, o pacote ou instalador deve ser obtido do administrador de rede ou da equipe de TI da organização.&lt;/p&gt;
+
+&lt;p&gt;Infelizmente, há organizações que não oferecem suporte a Linux. &lt;a href=&quot;https://www.google.com/search?q=download+Global+Protect+Linux&quot;&gt;Pesquisando na Internet&lt;/a&gt;, encontrei um &lt;em&gt;link&lt;/em&gt; para baixar o aplicativo nessa página da Universidade Estadual do Kansas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.k-state.edu/its/security/secure-data/vpn/index.html&quot;&gt;Virtual Private Networking - Kansas State University&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Também infelizmente, não consegui fazê-lo funcionar no Linux Kamarada 15.1, nem a versão CLI, nem a versão GUI. A &lt;a href=&quot;https://docs.paloaltonetworks.com/compatibility-matrix/globalprotect/where-can-i-install-the-globalprotect-app#id7a3c3401-b233-43b0-8d78-dfceab88798f_idbcd7ccf7-eceb-462c-8678-1a5fa51cbc18&quot;&gt;tabela de compatibilidade do GlobalProtect&lt;/a&gt; mostra que as distribuições Linux suportadas oficialmente são &lt;a href=&quot;https://www.centos.org/&quot;&gt;CentOS&lt;/a&gt;, &lt;a href=&quot;https://www.redhat.com/pt-br/technologies/linux-platforms/enterprise-linux&quot;&gt;Red Hat Enterprise Linux (RHEL)&lt;/a&gt; e &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;. As distribuições do openSUSE não são oficialmente suportadas.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.edivaldobrito.com.br/conectar-a-uma-vpn-global-protector-no-linux/&quot;&gt;Como se conectar a uma VPN Global Protector no Linux - Blog do Edivaldo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Openconnect-Conexao-de-VPN-Paloalto-no-Debian&quot;&gt;Openconnect - Conexão de VPN Paloalto no Debian - Artigo - Viva o Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux.html&quot;&gt;GlobalProtect App for Linux - Palo Alto Networks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 17 Mar 2020 00:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como instalar o programa do Imposto de Renda 2020 no Linux Kamarada (e no openSUSE)</title>
@@ -4734,165 +4929,6 @@ PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
                 <pubDate>Wed, 30 Oct 2019 23:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/10/30/dicas-para-usar-o-virtualbox-no-dia-a-dia/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/30/dicas-para-usar-o-virtualbox-no-dia-a-dia/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Não temos mais horário de verão: seu computador já sabe disso?</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/horario-de-verao-2019.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/horario-de-verao-2019.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-height: 400px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A partir desse ano, o Brasil não adota mais o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Hor%C3%A1rio_de_ver%C3%A3o&quot;&gt;&lt;strong&gt;horário de verão&lt;/strong&gt;&lt;/a&gt;, que é a prática de adiantar os relógios em 1 hora durante o verão. A mudança foi oficializada pelo &lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9772.htm&quot;&gt;Decreto nº 9.772&lt;/a&gt;, assinado pelo presidente Jair Bolsonaro em abril. Se seu sistema está bem configurado e atualizado, já está ciente dessa alteração e não adiantou — e nem adiantará mais — o relógio.&lt;/p&gt;
-
-&lt;p&gt;No entanto, alguns sistemas desatualizados adiantaram o relógio nesse domingo 20/10/2019. Isso indica que ainda estão configurados de acordo com a antepenúltima norma (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2013/Decreto/D8112.htm&quot;&gt;Decreto nº 8.112&lt;/a&gt;, de 30/09/2013), pela qual o início do horário de verão seria no terceiro domingo de outubro.&lt;/p&gt;
-
-&lt;p&gt;Mas mesmo que a hora do seu sistema esteja certa agora, se ele estiver desatualizado, possivelmente adiantará o relógio no primeiro domingo de novembro (03/11/2019), que seria o início do horário de verão, pela norma anterior (&lt;a href=&quot;http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2017/Decreto/D9242.htm&quot;&gt;Decreto nº 9.242&lt;/a&gt;, de 15/12/2017).&lt;/p&gt;
-
-&lt;p&gt;Você verá nesse &lt;em&gt;post&lt;/em&gt; como conferir e ajustar as configurações de data, hora e fuso horário, como verificar a configuração do horário de verão, e como atualizar seu sistema para que ele obtenha as últimas alterações e a data e hora estejam sempre certas!&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-conferir-a-data-e-hora-certas&quot;&gt;Onde conferir a data e hora certas&lt;/h2&gt;
-
-&lt;p&gt;Para verificar se a data e a hora do seu computador estão certas, você pode acessar o &lt;em&gt;site&lt;/em&gt; do projeto &lt;strong&gt;&lt;a href=&quot;http://ntp.br/&quot;&gt;NTP.br&lt;/a&gt;&lt;/strong&gt;, que mantém servidores de hora que podem ser consultados por computadores para sincronizar seus relógios:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/ntpbr-hora-certa.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/ntpbr-hora-certa.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;configurações-de-data-hora-e-fuso-horário&quot;&gt;Configurações de data, hora e fuso horário&lt;/h2&gt;
-
-&lt;p&gt;Você pode verificar as configurações de data, hora e fuso horário executando o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ timedatectl
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Que deve retornar algo parecido com:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;      Local time: seg 2019-10-21 14:35:46 -03
-  Universal time: seg 2019-10-21 17:35:46 UTC
-        RTC time: seg 2019-10-21 14:35:46
-       Time zone: America/Sao_Paulo (-03, -0300)
- Network time on: no
-NTP synchronized: no
- RTC in local TZ: yes
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nesse exemplo, o sistema obedece ao fuso horário (&lt;em&gt;time zone&lt;/em&gt;) &lt;strong&gt;América/São Paulo&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ou, se você usa a distribuição Linux &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; (ou uma distribuição derivada, como é o caso do &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;) e prefere a interface gráfica, pode conferir as configurações de data, hora e fuso horário abrindo o módulo &lt;strong&gt;Data e hora&lt;/strong&gt; do YaST:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/yast-data-e-hora.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/yast-data-e-hora.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O sistema operacional pode sincronizar data e hora com a Internet usando o protocolo &lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;NTP&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Veja como configurar data, hora, fuso horário e sincronização via NTP no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;Mantenha a hora do seu computador sempre certa com o NTP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se você usa um sistema que não recebe mais atualizações (por exemplo, um computador de 32 &lt;em&gt;bits&lt;/em&gt; com o &lt;a href=&quot;https://en.opensuse.org/Portal:13.2&quot;&gt;openSUSE 13.2&lt;/a&gt;), para desativar o horário de verão, utilize um fuso horário que historicamente não adotou o horário de verão (por exemplo, o fuso horário de &lt;strong&gt;Maceió&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;h2 id=&quot;configuração-do-horário-de-verão&quot;&gt;Configuração do horário de verão&lt;/h2&gt;
-
-&lt;p&gt;A data e hora podem ser obtidas da Internet, mas o início e o fim do horário de verão são programados na configuração do fuso horário, que é fixada no sistema operacional.&lt;/p&gt;
-
-&lt;p&gt;No caso do openSUSE e do Linux Kamarada, o pacote que contém essa programação é o &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/timezone&quot;&gt;timezone&lt;/a&gt;&lt;/strong&gt;, que normalmente vem instalado por padrão.&lt;/p&gt;
-
-&lt;p&gt;Para verificar o início e o fim do horário de verão no fuso horário atual, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zdump -v /etc/localtime | tail
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Usamos o comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/1/tail&quot;&gt;tail&lt;/a&gt;&lt;/strong&gt; para obter apenas as últimas linhas da saída:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;/etc/localtime  Sun Oct 15 02:59:59 2017 UT = Sat Oct 14 23:59:59 2017 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Oct 15 03:00:00 2017 UT = Sun Oct 15 01:00:00 2017 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 18 01:59:59 2018 UT = Sat Feb 17 23:59:59 2018 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 18 02:00:00 2018 UT = Sat Feb 17 23:00:00 2018 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  4 02:59:59 2018 UT = Sat Nov  3 23:59:59 2018 -03 isdst=0 gmtoff=-10800
-/etc/localtime  Sun Nov  4 03:00:00 2018 UT = Sun Nov  4 01:00:00 2018 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 17 01:59:59 2019 UT = Sat Feb 16 23:59:59 2019 -02 isdst=1 gmtoff=-7200
-/etc/localtime  Sun Feb 17 02:00:00 2019 UT = Sat Feb 16 23:00:00 2019 -03 isdst=0 gmtoff=-10800
-/etc/localtime  9223372036854689407 = NULL
-/etc/localtime  9223372036854775807 = NULL
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Interpretando a saída desse comando, temos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;início do horário de verão em 2017 na virada de 14/10 para 15/10&lt;/li&gt;
-  &lt;li&gt;fim do horário de verão em 2018 em 17/02&lt;/li&gt;
-  &lt;li&gt;início do horário de verão em 2018 na virada de 03/11 para 04/11&lt;/li&gt;
-  &lt;li&gt;fim do horário de verão em 2019 em 16/02&lt;/li&gt;
-  &lt;li&gt;nenhuma outra alteração a partir de então&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se sua configuração aparece diferente disso, é sinal que seu sistema está desatualizado.&lt;/p&gt;
-
-&lt;h2 id=&quot;mantenha-seu-sistema-atualizado&quot;&gt;Mantenha seu sistema atualizado&lt;/h2&gt;
-
-&lt;p&gt;O pacote &lt;strong&gt;timezone&lt;/strong&gt; recebe atualizações conforme as regras do horário de verão mudam.&lt;/p&gt;
-
-&lt;p&gt;Por esse e outros motivos, é importante manter o sistema sempre atualizado, com as versões mais novas dos programas e pacotes.&lt;/p&gt;
-
-&lt;p&gt;Veja como obter atualizações para o openSUSE e para o Linux Kamarada no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;posts-relacionados-e-referências&quot;&gt;Posts relacionados e referências&lt;/h2&gt;
-
-&lt;p&gt;Aqui normalmente eu falo de &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; em &lt;em&gt;desktops&lt;/em&gt; e servidores, mas considerando que &lt;a href=&quot;https://www.tecmundo.com.br/software/127038-android-linux-kernel.htm&quot;&gt;Android também é Linux&lt;/a&gt;, no ano passado escrevi um &lt;em&gt;post&lt;/em&gt; explicando como configurar data, hora e fuso horário em &lt;em&gt;smartphones&lt;/em&gt; e &lt;em&gt;tablets&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/intl/pt-BR_br/&quot;&gt;Android&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/22/mantenha-a-hora-do-android-sempre-certa/&quot;&gt;Mantenha a hora do Android sempre certa&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se quiser saber mais sobre o fim do horário de verão no Brasil, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://g1.globo.com/politica/noticia/2019/04/25/bolsonaro-assina-decreto-que-acaba-com-o-horario-de-verao.ghtml&quot;&gt;Bolsonaro assina decreto que acaba com o horário de verão - G1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Mon, 21 Oct 2019 22:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/10/21/nao-temos-mais-horario-de-verao-seu-computador-ja-sabe-disso/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/21/nao-temos-mais-horario-de-verao-seu-computador-ja-sabe-disso/</guid>
                 
                 
                     <category>pt</category>
