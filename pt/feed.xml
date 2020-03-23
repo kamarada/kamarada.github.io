@@ -9,10 +9,450 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 19 Mar 2020 01:27:25 -0300</pubDate>
-        <lastBuildDate>Thu, 19 Mar 2020 01:27:25 -0300</lastBuildDate>
+        <pubDate>Mon, 23 Mar 2020 18:51:38 -0300</pubDate>
+        <lastBuildDate>Mon, 23 Mar 2020 18:51:38 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Acesso remoto com NoMachine</title>
+                <description>&lt;p&gt;&lt;strong&gt;Acessar remotamente&lt;/strong&gt; um computador significa usá-lo, controlá-lo à distância usando outro computador. Em algumas situações, o &lt;strong&gt;acesso remoto&lt;/strong&gt; pode ser útil: para usar o computador do trabalho, estando em casa; para oferecer suporte a um colega ou cliente; ou mesmo para não ter que atravessar a casa para mexer em um computador que está na outra sala.&lt;/p&gt;
+
+&lt;p&gt;Existem alguns programas que podem ser usados para fazer acesso remoto. Hoje, veremos como usar o NoMachine.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;strong&gt;&lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;NoMachine&lt;/a&gt;&lt;/strong&gt; é uma solução de acesso remoto desenvolvida pela empresa de mesmo nome, que tem sede em Luxemburgo e existe desde 2003. É &lt;a href=&quot;https://pt.wikipedia.org/wiki/Multiplataforma&quot;&gt;&lt;strong&gt;multiplataforma&lt;/strong&gt;&lt;/a&gt; (pode ser usada em vários sistemas operacionais, incluindo Linux, Windows, macOS, Android, e iOS), &lt;strong&gt;gratuita&lt;/strong&gt; para uso pessoal e dispõe de opções pagas com mais recursos para empresas.&lt;/p&gt;
+
+&lt;h2 id=&quot;licença&quot;&gt;Licença&lt;/h2&gt;
+
+&lt;p&gt;Observe que o NoMachine não é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, e sim &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;proprietário&lt;/a&gt;. Se eu entendi certo a &lt;a href=&quot;https://www.nomachine.com/pt-pt/licensing-6&quot;&gt;licença de uso do NoMachine&lt;/a&gt;, os &lt;strong&gt;usos individuais&lt;/strong&gt; do NoMachine podem ser feitos de forma &lt;strong&gt;gratuita&lt;/strong&gt; (sem precisar comprar uma licença de &lt;em&gt;software&lt;/em&gt;), como, por exemplo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;de casa, acessar remotamente o computador que você usa no trabalho;&lt;/li&gt;
+  &lt;li&gt;do trabalho, acessar remotamente seu computador de casa; ou&lt;/li&gt;
+  &lt;li&gt;acessar outro computador na mesma rede local (seja em casa, ou no trabalho).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nos exemplos acima, você também pode substituir “trabalho” por “universidade” ou outra instituição de ensino.&lt;/p&gt;
+
+&lt;p&gt;O que você &lt;strong&gt;não&lt;/strong&gt; pode fazer com a versão gratuita do NoMachine são &lt;strong&gt;usos comerciais&lt;/strong&gt;, como, por exemplo, acessar remotamente o computador de um cliente, realizar manutenção e cobrar por esse serviço. Para usos comerciais, você deve visitar o &lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;&lt;em&gt;site&lt;/em&gt; do NoMachine&lt;/a&gt; e comprar uma versão comercial do programa.&lt;/p&gt;
+
+&lt;h2 id=&quot;cliente-e-servidor&quot;&gt;Cliente e servidor&lt;/h2&gt;
+
+&lt;p&gt;Nesse tutorial, vamos chamar o computador que é acessado de &lt;strong&gt;servidor&lt;/strong&gt; (ele é que disponibiliza, serve a área de trabalho) e o computador que faz o acesso, de &lt;strong&gt;cliente&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, se você está usando o computador de casa para acessar remotamente o computador do trabalho, o primeiro é o cliente e o segundo é o servidor.&lt;/p&gt;
+
+&lt;p&gt;Essas funções (cliente e servidor) não são fixas: com o NoMachine instalado, qualquer um dos computadores pode assumir qualquer uma dessas funções.&lt;/p&gt;
+
+&lt;p&gt;Assim, você poderia acessar remotamente o computador de casa a partir do computador do trabalho. Nesse caso, o primeiro seria o servidor e o segundo seria o cliente.&lt;/p&gt;
+
+&lt;h2 id=&quot;rede-local&quot;&gt;Rede local&lt;/h2&gt;
+
+&lt;p&gt;Observe que, a princípio, o NoMachine só é capaz de acessar remotamente computadores na mesma rede local.&lt;/p&gt;
+
+&lt;p&gt;Nos exemplos anteriores, para acessar remotamente o computador do trabalho, você precisaria se conectar à rede do trabalho usando uma &lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;VPN&lt;/a&gt; como uma das seguintes (consulte a disponibilidade junto ao administrador de rede ou equipe de TI da empresa):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;Como conectar a uma VPN do OpenVPN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/&quot;&gt;Como conectar a uma VPN do GlobalProtect&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Já para acessar remotamente o computador de casa, você precisaria configurar redirecionamento de portas no seu roteador. Para verificar se isso é possível, assim como obter instruções sobre como fazer, consulte seu provedor de Internet.&lt;/p&gt;
+
+&lt;p&gt;Sem mais delongas, vamos por a mão na massa!&lt;/p&gt;
+
+&lt;p&gt;Como sempre, me refiro às distribuições &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, mas o uso do NoMachine em outras distribuições é possível e não deve ser muito diferente.&lt;/p&gt;
+
+&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;Baixe o pacote RPM do NoMachine em ambos os computadores: cliente e servidor. Uma alternativa é baixar o pacote em um e copiar para o outro (com um &lt;em&gt;pendrive&lt;/em&gt;, por exemplo).&lt;/p&gt;
+
+&lt;p&gt;Para baixar o NoMachine, acesse seu &lt;em&gt;site&lt;/em&gt; em &lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;nomachine.com&lt;/a&gt; e clique em &lt;strong&gt;Transferir agora&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentre as opções de &lt;em&gt;download&lt;/em&gt;, escolha o pacote RPM para Linux de 64 &lt;em&gt;bits&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na página seguinte, clique em &lt;strong&gt;Download&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Seu navegador provavelmente baixará o pacote RPM para a pasta &lt;strong&gt;Downloads&lt;/strong&gt; (essa é a configuração padrão da maioria dos navegadores) ou perguntará onde deseja salvá-lo.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalação&quot;&gt;Instalação&lt;/h2&gt;
+
+&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, instale o NoMachine em ambos os computadores: cliente e servidor.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o NoMachine, abra a pasta onde o pacote RPM foi baixado, clique com o botão direito do &lt;em&gt;mouse&lt;/em&gt; nele e clique em &lt;strong&gt;Abrir com Instalar/Remover software&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de Controle do YaST&lt;/a&gt; é iniciado e mostra informações sobre o pacote que será instalado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O YaST informa que o pacote está corrompido, mas na verdade ele não conseguiu fazer a &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;verificação de autenticidade&lt;/a&gt;, já que o pacote não é assinado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa mensagem de erro é comum ao instalar um pacote RPM baixado manualmente (sem ser de um repositório configurado). Você pode seguramente clicar em &lt;strong&gt;Ignorar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O pacote é instalado. Ao final, clique em &lt;strong&gt;Concluir&lt;/strong&gt; para fechar o YaST:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Perceba que o NoMachine adicionou um ícone na barra do topo do &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;. Ele já está rodando e pronto para ser usado!&lt;/p&gt;
+
+&lt;p&gt;Note também que o pacote RPM do NoMachine instala os aplicativos cliente e servidor, assim como habilita o serviço do NoMachine em ambos os computadores — cliente e servidor — capacitando-os para exercer qualquer uma dessas funções.&lt;/p&gt;
+
+&lt;p&gt;O &lt;em&gt;download&lt;/em&gt; e a instalação no cliente e no servidor são iguais, mas a configuração e o uso são diferentes. Comecemos pelo computador que atuará como servidor.&lt;/p&gt;
+
+&lt;h2 id=&quot;verificando-o-endereço-ip-do-servidor&quot;&gt;Verificando o endereço IP do servidor&lt;/h2&gt;
+
+&lt;p&gt;Para conectar ao computador servidor, você precisa saber o endereço IP dele. O NoMachine fornece essa informação. Para obtê-la, clique no &lt;strong&gt;ícone do NoMachine&lt;/strong&gt;, na barra do topo. Aparecerá um menu com algumas opções. Clique em &lt;strong&gt;Mostrar o estado do serviço&lt;/strong&gt; (ou &lt;em&gt;Show the service status&lt;/em&gt;, se estiver aparecendo em inglês para você, já mostrarei como traduzir):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Anote o endereço IP do servidor (nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.3.7&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Alternativamente, se o ícone do NoMachine não estiver aparecendo para você na barra do topo do GNOME, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; e clique no ícone do &lt;strong&gt;NoMachine Service&lt;/strong&gt; (serviço do NoMachine):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você chegará àquela mesma tela, onde obterá o endereço IP do servidor.&lt;/p&gt;
+
+&lt;h2 id=&quot;traduzindo-a-interface-do-servidor&quot;&gt;Traduzindo a interface do servidor&lt;/h2&gt;
+
+&lt;p&gt;Normalmente, o NoMachine detecta o idioma do sistema e já traduz sua interface. Quando isso não acontece, ele adota por padrão o idioma inglês.&lt;/p&gt;
+
+&lt;p&gt;Para traduzir a interface do NoMachine no computador servidor, na janela que você abriu, clique em &lt;strong&gt;Preferências do servidor&lt;/strong&gt; (&lt;em&gt;Server preferences&lt;/em&gt;), no canto superior direito da janela.&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, clique em &lt;strong&gt;Preferências do Player&lt;/strong&gt; (&lt;em&gt;Player preferences&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-11.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-11.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em seguida, selecione a aba &lt;strong&gt;Aparência&lt;/strong&gt; (&lt;em&gt;Appearance&lt;/em&gt;) e em &lt;strong&gt;Texto&lt;/strong&gt; (&lt;em&gt;Text&lt;/em&gt;) selecione &lt;strong&gt;Português&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;É preciso reiniciar o NoMachine para que a tradução seja aplicada. Clique no &lt;em&gt;link&lt;/em&gt; que aparece na parte inferior da tela (&lt;strong&gt;Reinicie NoMachine Monitor para que as alterações tenham efeito&lt;/strong&gt;, &lt;em&gt;Restart the NoMachine Monitor for changes to take effect&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feito isso, o NoMachine reiniciará traduzido e já iniciará traduzido das próximas vezes.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-o-acesso-remoto-no-cliente&quot;&gt;Iniciando o acesso remoto no cliente&lt;/h2&gt;
+
+&lt;p&gt;Para iniciar o NoMachine no computador cliente, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; e clique no ícone do &lt;strong&gt;NoMachine&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na tela de boas vindas, marque a opção &lt;strong&gt;Não mostrar novamente esta mensagem&lt;/strong&gt; (&lt;em&gt;Don’t show this message again&lt;/em&gt;) e clique em &lt;strong&gt;Continuar&lt;/strong&gt; (&lt;em&gt;Continue&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-14-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-14-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O cliente do NoMachine automaticamente busca computadores na rede que estão rodando o serviço do NoMachine. Sua tela inicial mostra os servidores encontrados na rede, assim como quaisquer computadores que você já tenha acessado anteriormente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-15-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-15-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;traduzindo-a-interface-do-cliente&quot;&gt;Traduzindo a interface do cliente&lt;/h3&gt;
+
+&lt;p&gt;Caso a interface do cliente esteja em inglês, você pode configurar a tradução de forma semelhante à do servidor: na tela inicial do cliente do NoMachine, clique em &lt;strong&gt;Definições&lt;/strong&gt; (&lt;em&gt;Preferences&lt;/em&gt;), no canto superior direito da janela.&lt;/p&gt;
+
+&lt;p&gt;Em seguida, selecione a aba &lt;strong&gt;Aparência&lt;/strong&gt; (&lt;em&gt;Appearance&lt;/em&gt;) e em &lt;strong&gt;Texto&lt;/strong&gt; (&lt;em&gt;Text&lt;/em&gt;) selecione &lt;strong&gt;Português&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Reinicie o NoMachine para que a tradução seja aplicada.&lt;/p&gt;
+
+&lt;h3 id=&quot;acessando-um-computador-listado&quot;&gt;Acessando um computador listado&lt;/h3&gt;
+
+&lt;p&gt;Se o computador servidor que você deseja acessar aparece na lista, antes do primeiro acesso, selecione-o na lista e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Digite um nome para esse computador (exemplo: &lt;code class=&quot;highlighter-rouge&quot;&gt;Computador do Trabalho&lt;/code&gt;) e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora sim: para acessar um servidor que está na lista, faça um duplo-clique nele.&lt;/p&gt;
+
+&lt;p&gt;Se é o seu primeiro acesso remoto a esse computador, o NoMachine apresenta algumas configurações. Na tela &lt;strong&gt;Verificar a autenticidade do anfitrião&lt;/strong&gt;, clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-17-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-17-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe o &lt;strong&gt;Nome de Utilizador&lt;/strong&gt; (nome de usuário, &lt;em&gt;login&lt;/em&gt;) e a &lt;strong&gt;Palavra-Passe&lt;/strong&gt; (senha) da sua conta de usuário no computador servidor:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-18-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Opcionalmente, marque a opção para lembrar a senha. Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Estabelecida a conexão, o NoMachine apresenta algumas telas com dicas para seu uso:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-19-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-19-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em cada tela, leia atentamente seu conteúdo, marque a opção &lt;strong&gt;Não mostrar novamente esta mensagem&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, você verá a área de trabalho do computador servidor:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-20-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-20-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Cada clique dentro dessa janela é feito no computador servidor, bem assim o que é digitado aparece lá. Você está literalmente usando o computador servidor, mas à distância, remotamente, sem estar sentado na frente dele.&lt;/p&gt;
+
+&lt;p&gt;Note que no computador servidor uma notificação indica que um acesso foi iniciado. Além disso, se alguém estiver de frente para ele e a tela dele estiver ligada, verá o que você faz.&lt;/p&gt;
+
+&lt;h3 id=&quot;acessando-um-computador-manualmente&quot;&gt;Acessando um computador manualmente&lt;/h3&gt;
+
+&lt;p&gt;Na tela inicial do cliente do NoMachine, caso o computador servidor que você deseja acessar não apareça na lista, clique no botão &lt;strong&gt;Novo&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O NoMachine inicia um assistente para adicionar o computador à lista:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-21-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-21-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na primeira tela, deixe o &lt;strong&gt;Protocolo&lt;/strong&gt; como está, em seu valor padrão (&lt;strong&gt;NX&lt;/strong&gt;), e clique em &lt;strong&gt;Continuar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na segunda tela, no campo &lt;strong&gt;Anfitrião&lt;/strong&gt;, informe o endereço IP ou nome de rede (&lt;em&gt;hostname&lt;/em&gt;) do servidor e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-22-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-22-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na terceira tela, &lt;strong&gt;Autenticação&lt;/strong&gt;, deixe selecionada a opção padrão &lt;strong&gt;Palavra-Passe&lt;/strong&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-23-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-23-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na penúltima tela, caso você esteja usando um &lt;em&gt;proxy&lt;/em&gt; para se conectar à Internet, selecione a segunda opção e informe as configurações do &lt;em&gt;proxy&lt;/em&gt;. Caso não esteja (caso da maioria das pessoas), deixe selecionada a opção padrão &lt;strong&gt;Não usar um proxy&lt;/strong&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-24-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-24-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Por fim, digite um nome para esse computador (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;Computador do Trabalho&lt;/code&gt;) e clique em &lt;strong&gt;Concluído&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-25-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-25-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Concluído o assistente, a partir de agora esse computador aparece na tela inicial do cliente do NoMachine e você pode acessá-lo fazendo um duplo-clique nele.&lt;/p&gt;
+
+&lt;h2 id=&quot;configurando-o-firewall-no-servidor&quot;&gt;Configurando o firewall no servidor&lt;/h2&gt;
+
+&lt;p&gt;Nos testes que eu fiz com o Linux Kamarada, que traz como &lt;em&gt;firewall&lt;/em&gt; padrão o &lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;, mais adequado para &lt;em&gt;desktops&lt;/em&gt;, tanto no cliente quanto no servidor não foi necessário fazer qualquer configuração adicional no &lt;em&gt;firewall&lt;/em&gt; para que o NoMachine funcionasse.&lt;/p&gt;
+
+&lt;p&gt;Se você estiver com problemas em se conectar ao servidor, deve ser suficiente permitir as portas 4000 TCP e 4011 a 4999 UDP no computador servidor.&lt;/p&gt;
+
+&lt;p&gt;Caso você use o &lt;a href=&quot;/pt/2019/11/18/proteja-se-com-o-firewall-iptables/&quot;&gt;&lt;em&gt;firewall&lt;/em&gt; &lt;strong&gt;iptables&lt;/strong&gt;&lt;/a&gt; no computador servidor, para liberar essas portas, adicione essas linhas ao seu &lt;em&gt;script&lt;/em&gt; de configuração:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# NoMachine (portas 4000/TCP e 4011-4999/UDP)
+iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
+iptables -A INPUT -p udp --match multiport --dports 4011:4999 -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Caso precise de mais informações sobre as portas usadas pelo NoMachine, consulte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt; (em inglês)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;interrompendo-eou-desabilitando-o-serviço-do-nomachine&quot;&gt;Interrompendo e/ou desabilitando o serviço do NoMachine&lt;/h2&gt;
+
+&lt;p&gt;Se você vai usar um computador apenas como cliente, pode interromper e/ou desabilitar o serviço do NoMachine nesse computador (não é obrigatório, mas você pode fazer).&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, se você está usando o NoMachine para trabalho remoto, e imagina que a conexão será sempre do computador de casa (cliente) para o computador do trabalho (servidor), você pode desativar o serviço do NoMachine no computador de casa.&lt;/p&gt;
+
+&lt;p&gt;Se quiser interromper o serviço do NoMachine, clique no &lt;strong&gt;ícone do NoMachine&lt;/strong&gt;, na barra do topo, e depois clique em &lt;strong&gt;Fechar a aplicação NoMachine&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-26-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-26-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O NoMachine pergunta se deve iniciar o serviço da próxima vez em que o computador for ligado. Se quiser desabilitar o serviço, responda que &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-27-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-27-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O NoMachine solicita a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), que você deve fornecer para que o serviço seja interrompido e/ou desabilitado.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-manualmente-o-serviço-do-nomachine&quot;&gt;Iniciando manualmente o serviço do NoMachine&lt;/h2&gt;
+
+&lt;p&gt;Se você interrompeu e/ou desabilitou o serviço do NoMachine, pode iniciá-lo manualmente a qualquer momento. Para isso, abra o aplicativo &lt;strong&gt;NoMachine Service&lt;/strong&gt; e clique em &lt;strong&gt;Iniciar o servidor&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-28-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-28-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na mensagem de confirmação, clique em &lt;strong&gt;Avançar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-29-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-29-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Forneça a senha de administrador para iniciar o serviço.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/pt-pt/introdu%C3%A7%C3%A3o-ao-nomachine&quot;&gt;NoMachine - Introdução ao NoMachine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vultr.com/docs/setup-nomachine-nx-on-ubuntu&quot;&gt;Setup NoMachine NX On Ubuntu - Vultr.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR11P01005&quot;&gt;NoMachine - How to shutdown NoMachine and disable the automatic startup at boot time&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;É isso, pessoal! Espero que esse texto possa ajudá-los em seus acessos remotos. O aplicativo é bastante fácil de usar e intuitivo. Mas se surgir dúvidas, podem deixar comentários.&lt;/p&gt;
+
+&lt;p&gt;Até a próxima!&lt;/p&gt;
+
+</description>
+                <pubDate>Mon, 23 Mar 2020 18:40:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como conectar a uma VPN do GlobalProtect</title>
@@ -4304,631 +4744,6 @@ WantedBy=default.target
                 <pubDate>Mon, 18 Nov 2019 20:45:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/11/18/proteja-se-com-o-firewall-iptables/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/11/18/proteja-se-com-o-firewall-iptables/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Dicas para usar o VirtualBox no dia a dia</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nessa parte 3 de uma trilogia de &lt;em&gt;posts&lt;/em&gt; sobre o &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox&lt;/a&gt;, você verá como criar um disco rígido virtual e instalar o &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; na máquina virtual, assim como dicas para usar o VirtualBox no dia a dia. Como exemplo, vou usar a distribuição &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;, baseada no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Nos textos anteriores, vimos o que é virtualização, o que é o VirtualBox, como instalá-lo no &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e no Linux, como criar uma máquina virtual e como usá-la para experimentar o Linux.&lt;/p&gt;
-
-&lt;p&gt;Caso você tenha caído aqui de paraquedas, recomendo que leia os textos anteriores:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/10/16/instalando-o-virtualbox-no-linux/&quot;&gt;Instalando o VirtualBox no Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;prevenir-a-ejeção-do-livecddvd&quot;&gt;Prevenir a ejeção do LiveCD/DVD&lt;/h2&gt;
-
-&lt;p&gt;Alguns sistemas operacionais convidados, a exemplo do &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, ejetam a &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;mídia &lt;em&gt;live&lt;/em&gt;&lt;/a&gt; ao desligar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-41.jpg&quot; title=&quot;&amp;quot;Por favor, remova a mídia de instalação e pressione Enter&amp;quot;, em inglês&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-41.jpg&quot; alt=&quot;&amp;quot;Por favor, remova a mídia de instalação e pressione Enter&amp;quot;, em inglês&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;&quot;Por favor, remova a mídia de instalação e pressione Enter&quot;, em inglês&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em um computador “de verdade”, o LiveDVD é ejetado nesse momento.&lt;/p&gt;
-
-&lt;p&gt;Em uma máquina virtual do VirtualBox, o leitor de DVD virtual fica vazio. Para iniciar a VM novamente, você teria que mais uma vez inserir a imagem ISO no leitor de DVD virtual, como vimos na &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;parte 1&lt;/a&gt;. Se você está iniciando a VM várias vezes pela mídia &lt;em&gt;live&lt;/em&gt;, ter que reinserir a imagem ISO toda hora é desnecessariamente trabalhoso.&lt;/p&gt;
-
-&lt;p&gt;Felizmente, o VirtualBox tem uma opção para prevenir a ejeção da mídia. Para ativá-la, selecione a máquina virtual na tela inicial, clique em &lt;strong&gt;Configurações&lt;/strong&gt;, abra a seção &lt;strong&gt;Armazenamento&lt;/strong&gt;, selecione o leitor de DVD virtual e ative a opção &lt;strong&gt;LiveCD/DVD&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-42-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-42-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora, ao desligar a VM, a mídia não será mais removida. Você poderá iniciar a VM novamente sem precisar reinserir a imagem ISO manualmente.&lt;/p&gt;
-
-&lt;h2 id=&quot;criando-um-novo-disco-rígido-virtual&quot;&gt;Criando um novo disco rígido virtual&lt;/h2&gt;
-
-&lt;p&gt;Se você seguiu essa trilogia de &lt;em&gt;posts&lt;/em&gt; sobre o VirtualBox, até agora só usou uma &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;imagem &lt;em&gt;live&lt;/em&gt;&lt;/a&gt; do Linux na máquina virtual. Dessa forma, quaisquer alterações feitas no SO convidado são perdidas ao desligar a VM. Para ter um primeiro contato com o Linux, uma imagem &lt;em&gt;live&lt;/em&gt; é excelente, mas usar o computador no dia a dia não se parece com isso.&lt;/p&gt;
-
-&lt;p&gt;Para ter na máquina virtual uma experiência mais próxima de usar o Linux em uma máquina real, vamos instalar o Linux na VM. Para isso, precisamos antes criar um disco rígido virtual.&lt;/p&gt;
-
-&lt;p&gt;Com a VM desligada, selecione-a na tela inicial do VirtualBox, clique em &lt;strong&gt;Configurações&lt;/strong&gt;, abra a seção &lt;strong&gt;Armazenamento&lt;/strong&gt;, selecione a &lt;strong&gt;Controladora SATA&lt;/strong&gt; e clique no ícone &lt;strong&gt;Adicionar disco rígido&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-43-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-43-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O VirtualBox pergunta se você deseja criar um novo disco ou usar um disco já existente. Clique em &lt;strong&gt;Criar novo disco&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-44-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-44-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O VirtualBox suporta alguns tipos de discos rígidos virtuais. Provavelmente você não pretende usar esse disco com outro &lt;em&gt;software&lt;/em&gt; de virtualização, então mantenha selecionado o tipo nativo do VirtualBox, &lt;strong&gt;VDI (VirtualBox Disk Image)&lt;/strong&gt;, e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-45-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-45-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Um disco rígido virtual, para o SO hospedeiro, é um arquivo. Você pode escolher se deseja:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;criar um arquivo do tamanho total do disco (por exemplo, um disco de 20GB seria, já de início, um arquivo de 20GB) — opção &lt;strong&gt;Tamanho Fixo&lt;/strong&gt; — ou&lt;/li&gt;
-  &lt;li&gt;criar um arquivo do tamanho dos dados de fato armazenados (o arquivo começa pequeno e cresce conforme o disco virtual é usado, até o limite de 20GB) — opção &lt;strong&gt;Dinamicamente alocado&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Eu recomendo que você mantenha selecionada a opção &lt;strong&gt;Dinamicamente alocado&lt;/strong&gt; e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-46-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-46-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe uma localização e tamanho para o disco rígido virtual — 20GB são suficientes para instalar o Linux Kamarada (ou o openSUSE) e testar com conforto — e clique em &lt;strong&gt;Criar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-47-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-47-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pronto: disco rígido virtual criado e pronto para ser usado. De volta à caixa de diálogo &lt;strong&gt;Configurações&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt; para fechá-la e voltar para a tela inicial do VirtualBox.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalando-o-linux-na-máquina-virtual&quot;&gt;Instalando o Linux na máquina virtual&lt;/h2&gt;
-
-&lt;p&gt;Certifique-se que a imagem ISO do Linux está no leitor de DVD virtual e inicie a VM.&lt;/p&gt;
-
-&lt;p&gt;Inicie o instalador do Linux Kamarada clicando em seu ícone na &lt;em&gt;dock&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-48-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-48-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(a título de curiosidade, o instalador é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; chamado &lt;a href=&quot;https://calamares.io/&quot;&gt;Calamares&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Na primeira tela do instalador, o idioma &lt;strong&gt;português (Brasil)&lt;/strong&gt; já vem selecionado por padrão. Clique em &lt;strong&gt;Próximo&lt;/strong&gt; para continuar.&lt;/p&gt;
-
-&lt;p&gt;Na segunda tela, &lt;strong&gt;Partições&lt;/strong&gt;, fazemos o particionamento do disco rígido. Como você vai usar essa máquina virtual só para experimentar o Linux e somente ele será instalado no disco, não precisa se preocupar com isso, apenas selecione &lt;strong&gt;Apagar disco&lt;/strong&gt; e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-49-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-49-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela seguinte, &lt;strong&gt;Resumo&lt;/strong&gt;, o instalador lista as configurações da instalação. Confira se está tudo certo e clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-50-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-50-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Observe que, iniciada a instalação, não é possível cancelá-la. Clique em &lt;strong&gt;Instalar agora&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-51-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-51-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Aguarde a instalação do Linux Kamarada, que pode demorar alguns minutos, o instalador mostra o progresso:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-52-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-52-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode ir tomar um café e voltar logo em seguida.&lt;/p&gt;
-
-&lt;p&gt;Quando a instalação terminar, &lt;strong&gt;não&lt;/strong&gt; marque a opção &lt;strong&gt;Reiniciar agora&lt;/strong&gt;, clique em &lt;strong&gt;Concluído&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-53-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-53-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Desligue a máquina virtual normalmente, como vimos na &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;parte 1&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Remova a imagem ISO do leitor de DVD virtual (como quem ejeta um DVD de um leitor de DVD de um computador “de verdade”). Para isso, acesse as configurações da máquina virtual, abra a seção &lt;strong&gt;Armazenamento&lt;/strong&gt;, selecione o leitor de DVD, clique no ícone da mídia e depois, no menu que aparece, clique em &lt;strong&gt;Remover Disco do Drive Virtual&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-54-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-54-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Configurações&lt;/strong&gt; e voltar para a tela inicial do VirtualBox.&lt;/p&gt;
-
-&lt;p&gt;Agora inicie a máquina virtual. Dessa vez, o sistema será carregado do disco rígido virtual.&lt;/p&gt;
-
-&lt;p&gt;Na primeira vez em que é iniciado, o Linux Kamarada apresenta um assistente de configuração para auxiliar com as configurações básicas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-55-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-55-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(a título de curiosidade, esse assistente é um módulo do &lt;a href=&quot;https://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; chamado &lt;a href=&quot;https://en.opensuse.org/YaST_Firstboot&quot;&gt;Firstboot&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;Na primeira tela do assistente, o idioma &lt;strong&gt;Português brasileiro&lt;/strong&gt; e o leiaute (&lt;em&gt;layout&lt;/em&gt;) de teclado &lt;strong&gt;Português (Brasil)&lt;/strong&gt; já vem selecionados por padrão. Clique em &lt;strong&gt;Próximo&lt;/strong&gt; para continuar.&lt;/p&gt;
-
-&lt;p&gt;Na tela de boas vindas, clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-56-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-56-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela seguinte, você é apresentado à &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;licença de uso do openSUSE Leap&lt;/a&gt;, que é a mesma licença de uso do Linux Kamarada. Não precisa se preocupar com essa licença: uma vez que o openSUSE é um &lt;em&gt;software&lt;/em&gt; livre, ela não limita a forma como você pode usá-lo. Você pode lê-la se quiser conhecer seus direitos. Quando terminar, clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-57-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-57-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na próxima tela, &lt;strong&gt;Relógio e fuso horário&lt;/strong&gt;, verifique se as configurações de fuso horário, data e hora estão corretas e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-58-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-58-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela seguinte, você vai criar uma conta de usuário para você. Informe seu nome completo, qual nome de usuário (&lt;em&gt;login&lt;/em&gt;) e senha você deseja. Para facilitar o uso da VM, recomendo marcar as opções &lt;strong&gt;Usar esta senha para o administrador do sistema&lt;/strong&gt; e &lt;strong&gt;Login automático&lt;/strong&gt;. Quando terminar, clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-59-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-59-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na última tela do assistente, clique em &lt;strong&gt;Concluir&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-60-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-60-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pronto! O Linux Kamarada está instalado na máquina virtual, a partir de agora é só usá-lo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-61-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-61-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora vamos ver algumas dicas que podem facilitar esse uso, assim como torná-lo mais interessante.&lt;/p&gt;
-
-&lt;h2 id=&quot;placa-de-rede-em-modo-ponte-bridge&quot;&gt;Placa de rede em modo ponte (bridge)&lt;/h2&gt;
-
-&lt;p&gt;A depender do que você queira fazer, pode ser necessário comunicar a máquina virtual com outros dispositivos na rede, como uma impressora ou um servidor de arquivos, por exemplo.&lt;/p&gt;
-
-&lt;p&gt;Se você não modificou a configuração de rede padrão da máquina virtual, perceberá que a máquina virtual consegue se comunicar com a rede local, mas o contrário não é verdade (outros dispositivos na rede local não conseguem se comunicar com a máquina virtual).&lt;/p&gt;
-
-&lt;p&gt;Faça o teste: no SO convidado, abra o terminal e verifique o endereço IP da máquina virtual executando o comando a seguir.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ip -c a
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-62-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-62-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse exemplo, a máquina virtual recebeu o endereço IP &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.2.15/24&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;No SO hospedeiro, verifique o endereço IP da máquina real. Por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.10/24&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;De volta ao terminal do SO convidado, “pingue” a sua máquina real:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.0.10
-PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
-64 bytes from 10.0.0.10: icmp_seq=1 ttl=63 time=0.219 ms
-64 bytes from 10.0.0.10: icmp_seq=2 ttl=63 time=0.535 ms
-64 bytes from 10.0.0.10: icmp_seq=3 ttl=63 time=0.697 ms
-64 bytes from 10.0.0.10: icmp_seq=4 ttl=63 time=0.534 ms
-^C
---- 10.0.0.10 ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3052ms
-rtt min/avg/max/mdev = 0.219/0.496/0.697/0.173 ms
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(pressione &lt;strong&gt;Ctrl + C&lt;/strong&gt; para interromper o comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ping&quot;&gt;ping&lt;/a&gt;&lt;/strong&gt;)&lt;/p&gt;
-
-&lt;p&gt;Funciona. Agora tente do SO hospedeiro “pingar” a máquina virtual:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.2.15
-PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
-^C
---- 10.0.2.15 ping statistics ---
-4 packets transmitted, 0 received, 100% packet loss, time 3053ms
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Não funciona. Isso ocorre porque, por padrão, o VirtualBox provê rede para a máquina virtual no modo &lt;strong&gt;NAT&lt;/strong&gt; (do inglês &lt;a href=&quot;https://pt.wikipedia.org/wiki/Network_address_translation&quot;&gt;Network Address Translation&lt;/a&gt;, “tradução de endereço de rede”): nesse modo, o SO convidado acessa o mundo exterior por meio do &lt;em&gt;software&lt;/em&gt; de rede do SO hospedeiro, que traduz as requisições de rede como se fossem suas. O convidado enxerga a rede, mas a rede não enxerga o convidado, apenas o hospedeiro. Isso é igual ao que o &lt;em&gt;modem&lt;/em&gt; da operadora de Internet faz com seu computador em casa: seu computador enxerga a Internet, mas a Internet não enxerga seu computador, apenas seu &lt;em&gt;modem&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Esse é o modo de rede mais simples do VirtualBox. Normalmente não requer configuração nem do SO convidado, nem do SO hospedeiro e é suficiente para navegar em &lt;em&gt;sites&lt;/em&gt;, baixar arquivos, etc. Por isso, é o modo padrão de novas VMs e é bom para a maioria dos usos.&lt;/p&gt;
-
-&lt;p&gt;Mas o VirtualBox é bastante flexível em como ele virtualiza a rede e oferece outros modos.&lt;/p&gt;
-
-&lt;p&gt;O modo que eu costumo usar é o modo &lt;strong&gt;ponte&lt;/strong&gt; (&lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Bridge_(redes_de_computadores)&quot;&gt;bridge&lt;/a&gt;&lt;/em&gt;): nesse modo, o VirtualBox envia requisições de rede do SO convidado usando a placa de rede da máquina real diretamente, sem passar pelo &lt;em&gt;software&lt;/em&gt; de rede do SO hospedeiro. Na prática, é como se a máquina real e a máquina virtual estivessem conectadas diretamente ao &lt;em&gt;modem&lt;/em&gt; de casa. O hospedeiro deixa de estar “entre” o convidado e a rede e passa a estar “do lado” do convidado.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-63-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-63-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para configurar a rede da VM como modo ponte, com a VM desligada, acesse suas configurações, abra a seção &lt;strong&gt;Rede&lt;/strong&gt; e mude a opção &lt;strong&gt;Conectado a&lt;/strong&gt; para &lt;strong&gt;Placa em modo Bridge&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-64-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-64-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Caso seu computador tenha mais de uma placa de rede, no campo &lt;strong&gt;Nome&lt;/strong&gt;, logo abaixo, é possível escolher qual placa será usada na ponte para a máquina virtual:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-65-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-65-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt;. Inicie a máquina virtual e repita os testes anteriores. Perceba que agora a máquina virtual recebe um endereço IP da mesma rede da máquina real. Essa, por sua vez, agora consegue “pingar” a máquina virtual.&lt;/p&gt;
-
-&lt;p&gt;Além dos modos NAT e ponte, o VirtualBox oferece outros modos de rede, que podem ser úteis para outros casos de uso. Se quiser saber mais sobre os modos de virtualização de rede do VirtualBox, consulte o &lt;a href=&quot;https://www.virtualbox.org/manual/ch06.html&quot;&gt;manual do VirtualBox&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;pacote-de-extensões-extension-pack&quot;&gt;Pacote de extensões (Extension Pack)&lt;/h2&gt;
-
-&lt;p&gt;O &lt;em&gt;software&lt;/em&gt; VirtualBox é dividido em duas partes: um pacote principal, com todos os componentes de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt; licenciados sob a &lt;a href=&quot;https://www.gnu.org/licenses/old-licenses/gpl-2.0.pt-br.html&quot;&gt;GPLv2&lt;/a&gt;, e um &lt;strong&gt;pacote de extensões&lt;/strong&gt; (&lt;em&gt;Extension Pack&lt;/em&gt;), com alguns componentes adicionais proprietários da &lt;a href=&quot;https://www.oracle.com/br/&quot;&gt;Oracle&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para mim, a principal vantagem de instalar as extensões é poder virtualizar portas USB 2.0 e USB 3.0 (o pacote principal suporta apenas USB 1.1). O pacote de extensões adiciona mais algumas funcionalidades, que você pode conferir no &lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html#intro-installing&quot;&gt;manual do VirtualBox&lt;/a&gt;, se desejar.&lt;/p&gt;
-
-&lt;p&gt;O pacote principal foi o que baixamos e instalamos nos &lt;em&gt;posts&lt;/em&gt; anteriores.&lt;/p&gt;
-
-&lt;p&gt;Para baixar o pacote de extensões, acesse o &lt;em&gt;site&lt;/em&gt; oficial do VirtualBox em:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;E clique no &lt;em&gt;banner&lt;/em&gt; &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na página seguinte, abaixo de &lt;strong&gt;Oracle VM VirtualBox Extension Pack&lt;/strong&gt;, clique em &lt;em&gt;All supported platforms&lt;/em&gt; (todas as plataformas suportadas):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-66.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-66.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você vai baixar um arquivo com a extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.vbox-extpack&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se seu SO hospedeiro é Windows, você precisará iniciar o VirtualBox como administrador:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-67-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-67-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você usa Linux, isso não é necessário: pode iniciar o VirtualBox como de costume.&lt;/p&gt;
-
-&lt;p&gt;Continuando, abra o menu &lt;strong&gt;Arquivo&lt;/strong&gt; e clique em &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-68-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-68-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;À esquerda, selecione &lt;strong&gt;Extensões&lt;/strong&gt;. À direita, clique no botão &lt;strong&gt;Adicionar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-69-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-69-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione o arquivo do pacote de extensões que você baixou e clique em &lt;strong&gt;Abrir&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-70-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-70-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na caixa de diálogo de confirmação, clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-71-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-71-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Leia a licença do pacote de extensões (ou, pelo menos, role o texto até o final) e clique em &lt;strong&gt;Eu concordo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-72-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-72-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nesse momento, no Linux, é solicitada a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), que você deve fornecer para continuar.&lt;/p&gt;
-
-&lt;p&gt;O VirtualBox informa que o pacote de extensões foi instalado com sucesso, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-73-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-73-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que o pacote de extensões agora aparece na lista de extensões instaladas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-74-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-74-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Preferências&lt;/strong&gt; e voltar para a tela inicial do VirtualBox.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; você deve usar sempre as mesmas versões do VirtualBox e do pacote de extensões. Quando você atualizar o VirtualBox para uma nova versão, volte ao &lt;em&gt;site&lt;/em&gt; do VirtualBox, baixe e instale a versão equivalente do pacote de extensões.&lt;/p&gt;
-
-&lt;h2 id=&quot;adicionais-para-convidado-guest-additions&quot;&gt;Adicionais para convidado (Guest Additions)&lt;/h2&gt;
-
-&lt;p&gt;O VirtualBox oferece &lt;em&gt;drivers&lt;/em&gt; que podem ser instalados na máquina virtual para melhorar a performance do SO convidado e aumentar a integração com o SO hospedeiro com funcionalidades extras. Esses &lt;em&gt;drivers&lt;/em&gt; são chamados de &lt;strong&gt;adicionais para convidado&lt;/strong&gt; (&lt;em&gt;Guest Additions&lt;/em&gt;). É recomendado instalá-los para tornar mais rápido e prático o uso da VM.&lt;/p&gt;
-
-&lt;p&gt;Se o SO convidado é o Linux Kamarada, saiba que os adicionais para convidado já vem instalados por padrão.&lt;/p&gt;
-
-&lt;p&gt;Se o SO convidado é o openSUSE, a forma mais fácil de instalar os adicionais para convidado é obtê-los dos repositórios oficiais da distribuição, o que pode ser feito executando o comando a seguir (no SO convidado, como &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in virtualbox-guest-{tools,x11}
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;De modo geral, o VirtualBox disponibiliza uma imagem ISO com os adicionais para convidado prontos para instalação no Windows ou em distribuições Linux. Na janela da VM, abra o menu &lt;strong&gt;Dispositivos&lt;/strong&gt; e clique em &lt;strong&gt;Inserir imagem de CD dos Adicionais para Convidado&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-75-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-75-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o SO convidado é o Windows, o instalador dos adicionais para convidado deve ser iniciado automaticamente quando a imagem ISO é inserida, ou você pode iniciá-lo manualmente a partir do leitor de DVD virtual:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-76-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-76-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o SO convidado é o Ubuntu, o sistema pergunta se deseja executar o instalador dos adicionais para convidado quando a imagem ISO é inserida:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-77-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-77-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se precisar de mais informações sobre como instalar os adicionais para convidado, consulte a documentação do SO convidado ou o &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html#guestadd-install&quot;&gt;manual do VirtualBox&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; se o SO hospedeiro é o Linux Kamarada ou o openSUSE, o VirtualBox não vem com a imagem ISO dos adicionais para convidado e pergunta se você deseja baixá-la.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-78-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-78-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clicando em &lt;strong&gt;Baixar&lt;/strong&gt;, o &lt;em&gt;download&lt;/em&gt; é iniciado, mas sempre termina com erro:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-79-pt.jpg&quot; title=&quot;A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida.&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-79-pt.jpg&quot; alt=&quot;A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A operação de rede falhou com o seguinte erro: Durante um pedido de rede Razão desconhecida.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse é um &lt;em&gt;bug&lt;/em&gt; conhecido do openSUSE e já há pessoas trabalhando nele:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1132102&quot;&gt;Bug 1132102 - VirtualBox 6.0.x guest addition ISO download failed&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Por enquanto, a solução de contorno é baixar manualmente a imagem ISO dos adicionais para convidado e depois inseri-la manualmente no leitor de DVD virtual.&lt;/p&gt;
-
-&lt;p&gt;Você pode baixar a imagem ISO dos adicionais para convidado em:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://download.virtualbox.org/virtualbox/&quot;&gt;http://download.virtualbox.org/virtualbox/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;redimensionando-a-janela-da-vm&quot;&gt;Redimensionando a janela da VM&lt;/h3&gt;
-
-&lt;p&gt;Com os adicionais para convidado instalados, se você redimensiona a janela da máquina virtual, a resolução de tela do SO convidado é ajustada automaticamente, como se você tivesse mudado a resolução nas configurações de vídeo do SO convidado. Com isso, você pode usar praticamente qualquer resolução de vídeo na máquina virtual, mesmo que não seja uma das resoluções mais comuns (como 1024x768, 1366x768, 1920x1080, etc).&lt;/p&gt;
-
-&lt;p&gt;Por exemplo, se a máquina virtual roda o Linux Kamarada com uma resolução de 1024x768 e você redimensiona a janela da máquina virtual tornando-a 100 &lt;em&gt;pixels&lt;/em&gt; mais larga, os adicionais para convidado ajustam a resolução da tela automaticamente para 1124x768.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; se o SO convidado é o Linux Kamarada ou o openSUSE, pode ser que você redimensione a janela da VM e a resolução não seja ajustada de imediato.&lt;/p&gt;
-
-&lt;p&gt;Esse é outro &lt;em&gt;bug&lt;/em&gt; conhecido do openSUSE:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1151896&quot;&gt;Bug 1151896 - Leap 15.1 guest cant change screen resolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Uma solução de contorno é desligar a máquina virtual, abrir as configurações da máquina virtual, ir na seção &lt;strong&gt;Monitor&lt;/strong&gt; e, no campo &lt;strong&gt;Controladora Gráfica&lt;/strong&gt;, mudar da configuração padrão (&lt;strong&gt;VMSVGA&lt;/strong&gt;) para uma das outras configurações (&lt;strong&gt;VBoxVGA&lt;/strong&gt; ou &lt;strong&gt;VBoxSVGA&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-80-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-80-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Outra opção, se você não quiser reiniciar a VM, é executar (no SO convidado, como &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# VBoxClient --vmsvga
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Feito isso, redimensionar a janela da VM deve voltar a provocar o ajuste da resolução.&lt;/p&gt;
-
-&lt;h3 id=&quot;área-de-transferência-compartilhada&quot;&gt;Área de transferência compartilhada&lt;/h3&gt;
-
-&lt;p&gt;Com os adicionais para convidado instalados, você pode optar por compartilhar a área de transferência dos SOs convidado e hospedeiro. Fazendo isso, passa a ser possível copiar e colar textos da máquina virtual para a máquina real e vice-versa.&lt;/p&gt;
-
-&lt;p&gt;Para compartilhar a área de transferência, na janela da VM, abra o menu &lt;strong&gt;Dispositivos&lt;/strong&gt;, abra o submenu &lt;strong&gt;Área de Transferência Compartilhada&lt;/strong&gt; e selecione &lt;strong&gt;Bi-direcional&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-81-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-81-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Sabe um exemplo de como você pode usar essa facilidade? Você pode abrir um tutorial sobre Linux no seu navegador preferido no SO hospedeiro e copiar comandos para o terminal do Linux no SO convidado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-82-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-82-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Essas duas funcionalidades são apenas as que eu mais uso dos adicionais para convidado. Se quiser conhecer outras facilidades que eles propiciam, consulte o &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html&quot;&gt;manual do VirtualBox&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;isso-é-tudo-pessoal&quot;&gt;Isso é tudo, pessoal!&lt;/h2&gt;
-
-&lt;p&gt;Nessa trilogia de &lt;em&gt;posts&lt;/em&gt; sobre o VirtualBox, compartilhei o que acredito ser o básico e as principais dicas para que você possa usar esse &lt;em&gt;software&lt;/em&gt; de virtualização no dia a dia. Talvez o conceito de máquina virtual seja novo pra você, mas você deve ter percebido que a interface do VirtualBox é intuitiva: à medida em que você vai usando, percebe como funciona e dúvidas que vão surgindo acabam desaparecendo sozinhas com a prática.&lt;/p&gt;
-
-&lt;p&gt;Espero que esse texto tenha sido útil. Se restar qualquer dúvida, não hesite em comentar!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;p&gt;Para escrever esse &lt;em&gt;post&lt;/em&gt;, consultei o manual do VirtualBox:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/&quot;&gt;Oracle VM VirtualBox - User Manual&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 30 Oct 2019 23:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/10/30/dicas-para-usar-o-virtualbox-no-dia-a-dia/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/10/30/dicas-para-usar-o-virtualbox-no-dia-a-dia/</guid>
                 
                 
                     <category>pt</category>
