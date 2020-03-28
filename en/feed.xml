@@ -9,10 +9,458 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 23 Mar 2020 18:51:38 -0300</pubDate>
-        <lastBuildDate>Mon, 23 Mar 2020 18:51:38 -0300</lastBuildDate>
+        <pubDate>Sat, 28 Mar 2020 12:27:02 -0300</pubDate>
+        <lastBuildDate>Sat, 28 Mar 2020 12:27:02 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Remote access with NoMachine</title>
+                <description>&lt;p&gt;&lt;strong&gt;Remote access&lt;/strong&gt; software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work computer while being at home (home office); to provide remote support to a colleague or customer; or even to avoid moving to a particular device on the other side of the house just to click on something.&lt;/p&gt;
+
+&lt;p&gt;There are some remote access programs. Today, we are going to take a look at NoMachine.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.nomachine.com/&quot;&gt;NoMachine&lt;/a&gt;&lt;/strong&gt; is a remote access solution developed since 2003 by the Luxemburg-based company of the same name. It is &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cross-platform_software&quot;&gt;cross-platform&lt;/a&gt;&lt;/strong&gt; (available for use in various operating systems, including &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;, &lt;a href=&quot;https://www.apple.com/macos/&quot;&gt;macOS&lt;/a&gt;, &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; and &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt;) and &lt;strong&gt;free of charge&lt;/strong&gt; for personal use, but subscriptions are available for advanced features targeted at enterprises.&lt;/p&gt;
+
+&lt;h2 id=&quot;license&quot;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;Note that NoMachine is not a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free (&lt;em&gt;libre&lt;/em&gt;) software&lt;/a&gt;, but a &lt;a href=&quot;https://en.wikipedia.org/wiki/Proprietary_software&quot;&gt;proprietary&lt;/a&gt; one.&lt;/p&gt;
+
+&lt;p&gt;I read the &lt;a href=&quot;https://www.nomachine.com/licensing-6&quot;&gt;NoMachine license&lt;/a&gt; and, if I got it right, &lt;strong&gt;individual uses&lt;/strong&gt; are allowed &lt;strong&gt;free of charge&lt;/strong&gt; (without having to purchase a subscription), being examples of individual uses:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;remotely accessing the computer you use at work, from home;&lt;/li&gt;
+  &lt;li&gt;remotely accessing your home computer, from work; or&lt;/li&gt;
+  &lt;li&gt;remotely accessing another computer on the same local network (either at home or at work).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the examples above, you can replace “work” with “university” or other educational institution.&lt;/p&gt;
+
+&lt;p&gt;What you are &lt;strong&gt;not allowed&lt;/strong&gt; to do with the free version of NoMachine are &lt;strong&gt;commercial uses&lt;/strong&gt;, such as providing paid support service for a customer. For commercial uses, visit the &lt;a href=&quot;https://www.nomachine.com/&quot;&gt;NoMachine website&lt;/a&gt; and purchase a subscription.&lt;/p&gt;
+
+&lt;h2 id=&quot;client-and-server&quot;&gt;Client and server&lt;/h2&gt;
+
+&lt;p&gt;In this tutorial, we are going to call the computer that is accessed as &lt;strong&gt;server&lt;/strong&gt; (it serves the desktop, it makes its desktop available for use) and the computer that accesses it as &lt;strong&gt;client&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, if you are using your home computer to remotely access your work computer, your home computer is the client and your work computer is the server.&lt;/p&gt;
+
+&lt;p&gt;Those functions (client and server) are not fixed, but interchangeable: with NoMachine installed, both computers are able to act as either client or server.&lt;/p&gt;
+
+&lt;p&gt;Thus, if someday you remotely access your home computer from your work computer, in this new scenario your home computer is the server, while your work computer acts as the client.&lt;/p&gt;
+
+&lt;h2 id=&quot;local-network&quot;&gt;Local network&lt;/h2&gt;
+
+&lt;p&gt;Note that, at least in principle, NoMachine gives you remote access to computers on the same local network only.&lt;/p&gt;
+
+&lt;p&gt;In the previous examples, to remotely access the work computer, you would need to connect to the work network using a &lt;a href=&quot;https://kamarada.github.io/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/&quot;&gt;VPN&lt;/a&gt; technology such as one of the following (check availability with the company’s network administrator or IT staff):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kamarada.github.io/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/&quot;&gt;How to setup an OpenVPN client on openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kamarada.github.io/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/&quot;&gt;How to connect to a GlobalProtect VPN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To remotely access your home computer, you would need to configure port forwarding on your home router. To check if that is possible, as well as to get instructions on how to do that, contact your ISP.&lt;/p&gt;
+
+&lt;p&gt;No more talking, let’s roll up our sleeves!&lt;/p&gt;
+
+&lt;p&gt;As usual, I focus on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; and &lt;a href=&quot;https://kamarada.github.io/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada&lt;/a&gt;, but the usage of NoMachine on other Linux distributions is possible and shouldn’t be much different.&lt;/p&gt;
+
+&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
+
+&lt;p&gt;Download the NoMachine RPM package on both computers: client and server. An alternative is to download the package once and copy it to the other computer (e.g. using a USB stick).&lt;/p&gt;
+
+&lt;p&gt;To download NoMachine, visit its website at &lt;a href=&quot;https://www.nomachine.com/&quot;&gt;nomachine.com&lt;/a&gt; and click &lt;strong&gt;Download now&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Among the download options, choose the RPM package for 64-bit Linux:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next page, click &lt;strong&gt;Download&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Your browser is going to download the RPM package probably to the &lt;strong&gt;Downloads&lt;/strong&gt; folder (this is the default setting for most browsers) or ask where you want to save it.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;When the download is finished, install NoMachine on both computers: client and server.&lt;/p&gt;
+
+&lt;p&gt;To install NoMachine, open the folder where the RPM package has been downloaded, right- click the package and click &lt;strong&gt;Open With Install/Remove Software&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST Control Center&lt;/a&gt; is started. It shows information about the package that is going to be installed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Accept&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;YaST informs that the package is broken, but actually it was just unable to &lt;a href=&quot;https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;check its authenticity&lt;/a&gt;, since the package is not signed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This error message is common when installing a manually downloaded RPM package (not a package retrieved from a known repository). You can safely click &lt;strong&gt;Ignore&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The package is installed. At the end, click &lt;strong&gt;Finish&lt;/strong&gt; to close YaST:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Notice that NoMachine has just added an icon to the &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt; top bar. It is already running and ready to be used!&lt;/p&gt;
+
+&lt;p&gt;Also note that the NoMachine RPM package installs both the client and the server applications and enables the NoMachine service on both computers — client and server — enabling both of them to assume either of these functions.&lt;/p&gt;
+
+&lt;p&gt;You download and install NoMachine on client and server computers the same way, but setting up and using are different procedures. Let’s start with the computer that is going to act as the server.&lt;/p&gt;
+
+&lt;h2 id=&quot;finding-the-servers-ip-address&quot;&gt;Finding the server’s IP address&lt;/h2&gt;
+
+&lt;p&gt;To connect to the server computer, you need to know its IP address. NoMachine tells you this information. To get it, click the &lt;strong&gt;NoMachine icon&lt;/strong&gt; on the top bar. A menu with some options will appear. Click &lt;strong&gt;Show the service status&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Take note of the server’s IP address (in this example, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.3.5&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Alternatively, if the NoMachine icon does not appear for you on the GNOME top bar, open the &lt;strong&gt;Activities&lt;/strong&gt; menu on the top-left screen corner, type &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; and click the &lt;strong&gt;NoMachine Service&lt;/strong&gt; icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That same screen is opened and you can get the server’s IP address there.&lt;/p&gt;
+
+&lt;h2 id=&quot;translating-the-server-interface&quot;&gt;Translating the server interface&lt;/h2&gt;
+
+&lt;p&gt;Usually, NoMachine detects the system language and translates its interface automatically. In case that does not happen, it defaults to the English language.&lt;/p&gt;
+
+&lt;p&gt;If you want to change the server interface language, on the &lt;strong&gt;NoMachine Service Status&lt;/strong&gt; window, click &lt;strong&gt;Server preferences&lt;/strong&gt; on the top-right corner.&lt;/p&gt;
+
+&lt;p&gt;On the next screen, click &lt;strong&gt;Player preferences&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-11.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-11.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Then switch to the &lt;strong&gt;Appearance&lt;/strong&gt; tab and in &lt;strong&gt;Text&lt;/strong&gt; select your desired language:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-12.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You need to restart NoMachine for the translation to be applied. Click on the link that appears at the bottom of the screen (&lt;strong&gt;Restart the NoMachine Monitor for changes to take effect&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That done, NoMachine will restart. From now on, it will start already translated.&lt;/p&gt;
+
+&lt;p&gt;For this tutorial, I’m going to proceed with the default English language.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-remote-access-from-the-client&quot;&gt;Starting remote access from the client&lt;/h2&gt;
+
+&lt;p&gt;To start NoMachine on the client computer, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, type &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; and click the &lt;strong&gt;NoMachine&lt;/strong&gt; icon.&lt;/p&gt;
+
+&lt;p&gt;On the welcome screen, check &lt;strong&gt;Don’t show this message again&lt;/strong&gt; and click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-14-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-14-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The NoMachine client automatically searches for NoMachine servers on the same network.&lt;/p&gt;
+
+&lt;p&gt;The client main screen shows the servers found, as well as any computers you have previously accessed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-15-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-15-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h3 id=&quot;translating-the-client-interface&quot;&gt;Translating the client interface&lt;/h3&gt;
+
+&lt;p&gt;If you want, you can change the client interface language in a similar way you did on the server: on the NoMachine client main screen, click &lt;strong&gt;Settings&lt;/strong&gt; on the top-right corner.&lt;/p&gt;
+
+&lt;p&gt;Then switch to the &lt;strong&gt;Appearance&lt;/strong&gt; tab and in &lt;strong&gt;Text&lt;/strong&gt; select your desired language.&lt;/p&gt;
+
+&lt;p&gt;Restart NoMachine for the translation to be applied.&lt;/p&gt;
+
+&lt;h3 id=&quot;remotely-accessing-a-listed-computer&quot;&gt;Remotely accessing a listed computer&lt;/h3&gt;
+
+&lt;p&gt;If the server computer you want to remotely access appears in the list, before the first access, select it from the list and click &lt;strong&gt;Edit&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enter a name for that computer (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;Work Computer&lt;/code&gt;) and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-16-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-16-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now, back to the client main screen, double-click the computer you want to remotely access.&lt;/p&gt;
+
+&lt;p&gt;If this is the first time you remotely access that computer, NoMachine presents you some settings.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Verify host authenticity&lt;/strong&gt; screen, click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-17-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-17-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter the &lt;strong&gt;Username&lt;/strong&gt; (login) and &lt;strong&gt;Password&lt;/strong&gt; of your user account on the server computer:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-18-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-18-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Optionally, check the option to remember your credentials. Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once the connection is established, NoMachine presents you some tip screens:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-19-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-19-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On each screen, carefully read its contents, check the option &lt;strong&gt;Don’t show this message again&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, you will see the server computer’s screen in the NoMachine client window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-20-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-20-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Each click inside this window is made on the server computer, also what you type appears there. You are literally using the server computer, but remotely, without sitting in front of it.&lt;/p&gt;
+
+&lt;p&gt;Note that a notification appears on the server informing that a remote access has been initiated. Also, if someone is in front of it and its screen is on, they will see what you do.&lt;/p&gt;
+
+&lt;h3 id=&quot;remotely-accessing-a-computer-that-is-not-listed&quot;&gt;Remotely accessing a computer that is not listed&lt;/h3&gt;
+
+&lt;p&gt;On the NoMachine client main screen, if the server computer you want to remotely access does not appear in the list, click the &lt;strong&gt;New&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;NoMachine starts the &lt;strong&gt;New connection&lt;/strong&gt; wizard:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-21-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-21-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the first screen, keep the default &lt;strong&gt;Protocol&lt;/strong&gt; (which is &lt;strong&gt;NX&lt;/strong&gt;) and click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the second screen, fill in the &lt;strong&gt;Host&lt;/strong&gt; field with the server’s IP address and click &lt;strong&gt;Continue&lt;/strong&gt; (alternatively, you can enter its hostname):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-22-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-22-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the third screen, &lt;strong&gt;Authentication&lt;/strong&gt;, leave the default option selected, which is &lt;strong&gt;Password&lt;/strong&gt;, and click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-23-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-23-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Next, on the &lt;strong&gt;Proxy&lt;/strong&gt; screen, if you are using a proxy to connect to the Internet, select the second option (&lt;strong&gt;Connect using a proxy&lt;/strong&gt;) and enter the proxy settings. If you are not (I think this is the case of most people), leave the default option selected (&lt;strong&gt;Don’t use a proxy&lt;/strong&gt;) and click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-24-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-24-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Finally, enter a name for this computer (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;Work Computer&lt;/code&gt;) and click &lt;strong&gt;Done&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-25-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-25-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Once the wizard is finished, this computer will appear on the NoMachine client main screen and you will be able to remotely access it by double-clicking it.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuring-the-firewall-on-the-server&quot;&gt;Configuring the firewall on the server&lt;/h2&gt;
+
+&lt;p&gt;In the tests I did with Linux Kamarada, which brings the desktop-oriented &lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt; as the default firewall, it was not necessary to do any additional firewall configuration for NoMachine to work on both the client and the server.&lt;/p&gt;
+
+&lt;p&gt;If you are having trouble connecting to the server, it should be enough to allow ports 4000/TCP and 4011-4999/UDP on the server.&lt;/p&gt;
+
+&lt;p&gt;If you use the &lt;a href=&quot;https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/&quot;&gt;&lt;strong&gt;iptables&lt;/strong&gt; firewall&lt;/a&gt; on the server computer, to allow those ports, append these lines to your configuration script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# NoMachine (ports 4000/TCP and 4011-4999/UDP)
+iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
+iptables -A INPUT -p udp --match multiport --dports 4011:4999 -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you need more information about the ports used by NoMachine, take a look at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;stopping-andor-disabling-the-nomachine-service&quot;&gt;Stopping and/or disabling the NoMachine service&lt;/h2&gt;
+
+&lt;p&gt;If you always use a computer as a client, you can stop and/or disable the NoMachine service on that computer (you don’t need to, but you can do it).&lt;/p&gt;
+
+&lt;p&gt;For example, if you are using NoMachine for home office, and remote access is always from your home computer (client) to your work computer (server), never the other way around, you can disable the NoMachine service on your home computer.&lt;/p&gt;
+
+&lt;p&gt;If you want to stop the NoMachine service, click the &lt;strong&gt;NoMachine icon&lt;/strong&gt; on the top bar, and then click &lt;strong&gt;Close the NoMachine application&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-26-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-26-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;NoMachine asks whether to start the service the next time the computer is turned on. You are stopping the service. If you also want to disable it, answer &lt;strong&gt;No&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-27-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-27-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;NoMachine asks you the administrator (&lt;em&gt;root&lt;/em&gt; user) password, which you must provide to stop and/or disable the service.&lt;/p&gt;
+
+&lt;h2 id=&quot;manually-starting-the-nomachine-service&quot;&gt;Manually starting the NoMachine service&lt;/h2&gt;
+
+&lt;p&gt;If you have stopped and/or disabled the NoMachine service, you can manually start it at any time. To do that, open the &lt;strong&gt;NoMachine Service&lt;/strong&gt; app and click &lt;strong&gt;Start the server&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-28-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-28-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the confirmation message, click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/03/nomachine-29-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/03/nomachine-29-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Provide the administrator (&lt;em&gt;root&lt;/em&gt; user) password to start the service.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/getting-started-with-nomachine&quot;&gt;NoMachine - Getting started with NoMachine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vultr.com/docs/setup-nomachine-nx-on-ubuntu&quot;&gt;Setup NoMachine NX On Ubuntu - Vultr.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR11P01005&quot;&gt;NoMachine - How to shutdown NoMachine and disable the automatic startup at boot time&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That’s it, guys! I hope that this text can help you in your remote accesses. NoMachine is quite easy to use and features an intuitive interface. But if doubts arise, you can leave comments.&lt;/p&gt;
+
+&lt;p&gt;See you!&lt;/p&gt;
+
+</description>
+                <pubDate>Sat, 28 Mar 2020 12:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>How to connect to a GlobalProtect VPN</title>
@@ -4297,633 +4745,6 @@ WantedBy=default.target
                 <pubDate>Sun, 24 Nov 2019 15:50:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Tips for using VirtualBox every day</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;This is the part 3 of our trilogy of posts about &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox&lt;/a&gt;! You are going to see how to create a virtual hard disk and install &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; on the virtual machine, as well as tips for using VirtualBox daily. As the guest operating system, I’m going to use the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;-based &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Kamarada&lt;/a&gt; Linux distribution.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;In the previous posts, you’ve seen what virtualization is, what VirtualBox is, how to install it on &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and Linux, how to create a virtual machine and how to use it to try Linux.&lt;/p&gt;
-
-&lt;p&gt;If you fell into this page, I recommend that you start your reading from the previous posts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/19/installing-virtualbox-on-linux/&quot;&gt;Installing VirtualBox on Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;prevent-livecddvd-ejection&quot;&gt;Prevent LiveCD/DVD ejection&lt;/h2&gt;
-
-&lt;p&gt;Some guest operating systems, such as &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, eject &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live media&lt;/a&gt; on shutdown:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-41.jpg&quot; title=&quot;Please remove the installation medium, then press Enter&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-41.jpg&quot; alt=&quot;Please remove the installation medium, then press Enter&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Please remove the installation medium, then press Enter&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On a physical computer, the LiveDVD would now be ejected.&lt;/p&gt;
-
-&lt;p&gt;On a VirtualBox virtual machine, the virtual DVD drive becomes empty. To start the VM again, you would have to reinsert the ISO image into the virtual DVD drive, as we have seen in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;. If you repeatedly start the VM with live media, having to reinsert the ISO image every time is unnecessarily laborious.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, VirtualBox provides an option to prevent live media ejection. To enable it, select the virtual machine on the VirtualBox start screen, click &lt;strong&gt;Settings&lt;/strong&gt;, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the virtual DVD drive and enable the &lt;strong&gt;LiveCD/DVD&lt;/strong&gt; option:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-42-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-42-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;From now on, when you shut the VM down, live media will no longer be removed. You can start the VM again without having to manually reinsert the ISO image.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-a-virtual-hard-disk&quot;&gt;Creating a virtual hard disk&lt;/h2&gt;
-
-&lt;p&gt;If you have followed this trilogy of posts about VirtualBox, until now you have booted Linux on the virtual machine from a &lt;a href=&quot;/en/2015/12/09/what-is-a-livecd-dvd-usb/&quot;&gt;live image&lt;/a&gt;. That way, any changes you make to the guest OS are lost when you shut the VM down. For having a first contact with Linux, a live image is great, but using Linux on a daily basis doesn’t look like that.&lt;/p&gt;
-
-&lt;p&gt;To get a better idea of how it is to use Linux on a real computer, let’s install Linux on the virtual machine. Before doing that, we need to create a virtual hard disk.&lt;/p&gt;
-
-&lt;p&gt;With the VM shutdown, select it on the VirtualBox start screen, click &lt;strong&gt;Settings&lt;/strong&gt;, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the &lt;strong&gt;Controller: SATA&lt;/strong&gt; and click the &lt;strong&gt;Add hard disk&lt;/strong&gt; icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-43-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-43-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;VirtualBox asks if you want to create a new disk or use an existing one. Click &lt;strong&gt;Create new disk&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-44-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-44-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;VirtualBox supports some types of virtual hard disks. Probably you don’t want to use this disk with other virtualization software, so keep the VirtualBox native format &lt;strong&gt;VDI (VirtualBox Disk Image)&lt;/strong&gt; selected and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-45-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-45-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A virtual hard disk, from the host OS point of view, is a file. You can choose between:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;create a &lt;strong&gt;Fixed size&lt;/strong&gt; file, which immediately has the same size as the virtual disk’s wanted capacity (e.g. for a 10GB virtual disk, VirtualBox creates a 10GB file), or&lt;/li&gt;
-  &lt;li&gt;create a &lt;strong&gt;Dynamically allocated&lt;/strong&gt; file, which has the same size as the virtual disk space actually in use (this file is initially very small and grows in size when the guest OS stores new data, limited to the maximum capacity chosen).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I recommend that you keep the &lt;strong&gt;Dynamically allocated&lt;/strong&gt; option selected and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-46-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-46-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enter a file path and size for the virtual hard disk — 20GB is enough to install Linux Kamarada (or openSUSE) and test it with comfort — and click &lt;strong&gt;Create&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-47-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-47-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That’s it: virtual hard disk created and ready to be used. Back to the &lt;strong&gt;Settings&lt;/strong&gt; dialog box, click &lt;strong&gt;OK&lt;/strong&gt; to close it and return to the VirtualBox start screen.&lt;/p&gt;
-
-&lt;h2 id=&quot;installing-linux-on-the-virtual-machine&quot;&gt;Installing Linux on the virtual machine&lt;/h2&gt;
-
-&lt;p&gt;Make sure the Linux ISO image is in the virtual DVD drive and start the virtual machine.&lt;/p&gt;
-
-&lt;p&gt;Start the Linux Kamarada installer by clicking its icon on the dock:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-48-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-48-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(just out of curiosity, the installer is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt; called &lt;a href=&quot;https://calamares.io/&quot;&gt;Calamares&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;On the first installer screen, select your language (for the purpose of this post, I’m going to stay with the default &lt;strong&gt;American English&lt;/strong&gt;) and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the second screen, &lt;strong&gt;Partitions&lt;/strong&gt;, you can partition the hard disk. Since you are going to use this virtual machine just to try Linux and it will be the sole system installed on the virtual disk, you don’t need not worry about partitioning, just choose to &lt;strong&gt;Erase disk&lt;/strong&gt; and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-49-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-49-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the next screen, &lt;strong&gt;Summary&lt;/strong&gt;, the installer summarizes the installation settings. Make sure everything is alright and click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-50-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-50-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that we reached the point of no return: once the installation has started, you cannot undo changes made to the disk. Click &lt;strong&gt;Install Now&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-51-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-51-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Wait for the installation of Linux Kamarada, which may take a few minutes:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-52-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-52-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;You can go have a coffee and come back later.&lt;/p&gt;
-
-&lt;p&gt;When installation is finished, &lt;strong&gt;do not&lt;/strong&gt; check &lt;strong&gt;Restart now&lt;/strong&gt;, click &lt;strong&gt;Done&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-53-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-53-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Shut the virtual machine down as usual (as we have seen in &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;part 1&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Remove the ISO image from the virtual DVD drive (as if you were ejecting a DVD from a physical computer DVD drive). To do that, access the virtual machine settings, open the &lt;strong&gt;Storage&lt;/strong&gt; section, select the virtual DVD drive, click the media icon and then, on the drop-down menu that appears, click &lt;strong&gt;Remove Disk from Virtual Drive&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-54-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-54-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Settings&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
-
-&lt;p&gt;Now start the virtual machine. This time, it will boot from the virtual hard disk.&lt;/p&gt;
-
-&lt;p&gt;On the first use, Linux Kamarada presents a wizard to assist you on some basic configuration:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-55-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-55-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(just out of curiosity, that wizard is a &lt;a href=&quot;https://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; module called &lt;a href=&quot;https://en.opensuse.org/YaST_Firstboot&quot;&gt;Firstboot&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;On the first screen of the wizard, select your &lt;strong&gt;Language&lt;/strong&gt; and &lt;strong&gt;Keyboard Layout&lt;/strong&gt; and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the welcome screen, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-56-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-56-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the next screen, you are presented to the &lt;a href=&quot;https://en.opensuse.org/openSUSE:License&quot;&gt;openSUSE Leap license&lt;/a&gt;, which is the same license adopted by Linux Kamarada. You don’t need to worry about this license: since openSUSE is a free software, its license does not limit your use. You can read it just to know your rights as an openSUSE / Linux Kamarada user. When you finish, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-57-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-57-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the next screen, &lt;strong&gt;Clock and Time Zone&lt;/strong&gt;, adjust your time zone, date and time settings as needed and then click &lt;strong&gt;Next&lt;/strong&gt; (tip: if you need to change the time zone, click the map):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-58-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-58-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the next screen, you are going to create an user account for you. Enter your full name and the desired username and password. To make it easier to use the VM, I recommend checking the &lt;strong&gt;Use this password for system administrator&lt;/strong&gt; and &lt;strong&gt;Automatic Login&lt;/strong&gt; options. When you finish, click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-59-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-59-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the last wizard screen, just click &lt;strong&gt;Finish&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-60-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-60-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;That’s it! Linux Kamarada is installed on the virtual machine and ready to be used:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-61-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-61-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now let’s take a look at some tips that can make using VirtualBox easier and more interesting.&lt;/p&gt;
-
-&lt;h2 id=&quot;bridged-virtual-networking-mode&quot;&gt;Bridged virtual networking mode&lt;/h2&gt;
-
-&lt;p&gt;Depending on what you want to do, you may need the virtual machine to communicate with other devices on the local network, such as a printer or a file server.&lt;/p&gt;
-
-&lt;p&gt;If you haven’t changed the default virtual machine networking settings, you may have noticed that the virtual machine can communicate with the local network, but the opposite is not true (other local network devices are not able to reach the virtual machine).&lt;/p&gt;
-
-&lt;p&gt;In case you haven’t noticed it, run a simple test: on the guest OS, open the terminal and find out the IP address of the virtual machine by running the following command.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ip -c a
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-62-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-62-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;For instance, my virtual machine has been given the IP address &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.2.15/24&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;On the host OS, find out the IP address of the real machine. For instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.10/24&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Back to the guest OS terminal, &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ping&quot;&gt;ping&lt;/a&gt;&lt;/strong&gt; your real machine:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.0.10
-PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
-64 bytes from 10.0.0.10: icmp_seq=1 ttl=63 time=0.219 ms
-64 bytes from 10.0.0.10: icmp_seq=2 ttl=63 time=0.535 ms
-64 bytes from 10.0.0.10: icmp_seq=3 ttl=63 time=0.697 ms
-64 bytes from 10.0.0.10: icmp_seq=4 ttl=63 time=0.534 ms
-^C
---- 10.0.0.10 ping statistics ---
-4 packets transmitted, 4 received, 0% packet loss, time 3052ms
-rtt min/avg/max/mdev = 0.219/0.496/0.697/0.173 ms
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(press &lt;strong&gt;Ctrl + C&lt;/strong&gt; to stop the &lt;strong&gt;ping&lt;/strong&gt; command)&lt;/p&gt;
-
-&lt;p&gt;It works. Now from the host OS try to &lt;strong&gt;ping&lt;/strong&gt; the virtual machine:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ping 10.0.2.15
-PING 10.0.2.15 (10.0.2.15) 56(84) bytes of data.
-^C
---- 10.0.2.15 ping statistics ---
-4 packets transmitted, 0 received, 100% packet loss, time 3053ms
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It does not work.&lt;/p&gt;
-
-&lt;p&gt;That happens because VirtualBox by default enables one virtual network adapter for the virtual machine and selects the &lt;strong&gt;NAT&lt;/strong&gt; (&lt;a href=&quot;https://en.wikipedia.org/wiki/Network_address_translation&quot;&gt;Network Address Translation&lt;/a&gt;) mode for it. This way the guest OS can connect to the outside world using the host OS network stack, which translates guest network requests as if they were from the host. The guest is able to reach local network, but local network is not able to reach the guest, only the host at most. That is similar to what your ISP router does to your home computer: your computer is able to browse the web, but the world is not able to reach your home computer, only your modem at most.&lt;/p&gt;
-
-&lt;p&gt;NAT is the simplest VirtualBox networking mode. Usually it does not require any configuration on either the host or the guest. Also, it is sufficient for browsing the web, downloading files, etc. For those reasons, it is the default networking mode and is good for most use cases.&lt;/p&gt;
-
-&lt;p&gt;However, VirtualBox is extremely flexible in how it virtualizes networking and provides other modes.&lt;/p&gt;
-
-&lt;p&gt;Besides NAT, other mode I often use is &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Bridging_(networking)&quot;&gt;bridge&lt;/a&gt;&lt;/strong&gt;: using this mode, VirtualBox sends guest OS network requests using the real machine’s network adapter directly, circumventing the host OS network stack. In practice, it is as if the real machine and the virtual machine were connected directly to the same router. The host is no longer “between” the guest and the router, but “besides” the guest.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-63-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-63-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;To enable bridged networking, with the VM shut down, access the VM settings, open the &lt;strong&gt;Network&lt;/strong&gt; section, and change the &lt;strong&gt;Attached to&lt;/strong&gt; option to &lt;strong&gt;Bridged adapter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-64-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-64-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In case the real machine has more than one network adapter, you can select which one is going to be bridged with the virtual network adapter on the &lt;strong&gt;Name&lt;/strong&gt; field right below:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-65-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-65-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;When you are finished, click &lt;strong&gt;OK&lt;/strong&gt;. Start the virtual machine and repeat the previous tests. Note that the virtual machine now receives an IP address from the same network as the real machine, which in its turn can now ping the virtual machine.&lt;/p&gt;
-
-&lt;p&gt;In addition to NAT and bridged adapter, VirtualBox provides other networking modes, which may be useful for other use cases. If you want to learn more about VirtualBox networking modes, take a look at the &lt;a href=&quot;https://www.virtualbox.org/manual/ch06.html&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;extension-pack&quot;&gt;Extension Pack&lt;/h2&gt;
-
-&lt;p&gt;The VirtualBox software is split into two components: a base package, which consists of all &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt; components licensed under the &lt;a href=&quot;https://www.gnu.org/licenses/old-licenses/gpl-2.0.html&quot;&gt;GPLv2&lt;/a&gt;, and an &lt;strong&gt;Extension Pack&lt;/strong&gt;, with some additional &lt;a href=&quot;https://www.oracle.com/&quot;&gt;Oracle&lt;/a&gt; proprietary components which extend the functionality of the base package.&lt;/p&gt;
-
-&lt;p&gt;In my opinion, the main advantage of installing the Extension Pack is being able to virtualize USB 2.0 and USB 3.0 ports (the base package only supports USB 1.1). The Extension Pack adds some other features, which are listed on the &lt;a href=&quot;https://www.virtualbox.org/manual/ch01.html#intro-installing&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The base package was what we downloaded and installed in previous posts.&lt;/p&gt;
-
-&lt;p&gt;To download the Extension Pack, go to the VirtualBox official website at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;https://www.virtualbox.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And click the &lt;strong&gt;Download VirtualBox 6.0&lt;/strong&gt; banner.&lt;/p&gt;
-
-&lt;p&gt;On the next page, under &lt;strong&gt;Oracle VM VirtualBox Extension Pack&lt;/strong&gt;, click &lt;strong&gt;All supported platforms&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-66.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-66.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;You are going to download a file with a &lt;code class=&quot;highlighter-rouge&quot;&gt;.vbox-extpack&lt;/code&gt; extension.&lt;/p&gt;
-
-&lt;p&gt;If your host OS is Windows, you need to start VirtualBox as an administrator:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-67-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-67-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If your host OS is Linux, that is not needed: ​​you can start VirtualBox as usual.&lt;/p&gt;
-
-&lt;p&gt;Then, open the &lt;strong&gt;File&lt;/strong&gt; menu and click &lt;strong&gt;Preferences&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-68-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-68-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;By the left, select &lt;strong&gt;Extensions&lt;/strong&gt;. By the right, click the &lt;strong&gt;Add&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-69-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-69-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the Extension Pack file you downloaded and click &lt;strong&gt;Open&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-70-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-70-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the confirmation dialog box, click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-71-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-71-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Read the Extension Pack license (or at least scroll it until the end) and click &lt;strong&gt;I Agree&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-72-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-72-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now, if you are using Linux, you are asked the administrator (&lt;em&gt;root&lt;/em&gt; user) password, which you must provide to continue.&lt;/p&gt;
-
-&lt;p&gt;VirtualBox reports that the Extension Pack has been installed successfully, click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-73-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-73-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that the Extension Pack now appears in the list of installed extensions:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-74-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-74-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to close the &lt;strong&gt;Preferences&lt;/strong&gt; dialog box and return to the VirtualBox start screen.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; you should always use the same version of Extension Pack as your installed version of VirtualBox. When you update VirtualBox to a new version, go to the VirtualBox official website, download and install the equivalent version of the Extension Pack.&lt;/p&gt;
-
-&lt;h2 id=&quot;guest-additions&quot;&gt;Guest Additions&lt;/h2&gt;
-
-&lt;p&gt;VirtualBox offers drivers that can be installed &lt;em&gt;inside&lt;/em&gt; a virtual machine to improve performance of the guest OS and provide closer integration between host and guest systems with the addition of extra features. These drivers are called &lt;strong&gt;Guest Additions&lt;/strong&gt;. It is recommended to install them so the VM usage becomes faster and more convenient.&lt;/p&gt;
-
-&lt;p&gt;If the guest OS is Linux Kamarada, good news: Guest Additions come installed out-of-the-box.&lt;/p&gt;
-
-&lt;p&gt;If the guest OS is openSUSE, the easiest way to install Guest Additions is to get them from the official distribution repositories, which can be done by running the following command (on the guest OS, as root):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in virtualbox-guest-{tools,x11}
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In general, VirtualBox provides an ISO image with Guest Additions ready for installation on Windows or Linux. On the VM window, open the &lt;strong&gt;Devices&lt;/strong&gt; menu and click &lt;strong&gt;Insert Guest Additions CD image&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-75-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-75-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If the guest OS is Windows, the Guest Additions installer should be started automatically when the ISO image is inserted. If not, you can manually start it from the virtual DVD drive:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-76-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-76-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If the guest OS is Ubuntu, the system asks whether you want to run the Guest Additions installer when the ISO image is inserted:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-77-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-77-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If you need more information on how to install Guest Additions, refer to the guest OS documentation or the &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html#guestadd-install&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if the host OS is Linux Kamarada or openSUSE, VirtualBox does not come with the Guest Additions ISO image and asks you permission to download it.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-78-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-78-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clicking &lt;strong&gt;Download&lt;/strong&gt;, the download is started, but it always ends with an error:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-79-en.jpg&quot; title=&quot;The network operation failed with the following error: During network request: Unknown reason.&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-79-en.jpg&quot; alt=&quot;The network operation failed with the following error: During network request: Unknown reason.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;The network operation failed with the following error: During network request: Unknown reason.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;This is a known openSUSE bug and there are people already working on it:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1132102&quot;&gt;Bug 1132102 - VirtualBox 6.0.x guest addition ISO download failed&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;While it is not fixed, a possible workaround is to manually download the Guest Additions ISO image and then manually insert it into the virtual DVD drive.&lt;/p&gt;
-
-&lt;p&gt;You can download the Guest Additions ISO image at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://download.virtualbox.org/virtualbox/&quot;&gt;http://download.virtualbox.org/virtualbox/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;resizing-the-virtual-machines-window&quot;&gt;Resizing the virtual machine’s window&lt;/h3&gt;
-
-&lt;p&gt;With Guest Additions installed, when you resize the VM window, the guest OS display resolution is automatically adjusted, as if you had manually entered an arbitrary resolution in the guest OS video settings. This allows you to use virtually any display resolution in the VM, even if it’s not one of the most common resolutions (such as 1024x768, 1366x768, 1920x1080, etc).&lt;/p&gt;
-
-&lt;p&gt;For example, if the VM runs Linux Kamarada as guest with a resolution of 1024x768 pixels and you then resize the VM window to make it 100 pixels wider, the Guest Additions will automatically adjust the Linux Kamarada display resolution to 1124x768.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if the guest OS is Linux Kamarada or openSUSE, it may happen that you resize the VM window and the guest resolution is not automatically adjusted.&lt;/p&gt;
-
-&lt;p&gt;This is another known openSUSE bug:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1151896&quot;&gt;Bug 1151896 - Leap 15.1 guest cant change screen resolution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A possible workaround is to shut the VM down, access the VM settings, open the &lt;strong&gt;Display&lt;/strong&gt; section and change the &lt;strong&gt;Graphics Controller&lt;/strong&gt; from the default controller (&lt;strong&gt;VMSVGA&lt;/strong&gt;) to any of the others (&lt;strong&gt;VBoxVGA&lt;/strong&gt; or &lt;strong&gt;VBoxSVGA&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-80-en.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-80-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Another option, if you don’t want to restart the VM, is to run (on the guest OS, as root):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# VBoxClient --vmsvga
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That done, resizing the VM window should cause the guest resolution to be adjusted as expected.&lt;/p&gt;
-
-&lt;h3 id=&quot;shared-clipboard&quot;&gt;Shared clipboard&lt;/h3&gt;
-
-&lt;p&gt;With Guest Additions installed, you can share the clipboard of the guest with that of the host. Doing so makes it possible to copy and paste text from the virtual machine to the real machine and vice versa.&lt;/p&gt;
-
-&lt;p&gt;To enable clipboard sharing, on the VM window, open the &lt;strong&gt;Devices&lt;/strong&gt; menu, then the &lt;strong&gt;Shared Clipboard&lt;/strong&gt; submenu and finally select &lt;strong&gt;Bidirectional&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-81-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-81-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Do you know how you can use this facility? For example, you can open a Linux how-to on your favorite web browser on the host OS and copy commands to the Linux terminal on the guest OS:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/10/virtualbox-82-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/10/virtualbox-82-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Those two Guest Additions features are just the ones I use the most. If you want to know other features provided by Guest Additions, take a look at the &lt;a href=&quot;https://www.virtualbox.org/manual/ch04.html&quot;&gt;VirtualBox User Manual&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;thats-all-folks&quot;&gt;That’s all, folks!&lt;/h2&gt;
-
-&lt;p&gt;In this trilogy of posts about VirtualBox, I shared what I believe to be the basics to get started and top tips for using this virtualization software on a daily basis. Maybe the concept of a virtual machine is new to you, but you may have noticed that the VirtualBox interface is very intuitive: as you use it, you realize how it works, and questions that eventually come up fade away with practice.&lt;/p&gt;
-
-&lt;p&gt;I hope this text was helpful. If you have any questions, don’t hesitate to comment!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;p&gt;To write this post, I consulted the VirtualBox User Manual:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/manual/&quot;&gt;Oracle VM VirtualBox - User Manual&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Fri, 01 Nov 2019 22:40:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/11/01/tips-for-using-virtualbox-every-day/</guid>
                 
                 
                     <category>en</category>

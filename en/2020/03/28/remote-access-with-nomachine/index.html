@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Remote access with NoMachine - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="Remote access software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work com...">
+    <link rel="canonical" href="https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/en/feed.xml" />
+
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://kamarada.github.io/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-03-28 12:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Remote access software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work com..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2020/03/nomachine.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Remote access with NoMachine" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=4">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=4">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=4">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=4">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=4">
+    <meta name="msapplication-TileColor" content="#4caf50">
+    <meta name="theme-color" content="#4caf50">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/',
+                    title: document.title,
+                    description: 'Remote access software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work com...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.1'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2020/03/28/remote-access-with-nomachine/" itemprop="mainEntityOfPage url">
+                Remote access with NoMachine
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-03-28">
+                    <a href="/2020/03/28/">
+                        
+    Mar 28, 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-03-28" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p><strong>Remote access</strong> software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work computer while being at home (home office); to provide remote support to a colleague or customer; or even to avoid moving to a particular device on the other side of the house just to click on something.</p>
+
+<p>There are some remote access programs. Today, we are going to take a look at NoMachine.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine.jpg" title="">
+<img src="/files/2020/03/nomachine.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><strong><a href="https://www.nomachine.com/">NoMachine</a></strong> is a remote access solution developed since 2003 by the Luxemburg-based company of the same name. It is <strong><a href="https://en.wikipedia.org/wiki/Cross-platform_software">cross-platform</a></strong> (available for use in various operating systems, including <a href="https://www.kernel.org/linux.html">Linux</a>, <a href="https://www.microsoft.com/windows/">Windows</a>, <a href="https://www.apple.com/macos/">macOS</a>, <a href="https://www.android.com/">Android</a> and <a href="https://www.apple.com/ios/">iOS</a>) and <strong>free of charge</strong> for personal use, but subscriptions are available for advanced features targeted at enterprises.</p>
+
+<h2 id="license">License</h2>
+
+<p>Note that NoMachine is not a <a href="https://www.gnu.org/philosophy/free-sw.html">free (<em>libre</em>) software</a>, but a <a href="https://en.wikipedia.org/wiki/Proprietary_software">proprietary</a> one.</p>
+
+<p>I read the <a href="https://www.nomachine.com/licensing-6">NoMachine license</a> and, if I got it right, <strong>individual uses</strong> are allowed <strong>free of charge</strong> (without having to purchase a subscription), being examples of individual uses:</p>
+
+<ul>
+  <li>remotely accessing the computer you use at work, from home;</li>
+  <li>remotely accessing your home computer, from work; or</li>
+  <li>remotely accessing another computer on the same local network (either at home or at work).</li>
+</ul>
+
+<p>In the examples above, you can replace “work” with “university” or other educational institution.</p>
+
+<p>What you are <strong>not allowed</strong> to do with the free version of NoMachine are <strong>commercial uses</strong>, such as providing paid support service for a customer. For commercial uses, visit the <a href="https://www.nomachine.com/">NoMachine website</a> and purchase a subscription.</p>
+
+<h2 id="client-and-server">Client and server</h2>
+
+<p>In this tutorial, we are going to call the computer that is accessed as <strong>server</strong> (it serves the desktop, it makes its desktop available for use) and the computer that accesses it as <strong>client</strong>.</p>
+
+<p>For example, if you are using your home computer to remotely access your work computer, your home computer is the client and your work computer is the server.</p>
+
+<p>Those functions (client and server) are not fixed, but interchangeable: with NoMachine installed, both computers are able to act as either client or server.</p>
+
+<p>Thus, if someday you remotely access your home computer from your work computer, in this new scenario your home computer is the server, while your work computer acts as the client.</p>
+
+<h2 id="local-network">Local network</h2>
+
+<p>Note that, at least in principle, NoMachine gives you remote access to computers on the same local network only.</p>
+
+<p>In the previous examples, to remotely access the work computer, you would need to connect to the work network using a <a href="https://kamarada.github.io/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/">VPN</a> technology such as one of the following (check availability with the company’s network administrator or IT staff):</p>
+
+<ul>
+  <li><a href="https://kamarada.github.io/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/">How to setup an OpenVPN client on openSUSE Linux</a></li>
+  <li><a href="https://kamarada.github.io/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/">How to connect to a GlobalProtect VPN</a></li>
+</ul>
+
+<p>To remotely access your home computer, you would need to configure port forwarding on your home router. To check if that is possible, as well as to get instructions on how to do that, contact your ISP.</p>
+
+<p>No more talking, let’s roll up our sleeves!</p>
+
+<p>As usual, I focus on <a href="https://www.opensuse.org/">openSUSE</a> and <a href="https://kamarada.github.io/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/">Linux Kamarada</a>, but the usage of NoMachine on other Linux distributions is possible and shouldn’t be much different.</p>
+
+<h2 id="download">Download</h2>
+
+<p>Download the NoMachine RPM package on both computers: client and server. An alternative is to download the package once and copy it to the other computer (e.g. using a USB stick).</p>
+
+<p>To download NoMachine, visit its website at <a href="https://www.nomachine.com/">nomachine.com</a> and click <strong>Download now</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-01-en.jpg" title="">
+<img src="/files/2020/03/nomachine-01-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Among the download options, choose the RPM package for 64-bit Linux:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-02.jpg" title="">
+<img src="/files/2020/03/nomachine-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On the next page, click <strong>Download</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-03.jpg" title="">
+<img src="/files/2020/03/nomachine-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Your browser is going to download the RPM package probably to the <strong>Downloads</strong> folder (this is the default setting for most browsers) or ask where you want to save it.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>When the download is finished, install NoMachine on both computers: client and server.</p>
+
+<p>To install NoMachine, open the folder where the RPM package has been downloaded, right- click the package and click <strong>Open With Install/Remove Software</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-04-en.jpg" title="">
+<img src="/files/2020/03/nomachine-04-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The <a href="http://yast.opensuse.org/">YaST Control Center</a> is started. It shows information about the package that is going to be installed:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-05-en.jpg" title="">
+<img src="/files/2020/03/nomachine-05-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Click <strong>Accept</strong>.</p>
+
+<p>YaST informs that the package is broken, but actually it was just unable to <a href="https://kamarada.github.io/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/">check its authenticity</a>, since the package is not signed:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-06-en.jpg" title="">
+<img src="/files/2020/03/nomachine-06-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>This error message is common when installing a manually downloaded RPM package (not a package retrieved from a known repository). You can safely click <strong>Ignore</strong>.</p>
+
+<p>The package is installed. At the end, click <strong>Finish</strong> to close YaST:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-07-en.jpg" title="">
+<img src="/files/2020/03/nomachine-07-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Notice that NoMachine has just added an icon to the <a href="https://br.gnome.org/">GNOME</a> top bar. It is already running and ready to be used!</p>
+
+<p>Also note that the NoMachine RPM package installs both the client and the server applications and enables the NoMachine service on both computers — client and server — enabling both of them to assume either of these functions.</p>
+
+<p>You download and install NoMachine on client and server computers the same way, but setting up and using are different procedures. Let’s start with the computer that is going to act as the server.</p>
+
+<h2 id="finding-the-servers-ip-address">Finding the server’s IP address</h2>
+
+<p>To connect to the server computer, you need to know its IP address. NoMachine tells you this information. To get it, click the <strong>NoMachine icon</strong> on the top bar. A menu with some options will appear. Click <strong>Show the service status</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-08-en.jpg" title="">
+<img src="/files/2020/03/nomachine-08-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Take note of the server’s IP address (in this example, <code class="highlighter-rouge">10.0.3.5</code>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-09-en.jpg" title="">
+<img src="/files/2020/03/nomachine-09-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Alternatively, if the NoMachine icon does not appear for you on the GNOME top bar, open the <strong>Activities</strong> menu on the top-left screen corner, type <code class="highlighter-rouge">nomachine</code> and click the <strong>NoMachine Service</strong> icon:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-10-en.jpg" title="">
+<img src="/files/2020/03/nomachine-10-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>That same screen is opened and you can get the server’s IP address there.</p>
+
+<h2 id="translating-the-server-interface">Translating the server interface</h2>
+
+<p>Usually, NoMachine detects the system language and translates its interface automatically. In case that does not happen, it defaults to the English language.</p>
+
+<p>If you want to change the server interface language, on the <strong>NoMachine Service Status</strong> window, click <strong>Server preferences</strong> on the top-right corner.</p>
+
+<p>On the next screen, click <strong>Player preferences</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-11.png" title="">
+<img src="/files/2020/03/nomachine-11.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Then switch to the <strong>Appearance</strong> tab and in <strong>Text</strong> select your desired language:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-12.jpg" title="">
+<img src="/files/2020/03/nomachine-12.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>You need to restart NoMachine for the translation to be applied. Click on the link that appears at the bottom of the screen (<strong>Restart the NoMachine Monitor for changes to take effect</strong>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-13.jpg" title="">
+<img src="/files/2020/03/nomachine-13.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>That done, NoMachine will restart. From now on, it will start already translated.</p>
+
+<p>For this tutorial, I’m going to proceed with the default English language.</p>
+
+<h2 id="starting-remote-access-from-the-client">Starting remote access from the client</h2>
+
+<p>To start NoMachine on the client computer, open the <strong>Activities</strong> menu, type <code class="highlighter-rouge">nomachine</code> and click the <strong>NoMachine</strong> icon.</p>
+
+<p>On the welcome screen, check <strong>Don’t show this message again</strong> and click <strong>Continue</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-14-en.png" title="">
+<img src="/files/2020/03/nomachine-14-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The NoMachine client automatically searches for NoMachine servers on the same network.</p>
+
+<p>The client main screen shows the servers found, as well as any computers you have previously accessed:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-15-en.png" title="">
+<img src="/files/2020/03/nomachine-15-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h3 id="translating-the-client-interface">Translating the client interface</h3>
+
+<p>If you want, you can change the client interface language in a similar way you did on the server: on the NoMachine client main screen, click <strong>Settings</strong> on the top-right corner.</p>
+
+<p>Then switch to the <strong>Appearance</strong> tab and in <strong>Text</strong> select your desired language.</p>
+
+<p>Restart NoMachine for the translation to be applied.</p>
+
+<h3 id="remotely-accessing-a-listed-computer">Remotely accessing a listed computer</h3>
+
+<p>If the server computer you want to remotely access appears in the list, before the first access, select it from the list and click <strong>Edit</strong>.</p>
+
+<p>Enter a name for that computer (e.g. <code class="highlighter-rouge">Work Computer</code>) and click <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-16-en.png" title="">
+<img src="/files/2020/03/nomachine-16-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Now, back to the client main screen, double-click the computer you want to remotely access.</p>
+
+<p>If this is the first time you remotely access that computer, NoMachine presents you some settings.</p>
+
+<p>On the <strong>Verify host authenticity</strong> screen, click <strong>Yes</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-17-en.png" title="">
+<img src="/files/2020/03/nomachine-17-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Enter the <strong>Username</strong> (login) and <strong>Password</strong> of your user account on the server computer:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-18-en.jpg" title="">
+<img src="/files/2020/03/nomachine-18-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Optionally, check the option to remember your credentials. Click <strong>OK</strong>.</p>
+
+<p>Once the connection is established, NoMachine presents you some tip screens:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-19-en.jpg" title="">
+<img src="/files/2020/03/nomachine-19-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On each screen, carefully read its contents, check the option <strong>Don’t show this message again</strong> and click <strong>OK</strong>.</p>
+
+<p>Finally, you will see the server computer’s screen in the NoMachine client window:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-20-en.jpg" title="">
+<img src="/files/2020/03/nomachine-20-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Each click inside this window is made on the server computer, also what you type appears there. You are literally using the server computer, but remotely, without sitting in front of it.</p>
+
+<p>Note that a notification appears on the server informing that a remote access has been initiated. Also, if someone is in front of it and its screen is on, they will see what you do.</p>
+
+<h3 id="remotely-accessing-a-computer-that-is-not-listed">Remotely accessing a computer that is not listed</h3>
+
+<p>On the NoMachine client main screen, if the server computer you want to remotely access does not appear in the list, click the <strong>New</strong> button.</p>
+
+<p>NoMachine starts the <strong>New connection</strong> wizard:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-21-en.png" title="">
+<img src="/files/2020/03/nomachine-21-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On the first screen, keep the default <strong>Protocol</strong> (which is <strong>NX</strong>) and click <strong>Continue</strong>.</p>
+
+<p>On the second screen, fill in the <strong>Host</strong> field with the server’s IP address and click <strong>Continue</strong> (alternatively, you can enter its hostname):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-22-en.png" title="">
+<img src="/files/2020/03/nomachine-22-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On the third screen, <strong>Authentication</strong>, leave the default option selected, which is <strong>Password</strong>, and click <strong>Continue</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-23-en.jpg" title="">
+<img src="/files/2020/03/nomachine-23-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Next, on the <strong>Proxy</strong> screen, if you are using a proxy to connect to the Internet, select the second option (<strong>Connect using a proxy</strong>) and enter the proxy settings. If you are not (I think this is the case of most people), leave the default option selected (<strong>Don’t use a proxy</strong>) and click <strong>Continue</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-24-en.png" title="">
+<img src="/files/2020/03/nomachine-24-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Finally, enter a name for this computer (e.g. <code class="highlighter-rouge">Work Computer</code>) and click <strong>Done</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-25-en.png" title="">
+<img src="/files/2020/03/nomachine-25-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Once the wizard is finished, this computer will appear on the NoMachine client main screen and you will be able to remotely access it by double-clicking it.</p>
+
+<h2 id="configuring-the-firewall-on-the-server">Configuring the firewall on the server</h2>
+
+<p>In the tests I did with Linux Kamarada, which brings the desktop-oriented <a href="https://firewalld.org/">firewalld</a> as the default firewall, it was not necessary to do any additional firewall configuration for NoMachine to work on both the client and the server.</p>
+
+<p>If you are having trouble connecting to the server, it should be enough to allow ports 4000/TCP and 4011-4999/UDP on the server.</p>
+
+<p>If you use the <a href="https://kamarada.github.io/en/2019/11/24/protect-yourself-with-the-iptables-firewall/"><strong>iptables</strong> firewall</a> on the server computer, to allow those ports, append these lines to your configuration script:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre># NoMachine (ports 4000/TCP and 4011-4999/UDP)
+iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
+iptables -A INPUT -p udp --match multiport --dports 4011:4999 -j ACCEPT
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>If you need more information about the ports used by NoMachine, take a look at:</p>
+
+<ul>
+  <li><a href="https://www.nomachine.com/AR01L00770">NoMachine - Default ports used by NoMachine 4 or later</a></li>
+</ul>
+
+<h2 id="stopping-andor-disabling-the-nomachine-service">Stopping and/or disabling the NoMachine service</h2>
+
+<p>If you always use a computer as a client, you can stop and/or disable the NoMachine service on that computer (you don’t need to, but you can do it).</p>
+
+<p>For example, if you are using NoMachine for home office, and remote access is always from your home computer (client) to your work computer (server), never the other way around, you can disable the NoMachine service on your home computer.</p>
+
+<p>If you want to stop the NoMachine service, click the <strong>NoMachine icon</strong> on the top bar, and then click <strong>Close the NoMachine application</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-26-en.jpg" title="">
+<img src="/files/2020/03/nomachine-26-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>NoMachine asks whether to start the service the next time the computer is turned on. You are stopping the service. If you also want to disable it, answer <strong>No</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-27-en.jpg" title="">
+<img src="/files/2020/03/nomachine-27-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>NoMachine asks you the administrator (<em>root</em> user) password, which you must provide to stop and/or disable the service.</p>
+
+<h2 id="manually-starting-the-nomachine-service">Manually starting the NoMachine service</h2>
+
+<p>If you have stopped and/or disabled the NoMachine service, you can manually start it at any time. To do that, open the <strong>NoMachine Service</strong> app and click <strong>Start the server</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-28-en.jpg" title="">
+<img src="/files/2020/03/nomachine-28-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In the confirmation message, click <strong>Continue</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/03/nomachine-29-en.png" title="">
+<img src="/files/2020/03/nomachine-29-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Provide the administrator (<em>root</em> user) password to start the service.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://www.nomachine.com/getting-started-with-nomachine">NoMachine - Getting started with NoMachine</a></li>
+  <li><a href="https://www.vultr.com/docs/setup-nomachine-nx-on-ubuntu">Setup NoMachine NX On Ubuntu - Vultr.com</a></li>
+  <li><a href="https://www.nomachine.com/AR01L00770">NoMachine - Default ports used by NoMachine 4 or later</a></li>
+  <li><a href="https://www.nomachine.com/AR11P01005">NoMachine - How to shutdown NoMachine and disable the automatic startup at boot time</a></li>
+</ul>
+
+<p>That’s it, guys! I hope that this text can help you in your remote accesses. NoMachine is quite easy to use and features an intuitive interface. But if doubts arise, you can leave comments.</p>
+
+<p>See you!</p>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_toolbox addthis_32x32_style addthis_default_style addthis_follow_buttons text-center">
+                
+                    <a href="https://facebook.com/LinuxKamarada" class="addthis_button_facebook_follow" addthis:userid="LinuxKamarada" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://twitter.com/LinuxKamaradaWW" class="addthis_button_twitter_follow" addthis:userid="LinuxKamaradaWW" itemprop="sameAs"></a>
+                
+                
+                    <a href="https://instagram.com/Kamarada_Linux" class="addthis_button_instagram_follow" addthis:userid="Kamarada_Linux" itemprop="sameAs"></a>
+                
+                
+                
+                
+                
+                
+                    <a href="https://github.com/kamarada" class="addthis_button_github_follow" addthis:userid="kamarada" itemprop="sameAs"></a>
+                
+                <a href="https://kamarada.github.io/en/feed.xml" class="addthis_button_rss_follow"></a>
+            </div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyright &copy; 2020 <a href='#author'>Antônio Vinícius</a>. All rights reserved. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Remote access software lets you remotely control (use) a computer from another computer. In some situations, remote access can be useful: to use the work computer while being at home (home office); to provide remote support to a colleague or customer; or even to avoid moving to a particular device on the other side of...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2020/03/nomachine.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                    } else {
+                        $ad.remove();
+                    }
+                }
+            
+            $('.adsbygoogle').each(function(index, element){
+                adsbygoogle.push({});
+            });
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>
