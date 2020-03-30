@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 28 Mar 2020 19:15:41 -0300</pubDate>
-        <lastBuildDate>Sat, 28 Mar 2020 19:15:41 -0300</lastBuildDate>
+        <pubDate>Sun, 29 Mar 2020 23:59:26 -0300</pubDate>
+        <lastBuildDate>Sun, 29 Mar 2020 23:59:26 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
         
@@ -4619,6 +4619,9 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 28
 29
 30
+31
+32
+33
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ex&lt;/span&gt;
 
@@ -4642,6 +4645,9 @@ iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&
 
 &lt;span class=&quot;c&quot;&gt;# Allow loopback connections&lt;/span&gt;
 iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; lo &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
+
+&lt;span class=&quot;c&quot;&gt;# ICMP (ping)&lt;/span&gt;
+iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; icmp &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
 
 &lt;span class=&quot;c&quot;&gt;# SSH (port 22/TCP,UDP)&lt;/span&gt;
 iptables &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; INPUT &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; tcp &lt;span class=&quot;nt&quot;&gt;--dport&lt;/span&gt; 22 &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; ACCEPT
