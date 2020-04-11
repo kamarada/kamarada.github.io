@@ -9,10 +9,455 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 04 Apr 2020 13:08:08 -0300</pubDate>
-        <lastBuildDate>Sat, 04 Apr 2020 13:08:08 -0300</lastBuildDate>
+        <pubDate>Sat, 11 Apr 2020 17:26:13 -0300</pubDate>
+        <lastBuildDate>Sat, 11 Apr 2020 17:26:13 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Conexão de área de trabalho remota do Windows no Linux com clientes RDP</title>
+                <description>&lt;p&gt;Você já usou a &lt;a href=&quot;https://support.microsoft.com/pt-br/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;&lt;strong&gt;Conexão de Área de Trabalho Remota&lt;/strong&gt;&lt;/a&gt; do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;? Esse aplicativo, presente em todas as instalações do Windows, permite que você acesse remotamente outro computador com Windows ou um servidor com &lt;a href=&quot;https://www.microsoft.com/pt-br/cloud-platform/windows-server&quot;&gt;Windows Server&lt;/a&gt;. Para isso, ele utiliza o protocolo &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Protocol&quot;&gt;RDP&lt;/a&gt; (&lt;em&gt;Remote Desktop Protocol&lt;/em&gt;, “protocolo de área de trabalho remota”).&lt;/p&gt;
+
+&lt;p&gt;Há organizações que optam por instalar programas de forma centralizada no Windows Server em vez de instalá-los em seus vários computadores. Para usar esses programas, seus colaboradores devem acessar remotamente esse servidor, que antigamente era chamado de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Services&quot;&gt;Terminal Server&lt;/a&gt; (TS). Atualmente, essa prática já não é tão comum devido aos sistemas &lt;em&gt;web&lt;/em&gt;, mas em alguns cenários ela pode ser necessária.&lt;/p&gt;
+
+&lt;p&gt;Nesses cenários, usuários de &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; podem, a partir de seu sistema favorito, acessar remotamente computadores e servidores Windows. Basta, para isso, usar um cliente RDP.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-client.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-client.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Existem alguns clientes RDP para Linux e falaremos sobre eles hoje:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#remmina&quot;&gt;Remmina&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#freerdp&quot;&gt;FreeRDP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rdesktop&quot;&gt;rdesktop&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vinagre&quot;&gt;Vinagre&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Você pode escolher o que mais te agrada ou melhor se adequa às suas necessidades.&lt;/p&gt;
+
+&lt;p&gt;A título de curiosidade, o FreeRDP é um aplicativo, mas também uma biblioteca, que disponibiliza funcionalidades para outros aplicativos. Exceto pelo rdesktop, os demais clientes acima usam a biblioteca do FreeRDP.&lt;/p&gt;
+
+&lt;h2 id=&quot;habilitando-a-área-de-trabalho-remota-no-windows&quot;&gt;Habilitando a área de trabalho remota no Windows&lt;/h2&gt;
+
+&lt;p&gt;Antes de mais nada, você deve configurar o computador ao qual deseja se conectar para que ele permita conexões remotas. Para isso, nesse computador, com Windows, usando uma conta de administrador, abra o &lt;strong&gt;menu Iniciar&lt;/strong&gt; e clique em &lt;strong&gt;Configurações&lt;/strong&gt;. Na janela que aparece, abra a categoria &lt;strong&gt;Sistema&lt;/strong&gt; e, depois, &lt;strong&gt;Área de Trabalho Remota&lt;/strong&gt;. Por fim, ative-a:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-01-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-01-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que não é possível se conectar a computadores que executam a edição doméstica do Windows (por exemplo, o Windows 10 Home). Se esse for seu caso, essa tela informará:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se quiser mais informaçõe sobre a área de trabalho remota no Windows, consulte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.microsoft.com/pt-br/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;Como usar a Área de Trabalho Remota - Suporte do Windows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/pt-br/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access&quot;&gt;Área de Trabalho Remota - permitir o acesso ao seu computador - Microsoft Docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/04/remmina.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;remmina&quot;&gt;Remmina&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://remmina.org/&quot;&gt;Remmina&lt;/a&gt; é um cliente para vários protocolos de acesso remoto, como RDP, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Virtual_Network_Computing&quot;&gt;VNC&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Tecnologia_NX&quot;&gt;NX&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/X_display_manager_(tipo_de_programa)&quot;&gt;XDMCP&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt;. É útil para administradores de redes e viajantes que precisam trabalhar remotamente em vários computadores ou servidores. O Remmina já vem instalado na distribuição &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; e é seu cliente de área de trabalho remota padrão.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o Remmina no &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in remmina remmina-lang remmina-plugin-rdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Uma vez instalado, para iniciar o Remmina, se você usa o ambiente &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;remmina&lt;/code&gt; e clique no ícone do aplicativo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para se conectar de forma prática, selecione o protocolo &lt;strong&gt;RDP&lt;/strong&gt;, digite o endereço IP ou o nome de rede (&lt;em&gt;hostname&lt;/em&gt;) do computador que deseja acessar (no meu exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.251&lt;/code&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-02-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-02-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(observe que a interface do Remmina é traduzida, mas não completamente…)&lt;/p&gt;
+
+&lt;p&gt;Na tela seguinte, informe seu &lt;strong&gt;Nome de usuário&lt;/strong&gt; e &lt;strong&gt;Senha&lt;/strong&gt; no computador acessado. Se necessário, informe também o &lt;strong&gt;Domínio&lt;/strong&gt;. Opcionalmente, você também pode optar por &lt;strong&gt;Salvar a senha&lt;/strong&gt;. Quando estiver pronto para iniciar a conexão, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-03-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-03-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você verá a tela do computador acessado na janela do Remmina:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A partir de agora, você está usando o computador, mas à distância, remotamente, sem estar sentado na frente dele. Cada clique e digitação são processados no computador remoto. Se ele é um &lt;em&gt;desktop&lt;/em&gt; Windows, a tela fica bloqueada durante o acesso remoto.&lt;/p&gt;
+
+&lt;p&gt;Se você pretende acessar esse computador com frequência, considere cadastrar os dados da conexão, para que ela possa ser facilmente iniciada. Para isso, na tela inicial do Remmina, clique no botão de adicionar conexão, no canto superior esquerdo da janela:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela seguinte, dê um &lt;strong&gt;Nome&lt;/strong&gt; para identificar a conexão, selecione &lt;strong&gt;RDP&lt;/strong&gt; no campo &lt;strong&gt;Protocolo&lt;/strong&gt; e informe os dados da conexão: &lt;strong&gt;Servidor&lt;/strong&gt;, &lt;strong&gt;Nome de usuário&lt;/strong&gt;, &lt;strong&gt;User password&lt;/strong&gt; (senha) e &lt;strong&gt;Domínio&lt;/strong&gt; (se necessário). Quando terminar, clique em &lt;strong&gt;Save&lt;/strong&gt; (salvar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-06-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feito isso, essa conexão passará a ser listada na tela inicial do Remmina:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-07-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-07-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando quiser acessar remotamente esse computador, basta dar um duplo-clique nele.&lt;/p&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/utilities-terminal.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;freerdp&quot;&gt;FreeRDP&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.freerdp.com/&quot;&gt;FreeRDP&lt;/a&gt; é uma implementação &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;livre&lt;/a&gt; do protocolo RDP seguindo as &lt;a href=&quot;https://github.com/FreeRDP/FreeRDP/wiki/Reference-Documentation&quot;&gt;especificações abertas da Microsoft&lt;/a&gt;. Essa implementação fornece o aplicativo cliente, o servidor e uma biblioteca, que pode ser aproveitada por outros aplicativos que necessitem usar o protocolo RDP. Hoje, estamos interessados no aplicativo cliente do FreeRDP.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o cliente do FreeRDP no Linux Kamarada e no openSUSE, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in freerdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O cliente do FreeRDP não dispõe de uma tela para conexão tal qual a do Remmina. Para iniciar uma conexão usando o  cliente do FreeRDP, execute esse comando em um terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:nome_ou_endereco_ip_do_computador /u:nome_de_usuario
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Fazendo as devidas substituições. Por exemplo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:10.0.0.251 /u:Kamarada
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se for necessário informar o domínio, use o parâmetro &lt;code class=&quot;highlighter-rouge&quot;&gt;/d&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:nome_ou_ip_do_computador /d:dominio /u:nome_de_usuario
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Na primeira conexão ao computador, o cliente do FreeRDP pergunta se deve confiar no certificado:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;[10:27:42:649] [9439:9440] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[10:27:42:670] [9439:9440] [INFO][com.freerdp.crypto] - creating directory /home/linux/.config/freerdp
+[10:27:42:670] [9439:9440] [INFO][com.freerdp.crypto] - creating directory [/home/linux/.config/freerdp/certs]
+[10:27:42:671] [9439:9440] [INFO][com.freerdp.crypto] - created directory [/home/linux/.config/freerdp/server]
+[10:27:42:682] [9439:9440] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[10:27:42:683] [9439:9440] [ERROR][com.freerdp.crypto] - @           WARNING: CERTIFICATE NAME MISMATCH!           @
+[10:27:42:683] [9439:9440] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[10:27:42:683] [9439:9440] [ERROR][com.freerdp.crypto] - The hostname used for this connection (10.0.0.251:3389)
+[10:27:42:796] [9439:9440] [ERROR][com.freerdp.crypto] - does not match the name given in the certificate:
+[10:27:42:796] [9439:9440] [ERROR][com.freerdp.crypto] - Common Name (CN):
+[10:27:42:796] [9439:9440] [ERROR][com.freerdp.crypto] - 	WinDev2003Eval
+[10:27:42:796] [9439:9440] [ERROR][com.freerdp.crypto] - A valid certificate for the wrong name should NOT be trusted!
+Certificate details:
+	Subject: CN = WinDev2003Eval
+	Issuer: CN = WinDev2003Eval
+	Thumbprint: 23:7e:de:bc:85:d7:13:f3:e5:ce:e2:56:58:93:7d:f7:db:d1:bd:85
+The above X.509 certificate could not be verified, possibly because you do not have
+the CA certificate in your certificate store, or the certificate has expired.
+Please look at the OpenSSL documentation on how to add a private CA to the store.
+Do you trust the above certificate? (Y/T/N)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Digite &lt;code class=&quot;highlighter-rouge&quot;&gt;Y&lt;/code&gt; (de &lt;em&gt;yes&lt;/em&gt;, sim) e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Em seguida, digite a senha (&lt;em&gt;password&lt;/em&gt;) e tecle &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Password:
+[10:24:21:706] [9439:9440] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[10:24:21:706] [9439:9440] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[10:24:21:828] [9439:9440] [INFO][com.winpr.clipboard] - initialized POSIX local file subsystem
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, a conexão remota é iniciada:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/freerdp-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/freerdp-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você já iniciou a conexão de área de trabalho remota no Windows pelo &lt;strong&gt;Prompt de Comando&lt;/strong&gt; (comando &lt;strong&gt;&lt;a href=&quot;https://docs.microsoft.com/pt-br/windows-server/administration/windows-commands/mstsc&quot;&gt;mstsc&lt;/a&gt;&lt;/strong&gt;), deve ter reparado que o cliente do FreeRDP usa a mesma sintaxe. Ele foi propositalmente implementado dessa forma. Se quiser conferir:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no Windows, execute:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&amp;gt; mstsc /?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no Linux, execute:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/utilities-terminal.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;rdesktop&quot;&gt;rdesktop&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.rdesktop.org/&quot;&gt;rdesktop&lt;/a&gt; foi o primeiro cliente RDP para Linux e por muitos anos foi o mais usado. Desde &lt;a href=&quot;https://groups.google.com/forum/#!topic/rdesktop-announce/AddglSNxK90&quot;&gt;novembro de 2019&lt;/a&gt;, o projeto está procurando um novo responsável para mantê-lo.&lt;/p&gt;
+
+&lt;p&gt;Em contraste, o FreeRDP surgiu em &lt;a href=&quot;http://www.freerdp.com/2019/01/16/hi-freerdp-history&quot;&gt;2009&lt;/a&gt; como uma ramificação (um &lt;em&gt;fork&lt;/em&gt;) do rdesktop, quando a &lt;a href=&quot;https://www.microsoft.com/pt-br&quot;&gt;Microsoft&lt;/a&gt; decidiu abrir as especificações do protocolo RDP, e com o tempo e o avanço do projeto, se tornou o cliente RDP padrão em outros sistemas que não o Windows.&lt;/p&gt;
+
+&lt;p&gt;Eu apresento o rdesktop aqui mais a título de informação. A menos que você tenha um bom motivo para usá-lo, o recomendado é usar algum dos outros clientes, baseados no FreeRDP.&lt;/p&gt;
+
+&lt;p&gt;Para instalar o rdesktop no Linux Kamarada e no openSUSE, execute:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in rdesktop
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, para iniciar uma conexão remota usando o rdesktop, invoque-o a partir de um terminal informando o nome ou endereço IP do computador a ser acessado. Por exemplo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rdesktop 10.0.0.251
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Normalmente, isso seria o suficiente e o rdesktop funcionaria. Mas, já de início, esbarramos em um dos problemas de o &lt;em&gt;software&lt;/em&gt; não estar recebendo a devida manutenção:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Autoselected keyboard map pt-br
+ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt initialized ?
+Failed to connect, CredSSP required by server.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Em determinado momento, a Microsoft lançou uma atualização para o Windows que desde então tornou obrigatório por padrão o uso de Autenticação no Nível da Rede (do inglês &lt;a href=&quot;https://github.com/rdesktop/rdesktop/wiki/Network-Level-Authentication-(NLA)&quot;&gt;&lt;em&gt;Network Level Authentication&lt;/em&gt;&lt;/a&gt; — NLA). O FreeRDP suporta NLA, ao passo em que o rdesktop, não. Ainda é possível usar o rdesktop para acesso remoto, contanto que você desabilite a NLA no computador a ser acessado. Note que isso torna a conexão menos segura.&lt;/p&gt;
+
+&lt;p&gt;Para desabilitar a NLA, no computador a ser acessado, com Windows, usando uma conta de administrador, abra o &lt;strong&gt;Painel de Controle&lt;/strong&gt;, clique na categoria &lt;strong&gt;Sistema e Segurança&lt;/strong&gt;, depois no item &lt;strong&gt;Sistema&lt;/strong&gt;. Na tela seguinte, clique no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;Configurações remotas&lt;/strong&gt;, à esquerda. Na caixa de diálogo que aparece, selecione a aba &lt;strong&gt;Remoto&lt;/strong&gt;. Por fim, desative a opção &lt;strong&gt;Permitir conexões somente de computadores que estejam executando a Área de Trabalho Remota com Autenticação no Nível da Rede&lt;/strong&gt; (no final) e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Feito isso, de volta ao computador que fará o acesso remoto, com Linux, tente de novo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rdesktop 10.0.0.251
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Dessa vez, vai funcionar. Aparece uma janela com a tela de &lt;em&gt;logon&lt;/em&gt; do Windows. Nessa janela, informe seu nome de usuário e senha e tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar a área de trabalho remota:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdesktop-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdesktop-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se quiser mais informações sobre esse &lt;em&gt;bug&lt;/em&gt; do rdesktop, consulte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/71&quot;&gt;CredSSP does not work - Issue #71 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/279&quot;&gt;Add support for Network Level Authentication - Issue #279 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/261#issuecomment-382608793&quot;&gt;Doesn’t work if there is Fortress machine between connecting to the remote  server - Issue #261 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/wiki/Network-Level-Authentication-(NLA)&quot;&gt;Network Level Authentication (NLA) - rdesktop/rdesktop Wiki - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/preferences-desktop-remote-desktop.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;vinagre&quot;&gt;Vinagre&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://wiki.gnome.org/Apps/Vinagre&quot;&gt;Vinagre&lt;/a&gt; é o cliente de área de trabalho remota padrão do ambiente GNOME. Por isso, é também o cliente de área de trabalho remota padrão do Linux Kamarada na versão atual, 15.1. Assim como o Remmina, ele suporta alguns protocolos de conexão: SSH, RDP, &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Protocol_for_Independent_Computing_Environments&quot;&gt;SPICE&lt;/a&gt; e VNC. No entanto, assim como o rdesktop, não recebe manutenção há algum tempo já.&lt;/p&gt;
+
+&lt;p&gt;Ao tentar uma conexão RDP, o Vinagre apenas exibe uma tela preta, como eu reportei na lista de discussão do openSUSE:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2020-01/msg00308.html&quot;&gt;[opensuse-factory] Black screen when trying a RDP access to Windows 10 using Vinagre (Leap 15.1/15.2 and Tumbleweed)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Em algumas distribuições, a exemplo do &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;, o Vinagre funciona. Creio que essas distribuições aplicaram alguma correção (&lt;em&gt;patch&lt;/em&gt;) ao Vinagre.&lt;/p&gt;
+
+&lt;p&gt;Provavelmente, na próxima versão do Linux Kamarada, eu devo substituir o Vinagre pelo Remmina, assim como fez a distribuição Ubuntu. Por isso, eu apresento o Vinagre aqui mais a título de informação também.&lt;/p&gt;
+
+&lt;p&gt;O Vinagre já vem instalado por padrão no Linux Kamarada e no openSUSE, se você optou pelo ambiente GNOME, mas caso você precise ou queira instalá-lo, pode fazer isso com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in vinagre vinagre-lang
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para iniciar o Vinagre, que aparece na lista de aplicativos como &lt;strong&gt;Visualizador de área de trabalho remota&lt;/strong&gt;, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;remota&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;vinagre&lt;/code&gt; e clique no ícone correspondente ao aplicativo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela inicial do &lt;strong&gt;Vinagre&lt;/strong&gt;, clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Preencha a tela seguinte com as informações sobre a conexão:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;no campo &lt;strong&gt;Protocolo&lt;/strong&gt;, selecione &lt;strong&gt;RDP&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;no campo &lt;strong&gt;Máquina&lt;/strong&gt;, informe o nome de rede (&lt;em&gt;hostname&lt;/em&gt;) ou endereço IP do computador a ser acessado;&lt;/li&gt;
+  &lt;li&gt;informe seu &lt;strong&gt;Nome de usuário&lt;/strong&gt; no computador a ser acessado; e&lt;/li&gt;
+  &lt;li&gt;opcionalmente, se necessário, informe o &lt;strong&gt;Domínio&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Conectar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na primeira conexão ao computador, o Vinagre pergunta se deve confiar no certificado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Responda que sim clicando em &lt;strong&gt;Conectar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Informe sua &lt;strong&gt;Senha&lt;/strong&gt;, opcionalmente selecione &lt;strong&gt;Lembrar esta credencial&lt;/strong&gt; e clique em &lt;strong&gt;Autenticar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nesse momento, você deveria ver a área de trabalho do computador remoto, que inclusive tem sua tela bloqueada (como normalmente ocorre nas conexões RDP). Mas, como eu disse, o Vinagre apenas exibe uma tela preta:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-06-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Assim como o Remmina, o Vinagre permite que você memorize os dados dessa conexão, para conectar-se de novo de forma prática no futuro. Para isso, na tela da conexão, abra o menu &lt;strong&gt;Marcadores&lt;/strong&gt; e clique em &lt;strong&gt;Adicionar marcador&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Criado o marcador, essa conexão passará a ser listada no menu &lt;strong&gt;Marcadores&lt;/strong&gt;. Quando quiser acessar remotamente esse computador, basta abrir esse menu e clicar no marcador.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.microsoft.com/pt-br/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;Como usar a Área de Trabalho Remota - Suporte do Windows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/pt-br/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access&quot;&gt;Área de Trabalho Remota - permitir o acesso ao seu computador - Microsoft Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-vnc.html&quot;&gt;Remote Graphical Sessions with VNC - Reference - openSUSE Leap 15.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.umbler.com/br/acesso-remoto-por-rdp/&quot;&gt;Acesso remoto por RDP a partir do Linux usando o FreeRDP - Umbler Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.freerdp.com/2019/01/16/hi-freerdp-history&quot;&gt;Hi! - The history of the FreeRDP project - FreeRDP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como o acesso remoto a computadores com Windows 10 Home não é possível, para a produção deste artigo foi usada uma &lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;máquina virtual do VirtualBox&lt;/a&gt; com uma versão de avaliação do Windows 10 Enterprise obtida legalmente em:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.microsoft.com/pt-br/windows/downloads/virtual-machines/&quot;&gt;Baixar uma máquina virtual do Windows 10 - desenvolvimento de aplicativos do Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 11 Apr 2020 17:20:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Transmitindo do VLC para a TV com o Chromecast</title>
@@ -3881,282 +4326,6 @@ systemctl start fail2ban
                 <pubDate>Sat, 14 Dec 2019 00:50:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Dica de Git: merge e diff facilitados pela interface gráfica com Meld e Atom</title>
-                <description>&lt;p&gt;Dica para desenvolvedores que usam &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;: já sentiu dificuldade ao fazer um &lt;em&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&quot;&gt;merge&lt;/a&gt;&lt;/em&gt;? Sabia que é possível resolver conflitos com o auxílio de interfaces gráficas que facilitam bastante o trabalho? Hoje veremos dois aplicativos que podem nos ajudar a resolver conflitos: o editor de texto &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; e a ferramenta de &lt;em&gt;diff&lt;/em&gt; e &lt;em&gt;merge&lt;/em&gt; &lt;a href=&quot;https://meldmerge.org/&quot;&gt;Meld&lt;/a&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;fazendo-merge-e-resolvendo-conflitos&quot;&gt;Fazendo merge e resolvendo conflitos&lt;/h2&gt;
-
-&lt;p&gt;Antes da dica propriamente dita, para garantir que estamos todos na mesma página, vejamos como normalmente se faz &lt;a href=&quot;https://git-scm.com/docs/git-merge&quot;&gt;&lt;strong&gt;git merge&lt;/strong&gt;&lt;/a&gt; e se resolve conflitos.&lt;/p&gt;
-
-&lt;p&gt;Imagine que você e um colega trabalham em um projeto de desenvolvimento e usam um repositório do Git para armazenar o código-fonte. Além do &lt;em&gt;branch&lt;/em&gt; principal (&lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;), cada um possui seu próprio &lt;em&gt;branch&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;antonio&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;jose&lt;/code&gt;). Ao terminar o desenvolvimento de uma funcionalidade, cada um deve fazer &lt;em&gt;merge&lt;/em&gt; do seu &lt;em&gt;branch&lt;/em&gt; para o &lt;em&gt;branch&lt;/em&gt; principal.&lt;/p&gt;
-
-&lt;p&gt;Imagine também que vocês trabalharam em paralelo no mesmo arquivo, editando linhas próximas (ou as mesmas linhas), mas seu colega fez &lt;em&gt;merge&lt;/em&gt; com o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; primeiro. Quando você fizer &lt;em&gt;merge&lt;/em&gt; do seu &lt;em&gt;branch&lt;/em&gt; com o &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;, o Git acusará um conflito de arquivo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/11/git-merge-conflict-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/11/git-merge-conflict-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Um exemplo que aconteceu comigo na vida real, ao trazer atualizações do &lt;em&gt;upstream&lt;/em&gt; para um &lt;em&gt;fork&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git checkout master1
-$ git merge upstream1
-Auto-merging publish.sh
-Auto-merging libs/popper.js/1.16.0/umd/popper.js
-...
-Auto-merging _layouts/post.html
-Auto-merging _layouts/default.html
-Auto-merging _includes/sidebar.html
-Auto-merging _includes/head.html
-CONFLICT (content): Merge conflict in _includes/head.html
-Auto-merging _includes/footer.html
-CONFLICT (content): Merge conflict in _includes/footer.html
-Automatic merge failed; fix conflicts and then commit the result.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git status
-On branch master1
-You have unmerged paths.
-  (fix conflicts and run &quot;git commit&quot;)
-  (use &quot;git merge --abort&quot; to abort the merge)
-
-Changes to be committed:
-
-	modified:   _includes/adsense.html
-	modified:   _includes/sidebar.html
-...
-	new file:   libs/popper.js/1.16.0/umd/popper.min.js.map
-	modified:   publish.sh
-
-Unmerged paths:
-  (use &quot;git add/rm &amp;lt;file&amp;gt;...&quot; as appropriate to mark resolution)
-
-	both modified:   _includes/footer.html
-	both modified:   _includes/head.html
-	deleted by us:   _posts/2015-08-25-welcome-to-jekyll.markdown
-	both modified:   assets/css/main.css
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em caso de conflito durante o &lt;em&gt;merge&lt;/em&gt;, você deve editar manualmente os arquivos conflituosos, comparando as alterações que você e o seu colega fizeram, elaborar a versão final do arquivo e, por fim, executar &lt;a href=&quot;https://git-scm.com/docs/git-commit&quot;&gt;&lt;strong&gt;git commit&lt;/strong&gt;&lt;/a&gt; para concluir o &lt;em&gt;merge&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;resolvendo-conflitos-com-o-atom&quot;&gt;Resolvendo conflitos com o Atom&lt;/h2&gt;
-
-&lt;p&gt;Se você ainda não conhece, o &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; é um editor de texto feito pelo &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, por desenvolvedores e para desenvolvedores. Possui muitas funcionalidades, é bastante inteligente já em sua configuração padrão, mas pode receber extensões. O Atom faz lembrar o &lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;Sublime Text&lt;/a&gt;, mas é &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; e gratuito.&lt;/p&gt;
-
-&lt;p&gt;Para instalar o Atom no &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt; ou no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, baixe e instale o pacote RPM do seu &lt;em&gt;site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://atom.io/&quot;&gt;https://atom.io/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ao abrir um arquivo conflituoso com o Atom, ele permite facilmente escolher entre uma versão ou outra das linhas, basta clicar no botão &lt;strong&gt;Use me&lt;/strong&gt; referente à versão desejada:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/11/atom.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/11/atom.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que a decisão não precisa ser binária: você pode escolher uma das versões e editá-la para obter um meio termo. O que importa é o conteúdo final do arquivo na hora de salvar.&lt;/p&gt;
-
-&lt;h2 id=&quot;resolvendo-conflitos-com-o-meld&quot;&gt;Resolvendo conflitos com o Meld&lt;/h2&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://meldmerge.org/&quot;&gt;Meld&lt;/a&gt; é uma ferramenta gráfica de &lt;em&gt;diff&lt;/em&gt; e &lt;em&gt;merge&lt;/em&gt; feita para desenvolvedores. Permite comparar arquivos e pastas em duas ou três vias e suporta vários sistemas de controle de versão, dentre eles o Git. Para instalar o Meld no Linux Kamarada ou no openSUSE, execute:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in meld meld-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você pode usar o Meld sozinho, abrindo o aplicativo e selecionando os arquivos ou pastas que deseja comparar, mas não vou entrar em detalhes nesse sentido, porque nosso objetivo aqui é ver como usar o Meld integrado ao Git.&lt;/p&gt;
-
-&lt;p&gt;Para resolver conflitos com o Meld, execute o comando &lt;a href=&quot;https://git-scm.com/docs/git-mergetool&quot;&gt;&lt;strong&gt;git mergetool&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git mergetool
-
-This message is displayed because 'merge.tool' is not configured.
-See 'git mergetool --tool-help' or 'git help config' for more details.
-'git mergetool' will now attempt to use one of the following tools:
-meld opendiff kdiff3 tkdiff xxdiff tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
-Merging:
-_includes/footer.html
-_includes/head.html
-_posts/2015-08-25-welcome-to-jekyll.markdown
-assets/css/main.css
-
-Normal merge conflict for '_includes/footer.html':
-  {local}: modified file
-  {remote}: modified file
-Hit return to start merge resolution tool (meld):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A função do comando &lt;strong&gt;git mergetool&lt;/strong&gt; é iniciar uma ferramenta apropriada para a resolução de conflitos. Ele exibe essa mensagem comprida na primeira utilização porque ainda não configuramos uma ferramenta. Note que ele suporta várias ferramentas, dentre elas o Meld, que é a primeira da lista e é também a que ele sugere usar. Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld.&lt;/p&gt;
-
-&lt;p&gt;O Meld abre o arquivo conflituoso em três vias: à esquerda, a versão anterior do &lt;em&gt;branch&lt;/em&gt; atual (nesse exemplo, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;); no meio, a versão mesclada (esse é o resultado que irá no &lt;em&gt;commit&lt;/em&gt; do &lt;em&gt;merge&lt;/em&gt;); e à direita, a versão do &lt;em&gt;branch&lt;/em&gt; que está sendo mesclado (&lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/11/git-mergetool-meld-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/11/git-mergetool-meld-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode usar as setas ao lado das linhas para copiar trechos de código de um lado para o outro.&lt;/p&gt;
-
-&lt;p&gt;Note que também no Meld as decisões não precisam ser binárias: você pode simplesmente posicionar o cursor na via do meio e começar a digitar. A versão final do arquivo mesclado será tudo que estiver na via do meio, não importando se o conteúdo veio da via da esquerda, da via da direita ou se foi digitado à mão.&lt;/p&gt;
-
-&lt;p&gt;Quando terminar de resolver o conflito, clique em &lt;strong&gt;Salvar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para que o Git sempre use o Meld para resolver conflitos sem perguntar qual ferramenta usar, execute os comandos a seguir:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git config --global merge.tool meld
-$ git config --global mergetool.prompt false
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Feito isso, aquela mensagem comprida não aparecerá mais ao executar &lt;strong&gt;git mergetool&lt;/strong&gt;: o Git indicará qual arquivo está mesclando e já abrirá o Meld (você não precisará teclar &lt;strong&gt;Enter&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Além de resolver conflitos, o Meld pode ser usado para comparar versões de arquivos controladas pelo Git.&lt;/p&gt;
-
-&lt;h2 id=&quot;comparando-versões-de-arquivos&quot;&gt;Comparando versões de arquivos&lt;/h2&gt;
-
-&lt;p&gt;Para comparar versões de um mesmo arquivo (por exemplo, qual a diferença entre um arquivo em um &lt;em&gt;branch&lt;/em&gt; e esse mesmo arquivo em outro &lt;em&gt;branch&lt;/em&gt;, ou o que mudou em um arquivo entre dois &lt;em&gt;commits&lt;/em&gt;), você pode usar o comando &lt;a href=&quot;https://git-scm.com/docs/git-diff&quot;&gt;&lt;strong&gt;git diff&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git checkout master1
-$ git diff upstream1 -- _includes/footer.html
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nesse exemplo, queremos saber o que mudou no arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/footer.html&lt;/code&gt; do &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt; (especificado como referência inicial) para o &lt;em&gt;branch&lt;/em&gt; atual (&lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/11/git-diff-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/11/git-diff-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Talvez usando o Meld essa comparação fique mais interessante. Vejamos.&lt;/p&gt;
-
-&lt;h2 id=&quot;comparando-versões-de-arquivos-com-o-meld&quot;&gt;Comparando versões de arquivos com o Meld&lt;/h2&gt;
-
-&lt;p&gt;Como se fosse uma mistura do &lt;strong&gt;git diff&lt;/strong&gt; com o &lt;strong&gt;git mergetool&lt;/strong&gt; é o comando &lt;a href=&quot;https://git-scm.com/docs/git-difftool&quot;&gt;&lt;strong&gt;git difftool&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git difftool upstream1 -- _includes/footer.html
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;De forma semelhante, no primeiro uso ele alerta que não foi configurado e pergunta se deseja iniciar o Meld:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;This message is displayed because 'diff.tool' is not configured.
-See 'git difftool --tool-help' or 'git help config' for more details.
-'git difftool' will now attempt to use one of the following tools:
-meld opendiff kdiff3 tkdiff xxdiff kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff
-
-Viewing (1/1): '_includes/footer.html'
-Launch 'meld' [Y/n]?
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o Meld. Dessa vez, ele faz uma comparação em duas vias: à esquerda, é exibida a versão especificada como referência (nesse caso, a versão do &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;upstream1&lt;/code&gt;), e à direita, é exibida a versão do &lt;em&gt;branch&lt;/em&gt; atual (nesse caso, o &lt;em&gt;branch&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;master1&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/11/git-difftool-meld-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/11/git-difftool-meld-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Configurar o &lt;strong&gt;git difftool&lt;/strong&gt; para sempre usar o Meld sem perguntar também é parecido:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git config --global diff.tool meld
-$ git config --global difftool.prompt false
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&quot;&gt;Git - Basic Branching and Merging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://imasters.com.br/desenvolvimento/git-diffs-e-merges-mais-praticos-com-o-meld&quot;&gt;Git diffs e merges mais práticos com o Meld - iMasters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fedoramagazine.org/compare-files-with-these-graphical-diff-tools-in-fedora/&quot;&gt;Compare files with these graphical diff tools in Fedora - Fedora Magazine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/39925108/1657502&quot;&gt;Setting up and using Meld as your git difftool and mergetool - Stack Overflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 27 Nov 2019 22:50:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/11/27/dica-de-git-merge-e-diff-facilitados-pela-interface-grafica-com-meld-e-atom/</guid>
                 
                 
                     <category>pt</category>
