@@ -9,10 +9,476 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 14 Apr 2020 23:19:12 -0300</pubDate>
-        <lastBuildDate>Tue, 14 Apr 2020 23:19:12 -0300</lastBuildDate>
+        <pubDate>Mon, 20 Apr 2020 00:40:24 -0300</pubDate>
+        <lastBuildDate>Mon, 20 Apr 2020 00:40:24 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Remote Desktop Connection to Windows from Linux using RDP clients</title>
+                <description>&lt;p&gt;Have you ever used the &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; app &lt;a href=&quot;https://support.microsoft.com/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;&lt;strong&gt;Remote Desktop Connection&lt;/strong&gt;&lt;/a&gt;? This app, included in all Windows installations, allows you to remotely access another Windows PC or a server with &lt;a href=&quot;https://www.microsoft.com/cloud-platform/windows-server&quot;&gt;Windows Server&lt;/a&gt;. For this purpose, it employs the &lt;a href=&quot;https://en.wikipedia.org/wiki/Remote_Desktop_Protocol&quot;&gt;Remote Desktop Protocol&lt;/a&gt; (RDP).&lt;/p&gt;
+
+&lt;p&gt;Organizations can install applications on a central server instead of various computers. To use those applications, employees must remotely access that server. Such centralization can make maintenance and troubleshooting easier. This technology was formerly known as &lt;a href=&quot;https://en.wikipedia.org/wiki/Remote_Desktop_Services&quot;&gt;Terminal Services&lt;/a&gt; (TS). Currently, web systems are more common. But, in some scenarios, Windows remote apps are still needed.&lt;/p&gt;
+
+&lt;p&gt;In those scenarios, &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users can remotely access Windows computers and servers from their favorite system using an RDP client.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-client.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-client.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;There are a few RDP clients available for Linux and we are going to talk about them today:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#remmina&quot;&gt;Remmina&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#freerdp&quot;&gt;FreeRDP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rdesktop&quot;&gt;rdesktop&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vinagre&quot;&gt;Vinagre&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can choose the one you like best or the one that best suits your needs.&lt;/p&gt;
+
+&lt;p&gt;Out of curiosity, FreeRDP is both an app and a library, which provides reusable features for other apps. Except for rdesktop, all of the other clients above use the FreeRDP library.&lt;/p&gt;
+
+&lt;h2 id=&quot;enabling-remote-desktop-on-windows&quot;&gt;Enabling remote desktop on Windows&lt;/h2&gt;
+
+&lt;p&gt;First of all, you must set up the computer you want to connect to so it allows remote connections. On the Windows machine you want to connect to, logged on with an administrator account, open the &lt;strong&gt;Start menu&lt;/strong&gt; and click &lt;strong&gt;Settings&lt;/strong&gt;. To do that, on the window that appears, open the &lt;strong&gt;System&lt;/strong&gt; category, and then &lt;strong&gt;Remote Desktop&lt;/strong&gt;. Finally, enable it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-01-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-01-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that you can’t connect to computers running a Windows Home edition (for instance, Windows 10 Home). This screen informs you, if that is the case:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-02-en.jpg&quot; title=&quot;Your Home edition of Windows 10 doesn&amp;apos;t support Remote Desktop.&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-02-en.jpg&quot; alt=&quot;Your Home edition of Windows 10 doesn&amp;apos;t support Remote Desktop.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Your Home edition of Windows 10 doesn't support Remote Desktop.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Source of the image: &lt;a href=&quot;https://www.digitalcitizen.life/enable-remote-desktop-windows&quot;&gt;Digital Citizen&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want more information about remote desktop on Windows, take a look at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.microsoft.com/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;How to use Remote Desktop - Windows Support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access&quot;&gt;Remote Desktop - Allow access to your PC - Microsoft Docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/04/remmina.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;remmina&quot;&gt;Remmina&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://remmina.org/&quot;&gt;Remmina&lt;/a&gt; is a remote desktop client that supports many remote access protocols such as RDP, &lt;a href=&quot;https://en.wikipedia.org/wiki/Virtual_Network_Computing&quot;&gt;VNC&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/NX_technology&quot;&gt;NX&lt;/a&gt;, &lt;a href=&quot;https://en.wikipedia.org/wiki/X_display_manager&quot;&gt;XDMCP&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Secure_Shell&quot;&gt;SSH&lt;/a&gt;. It aims to be useful for system administrators and travellers, who need to work with lots of remote desktops and/or servers. Remmina is included in the &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; Linux distribution and is its default remote desktop client.&lt;/p&gt;
+
+&lt;p&gt;To install Remmina on &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada&lt;/a&gt; and &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in remmina remmina-plugin-rdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once installed, to start Remmina, if you use the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop environment, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, on the top-left screen corner, type &lt;code class=&quot;highlighter-rouge&quot;&gt;remmina&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To quickly start a remote access, select the &lt;strong&gt;RDP&lt;/strong&gt; protocol, type the hostname or IP address of the computer you want to connect to (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.251&lt;/code&gt;) and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-02-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-02-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If it’s the first time you connect to this computer, Remmina asks whether to trust its certificate, click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-03-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-03-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, enter your &lt;strong&gt;User name&lt;/strong&gt; and &lt;strong&gt;Password&lt;/strong&gt; on the remote computer. Also inform the &lt;strong&gt;Domain&lt;/strong&gt;, if necessary. Optionally, you can choose to &lt;strong&gt;Save password&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-04-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-04-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You will see the remote computer’s desktop in the Remmina window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;From now on, you are using that computer, but remotely, without sitting in front of it. Each clicking and typing is sent to be processed on the remote computer.&lt;/p&gt;
+
+&lt;p&gt;If the remote computer is a Windows desktop, its screen is locked during remote access.&lt;/p&gt;
+
+&lt;p&gt;If you are going to access this computer often, consider saving the connection data, so that remote access can be easily initiated. To do this, click the &lt;strong&gt;Create a new connection profile&lt;/strong&gt; button on the top-left corner of the Remmina main window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the next screen, give a &lt;strong&gt;Name&lt;/strong&gt; to identify the connection, select &lt;strong&gt;RDP&lt;/strong&gt; in the &lt;strong&gt;Protocol&lt;/strong&gt; field and enter the connection data: &lt;strong&gt;Server&lt;/strong&gt;, &lt;strong&gt;User name&lt;/strong&gt;, &lt;strong&gt;User password&lt;/strong&gt; and &lt;strong&gt;Domain&lt;/strong&gt; (if necessary). When you’re finished, click &lt;strong&gt;Save&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-07-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-07-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;After that, the connection becomes listed on the Remmina main window:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/remmina-08-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/remmina-08-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When you want to remotely access that computer, just double-click it on the list.&lt;/p&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/utilities-terminal.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;freerdp&quot;&gt;FreeRDP&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.freerdp.com/&quot;&gt;FreeRDP&lt;/a&gt; is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free&lt;/a&gt; implementation of the Remote Desktop Protocol following the &lt;a href=&quot;https://github.com/FreeRDP/FreeRDP/wiki/Reference-Documentation&quot;&gt;Microsoft Open Specifications&lt;/a&gt;. This implementation provides both the client and the server applications as well as a library, which allows other applications to use the RDP protocol. Today, we are interested in the FreeRDP client application.&lt;/p&gt;
+
+&lt;p&gt;To install the FreeRDP client on Linux Kamarada and openSUSE, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in freerdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The FreeRDP client does not have a main screen like Remmina. To start a remote access using the FreeRDP client, run this command from a terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:hostname_or_ip_address /u:username
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Making the appropriate substitutions. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:10.0.0.251 /u:Kamarada
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you need to inform the computer’s domain, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;/d&lt;/code&gt; parameter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /v:hostname_or_ip_address /d:domain /u:username
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If it’s the first time you connect to this computer, the FreeRDP client asks whether to trust its certificate:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;[18:10:18:588] [3213:3214] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:10:18:604] [3213:3214] [INFO][com.freerdp.crypto] - creating directory /home/linux/.config/freerdp
+[18:10:18:604] [3213:3214] [INFO][com.freerdp.crypto] - creating directory [/home/linux/.config/freerdp/certs]
+[18:10:18:604] [3213:3214] [INFO][com.freerdp.crypto] - created directory [/home/linux/.config/freerdp/server]
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - @           WARNING: CERTIFICATE NAME MISMATCH!           @
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - The hostname used for this connection (10.0.0.251:3389)
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - does not match the name given in the certificate:
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - Common Name (CN):
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - 	WinDev2003Eval
+[18:10:18:613] [3213:3214] [ERROR][com.freerdp.crypto] - A valid certificate for the wrong name should NOT be trusted!
+Certificate details:
+	Subject: CN = WinDev2003Eval
+	Issuer: CN = WinDev2003Eval
+	Thumbprint: 23:7e:de:bc:85:d7:13:f3:e5:ce:e2:56:58:93:7d:f7:db:d1:bd:85
+The above X.509 certificate could not be verified, possibly because you do not have
+the CA certificate in your certificate store, or the certificate has expired.
+Please look at the OpenSSL documentation on how to add a private CA to the store.
+Do you trust the above certificate? (Y/T/N)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;Y&lt;/code&gt; (yes) and hit &lt;strong&gt;Enter&lt;/strong&gt;. Then type your user password on the remote computer and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Do you trust the above certificate? (Y/T/N) Y
+Password:
+[18:11:31:595] [3213:3214] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[18:11:31:596] [3213:3214] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[18:11:32:782] [3213:3214] [INFO][com.winpr.clipboard] - initialized POSIX local file subsystem
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After that, the remote desktop connection is initiated:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/freerdp-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/freerdp-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you have ever started the remote desktop connection on Windows by the &lt;strong&gt;Command Prompt&lt;/strong&gt; (using the &lt;strong&gt;&lt;a href=&quot;https://docs.microsoft.com/windows-server/administration/windows-commands/mstsc&quot;&gt;mstsc&lt;/a&gt;&lt;/strong&gt; command), you may have noticed that the FreeRDP client uses the same command syntax. It was implemented that way on purpose, to keep compatibility.&lt;/p&gt;
+
+&lt;p&gt;If you are a curious person and want to check it out by yourself:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on Windows, run:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&amp;gt; mstsc /?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on Linux, run:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ xfreerdp /?
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/utilities-terminal.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;rdesktop&quot;&gt;rdesktop&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.rdesktop.org/&quot;&gt;rdesktop&lt;/a&gt; was the first RDP client for Linux and, for many years, it was the most used. But since &lt;a href=&quot;https://groups.google.com/forum/#!topic/rdesktop-announce/AddglSNxK90&quot;&gt;November 2019&lt;/a&gt;, the project is looking for a new  maintainer.&lt;/p&gt;
+
+&lt;p&gt;In contrast, &lt;a href=&quot;http://www.freerdp.com/2019/01/16/hi-freerdp-history&quot;&gt;FreeRDP was born in 2009&lt;/a&gt; as a fork of rdesktop, when &lt;a href=&quot;https://www.microsoft.com/&quot;&gt;Microsoft&lt;/a&gt; decided to open the RDP specifications. As time passed and the FreeRDP project evolved, it became the standard RDP client on systems where no native Microsoft client is available.&lt;/p&gt;
+
+&lt;p&gt;I present rdesktop here for information purposes only. Unless you have a good reason to use it, you are advised to use one of the other RDP clients, based on FreeRDP.&lt;/p&gt;
+
+&lt;p&gt;To install rdesktop on Linux Kamarada and openSUSE, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in rdesktop
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, to start a remote access using rdesktop, invoke it from a terminal followed by the hostname or IP address of the computer you want to connect to. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rdesktop 10.0.0.251
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the past, that would suffice and rdesktop would just work. But now we face a problem that comes from the lack of proper maintenance and updates:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Autoselected keyboard map en-us
+ERROR: CredSSP: Initialize failed, do you have correct kerberos tgt initialized ?
+Failed to connect, CredSSP required by server.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At some point, Microsoft released an Windows update that has since made the use of &lt;a href=&quot;https://github.com/rdesktop/rdesktop/wiki/Network-Level-Authentication-(NLA)&quot;&gt;Network Level Authentication&lt;/a&gt; (NLA) required by default. FreeRDP does support NLA, while rdesktop does not. You can still use rdesktop for remote access, as long as you disable NLA on the computer you want to connect to. Note that this makes the connection less secure.&lt;/p&gt;
+
+&lt;p&gt;To disable NLA on the Windows machine you want to connect to, logged on with an administrator account, open the &lt;strong&gt;Control Panel&lt;/strong&gt;, open the &lt;strong&gt;System and Security&lt;/strong&gt; category, then click the &lt;strong&gt;System&lt;/strong&gt; icon. On the next screen, click the &lt;strong&gt;Remote settings&lt;/strong&gt; link by the left. On the dialog box that appears, select the &lt;strong&gt;Remote&lt;/strong&gt; tab. Finally, disable the option &lt;strong&gt;Allow connections only from computers running Remote Desktop with Network Level Authentication&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/windows-rdp-03-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/windows-rdp-03-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;With NLA disabled, back to the Linux computer that will start the remote access, try again:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rdesktop 10.0.0.251
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This time, rdesktop will work. A window presents the Windows logon screen. Enter your username and password and press &lt;strong&gt;Enter&lt;/strong&gt; to start the remote access:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdesktop-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdesktop-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you want more information about that rdesktop bug, see:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/71&quot;&gt;CredSSP does not work - Issue #71 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/279&quot;&gt;Add support for Network Level Authentication - Issue #279 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/issues/261#issuecomment-382608793&quot;&gt;Doesn’t work if there is Fortress machine between connecting to the remote  server - Issue #261 - rdesktop/rdesktop - GitHub&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdesktop/rdesktop/wiki/Network-Level-Authentication-(NLA)&quot;&gt;Network Level Authentication (NLA) - rdesktop/rdesktop Wiki - GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;media mb-3&quot;&gt;
+    &lt;img src=&quot;/files/2020/02/preferences-desktop-remote-desktop.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
+    &lt;div class=&quot;media-body align-self-center&quot;&gt;
+        &lt;h2 class=&quot;mt-0 mb-0&quot; id=&quot;vinagre&quot;&gt;Vinagre&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Vinagre&quot;&gt;Vinagre&lt;/a&gt; is the default remote desktop client for the GNOME desktop. That’s why it is also the default remote desktop client for Linux Kamarada 15.1, the current stable release. Like Remmina, it supports some connection protocols: SSH, RDP, &lt;a href=&quot;https://en.wikipedia.org/wiki/Simple_Protocol_for_Independent_Computing_Environments&quot;&gt;SPICE&lt;/a&gt; and VNC. However, like rdesktop, Vinagre is unmaintained for some time now.&lt;/p&gt;
+
+&lt;p&gt;When trying a RDP access, Vinagre only displays a black screen, as I reported on the openSUSE mailing list some time ago:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2020-01/msg00308.html&quot;&gt;[opensuse-factory] Black screen when trying a RDP access to Windows 10 using Vinagre (Leap 15.1/15.2 and Tumbleweed)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On some distributions, like &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;, Vinagre works. I believe that those distributions applied some patch to Vinagre.&lt;/p&gt;
+
+&lt;p&gt;Probably, &lt;a href=&quot;/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/&quot;&gt;the next Linux Kamarada release&lt;/a&gt; will come with Remmina instead of Vinagre, following the Ubuntu Linux distribution.&lt;/p&gt;
+
+&lt;p&gt;Because of that, I present Vinagre here just for information purposes as well.&lt;/p&gt;
+
+&lt;p&gt;Vinagre comes already installed by default on Linux Kamarada and openSUSE, if you chose the GNOME desktop, but if you need or want to install it, you can do this by running:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in vinagre
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To start Vinagre, which appears as &lt;strong&gt;Remote Desktop Viewer&lt;/strong&gt; on the applications list, open the &lt;strong&gt;Activities&lt;/strong&gt; menu, on the top-left screen corner, type &lt;code class=&quot;highlighter-rouge&quot;&gt;remote&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;vinagre&lt;/code&gt; and click the corresponding icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the Vinagre main screen, click &lt;strong&gt;Connect&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Fill in the next screen fields with the connection data:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;on the &lt;strong&gt;Protocol&lt;/strong&gt; field, select &lt;strong&gt;RDP&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;on the &lt;strong&gt;Host&lt;/strong&gt; field, enter the hostname or IP address of the computer to connect to;&lt;/li&gt;
+  &lt;li&gt;enter your &lt;strong&gt;Username&lt;/strong&gt; on the remote computer; and&lt;/li&gt;
+  &lt;li&gt;enter the &lt;strong&gt;Domain&lt;/strong&gt;, if necessary.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you are finished, click &lt;strong&gt;Connect&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If it’s the first time you connect to this computer, Vinagre asks whether to trust its certificate:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Tell it to do so by clicking &lt;strong&gt;Connect&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enter your &lt;strong&gt;Password&lt;/strong&gt;, optionally enable &lt;strong&gt;Remember this credential&lt;/strong&gt; and click &lt;strong&gt;Authenticate&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;At this point, you should see the remote computer’s desktop. You can notice it has its screen locked (as it normally does during RDP accesses). But, as I said, Vinagre only displays a black screen:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/vinagre-06-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/vinagre-06-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Like Remmina, Vinagre allows you to memorize the connection data, to easily connect to the same computer again in the future. To do this, during the remote access, open the &lt;strong&gt;Bookmarks&lt;/strong&gt; menu and click &lt;strong&gt;Add Bookmark&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;After you created the bookmark, it will now be listed on the &lt;strong&gt;Bookmarks&lt;/strong&gt; menu. When you want to remotely access this computer again, just open this menu and click the bookmark.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.microsoft.com/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;How to use Remote Desktop - Windows Support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access&quot;&gt;Remote Desktop - Allow access to your PC - Microsoft Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-vnc.html&quot;&gt;Remote Graphical Sessions with VNC - Reference - openSUSE Leap 15.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.freerdp.com/2019/01/16/hi-freerdp-history&quot;&gt;Hi! - The history of the FreeRDP project - FreeRDP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since it’s not possible to remotely access computers running Windows 10 Home, to write this how-to I used a &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox virtual machine&lt;/a&gt; with a Windows 10 Enterprise evaluation version legally downloaded from:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.microsoft.com/windows/downloads/virtual-machines/&quot;&gt;Download a Windows 10 virtual machine - Windows app development&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Mon, 20 Apr 2020 00:25:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Linux Kamarada 15.2 Beta makes your desktop greener than ever</title>
@@ -3352,662 +3818,6 @@ systemctl start fail2ban
                 <pubDate>Tue, 07 Jan 2020 07:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/01/07/mitigating-brute-force-attacks-on-linux-using-fail2ban/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/01/07/mitigating-brute-force-attacks-on-linux-using-fail2ban/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>10 classic games for Linux</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/classic-games.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/12/classic-games.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Who said &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; is not an operating system for games? Christmas break was coming, so I decided to search games for Linux and I found the results quite impressive. I myself didn’t know there were that many options available, and more are being released every day, as the community of Linux users and developers grows.&lt;/p&gt;
-
-&lt;p&gt;I chose 20 games to talk about here and I’m going to start by 10 that are classic ones.&lt;/p&gt;
-
-&lt;p&gt;Some of these classic games became popular among desktop users because they have been included in the &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; operating system.&lt;/p&gt;
-
-&lt;p&gt;Linux users can enjoy the versions provided by &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; and &lt;a href=&quot;https://kde.org/&quot;&gt;KDE&lt;/a&gt;, the two major desktop environments in terms of number of users and integrated apps.&lt;/p&gt;
-
-&lt;p&gt;Actually, all of the games listed here should work well on all desktop environments, but KDE games may work better on &lt;a href=&quot;https://www.qt.io/&quot;&gt;Qt&lt;/a&gt;-based DEs (such as KDE itself, &lt;a href=&quot;https://www.deepin.org/&quot;&gt;Deepin&lt;/a&gt; and &lt;a href=&quot;https://lxqt.org/&quot;&gt;LXQt&lt;/a&gt;), while GNOME games may work better on &lt;a href=&quot;https://gtk.org/&quot;&gt;GTK&lt;/a&gt;-based DEs (almost all of the others, including GNOME itself, &lt;a href=&quot;https://unity8.io/&quot;&gt;Unity&lt;/a&gt;, &lt;a href=&quot;https://xfce.org/&quot;&gt;Xfce&lt;/a&gt;, &lt;a href=&quot;http://developer.linuxmint.com/projects/cinnamon-projects.html&quot;&gt;Cinnamon&lt;/a&gt;, &lt;a href=&quot;https://mate-desktop.org/&quot;&gt;MATE&lt;/a&gt;, &lt;a href=&quot;https://elementary.io/&quot;&gt;Pantheon&lt;/a&gt;, &lt;a href=&quot;https://lxde.org/&quot;&gt;LXDE&lt;/a&gt; and &lt;a href=&quot;https://budgie-desktop.org/&quot;&gt;Budgie&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Also, all of the following games are &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;free and open source&lt;/a&gt; and, except by the last one, are all included in &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;Linux Kamarada&lt;/a&gt;. As usual, I focus on openSUSE and Linux Kamarada, but if you use another Linux distribution, you may easily find out how to install those games on it.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Solitaire&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/aisleriot-en.jpg&quot; title=&quot;Aisleriot&quot;&gt;
-&lt;img src=&quot;/files/2019/12/aisleriot-en.jpg&quot; alt=&quot;Aisleriot&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Aisleriot&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kpat-en.jpg&quot; title=&quot;KPatience&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kpat-en.jpg&quot; alt=&quot;KPatience&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KPatience&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Solitaire&quot;&gt;Solitaire&lt;/a&gt;&lt;/strong&gt; is any tabletop game — tipically a card game — which one can play by oneself. The most famous solitaire game is &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Klondike_(solitaire)&quot;&gt;Klondike&lt;/a&gt;&lt;/strong&gt;, better known as &lt;strong&gt;Patience&lt;/strong&gt; or Solitaire (Windows ships it as Solitaire). Other popular solitaire games include &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/FreeCell&quot;&gt;FreeCell&lt;/a&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Spider_(solitaire)&quot;&gt;Spider&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;For simple games, where the way the game goes depends only upon how the cards fall, your patience might be the only thing you need. There are also solitaire games where you must plan your strategy and think ahead in order to win. A theme common to all the games is the player must put the cards in some special order — moving, turning and reordering them.&lt;/p&gt;
-
-&lt;p&gt;GNOME provides a compilation of 80 different solitaire card games in the &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Aisleriot&quot;&gt;Aisleriot&lt;/a&gt;&lt;/strong&gt; app, which comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in aisleriot
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about each of the games in Aisleriot on the app itself, by opening the &lt;strong&gt;Help&lt;/strong&gt; menu or pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading the online manual:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/aisleriot/stable/&quot;&gt;AisleRiot Manual&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;KDE also has its own solitaire card games compilation named &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kpat&quot;&gt;KPatience&lt;/a&gt;&lt;/strong&gt;. It can be installed with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kpat
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about each of the games in KPatience on the app itself, by opening the &lt;strong&gt;Help&lt;/strong&gt; menu or pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading the online manual:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/kpat/index.html&quot;&gt;The KPatience Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kmahjongg.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Mahjongg solitaire&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-mahjongg-en.jpg&quot; title=&quot;GNOME Mahjongg&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-mahjongg-en.jpg&quot; alt=&quot;GNOME Mahjongg&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Mahjongg&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kmahjongg-en.jpg&quot; title=&quot;KMahjongg&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kmahjongg-en.jpg&quot; alt=&quot;KMahjongg&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KMahjongg&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Mahjong_solitaire&quot;&gt;&lt;strong&gt;Mahjongg solitaire&lt;/strong&gt;&lt;/a&gt;, also known simply as Mahjongg, is a solitaire version of the classic Chinese four-player tile-based game &lt;a href=&quot;https://en.wikipedia.org/wiki/Mahjong&quot;&gt;Mahjong&lt;/a&gt;. The game is played with a set of 144 tiles based on Chinese characters and symbols. Some versions add Latin letters and Arabic numerals appealling to a Western audience.&lt;/p&gt;
-
-&lt;p&gt;The 144 tiles are arranged in layers. Tiles that are below other tiles cannot be seen initially. A tile is said to be open or exposed if no other tile is lying directly on it, so it can be removed from the board without disturbing other tiles. You can recognize open tiles by a free long edge on either the left or the right. The goal is to match pairs of open identical tiles and remove them from the board, exposing the tiles under them for play. The game is finished when all pairs have been removed or when there are no exposed pairs remaining.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Mahjongg&quot;&gt;&lt;strong&gt;GNOME Mahjongg&lt;/strong&gt;&lt;/a&gt; comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-mahjongg
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;KDE’s version of Mahjongg is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kmahjongg&quot;&gt;KMahjongg&lt;/a&gt;&lt;/strong&gt; and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kmahjongg
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-mahjongg/stable/&quot;&gt;Mahjongg - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/kmahjongg/index.html&quot;&gt;The KMahjongg Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kmines.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Minesweeper&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-mines-en.jpg&quot; title=&quot;GNOME Mines&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-mines-en.jpg&quot; alt=&quot;GNOME Mines&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Mines&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kmines-en.jpg&quot; title=&quot;KMines&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kmines-en.jpg&quot; alt=&quot;KMines&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KMines&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Minesweeper_(computer_game)&quot;&gt;Minesweeper&lt;/a&gt;&lt;/strong&gt; is a single-player logic puzzle game. The aim is to locate all the mines that are hidden under tiles on a rectangular board. You will need to use a combination of logic and luck to find all the mines without triggering an explosion.&lt;/p&gt;
-
-&lt;p&gt;You start the game with a grid of covered squares and no idea what is in them. Clicking on a square reveals what is in it: either empty or a mine. If you hit a mine, the game is over. If you uncover an empty square, it may show a number, which indicates how many mines there are in the neighbor squares, or nothing, if there are no mines nearby. Once you find a few clear squares you can start to deduce which squares have mines in them and which don’t. You win the game once you have revealed all the empty squares and marked all the mined squares.&lt;/p&gt;
-
-&lt;p&gt;GNOME has a minesweeper clone called &lt;a href=&quot;https://wiki.gnome.org/Apps/Mines&quot;&gt;&lt;strong&gt;GNOME Mines&lt;/strong&gt;&lt;/a&gt;, which comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-mines
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;KDE also has its own minesweeper game named &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kmines&quot;&gt;KMines&lt;/a&gt;&lt;/strong&gt;. It can be installed with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kmines
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-mines/stable/&quot;&gt;GNOME Mines - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/kmines/index.html&quot;&gt;The KMines Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/chess.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Chess&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-chess-en.jpg&quot; title=&quot;GNOME Chess&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-chess-en.jpg&quot; alt=&quot;GNOME Chess&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Chess&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/knights-en.jpg&quot; title=&quot;KNights&quot;&gt;
-&lt;img src=&quot;/files/2019/12/knights-en.jpg&quot; alt=&quot;KNights&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KNights&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Chess&quot;&gt;Chess&lt;/a&gt;&lt;/strong&gt; is a two-player strategy game played on a 8x8 checkered board (with squares of alternating colors). The game is played by millions of people worldwide.&lt;/p&gt;
-
-&lt;p&gt;One player controls the white pieces and the other player controls the black pieces. Each player begins the game with 16 pieces: 1 king, 1 queen, 2 rooks, 2 knights, 2 bishops, and 8 pawns. Each piece type moves differently. The two players simulate a battle by moving their pieces and capturing each other’s pieces. The objective of the game is to checkmate the opponent’s king. This occurs when the king is under immediate attack (in check) and there is no move able to remove it from attack.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Chess&quot;&gt;&lt;strong&gt;GNOME Chess&lt;/strong&gt;&lt;/a&gt; allows a human to play against a computer &lt;a href=&quot;https://en.wikipedia.org/wiki/Chess_engine&quot;&gt;chess engine&lt;/a&gt; such as &lt;a href=&quot;https://www.gnu.org/software/chess/&quot;&gt;GNU Chess&lt;/a&gt; (default) or against another human locally. It comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-chess gnuchess
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;KDE’s chess is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.knights&quot;&gt;KNights&lt;/a&gt;&lt;/strong&gt;. It supports playing local games against human players or against chess engines, as well as playing online games on the &lt;a href=&quot;https://www.freechess.org/&quot;&gt;Free Internet Chess Server (FICS)&lt;/a&gt;. Furthermore, it is possible to watch two different chess engines playing against each other. It can be installed with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in knights
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online manuals:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-chess/stable/&quot;&gt;GNOME Chess Manual&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/knights/index.html&quot;&gt;The Knights Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/qgo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Reversi&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/iagno-en.jpg&quot; title=&quot;Iagno&quot;&gt;
-&lt;img src=&quot;/files/2019/12/iagno-en.jpg&quot; alt=&quot;Iagno&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Iagno&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kreversi-en.jpg&quot; title=&quot;KReversi&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kreversi-en.jpg&quot; alt=&quot;KReversi&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KReversi&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Reversi&quot;&gt;Reversi&lt;/a&gt;&lt;/strong&gt;, also known as &lt;strong&gt;Othello&lt;/strong&gt;, is a strategy game for two players, played on an 8×8 uncheckered board (with squares of the same color). The game pieces are 64 identical two sided disks, which are light on one side and dark on the other.&lt;/p&gt;
-
-&lt;p&gt;Players take turns tactically placing disks on the board with their assigned color facing up. During a play, any disks of the opponent’s color that are in a straight line and bounded by the disk just placed and another disk of the current player’s color are turned over to the current player’s color. The game ends when the board is completely filled by disks and the winner is the player with most disks of their color on the board.&lt;/p&gt;
-
-&lt;p&gt;The GNOME version of Reversi is called &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Iagno&quot;&gt;Iagno&lt;/a&gt;&lt;/strong&gt;. It comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in iagno
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The KDE version of Reversi is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kreversi&quot;&gt;KReversi&lt;/a&gt;&lt;/strong&gt; and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kreversi
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/iagno/stable/&quot;&gt;Iagno - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/kreversi/index.html&quot;&gt;The KReversi Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/ksudoku.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Sudoku&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-sudoku-en.jpg&quot; title=&quot;GNOME Sudoku&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-sudoku-en.jpg&quot; alt=&quot;GNOME Sudoku&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Sudoku&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/ksudoku-en.jpg&quot; title=&quot;KSudoku&quot;&gt;
-&lt;img src=&quot;/files/2019/12/ksudoku-en.jpg&quot; alt=&quot;KSudoku&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KSudoku&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sudoku&quot;&gt;Sudoku&lt;/a&gt;&lt;/strong&gt; (meaning “single number”) is a Japanese logic puzzle game featuring a 9x9 square grid divided into 9 subgrids of 3x3 squares. The objective is to fill each square with a number between 1 and 9 (inclusive) such that no number is repeated in any row, column or subgrid. Puzzles start partially filled and it’s the player’s job to fill in the rest. Each puzzle has only one solution. In a solved puzzle, each row, column and subgrid contains all the numbers 1 to 9.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Sudoku&quot;&gt;&lt;strong&gt;GNOME Sudoku&lt;/strong&gt;&lt;/a&gt; comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-sudoku
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;KDE’s version of Sudoku is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.ksudoku&quot;&gt;KSudoku&lt;/a&gt;&lt;/strong&gt; and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in ksudoku
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-sudoku/stable/&quot;&gt;GNOME Sudoku - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/ksudoku/index.html&quot;&gt;The KSudoku Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/quadrapassel.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Tetris&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/quadrapassel-en.jpg&quot; title=&quot;Quadrapassel&quot;&gt;
-&lt;img src=&quot;/files/2019/12/quadrapassel-en.jpg&quot; alt=&quot;Quadrapassel&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Quadrapassel&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kblocks-en.jpg&quot; title=&quot;KBlocks&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kblocks-en.jpg&quot; alt=&quot;KBlocks&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KBlocks&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Tetris&quot;&gt;Tetris&lt;/a&gt;&lt;/strong&gt; is the classic falling-block game. Geometric shapes made of blocks fall from the top center of the screen in a random order. Your task is to rotate and move the shapes across the screen to stack the blocks in a way that lines are completely filled. When a line is completed, it is removed, and more space is available in the play area. When there is not enough space for blocks to fall, the game is over. Blocks come in seven different shapes made from four blocks each: one straight, two L-shaped, one square, and two S-shaped.&lt;/p&gt;
-
-&lt;p&gt;The GNOME version of Tetris is called &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Quadrapassel&quot;&gt;Quadrapassel&lt;/a&gt;&lt;/strong&gt;. It comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in quadrapassel
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The KDE version of Tetris is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kblocks&quot;&gt;KBlocks&lt;/a&gt;&lt;/strong&gt;. It can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kblocks
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/quadrapassel/stable/&quot;&gt;Quadrapassel - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/kblocks/index.html&quot;&gt;The KBlocks Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/ksnakeduel.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Snake&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-nibbles-en.jpg&quot; title=&quot;Nibbles&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-nibbles-en.jpg&quot; alt=&quot;Nibbles&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Nibbles&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/ksnakeduel-en.jpg&quot; title=&quot;KSnakeDuel&quot;&gt;
-&lt;img src=&quot;/files/2019/12/ksnakeduel-en.jpg&quot; alt=&quot;KSnakeDuel&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KSnakeDuel&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Snake_(video_game_genre)&quot;&gt;Snake&lt;/a&gt;&lt;/strong&gt; is the name for a video game concept where the player controls a snake which grows in length. It became popular after a variant was preloaded on &lt;a href=&quot;https://www.nokia.com/&quot;&gt;Nokia&lt;/a&gt; mobile phones in 1998.&lt;/p&gt;
-
-&lt;p&gt;TODO Incluir imagem do Snake, da Nokia&lt;/p&gt;
-
-&lt;p&gt;There is a snake game for GNOME called &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Nibbles&quot;&gt;Nibbles&lt;/a&gt;&lt;/strong&gt;. The aim of the game is to swallow as many objects as you can while avoiding maze walls and other snakes. Nibbles comes out-of-the-box on Linux Kamarada and can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-nibbles
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The snake game for KDE is called &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.ksnakeduel&quot;&gt;KSnakeDuel&lt;/a&gt;&lt;/strong&gt; and it features two game types:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;KSnakeDuel:&lt;/strong&gt; a two-player game, that you can play against the computer or a friend, in which snakes grow in length without eating anything. The aim of the game is to live longer than your opponent. To do that, avoid running into a wall, your own tail and that of your opponent. Actually, that is closer to the concept of &lt;a href=&quot;https://en.wikipedia.org/wiki/Tron&quot;&gt;TRON&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;KSnake:&lt;/strong&gt; this is a simple snake-like game in which your objective is to survive as long as possible and eat as many fruits as you can.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can switch between these game types using the game type selector in the configuration dialog. KSnakeDuel can be installed on openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in ksnakeduel
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about Nibbles and KSnakeDuel (and KSnake) in their &lt;strong&gt;Help&lt;/strong&gt; menu, pressing &lt;strong&gt;F1&lt;/strong&gt;, or reading their online helps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-nibbles/stable/&quot;&gt;Nibbles - GNOME Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/en/kdegames/ksnakeduel/index.html&quot;&gt;The KSnakeDuel Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Hearts&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-hearts-en.jpg&quot; title=&quot;GNOME Hearts&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-hearts-en.jpg&quot; alt=&quot;GNOME Hearts&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME Hearts&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/hearts.jpg&quot; title=&quot;Hearts (Qt version)&quot;&gt;
-&lt;img src=&quot;/files/2019/12/hearts.jpg&quot; alt=&quot;Hearts (Qt version)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Hearts (Qt version)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Hearts_(card_game)&quot;&gt;Hearts&lt;/a&gt;&lt;/strong&gt; is a trick-taking card game played by four players using a full 52 cards deck (without jokers). The objective is to gain as few point cards as possible, with the point cards usually being all the hearts and the queen of spades. As soon as one player reaches a set number of points the game is over and the player with the lowest score is declared the winner.&lt;/p&gt;
-
-&lt;p&gt;How many points a card is and when the game ends depends on the ruleset. The standard ruleset is what most people will be familiar with. All of the hearts are worth 1 point and the queen of spades is worth 13 points, other cards don’t add up points. The game ends as soon as one player reaches 100 points.&lt;/p&gt;
-
-&lt;p&gt;There was a Hearts game for GNOME which is unmaintained now. You can install and play it, it works, but nobody knows for how long, as it has not been receiving updates for some time.&lt;/p&gt;
-
-&lt;p&gt;Although abandoned, I decided to include it on Linux Kamarada because I really liked to play Hearts.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;GNOME Hearts&lt;/strong&gt; is not on the OSS repo. To install it on openSUSE, you need to add the &lt;a href=&quot;https://en.opensuse.org/openSUSE:Games&quot;&gt;Games&lt;/a&gt; repo first:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/games/openSUSE_Leap_15.1/ games
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, install GNOME Hearts running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-hearts
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As an alternative, you can install a Qt version of Hearts (not part of KDE games) simply called &lt;a href=&quot;https://github.com/Rescator7/Hearts&quot;&gt;&lt;strong&gt;Hearts&lt;/strong&gt;&lt;/a&gt;. It is available on the Games repo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hearts
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about both games in their &lt;strong&gt;Help&lt;/strong&gt; menu.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kcheckers.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Checkers&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kcheckers.jpg&quot; title=&quot;KCheckers&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kcheckers.jpg&quot; alt=&quot;KCheckers&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KCheckers&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/qcheckers.jpg&quot; title=&quot;QCheckers&quot;&gt;
-&lt;img src=&quot;/files/2019/12/qcheckers.jpg&quot; alt=&quot;QCheckers&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;QCheckers&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Checkers&quot;&gt;Checkers&lt;/a&gt;&lt;/strong&gt; (American English) or &lt;strong&gt;Draughts&lt;/strong&gt; (British English) is a two-player strategy game played on an 8×8 checkerboard which involve diagonal moves of uniform game pieces and mandatory captures by jumping over opponent pieces.&lt;/p&gt;
-
-&lt;p&gt;Actually there is no checkers version as part of either GNOME or KDE families of games, but there is a Qt-based checkers game for Linux: &lt;strong&gt;&lt;a href=&quot;https://portnov.github.io/qcheckers/&quot;&gt;QCheckers&lt;/a&gt;&lt;/strong&gt;, formerly known as &lt;strong&gt;KCheckers&lt;/strong&gt; (the letter K in the name is misleading, this game was never part of the KDE family).&lt;/p&gt;
-
-&lt;p&gt;The older version (KCheckers) is available on the Games repo. You can install it on Linux Kamarada and openSUSE running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kcheckers
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;QCheckers is in development and it’s not available on either the OSS or the Games repo, but you can retrieve it from community repos at &lt;a href=&quot;https://software.opensuse.org/package/qcheckers&quot;&gt;software.opensuse.org&lt;/a&gt;, or download and compile its source code from &lt;a href=&quot;https://github.com/portnov/qcheckers&quot;&gt;GitHub&lt;/a&gt;, if you prefer (and know how to do it).&lt;/p&gt;
-
-&lt;p&gt;In both versions, you can find more information in the &lt;strong&gt;Help&lt;/strong&gt; menu.&lt;/p&gt;
-
-&lt;h2 id=&quot;other-gnome-and-kde-games&quot;&gt;Other GNOME and KDE games&lt;/h2&gt;
-
-&lt;p&gt;This page is far from listing all the GNOME and KDE games, here was just a part of them. To get the complete list of games currently maintained by GNOME and KDE, visit the following websites:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps#Games&quot;&gt;GNOME Wiki - Apps - Games&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kde.org/applications/games/&quot;&gt;Games - KDE.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And there are more to come! Follow Linux Kamarada to know more games for Linux!&lt;/p&gt;
-
-</description>
-                <pubDate>Sun, 22 Dec 2019 23:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2019/12/22/10-classic-games-for-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2019/12/22/10-classic-games-for-linux/</guid>
                 
                 
                     <category>en</category>

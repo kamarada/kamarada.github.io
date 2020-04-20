@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -198,7 +202,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -297,7 +301,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2020-04-11" />
+                <meta itemprop="dateModified" content="2020-04-20" />
             </div>
             <div class='col-sm-6'>
                 
@@ -359,6 +363,12 @@
 <p>Você pode escolher o que mais te agrada ou melhor se adequa às suas necessidades.</p>
 
 <p>A título de curiosidade, o FreeRDP é um aplicativo, mas também uma biblioteca, que disponibiliza funcionalidades para outros aplicativos. Exceto pelo rdesktop, os demais clientes acima usam a biblioteca do FreeRDP.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (20/04/2020):</strong>
+    <p>Postagem revisada, uma imagem foi adicionada.</p>
+
+</div>
 
 <h2 id="habilitando-a-área-de-trabalho-remota-no-windows">Habilitando a área de trabalho remota no Windows</h2>
 
@@ -422,7 +432,7 @@
 
 <p>(observe que a interface do Remmina é traduzida, mas não completamente…)</p>
 
-<p>Na tela seguinte, informe seu <strong>Nome de usuário</strong> e <strong>Senha</strong> no computador acessado. Se necessário, informe também o <strong>Domínio</strong>. Opcionalmente, você também pode optar por <strong>Salvar a senha</strong>. Quando estiver pronto para iniciar a conexão, clique em <strong>OK</strong>:</p>
+<p>Na primeira conexão ao computador, o Remmina pergunta se deve confiar no certificado:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/remmina-03-pt.png" title="">
@@ -431,11 +441,22 @@
 
 </div>
 
+<p>Responda que sim clicando em <strong>Yes</strong> (sim, em inglês).</p>
+
+<p>Na tela seguinte, informe seu <strong>Nome de usuário</strong> e <strong>Senha</strong> no computador acessado. Se necessário, informe também o <strong>Domínio</strong>. Opcionalmente, você também pode optar por <strong>Salvar a senha</strong>. Quando estiver pronto para iniciar a conexão, clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/04/remmina-04-pt.png" title="">
+<img src="/files/2020/04/remmina-04-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
 <p>Você verá a tela do computador acessado na janela do Remmina:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/04/remmina-04-pt.jpg" title="">
-<img src="/files/2020/04/remmina-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2020/04/remmina-05-pt.jpg" title="">
+<img src="/files/2020/04/remmina-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -445,8 +466,8 @@
 <p>Se você pretende acessar esse computador com frequência, considere cadastrar os dados da conexão, para que ela possa ser facilmente iniciada. Para isso, na tela inicial do Remmina, clique no botão de adicionar conexão, no canto superior esquerdo da janela:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/04/remmina-05-pt.jpg" title="">
-<img src="/files/2020/04/remmina-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2020/04/remmina-06-pt.jpg" title="">
+<img src="/files/2020/04/remmina-06-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -454,8 +475,8 @@
 <p>Na tela seguinte, dê um <strong>Nome</strong> para identificar a conexão, selecione <strong>RDP</strong> no campo <strong>Protocolo</strong> e informe os dados da conexão: <strong>Servidor</strong>, <strong>Nome de usuário</strong>, <strong>User password</strong> (senha) e <strong>Domínio</strong> (se necessário). Quando terminar, clique em <strong>Save</strong> (salvar):</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/04/remmina-06-pt.png" title="">
-<img src="/files/2020/04/remmina-06-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2020/04/remmina-07-pt.png" title="">
+<img src="/files/2020/04/remmina-07-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -463,8 +484,8 @@
 <p>Feito isso, essa conexão passará a ser listada na tela inicial do Remmina:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/04/remmina-07-pt.png" title="">
-<img src="/files/2020/04/remmina-07-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2020/04/remmina-08-pt.png" title="">
+<img src="/files/2020/04/remmina-08-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -554,7 +575,9 @@ Do you trust the above certificate? (Y/T/N)
 2
 3
 4
-</pre></td><td class="rouge-code"><pre>Password:
+5
+</pre></td><td class="rouge-code"><pre>Do you trust the above certificate? (Y/T/N) Y
+Password:
 [10:24:21:706] [9439:9440] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
 [10:24:21:706] [9439:9440] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
 [10:24:21:828] [9439:9440] [INFO][com.winpr.clipboard] - initialized POSIX local file subsystem
@@ -596,7 +619,7 @@ Do you trust the above certificate? (Y/T/N)
 
 <p>O <a href="https://www.rdesktop.org/">rdesktop</a> foi o primeiro cliente RDP para Linux e por muitos anos foi o mais usado. Desde <a href="https://groups.google.com/forum/#!topic/rdesktop-announce/AddglSNxK90">novembro de 2019</a>, o projeto está procurando um novo responsável para mantê-lo.</p>
 
-<p>Em contraste, o FreeRDP surgiu em <a href="http://www.freerdp.com/2019/01/16/hi-freerdp-history">2009</a> como uma ramificação (um <em>fork</em>) do rdesktop, quando a <a href="https://www.microsoft.com/pt-br">Microsoft</a> decidiu abrir as especificações do protocolo RDP, e com o tempo e o avanço do projeto, se tornou o cliente RDP padrão em outros sistemas que não o Windows.</p>
+<p>Em contraste, <a href="http://www.freerdp.com/2019/01/16/hi-freerdp-history">o FreeRDP surgiu em 2009</a> como uma ramificação (um <em>fork</em>) do rdesktop, quando a <a href="https://www.microsoft.com/pt-br">Microsoft</a> decidiu abrir as especificações do protocolo RDP, e com o tempo e o avanço do projeto, se tornou o cliente RDP padrão em sistemas onde um cliente oficial da Microsoft não está disponível.</p>
 
 <p>Eu apresento o rdesktop aqui mais a título de informação. A menos que você tenha um bom motivo para usá-lo, o recomendado é usar algum dos outros clientes, baseados no FreeRDP.</p>
 
@@ -624,7 +647,7 @@ Failed to connect, CredSSP required by server.
 
 <p>Em determinado momento, a Microsoft lançou uma atualização para o Windows que desde então tornou obrigatório por padrão o uso de Autenticação no Nível da Rede (do inglês <a href="https://github.com/rdesktop/rdesktop/wiki/Network-Level-Authentication-(NLA)"><em>Network Level Authentication</em></a> — NLA). O FreeRDP suporta NLA, ao passo em que o rdesktop, não. Ainda é possível usar o rdesktop para acesso remoto, contanto que você desabilite a NLA no computador a ser acessado. Note que isso torna a conexão menos segura.</p>
 
-<p>Para desabilitar a NLA, no computador a ser acessado, com Windows, usando uma conta de administrador, abra o <strong>Painel de Controle</strong>, clique na categoria <strong>Sistema e Segurança</strong>, depois no item <strong>Sistema</strong>. Na tela seguinte, clique no <em>link</em> <strong>Configurações remotas</strong>, à esquerda. Na caixa de diálogo que aparece, selecione a aba <strong>Remoto</strong>. Por fim, desative a opção <strong>Permitir conexões somente de computadores que estejam executando a Área de Trabalho Remota com Autenticação no Nível da Rede</strong> (no final) e clique em <strong>OK</strong>:</p>
+<p>Para desabilitar a NLA no computador Windows a ser acessado, usando uma conta de administrador, abra o <strong>Painel de Controle</strong>, clique na categoria <strong>Sistema e Segurança</strong>, depois no item <strong>Sistema</strong>. Na tela seguinte, clique no <em>link</em> <strong>Configurações remotas</strong>, à esquerda. Na caixa de diálogo que aparece, selecione a aba <strong>Remoto</strong>. Por fim, desative a opção <strong>Permitir conexões somente de computadores que estejam executando a Área de Trabalho Remota com Autenticação no Nível da Rede</strong> (no final) e clique em <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/windows-rdp-03-pt.jpg" title="">
@@ -674,7 +697,16 @@ Failed to connect, CredSSP required by server.
 
 <p>Em algumas distribuições, a exemplo do <a href="https://www.debian.org/">Debian</a>, o Vinagre funciona. Creio que essas distribuições aplicaram alguma correção (<em>patch</em>) ao Vinagre.</p>
 
-<p>Provavelmente, na próxima versão do Linux Kamarada, eu devo substituir o Vinagre pelo Remmina, assim como fez a distribuição Ubuntu. Por isso, eu apresento o Vinagre aqui mais a título de informação também.</p>
+<p>Provavelmente, na <a href="/pt/2020/04/14/linux-kamarada-15.2-beta-deixa-o-seu-desktop-ainda-mais-verde/">próxima versão do Linux Kamarada</a>, eu devo substituir o Vinagre pelo Remmina, assim como fez a distribuição Ubuntu.</p>
+
+<p>Por isso, eu apresento o Vinagre aqui mais a título de informação também.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (20/04/2020):</strong>
+    
+<p>Quando terminar de ler, dê uma conferida no <a href="/pt/2020/04/14/linux-kamarada-15.2-beta-deixa-o-seu-desktop-ainda-mais-verde/">Linux Kamarada 15.2 Beta</a>!</p>
+
+</div>
 
 <p>O Vinagre já vem instalado por padrão no Linux Kamarada e no openSUSE, se você optou pelo ambiente GNOME, mas caso você precise ou queira instalá-lo, pode fazer isso com o comando:</p>
 
@@ -691,7 +723,7 @@ Failed to connect, CredSSP required by server.
 
 </div>
 
-<p>Na tela inicial do <strong>Vinagre</strong>, clique em <strong>Conectar</strong>:</p>
+<p>Na tela inicial do Vinagre, clique em <strong>Conectar</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/vinagre-02-pt.jpg" title="">
@@ -1094,7 +1126,7 @@ Failed to connect, CredSSP required by server.
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
