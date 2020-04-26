@@ -95,6 +95,7 @@
         <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
         <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
         <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
 
@@ -341,6 +342,15 @@
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
 
 
         
@@ -792,7 +802,7 @@
             <!-- AddThis Sharing Buttons End -->
         
 
-        <div class="media">
+        <div class="media my-4">
     <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
     <div class="media-body">
         Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="#" title="PayPal" target="_blank">PayPal</a> ou <a href="#">contribuir com o projeto de outras formas</a>.
@@ -904,6 +914,15 @@
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
 
 
         </div><!-- .col-xs-12 -->
@@ -1081,6 +1100,15 @@
         data-ad-format="auto"
         data-full-width-responsive="true"></ins>
     <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
 
 
     
@@ -1091,6 +1119,7 @@
         $(document).ready(function(){
             
                 var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
                 var $posts = $('.blog-post');
                 if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
                     // Post listing
@@ -1101,6 +1130,7 @@
                         post = 2;
                     }
                     $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
                 } else {
                     // Page or post
                     var $paragraphs = $('.blog-post-content p').filter(function() {
@@ -1114,14 +1144,21 @@
                             paragraph = 1;
                         }
                         $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
                     } else {
                         $ad.remove();
+                        $please_allow_ads.remove();
                     }
                 }
             
-            $('.adsbygoogle').each(function(index, element){
-                adsbygoogle.push({});
-            });
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
         });
     </script>
     <!-- Google AdSense End -->
