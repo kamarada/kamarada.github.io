@@ -9,10 +9,278 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 26 Apr 2020 01:46:01 -0300</pubDate>
-        <lastBuildDate>Sun, 26 Apr 2020 01:46:01 -0300</lastBuildDate>
+        <pubDate>Mon, 27 Apr 2020 19:46:44 -0300</pubDate>
+        <lastBuildDate>Mon, 27 Apr 2020 19:46:44 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>Servindo áreas de trabalho remotas do Linux para clientes Windows usando XRDP</title>
+                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, vimos como usar clientes RDP no &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; para acessar áreas de trabalho remotas do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Services&quot;&gt;Terminal Services&lt;/a&gt; do &lt;a href=&quot;https://www.microsoft.com/pt-br/cloud-platform/windows-server&quot;&gt;Windows Server&lt;/a&gt;. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Service às avessas”), é possível fazer isso?&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;É possível sim! Hoje você verá como fazer no &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; usando o XRDP.&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;http://xrdp.org/&quot;&gt;XRDP&lt;/a&gt; é um servidor de áreas de trabalho remotas para Linux baseado no protocolo &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Protocol&quot;&gt;RDP&lt;/a&gt; (&lt;em&gt;Remote Desktop Protocol&lt;/em&gt;, “protocolo de área de trabalho remota”). Esse é o mesmo protocolo usado pelo aplicativo &lt;strong&gt;Conexão de Área de Trabalho Remota&lt;/strong&gt; do Windows e pelos clientes RDP que vimos no &lt;a href=&quot;/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-o-xrdp&quot;&gt;Instalando o XRDP&lt;/h2&gt;
+
+&lt;p&gt;No computador ou servidor Linux que disponibilizará a(s) área(s) de trabalho (vamos chamá-lo apenas de “servidor” de agora em diante), instale o XRDP executando os comandos a seguir como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
+# zypper in xrdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Habilite o serviço do XRDP para que ele seja iniciado automaticamente durante o &lt;em&gt;boot&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl enable xrdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você também pode iniciar o XRDP imediatamente, não precisa reiniciar o servidor:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl start xrdp
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;instalando-o-vnc&quot;&gt;Instalando o VNC&lt;/h2&gt;
+
+&lt;p&gt;Para prover conexão via RDP, um protocolo nativo do Windows, o XRDP utiliza nos bastidores o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Virtual_Network_Computing&quot;&gt;VNC&lt;/a&gt;, um protocolo de acesso remoto mais comum no Linux. Por isso, antes de usar o XRDP propriamente dito, devemos instalar o VNC, o que é fácil fazer no Linux Kamarada e no openSUSE por meio do &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Abra o Centro de controle do YaST. Para fazer isso no Linux Kamarada, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentro da categoria &lt;strong&gt;Serviços de rede&lt;/strong&gt;, clique no item &lt;strong&gt;Administração remota (VNC)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela seguinte, selecione a opção &lt;strong&gt;Permitir Administração Remota com Gerenciamento de Sessões&lt;/strong&gt; e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(na verdade, eu testei as duas primeiras opções e não vi diferença no final)&lt;/p&gt;
+
+&lt;p&gt;O YaST informa que é necessário instalar o pacote &lt;strong&gt;vncmanager&lt;/strong&gt;. Clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde a conclusão do processo de instalação e configuração. Ao final, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurando-o-firewall-no-servidor&quot;&gt;Configurando o firewall no servidor&lt;/h2&gt;
+
+&lt;p&gt;Para terminar a instalação e configuração do XRDP, falta apenas mais um detalhe, que é liberar no &lt;em&gt;firewall&lt;/em&gt; a porta usada pelo protocolo RDP, que é, por padrão, a porta 3389 TCP.&lt;/p&gt;
+
+&lt;p&gt;Se você usa o &lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;, que é o &lt;em&gt;firewall&lt;/em&gt; padrão do Linux Kamarada, o protocolo RDP está pré-cadastrado com o nome de &lt;code class=&quot;highlighter-rouge&quot;&gt;ms-wbt&lt;/code&gt; (sigla para &lt;em&gt;Microsoft Windows-Based Terminal&lt;/em&gt;). Você só precisa habilitá-lo na zona da sua interface de rede. Supondo que seja a zona pública (&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;), você pode habilitá-lo com o comando (modifique conforme necessário):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# firewall-cmd --permanent --zone=public --add-service=ms-wbt
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, recarregue as regras do firewalld:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# firewall-cmd --reload
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Caso você use o &lt;a href=&quot;/pt/2019/11/18/proteja-se-com-o-firewall-iptables/&quot;&gt;&lt;em&gt;firewall&lt;/em&gt; &lt;strong&gt;iptables&lt;/strong&gt;&lt;/a&gt;, para liberar a porta 3389 TCP, adicione essas linhas ao seu &lt;em&gt;script&lt;/em&gt; de configuração:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# RDP (porta 3389/TCP)
+iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note que você só precisa fazer essa configuração no servidor. Se ela fosse necessária também no cliente, teríamos feito também no &lt;a href=&quot;/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;encerrando-a-sessão-no-servidor&quot;&gt;Encerrando a sessão no servidor&lt;/h2&gt;
+
+&lt;p&gt;Enquanto usa a área de trabalho remota do Windows, você não pode usar o servidor e acessa-lo remotamente ao mesmo tempo: se você inicia um acesso remoto, a tela no servidor é bloqueada. Bem assim, se você faz &lt;em&gt;logon&lt;/em&gt; no servidor, o acesso remoto é interrompido.&lt;/p&gt;
+
+&lt;p&gt;O XRDP funciona de forma semelhante, com a diferença que o encerramento da sessão não é feito de forma automática, mas manual. Antes de iniciar um acesso remoto a um servidor XRDP, você deve encerrar sua sessão nesse servidor.&lt;/p&gt;
+
+&lt;p&gt;Para encerrar sua sessão no Linux Kamarada, abra o &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, expanda seu nome de usuário e clique em &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;acesso-remoto-a-partir-do-windows&quot;&gt;Acesso remoto a partir do Windows&lt;/h2&gt;
+
+&lt;p&gt;No computador com Windows a partir do qual você fará o acesso remoto, abra o &lt;strong&gt;menu Iniciar&lt;/strong&gt;, no canto inferior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;conexao&lt;/code&gt; e clique no ícone do aplicativo &lt;strong&gt;Conexão de Área de Trabalho Remota&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite o endereço IP ou o nome de rede (&lt;em&gt;hostname&lt;/em&gt;) do &lt;strong&gt;Computador&lt;/strong&gt; que deseja acessar (no meu exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.253&lt;/code&gt;) e clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-08-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-08-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O aplicativo pergunta se pode confiar na conexão com o computador remoto. Marque a opção &lt;strong&gt;Não perguntar novamente sobre conexões com este computador&lt;/strong&gt; e clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-09-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-09-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O cliente de área de trabalho remota do Windows mostra a tela de &lt;em&gt;login&lt;/em&gt; do XRDP:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-10-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-10-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Digite seu nome de usuário (&lt;em&gt;username&lt;/em&gt;) e senha (&lt;em&gt;password&lt;/em&gt;) no servidor Linux acessado e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Feito isso, você terá acesso à sua área de trabalho no servidor Linux acessado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;(note que, inicialmente, o acesso é feito em tela cheia, mas você pode mudar para uma janela)&lt;/p&gt;
+
+&lt;p&gt;Quando não precisar mais do acesso remoto, lembre-se de encerrar sua sessão no Linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;dica-criando-um-atalho-para-a-conexão&quot;&gt;Dica: criando um atalho para a conexão&lt;/h2&gt;
+
+&lt;p&gt;Se pretende acessar esse servidor Linux com frequência, você pode, para a sua conveniência, salvar os dados da conexão em algum local de fácil acesso, como a Área de Trabalho.&lt;/p&gt;
+
+&lt;p&gt;Para isso, na tela inicial do aplicativo Conexão de Área de Trabalho Remota, clique em &lt;strong&gt;Mostrar Opções&lt;/strong&gt;. Digite o endereço IP ou nome de rede do &lt;strong&gt;Computador&lt;/strong&gt; remoto com Linux. Digite também seu &lt;strong&gt;Nome de usuário&lt;/strong&gt; nesse computador. Opcionalmente, marque a opção &lt;strong&gt;Permitir salvar minhas credenciais&lt;/strong&gt; se você também deseja salvar a senha. Por fim, clique em &lt;strong&gt;Salvar como&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-12-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-12-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O aplicativo pergunta se pode confiar na conexão com o computador remoto. Marque a opção &lt;strong&gt;Não perguntar novamente sobre conexões com este computador&lt;/strong&gt; e clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-13-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-13-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você optou por salvar a senha, digite-a na caixa de diálogo seguinte, marque a opção &lt;strong&gt;Lembrar-me&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-14-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-14-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Escolha um local e um nome para o arquivo e salve-o.&lt;/p&gt;
+
+&lt;p&gt;Pronto! Feito isso, para se conectar novamente a esse servidor, é só dar duplo-clique no arquivo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-15-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;acesso-remoto-a-partir-do-linux&quot;&gt;Acesso remoto a partir do Linux&lt;/h2&gt;
+
+&lt;p&gt;Se seu computador com Linux possui um cliente RDP instalado, pode acessar remotamente outro computador ou servidor com Linux que serve áreas de trabalho pelo XRDP:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/04/rdp-server-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/04/rdp-server-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para mais informações sobre os clientes RDP existentes para Linux, consulte o &lt;em&gt;post&lt;/em&gt; anterior:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/&quot;&gt;Conexão de área de trabalho remota do Windows no Linux com clientes RDP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Como vimos, o XRDP é uma forma prática de prover acesso remoto ao Linux a partir do Windows, uma vez que não é necessário instalar &lt;em&gt;software&lt;/em&gt; adicional no computador com Windows, que já está pronto para atuar como cliente.&lt;/p&gt;
+
+&lt;p&gt;De certa forma, é também uma forma prática de prover acesso remoto entre computadores com Linux. Basta instalar no servidor o XRDP e nos clientes, um dos programas listados no &lt;a href=&quot;/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.hiroom2.com/2018/06/14/opensuse-15-xrdp-kde-en/&quot;&gt;OpenSUSE Leap 15: Connect to KDE desktop environment via XRDP - Narrow Escape&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-vnc.html&quot;&gt;Remote Graphical Sessions with VNC - Reference - openSUSE Leap 15.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://documentation.suse.com/sles-sap/15-SP1/html/SLES4SAP-guide/cha-s4s-configure-rdp.html&quot;&gt;Connecting via RDP - Guide - SUSE Linux Enterprise Server for SAP Applications 15 SP1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/a/480858/106621&quot;&gt;opensuse - Enabling XRDP for remote on SUSE Linux Enterprise Server 12 SP3 (HVM) - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nextofwindows.com/how-to-save-password-in-a-remote-desktop-connection-in-windows-8&quot;&gt;How To Save Password in A Remote Desktop Connection in Windows 8 - Next of Windows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=b3wTEelo7zo&quot;&gt;Virtual Desktop Infrastructure by xrdp - openSUSE - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Mon, 27 Apr 2020 16:40:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Linux Kamarada 15.2 Beta deixa o seu desktop ainda mais verde</title>
@@ -3228,662 +3496,6 @@ $ gpg --import public_key
                 <pubDate>Tue, 14 Jan 2020 22:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/01/14/linux-kamarada-libera-versao-candidata-a-lancamento-15.1-rc/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/01/14/linux-kamarada-libera-versao-candidata-a-lancamento-15.1-rc/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>10 jogos clássicos para Linux</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/classic-games.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/12/classic-games.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quem disse que o &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; não é um sistema operacional para jogos? No clima do recesso de Natal, decidi pesquisar jogos para Linux e fiquei impressionado com o que encontrei. Eu mesmo não sabia que havia tantas opções disponíveis, e mais jogos são lançados a cada dia, à medida em que o Linux atrai novos usuários e desenvolvedores.&lt;/p&gt;
-
-&lt;p&gt;Escolhi 20 jogos para mostrar aqui e vou começar pelos 10 que são verdadeiros clássicos.&lt;/p&gt;
-
-&lt;p&gt;Alguns desses jogos clássicos se tornaram populares entre os usuários de computadores &lt;em&gt;desktops&lt;/em&gt; porque vem incluídos no sistema operacional &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Usuários do Linux podem desfrutar das versões fornecidas pelo &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; e pelo &lt;a href=&quot;https://kde.org/&quot;&gt;KDE&lt;/a&gt;, as duas maiores áreas de trabalho para Linux em número de usuários e aplicativos integrados.&lt;/p&gt;
-
-&lt;p&gt;Na verdade, todos os jogos listados a seguir devem funcionar bem em todas as áreas de trabalho, mas pode ser que os jogos do KDE funcionem melhor em áreas de trabalho baseadas na biblioteca &lt;a href=&quot;https://www.qt.io/&quot;&gt;Qt&lt;/a&gt; (como o próprio KDE, o &lt;a href=&quot;https://www.deepin.org/&quot;&gt;Deepin&lt;/a&gt; e o &lt;a href=&quot;https://lxqt.org/&quot;&gt;LXQt&lt;/a&gt;), enquanto os jogos do GNOME funcionem melhor em áreas de trabalho baseadas em &lt;a href=&quot;https://gtk.org/&quot;&gt;GTK&lt;/a&gt; (o próprio GNOME e quase todas as outras, incluindo &lt;a href=&quot;https://unity8.io/&quot;&gt;Unity&lt;/a&gt;, &lt;a href=&quot;https://xfce.org/&quot;&gt;Xfce&lt;/a&gt;, &lt;a href=&quot;http://developer.linuxmint.com/projects/cinnamon-projects.html&quot;&gt;Cinnamon&lt;/a&gt;, &lt;a href=&quot;https://mate-desktop.org/pt/&quot;&gt;MATE&lt;/a&gt;, &lt;a href=&quot;https://elementary.io/&quot;&gt;Pantheon&lt;/a&gt;, &lt;a href=&quot;https://lxde.org/&quot;&gt;LXDE&lt;/a&gt; e &lt;a href=&quot;https://budgie-desktop.org/&quot;&gt;Budgie&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Além disso, todos os jogos listados a seguir são &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_livre_e_de_c%C3%B3digo_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; livres e de código aberto&lt;/a&gt; e, exceto pelo último, todos vem incluídos no &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;Linux Kamarada&lt;/a&gt;. Como de costume, aqui eu foco no openSUSE e no Linux Kamarada, mas se você usa outra distribuição Linux, provavelmente deve ser possível instalar esses jogos nela com facilidade.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Paciência&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/aisleriot-pt.jpg&quot; title=&quot;Aisleriot&quot;&gt;
-&lt;img src=&quot;/files/2019/12/aisleriot-pt.jpg&quot; alt=&quot;Aisleriot&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Aisleriot&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kpat-pt.jpg&quot; title=&quot;KPatience&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kpat-pt.jpg&quot; alt=&quot;KPatience&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KPatience&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Paci%C3%AAncia_(jogo)&quot;&gt;&lt;strong&gt;Paciência&lt;/strong&gt;&lt;/a&gt; é qualquer jogo de mesa — comumente jogo de baralho — que uma pessoa pode jogar sozinha. O jogo de paciência mais famoso é o &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Klondike_(solitaire)&quot;&gt;Klondike&lt;/a&gt;&lt;/strong&gt;, tanto que a palavra “Paciência” normalmente remete a ele, uma vez que o Windows o batizou assim. Outros jogos populares de paciência incluem &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/FreeCell&quot;&gt;FreeCell&lt;/a&gt;&lt;/strong&gt; e &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Paci%C3%AAncia_Spider&quot;&gt;Spider&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Para jogar jogos de paciência, você precisa, como o nome sugere, de paciência. Para os jogos mais simples, onde a forma como o jogo se desenrola depende apenas de como as cartas vão aparecendo, sua paciência é mesmo a única coisa que você precisa. Mas existem também jogos de paciência onde você precisa planejar sua estratégia e pensar no futuro para ganhar. Todos os jogos de paciência têm em comum a necessidade do jogador colocar as cartas numa determinada ordem — enquanto as move, vira e reordena.&lt;/p&gt;
-
-&lt;p&gt;O GNOME oferece uma coleção de 80 jogos de paciência no aplicativo &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Aisleriot&quot;&gt;Aisleriot&lt;/a&gt;&lt;/strong&gt;, que vem instalado por padrão no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in aisleriot aisleriot-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você pode encontrar mais informações sobre cada um dos jogos do Aisleriot no próprio aplicativo, abrindo o menu &lt;strong&gt;Ajuda&lt;/strong&gt; ou pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt;, ou lendo o manual &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/aisleriot/stable/index.html.pt_BR&quot;&gt;Manual do AisleRiot&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O KDE também tem sua própria coleção de jogos de paciência chamada &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kpat&quot;&gt;KPatience&lt;/a&gt;&lt;/strong&gt;. Ela pode ser instalada executando o seguinte comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kpat kpat-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você pode encontrar mais informações sobre cada um dos jogos do KPatience no próprio aplicativo, abrindo o menu &lt;strong&gt;Ajuda&lt;/strong&gt; ou pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt;, ou lendo o manual &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/kpat/index.html&quot;&gt;Manual do KPatience&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kmahjongg.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Paciência Mahjongg&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-mahjongg-pt.jpg&quot; title=&quot;Mahjongg do GNOME&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-mahjongg-pt.jpg&quot; alt=&quot;Mahjongg do GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Mahjongg do GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kmahjongg-pt.jpg&quot; title=&quot;KMahjongg&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kmahjongg-pt.jpg&quot; alt=&quot;KMahjongg&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KMahjongg&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;A &lt;strong&gt;Paciência Mahjongg&lt;/strong&gt;, também conhecida simplesmente como &lt;strong&gt;Mahjongg&lt;/strong&gt;, é uma versão para um jogador do clássico jogo de mesa chinês para quatro jogadores chamado &lt;a href=&quot;https://pt.wikipedia.org/wiki/Mahjong&quot;&gt;Mahjong&lt;/a&gt;. É composto de 144 peças com símbolos chineses, chamadas de pedras. Algumas versões adicionam letras latinas e algarismos arábicos pensando em um público ocidental.&lt;/p&gt;
-
-&lt;p&gt;As 144 pedras são empilhadas em camadas. No início, há pedras que estão embaixo de outras e não podem ser vistas. Uma pedra está “aberta” se nenhuma outra pedra está apoiada nela, de modo que pode ser removida da pilha sem derrubar outras pedras. Você pode identificar pedras abertas pela borda livre à esquerda ou à direita. Seu objetivo é combinar pares de peças abertas idênticas e removê-los da pilha. O jogo termina quando todos os pares foram removidos ou quando não há pares abertos restantes.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://wiki.gnome.org/Apps/Mahjongg&quot;&gt;&lt;strong&gt;Mahjongg&lt;/strong&gt;&lt;/a&gt; do GNOME vem instalado por padrão, pronto pra usar no Linux Kamarada. No openSUSE, ele pode ser instalado executando o comando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-mahjongg gnome-mahjongg-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A versão do KDE se chama &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kmahjongg&quot;&gt;KMahjongg&lt;/a&gt;&lt;/strong&gt; e pode ser instalada no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kmahjongg kmahjongg-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-mahjongg/stable/&quot;&gt;Mahjongg - GNOME Help&lt;/a&gt; (em inglês)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/kmahjongg/index.html&quot;&gt;Manual do KMahjongg&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kmines.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Campo minado&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-mines-pt.jpg&quot; title=&quot;Minas do GNOME&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-mines-pt.jpg&quot; alt=&quot;Minas do GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Minas do GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kmines-pt.jpg&quot; title=&quot;KMines&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kmines-pt.jpg&quot; alt=&quot;KMines&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KMines&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Campo_minado&quot;&gt;Campo minado&lt;/a&gt;&lt;/strong&gt; é um jogo de lógica para um jogador. O objetivo é encontrar todas as minas que estão escondidas sem detoná-las. Você precisará, além de lógica, de um pouco de sorte.&lt;/p&gt;
-
-&lt;p&gt;O jogo começa com uma grade de quadrados cobertos e você não faz ideia do que há neles. Clicar em um quadrado revela o que há nele: vazio ou mina. Se você acertar uma mina, o jogo acaba. Se o quadrado estiver vazio, ele poderá mostrar um número, indicando quantos quadrados vizinhos tem minas, ou nada, se não houver minas por perto. Depois de descobrir alguns quadrados, você começa a deduzir quais tem minas e quais não tem. Você vence o jogo depois de revelar todos os quadrados vazios e marcar todos os quadrados com minas.&lt;/p&gt;
-
-&lt;p&gt;O GNOME tem um clone do campo minado chamado &lt;a href=&quot;https://wiki.gnome.org/Apps/Mines&quot;&gt;&lt;strong&gt;Minas&lt;/strong&gt;&lt;/a&gt;, que vem instalado por padrão, pronto pra usar no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-mines gnome-mines-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O KDE também tem seu próprio clone do campo minado chamado &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kmines&quot;&gt;KMines&lt;/a&gt;&lt;/strong&gt;, que pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kmines kmines-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-mines/stable/&quot;&gt;GNOME Mines - GNOME Help&lt;/a&gt; (em inglês)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/kmines/index.html&quot;&gt;Manual do KMines&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/chess.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Xadrez&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-chess-pt.jpg&quot; title=&quot;Xadrez do GNOME&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-chess-pt.jpg&quot; alt=&quot;Xadrez do GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Xadrez do GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/knights-pt.jpg&quot; title=&quot;KNights&quot;&gt;
-&lt;img src=&quot;/files/2019/12/knights-pt.jpg&quot; alt=&quot;KNights&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KNights&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.wikipedia.org/wiki/Xadrez&quot;&gt;&lt;strong&gt;xadrez&lt;/strong&gt;&lt;/a&gt; é um jogo de estratégia para dois jogadores, jogado em um tabuleiro quadriculado 8x8 com quadrados de cores claras e escuras alternadas. É jogado por milhões de pessoas em todo o mundo e é considerado também um esporte.&lt;/p&gt;
-
-&lt;p&gt;Um jogador controla as peças brancas e o outro, as pretas. Cada jogador começa o jogo com 16 peças: 1 rei, 1 rainha, 2 torres, 2 cavalos, 2 bispos e 8 peões. Cada tipo de peça se move de maneira diferente. Os jogadores travam uma batalha movendo suas peças e capturando as peças um do outro. O objetivo do jogo é deixar o rei do adversário em xeque-mate. Isso acontece quando o rei está sob ataque imediato (em xeque) e não há movimento que possa tirá-lo do ataque.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://wiki.gnome.org/Apps/Chess&quot;&gt;&lt;strong&gt;Xadrez&lt;/strong&gt;&lt;/a&gt; do GNOME permite que você jogue contra um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Motor_de_xadrez&quot;&gt;mecanismo de xadrez&lt;/a&gt; do computador, como o &lt;a href=&quot;https://www.gnu.org/software/chess/&quot;&gt;GNU Chess&lt;/a&gt; (padrão), ou contra outra pessoa se revezando no mesmo computador. Ele vem pronto pra usar no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-chess gnome-chess-lang gnuchess
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O xadrez do KDE se chama &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.knights&quot;&gt;KNights&lt;/a&gt;&lt;/strong&gt;. Ele permite que você jogue localmente, contra um mecanismo de xadrez ou outra pessoa, ou &lt;em&gt;online&lt;/em&gt;, por meio do &lt;a href=&quot;https://www.freechess.org/&quot;&gt;Free Internet Chess Server (FICS)&lt;/a&gt;. Além disso, você pode assistir a dois mecanismos de xadrez jogando um contra o outro. O KNights pode ser instalado executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in knights knights-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo o manual &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-chess/stable/index.html.pt_BR&quot;&gt;Manual do jogo de xadrez GNOME Chess&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/knights/index.html&quot;&gt;Manual do Knights&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/qgo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Reversi&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/iagno-pt.jpg&quot; title=&quot;Iagno&quot;&gt;
-&lt;img src=&quot;/files/2019/12/iagno-pt.jpg&quot; alt=&quot;Iagno&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Iagno&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kreversi-pt.jpg&quot; title=&quot;KReversi&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kreversi-pt.jpg&quot; alt=&quot;KReversi&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KReversi&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Reversi&quot;&gt;Reversi&lt;/a&gt;&lt;/strong&gt;, também conhecido como &lt;strong&gt;Othello&lt;/strong&gt;, é um jogo de estratégia para dois jogadores, jogado em um tabuleiro 8x8 com quadrados da mesma cor. As peças do jogo são 64 discos idênticos de dois lados, que são claros de um lado e escuros do outro.&lt;/p&gt;
-
-&lt;p&gt;Os jogadores se revezam colocando discos no tabuleiro, com sua cor atribuída virada pra cima. Durante uma jogada, todos os discos do adversário que estejam em uma linha reta (horizontal, vertical ou diagonal) entre o disco recém-colocado e outro disco do jogador atual são virados e passam a ser da cor desse jogador. O jogo termina quando todas as casas estiverem ocupadas e o vencedor é o jogador com mais discos da sua cor no tabuleiro.&lt;/p&gt;
-
-&lt;p&gt;O GNOME chama sua versão do Reversi de &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Iagno&quot;&gt;Iagno&lt;/a&gt;&lt;/strong&gt;. Ele vem instalado por padrão, pronto pra usar no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in iagno iagno-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O KDE chama sua versão do Reversi de &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kreversi&quot;&gt;KReversi&lt;/a&gt;&lt;/strong&gt;. Ela pode ser instalada executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kreversi kreversi-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/iagno/stable/index.html.pt_BR&quot;&gt;Iagno - Ajuda do GNOME&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/kreversi/index.html&quot;&gt;Manual do KReversi&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/ksudoku.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Sudoku&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-sudoku-pt.jpg&quot; title=&quot;Sudoku do GNOME&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-sudoku-pt.jpg&quot; alt=&quot;Sudoku do GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Sudoku do GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/ksudoku-pt.jpg&quot; title=&quot;KSudoku&quot;&gt;
-&lt;img src=&quot;/files/2019/12/ksudoku-pt.jpg&quot; alt=&quot;KSudoku&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KSudoku&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Sudoku&quot;&gt;Sudoku&lt;/a&gt;&lt;/strong&gt; (“número único”, em japonês) é um jogo de lógica com uma grade quadriculada 9x9 dividida em 9 subgrades 3x3. O objetivo é preencher cada quadrado com um número entre 1 e 9 (inclusive), de modo que esse número não seja repetido na mesma linha, coluna ou subgrade. O quebra-cabeça tem algumas pistas iniciais, que são números inseridos em alguns quadrados, e os restantes devem ser preenchidos. Cada quebra-cabeça admite uma única solução, na qual cada linha, coluna e subgrade contém todos os números de 1 a 9.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://wiki.gnome.org/Apps/Sudoku&quot;&gt;&lt;strong&gt;Sudoku&lt;/strong&gt;&lt;/a&gt; do GNOME vem instalado por padrão, pronto pra usar no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-sudoku gnome-sudoku-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A versão do KDE se chama &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.ksudoku&quot;&gt;KSudoku&lt;/a&gt;&lt;/strong&gt; e pode ser instalada no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in ksudoku ksudoku-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-sudoku/stable/&quot;&gt;GNOME Sudoku - GNOME Help&lt;/a&gt; (em inglês)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/ksudoku/index.html&quot;&gt;Manual do KSudoku&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/quadrapassel.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Tetris&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/quadrapassel-pt.jpg&quot; title=&quot;Quadrapassel&quot;&gt;
-&lt;img src=&quot;/files/2019/12/quadrapassel-pt.jpg&quot; alt=&quot;Quadrapassel&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Quadrapassel&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kblocks-pt.jpg&quot; title=&quot;KBlocks&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kblocks-pt.jpg&quot; alt=&quot;KBlocks&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KBlocks&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Tetris&quot;&gt;Tetris&lt;/a&gt;&lt;/strong&gt; é o clássico jogo de encaixar blocos. Formas geométricas, feitas de quatro blocos cada, caem em ordem aleatória. Você deve girar e mover as formas pela tela para empilhar os blocos de forma que linhas sejam completamente preenchidas. Quando uma linha é completada, ela é removida, liberando mais espaço na área de jogo. Se a pilha cresce de um jeito que não há mais espaço suficiente para que os blocos caiam, o jogo acaba.&lt;/p&gt;
-
-&lt;p&gt;O GNOME tem uma versão do Tetris chamada &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Quadrapassel&quot;&gt;Quadrapassel&lt;/a&gt;&lt;/strong&gt;. Ela vem instalada por padrão, pronta pra usar no Linux Kamarada e pode ser instalada no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in quadrapassel quadrapassel-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O KDE também tem seu Tetris, chamado &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.kblocks&quot;&gt;KBlocks&lt;/a&gt;&lt;/strong&gt;, que pode ser instalado no openSUSE com:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kblocks kblocks-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Em ambos os jogos, você pode encontrar mais informações no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/quadrapassel/stable/&quot;&gt;Quadrapassel - GNOME Help&lt;/a&gt; (em inglês)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/kblocks/index.html&quot;&gt;Manual do KBlocks&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/ksnakeduel.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Cobra&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-nibbles-pt.jpg&quot; title=&quot;Nibbles&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-nibbles-pt.jpg&quot; alt=&quot;Nibbles&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Nibbles&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/ksnakeduel-pt.jpg&quot; title=&quot;KSnakeDuel&quot;&gt;
-&lt;img src=&quot;/files/2019/12/ksnakeduel-pt.jpg&quot; alt=&quot;KSnakeDuel&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KSnakeDuel&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt.wikipedia.org/wiki/Serpente_(jogo_eletr%C3%B4nico)&quot;&gt;&lt;strong&gt;jogo da cobrinha&lt;/strong&gt;&lt;/a&gt; é um conceito de jogo em que o jogador controla uma cobra que cresce em comprimento. Tornou-se popular depois que foi incluído nos celulares da &lt;a href=&quot;https://www.nokia.com/pt_int/&quot;&gt;Nokia&lt;/a&gt; em 1998.&lt;/p&gt;
-
-&lt;p&gt;TODO Incluir imagem do Snake, da Nokia&lt;/p&gt;
-
-&lt;p&gt;Existe um jogo de cobra para GNOME chamado &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Nibbles&quot;&gt;Nibbles&lt;/a&gt;&lt;/strong&gt;. O objetivo do jogo é engolir o máximo de objetos possível, evitando paredes de labirintos e outras cobras. O Nibbles vem pronto pra usar no Linux Kamarada e pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-nibbles gnome-nibbles-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O jogo da cobra para KDE é chamado &lt;strong&gt;&lt;a href=&quot;https://kde.org/applications/games/org.kde.ksnakeduel&quot;&gt;KSnakeDuel&lt;/a&gt;&lt;/strong&gt; e possui dois tipos de jogos:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;KSnakeDuel:&lt;/strong&gt; um jogo para dois jogadores, que você pode jogar contra o computador ou um amigo, no qual as cobras crescem sem precisar comer nada. Seu objetivo no jogo é viver mais tempo que o seu adversário. Para isso, evite bater numa parede, na sua própria cauda ou na do seu adversário. Na verdade, esse tipo de jogo está mais próximo do conceito de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Tron&quot;&gt;TRON&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;KSnake:&lt;/strong&gt; esse é um clone simples do jogo Snake em que o seu objetivo é sobreviver o maior tempo possível, comendo o máximo de frutas possível.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Você pode alternar entre esses tipos de jogos usando o seletor de tipo de jogo na caixa de diálogo de configuração. O KSnakeDuel pode ser instalado no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in ksnakeduel ksnakeduel-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você pode encontrar mais informações sobre o Nibbles e o KSnakeDuel (e o KSnake) no menu &lt;strong&gt;Ajuda&lt;/strong&gt;, pressionando a tecla &lt;strong&gt;F1&lt;/strong&gt; ou lendo a ajuda &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/gnome-nibbles/stable/index.html.pt_BR&quot;&gt;Nibbles - Ajuda do GNOME&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.kde.org/stable5/pt_BR/kdegames/ksnakeduel/index.html&quot;&gt;Manual do KSnakeDuel&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Copas&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-hearts-pt.jpg&quot; title=&quot;Copas do GNOME&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-hearts-pt.jpg&quot; alt=&quot;Copas do GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Copas do GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/hearts.jpg&quot; title=&quot;Hearts (Qt version)&quot;&gt;
-&lt;img src=&quot;/files/2019/12/hearts.jpg&quot; alt=&quot;Hearts (Qt version)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Hearts (Qt version)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Copas_(jogo_de_cartas)&quot;&gt;&lt;strong&gt;Copas&lt;/strong&gt;&lt;/a&gt; é um jogo de baralho para quatro jogadores que usa um baralho completo de 52 cartas (sem coringas). O objetivo é evitar puxar as cartas que tem valor, normalmente as cartas de copas e a dama de espadas. Assim que um jogador atinge um determinado número de pontos, o jogo termina e o jogador com a pontuação mais baixa é o vencedor.&lt;/p&gt;
-
-&lt;p&gt;Quantos pontos valem cada carta e quando o jogo termina depende da variante jogada. A maioria das pessoas está acostumada com variante padrão, em que cada carta de copas vale 1 ponto e a dama de espadas vale 13 pontos, as demais cartas não somam pontos. Nessa variante, o jogo termina assim que um jogador atinge 100 pontos.&lt;/p&gt;
-
-&lt;p&gt;Existe um jogo de Copas para o GNOME, mas foi descontinuado, tanto que não é listado na &lt;a href=&quot;https://wiki.gnome.org/Apps#Games&quot;&gt;lista oficial de jogos para o GNOME&lt;/a&gt;. Dá pra instalar e jogar, funciona, mas ninguém sabe por quanto tempo vai continuar funcionando, porque não recebe atualizações há algum tempo.&lt;/p&gt;
-
-&lt;p&gt;Apesar disso, decidi incluí-lo no Linux Kamarada, porque eu realmente gostava de jogar Copas!&lt;/p&gt;
-
-&lt;p&gt;O &lt;strong&gt;Copas&lt;/strong&gt; do GNOME não está disponível no repositório OSS. Para instalá-lo no openSUSE, você precisa adicionar o &lt;a href=&quot;https://en.opensuse.org/openSUSE:Games&quot;&gt;repositório de jogos&lt;/a&gt; primeiro:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/games/openSUSE_Leap_15.1/ games
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Aí sim, na sequência, você pode instalar o Copas executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in gnome-hearts gnome-hearts-lang
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Alternativamente, você pode instalar uma versão feita em Qt do jogo Copas (não faz parte dos jogos do KDE) chamada simplesmente de &lt;a href=&quot;https://github.com/Rescator7/Hearts&quot;&gt;&lt;strong&gt;Hearts&lt;/strong&gt;&lt;/a&gt; (copas, em inglês). Ela também está disponível no repositório de jogos e pode ser instalada executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hearts
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você pode encontrar mais informações sobre ambos os jogos em seus menus de ajuda.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2019/12/kcheckers.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Damas&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/kcheckers.jpg&quot; title=&quot;KCheckers&quot;&gt;
-&lt;img src=&quot;/files/2019/12/kcheckers.jpg&quot; alt=&quot;KCheckers&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KCheckers&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/qcheckers.jpg&quot; title=&quot;QCheckers&quot;&gt;
-&lt;img src=&quot;/files/2019/12/qcheckers.jpg&quot; alt=&quot;QCheckers&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;QCheckers&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Damas&quot;&gt;&lt;strong&gt;Damas&lt;/strong&gt;&lt;/a&gt; é um jogo de estratégia para dois jogadores jogado em um tabuleiro de xadrez 8×8. As peças se movimentam na diagonal e capturam as peças do adversário pulando-as. A captura, quando possível, é obrigatória. Vence o jogador que conseguir capturar todas as peças do adversário.&lt;/p&gt;
-
-&lt;p&gt;Atualmente, as famílias de jogos do GNOME e do KDE não incluem um jogo de damas, mas existe um jogo de damas para Linux feito em Qt chamado &lt;strong&gt;&lt;a href=&quot;https://portnov.github.io/qcheckers/&quot;&gt;QCheckers&lt;/a&gt;&lt;/strong&gt;, antes chamado KCheckers (a letra K no nome engana, porque esse jogo nunca fez parte da família do KDE).&lt;/p&gt;
-
-&lt;p&gt;A versão mais antiga (KCheckers) está disponível no repositório de jogos do openSUSE. Você pode instalá-la no Linux Kamarada e no openSUSE executando:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in kcheckers
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A versão mais nova (QCheckers) está em desenvolvimento e não está disponível nos repositórios oficiais do openSUSE, mas você pode obter pacotes compilados pela comunidade de usuários em &lt;a href=&quot;https://software.opensuse.org/package/qcheckers&quot;&gt;software.opensuse.org&lt;/a&gt; ou baixar o código-fonte do &lt;a href=&quot;https://github.com/portnov/qcheckers&quot;&gt;GitHub&lt;/a&gt; e compilar, se preferir (e souber como fazer).&lt;/p&gt;
-
-&lt;p&gt;Nas duas versões, você pode encontrar mais informações sobre o jogo no menu de ajuda.&lt;/p&gt;
-
-&lt;h2 id=&quot;outros-jogos-do-gnome-e-do-kde&quot;&gt;Outros jogos do GNOME e do KDE&lt;/h2&gt;
-
-&lt;p&gt;Essa lista está longe de incluir todos os jogos do GNOME e do KDE, aqui apresentei apenas alguns deles. Para ver a lista completa dos jogos mantidos atualmente por esses dois projetos, visite os &lt;em&gt;sites&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps#Games&quot;&gt;GNOME Wiki - Apps - Games&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kde.org/applications/games/&quot;&gt;Games - KDE.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;No próximo &lt;em&gt;post&lt;/em&gt; (que publicarei provavelmente quando voltar do recesso), mostrarei mais 10 jogos para Linux. Siga o Linux Kamarada nas redes sociais para receber a notificação!&lt;/p&gt;
-
-</description>
-                <pubDate>Sun, 22 Dec 2019 23:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2019/12/22/10-jogos-classicos-para-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2019/12/22/10-jogos-classicos-para-linux/</guid>
                 
                 
                     <category>pt</category>
