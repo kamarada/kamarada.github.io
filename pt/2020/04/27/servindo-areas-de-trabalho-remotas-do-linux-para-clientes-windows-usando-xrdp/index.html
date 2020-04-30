@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/04/29/remote-desktop-connection-to-linux-from-windows-using-the-xrdp-server/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -203,7 +207,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/04/29/remote-desktop-connection-to-linux-from-windows-using-the-xrdp-server/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -306,7 +310,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2020-04-27" />
+                <meta itemprop="dateModified" content="2020-04-30" />
             </div>
             <div class='col-sm-6'>
                 
@@ -352,7 +356,7 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>No <a href="/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/"><em>post</em> anterior</a>, vimos como usar clientes RDP no <a href="https://www.vivaolinux.com.br/linux/">Linux</a> para acessar áreas de trabalho remotas do <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> ou <a href="https://pt.wikipedia.org/wiki/Remote_Desktop_Services">Terminal Services</a> do <a href="https://www.microsoft.com/pt-br/cloud-platform/windows-server">Windows Server</a>. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Service às avessas”), é possível fazer isso?</p>
+            <p>No <a href="/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/"><em>post</em> anterior</a>, vimos como usar clientes RDP no <a href="https://www.vivaolinux.com.br/linux/">Linux</a> para acessar áreas de trabalho remotas do <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> ou <a href="https://pt.wikipedia.org/wiki/Remote_Desktop_Services">Terminal Services</a> do <a href="https://www.microsoft.com/pt-br/cloud-platform/windows-server">Windows Server</a>. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Services do Linux”), é possível fazer isso?</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/rdp-server.jpg" title="">
@@ -363,7 +367,7 @@
 
 <p>É possível sim! Hoje você verá como fazer no <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">Linux Kamarada</a> e no <a href="https://www.opensuse.org/">openSUSE</a> usando o XRDP.</p>
 
-<p>O <a href="http://xrdp.org/">XRDP</a> é um servidor de áreas de trabalho remotas para Linux baseado no protocolo <a href="https://pt.wikipedia.org/wiki/Remote_Desktop_Protocol">RDP</a> (<em>Remote Desktop Protocol</em>, “protocolo de área de trabalho remota”). Esse é o mesmo protocolo usado pelo aplicativo <strong>Conexão de Área de Trabalho Remota</strong> do Windows e pelos clientes RDP que vimos no <a href="/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/"><em>post</em> anterior</a>.</p>
+<p>O <a href="http://xrdp.org/">XRDP</a> é um servidor de áreas de trabalho remotas para Linux baseado no protocolo <a href="https://pt.wikipedia.org/wiki/Remote_Desktop_Protocol">RDP</a> (<em>Remote Desktop Protocol</em>, “protocolo de área de trabalho remota”). Esse é o mesmo protocolo usado pelo aplicativo <a href="https://support.microsoft.com/pt-br/help/4028379/windows-10-how-to-use-remote-desktop"><strong>Conexão de Área de Trabalho Remota</strong></a> do Windows e pelos clientes RDP que vimos no <a href="/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/"><em>post</em> anterior</a>.</p>
 
 <h2 id="instalando-o-xrdp">Instalando o XRDP</h2>
 
@@ -389,7 +393,7 @@
 
 <h2 id="instalando-o-vnc">Instalando o VNC</h2>
 
-<p>Para prover conexão via RDP, um protocolo nativo do Windows, o XRDP utiliza nos bastidores o <a href="https://pt.wikipedia.org/wiki/Virtual_Network_Computing">VNC</a>, um protocolo de acesso remoto mais comum no Linux. Por isso, antes de usar o XRDP propriamente dito, devemos instalar o VNC, o que é fácil fazer no Linux Kamarada e no openSUSE por meio do <a href="http://yast.opensuse.org/">Centro de controle do YaST</a>.</p>
+<p>Para prover conexões via RDP, um protocolo nativo do Windows, o XRDP utiliza nos bastidores o <a href="https://pt.wikipedia.org/wiki/Virtual_Network_Computing">VNC</a>, um protocolo de acesso remoto mais comum no Linux. Por isso, antes de usar o XRDP propriamente dito, devemos instalar o VNC, o que é fácil fazer no Linux Kamarada e no openSUSE por meio do <a href="http://yast.opensuse.org/">Centro de controle do YaST</a>.</p>
 
 <p>Abra o Centro de controle do YaST. Para fazer isso no Linux Kamarada, abra o menu <strong>Atividades</strong>, no canto superior esquerdo da tela, digite <code class="highlighter-rouge">yast</code> e clique no ícone correspondente:</p>
 
@@ -462,11 +466,11 @@
 iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Note que você só precisa fazer essa configuração no servidor. Se ela fosse necessária também no cliente, teríamos feito também no <a href="/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/"><em>post</em> anterior</a>.</p>
+<p>Note que você só precisa fazer essa configuração no servidor. Se ela fosse necessária também no cliente, teríamos feito também no <a href="/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/"><em>post</em> anterior</a>.</p>
 
 <h2 id="encerrando-a-sessão-no-servidor">Encerrando a sessão no servidor</h2>
 
-<p>Enquanto usa a área de trabalho remota do Windows, você não pode usar o servidor e acessa-lo remotamente ao mesmo tempo: se você inicia um acesso remoto, a tela no servidor é bloqueada. Bem assim, se você faz <em>logon</em> no servidor, o acesso remoto é interrompido.</p>
+<p>Enquanto usa a área de trabalho remota do Windows, você não pode usar o servidor (sentando-se em frente a ele) e acessa-lo remotamente ao mesmo tempo: se você inicia um acesso remoto, a tela no servidor é bloqueada. Bem assim, se você faz <em>logon</em> no servidor, o acesso remoto é interrompido.</p>
 
 <p>O XRDP funciona de forma semelhante, com a diferença que o encerramento da sessão não é feito de forma automática, mas manual. Antes de iniciar um acesso remoto a um servidor XRDP, você deve encerrar sua sessão nesse servidor.</p>
 
@@ -481,7 +485,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 <h2 id="acesso-remoto-a-partir-do-windows">Acesso remoto a partir do Windows</h2>
 
-<p>No computador com Windows a partir do qual você fará o acesso remoto, abra o <strong>menu Iniciar</strong>, no canto inferior esquerdo da tela, digite <code class="highlighter-rouge">conexao</code> e clique no ícone do aplicativo <strong>Conexão de Área de Trabalho Remota</strong>:</p>
+<p>No computador com Windows a partir do qual você fará o acesso remoto, abra o <strong>menu Iniciar</strong>, digite <code class="highlighter-rouge">conexao</code> e clique no ícone do aplicativo <strong>Conexão de Área de Trabalho Remota</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/rdp-server-07-pt.jpg" title="">
@@ -511,8 +515,8 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 <p>O cliente de área de trabalho remota do Windows mostra a tela de <em>login</em> do XRDP:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/04/rdp-server-10-pt.png" title="">
-<img src="/files/2020/04/rdp-server-10-pt.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+<a href="/files/2020/04/rdp-server-10.png" title="">
+<img src="/files/2020/04/rdp-server-10.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
 </a>
 
 </div>
@@ -534,7 +538,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 <h2 id="dica-criando-um-atalho-para-a-conexão">Dica: criando um atalho para a conexão</h2>
 
-<p>Se pretende acessar esse servidor Linux com frequência, você pode, para a sua conveniência, salvar os dados da conexão em algum local de fácil acesso, como a Área de Trabalho.</p>
+<p>Se pretende acessar esse servidor Linux com frequência, você pode, para a sua conveniência, salvar as configurações da conexão em algum local de fácil acesso, como a Área de Trabalho.</p>
 
 <p>Para isso, na tela inicial do aplicativo Conexão de Área de Trabalho Remota, clique em <strong>Mostrar Opções</strong>. Digite o endereço IP ou nome de rede do <strong>Computador</strong> remoto com Linux. Digite também seu <strong>Nome de usuário</strong> nesse computador. Opcionalmente, marque a opção <strong>Permitir salvar minhas credenciais</strong> se você também deseja salvar a senha. Por fim, clique em <strong>Salvar como</strong>:</p>
 
@@ -545,7 +549,11 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 </div>
 
-<p>O aplicativo pergunta se pode confiar na conexão com o computador remoto. Marque a opção <strong>Não perguntar novamente sobre conexões com este computador</strong> e clique em <strong>Conectar</strong>:</p>
+<p>Escolha um local e um nome para o arquivo e salve-o.</p>
+
+<p>Em seguida, clique em <strong>Conectar</strong>. Vamos fazer uma conexão apenas para salvar a senha.</p>
+
+<p>O aplicativo pergunta se você confia conectar com o computador remoto. Marque a opção <strong>Não perguntar novamente sobre conexões com este computador</strong> e clique em <strong>Conectar</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/rdp-server-13-pt.png" title="">
@@ -554,7 +562,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 </div>
 
-<p>Se você optou por salvar a senha, digite-a na caixa de diálogo seguinte, marque a opção <strong>Lembrar-me</strong> e clique em <strong>OK</strong>:</p>
+<p>Se você optou por salvar a senha, digite-a na caixa de diálogo seguinte, certifique-se de que a opção <strong>Lembrar-me</strong> esteja marcada (por padrão, está) e clique em <strong>OK</strong>:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/rdp-server-14-pt.png" title="">
@@ -563,7 +571,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 </div>
 
-<p>Escolha um local e um nome para o arquivo e salve-o.</p>
+<p>Agora você terá acesso à área de trabalho remota. Apenas encerre sua sessão.</p>
 
 <p>Pronto! Feito isso, para se conectar novamente a esse servidor, é só dar duplo-clique no arquivo:</p>
 
@@ -576,7 +584,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 
 <h2 id="acesso-remoto-a-partir-do-linux">Acesso remoto a partir do Linux</h2>
 
-<p>Se seu computador com Linux possui um cliente RDP instalado, pode acessar remotamente outro computador ou servidor com Linux que serve áreas de trabalho pelo XRDP:</p>
+<p>Se seu computador com Linux possui um cliente RDP instalado, pode acessar remotamente outro computador ou servidor com Linux rodando o XRDP — ou seja, uma conexão RDP Linux para Linux:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/04/rdp-server-16-pt.jpg" title="">
@@ -588,14 +596,14 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
 <p>Para mais informações sobre os clientes RDP existentes para Linux, consulte o <em>post</em> anterior:</p>
 
 <ul>
-  <li><a href="/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/">Conexão de área de trabalho remota do Windows no Linux com clientes RDP</a></li>
+  <li><a href="/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/">Conexão de área de trabalho remota do Windows no Linux com clientes RDP</a></li>
 </ul>
 
 <h2 id="conclusão">Conclusão</h2>
 
-<p>Como vimos, o XRDP é uma forma prática de prover acesso remoto ao Linux a partir do Windows, uma vez que não é necessário instalar <em>software</em> adicional no computador com Windows, que já está pronto para atuar como cliente.</p>
+<p>Como vimos, o XRDP é uma forma prática de prover acesso remoto ao Linux a partir do Windows, uma vez que não é necessário instalar <em>software</em> adicional no Windows, que já possui um cliente RDP nativo.</p>
 
-<p>De certa forma, é também uma forma prática de prover acesso remoto entre computadores com Linux. Basta instalar no servidor o XRDP e nos clientes, um dos programas listados no <a href="/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/"><em>post</em> anterior</a>.</p>
+<p>De certa forma, é também uma forma prática de prover acesso remoto de Linux para Linux. Basta instalar no servidor o XRDP e nos clientes, um dos clientes RDP listados no <a href="/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/"><em>post</em> anterior</a>.</p>
 
 <h2 id="referências">Referências</h2>
 
@@ -881,7 +889,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
     </div>
 </footer>
 
-<meta itemprop="description" content="No post anterior, vimos como usar clientes RDP no Linux para acessar áreas de trabalho remotas do Windows ou Terminal Services do Windows Server. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Service às avessas”), é possível fazer isso?É possível sim! Hoje você verá...">
+<meta itemprop="description" content="No post anterior, vimos como usar clientes RDP no Linux para acessar áreas de trabalho remotas do Windows ou Terminal Services do Windows Server. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Services do Linux”), é possível fazer isso?É possível sim! Hoje você verá...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
@@ -1017,7 +1025,7 @@ iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/04/29/remote-desktop-connection-to-linux-from-windows-using-the-xrdp-server/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
