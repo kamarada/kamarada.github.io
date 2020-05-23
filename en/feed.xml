@@ -9,10 +9,342 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 22 May 2020 08:42:32 -0300</pubDate>
-        <lastBuildDate>Fri, 22 May 2020 08:42:32 -0300</lastBuildDate>
+        <pubDate>Sat, 23 May 2020 13:41:49 -0300</pubDate>
+        <lastBuildDate>Sat, 23 May 2020 13:41:49 -0300</lastBuildDate>
         <generator>Jekyll v3.8.5</generator>
         
+        
+            <item>
+                <title>RetroArch: the ultimate all-in-one video game emulator</title>
+                <description>&lt;p&gt;An &lt;strong&gt;emulator&lt;/strong&gt; is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for that video game.&lt;/p&gt;
+
+&lt;p&gt;For years, there have been several emulators for various video games and they make the joy of the nostalgic, who want to play games of video games they own but don’t work anymore, or those who don’t have video games to play.&lt;/p&gt;
+
+&lt;p&gt;When I had my first contact with emulators, almost 20 years ago, I was using &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and I needed to install an emulator for each video game I wanted to emulate, for example: to emulate &lt;a href=&quot;https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System&quot;&gt;Super Nintendo&lt;/a&gt;, I used &lt;a href=&quot;/en/2019/08/14/how-to-play-super-nintendo-games-on-opensuse-with-the-snes9x-emulator/&quot;&gt;Snes9x&lt;/a&gt;, to emulate &lt;a href=&quot;https://en.wikipedia.org/wiki/Sega_Genesis&quot;&gt;Sega Genesis&lt;/a&gt;, I used &lt;a href=&quot;http://www.gens.me/&quot;&gt;Gens&lt;/a&gt;, and so on.&lt;/p&gt;
+
+&lt;p&gt;Is there an emulator for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; capable of emulating all (or at least many) video games?&lt;/p&gt;
+
+&lt;p&gt;Today, yes, there is: we have &lt;a href=&quot;https://www.retroarch.com/&quot;&gt;RetroArch&lt;/a&gt;. Multi-platform free and open-source software, RetroArch is not actually an emulator, but an interface (frontend) for several emulators, a kind of emulation center, capable of running virtually every retro game imaginable. RetroArch interfaces with emulators through the &lt;a href=&quot;http://www.libretro.com/&quot;&gt;libretro&lt;/a&gt; library (backend). Each emulator that libretro supports is encapsulated into what is called a libretro &lt;strong&gt;core&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The list of video games that RetroArch can emulate includes, but is not limited to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Atari 2600&lt;/li&gt;
+  &lt;li&gt;Nintendo Entertainment System (NES)&lt;/li&gt;
+  &lt;li&gt;Sega Genesis, also known as Mega Drive&lt;/li&gt;
+  &lt;li&gt;Game Boy, Game Boy Color (GBC), Game Boy Advance (GBA)&lt;/li&gt;
+  &lt;li&gt;Super Nintendo Entertainment System (SNES)&lt;/li&gt;
+  &lt;li&gt;PlayStation (PS, PS1, PSX), PlayStation 2 (PS2), PlayStation Portable (PSP)&lt;/li&gt;
+  &lt;li&gt;Nintendo 64 (N64)&lt;/li&gt;
+  &lt;li&gt;GameCube&lt;/li&gt;
+  &lt;li&gt;Nintendo DS&lt;/li&gt;
+  &lt;li&gt;Nintendo Wii&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Did you like it? Then read on to see how to install and use RetroArch on &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada&lt;/a&gt; and &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;where-to-download-games-roms&quot;&gt;Where to download games (ROMs)&lt;/h2&gt;
+
+&lt;p&gt;Files that contain games are commonly called &lt;strong&gt;ROMs&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For cartridge-based video games, such as the Super Nintendo and the Sega Genesis, their ROMs are files that contain the contents dumped from the cartridges.&lt;/p&gt;
+
+&lt;p&gt;RetroArch does not come with ROMs. Also there are no ROMs to download here on the Linux Kamarada website. You can search for ROMs on web search engines like &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For example, try searching for &lt;code class=&quot;highlighter-rouge&quot;&gt;sega genesis roms&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; if you download a ROM compressed as a ZIP archive, you don’t need to unzip it, RetroArch can open it as is.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-retroarch&quot;&gt;Installing RetroArch&lt;/h2&gt;
+
+&lt;p&gt;There are two different methods for installing RetroArch on openSUSE: from the graphical interface using 1-Click Install or from the terminal using the &lt;strong&gt;zypper&lt;/strong&gt; package manager — choose whichever method you prefer.&lt;/p&gt;
+
+&lt;p&gt;To install RetroArch using 1-Click Install, click the following button:&lt;/p&gt;
+
+&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/retroarch.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; 1-Click Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To install using the terminal, first add the needed repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f http://download.opensuse.org/repositories/Emulators/openSUSE_Leap_15.1/ emulators
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, install the RetroArch package:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in retroarch
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On openSUSE, each libretro core has its own package. Several cores are already installed by default as RetroArch dependencies. Later on, you can open &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt;’s &lt;strong&gt;Software Management&lt;/strong&gt;, search for &lt;code class=&quot;highlighter-rouge&quot;&gt;libretro&lt;/code&gt; and install or remove cores as you wish.&lt;/p&gt;
+
+&lt;p&gt;Right after installing, you should be able to launch RetroArch.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-retroarch&quot;&gt;Starting RetroArch&lt;/h2&gt;
+
+&lt;p&gt;To start RetroArch, if you use the &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop, click &lt;strong&gt;Activities&lt;/strong&gt;, by the upper-left corner of the screen, start typing &lt;code class=&quot;highlighter-rouge&quot;&gt;retroarch&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-launching-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-launching-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-main-screen-en.jpg&quot; title=&quot;The RetroArch main screen&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-main-screen-en.jpg&quot; alt=&quot;The RetroArch main screen&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The RetroArch main screen&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;setting-up-controls&quot;&gt;Setting up controls&lt;/h2&gt;
+
+&lt;p&gt;An interesting feature of RetroArch is that it has a global control configuration, which needs to be set up just once. RetroArch then adapts this global control configuration for each video game in the best possible way. If you used many emulators individually instead, you would have to set up controls on each of them.&lt;/p&gt;
+
+&lt;p&gt;RetroArch maps your real-world gamepad or keyboard buttons to a virtual controller called a &lt;a href=&quot;https://docs.libretro.com/guides/input-and-controls/&quot;&gt;RetroPad&lt;/a&gt;, then it maps the RetroPad buttons to the video games controllers buttons. A RetroPad does not exist in real life, it’s only a concept within RetroArch.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retropad.jpg&quot; title=&quot;Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers.&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retropad.jpg&quot; alt=&quot;Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;RetroPad has the same layout of a &lt;a href=&quot;https://www.playstation.com/en-us/explore/accessories/gaming-controllers/dualshock-4/&quot;&gt;Sony DualShock&lt;/a&gt;, the &lt;a href=&quot;https://en.wikipedia.org/wiki/PlayStation_(console)&quot;&gt;PlayStation&lt;/a&gt; controller. So, if you are going to buy a gaming controller, I recommend you to buy a gaming controller for PC with that same layout. I have a controller like that and it’s the best controller for emulation, because it has many buttons, so it can be mapped to any video game controller.&lt;/p&gt;
+
+&lt;p&gt;You can use a real controller with less buttons, that’s perfectly fine. However, if that is the case, you may be missing buttons to emulate some video games.&lt;/p&gt;
+
+&lt;p&gt;If you are going to play with a gamepad, plug it in. RetroArch should detect it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-joystick-detected-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-joystick-detected-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;RetroArch is also able to automatically configure many gamepad models: you plug your gamepad and it just works, like a real video game. Possibly your gamepad is ready to use right now and you can just start playing.&lt;/p&gt;
+
+&lt;p&gt;To navigate the RetroArch menu, you can use your keyboard, mouse or the gamepad you just connected. To navigate using the mouse, simply click where you want to go.&lt;/p&gt;
+
+&lt;p&gt;To navigate the menu using the keyboard, use the &lt;strong&gt;arrow keys&lt;/strong&gt; to move through the options, &lt;strong&gt;Enter&lt;/strong&gt; to advance in the menu, &lt;strong&gt;Backspace&lt;/strong&gt; to go back and &lt;strong&gt;Esc&lt;/strong&gt; to quit RetroArch.&lt;/p&gt;
+
+&lt;p&gt;To navigate the menu using the gamepad, use the &lt;strong&gt;arrows&lt;/strong&gt; to move through the options, &lt;strong&gt;O&lt;/strong&gt; (circle) to advance in the menu and &lt;strong&gt;X&lt;/strong&gt; (cross) to go back.&lt;/p&gt;
+
+&lt;p&gt;If you want to change the mapping of your keyboard or gamepad to the RetroPad, enter the &lt;strong&gt;Settings&lt;/strong&gt; menu, navigate to &lt;strong&gt;Input&lt;/strong&gt; and finally select &lt;strong&gt;Port 1 Binds&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-setup-1-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-setup-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In my case, RetroArch has already mapped my gamepad:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-setup-2-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-setup-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To quickly assign all buttons at once, choose &lt;strong&gt;Bind All&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Press the buttons following the RetroArch guidelines:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-setup-3-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-setup-3-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In the end, you will have all buttons mapped and you will be back to the menu.&lt;/p&gt;
+
+&lt;p&gt;If you are going to play two-player games, set up the second player controls in a similar way.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-a-game&quot;&gt;Starting a game&lt;/h2&gt;
+
+&lt;p&gt;To start a game (open a ROM) in RetroArch, go back to the &lt;strong&gt;Main Menu&lt;/strong&gt; and select &lt;strong&gt;Load Content&lt;/strong&gt;. Navigate to the game folder:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-open-rom-1-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-open-rom-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Find the game you want to start, select it once you have:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-open-rom-2-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-open-rom-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If the game is zipped, you will be presented with two options, &lt;strong&gt;Browse Archive&lt;/strong&gt; or &lt;strong&gt;Load Archive&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-open-rom-3-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-open-rom-3-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In most cases, the ZIP archive contains just one game and you can just load it.&lt;/p&gt;
+
+&lt;p&gt;Based on the selected file, RetroArch suggests some emulators (cores) to be used:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-open-rom-4-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-open-rom-4-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You should always choose the platform the game was supposed to run on. For example, I’m loading a Sega Genesis game. So, I’m going to select the Sega Genesis core, which is based on the &lt;a href=&quot;https://www.retrodev.com/blastem/&quot;&gt;BlastEm&lt;/a&gt; emulator.&lt;/p&gt;
+
+&lt;p&gt;The game should start:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-open-rom-5.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-open-rom-5.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;accessing-the-in-game-menu&quot;&gt;Accessing the in-game menu&lt;/h2&gt;
+
+&lt;p&gt;If during the game you need to access the RetroArch menu, press &lt;strong&gt;F1&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-game-menu-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-game-menu-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;saving-and-loading-game-states&quot;&gt;Saving and loading game states&lt;/h2&gt;
+
+&lt;p&gt;An advantage the emulator offers over the video game is that you can save the game state, as well as resume from where you saved it, at any time you want.&lt;/p&gt;
+
+&lt;p&gt;Playing on RetroArch, you can save just like you would on the real video game (using the game’s own menu), or you can use one of the RetroArch slots.&lt;/p&gt;
+
+&lt;p&gt;Another advantage is that generally video games offer only one memory to save the game, so that only one game can be saved. RetroArch offers dozens of memories (state slots).&lt;/p&gt;
+
+&lt;p&gt;Note that the RetroArch in-game menu offers the &lt;strong&gt;Save State&lt;/strong&gt; and &lt;strong&gt;Load State&lt;/strong&gt; options, as well as the &lt;strong&gt;State Slot&lt;/strong&gt; option that allows you to change the slot currently in use.&lt;/p&gt;
+
+&lt;p&gt;If you need to use one of those options quickly during the game, you can use the keys:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;F2&lt;/strong&gt; to save the game state&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;F4&lt;/strong&gt; to load the game state&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;F7&lt;/strong&gt; to increase the current state slot (from 0 to 1, from 1 to 2, and so on)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;F6&lt;/strong&gt; to decrease the current state slot (from 2 to 1, from 1 to 0)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;quitting-the-game&quot;&gt;Quitting the game&lt;/h2&gt;
+
+&lt;p&gt;When you no longer want to play, you can just close the RetroArch window or press &lt;strong&gt;Esc&lt;/strong&gt;. Note that if you haven’t saved the game, when you quit, your progress will be lost.&lt;/p&gt;
+
+&lt;p&gt;If you want to quit the current game but return to the RetroArch main menu, press &lt;strong&gt;F1&lt;/strong&gt; to open the in-game menu and choose &lt;strong&gt;Close Content&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;history&quot;&gt;History&lt;/h2&gt;
+
+&lt;p&gt;RetroArch allows you to easily access games you’ve already played by the &lt;strong&gt;History&lt;/strong&gt; menu:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-history-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-history-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;favorites&quot;&gt;Favorites&lt;/h2&gt;
+
+&lt;p&gt;You can also add games you like most or play often to the list of your favorite games, which is another way to easily access them. There are two ways to do this.&lt;/p&gt;
+
+&lt;p&gt;During the game, you can open the RetroArch menu and choose &lt;strong&gt;Add to Favorites&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or you can go to the &lt;strong&gt;History&lt;/strong&gt; menu, select the game and use that same option:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-favorites-1-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-favorites-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Then, to access your favorite games, go to the &lt;strong&gt;Favorites&lt;/strong&gt; menu:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/05/retroarch-favorites-2-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/05/retroarch-favorites-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;system-requirements&quot;&gt;System requirements&lt;/h2&gt;
+
+&lt;p&gt;RetroArch is, roughly speaking, a graphical user interface made up of menus. Thus, it has no minimum requirements and can be installed on any computer.&lt;/p&gt;
+
+&lt;p&gt;But each emulator has its own requirements. Therefore, which video games your computer is capable of emulating depends on your hardware.&lt;/p&gt;
+
+&lt;p&gt;To give you an idea, it’s very easy to use RetroArch on a &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; thanks to the &lt;a href=&quot;https://retropie.org.uk/&quot;&gt;RetroPie&lt;/a&gt; distribution (I can write about it in the future). You can check the technical specifications of the Raspberry Pi 4 computer in the text I wrote about it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Getting started on Raspberry Pi with NOOBS and Raspbian&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Raspberry Pi 4 has a considerable computing power for a credit-card sized computer. Although it’s simpler than most nowadays PCs (both desktops and laptops), a Raspberry Pi 4 is able to emulate a PlayStation perfectly fine.&lt;/p&gt;
+
+&lt;p&gt;Any working computer today should be able to emulate up to the fifth generation video games, such as PlayStation (launched in 1994) and &lt;a href=&quot;https://en.wikipedia.org/wiki/Nintendo_64&quot;&gt;Nintendo 64&lt;/a&gt; (1996), or earlier ones, such as Super Nintendo (1990) and Sega Genesis (1988).&lt;/p&gt;
+
+&lt;p&gt;For a complete list of video games classified by generations, see Wikipedia:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_home_video_game_consoles&quot;&gt;List of home video game consoles – Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Emulating newer and higher-spec video games, such as &lt;a href=&quot;https://en.wikipedia.org/wiki/PlayStation_2&quot;&gt;PlayStation 2&lt;/a&gt; (2000), &lt;a href=&quot;https://en.wikipedia.org/wiki/GameCube&quot;&gt;GameCube&lt;/a&gt; (2001), &lt;a href=&quot;https://en.wikipedia.org/wiki/Nintendo_DS&quot;&gt;Nintendo DS&lt;/a&gt; (2004) and &lt;a href=&quot;https://en.wikipedia.org/wiki/Wii&quot;&gt;Nintendo Wii&lt;/a&gt; (2006), certainly requires higher-spec computers. In such cases, you may want to consult the respective emulators requirements on the emulators websites to see if your computer can emulate those video games.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtogeek.com/260274/how-to-set-up-retroarch-the-ultimate-all-in-one-retro-games-emulator/&quot;&gt;How to Set Up RetroArch, The Ultimate All-In-One Retro Games Emulator - How-To Geek&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.libretro.com/&quot;&gt;Libretro Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forums.libretro.com/t/system-requirements-analysis-work-in-progress/13746&quot;&gt;System requirements (analysis, work in progress) - Cores - Libretro Forums&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/RetroArch&quot;&gt;RetroArch - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 23 May 2020 13:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Folding@home: see how your PC can help Covid-19 research</title>
@@ -3349,482 +3681,6 @@ $ gpg --import public_key
                 <pubDate>Thu, 27 Feb 2020 23:15:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Have a lot of fun playing these 10 games for Linux!</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/have-a-lot-of-fun-10-games.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/have-a-lot-of-fun-10-games.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Before the Christmas break, I promised that I would show 20 games for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt;, proving that this operating system is great even for those who use their computer for fun. I decided to split the post in two parts, otherwise it would have been too long. This is the second part.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Here is the first part, in case you missed it:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/12/22/10-classic-games-for-linux/&quot;&gt;10 classic games for Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The games I’m going to show you today (and the ones of the first part too) share in common:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;they are &lt;strong&gt;cross-platform&lt;/strong&gt;: available for use in various operating systems, such as Linux and &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;, some are also available for other systems such as &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; and &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;they are &lt;strong&gt;free&lt;/strong&gt; (as in “for free”, &lt;em&gt;gratis&lt;/em&gt;): can be used without payment; and&lt;/li&gt;
-  &lt;li&gt;they are also &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;&lt;strong&gt;free softwares&lt;/strong&gt;&lt;/a&gt; (as in “freedom”, also called &lt;em&gt;libre&lt;/em&gt; softwares): users of free softwares have the freedom to run, copy, distribute, study, change and improve those software as they wish, access to their &lt;a href=&quot;https://en.wikipedia.org/wiki/Source_code&quot;&gt;source code&lt;/a&gt; is given;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Softwares that are free in both senses (as in “for free” and “freedom”) are called &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;FOSS — free and open-source softwares&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;As usual, I focus on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; and &lt;a href=&quot;/en/2020/01/14/release-candidate-available-for-linux-kamarada-15.1/&quot;&gt;Linux Kamarada&lt;/a&gt;, but if you use another Linux distribution, you may easily find out how to install those games on it.&lt;/p&gt;
-
-&lt;p&gt;Most of the following games can be downloaded from the openSUSE’s &lt;a href=&quot;https://en.opensuse.org/Package_repositories#OSS&quot;&gt;main repository&lt;/a&gt;, which contains only &lt;a href=&quot;https://opensource.org/osd&quot;&gt;open source software (OSS)&lt;/a&gt; and is enabled by default. Therefore, no additional configuration is needed before installing a game that is in the OSS repository.&lt;/p&gt;
-
-&lt;p&gt;But some games are available only in the openSUSE’s &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories#Games&quot;&gt;Games repository&lt;/a&gt;. Some games are even available in both repositories (OSS and Games), but usually the Games repo provides later verions.&lt;/p&gt;
-
-&lt;p&gt;In any case, let’s enable the Games repository before we begin:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/games/openSUSE_Leap_15.1/ games
-# zypper ref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;No more talking, let’s see the games!&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/hedgewars.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Hedgewars&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/hedgewars-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/hedgewars-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/hedgewars-2-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/hedgewars-2-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.hedgewars.org/&quot;&gt;Hedgewars&lt;/a&gt; is a turn-based strategy, artillery, action and comedy game where teams of pink hedgehogs fight each other with over-the-top weaponary. It’s for up to 8 players either online multiplayer or local rotational on the same computer, with optional &lt;a href=&quot;https://en.wikipedia.org/wiki/Artificial_intelligence&quot;&gt;AI&lt;/a&gt; opponents. There is a training mode for beginners and singleplayer campaigns. Hedgewars borrows concepts from &lt;a href=&quot;https://en.wikipedia.org/wiki/Worms_(series)&quot;&gt;Worms&lt;/a&gt;, a series of artillery tactical games well succeeded during the 90s.&lt;/p&gt;
-
-&lt;p&gt;You can get Hedgewars from either the OSS or the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in hedgewars
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about Hedgewars reading the online manual:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.hedgewars.org/wiki.html&quot;&gt;Main Page - Hedgewars Wiki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/supertux.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;SuperTux&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/supertux-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/supertux-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/supertux-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/supertux-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.supertux.org/&quot;&gt;SuperTux&lt;/a&gt; is a single-player game featuring the penguin &lt;a href=&quot;https://en.wikipedia.org/wiki/Tux_(mascot)&quot;&gt;Tux&lt;/a&gt;, the Linux mascot. He will have to make his way through many different levels, in order to reach and rescue his beloved Penny, who was captured by the evil Nolok. Run through multiple worlds, fighting off enemies by jumping on them, bumping them from below or tossing objects at them, grabbing power-ups and other stuff on the way. SuperTux is a classic jump’n’run side-scrolling 2D &lt;a href=&quot;https://en.wikipedia.org/wiki/Platform_game&quot;&gt;platform game&lt;/a&gt; in a style similar to the well-known &lt;a href=&quot;https://en.wikipedia.org/wiki/Mario&quot;&gt;Super Mario&lt;/a&gt; games.&lt;/p&gt;
-
-&lt;p&gt;You can get SuperTux from either the OSS or the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in supertux2
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about SuperTux reading the online manual:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/SuperTux/supertux/wiki/User-Manual&quot;&gt;User Manual - SuperTux Wiki - GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/supertuxkart.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;SuperTuxKart&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/supertuxkart-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/supertuxkart-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/supertuxkart-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/supertuxkart-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://supertuxkart.net/&quot;&gt;SuperTuxKart&lt;/a&gt; is a 3D &lt;a href=&quot;https://en.wikipedia.org/wiki/Kart_racing&quot;&gt;kart racing&lt;/a&gt; game with a variety of characters, tracks and modes to play. It does not intend to be a &lt;a href=&quot;https://en.wikipedia.org/wiki/Mario_Kart&quot;&gt;Mario Kart&lt;/a&gt; clone, but they are similar somehow. SuperTuxKart is more fun than realistic and provide an enjoyable experience for all ages. Up to 8 players can race or battle against each other or against AI opponents, on a single computer, a local network or online with players all over the world. You can run a single race or go through the Story Mode, try to beat your fastest time in Time Trial, compete in Grand Prix cups, and more!&lt;/p&gt;
-
-&lt;p&gt;You can get SuperTuxKart from either the OSS or the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in supertuxkart
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about SuperTuxKart in the built-in &lt;strong&gt;Help&lt;/strong&gt; menu.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/opensnc.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Open Sonic&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/opensnc-1-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/opensnc-1-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/opensnc-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/opensnc-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://opensnc.sourceforge.net/&quot;&gt;Open Sonic&lt;/a&gt; is an open-source game based on the &lt;a href=&quot;https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(character)&quot;&gt;Sonic the Hedgehog&lt;/a&gt; universe. It introduces a different style of gameplay called cooperative play, in which it’s possible to control 3 characters simultaneously. Unlike most similar games, Open Sonic provides a greater level of interaction between the player and the levels. It’s more than just a jump’n’run; the user must come up with some strategy in order to get through the levels.&lt;/p&gt;
-
-&lt;p&gt;Open Sonic is not available on either the OSS or the Games repo, but on the &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories#Packman&quot;&gt;Packman&lt;/a&gt; repo. To install it on openSUSE (and Linux Kamarada), you need to add the Packman repo first:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.1/ packman
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, install Open Sonic running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in opensnc
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The game features a tutorial mode that explains controls and how to play.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/extreme-tuxracer.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Extreme Tux Racer&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/extreme-tuxracer-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/extreme-tuxracer-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/extreme-tuxracer-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/extreme-tuxracer-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://sourceforge.net/projects/extremetuxracer/&quot;&gt;Extreme Tux Racer&lt;/a&gt; is a 3D high speed arctic racing game in which the player must control Tux, the Linux Penguin, on a sliding snow course across a mountainside trying to collect as many fish as possible. Extreme Tux Racer is a fork of the original &lt;a href=&quot;https://en.wikipedia.org/wiki/Tux_Racer&quot;&gt;Tux Racer&lt;/a&gt;, which was originally open source, then became commercial and closed-source, and finally discontinued.&lt;/p&gt;
-
-&lt;p&gt;You can get Extreme Tux Racer from either the OSS or the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in extreme-tuxracer
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The game features a &lt;strong&gt;Help&lt;/strong&gt; menu that lists controls.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/frets-on-fire.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Frets on Fire&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/frets-on-fire-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/frets-on-fire-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/frets-on-fire-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/frets-on-fire-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://fretsonfire.sourceforge.net/&quot;&gt;Frets on Fire (FoF)&lt;/a&gt; is a game of musical skill and fast fingers, inspired by many of the popular commercial music games such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Guitar_Hero&quot;&gt;Guitar Hero&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Rock_Band_(video_game)&quot;&gt;Rock Band&lt;/a&gt;. The aim of the game is to play guitar with the keyboard as accurately as possible. Coloured markers that represent the notes and the rhythm of the music appear on the screen. Also, each marker corresponds to a button to be pressed. The player must hit the right button at the right moment to play the song and score points. FoF supports gamepads, as well as various guitar-type controllers.&lt;/p&gt;
-
-&lt;p&gt;I installed Frets on Fire using &lt;a href=&quot;https://flatpak.org/&quot;&gt;Flatpak&lt;/a&gt;, a distribution-agnostic package manager (similar to &lt;a href=&quot;https://snapcraft.io/&quot;&gt;Snap&lt;/a&gt;, which &lt;a href=&quot;/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/&quot;&gt;we once used to install Spotify&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;First, to install Flatpak on openSUSE, run (it’s available on the OSS repo):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install flatpak
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, to install Frets on Fire, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# flatpak install --user https://flathub.org/repo/appstream/net.sourceforge.fretsonfire.flatpakref
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The game features a tutorial mode that explains controls and how to play.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/stepmania.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Stepmania&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/stepmania-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/stepmania-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/stepmania-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/stepmania-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.stepmania.com/&quot;&gt;Stepmania&lt;/a&gt; is a music/rhythm game. It’s somehow similar to Frets on Fire in the sense that the player presses different buttons in time to the music and to patterns that scroll across the screen. But the aim of Stepmania is to dance! It’s usually played with dance pads, but it supports gamepads and keyboards as well. Stepmania resembles &lt;a href=&quot;https://en.wikipedia.org/wiki/Dance_Dance_Revolution&quot;&gt;Dance Dance Revolution&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can get Stepmania from the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in stepmania
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can find more information about Stepmania on the game’s wiki:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/stepmania/stepmania/wiki&quot;&gt;Stepmania Wiki - GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/pinball.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Pinball&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/pinball-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/pinball-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/pinball-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/pinball-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://pinball.sourceforge.net/&quot;&gt;Emilia Pinball&lt;/a&gt; is an open source &lt;a href=&quot;https://en.wikipedia.org/wiki/Pinball&quot;&gt;pinball&lt;/a&gt; simulator for Linux. It is also known simply as Pinball, probably because it was the first game of this genre for Linux. The player controls flippers that are used to hit one or more balls into targets to score points. Also, flippers must protect balls from falling on a drain situated at the bottom. The game ends after all the balls fall into the drain a number of times. Sadly Emilia Pinball stopped development very early, but it’s still great fun to play! It comes with just two tables to play on, but they are very addictive.&lt;/p&gt;
-
-&lt;p&gt;You can get Emilia Pinball from the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in pinball
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/pokerth.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;PokerTH&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/pokerth-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/pokerth-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/pokerth-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/pokerth-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.pokerth.net/&quot;&gt;PokerTH&lt;/a&gt; is an open source &lt;a href=&quot;https://en.wikipedia.org/wiki/Poker&quot;&gt;poker&lt;/a&gt; game. It allows you to play &lt;a href=&quot;https://en.wikipedia.org/wiki/Texas_hold'em&quot;&gt;Texas hold’em&lt;/a&gt;, one of the most popular variants of poker, against up to nine computer opponents or human players on the same local network or online around the world. To play online, you need to register for free at &lt;a href=&quot;https://www.pokerth.net/&quot;&gt;pokerth.net&lt;/a&gt;. There is a forum where players organize CUPs and publish their results.&lt;/p&gt;
-
-&lt;p&gt;You can get PokerTH from the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in pokerth
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/01/xgalaga.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;XGalaga++&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/xgalaga-1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/xgalaga-1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/01/xgalaga-2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/01/xgalaga-2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://marc.mongenet.ch/OSS/XGalaga/&quot;&gt;XGalaga++&lt;/a&gt; is a classic single screen vertical &lt;a href=&quot;https://en.wikipedia.org/wiki/Shoot_'em_up&quot;&gt;shoot’em up&lt;/a&gt; game. You control a spacecraft and combat enemies by shooting at them while evading their fire. XGalaga++ was inspired by &lt;a href=&quot;http://rumsey.org/xgal.html&quot;&gt;XGalaga&lt;/a&gt;, but rewritten from scratch, except for the graphics, which were borrowed from XGalaga. In its turn, XGalaga is a clone of the old space arcade game &lt;a href=&quot;https://en.wikipedia.org/wiki/Galaga&quot;&gt;Galaga&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can get XGalaga++ from either the OSS or the Games repo by running:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in xgalaga++
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;When you start the game, the first screen explains controls and bonus items. When you are finished reading, press &lt;strong&gt;s&lt;/strong&gt; to start the game.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-about-more&quot;&gt;How about more?&lt;/h2&gt;
-
-&lt;p&gt;Besides the 10 games you knew today, and the other 10 we showed on the previous post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/12/22/10-classic-games-for-linux/&quot;&gt;10 classic games for Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Take a look at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/08/14/how-to-play-super-nintendo-games-on-opensuse-with-the-snes9x-emulator/&quot;&gt;How to play Super Nintendo games on openSUSE with the Snes9x emulator&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/&quot;&gt;20 apps you can use the same way on both Linux and Windows — part 2&lt;/a&gt; (here we talked about Steam, which is an online service where you can get games for Linux)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;What about you? Would you like to recommend any game for Linux that hasn’t appeared on the Linux Kamarada blog yet? Write in the comments!&lt;/p&gt;
-
-&lt;p&gt;Cheers! See you next time!&lt;/p&gt;
-
-</description>
-                <pubDate>Sat, 18 Jan 2020 22:10:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/01/18/have-a-lot-of-fun-playing-these-10-games-for-linux/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/01/18/have-a-lot-of-fun-playing-these-10-games-for-linux/</guid>
                 
                 
                     <category>en</category>
