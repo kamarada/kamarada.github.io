@@ -9,10 +9,169 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 23 May 2020 13:41:49 -0300</pubDate>
-        <lastBuildDate>Sat, 23 May 2020 13:41:49 -0300</lastBuildDate>
-        <generator>Jekyll v3.8.5</generator>
+        <pubDate>Fri, 05 Jun 2020 18:54:03 -0300</pubDate>
+        <lastBuildDate>Fri, 05 Jun 2020 18:54:03 -0300</lastBuildDate>
+        <generator>Jekyll v3.8.6</generator>
         
+        
+            <item>
+                <title>Gerencie seus arquivos de configuração no Linux com o Git</title>
+                <description>
+&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
+    &lt;div class=&quot;media&quot;&gt;
+        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
+        &lt;div class=&quot;media-body&quot;&gt;
+            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Nota do Linux Kamarada:&lt;/h6&gt;
+            
+&lt;p&gt;Esta é uma tradução não oficial da notícia originalmente publicada por Sébastien ‘sogal’ Poher no &lt;em&gt;site&lt;/em&gt; &lt;a href=&quot;https://news.opensuse.org/2020/03/27/Manage-dotfiles-with-Git/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/06/git_logo.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/06/git_logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Os arquivos comumente chamados de &lt;em&gt;dotfiles&lt;/em&gt; (“arquivos ponto”, em uma tradução literal) são todos aqueles pequenos arquivos de texto puro que contém as configurações dos seus programas. A maioria deles está em sua pasta pessoal (&lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME&lt;/code&gt;), mas são arquivos ocultos, uma vez que seus nomes começam com um ponto (daí serem chamados de &lt;em&gt;dotfiles&lt;/em&gt;). Alguns aplicativos os armazenam na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para gerenciá-los (acompanhar suas alterações, movê-los entre diferentes computadores, fazer &lt;em&gt;backup&lt;/em&gt; deles), existem algumas soluções:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;o bom e velho &lt;em&gt;pendrive&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://rsync.samba.org/&quot;&gt;rsync&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;sincronizá-los na “nuvem”&lt;/li&gt;
+  &lt;li&gt;movê-los para uma pasta central e criar &lt;em&gt;links&lt;/em&gt; simbólicos para onde eles deveriam estar&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Neste artigo, vamos focar em como gerenciá-los de forma simples e eficiente com o &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;git-ao-resgate&quot;&gt;Git ao resgate!&lt;/h2&gt;
+
+&lt;p&gt;Neste exemplo, vamos usar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/dotfiles&lt;/code&gt; como repositório do Git, mas fique a vontade para usar outra pasta, de acordo com a sua necessidade.&lt;/p&gt;
+
+&lt;p&gt;Primeiramente, vamos inicializar este repositório:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git init --bare $HOME/dotfiles
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, como todos os comandos &lt;strong&gt;git&lt;/strong&gt; que usaremos se referirão a este repositório, é recomendável criar um &lt;strong&gt;&lt;a href=&quot;https://www.man7.org/linux/man-pages/man1/alias.1p.html&quot;&gt;alias&lt;/a&gt;&lt;/strong&gt;, como:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você pode adicionar essa linha ao arquivo de configuração do seu &lt;code class=&quot;highlighter-rouge&quot;&gt;$SHELL&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.bashrc&lt;/code&gt;, se você usa &lt;a href=&quot;https://www.gnu.org/software/bash/&quot;&gt;Bash&lt;/a&gt;, ou &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.zshrc&lt;/code&gt;, se você usa &lt;a href=&quot;https://www.zsh.org/&quot;&gt;Zsh&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Em seguida, vamos configurar o Git para que ele não mostre todos os arquivos não rastreados (&lt;em&gt;untracked files&lt;/em&gt;). Precisamos fazer isso porque vamos usar toda a pasta pessoal como pasta de trabalho (&lt;em&gt;work tree&lt;/em&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ dotfiles config --local status.showUntrackedFiles no
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A essa altura, você já deve ser capaz de verificar o estado do repositório:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ dotfiles status
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você pode adicionar seus arquivos de configuração e comitar como desejar. Por exemplo, vamos adicionar nosso &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ dotfiles add .bashrc
+$ dotfiles commit -m &quot;.bashrc adicionado&quot;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora basta adicionar um repositório remoto — um servidor Git hospedado por você mesmo (&lt;em&gt;self-hosted&lt;/em&gt;) ou um &lt;em&gt;online&lt;/em&gt; — e enviar suas mudanças para ele:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ dotfiles remote add origin git@seugit.exemplo.com/dotfiles.git
+$ dotfiles push
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
+    &lt;div class=&quot;media&quot;&gt;
+        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
+        &lt;div class=&quot;media-body&quot;&gt;
+            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Nota do Linux Kamarada:&lt;/h6&gt;
+            
+&lt;p&gt;Serviços &lt;em&gt;online&lt;/em&gt; como &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt; e &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt; permitem que você crie repositórios privados. A menos que sua intenção seja realmente compartilhar esses arquivos de configuração com alguém, recomendo que você se atente a esse detalhe e crie um repositório privado, para que só você tenha acesso aos seus arquivos pessoais.&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurando-um-novo-computador&quot;&gt;Configurando um novo computador&lt;/h2&gt;
+
+&lt;p&gt;Agora que você já configurou tudo no primeiro computador, vamos configurar um novo computador com os &lt;em&gt;dotfiles&lt;/em&gt; que você tem no seu repositório.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, faça um clone local do seu repositório &lt;em&gt;online&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git clone --bare git@seugit.exemplo.com/dotfiles.git $HOME/dotfiles
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Novamente, você deve definir o mesmo &lt;strong&gt;alias&lt;/strong&gt; de antes:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Lembre-se de adicioná-lo ao arquivo de configuração do seu &lt;code class=&quot;highlighter-rouge&quot;&gt;$SHELL&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Agora basta aplicar as alterações do repositório que você acabou de clonar ao seu sistema:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ dotfiles checkout
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se alguns dos arquivos já existirem, você receberá uma mensagem de erro. Provavelmente isso ocorrerá com os arquivos criados por padrão durante a instalação do openSUSE e a criação da sua conta do usuário, como o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.bashrc&lt;/code&gt;. Não se preocupe, apenas renomeie ou exclua os arquivos que já existiam.&lt;/p&gt;
+
+&lt;p&gt;Agora, sempre que você alterar seus arquivos de configuração rastreados pelo Git, lembre-se de comitar e enviar suas alterações.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Os artigos a seguir foram usados como referências deste artigo. Muito obrigado aos seus autores!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lord.re/en/posts/62-dotfiles-home-git/&quot;&gt;Easily manage your dotfiles with git&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.freecodecamp.org/news/dive-into-dotfiles-part-2-6321b4a73608/&quot;&gt;How to make your Dotfile management a painless affair&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/toutsbrasil/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b&quot;&gt;How to manage your dotfiles with git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
+    &lt;div class=&quot;media&quot;&gt;
+        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
+        &lt;div class=&quot;media-body&quot;&gt;
+            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Nota do Linux Kamarada:&lt;/h6&gt;
+            
+&lt;p&gt;As referências acima foram citadas pelo autor do texto original:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://news.opensuse.org/2020/03/27/Manage-dotfiles-with-Git/&quot;&gt;Manage your dotfiles with Git - openSUSE News&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Obrigado, Sébastien ‘sogal’ Poher, por essa excelente dica!&lt;/p&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</description>
+                <pubDate>Fri, 05 Jun 2020 11:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/06/05/gerencie-seus-arquivos-de-configuracao-no-linux-com-o-git/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/06/05/gerencie-seus-arquivos-de-configuracao-no-linux-com-o-git/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>RetroArch: um emulador só para vários videogames</title>
@@ -2635,1065 +2794,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.241-b07, mixed mode)
                 <pubDate>Mon, 02 Mar 2020 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/03/02/como-instalar-o-programa-do-imposto-de-renda-2020-no-linux-kamarada-e-no-opensuse/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/03/02/como-instalar-o-programa-do-imposto-de-renda-2020-no-linux-kamarada-e-no-opensuse/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Kamarada 15.1 vem com tudo que você precisa para usar o Linux no dia a dia</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/09/kamarada-15.1.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2019/09/kamarada-15.1.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada é uma distribuição &lt;a href=&quot;http://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; brasileira que pode ser usada em computadores pessoais, seja em casa ou no trabalho, em empresas privadas ou órgãos públicos. Foi feita pensando em pessoas que estão começando a usar computadores e/ou Linux, mas também deve agradar aos usuários mais experientes. Contém os programas essenciais a qualquer instalação do Linux e uma área de trabalho fácil de usar, com visual moderno e agradável.&lt;/p&gt;
-
-&lt;p&gt;Depois de alguns meses de desenvolvimento, hoje é lançada a primeira versão &lt;strong&gt;estável&lt;/strong&gt; do Linux Kamarada. Isso significa que ele está &lt;strong&gt;pronto pra usar&lt;/strong&gt; e pode ser baixado &lt;a href=&quot;/pt/download&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por que então o número 15.1, se essa é a primeira versão? Você já vai entender.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/distributor-logo-opensuse.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Baseado no openSUSE Leap&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada não foi criado “do nada”, mas baseado em uma distribuição maior chamada &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;openSUSE Leap&lt;/a&gt;. Ela fornece um sistema amigável para &lt;em&gt;desktops&lt;/em&gt; e rico em funcionalidades para servidores, assim como ferramentas de &lt;em&gt;software&lt;/em&gt; livre para desenvolvedores e administradores de sistemas. É uma das distribuições mais usadas no mundo, mantida pela comunidade do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;Projeto openSUSE&lt;/a&gt;, com patrocínio da &lt;a href=&quot;https://www.suse.com/pt-br/&quot;&gt;SUSE&lt;/a&gt; e de outras empresas.&lt;/p&gt;
-
-&lt;p&gt;Um amigo da universidade me apresentou ao openSUSE em 2012 e eu o uso desde então. Havia apenas uma distribuição chamada openSUSE, que estava então na versão 12.1. Hoje, o projeto disponibiliza duas distribuições (é como se existissem “dois openSUSEs”):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE Leap:&lt;/strong&gt; mais estável, continuação do bom e velho openSUSE, mas com um novo processo de desenvolvimento, atualmente está na versão 15.1 e lança novas versões com regularidade (geralmente, uma nova versão por ano), de modo semelhante a distribuições mais tradicionais como &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;; e&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE Tumbleweed:&lt;/strong&gt; com lançamentos contínuos (&lt;em&gt;rolling release&lt;/em&gt;), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os &lt;em&gt;softwares&lt;/em&gt; mais recentes, recebe atualizações pequenas e frequentes sempre que um &lt;em&gt;software&lt;/em&gt; é atualizado, semelhante a distribuições como &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; e &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em Linux.&lt;/p&gt;
-
-&lt;p&gt;Por ser uma distribuição pensada no usuário iniciante, o Linux Kamarada é baseado no openSUSE Leap. Os números de versões iguais (15.1) refletem esse alinhamento.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/desktop-environment-gnome.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Área de trabalho GNOME&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;A área de trabalho &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt; é uma das mais populares dentre os usuários e distribuições Linux. Apresenta um visual simples, elegante e minimalista, que ajuda a focar no que deve ser feito. Projetada pensando em usabilidade, é uma área de trabalho rápida, fácil de usar e que simplesmente funciona, com aplicativos que se integram e trabalham bem em conjunto.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/gnome-desktop-pt.jpg&quot; title=&quot;Área de trabalho GNOME&quot;&gt;
-&lt;img src=&quot;/files/2020/02/gnome-desktop-pt.jpg&quot; alt=&quot;Área de trabalho GNOME&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Área de trabalho GNOME&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/gnome-apps-pt.jpg&quot; title=&quot;Menu de aplicativos&quot;&gt;
-&lt;img src=&quot;/files/2020/02/gnome-apps-pt.jpg&quot; alt=&quot;Menu de aplicativos&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Menu de aplicativos&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/gnome-core-apps-pt.jpg&quot; title=&quot;GNOME core apps&quot;&gt;
-&lt;img src=&quot;/files/2020/02/gnome-core-apps-pt.jpg&quot; alt=&quot;GNOME core apps&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME core apps&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada traz os principais aplicativos para GNOME (&lt;a href=&quot;https://blogs.gnome.org/mcatanzaro/2017/08/13/gnome-3-26-core-applications&quot;&gt;GNOME &lt;em&gt;core apps&lt;/em&gt;&lt;/a&gt;) pré-instalados, oferecendo a experiência padrão dessa área de trabalho. Se você já conhece o GNOME de outra distribuição (Ubuntu, por exemplo), não sentirá falta desses aplicativos:&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/help-browser.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Ajuda&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-tweak-tool.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Ajustes&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-usage-analyzer.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Analisador de uso de disco&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/system-file-manager.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Arquivos&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/accessories-calculator.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Calculadora&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/applets-screenshooter.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Captura de tela&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/accessories-character-map.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Caracteres&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/simple-scan.png&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Digitalização simples&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-utility.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Discos&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-documents.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Documentos&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/accessories-text-editor.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Editor de texto&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-power-statistics.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Estatísticas de energia&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/accessories-character-map.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Fontes&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-photos.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Fotos&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/archive-manager.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Gerenciador de compactação&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/partitionmanager.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;GParted&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/utilities-log-viewer.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Logs&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/weather.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Meteorologia&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/applications-utilities.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Monitor do sistema&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/software-store.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Programas&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-clocks.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Relógios&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/preferences-system-privacy.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Senhas e chaves&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/utilities-terminal.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Terminal&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/preferences-desktop-remote-desktop.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Visualizador de área de trabalho remota&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/document-viewer.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Visualizador de documentos&lt;/h6&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;col-6 col-md-4 col-lg-3 text-center&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/multimedia-photo-viewer.svg&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;h6 class=&quot;mt-2&quot;&gt;Visualizador de imagens&lt;/h6&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mt-5 mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/yast.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Centro de controle do YaST&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Uma das coisas que mais gosto no openSUSE — e um dos motivos de eu indicá-lo para quem me pergunta por uma distribuição — é o &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt;. Sigla do inglês &lt;em&gt;Yet another Setup Tool&lt;/em&gt; (“apenas mais uma ferramenta de configuração”), o YaST é a ferramenta central do openSUSE para administrar o sistema. Ele apresenta uma interface amigável e reúne em um só lugar todas as configurações administrativas (as que afetam todos os usuários), como instalação e remoção de programas, impressoras, usuários, data e hora, etc.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/yast-main-pt.jpg&quot; title=&quot;Tela principal do YaST&quot;&gt;
-&lt;img src=&quot;/files/2020/02/yast-main-pt.jpg&quot; alt=&quot;Tela principal do YaST&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tela principal do YaST&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/yast-software-pt.jpg&quot; title=&quot;Instalação de programa&quot;&gt;
-&lt;img src=&quot;/files/2020/02/yast-software-pt.jpg&quot; alt=&quot;Instalação de programa&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Instalação de programa&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/yast-users-pt.jpg&quot; title=&quot;Criação de usuário&quot;&gt;
-&lt;img src=&quot;/files/2020/02/yast-users-pt.jpg&quot; alt=&quot;Criação de usuário&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Criação de usuário&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/libreoffice-main.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Para usar no escritório, na escola ou em casa&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/libreoffice-pt.jpg&quot; title=&quot;LibreOffice Writer&quot;&gt;
-&lt;img src=&quot;/files/2020/02/libreoffice-pt.jpg&quot; alt=&quot;LibreOffice Writer&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;LibreOffice Writer&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Seja para redigir um trabalho escolar, preparar a apresentação de uma palestra ou organizar em uma planilha as despesas de casa, o Linux Kamarada tem os aplicativos que você precisa: o &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt;, que é uma suíte de aplicativos de escritório, e o &lt;a href=&quot;https://pdfsam.org/pt/&quot;&gt;PDFsam&lt;/a&gt; (PDF Split and Merge), um programa que permite manipular documentos &lt;a href=&quot;https://pt.wikipedia.org/wiki/Portable_Document_Format&quot;&gt;PDF&lt;/a&gt; realizando ações como dividir um documento em partes (pela quantidade de páginas ou pelo tamanho do arquivo em &lt;em&gt;bytes&lt;/em&gt;), unir documentos, girar ou extrair páginas, dentre outras.&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled row&quot;&gt;
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/libreoffice-writer.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;LibreOffice Writer&lt;/h6&gt;
-            Processador de textos
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/libreoffice-calc.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;LibreOffice Calc&lt;/h6&gt;
-            Planilhas
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/libreoffice-impress.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;LibreOffice Impress&lt;/h6&gt;
-            Apresentações multimídias
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/libreoffice-draw.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;LibreOffice Draw&lt;/h6&gt;
-            Desenhos, gráficos e diagramas
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/libreoffice-base.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;LibreOffice Base&lt;/h6&gt;
-            Bancos de dados
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/pdfsam-basic.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;PDFsam Basic&lt;/h6&gt;
-            Dividir, unir e girar documentos PDF
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O LibreOffice é oriundo do &lt;a href=&quot;https://www.openoffice.org/pt-br/&quot;&gt;OpenOffice&lt;/a&gt;, que aqui no Brasil era chamado de &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Conheca-o-OpenOffice.org-e-o-BrOffice.org?pagina=3&quot;&gt;BrOffice&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Uma novidade notória do LibreOffice 6.3 que vem com o Linux Kamarada 15.1 é a nova interface que organiza ícones em abas na parte superior da tela, semelhante às versões mais recentes do &lt;a href=&quot;https://www.office.com/&quot;&gt;Microsoft Office&lt;/a&gt;. Essa interface é opcional e não vem habilitada por padrão. Para mudar para a nova interface, abra qualquer aplicativo do LibreOffice, clique no menu &lt;strong&gt;Exibir&lt;/strong&gt;, aponte para &lt;strong&gt;Interface do usuário&lt;/strong&gt; e escolha &lt;strong&gt;Em abas&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/libreoffice-new-interface-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/02/libreoffice-new-interface-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você também pode testar todas as opções desse menu e ficar com a que mais te agrada.&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/chromium-browser.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;O navegador mais usado no mundo&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Segundo o &lt;a href=&quot;http://gs.statcounter.com/&quot;&gt;StatCounter&lt;/a&gt;, serviço que analisa o tráfego da &lt;em&gt;web&lt;/em&gt;, atualmente o &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; é o navegador mais usado no mundo (69% dos usuários de &lt;em&gt;desktops&lt;/em&gt;) e também no Brasil (85% dos usuários de &lt;em&gt;desktops&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;O que talvez muitas pessoas não saibam é que o Chrome é baseado em um navegador livre chamado &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;. O Chrome não pode ser distribuído por ser um &lt;em&gt;software&lt;/em&gt; proprietário, mas o Chromium pode e está presente no repositório oficial do openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Por esses motivos, o Chromium foi escolhido para ser o navegador padrão do Linux Kamarada.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/chromium-pt.jpg&quot; title=&quot;Chromium&quot;&gt;
-&lt;img src=&quot;/files/2020/02/chromium-pt.jpg&quot; alt=&quot;Chromium&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Chromium&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Claro, se preferir, você pode instalar e usar outro navegador que seja do seu agrado.&lt;/p&gt;
-
-&lt;p&gt;Outros aplicativos que o Linux Kamarada já traz instalados na categoria Internet:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled row&quot;&gt;
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/linphone.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Linphone&lt;/h6&gt;
-            &lt;em&gt;Softphone&lt;/em&gt; VoIP
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/pidgin.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Pidgin&lt;/h6&gt;
-            Mensageiro instantâneo
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/transmission.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Transmission&lt;/h6&gt;
-            Cliente de BitTorrent
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/gnome-todo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Para você se organizar&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/gnome-calendar-pt.jpg&quot; title=&quot;Agenda&quot;&gt;
-&lt;img src=&quot;/files/2020/02/gnome-calendar-pt.jpg&quot; alt=&quot;Agenda&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Agenda&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/gnome-contacts-pt.jpg&quot; title=&quot;Contatos&quot;&gt;
-&lt;img src=&quot;/files/2020/02/gnome-contacts-pt.jpg&quot; alt=&quot;Contatos&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Contatos&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada traz aplicativos que te permitem guardar seus contatos, agendar compromissos, enviar e receber &lt;em&gt;e-mails&lt;/em&gt;, organizar tarefas a fazer e tomar notas. Esses aplicativos são chamados de &lt;strong&gt;gerenciadores de informações pessoais&lt;/strong&gt; (&lt;em&gt;personal information managers&lt;/em&gt; — PIM). Eles são integrados às contas &lt;em&gt;online&lt;/em&gt; do GNOME. Se você tiver uma conta do &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; ou da &lt;a href=&quot;https://www.microsoft.com/pt-br&quot;&gt;Microsoft&lt;/a&gt;, por exemplo, pode configurá-la no GNOME e sincronizar suas informações com a nuvem e outros dispositivos. Desse modo, você pode agendar um evento no computador e ser notificado pelo celular, quando chegar a hora.&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled row&quot;&gt;
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/office-calendar.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Agenda&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-contacts.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Contatos&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/evolution.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Evolution&lt;/h6&gt;
-            Cliente de &lt;em&gt;e-mail&lt;/em&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/accessories-notes.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Notas&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-todo.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Tarefas&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para ver como sincronizar sua conta do Google (ou do &lt;a href=&quot;https://gsuite.google.com&quot;&gt;G Suite&lt;/a&gt;) com esses aplicativos, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/04/09/tire-o-maximo-proveito-do-gnome-sincronizando-sua-conta-do-google/&quot;&gt;Tire o máximo proveito do GNOME sincronizando sua conta do Google&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Também já mostrei aqui como sincronizar uma conta do &lt;a href=&quot;https://products.office.com/pt-br/exchange/email&quot;&gt;Microsoft Exchange&lt;/a&gt; com o GNOME:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/09/05/conecte-o-evolution-ao-office-365/&quot;&gt;Conecte o Evolution ao Office 365&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/gnome-games.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Jogos&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/quadrapassel-pt.jpg&quot; title=&quot;Quadrapassel (Tetris)&quot;&gt;
-&lt;img src=&quot;/files/2019/12/quadrapassel-pt.jpg&quot; alt=&quot;Quadrapassel (Tetris)&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Quadrapassel (Tetris)&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/12/gnome-chess-pt.jpg&quot; title=&quot;Xadrez&quot;&gt;
-&lt;img src=&quot;/files/2019/12/gnome-chess-pt.jpg&quot; alt=&quot;Xadrez&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Xadrez&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada vem com jogos casuais para que você possa aproveitar seu tempo livre. Alguns são jogos para apenas um jogador, outros podem ser jogados contra o computador ou com um amigo:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled row&quot;&gt;
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Aisleriot&lt;/h6&gt;
-            Paciência
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/kpatience.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Copas&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/qgo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Iagno&lt;/h6&gt;
-            Reversi
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/kmahjongg.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Mahjongg&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/kmines.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Minas&lt;/h6&gt;
-            Campo minado
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-nibbles.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Nibbles&lt;/h6&gt;
-            Cobras
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/quadrapassel.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Quadrapassel&lt;/h6&gt;
-            Tetris
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/ksudoku.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Sudoku&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2019/12/chess.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Xadrez&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Se quiser saber mais sobre os jogos que já vem inclusos no Linux Kamarada, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/12/22/10-jogos-classicos-para-linux/&quot;&gt;10 jogos clássicos para Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Além desses, há muitos outros jogos para Linux que você pode instalar. Se quiser algumas sugestões, veja:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/01/18/diversao-garantida-com-esses-10-jogos-para-linux/&quot;&gt;Diversão garantida com esses 10 jogos para Linux!&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/multimedia-video-player.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Multimídia&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/vlc-pt.jpg&quot; title=&quot;Reprodutor de Mídias VLC&quot;&gt;
-&lt;img src=&quot;/files/2020/02/vlc-pt.jpg&quot; alt=&quot;Reprodutor de Mídias VLC&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Reprodutor de Mídias VLC&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/vlc.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;div class=&quot;media-body&quot;&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;VLC&lt;/a&gt; é o reprodutor multimídia padrão do Linux Kamarada. Ele é um verdadeiro “canivete suíço”: reproduz a maioria dos arquivos de mídia (por exemplo, &lt;a href=&quot;https://pt.wikipedia.org/wiki/MP3&quot;&gt;MP3&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/DivX&quot;&gt;DivX&lt;/a&gt;), mídias (&lt;a href=&quot;https://pt.wikipedia.org/wiki/Compact_disc&quot;&gt;CD&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/DVD&quot;&gt;DVD&lt;/a&gt;, &lt;a href=&quot;https://pt.wikipedia.org/wiki/Disco_Blu-ray&quot;&gt;Blu-ray&lt;/a&gt;) e transmissões (&lt;em&gt;streamings&lt;/em&gt;). Se há algo que o VLC não consegue reproduzir, provavelmente nenhum outro programa consegue!&lt;/p&gt;
-
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Infelizmente, &lt;em&gt;codecs&lt;/em&gt; proprietários não podem ser distribuídos. Por isso, o VLC que vem pré-instalado no Linux Kamarada suporta apenas formatos multimídia livres (por exemplo, &lt;a href=&quot;https://pt.wikipedia.org/wiki/XviD&quot;&gt;Xvid&lt;/a&gt;) e não consegue reproduzir muitos arquivos.&lt;/p&gt;
-
-&lt;p&gt;A dica é baixar o VLC do repositório do projeto &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt;, que disponibiliza o pacote &lt;code class=&quot;highlighter-rouge&quot;&gt;vlc-codecs&lt;/code&gt;, que contém todos os &lt;em&gt;codecs&lt;/em&gt; que o VLC suporta (inclusive os proprietários):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfK -p 90 -n &quot;Packman Repository&quot; http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.1/ packman
-# zypper in vlc vlc-lang vlc-codecs
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Outros aplicativos que o Linux Kamarada já traz instalados na categoria Multimídia:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled row&quot;&gt;
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-burner.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Brasero&lt;/h6&gt;
-            Gravador de discos CD/DVD
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/cheese.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Cheese&lt;/h6&gt;
-            &lt;em&gt;Webcam&lt;/em&gt; (fotos e vídeos)
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media col-md-6 col-lg-4 mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/gnome-sound-recorder.svg&quot; class=&quot;align-self-center mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body align-self-center&quot;&gt;
-            &lt;h6 class=&quot;mt-0 mb-0&quot;&gt;Gravador de som&lt;/h6&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/microsoft.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Integração com o Windows&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Se você usava (ou usa) &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, ou tem outros computadores na mesma rede com Windows (seja rede doméstica ou rede corporativa), saiba que não precisa se desfazer de seus programas e arquivos: o Linux Kamarada consegue se integrar a esse ecossistema.&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/menu.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Dual boot&lt;/h6&gt;
-            Você pode instalar Windows e Linux no mesmo computador. Ao ligar o computador, o menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; permite escolher qual sistema usar.
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/wine.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Wine&lt;/h6&gt;
-            O Linux Kamarada traz o &lt;a href=&quot;https://www.winehq.org/&quot;&gt;Wine&lt;/a&gt; instalado por padrão. O Wine é uma camada de tradução que permite que aplicativos para Windows sejam usados no Linux.
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/folder-blue-network.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Pastas e impressoras compartilhadas&lt;/h6&gt;
-            Acesse pastas compartilhadas pelo &lt;em&gt;app&lt;/em&gt; Arquivos e instale impressoras compartilhadas pelo YaST.
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/ms-office.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Arquivos do Office&lt;/h6&gt;
-            Você pode abrir, editar e salvar arquivos do &lt;a href=&quot;https://products.office.com/pt-br/word&quot;&gt;Microsoft Word&lt;/a&gt;, &lt;a href=&quot;https://products.office.com/pt-br/excel&quot;&gt;Excel&lt;/a&gt; e &lt;a href=&quot;https://products.office.com/pt-br/powerpoint&quot;&gt;PowerPoint&lt;/a&gt; com o LibreOffice Writer, Calc e Impress.    
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; nem todos os aplicativos para Windows são compatíveis ou funcionam perfeitamente no Linux. Você pode verificar a compatibilidade de um aplicativo em:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://appdb.winehq.org/&quot;&gt;WineHQ  - Wine Application Database&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/office-building.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Feito pensando em empresas&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O openSUSE Leap é desenvolvido pela comunidade openSUSE, mas compartilha sua base de código com o &lt;a href=&quot;https://www.suse.com/pt-br/solutions/enterprise-linux/&quot;&gt;SUSE Linux Enterprise (SLE)&lt;/a&gt;, desenvolvido pela empresa SUSE. Se precisar de suporte comercial, você pode migrar com facilidade do Leap para o SLE. Toda instalação do Linux Kamarada é também uma instalação do Leap e, portanto, herda essas características.&lt;/p&gt;
-
-&lt;p&gt;Além disso, confira as funcionalidades a seguir, que podem interessar a organizações:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/preferences-desktop-online-accounts.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Contas online&lt;/h6&gt;
-
-            Se sua empresa usa G Suite ou Microsoft Exchange, é possível sincronizar os aplicativos do GNOME com esses serviços.
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/samba.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Suporte a redes Windows e Active Directory&lt;/h6&gt;
-
-            &lt;p&gt;Usando o YaST, é possível ingressar computadores com o Linux Kamarada em domínios do &lt;a href=&quot;https://docs.microsoft.com/pt-br/windows-server/identity/ad-ds/ad-ds-getting-started&quot;&gt;Active Directory (AD)&lt;/a&gt;, de modo que os usuários possam fazer &lt;em&gt;login&lt;/em&gt; no Linux usando suas contas do AD e usar os serviços disponibilizados pelo domínio.&lt;/p&gt;
-
-            &lt;p&gt;Para mais informações, consulte a documentação do openSUSE (em inglês):&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/security/html/book.security/cha-security-ad.html&quot;&gt;Active Directory Support - Security Guide - openSUSE Leap 15.1&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/safenet-etoken-5110-icon.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;Suporte a certificados digitais&lt;/h6&gt;
-
-            &lt;p&gt;Os pacotes necessários à utilização de mídias criptográficas já vem pré-instalados no Linux Kamarada. Resta a você instalar o &lt;em&gt;driver&lt;/em&gt; proprietário do seu &lt;em&gt;token&lt;/em&gt; (se necessário) e configurar os aplicativos para usá-lo.&lt;/p&gt;
-
-            &lt;p&gt;Para mais informações sobre a configuração e uso de certificados digitais, leia:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/google-noto-emoji-brazil-flag.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Brasileiro!&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada é oferecido em duas edições: a brasileira, em português, e a internacional, em inglês. Outros idiomas suportados pelo openSUSE podem ser instalados usando o YaST.&lt;/p&gt;
-
-&lt;p&gt;A edição brasileira já vem com várias configurações que os usuários brasileiros precisariam ajustar em uma instalação normal do openSUSE: idioma, leiaute de teclado, fuso horário e até mesmo os certificados da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;. Na prática, isso significa que o navegador confia em &lt;em&gt;sites&lt;/em&gt; do governo brasileiro e classifica as conexões como seguras:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/icp-brasil.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/02/icp-brasil.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Isso também significa que usuários de certificados digitais tem uma configuração a menos para se preocupar no Linux Kamarada, que seria essa:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Apenas certifique-se de executar o seguinte comando caso venha a instalar outro navegador ou cliente de &lt;em&gt;e-mail&lt;/em&gt;, para que ele receba os certificados da ICP-Brasil:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ instalar-icpbrasil
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;e-não-para-por-aí&quot;&gt;E não para por aí…&lt;/h2&gt;
-
-&lt;p&gt;Eu tentei enumerar as principais funcionalidades do Linux Kamarada. Mais duas funcionalidades que me ocorrem agora são o &lt;a href=&quot;/pt/2018/09/19/impressoras-hp-no-opensuse/&quot;&gt;Gerenciador de dispositivos HP&lt;/a&gt; e o programa de desenho &lt;a href=&quot;https://kde.org/applications/graphics/org.kde.kolourpaint&quot;&gt;KolourPaint&lt;/a&gt;. Mas vou parar por aqui, dado que o texto já está um pouco longo…&lt;/p&gt;
-
-&lt;p&gt;É isso. Se quiser conhecer mais o Linux Kamarada, agora é com você: baixe e teste!&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-baixo-o-linux-kamarada&quot;&gt;Onde baixo o Linux Kamarada?&lt;/h2&gt;
-
-&lt;p&gt;A página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt; foi atualizada com o &lt;em&gt;link&lt;/em&gt; para &lt;em&gt;download&lt;/em&gt; da versão 15.1 Final.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; não é recomendado usar o Linux Kamarada em servidores, embora seja possível. Nesse caso, a distribuição openSUSE Leap é mais adequada, por fornecer uma opção de instalação própria para servidores, sem área de trabalho.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-faço-em-seguida&quot;&gt;O que faço em seguida?&lt;/h2&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; estiver concluído, verifique a integridade da imagem ISO calculando sua soma de verificação (&lt;em&gt;checksum&lt;/em&gt;), que deve coincidir com a soma que aparece na página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt;. Se a soma não corresponder, faça o &lt;em&gt;download&lt;/em&gt; novamente.&lt;/p&gt;
-
-&lt;p&gt;Se não estiver com pressa, é recomendado verificar também a autenticidade da imagem ISO.&lt;/p&gt;
-
-&lt;p&gt;A impressão digital (&lt;em&gt;fingerprint&lt;/em&gt;) da chave pública do Projeto Linux Kamarada é:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;6b18 52e7 764f b302 b805 a4a0 a575 bcce 1737 8ecc
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para importá-la, execute os comandos a seguir:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ wget https://build.opensuse.org/projects/home:kamarada:15.1/public_key
-$ gpg --import public_key
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para mais informações sobre essas verificações, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;Verificação de integridade e autenticidade com SHA-256 e GPG&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Com a imagem ISO baixada e as verificações feitas e bem-sucedidas, você tem 3 opções:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-burner.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;1) Gravar a imagem ISO em um DVD (gerando, assim, um LiveDVD)&lt;/h6&gt;
-
-            &lt;p&gt;Use um aplicativo como o &lt;a href=&quot;https://cdburnerxp.se/&quot;&gt;CDBurnerXP&lt;/a&gt; (no Windows), o &lt;a href=&quot;http://www.k3b.org/&quot;&gt;K3b&lt;/a&gt; (em um Linux com KDE) ou o &lt;a href=&quot;https://wiki.gnome.org/Apps/Brasero&quot;&gt;Brasero&lt;/a&gt; (em um Linux com GNOME) para gravar a imagem ISO em um DVD. Ligue o computador com o LiveDVD na unidade de DVD para iniciar o Linux Kamarada.&lt;/p&gt;
-
-            &lt;p&gt;Esse &lt;em&gt;post&lt;/em&gt; pode te ajudar com a gravação do DVD:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2016/04/22/como-gravar-um-livedvd/&quot;&gt;Como gravar um LiveDVD&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/usb-creator.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;2) Gravar a imagem ISO em um &lt;em&gt;pendrive&lt;/em&gt; (gerando, assim, um LiveUSB)&lt;/h6&gt;
-
-            &lt;p&gt;Use o &lt;a href=&quot;https://rufus.ie/&quot;&gt;Rufus&lt;/a&gt; (no Windows), o &lt;a href=&quot;https://github.com/openSUSE/imagewriter&quot;&gt;Gravador de imagens do SUSE Studio&lt;/a&gt; (no openSUSE) ou o &lt;strong&gt;&lt;a href=&quot;http://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; (em qualquer distribuição Linux) para gravar a imagem ISO em um &lt;em&gt;pendrive&lt;/em&gt;. Ligue o computador com o LiveUSB para iniciar o Linux Kamarada.&lt;/p&gt;
-
-            &lt;p&gt;Esse &lt;em&gt;post&lt;/em&gt; pode te ajudar com a preparação do LiveUSB:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2016/02/21/como-preparar-um-liveusb/&quot;&gt;Como preparar um LiveUSB&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/virtualbox.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;3) Criar uma máquina virtual e usar a imagem ISO para iniciá-la&lt;/h6&gt;
-
-            &lt;p&gt;Essa opção te possibilita testar o Linux Kamarada sem precisar reiniciar o computador e sair do sistema operacional que você já usa.&lt;/p&gt;
-
-            &lt;p&gt;Para mais informações, leia:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            Depois de testar o Linux Kamarada, caso queira instalá-lo no seu computador ou na máquina virtual, inicie o instalador clicando nesse ícone, situado na &lt;em&gt;dock&lt;/em&gt; (à esquerda, na tela).
-        &lt;/div&gt;
-        &lt;img src=&quot;/files/2020/02/calamares.svg&quot; class=&quot;ml-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O instalador apenas fará o particionamento e a cópia do sistema para o computador. Ao final, reinicie o computador. Então, um assistente do YaST fará as configurações iniciais.&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/calamares-pt.jpg&quot; title=&quot;Instalador&quot;&gt;
-&lt;img src=&quot;/files/2020/02/calamares-pt.jpg&quot; alt=&quot;Instalador&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Instalador&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/02/yast-firstboot-pt.jpg&quot; title=&quot;Configurações iniciais&quot;&gt;
-&lt;img src=&quot;/files/2020/02/yast-firstboot-pt.jpg&quot; alt=&quot;Configurações iniciais&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Configurações iniciais&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;e-se-eu-já-uso-o-opensuse-leap&quot;&gt;E se eu já uso o openSUSE Leap?&lt;/h2&gt;
-
-&lt;p&gt;Você já usa o openSUSE Leap e quer transformá-lo no Linux Kamarada? Simples!&lt;/p&gt;
-
-&lt;p&gt;Basta adicionar o repositório do Linux Kamarada e instalar o pacote &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/patterns-kamarada-gnome&quot;&gt;patterns-kamarada-gnome&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Você pode fazer isso de duas formas: pela interface gráfica, usando a instalação com 1 clique (&lt;em&gt;1-Click Install&lt;/em&gt;), ou pelo terminal, usando o gerenciador de pacotes &lt;strong&gt;zypper&lt;/strong&gt;. Escolha a que prefere.&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando a instalação com 1 clique, clique no botão abaixo:&lt;/p&gt;
-
-&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/patterns-kamarada-gnome-pt.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; Instalação com 1 clique&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando o terminal, primeiro adicione o repositório do Linux Kamarada:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f -K -n &quot;Linux Kamarada&quot; http://c3sl.dl.osdn.jp/storage/g/k/ka/kamarada/15.1/openSUSE_Leap_15.1/ kamarada
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O repositório do Linux Kamarada é gentilmente hospedado pela &lt;a href=&quot;https://osdn.net/projects/kamarada/&quot;&gt;OSDN&lt;/a&gt;, que replica seu conteúdo em alguns servidores de espelho (&lt;em&gt;mirrors&lt;/em&gt;) espalhados pelo mundo. A instalação com 1 clique e o comando acima instruem seu sistema a usar o espelho brasileiro do repositório, gentilmente hospedado pela &lt;a href=&quot;http://www.c3sl.ufpr.br/&quot;&gt;UFPR&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Depois, instale o pacote &lt;strong&gt;patterns-kamarada-gnome&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in patterns-kamarada-gnome
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se você já usa a área de trabalho GNOME, provavelmente será necessário baixar poucos pacotes. Se você usa outra área de trabalho, o tamanho do &lt;em&gt;download&lt;/em&gt; será maior.&lt;/p&gt;
-
-&lt;p&gt;Quando a instalação terminar, se você criar um novo usuário, perceberá que ele receberá as configurações padrão do Linux Kamarada (como tema, papel de parede, etc.). Usuários já existentes podem seguir usando suas personalizações ou ajustar a aparência do sistema (por exemplo, usando os aplicativos &lt;strong&gt;Ajustes&lt;/strong&gt; e &lt;strong&gt;Configurações&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-obtenho-ajuda&quot;&gt;Onde obtenho ajuda?&lt;/h2&gt;
-
-&lt;p&gt;A página &lt;a href=&quot;/pt/ajuda&quot;&gt;Ajuda&lt;/a&gt; indica alguns lugares onde é possível obter auxílio com o Linux Kamarada, o openSUSE ou distribuições Linux em geral (incluindo essas duas).&lt;/p&gt;
-
-&lt;p&gt;O principal canal de suporte para os usuários é o &lt;a href=&quot;https://groups.google.com/forum/#!forum/linuxkamarada&quot;&gt;grupo do Google do Linux Kamarada&lt;/a&gt;, que pode ser acessado pelo navegador ou usado como uma lista de discussão por &lt;em&gt;e-mail&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-obtenho-os-códigos-fonte&quot;&gt;Onde obtenho os códigos-fonte?&lt;/h2&gt;
-
-&lt;p&gt;Como todo projeto de &lt;em&gt;software&lt;/em&gt; livre, o Linux Kamarada disponibiliza seus códigos-fonte para quem quiser estudá-los, adaptá-los ou contribuir com o projeto.&lt;/p&gt;
-
-&lt;p&gt;O desenvolvimento do Linux Kamarada ocorre no &lt;a href=&quot;https://github.com/kamarada&quot;&gt;GitHub&lt;/a&gt; e no &lt;a href=&quot;https://build.opensuse.org/project/subprojects/home:kamarada&quot;&gt;Open Build Service&lt;/a&gt;. Lá podem ser obtidos os códigos-fonte dos pacotes desenvolvidos especificamente para esse projeto (até mesmo &lt;a href=&quot;https://github.com/kamarada/kamarada-website&quot;&gt;o código-fonte deste &lt;em&gt;site&lt;/em&gt;&lt;/a&gt; que você lê está disponível).&lt;/p&gt;
-
-&lt;p&gt;Os códigos-fonte de pacotes herdados do openSUSE podem ser obtidos diretamente dessa distribuição. Se precisar de ajuda para fazer isso, entre em contato, posso ajudar.&lt;/p&gt;
-
-&lt;h2 id=&quot;um-pouco-sobre-o-projeto&quot;&gt;Um pouco sobre o projeto&lt;/h2&gt;
-
-&lt;p&gt;O Linux Kamarada surgiu da vontade de mostrar para as pessoas o “Linux como eu vejo”: um sistema viável de usar no dia-a-dia em casa e no trabalho. Dessa forma, comecei a escrever compartilhando minha experiência usando o Linux. Mas sempre tive vontade de criar uma distribuição, contendo os programas que uso, indico e acredito que são os melhores. Finalmente isso deixou de ser apenas uma vontade e virou algo concreto.&lt;/p&gt;
-
-&lt;p&gt;“Se um amigo me pedisse para formatar o computador dele e instalar o Linux, como eu faria?” Foi com esse pensamento que eu fiz a distribuição, incluindo os programas e personalizações que eu mesmo uso nos computadores de casa e do trabalho. Claro, não exatamente todos os programas que eu uso (resultaria em uma distribuição voltada para profissionais de TI), mas os que eu acredito que interessariam a muitas pessoas. Só incluí na distribuição programas que conheço. Inclusive já escrevi sobre alguns deles aqui no &lt;em&gt;blog&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;O lançamento do Linux Kamarada 15.1 não é um ponto final, mas um ponto de partida: com o tempo, conforme eu descubra novas funcionalidades que possam interessar, posso acrescentá-las à distribuição, assim como substituir ou remover programas conforme se tornem obsoletos.&lt;/p&gt;
-
-&lt;p&gt;O nome Linux Kamarada remete à palavra &lt;a href=&quot;https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/camarada/&quot;&gt;camarada&lt;/a&gt;, que quer dizer: amigo, companheiro, simpático, gentil, solidário, algo nesse sentido.&lt;/p&gt;
-
-&lt;p&gt;O mascote do Linux é o pinguim &lt;a href=&quot;https://pt.wikipedia.org/wiki/Tux&quot;&gt;Tux&lt;/a&gt;. O mascote do Linux Kamarada é o Tux piscando o olho:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2019/09/tux-evolution.png&quot; title=&quot;A &amp;quot;evolução&amp;quot; do Tux: primeira versão do mascote por [Larry Ewing](https://isc.tamu.edu/~lewing/linux/) em 1996, uma imagem bitmap GIF feita no [GIMP](https://www.gimp.org/); depois uma versão estilizada, agora já uma imagem vetorial SVG; e, por fim, o Tux Kamarada.&quot;&gt;
-&lt;img src=&quot;/files/2019/09/tux-evolution.png&quot; alt=&quot;A &amp;quot;evolução&amp;quot; do Tux: primeira versão do mascote por [Larry Ewing](https://isc.tamu.edu/~lewing/linux/) em 1996, uma imagem bitmap GIF feita no [GIMP](https://www.gimp.org/); depois uma versão estilizada, agora já uma imagem vetorial SVG; e, por fim, o Tux Kamarada.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;A “evolução” do Tux: primeira versão do mascote por &lt;a href=&quot;https://isc.tamu.edu/~lewing/linux/&quot;&gt;Larry Ewing&lt;/a&gt; em 1996, uma imagem bitmap GIF feita no &lt;a href=&quot;https://www.gimp.org/&quot;&gt;GIMP&lt;/a&gt;; depois uma versão estilizada, agora já uma imagem vetorial SVG; e, por fim, o Tux Kamarada.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A troca da letra C pela letra K, embora não mude a pronúncia, foi feita com intenção de remeter à área de trabalho &lt;a href=&quot;https://kde.org/&quot;&gt;KDE&lt;/a&gt;, assim como muitos aplicativos para KDE têm seus nomes começando com a letra K, como &lt;a href=&quot;https://konsole.kde.org/&quot;&gt;Konsole&lt;/a&gt; ou &lt;a href=&quot;https://kde.org/applications/utilities/org.kde.kleopatra&quot;&gt;Kleopatra&lt;/a&gt;. Quando comecei a usar o openSUSE, eu usava essa área de trabalho. Depois de muito me aborrecer com &lt;em&gt;bugs&lt;/em&gt; e mudanças constantes, mudei para a área de trabalho GNOME, que considero mais estável e uso desde então. O projeto Linux Kamarada já existia e continuou com o mesmo nome.&lt;/p&gt;
-
-&lt;h2 id=&quot;um-pouco-sobre-mim&quot;&gt;Um pouco sobre mim&lt;/h2&gt;
-
-&lt;p&gt;O Projeto Linux Kamarada é formado por uma equipe de uma pessoa só — em outras palavras, uma “euquipe”. Na verdade, eu sou o único responsável por manter esse projeto enquanto &lt;em&gt;site&lt;/em&gt; e distribuição, mas em ambos eu uso e herdo muito &lt;em&gt;software&lt;/em&gt; livre feito pela distribuição maior openSUSE e por diversas pessoas ao redor do mundo. Como diz o ditado, “nenhum ser humano é uma ilha”.&lt;/p&gt;
-
-&lt;p class=&quot;text-center&quot;&gt;
-    &lt;img src=&quot;/files/2019/09/vinyanalista.jpg&quot; alt=&quot;Antônio Vinícius&quot; class=&quot;img-fluid img-thumbnail rounded-circle&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Meu nome é Antônio Vinícius (me chamam por um nome ou outro). Nasci em 1992 em &lt;a href=&quot;https://pt.wikipedia.org/wiki/Aracaju&quot;&gt;Aracaju (SE)&lt;/a&gt;, no dia do &lt;a href=&quot;https://pt.wikipedia.org/wiki/Santo_Ant%C3%B3nio_de_Lisboa&quot;&gt;santo&lt;/a&gt;. Sou formado como técnico em Informática e cientista da Computação. Atualmente moro em Florianópolis (SC) e trabalho como analista de sistemas no &lt;a href=&quot;https://www.tjsc.jus.br/&quot;&gt;TJSC&lt;/a&gt;. Uso Linux há 12 anos (desde 2007). Sou usuário entusiasta de Linux e &lt;em&gt;softwares&lt;/em&gt; livres em geral. Curioso, estou sempre em busca de conhecer novas tecnologias e adquirir conhecimentos, que compartilho neste &lt;em&gt;blog&lt;/em&gt; do Linux Kamarada e no meu &lt;a href=&quot;https://vinyanalista.github.io/&quot;&gt;&lt;em&gt;blog&lt;/em&gt; pessoal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;ficha-técnica-do-linux-kamarada-151&quot;&gt;Ficha técnica do Linux Kamarada 15.1&lt;/h2&gt;
-
-&lt;p&gt;Para referência futura, eis um resumo do &lt;em&gt;software&lt;/em&gt; contido no Linux Kamarada 15.1:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;kernel&lt;/em&gt; Linux 4.12.14&lt;/li&gt;
-  &lt;li&gt;servidor gráfico X.Org 1.20.3 (sem Wayland)&lt;/li&gt;
-  &lt;li&gt;área de trabalho GNOME 3.26 acompanhada de seus principais aplicativos (&lt;em&gt;core apps&lt;/em&gt;), como Arquivos (antigo Nautilus), Calculadora, Terminal, Editor de texto (gedit), Captura de tela e outros&lt;/li&gt;
-  &lt;li&gt;suíte de aplicativos de escritório LibreOffice 6.3.3&lt;/li&gt;
-  &lt;li&gt;navegador Chromium 80&lt;/li&gt;
-  &lt;li&gt;reprodutor multimídia VLC 3.0.7&lt;/li&gt;
-  &lt;li&gt;cliente de &lt;em&gt;e-mail&lt;/em&gt; Evolution&lt;/li&gt;
-  &lt;li&gt;centro de controle do YaST&lt;/li&gt;
-  &lt;li&gt;Brasero&lt;/li&gt;
-  &lt;li&gt;CUPS 2.2.7&lt;/li&gt;
-  &lt;li&gt;Firewalld 0.5.5&lt;/li&gt;
-  &lt;li&gt;GParted 0.31.0&lt;/li&gt;
-  &lt;li&gt;HPLIP 3.18.6&lt;/li&gt;
-  &lt;li&gt;Java (OpenJDK) 11.0.3&lt;/li&gt;
-  &lt;li&gt;KolourPaint 18.12.3&lt;/li&gt;
-  &lt;li&gt;Linphone 4.1.1&lt;/li&gt;
-  &lt;li&gt;PDFsam Basic 4.1.1&lt;/li&gt;
-  &lt;li&gt;Pidgin 2.13.0&lt;/li&gt;
-  &lt;li&gt;Samba 4.9.5&lt;/li&gt;
-  &lt;li&gt;Transmission 2.94&lt;/li&gt;
-  &lt;li&gt;Vim 8.0&lt;/li&gt;
-  &lt;li&gt;Wine 3.7&lt;/li&gt;
-  &lt;li&gt;jogos: Aisleriot (Paciência), Copas, Iagno (Reversi), Mahjongg, Minas (Campo minado), Nibbles (Cobras), Quadrapassel (Tetris), Sudoku, Xadrez&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Essa lista não é exaustiva, mas já dá uma noção do que se encontra na distribuição.&lt;/p&gt;
-</description>
-                <pubDate>Mon, 24 Feb 2020 01:10:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/</guid>
                 
                 
                     <category>pt</category>
