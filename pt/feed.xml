@@ -9,10 +9,351 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 03 Jul 2020 09:43:09 -0300</pubDate>
-        <lastBuildDate>Fri, 03 Jul 2020 09:43:09 -0300</lastBuildDate>
+        <pubDate>Wed, 08 Jul 2020 01:24:28 -0300</pubDate>
+        <lastBuildDate>Wed, 08 Jul 2020 01:24:28 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Assinando e-mails enviados com certificado digital no Evolution</title>
+                <description>&lt;p&gt;Se você tem um &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;certificado digital&lt;/a&gt;, pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia, conferindo-lhes mais segurança quanto a autenticidade e integridade. Já mostramos aqui, em outro texto, &lt;a href=&quot;/pt/2018/09/24/assinando-emails-enviados-com-certificado-digital-no-thunderbird/&quot;&gt;como assinar digitalmente &lt;em&gt;e-mails&lt;/em&gt; enviados pelo Thunderbird&lt;/a&gt;, o cliente de &lt;em&gt;e-mail&lt;/em&gt; da &lt;a href=&quot;https://www.mozilla.org/pt-BR/&quot;&gt;Fundação Mozilla&lt;/a&gt;. Se você é usuário do &lt;a href=&quot;https://wiki.gnome.org/Apps/Evolution&quot;&gt;Evolution&lt;/a&gt;, o cliente de &lt;em&gt;e-mail&lt;/em&gt; padrão do &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt; e também do &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt;, verá hoje como pode assinar os &lt;em&gt;e-mails&lt;/em&gt; que envia por esse programa.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para referência futura, aqui utilizo o &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt;, baseado no &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;sincronizando-seus-e-mails&quot;&gt;Sincronizando seus e-mails&lt;/h2&gt;
+
+&lt;p&gt;Se seu certificado digital está associado a uma conta de &lt;em&gt;e-mail&lt;/em&gt; do &lt;a href=&quot;https://mail.google.com/&quot;&gt;Gmail&lt;/a&gt; (ou do &lt;a href=&quot;https://gsuite.google.com/&quot;&gt;G Suite&lt;/a&gt;), comece configurando o Evolution para sincronizar seus &lt;em&gt;e-mails&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/04/09/tire-o-maximo-proveito-do-gnome-sincronizando-sua-conta-do-google/&quot;&gt;Tire o máximo proveito do GNOME sincronizando sua conta do Google&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Já se você usa uma conta de &lt;em&gt;e-mail&lt;/em&gt; do &lt;a href=&quot;https://www.microsoft.com/pt-br/microsoft-365/exchange/email&quot;&gt;Microsoft Exchange&lt;/a&gt;, veja:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/09/05/conecte-o-evolution-ao-office-365/&quot;&gt;Conecte o Evolution ao Office 365&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;instalando-a-mídia-criptográfica&quot;&gt;Instalando a mídia criptográfica&lt;/h2&gt;
+
+&lt;p&gt;Antes de continuar, certifique-se de que seu &lt;em&gt;token&lt;/em&gt; ou cartão inteligente (&lt;em&gt;smart card&lt;/em&gt;) é devidamente reconhecido pelo sistema operacional. Se precisar de ajuda com isso, veja:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;Configurando certificado digital no Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;instalando-o-certificado-da-ac-no-evolution&quot;&gt;Instalando o certificado da AC no Evolution&lt;/h2&gt;
+
+&lt;p&gt;Devemos importar o certificado da nossa Autoridade Certificadora para o Evolution, para que ele possa verificar a hierarquia de certificados e validar o nosso certificado digital.&lt;/p&gt;
+
+&lt;p&gt;Se você usa o navegador &lt;a href=&quot;https://www.chromium.org&quot;&gt;Chromium&lt;/a&gt; (ou outro baseado nele, como o &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;, &lt;a href=&quot;https://www.opera.com/pt-br&quot;&gt;Opera&lt;/a&gt;, &lt;a href=&quot;https://vivaldi.com/pt-br/&quot;&gt;Vivaldi&lt;/a&gt; ou &lt;a href=&quot;https://brave.com/&quot;&gt;Brave&lt;/a&gt;), saiba que o Evolution usa a mesma configuração de certificados desse navegador, armazenada na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.pki/nssdb/&lt;/code&gt;. Portanto, se você instalou o certificado da AC nesse navegador, não precisa repetir essa configuração e pode pular esse passo.&lt;/p&gt;
+
+&lt;p&gt;Se você usa o Linux Kamarada 15.1, também pode pular esse passo, porque o navegador padrão é o Chromium e a AC raiz brasileira já vem pré-instalada.&lt;/p&gt;
+
+&lt;p&gt;Se quiser saber como instalar o certificado da AC no Chromium (e semelhantes), veja:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/29/como-instalar-certificados-de-seguranca-no-linux/&quot;&gt;Como instalar certificados de segurança no Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você está fazendo essa configuração pela primeira vez e vai importar o certificado da AC diretamente pelo Evolution, continue lendo.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://acraiz.icpbrasil.gov.br/credenciadas/RAIZ/ICP-Brasilv5.crt&quot;&gt;Clique aqui&lt;/a&gt; para baixar o certificado de segurança da &lt;a href=&quot;http://www.iti.gov.br/icp-brasil&quot;&gt;ICP-Brasil&lt;/a&gt;, a AC raiz brasileira.&lt;/p&gt;
+
+&lt;p&gt;Na tela principal do Evolution, abra o menu &lt;strong&gt;Editar&lt;/strong&gt; e clique na opção &lt;strong&gt;Preferências&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No painel da esquerda, selecione &lt;strong&gt;Certificados&lt;/strong&gt; e na direita, a aba &lt;strong&gt;Seus certificados&lt;/strong&gt;. Clique no botão &lt;strong&gt;Importar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe o caminho para o certificado que você baixou.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo seguinte, marque as três opções e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O Evolution solicita a senha para o banco de dados de certificados, que, por padrão, é vazia. Nesse caso, você pode simplesmente clicar em &lt;strong&gt;OK&lt;/strong&gt; sem digitar nada:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-04-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-04-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Verifique que a ICP-Brasil aparece na lista de autoridades certificadoras:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurando-o-token-no-evolution&quot;&gt;Configurando o token no Evolution&lt;/h2&gt;
+
+&lt;p&gt;Assim como o navegador Chromium, e diferentemente do &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Firefox&lt;/a&gt; e do &lt;a href=&quot;https://www.thunderbird.net/&quot;&gt;Thunderbird&lt;/a&gt;, o cliente de &lt;em&gt;e-mail&lt;/em&gt; Evolution não dispõe de uma interface gráfica para a configuração de &lt;em&gt;tokens&lt;/em&gt;, motivo pelo qual faremos esse procedimento usando o terminal.&lt;/p&gt;
+
+&lt;p&gt;Esse passo também pode ser pulado se você usa o navegador Chromium e já configurou seu &lt;em&gt;token&lt;/em&gt; nele. Falamos sobre isso em outro tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/&quot;&gt;Configurando certificado digital no navegador Google Chrome / Chromium&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você está fazendo essa configuração pela primeira vez, continue lendo.&lt;/p&gt;
+
+&lt;p&gt;Conecte seu &lt;em&gt;token&lt;/em&gt; antes de continuar.&lt;/p&gt;
+
+&lt;p&gt;Primeiro, comece abrindo o terminal e instalando as &lt;a href=&quot;https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/NSS/Tools&quot;&gt;ferramentas NSS da Mozilla&lt;/a&gt; (é possível que já estejam instaladas em seu sistema, como já vem no Linux Kamarada):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in mozilla-nss-tools
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, certifique-se que está em sua pasta pessoal (&lt;em&gt;home&lt;/em&gt;) e execute o comando a seguir (fazendo as devidas substituições) para adicionar o &lt;em&gt;token&lt;/em&gt; à lista de dispositivos e módulos de segurança:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ cd
+$ modutil -dbdir sql:.pki/nssdb/ -add &quot;nome_do_token&quot; -libfile /caminho/para/biblioteca
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No lugar de &lt;code class=&quot;highlighter-rouge&quot;&gt;nome_do_token&lt;/code&gt;, digite um nome para identificar o &lt;em&gt;token&lt;/em&gt; (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;eToken&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;No lugar de &lt;code class=&quot;highlighter-rouge&quot;&gt;/caminho/para/biblioteca&lt;/code&gt;, informe o caminho para a biblioteca do &lt;em&gt;token&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se seu &lt;em&gt;token&lt;/em&gt; foi reconhecido pelo &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;OpenSC&lt;/a&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/opensc-pkcs11.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;se você instalou o &lt;a href=&quot;/pt/2018/04/16/configurando-certificado-digital-no-linux-opensuse/&quot;&gt;SafeNet Authentication Client&lt;/a&gt; (meu caso), informe &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/libeToken.so&lt;/code&gt;;&lt;/li&gt;
+  &lt;li&gt;para outros &lt;em&gt;tokens&lt;/em&gt;, siga as instruções fornecidas pela fabricante ou certificadora.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para mim, que uso atualmente um &lt;em&gt;token&lt;/em&gt; &lt;a href=&quot;https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/etoken-5110-usb-token/&quot;&gt;SafeNet eToken 5110&lt;/a&gt;, o comando ficou assim:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ modutil -dbdir sql:.pki/nssdb/ -add &quot;eToken&quot; -libfile /usr/lib64/libeToken.so
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O programa &lt;strong&gt;modutil&lt;/strong&gt; alerta que é necessário fechar o navegador (no nosso caso, o cliente de &lt;em&gt;e-mail&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;WARNING: Performing this operation while the browser is running could cause
+corruption of your security databases. If the browser is currently running,
+you should exit browser before continuing this operation. Type
+'q &amp;lt;enter&amp;gt;' to abort, or &amp;lt;enter&amp;gt; to continue:
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feche o Evolution e, de volta ao terminal, tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Quando o programa encerrar, pode reabrir o Evolution:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Module &quot;eToken&quot; added to database.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Certifique-se de que o Evolution reconhece o seu &lt;em&gt;token&lt;/em&gt;. Para isso, abra o menu &lt;strong&gt;Editar&lt;/strong&gt; e clique na opção &lt;strong&gt;Preferências&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se o Evolution pedir a senha PIN do seu &lt;em&gt;token&lt;/em&gt; (o que já é um bom sinal), digite-a e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No painel da esquerda, selecione &lt;strong&gt;Certificados&lt;/strong&gt; e à direita, na aba &lt;strong&gt;Seus certificados&lt;/strong&gt;, note que seu certificado digital aparece na lista:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configurando-a-assinatura-digital-no-evolution&quot;&gt;Configurando a assinatura digital no Evolution&lt;/h2&gt;
+
+&lt;p&gt;A partir de agora, estamos todos na mesma página: usuários de Chromium ou de outros navegadores, assim como usuários de Linux Kamarada ou de outras distribuições.&lt;/p&gt;
+
+&lt;p&gt;O próximo passo é configurar o Evolution para assinar os &lt;em&gt;e-mails&lt;/em&gt; que enviamos a partir da nossa conta com o nosso certificado.&lt;/p&gt;
+
+&lt;p&gt;Na caixa de diálogo &lt;strong&gt;Preferências do Evolution&lt;/strong&gt;, no painel da esquerda, selecione &lt;strong&gt;Contas de correio&lt;/strong&gt; (a primeira opção). À direita, selecione sua conta de &lt;em&gt;e-mail&lt;/em&gt; e clique no botão &lt;strong&gt;Editar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentro de &lt;strong&gt;MIME seguro (S/MIME)&lt;/strong&gt;, em &lt;strong&gt;Certificado de assinatura&lt;/strong&gt;, clique em &lt;strong&gt;Selecionar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione o &lt;strong&gt;Certificado&lt;/strong&gt; a ser usado para assinatura e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à caixa de diálogo &lt;strong&gt;Editor de contas&lt;/strong&gt;, caso deseje sempre assinar digitalmente os &lt;em&gt;e-mails&lt;/em&gt; que envia, marque a opção &lt;strong&gt;Sempre assinar mensagens enviadas ao usar esta conta&lt;/strong&gt;, abaixo de &lt;strong&gt;MIME seguro (S/MIME)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Editor de contas&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Depois, clique em &lt;strong&gt;OK&lt;/strong&gt; para fechar a caixa de diálogo &lt;strong&gt;Preferências do Evolution&lt;/strong&gt; e voltar à tela principal.&lt;/p&gt;
+
+&lt;p&gt;A assinatura digital está configurada e pronta para ser usada.&lt;/p&gt;
+
+&lt;h2 id=&quot;enviando-e-mails-com-assinatura-digital&quot;&gt;Enviando e-mails com assinatura digital&lt;/h2&gt;
+
+&lt;p&gt;Na tela principal do Evolution, clique no botão &lt;strong&gt;Novo&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como de costume, preencha os campos &lt;strong&gt;De&lt;/strong&gt;, &lt;strong&gt;Para&lt;/strong&gt; e &lt;strong&gt;Assunto&lt;/strong&gt; e redija a mensagem.&lt;/p&gt;
+
+&lt;p&gt;Antes de enviar, certifique-se de que a opção &lt;strong&gt;Assinar S/MIME&lt;/strong&gt;, dentro do menu &lt;strong&gt;Opções&lt;/strong&gt;, está marcada (se você marcou aquela opção nas configurações da conta, essa opção já deve vir marcada por padrão):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Enviar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Evolution solicita o PIN do &lt;em&gt;token&lt;/em&gt; para assinar a mensagem no momento do envio:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;verificando-a-assinatura-digital-de-e-mails-recebidos&quot;&gt;Verificando a assinatura digital de e-mails recebidos&lt;/h2&gt;
+
+&lt;p&gt;Se o destinatário usa o Evolution, ele pode verificar a assinatura digital da mensagem:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-14-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-14-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-15-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Pode ser que o Evolution não reconheça a assinatura, exibindo &lt;strong&gt;Assinatura inválida&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-17-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-17-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se isso acontecer, é sinal que o destinatário não conhece o certificado da sua Autoridade Certificadora. Oriente-o instalar esse certificado, seguindo as instruções presentes nesta página. Feito isso, ao voltar ao Evolution, perceberá que a assinatura é reconhecida.&lt;/p&gt;
+
+&lt;p&gt;Se o destinatário utiliza o &lt;em&gt;webmail&lt;/em&gt;, pode ser que o &lt;em&gt;webmail&lt;/em&gt; possibilite verificar a assinatura da mensagem, como o Gmail, por exemplo, possibilita:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que o Gmail também não reconhece a assinatura, muito provavelmente pelo mesmo motivo: não conhece o certificado da ICP-Brasil. Infelizmente, a solução definitiva para isso demandaria ao &lt;a href=&quot;https://www.google.com.br&quot;&gt;Google&lt;/a&gt; instalar esse certificado em seus servidores.&lt;/p&gt;
+
+&lt;p&gt;Ainda assim, o Gmail te possibilita, clicando em &lt;strong&gt;Informações do remetente&lt;/strong&gt;, baixar o certificado do remetente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2018/09/thunderbird-token-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Com isso, você pode verificar o certificado você mesmo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/evolution-token-18-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/evolution-token-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.redhat.com/show_bug.cgi?id=624851#c38&quot;&gt;Red Hat Bugzilla – Bug 624851 – Evolution mail client: Unable to load encryption cert from the smart card to send/receive encrypted messages.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/OpenSC/OpenSC/wiki/Using-OpenSC-in-Evolution&quot;&gt;Using OpenSC in Evolution - OpenSC wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/users/evolution/stable/mail-encryption.html.en&quot;&gt;Mail encryption and certificates - GNOME Help&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 08 Jul 2020 01:20:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/07/08/assinando-emails-enviados-com-certificado-digital-no-evolution/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/07/08/assinando-emails-enviados-com-certificado-digital-no-evolution/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Versão 15.2 do openSUSE Leap traz novos e empolgantes pacotes de Inteligência Artificial, aprendizagem de máquina e containers</title>
@@ -2301,446 +2642,6 @@ Failed to connect, CredSSP required by server.
                 <pubDate>Fri, 03 Apr 2020 01:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/04/03/transmitindo-do-vlc-para-a-tv-com-o-chromecast/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/04/03/transmitindo-do-vlc-para-a-tv-com-o-chromecast/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Acesso remoto com NoMachine</title>
-                <description>&lt;p&gt;&lt;strong&gt;Acessar remotamente&lt;/strong&gt; um computador significa usá-lo, controlá-lo à distância usando outro computador. Em algumas situações, o &lt;strong&gt;acesso remoto&lt;/strong&gt; pode ser útil: para usar o computador do trabalho, estando em casa; para oferecer suporte a um colega ou cliente; ou mesmo para não ter que atravessar a casa para mexer em um computador que está na outra sala.&lt;/p&gt;
-
-&lt;p&gt;Existem alguns programas que podem ser usados para fazer acesso remoto. Hoje, veremos como usar o NoMachine.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;&lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;NoMachine&lt;/a&gt;&lt;/strong&gt; é uma solução de acesso remoto desenvolvida pela empresa de mesmo nome, que tem sede em Luxemburgo e existe desde 2003. É &lt;a href=&quot;https://pt.wikipedia.org/wiki/Multiplataforma&quot;&gt;&lt;strong&gt;multiplataforma&lt;/strong&gt;&lt;/a&gt; (pode ser usada em vários sistemas operacionais, incluindo &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;, &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt;, &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; e &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt;), &lt;strong&gt;gratuita&lt;/strong&gt; para uso pessoal e dispõe de opções pagas com mais recursos para empresas.&lt;/p&gt;
-
-&lt;h2 id=&quot;licença&quot;&gt;Licença&lt;/h2&gt;
-
-&lt;p&gt;Observe que o NoMachine não é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, e sim &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;proprietário&lt;/a&gt;. Se eu entendi certo a &lt;a href=&quot;https://www.nomachine.com/pt-pt/licensing-6&quot;&gt;licença de uso do NoMachine&lt;/a&gt;, os &lt;strong&gt;usos individuais&lt;/strong&gt; do NoMachine podem ser feitos de forma &lt;strong&gt;gratuita&lt;/strong&gt; (sem precisar comprar uma licença de &lt;em&gt;software&lt;/em&gt;), como, por exemplo:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;de casa, acessar remotamente o computador que você usa no trabalho;&lt;/li&gt;
-  &lt;li&gt;do trabalho, acessar remotamente seu computador de casa; ou&lt;/li&gt;
-  &lt;li&gt;acessar outro computador na mesma rede local (seja em casa, ou no trabalho).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Nos exemplos acima, você também pode substituir “trabalho” por “universidade” ou outra instituição de ensino.&lt;/p&gt;
-
-&lt;p&gt;O que você &lt;strong&gt;não&lt;/strong&gt; pode fazer com a versão gratuita do NoMachine são &lt;strong&gt;usos comerciais&lt;/strong&gt;, como, por exemplo, acessar remotamente o computador de um cliente, realizar manutenção e cobrar por esse serviço. Para usos comerciais, você deve visitar o &lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;&lt;em&gt;site&lt;/em&gt; do NoMachine&lt;/a&gt; e comprar uma versão comercial do programa.&lt;/p&gt;
-
-&lt;h2 id=&quot;cliente-e-servidor&quot;&gt;Cliente e servidor&lt;/h2&gt;
-
-&lt;p&gt;Nesse tutorial, vamos chamar o computador que é acessado de &lt;strong&gt;servidor&lt;/strong&gt; (ele é que disponibiliza, serve a área de trabalho) e o computador que faz o acesso, de &lt;strong&gt;cliente&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Por exemplo, se você está usando o computador de casa para acessar remotamente o computador do trabalho, o primeiro é o cliente e o segundo é o servidor.&lt;/p&gt;
-
-&lt;p&gt;Essas funções (cliente e servidor) não são fixas: com o NoMachine instalado, qualquer um dos computadores pode assumir qualquer uma dessas funções.&lt;/p&gt;
-
-&lt;p&gt;Assim, você poderia acessar remotamente o computador de casa a partir do computador do trabalho. Nesse caso, o primeiro seria o servidor e o segundo seria o cliente.&lt;/p&gt;
-
-&lt;h2 id=&quot;rede-local&quot;&gt;Rede local&lt;/h2&gt;
-
-&lt;p&gt;Observe que, a princípio, o NoMachine só é capaz de acessar remotamente computadores na mesma rede local.&lt;/p&gt;
-
-&lt;p&gt;Nos exemplos anteriores, para acessar remotamente o computador do trabalho, você precisaria se conectar à rede do trabalho usando uma &lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;VPN&lt;/a&gt; como uma das seguintes (consulte a disponibilidade junto ao administrador de rede ou equipe de TI da empresa):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2017/07/07/como-conectar-a-uma-vpn-do-openvpn/&quot;&gt;Como conectar a uma VPN do OpenVPN&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/&quot;&gt;Como conectar a uma VPN do GlobalProtect&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Já para acessar remotamente o computador de casa, você precisaria configurar redirecionamento de portas no seu roteador de casa. Para verificar se isso é possível, assim como obter instruções sobre como fazer, consulte seu provedor de Internet.&lt;/p&gt;
-
-&lt;p&gt;Sem mais delongas, vamos por a mão na massa!&lt;/p&gt;
-
-&lt;p&gt;Como sempre, me refiro às distribuições &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, mas o uso do NoMachine em outras distribuições é possível e não deve ser muito diferente.&lt;/p&gt;
-
-&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
-
-&lt;p&gt;Baixe o pacote RPM do NoMachine em ambos os computadores: cliente e servidor. Uma alternativa é baixar o pacote em um e copiar para o outro (com um &lt;em&gt;pendrive&lt;/em&gt;, por exemplo).&lt;/p&gt;
-
-&lt;p&gt;Para baixar o NoMachine, acesse seu &lt;em&gt;site&lt;/em&gt; em &lt;a href=&quot;https://www.nomachine.com/pt-pt/&quot;&gt;nomachine.com&lt;/a&gt; e clique em &lt;strong&gt;Transferir agora&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Dentre as opções de &lt;em&gt;download&lt;/em&gt;, escolha o pacote RPM para Linux de 64 &lt;em&gt;bits&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na página seguinte, clique em &lt;strong&gt;Download&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Seu navegador provavelmente baixará o pacote RPM para a pasta &lt;strong&gt;Downloads&lt;/strong&gt; (essa é a configuração padrão da maioria dos navegadores) ou perguntará onde deseja salvá-lo.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalação&quot;&gt;Instalação&lt;/h2&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, instale o NoMachine em ambos os computadores: cliente e servidor.&lt;/p&gt;
-
-&lt;p&gt;Para instalar o NoMachine, abra a pasta onde o pacote RPM foi baixado, clique com o botão direito do &lt;em&gt;mouse&lt;/em&gt; nele e clique em &lt;strong&gt;Abrir com Instalar/Remover software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de Controle do YaST&lt;/a&gt; é iniciado e mostra informações sobre o pacote que será instalado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O YaST informa que o pacote está corrompido, mas na verdade ele não conseguiu fazer a &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;verificação de autenticidade&lt;/a&gt;, já que o pacote não é assinado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Essa mensagem de erro é comum ao instalar um pacote RPM baixado manualmente (sem ser de um repositório configurado). Você pode seguramente clicar em &lt;strong&gt;Ignorar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O pacote é instalado. Ao final, clique em &lt;strong&gt;Concluir&lt;/strong&gt; para fechar o YaST:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que o NoMachine adicionou um ícone na barra do topo do &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;. Ele já está rodando e pronto para ser usado!&lt;/p&gt;
-
-&lt;p&gt;Note também que o pacote RPM do NoMachine instala os aplicativos cliente e servidor, assim como habilita o serviço do NoMachine em ambos os computadores — cliente e servidor — capacitando-os para exercer qualquer uma dessas funções.&lt;/p&gt;
-
-&lt;p&gt;O &lt;em&gt;download&lt;/em&gt; e a instalação no cliente e no servidor são iguais, mas a configuração e o uso são diferentes. Comecemos pelo computador que atuará como servidor.&lt;/p&gt;
-
-&lt;h2 id=&quot;verificando-o-endereço-ip-do-servidor&quot;&gt;Verificando o endereço IP do servidor&lt;/h2&gt;
-
-&lt;p&gt;Para conectar ao computador servidor, você precisa saber o endereço IP dele. O NoMachine fornece essa informação. Para obtê-la, clique no &lt;strong&gt;ícone do NoMachine&lt;/strong&gt;, na barra do topo. Aparecerá um menu com algumas opções. Clique em &lt;strong&gt;Mostrar o estado do serviço&lt;/strong&gt; (ou &lt;em&gt;Show the service status&lt;/em&gt;, se estiver aparecendo em inglês para você, já mostrarei como traduzir):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Anote o endereço IP do servidor (nesse exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.3.7&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Alternativamente, se o ícone do NoMachine não estiver aparecendo para você na barra do topo do GNOME, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; e clique no ícone do &lt;strong&gt;NoMachine Service&lt;/strong&gt; (serviço do NoMachine):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com isso, você chegará àquela mesma tela, onde obterá o endereço IP do servidor.&lt;/p&gt;
-
-&lt;h2 id=&quot;traduzindo-a-interface-do-servidor&quot;&gt;Traduzindo a interface do servidor&lt;/h2&gt;
-
-&lt;p&gt;Normalmente, o NoMachine detecta o idioma do sistema e já traduz sua interface. Quando isso não acontece, ele adota por padrão o idioma inglês.&lt;/p&gt;
-
-&lt;p&gt;Para traduzir a interface do NoMachine no computador servidor, na janela que você abriu, clique em &lt;strong&gt;Preferências do servidor&lt;/strong&gt; (&lt;em&gt;Server preferences&lt;/em&gt;), no canto superior direito da janela.&lt;/p&gt;
-
-&lt;p&gt;Na tela seguinte, clique em &lt;strong&gt;Preferências do Player&lt;/strong&gt; (&lt;em&gt;Player preferences&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-11.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-11.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em seguida, selecione a aba &lt;strong&gt;Aparência&lt;/strong&gt; (&lt;em&gt;Appearance&lt;/em&gt;) e em &lt;strong&gt;Texto&lt;/strong&gt; (&lt;em&gt;Text&lt;/em&gt;) selecione &lt;strong&gt;Português&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-12.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-12.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;É preciso reiniciar o NoMachine para que a tradução seja aplicada. Clique no &lt;em&gt;link&lt;/em&gt; que aparece na parte inferior da tela (&lt;strong&gt;Reinicie NoMachine Monitor para que as alterações tenham efeito&lt;/strong&gt;, &lt;em&gt;Restart the NoMachine Monitor for changes to take effect&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-13.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Feito isso, o NoMachine reiniciará traduzido e já iniciará traduzido das próximas vezes.&lt;/p&gt;
-
-&lt;h2 id=&quot;iniciando-o-acesso-remoto-no-cliente&quot;&gt;Iniciando o acesso remoto no cliente&lt;/h2&gt;
-
-&lt;p&gt;Para iniciar o NoMachine no computador cliente, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;nomachine&lt;/code&gt; e clique no ícone do &lt;strong&gt;NoMachine&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na tela de boas vindas, marque a opção &lt;strong&gt;Não mostrar novamente esta mensagem&lt;/strong&gt; (&lt;em&gt;Don’t show this message again&lt;/em&gt;) e clique em &lt;strong&gt;Continuar&lt;/strong&gt; (&lt;em&gt;Continue&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-14-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-14-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O cliente do NoMachine automaticamente busca computadores na rede que estão rodando o serviço do NoMachine. Sua tela inicial mostra os servidores encontrados na rede, assim como quaisquer computadores que você já tenha acessado anteriormente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-15-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-15-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h3 id=&quot;traduzindo-a-interface-do-cliente&quot;&gt;Traduzindo a interface do cliente&lt;/h3&gt;
-
-&lt;p&gt;Caso a interface do cliente esteja em inglês, você pode configurar a tradução de forma semelhante à do servidor: na tela inicial do cliente do NoMachine, clique em &lt;strong&gt;Definições&lt;/strong&gt; (&lt;em&gt;Preferences&lt;/em&gt;), no canto superior direito da janela.&lt;/p&gt;
-
-&lt;p&gt;Em seguida, selecione a aba &lt;strong&gt;Aparência&lt;/strong&gt; (&lt;em&gt;Appearance&lt;/em&gt;) e em &lt;strong&gt;Texto&lt;/strong&gt; (&lt;em&gt;Text&lt;/em&gt;) selecione &lt;strong&gt;Português&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Reinicie o NoMachine para que a tradução seja aplicada.&lt;/p&gt;
-
-&lt;h3 id=&quot;acessando-um-computador-listado&quot;&gt;Acessando um computador listado&lt;/h3&gt;
-
-&lt;p&gt;Se o computador servidor que você deseja acessar aparece na lista, antes do primeiro acesso, selecione-o na lista e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Digite um nome para esse computador (exemplo: &lt;code class=&quot;highlighter-rouge&quot;&gt;Computador do Trabalho&lt;/code&gt;) e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-16-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora sim: para acessar um servidor que está na lista, faça um duplo-clique nele.&lt;/p&gt;
-
-&lt;p&gt;Se é o seu primeiro acesso remoto a esse computador, o NoMachine apresenta algumas configurações. Na tela &lt;strong&gt;Verificar a autenticidade do anfitrião&lt;/strong&gt;, clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-17-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-17-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe o &lt;strong&gt;Nome de Utilizador&lt;/strong&gt; (nome de usuário, &lt;em&gt;login&lt;/em&gt;) e a &lt;strong&gt;Palavra-Passe&lt;/strong&gt; (senha) da sua conta de usuário no computador servidor:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-18-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Opcionalmente, marque a opção para lembrar a senha. Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Estabelecida a conexão, o NoMachine apresenta algumas telas com dicas para seu uso:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-19-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-19-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Em cada tela, leia atentamente seu conteúdo, marque a opção &lt;strong&gt;Não mostrar novamente esta mensagem&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Finalmente, você verá a tela do computador servidor na janela do cliente do NoMachine:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-20-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-20-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Cada clique dentro dessa janela é feito no computador servidor, bem assim o que é digitado aparece lá. Você está literalmente usando o computador servidor, mas à distância, remotamente, sem estar sentado na frente dele.&lt;/p&gt;
-
-&lt;p&gt;Note que no computador servidor uma notificação indica que um acesso foi iniciado. Além disso, se alguém estiver de frente para ele e a tela dele estiver ligada, verá o que você faz.&lt;/p&gt;
-
-&lt;h3 id=&quot;acessando-um-computador-manualmente&quot;&gt;Acessando um computador manualmente&lt;/h3&gt;
-
-&lt;p&gt;Na tela inicial do cliente do NoMachine, caso o computador servidor que você deseja acessar não apareça na lista, clique no botão &lt;strong&gt;Novo&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O NoMachine inicia um assistente para adicionar o computador à lista:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-21-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-21-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na primeira tela, deixe o &lt;strong&gt;Protocolo&lt;/strong&gt; como está, em seu valor padrão (&lt;strong&gt;NX&lt;/strong&gt;), e clique em &lt;strong&gt;Continuar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na segunda tela, no campo &lt;strong&gt;Anfitrião&lt;/strong&gt;, informe o endereço IP ou nome de rede (&lt;em&gt;hostname&lt;/em&gt;) do servidor e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-22-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-22-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na terceira tela, &lt;strong&gt;Autenticação&lt;/strong&gt;, deixe selecionada a opção padrão &lt;strong&gt;Palavra-Passe&lt;/strong&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-23-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-23-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na penúltima tela, caso você esteja usando um &lt;em&gt;proxy&lt;/em&gt; para se conectar à Internet, selecione a segunda opção e informe as configurações do &lt;em&gt;proxy&lt;/em&gt;. Caso não esteja (caso da maioria das pessoas), deixe selecionada a opção padrão &lt;strong&gt;Não usar um proxy&lt;/strong&gt; e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-24-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-24-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Por fim, digite um nome para esse computador (por exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;Computador do Trabalho&lt;/code&gt;) e clique em &lt;strong&gt;Concluído&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-25-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-25-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Concluído o assistente, a partir de agora esse computador aparece na tela inicial do cliente do NoMachine e você pode acessá-lo fazendo um duplo-clique nele.&lt;/p&gt;
-
-&lt;h2 id=&quot;configurando-o-firewall-no-servidor&quot;&gt;Configurando o firewall no servidor&lt;/h2&gt;
-
-&lt;p&gt;Nos testes que eu fiz com o Linux Kamarada, que traz como &lt;em&gt;firewall&lt;/em&gt; padrão o &lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;, mais adequado para &lt;em&gt;desktops&lt;/em&gt;, tanto no cliente quanto no servidor não foi necessário fazer qualquer configuração adicional no &lt;em&gt;firewall&lt;/em&gt; para que o NoMachine funcionasse.&lt;/p&gt;
-
-&lt;p&gt;Se você estiver com problemas em se conectar ao servidor, deve ser suficiente permitir as portas 4000 TCP e 4011 a 4999 UDP no computador servidor.&lt;/p&gt;
-
-&lt;p&gt;Caso você use o &lt;a href=&quot;/pt/2019/11/18/proteja-se-com-o-firewall-iptables/&quot;&gt;&lt;em&gt;firewall&lt;/em&gt; &lt;strong&gt;iptables&lt;/strong&gt;&lt;/a&gt; no computador servidor, para liberar essas portas, adicione essas linhas ao seu &lt;em&gt;script&lt;/em&gt; de configuração:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# NoMachine (portas 4000/TCP e 4011-4999/UDP)
-iptables -A INPUT -p tcp --dport 4000 -j ACCEPT
-iptables -A INPUT -p udp --match multiport --dports 4011:4999 -j ACCEPT
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Caso precise de mais informações sobre as portas usadas pelo NoMachine, consulte:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt; (em inglês)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;interrompendo-eou-desabilitando-o-serviço-do-nomachine&quot;&gt;Interrompendo e/ou desabilitando o serviço do NoMachine&lt;/h2&gt;
-
-&lt;p&gt;Se você vai usar um computador apenas como cliente, pode interromper e/ou desabilitar o serviço do NoMachine nesse computador (não é obrigatório, mas você pode fazer).&lt;/p&gt;
-
-&lt;p&gt;Por exemplo, se você está usando o NoMachine para trabalho remoto, e imagina que a conexão será sempre do computador de casa (cliente) para o computador do trabalho (servidor), você pode desativar o serviço do NoMachine no computador de casa.&lt;/p&gt;
-
-&lt;p&gt;Se quiser interromper o serviço do NoMachine, clique no &lt;strong&gt;ícone do NoMachine&lt;/strong&gt;, na barra do topo, e depois clique em &lt;strong&gt;Fechar a aplicação NoMachine&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-26-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-26-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O NoMachine pergunta se deve iniciar o serviço da próxima vez em que o computador for ligado. Se quiser desabilitar o serviço, responda que &lt;strong&gt;Não&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-27-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-27-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O NoMachine solicita a senha do administrador (usuário &lt;em&gt;root&lt;/em&gt;), que você deve fornecer para que o serviço seja interrompido e/ou desabilitado.&lt;/p&gt;
-
-&lt;h2 id=&quot;iniciando-manualmente-o-serviço-do-nomachine&quot;&gt;Iniciando manualmente o serviço do NoMachine&lt;/h2&gt;
-
-&lt;p&gt;Se você interrompeu e/ou desabilitou o serviço do NoMachine, pode iniciá-lo manualmente a qualquer momento. Para isso, abra o aplicativo &lt;strong&gt;NoMachine Service&lt;/strong&gt; e clique em &lt;strong&gt;Iniciar o servidor&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-28-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-28-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na mensagem de confirmação, clique em &lt;strong&gt;Avançar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/nomachine-29-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/nomachine-29-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Forneça a senha de administrador para iniciar o serviço.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/pt-pt/introdu%C3%A7%C3%A3o-ao-nomachine&quot;&gt;NoMachine - Introdução ao NoMachine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.vultr.com/docs/setup-nomachine-nx-on-ubuntu&quot;&gt;Setup NoMachine NX On Ubuntu - Vultr.com&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR01L00770&quot;&gt;NoMachine - Default ports used by NoMachine 4 or later&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nomachine.com/AR11P01005&quot;&gt;NoMachine - How to shutdown NoMachine and disable the automatic startup at boot time&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;É isso, pessoal! Espero que esse texto possa ajudá-los em seus acessos remotos. O aplicativo é bastante fácil de usar e intuitivo. Mas se surgirem dúvidas, podem deixar comentários.&lt;/p&gt;
-
-&lt;p&gt;Até a próxima!&lt;/p&gt;
-
-</description>
-                <pubDate>Mon, 23 Mar 2020 18:40:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/03/23/acesso-remoto-com-nomachine/</guid>
                 
                 
                     <category>pt</category>
