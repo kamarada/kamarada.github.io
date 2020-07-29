@@ -9,10 +9,365 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 29 Jul 2020 00:36:28 -0300</pubDate>
-        <lastBuildDate>Wed, 29 Jul 2020 00:36:28 -0300</lastBuildDate>
+        <pubDate>Wed, 29 Jul 2020 11:44:18 -0300</pubDate>
+        <lastBuildDate>Wed, 29 Jul 2020 11:44:18 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Ventoy: create a multiboot USB drive by simply copying ISO images to it</title>
+                <description>&lt;p&gt;Did you know that you can install &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; using the same USB stick, without having to format it twice? Also, you can use the same USB stick to test live images of many Linux distributions, without having to format it again and again. Indeed, there are several tools to create bootable USB drives (good ones include &lt;a href=&quot;https://rufus.ie/&quot;&gt;Rufus&lt;/a&gt; for Windows, &lt;a href=&quot;https://github.com/openSUSE/imagewriter&quot;&gt;SUSE Studio Imagewriter&lt;/a&gt; and &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; for Linux), but none of them is easier to use than the fairly new Ventoy.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.ventoy.net/&quot;&gt;Ventoy&lt;/a&gt; is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt; tool to create bootable USB drives with &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_image&quot;&gt;ISO images&lt;/a&gt;. You format a USB drive and install Ventoy to it just once. Thereafter, you can simply copy some ISO files to the USB drive and boot from it. Ventoy presents a &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; menu listing the ISO images present on the USB drive, from where you can choose which one to boot and start using it right away.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ventoy supports legacy &lt;a href=&quot;https://en.wikipedia.org/wiki/BIOS&quot;&gt;BIOS&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface&quot;&gt;UEFI&lt;/a&gt; (with and without &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot&quot;&gt;secure boot&lt;/a&gt;), &lt;a href=&quot;https://en.wikipedia.org/wiki/Master_boot_record&quot;&gt;MBR&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/GUID_Partition_Table&quot;&gt;GPT&lt;/a&gt; partition tables, which makes it kind of universal.&lt;/p&gt;
+
+&lt;p&gt;Commonly, tools to create bootable USB drives extract the ISO image contents to the drive, allowing just one ISO image to be used at a time. That way, you need to reformat the drive every time you want to boot another ISO image. Besides that, tools usually prevent the drive from being used for other purposes (it’s not possible to copy other files). With Ventoy, you don’t need to format the drive again and again: you can copy and delete ISO images as you wish. You can also copy other files to drive, so you can continue to use it for other purposes.&lt;/p&gt;
+
+&lt;p&gt;You can find Ventoy very handy if you work on formatting and repairing computers, or if you like to try out different Linux distros. I myself started using Ventoy on the recommendation of a friend. I have been using it to test &lt;a href=&quot;/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/&quot;&gt;Linux Kamarada 15.2 Beta&lt;/a&gt;. Ventoy was very useful for me last week, when I installed Windows and Linux on my new &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SSD Kingston A400&lt;/a&gt;, which I received from warranty after the previous one suffered from the &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SATAFIRM S11&lt;/a&gt; bug.&lt;/p&gt;
+
+&lt;p&gt;The first release of Ventoy (1.0.0) was made available on &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;April 5th&lt;/a&gt;. The latest release (1.0.17) is just 4 days old, from &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;July 25th&lt;/a&gt;. For future reference, to write this text I use this version.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-do-i-need-to-use-ventoy&quot;&gt;What do I need to use Ventoy?&lt;/h2&gt;
+
+&lt;p&gt;To use Ventoy, you need a USB drive (be it a USB stick, an external hard drive, a memory card, etc.) that is large enough to hold the ISO images you are going to use. For instance, the &lt;a href=&quot;/en/download/15.1/&quot;&gt;Linux Kamarada 15.1 ISO image&lt;/a&gt; is 1.5GB. If you are going to use just that image, you need at least a 2GB drive. The &lt;a href=&quot;https://www.microsoft.com/software-download/windows10&quot;&gt;Windows 10 version 2004 ISO image&lt;/a&gt; is 4.9GB. To use both images, you need at least an 8GB drive, and so on.&lt;/p&gt;
+
+&lt;p&gt;In addition, you need a Windows or Linux &lt;a href=&quot;https://en.wikipedia.org/wiki/Personal_computer&quot;&gt;PC&lt;/a&gt; to prepare the USB drive.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+    &lt;p&gt;Before proceeding, please note that the USB drive will be formatted by Ventoy, so &lt;strong&gt;the data on the USB drive will be lost&lt;/strong&gt;! If you want to keep the data on it, here's what you can do: copy the data to another location (e.g. to the computer), install Ventoy on the USB drive, then move the data back to the USB drive.&lt;/p&gt;
+    &lt;p&gt;It is also recommended that you remove any other storage devices connected to your computer (such as other USB sticks, external hard drives, memory cards, etc.) to prevent them from being formatted by mistake.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;No more talking, let’s see how to install and use this powerful tool!&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-install-ventoy-to-the-usb-drive&quot;&gt;How to install Ventoy to the USB drive&lt;/h2&gt;
+
+&lt;p&gt;Start by downloading Ventoy for your operating system from the Ventoy releases page on GitHub:
+ &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ventoy/Ventoy/releases&quot;&gt;https://github.com/ventoy/Ventoy/releases&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-02.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-02.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Below are instructions on how to install Ventoy to the USB drive depending on the operating system you use.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-install-ventoy-using-windows&quot;&gt;How to install Ventoy using Windows&lt;/h3&gt;
+
+&lt;p&gt;Download the &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt; file corresponding to Ventoy for Windows.&lt;/p&gt;
+
+&lt;p&gt;When the download is complete, extract the contents of the archive. To do this, you can use the wizard that comes with Windows itself or a program such as &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7-Zip&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter the extracted folder and launch the &lt;strong&gt;Ventoy2Disk&lt;/strong&gt; executable by double-clicking it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Optionally, you can translate the Ventoy interface to your language by opening the &lt;strong&gt;Language&lt;/strong&gt; menu and selecting the desired language:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To this tutorial, I’m going to stay with the default language, which is &lt;strong&gt;English (English)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select the USB drive from the &lt;strong&gt;Device&lt;/strong&gt; list and click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ventoy warns you of the risk of data loss (what I said before). Click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Double check you are formatting the right device and click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;After a few seconds or minutes, Ventoy finishes installing itself to the USB drive:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can click &lt;strong&gt;OK&lt;/strong&gt; to dismiss that dialog box and close the Ventoy window. Before closing, observe that the program now informs you which Ventoy version is installed on the device:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Now that your USB drive is ready, copy the ISO images you are going to use onto it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-windows-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-windows-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that you can organize them inside a folder, to keep them separated from other files on the USB drive. During boot, Ventoy searches all the directories and subdirectories recursively to find all the ISO files inside the USB drive.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-install-ventoy-using-linux&quot;&gt;How to install Ventoy using Linux&lt;/h3&gt;
+
+&lt;p&gt;To show how to install Ventoy using Linux, I’m going to use &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Download the &lt;code class=&quot;highlighter-rouge&quot;&gt;.tar.gz&lt;/code&gt; file corresponding to Ventoy for Linux.&lt;/p&gt;
+
+&lt;p&gt;When the download is complete, extract the contents of the archive:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-linux-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-linux-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enter the extracted folder and you will find the &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt; script:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-linux-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-linux-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Open a terminal window from within this folder.&lt;/p&gt;
+
+&lt;p&gt;Before proceeding, you need to find out the device name of your USB drive. To do this, you can use the &lt;strong&gt;Disks&lt;/strong&gt; app:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-linux-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-linux-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Or the &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man8/fdisk.8.html&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt; command line utility:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
+
+[...]
+
+Disk /dev/sdb: 7.2 GiB, 7744782336 bytes, 15126528 sectors
+Disk model: USB DISK 2.0    
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x789ef007
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        2048 15126527 15124480  7.2G  b W95 FAT32
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In my case, the USB drive name is &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sdb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+    &lt;p&gt;Be sure to correctly identify the USB drive, as well as correctly type its name next, so as not to format another device by mistake.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We are ready to install Ventoy to the USB drive. Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt; script as the administrator user (root), informing the device name as argument:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sh Ventoy2Disk.sh -i /dev/sdb
+
+***********************************************************
+*                Ventoy2Disk Script                       *
+*             longpanda  admin@ventoy.net                 *
+***********************************************************
+
+Disk : /dev/sdb
+Modelo:  USB DISK 2.0 (scsi)
+Size : 7 GB
+Style: MBR
+
+
+Attention:
+You will install Ventoy to /dev/sdb.
+All the data on the disk /dev/sdb will be lost!!!
+
+Continue? (y/n)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ventoy warns you of the risk of data loss and asks if you want to continue.&lt;/p&gt;
+
+&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; (from &lt;em&gt;yes&lt;/em&gt;) and then hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Continue? (y/n)y
+
+All the data on the disk /dev/sdb will be lost!!!
+Double-check. Continue? (y/n)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ventoy warns you once more (think twice). Again, type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Double-check. Continue? (y/n)y
+
+Create partitions on /dev/sdb by parted in MBR style ...
+Done
+mkfs on disk partitions ...
+create efi fat fs /dev/sdb2 ...
+mkfs.fat 4.1 (2017-01-24)
+success
+mkexfatfs 1.3.0
+Creating... done.
+Flushing... done.
+File system created successfully.
+writing data to disk ...
+sync data ...
+esp partition processing ...
+umount: /home/linux/Downloads/ventoy-1.0.17-linux/ventoy-1.0.17/tmp_mnt: target is busy.
+rm: cannot remove './tmp_mnt': Device or resource busy
+
+Install Ventoy to /dev/sdb successfully finished.
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After a few seconds or minutes, Ventoy finishes installing itself to the USB drive.&lt;/p&gt;
+
+&lt;p&gt;Using Linux Kamarada 15.1, an error message was displayed, as you can see above. This is because Ventoy formats the USB drive with the &lt;a href=&quot;https://en.wikipedia.org/wiki/ExFAT&quot;&gt;exFAT&lt;/a&gt; file system, and support for that file system is not installed out-of-the-box on Linux Kamarada 15.1.&lt;/p&gt;
+
+&lt;p&gt;In case you see that error message on Linux Kamarada 15.1, &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap&lt;/a&gt;, or another Linux distribution based on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, install the exFAT support with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fuse-exfat
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Linux Kamarada 15.2 will come with native support for the exFAT file system.&lt;/p&gt;
+
+&lt;p&gt;Now that your USB drive is ready, copy the ISO images you are going to use onto it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/07/ventoy-linux-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/07/ventoy-linux-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that you can organize them inside a folder, to keep them separated from other files on the USB drive. During boot, Ventoy searches all the directories and subdirectories recursively to find all the ISO files inside the USB drive.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-the-usb-drive-with-ventoy&quot;&gt;Using the USB drive with Ventoy&lt;/h2&gt;
+
+&lt;p&gt;After installing Ventoy to the USB drive and copying ISO images onto it, it’s time to use it: reboot your computer with the USB drive plugged in. Ventoy will list the ISO images on the USB drive in a menu, similar to the one presented on the first photo in this text. Select the desired ISO image and hit &lt;strong&gt;Enter&lt;/strong&gt; to boot the system it contains.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linuxuprising.com/2020/06/create-bootable-usb-drive-by-simply.html&quot;&gt;Create A Bootable USB Drive By Simply Copying The ISO To The USB With Ventoy (Linux And Windows) - Linux Uprising Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ostechnix.com/how-to-create-multiboot-usb-drives-with-ventoy-in-linux/&quot;&gt;How To Create Multiboot USB Drives With Ventoy In Linux - OSTechNix&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ventoy.net/en/doc_start.html&quot;&gt;Get Started - Ventoy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://linuxconfig.org/how-to-create-a-multiboot-usb-with-ventoy&quot;&gt;How to create a multiboot USB with Ventoy - LinuxConfig.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 29 Jul 2020 11:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>openSUSE Leap 15.2 Release Brings Exciting New Artificial Intelligence (AI), Machine Learning, and Container Packages</title>
@@ -2455,199 +2810,6 @@ iptables -A INPUT -p udp --match multiport --dports 4011:4999 -j ACCEPT
                 <pubDate>Sat, 28 Mar 2020 12:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/03/28/remote-access-with-nomachine/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>How to connect to a GlobalProtect VPN</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/globalprotect.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/globalprotect.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 200px;&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.paloaltonetworks.com/products/globalprotect&quot;&gt;GlobalProtect&lt;/a&gt; is the name of the &lt;a href=&quot;/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/&quot;&gt;virtual private network (VPN)&lt;/a&gt; provided by the &lt;a href=&quot;https://www.paloaltonetworks.com/&quot;&gt;Palo Alto Networks&lt;/a&gt; firewalls. Are you going to work remotely for a company that requires you to use this VPN? Here’s how to install the necessary software and connect on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; Leap and Tumbleweed and also on &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada&lt;/a&gt; (a novel Linux distro based on openSUSE Leap).&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;VPNs are used by organizations (such as companies and universities) to allow people (employees and students) to remotely connect to their networks. A VPN provides an encrypted connection (a tunnel) between your home computer and the organization network. If you want to know more about VPNs, read the beginning of this post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/&quot;&gt;How to setup an OpenVPN client on openSUSE Linux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On that occasion, we talked about &lt;a href=&quot;/en/2017/07/07/how-to-setup-an-openvpn-client-on-opensuse-linux/&quot;&gt;OpenVPN&lt;/a&gt;, another VPN technology.&lt;/p&gt;
-
-&lt;p&gt;Today, we are going to talk about GlobalProtect.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users have two options for connecting to GlobalProtect VPNs:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;the OpenConnect client, which is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt;, thus provided by the Linux distributions themselves; or&lt;/li&gt;
-  &lt;li&gt;the official (proprietary) GlobalProtect client, provided by Palo Alto Networks.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I advance that I was not able to make the official client work on openSUSE. So, I mention it here just to let you know that it exists.&lt;/p&gt;
-
-&lt;h2 id=&quot;option-1-openconnect-client&quot;&gt;Option #1: OpenConnect client&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.infradead.org/openconnect/&quot;&gt;OpenConnect&lt;/a&gt; is a VPN client initially created to support &lt;a href=&quot;http://www.cisco.com/go/asm&quot;&gt;Cisco’s AnyConnect&lt;/a&gt; VPN. It has since been ported to support the &lt;a href=&quot;https://www.pulsesecure.net/products/connect-secure/&quot;&gt;Pulse Connect Secure&lt;/a&gt; VPN and the PAN GlobalProtect VPN. Support for the latter came with version 8.00, &lt;a href=&quot;https://lists.infradead.org/pipermail/openconnect-devel/2019-January/005178.html&quot;&gt;released on January 4, 2019&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Tumbleweed&quot;&gt;openSUSE Tumbleweed&lt;/a&gt;, the rolling release version of openSUSE, has OpenConnect version 8.05 available on its official repositories. If you use this distribution, to install OpenConnect, you just need to run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in openconnect
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;/en/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt;, the (traditional) regular release version of openSUSE, offers OpenConnect version 7.08 on its official repositories.&lt;/p&gt;
-
-&lt;p&gt;That is the same version that comes installed out-of-the-box on &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you are an user of either of these distros, you need to update OpenConnect to version 8.05, which can be retrieved from the network repository. To do this, first add the network repo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar http://download.opensuse.org/repositories/network/openSUSE_Leap_15.1/ network
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, install the OpenConnect package (explicitly stating that you want to download it from the network repo):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in network:openconnect
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Up-to-date OpenConnect installed, everyone on the same page, let’s see how to use it.&lt;/p&gt;
-
-&lt;h3 id=&quot;connection&quot;&gt;Connection&lt;/h3&gt;
-
-&lt;p&gt;To connect to a GlobalProtect VPN, have the following information ready:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GlobalProtect server, you need either its IP address or its &lt;a href=&quot;https://en.wikipedia.org/wiki/Fully_qualified_domain_name&quot;&gt;full qualified domain name (FQDN)&lt;/a&gt;;&lt;/li&gt;
-  &lt;li&gt;user name (login); and&lt;/li&gt;
-  &lt;li&gt;user password.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you don’t know them, ask your organization’s network administrator or IT staff.&lt;/p&gt;
-
-&lt;p&gt;Open a terminal window (reserve a terminal window just for connecting) and run the following command, making the appropriate replacements:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudo openconnect --protocol=gp global.protect.server -u user-name
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Type the administrator (root user) password and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;[sudo] password for root:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, when prompted, enter your user password to access the VPN:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;POST https://vpn.XXXXXXXX.br/ssl-vpn/prelogin.esp?tmp=tmp&amp;amp;clientVer=4100&amp;amp;clientos=Linux
-Connected to 200.XXXXX.4:443
-SSL negotiation with vpn.XXXXXXXX.br
-Connected to HTTPS on vpn.XXXXXXXX.br
-Digite o seu usuário e senha:
-Senha:
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Connection is established and the IP address you obtained from the VPN is informed:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;POST https://vpn.XXXXXXXX.br/ssl-vpn/login.esp
-GlobalProtect login returned authentication-source=auth-seq_ad-local-vpn
-POST https://vpn.XXXXXXXX.br/ssl-vpn/getconfig.esp
-Session will expire after 43199 minutes.
-Tunnel timeout (rekey interval) is 180 minutes.
-Idle timeout is 180 minutes.
-No MTU received. Calculated 1422 for ESP tunnel
-POST https://vpn.XXXXXXXX.br/ssl-vpn/hipreportcheck.esp
-Connected as 10.22.4.171, using SSL, with ESP in progress
-ESP session established with server
-ESP tunnel connected; exiting HTTPS mainloop.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In this example, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.22.4.171&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The OpenConnect command does not end immediately. Instead, it runs indefinitely. You remain connected to the VPN as long as you keep that program running (that’s why I advised to reserve a terminal window just for it).&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/03/globalprotect-connected-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/03/globalprotect-connected-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;During this time, you can access the organization’s internal systems from your home computer as if you were there (phisically speaking).&lt;/p&gt;
-
-&lt;p&gt;When you no longer need the VPN and want to disconnect, press &lt;strong&gt;Ctrl + C&lt;/strong&gt; to stop OpenConnect (and close the connection):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;^CPOST https://vpn.XXXXXXXX.br/ssl-vpn/logout.esp
-SSL negotiation with vpn.XXXXXXXX.br
-Connected to HTTPS on vpn.XXXXXXXX.br
-Logout successful
-RTNETLINK answers: No such process
-RTNETLINK answers: No such process
-RTNETLINK answers: No such process
-RTNETLINK answers: No such process
-User cancelled (SIGINT/SIGTERM); exiting.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;option-2-globalprotect-official-client&quot;&gt;Option #2: GlobalProtect official client&lt;/h2&gt;
-
-&lt;p&gt;Palo Alto Networks provides a &lt;a href=&quot;https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux.html&quot;&gt;GlobalProtect app for Linux&lt;/a&gt; in two versions: a command line interface (CLI) version and a graphical user interface (GUI) version. Ideally, the package or installer should be provided to you by the organization’s network administrator or IT staff.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately, there are organizations that do not support Linux. &lt;a href=&quot;https://www.google.com/search?q=download+Global+Protect+Linux&quot;&gt;Searching the Internet&lt;/a&gt;, I found a link to download the GlobalProtect app on this page of the Kansas State University:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.k-state.edu/its/security/secure-data/vpn/index.html&quot;&gt;Virtual Private Networking - Kansas State University&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Also unfortunately, I was unable to make it work on Linux Kamarada 15.1, neither the CLI version, nor the GUI version. The &lt;a href=&quot;https://docs.paloaltonetworks.com/compatibility-matrix/globalprotect/where-can-i-install-the-globalprotect-app#id7a3c3401-b233-43b0-8d78-dfceab88798f_idbcd7ccf7-eceb-462c-8678-1a5fa51cbc18&quot;&gt;GlobalProtect compatibility matrix&lt;/a&gt; shows that the Linux distributions officially supported by Palo Alto Networks are &lt;a href=&quot;https://www.centos.org/&quot;&gt;CentOS&lt;/a&gt;, &lt;a href=&quot;https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux&quot;&gt;Red Hat Enterprise Linux (RHEL)&lt;/a&gt; and &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;. openSUSE distributions are not officially supported.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.edivaldobrito.com.br/conectar-a-uma-vpn-global-protector-no-linux/&quot;&gt;Como se conectar a uma VPN Global Protector no Linux - Blog do Edivaldo&lt;/a&gt; (in Portuguese)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Openconnect-Conexao-de-VPN-Paloalto-no-Debian&quot;&gt;Openconnect - Conexão de VPN Paloalto no Debian - Artigo - Viva o Linux&lt;/a&gt; (in Portuguese)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux.html&quot;&gt;GlobalProtect App for Linux - Palo Alto Networks&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Thu, 19 Mar 2020 00:20:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/</guid>
                 
                 
                     <category>en</category>

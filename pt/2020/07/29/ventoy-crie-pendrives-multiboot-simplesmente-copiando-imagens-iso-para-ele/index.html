@@ -20,7 +20,7 @@
     <title>
         
             
-                Ventoy: crie pendrives multiboot simplesmente copiando imagens ISO para ele - Linux Kamarada
+                Ventoy: crie um pendrive multiboot simplesmente copiando imagens ISO para ele - Linux Kamarada
             
         
     </title>
@@ -30,6 +30,10 @@
     <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
 
     
+    
+        
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/" />
+        
     
         
     
@@ -55,7 +59,7 @@
         <meta property="og:image" content="https://kamarada.github.io/files/2020/07/ventoy-01.jpg" />
     
     <meta property="og:site_name" content="Linux Kamarada" />
-    <meta property="og:title" content="Ventoy: crie pendrives multiboot simplesmente copiando imagens ISO para ele" />
+    <meta property="og:title" content="Ventoy: crie um pendrive multiboot simplesmente copiando imagens ISO para ele" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://kamarada.github.io/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/" />
 
@@ -203,7 +207,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -289,7 +293,7 @@
     <header class="card-header">
         <h1 class="blog-post-title" itemprop="headline name">
             <a class="blog-post-link" href="/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/" itemprop="mainEntityOfPage url">
-                Ventoy: crie pendrives multiboot simplesmente copiando imagens ISO para ele
+                Ventoy: crie um pendrive multiboot simplesmente copiando imagens ISO para ele
             </a>
         </h1>
         <div class="blog-post-meta row">
@@ -352,7 +356,7 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>Sabia que você pode instalar <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e <a href="https://www.vivaolinux.com.br/linux/">Linux</a> usando o mesmo <em>pendrive</em>, sem precisar formatá-lo duas vezes? Assim como usar o mesmo <em>pendrive</em> para testar <a href="https://kamarada.github.io/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">imagens <em>live</em></a> de várias distribuições Linux, sem formatá-lo de novo e de novo? É bem verdade que existem várias ferramentas para criar <em>pendrives</em> inicializáveis (ou “bootáveis”, na gíria técnica), dentre as quais <a href="https://kamarada.github.io/pt/2016/02/21/como-preparar-um-liveusb/">já falamos aqui</a> sobre o <a href="https://rufus.ie/">Rufus</a> (para Windows), o <a href="https://github.com/openSUSE/imagewriter">SUSE Studio Imagewriter</a> e o <strong><a href="https://man7.org/linux/man-pages/man1/dd.1.html">dd</a></strong> (para Linux), mas nenhuma delas é mais fácil de usar que o recém-chegado Ventoy.</p>
+            <p>Sabia que você pode instalar <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e <a href="https://www.vivaolinux.com.br/linux/">Linux</a> usando o mesmo <em>pendrive</em>, sem precisar formatá-lo duas vezes? Assim como usar o mesmo <em>pendrive</em> para testar <a href="/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/">imagens <em>live</em></a> de várias distribuições Linux, sem formatá-lo de novo e de novo? É bem verdade que existem várias ferramentas para criar <em>pendrives</em> inicializáveis (ou “bootáveis”, na gíria técnica), dentre as quais <a href="/pt/2016/02/21/como-preparar-um-liveusb/">já falamos aqui</a> sobre o <a href="https://rufus.ie/">Rufus</a> (para Windows), o <a href="https://github.com/openSUSE/imagewriter">SUSE Studio Imagewriter</a> e o <strong><a href="https://man7.org/linux/man-pages/man1/dd.1.html">dd</a></strong> (para Linux), mas nenhuma delas é mais fácil de usar que o recém-chegado Ventoy.</p>
 
 <p>O <a href="https://www.ventoy.net/">Ventoy</a> é uma ferramenta de <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a> para criar <em>pendrives</em> inicializáveis com <a href="https://pt.wikipedia.org/wiki/Imagem_ISO">imagens ISO</a>. O Ventoy formata o <em>pendrive</em> uma única vez e se instala nele. A partir daí, basta você copiar imagens ISO para o <em>pendrive</em>. Reinicie o computador com o <em>pendrive</em> conectado e o Ventoy apresentará um menu do <a href="https://www.gnu.org/software/grub/">GRUB</a> listando as imagens ISO que estão no <em>pendrive</em>. Escolha uma e o sistema operacional será iniciado a partir dela. O Ventoy suporta <a href="https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos">BIOS</a> tradicional e <a href="https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos">UEFI</a> (com e sem <a href="https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos"><em>boot</em> seguro</a>), partições <a href="https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos">MBR</a> e <a href="https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos">GPT</a>, o que o torna universal.</p>
 
@@ -365,13 +369,13 @@
 
 <p>Outras ferramentas do gênero, como as citadas anteriormente, extraem o conteúdo da imagem ISO para o <em>pendrive</em>, permitindo que apenas uma imagem ISO seja usada por vez. Com isso, você precisa formatar o <em>pendrive</em> cada vez que quiser usar outra imagem ISO. Além disso, normalmente elas impedem que ele seja usado para outras finalidades (não permitem copiar outros arquivos). Com o Ventoy, você pode copiar e excluir imagens ISO do <em>pendrive</em>, assim como quaisquer outros arquivos, sem precisar formatá-lo de novo e de novo.</p>
 
-<p>O Ventoy é uma “mão na roda” para quem trabalha formatando e reparando computadores, ou quem gosta de experimentar várias distribuições Linux. Eu mesmo conheci o Ventoy por indicação de um amigo e tenho usado para testar o <a href="https://kamarada.github.io/pt/2020/04/14/linux-kamarada-15.2-beta-deixa-o-seu-desktop-ainda-mais-verde/">Linux Kamarada 15.2 Beta</a>. Semana passada o Ventoy me foi muito útil para instalar o Windows e o Linux no meu novo <a href="https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/">SSD Kingston A400</a>, que recebi da garantia após o anterior apresentar o <em>bug</em> <a href="https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/">SATAFIRM S11</a>.</p>
+<p>O Ventoy é uma “mão na roda” para quem trabalha formatando e reparando computadores, ou quem gosta de experimentar várias distribuições Linux. Eu mesmo conheci o Ventoy por indicação de um amigo e tenho usado para testar o <a href="/pt/2020/04/14/linux-kamarada-15.2-beta-deixa-o-seu-desktop-ainda-mais-verde/">Linux Kamarada 15.2 Beta</a>. Semana passada o Ventoy me foi muito útil para instalar o Windows e o Linux no meu novo <a href="https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/">SSD Kingston A400</a>, que recebi da garantia após o anterior apresentar o <em>bug</em> <a href="https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/">SATAFIRM S11</a>.</p>
 
 <p>A primeira versão do Ventoy (1.0.0) foi lançada em <a href="https://www.ventoy.net/en/doc_news.html">05 de abril</a>. A versão mais recente (1.0.17) foi lançada há 4 dias, em <a href="https://www.ventoy.net/en/doc_news.html">25 de julho</a>, e é essa versão que vou usar aqui hoje.</p>
 
 <h2 id="o-que-preciso-para-usar-o-ventoy">O que preciso para usar o Ventoy?</h2>
 
-<p>Para usar o Ventoy, você precisa de um <em>pendrive</em> ou equivalente (por exemplo, HD externo, cartão de memória, etc.) em que caibam as imagens ISO que você vai usar. Por exemplo, a <a href="https://kamarada.github.io/pt/download/15.1/">imagem ISO do Linux Kamarada 15.1</a> ocupa 1,5GB. Se vai usar somente ela, você precisa de um <em>pendrive</em> de pelo menos 2GB. Já a <a href="https://www.microsoft.com/pt-br/software-download/windows10">ISO do Windows 10 versão 2004</a> ocupa 4,6GB. Para usar ambas, você precisa de um <em>pendrive</em> de pelo menos 8GB, e assim por diante.</p>
+<p>Para usar o Ventoy, você precisa de um <em>pendrive</em> ou equivalente (por exemplo, HD externo, cartão de memória, etc.) em que caibam as imagens ISO que você vai usar. Por exemplo, a <a href="/pt/download/15.1/">imagem ISO do Linux Kamarada 15.1</a> ocupa 1,5GB. Se vai usar somente ela, você precisa de um <em>pendrive</em> de pelo menos 2GB. Já a <a href="https://www.microsoft.com/pt-br/software-download/windows10">ISO do Windows 10 versão 2004</a> ocupa 4,6GB. Para usar ambas, você precisa de um <em>pendrive</em> de pelo menos 8GB, e assim por diante.</p>
 
 <p>Além disso, você precisa de um <a href="https://pt.wikipedia.org/wiki/Computador_pessoal">PC</a> com Windows ou Linux para preparar o <em>pendrive</em>.</p>
 
@@ -492,7 +496,7 @@
 
 <h3 id="como-instalar-o-ventoy-usando-o-linux">Como instalar o Ventoy usando o Linux</h3>
 
-<p>Para demonstrar como instalar o Ventoy usando o Linux, vou usar o <a href="https://kamarada.github.io/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">Linux Kamarada 15.1</a>.</p>
+<p>Para demonstrar como instalar o Ventoy usando o Linux, vou usar o <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">Linux Kamarada 15.1</a>.</p>
 
 <p>Baixe o arquivo <code class="highlighter-rouge">.tar.gz</code> referente ao Ventoy para Linux.</p>
 
@@ -663,7 +667,7 @@ Install Ventoy to /dev/sdb successfully finished.
 
 <p>No Linux Kamarada 15.1, uma mensagem de erro foi exibida, como você pode ver acima. Isso ocorreu porque o Ventoy formata o <em>pendrive</em> com o sistema de arquivos <a href="https://pt.wikipedia.org/wiki/ExFAT">exFAT</a> e o suporte a esse sistema de arquivos não vem instalado por padrão no Linux Kamarada 15.1.</p>
 
-<p>Caso você se depare com essa mensagem no Linux Kamarada 15.1, no <a href="https://kamarada.github.io/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/">openSUSE Leap 15.1</a>, ou em outra distribuição baseada no <a href="https://www.opensuse.org/">openSUSE</a>, instale o suporte ao exFAT com:</p>
+<p>Caso você se depare com essa mensagem no Linux Kamarada 15.1, no <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">openSUSE Leap</a>, ou em outra distribuição baseada no <a href="https://www.opensuse.org/">openSUSE</a>, instale o suporte ao exFAT com:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre># zypper in fuse-exfat
@@ -1103,7 +1107,7 @@ Install Ventoy to /dev/sdb successfully finished.
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
