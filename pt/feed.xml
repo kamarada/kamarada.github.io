@@ -9,10 +9,265 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 08 Aug 2020 20:28:41 -0300</pubDate>
-        <lastBuildDate>Sat, 08 Aug 2020 20:28:41 -0300</lastBuildDate>
+        <pubDate>Tue, 18 Aug 2020 01:15:43 -0300</pubDate>
+        <lastBuildDate>Tue, 18 Aug 2020 01:15:43 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Firefox e Chromium não conseguem reproduzir vídeos: veja como resolver</title>
+                <description>&lt;p&gt;Se você usa o &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; ou o &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, navegadores que vem no &lt;a href=&quot;https://kamarada.github.io/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/&quot;&gt;Linux Kamarada 15.2 RC&lt;/a&gt;, talvez já tenha se deparado com algum vídeo que eles não conseguem reproduzir. As mensagens de erro variam de &lt;em&gt;site&lt;/em&gt; para &lt;em&gt;site&lt;/em&gt;. Veja alguns exemplos:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-video-01-pt.jpg&quot; title=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): Não foi possível reproduzir a mídia.&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-video-01-pt.jpg&quot; alt=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): Não foi possível reproduzir a mídia.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/openSUSE/status/1290345568452202498&quot;&gt;Twitter&lt;/a&gt;: Não foi possível reproduzir a mídia.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/chromium-video-01-pt.jpg&quot; title=&quot;[Facebook](https://www.facebook.com/167950666638006/videos/1043355016062250/): Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&quot;&gt;
+&lt;img src=&quot;/files/2020/08/chromium-video-01-pt.jpg&quot; alt=&quot;[Facebook](https://www.facebook.com/167950666638006/videos/1043355016062250/): Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/167950666638006/videos/1043355016062250/&quot;&gt;Facebook&lt;/a&gt;: Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De forma resumida, isso acontece porque estão faltando &lt;em&gt;codecs&lt;/em&gt; proprietários no seu computador. A dica a seguir pode te ajudar a resolver esse problema.&lt;/p&gt;
+
+&lt;p&gt;Caso você ainda não conheça, o Linux Kamarada é uma distribuição &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; baseada no &lt;a href=&quot;https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap&lt;/a&gt;, portanto a dica a seguir também serve para usuários do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Outras distribuições podem enfrentar problema semelhante e ter também solução análoga.&lt;/p&gt;
+
+&lt;h2 id=&quot;como-resolver-esse-problema&quot;&gt;Como resolver esse problema&lt;/h2&gt;
+
+&lt;p&gt;A solução, no caso do Linux Kamarada e do openSUSE Leap, se resume a:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Adicionar o repositório do projeto &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt;, caso você ainda não tenha esse repositório adicionado no seu sistema;&lt;/li&gt;
+  &lt;li&gt;Obter a lista atualizada de pacotes disponíveis nos repositórios; e&lt;/li&gt;
+  &lt;li&gt;Atualizar os pacotes do sistema permitindo a mudança de fornecedor, o que deve fazer com que alguns pacotes fornecidos pelo openSUSE sejam substituídos por pacotes do Packman, que contém os  &lt;em&gt;codecs&lt;/em&gt; proprietários faltantes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Há pelo menos duas formas de fazer isso: pela interface gráfica, que pode ser mais amigável especialmente para os iniciantes, ou pela interface de linha de comando.&lt;/p&gt;
+
+&lt;h3 id=&quot;pela-interface-de-linha-de-comando&quot;&gt;Pela interface de linha de comando&lt;/h3&gt;
+
+&lt;p&gt;A solução pela linha de comando usa o gerenciador de pacotes &lt;strong&gt;&lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt;. Como ela é mais resumida, vou começar mostrando ela.&lt;/p&gt;
+
+&lt;p&gt;Execute os 3 comandos a seguir, que correspondem aos 3 passos acima respectivamente, como usuário administrador (&lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.2/ packman
+# zypper ref
+# zypper up --allow-vendor-change
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;pela-interface-gráfica&quot;&gt;Pela interface gráfica&lt;/h3&gt;
+
+&lt;p&gt;Embora seja mais amigável, a solução pela interface gráfica requer alguns cliques e passa por mais telas. Mas a facilidade mais que compensa esse caminho mais longo.&lt;/p&gt;
+
+&lt;h4 id=&quot;adicionando-o-repositório-do-projeto-packman&quot;&gt;Adicionando o repositório do projeto Packman&lt;/h4&gt;
+
+&lt;p&gt;Abra o &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;. Para isso, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentro da categoria &lt;strong&gt;Software&lt;/strong&gt;, a primeira, clique no item &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela &lt;strong&gt;Repositórios de software configurados&lt;/strong&gt;, clique no botão &lt;strong&gt;Adicionar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela seguinte, selecione a opção &lt;strong&gt;Repositórios da comunidade&lt;/strong&gt; e clique no botão &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na &lt;strong&gt;Lista de repositórios online&lt;/strong&gt;, ative o &lt;strong&gt;Packman Repository&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O próprio YaST se encarrega de obter a lista atualizada de pacotes disponíveis nos repositórios. Ele pergunta se pode confiar no novo repositório, clique em &lt;strong&gt;Confiar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-06-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à tela &lt;strong&gt;Repositórios de software configurados&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt; para sair dela.&lt;/p&gt;
+
+&lt;h4 id=&quot;obtendo-os-pacotes-do-repositório-do-packman&quot;&gt;Obtendo os pacotes do repositório do Packman&lt;/h4&gt;
+
+&lt;p&gt;De volta à tela principal do YaST, clique no item &lt;strong&gt;Gerenciamento de software&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na janela que se abre, abra o menu &lt;strong&gt;Ver&lt;/strong&gt; e clique em &lt;strong&gt;Repositórios&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;À esquerda, selecione o &lt;strong&gt;Packman Repository&lt;/strong&gt;, e à direita, clique em &lt;strong&gt;Comutar pacotes do sistema&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que vários pacotes que já estavam instalados no sistema, mas eram fornecidos pelo openSUSE, foram marcados para serem atualizados, para versões fornecidas pelo Packman:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique no botão &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O YaST alerta que vai instalar mais alguns pacotes, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O YaST baixa e instala os pacotes, o que pode demorar mais ou menos dependendo da sua conexão de Internet:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ao final, o YaST avisa que a instalação dos pacotes foi concluída com sucesso:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Concluir&lt;/strong&gt; para fechar essa janela e depois feche o YaST.&lt;/p&gt;
+
+&lt;h2 id=&quot;prontinho&quot;&gt;Prontinho!&lt;/h2&gt;
+
+&lt;p&gt;Quando terminar os procedimentos acima, feche o navegador e abra-o de novo.&lt;/p&gt;
+
+&lt;p&gt;Feito isso, os vídeos que antes não eram reproduzidos passam a aparecer:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-video-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-video-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/chromium-video-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/chromium-video-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;caso-você-queira-mais-informações&quot;&gt;Caso você queira mais informações&lt;/h2&gt;
+
+&lt;p&gt;O MP4 e o H.264 se tornaram formatos de vídeo comuns na Internet. A rigor, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/MP4&quot;&gt;MP4&lt;/a&gt; é um formato de &lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Arquivo_recipiente&quot;&gt;container&lt;/a&gt;&lt;/em&gt;, que pode armazenar em um único arquivo trilha de vídeo, trilhas de áudio, legendas embutidas e outras informações. Já o &lt;a href=&quot;https://pt.wikipedia.org/wiki/H.264&quot;&gt;H.264&lt;/a&gt; é um formato de vídeo de alta definição comprimido, ou seja, ele codifica apenas a informação visual (o vídeo em si) e vem dentro de um &lt;em&gt;container&lt;/em&gt; (como o MP4). Geralmente, “arquivo de vídeo H.264” refere-se a um arquivo com extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.mp4&lt;/code&gt; que contém uma trilha de vídeo codificada com o H.264.&lt;/p&gt;
+
+&lt;p&gt;Ocorre que o &lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Codec&quot;&gt;codec&lt;/a&gt;&lt;/em&gt; do H.264 não é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, mas um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;&lt;em&gt;software&lt;/em&gt; proprietário&lt;/a&gt; da Moving Picture Experts Group Licensing Administration (&lt;a href=&quot;https://www.mpegla.com/&quot;&gt;MPEG LA&lt;/a&gt;) e, portanto, não pode ser fornecido em distribuições Linux como o Linux Kamarada e o openSUSE.&lt;/p&gt;
+
+&lt;p&gt;Se você abre uma página no navegador que tem um vídeo H.264, mas o &lt;em&gt;codec&lt;/em&gt; do H.264 não está instalado no sistema — e ele não vem instalado por padrão nem no openSUSE, nem no Linux Kamarada — então o vídeo não é reproduzido, como mostrei no início do texto.&lt;/p&gt;
+
+&lt;p&gt;Felizmente, no caso dessas duas distribuições, existe o projeto Packman que fornece esse e outros &lt;em&gt;codecs&lt;/em&gt; proprietários na forma de pacotes que podem ser instalados com facilidade.&lt;/p&gt;
+
+&lt;p&gt;Note que esse problema não ocorre no navegador &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;. Provavelmente a &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; fez um acordo comercial com a MPEG LA para distribuir o &lt;em&gt;codec&lt;/em&gt; do H.264 embutido no Chrome.&lt;/p&gt;
+
+&lt;h3 id=&quot;mas-e-o-plugin-openh264-do-firefox&quot;&gt;Mas e o plugin OpenH264 do Firefox?&lt;/h3&gt;
+
+&lt;p&gt;Se você usa o Firefox, talvez tenha reparado que ele tem um &lt;em&gt;plugin&lt;/em&gt; chamado “Codec de vídeo OpenH264”, que é instalado automaticamente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-openh264-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-openh264-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.openh264.org/&quot;&gt;OpenH264&lt;/a&gt; é o nome da implementação do &lt;em&gt;codec&lt;/em&gt; do H.264 feita pela &lt;a href=&quot;https://www.cisco.com/c/pt_br/index.html&quot;&gt;Cisco&lt;/a&gt;. Essa implementação tem seu &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt;, porém também não é um &lt;em&gt;software&lt;/em&gt; livre, visto que seus binários são lançados sob uma licença da Cisco, que cobre os custos de licenciamento junto à MPEG LA para fornecer esse &lt;em&gt;codec&lt;/em&gt; de graça. Por isso, ele deve ser baixado da Cisco.&lt;/p&gt;
+
+&lt;p&gt;A Mozilla fez uma parceria com a Cisco para que o Firefox possa usar o OpenH264. Quando você usa o Firefox pela primeira vez, ele baixa o &lt;em&gt;plugin&lt;/em&gt; do OpenH264 do &lt;em&gt;site&lt;/em&gt; da Cisco.&lt;/p&gt;
+
+&lt;p&gt;O OpenH264 implementa apenas a parte mais básica (&lt;em&gt;baseline profile&lt;/em&gt;) do formato H.264, de modo que só é usado pelo Firefox para dar suporte a chamadas de vídeo, como as feitas usando a tecnologia &lt;a href=&quot;https://webrtc.org/&quot;&gt;WebRTC&lt;/a&gt;. Exemplos de serviços de chamadas de vídeo que usam essa tecnologia incluem o &lt;a href=&quot;https://meet.google.com/&quot;&gt;Google Meet&lt;/a&gt;, o &lt;a href=&quot;https://hangouts.google.com/&quot;&gt;Google Hangouts&lt;/a&gt;, o &lt;a href=&quot;https://www.messenger.com/&quot;&gt;Facebook Messenger&lt;/a&gt; e o &lt;a href=&quot;https://discord.com/&quot;&gt;Discord&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Portanto, o &lt;em&gt;plugin&lt;/em&gt; OpenH264 do Firefox nada tem a ver com os vídeos que não são reproduzidos. Falei dele aqui apenas para esclarecer isso.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/questions/1188176&quot;&gt;Twitter says “The media could not be played”. | Firefox Support Forum | Mozilla Support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support&quot;&gt;SDB:Firefox MP4/H.264 Video Support - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fsf.org/licensing/h264-patent-license&quot;&gt;Information about the H.264 patent license - Free Software Foundation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/pt-BR/kb/por-que-existe-um-plugin-openh264-no-firefox&quot;&gt;Por que existe um plugin OpenH264 no Firefox? | Ajuda do Firefox&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2018-02/msg00846.html&quot;&gt;[opensuse-factory] Status of x264 libraries in the standard distribution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fedoraproject.org/wiki/OpenH264&quot;&gt;OpenH264 - Fedora Project Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bloggeek.me/massive-applications-using-webrtc/&quot;&gt;10 Massive Applications Using WebRTC - BlogGeek.me&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 18 Aug 2020 01:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Linux Kamarada libera versão candidata a lançamento (15.2 RC)</title>
@@ -2632,278 +2887,6 @@ Starting fahclient ... FAIL
                 <pubDate>Sat, 02 May 2020 18:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/05/02/folding-at-home-veja-como-seu-pc-pode-ajudar-as-pesquisas-sobre-a-covid-19/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/05/02/folding-at-home-veja-como-seu-pc-pode-ajudar-as-pesquisas-sobre-a-covid-19/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Servindo áreas de trabalho remotas do Linux para clientes Windows usando XRDP</title>
-                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, vimos como usar clientes RDP no &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; para acessar áreas de trabalho remotas do &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Services&quot;&gt;Terminal Services&lt;/a&gt; do &lt;a href=&quot;https://www.microsoft.com/pt-br/cloud-platform/windows-server&quot;&gt;Windows Server&lt;/a&gt;. Mas se você precisa disponibilizar áreas de trabalho remotas do Linux para clientes com Windows (uma espécie de “Terminal Services do Linux”), é possível fazer isso?&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;É possível sim! Hoje você verá como fazer no &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; usando o XRDP.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;http://xrdp.org/&quot;&gt;XRDP&lt;/a&gt; é um servidor de áreas de trabalho remotas para Linux baseado no protocolo &lt;a href=&quot;https://pt.wikipedia.org/wiki/Remote_Desktop_Protocol&quot;&gt;RDP&lt;/a&gt; (&lt;em&gt;Remote Desktop Protocol&lt;/em&gt;, “protocolo de área de trabalho remota”). Esse é o mesmo protocolo usado pelo aplicativo &lt;a href=&quot;https://support.microsoft.com/pt-br/help/4028379/windows-10-how-to-use-remote-desktop&quot;&gt;&lt;strong&gt;Conexão de Área de Trabalho Remota&lt;/strong&gt;&lt;/a&gt; do Windows e pelos clientes RDP que vimos no &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;instalando-o-xrdp&quot;&gt;Instalando o XRDP&lt;/h2&gt;
-
-&lt;p&gt;No computador ou servidor Linux que disponibilizará a(s) área(s) de trabalho (vamos chamá-lo apenas de “servidor” de agora em diante), instale o XRDP executando os comandos a seguir como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ref
-# zypper in xrdp
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Habilite o serviço do XRDP para que ele seja iniciado automaticamente durante o &lt;em&gt;boot&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl enable xrdp
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Você também pode iniciar o XRDP imediatamente, não precisa reiniciar o servidor:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl start xrdp
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;instalando-o-vnc&quot;&gt;Instalando o VNC&lt;/h2&gt;
-
-&lt;p&gt;Para prover conexões via RDP, um protocolo nativo do Windows, o XRDP utiliza nos bastidores o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Virtual_Network_Computing&quot;&gt;VNC&lt;/a&gt;, um protocolo de acesso remoto mais comum no Linux. Por isso, antes de usar o XRDP propriamente dito, devemos instalar o VNC, o que é fácil fazer no Linux Kamarada e no openSUSE por meio do &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Abra o Centro de controle do YaST. Para fazer isso no Linux Kamarada, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Dentro da categoria &lt;strong&gt;Serviços de rede&lt;/strong&gt;, clique no item &lt;strong&gt;Administração remota (VNC)&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela seguinte, selecione a opção &lt;strong&gt;Permitir Administração Remota com Gerenciamento de Sessões&lt;/strong&gt; e clique em &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(na verdade, eu testei as duas primeiras opções e não vi diferença no final)&lt;/p&gt;
-
-&lt;p&gt;O YaST informa que é necessário instalar o pacote &lt;strong&gt;vncmanager&lt;/strong&gt;. Clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Aguarde a conclusão do processo de instalação e configuração. Ao final, clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;configurando-o-firewall-no-servidor&quot;&gt;Configurando o firewall no servidor&lt;/h2&gt;
-
-&lt;p&gt;Para terminar a instalação e configuração do XRDP, falta apenas mais um detalhe, que é liberar no &lt;em&gt;firewall&lt;/em&gt; a porta usada pelo protocolo RDP, que é, por padrão, a porta 3389 TCP.&lt;/p&gt;
-
-&lt;p&gt;Se você usa o &lt;a href=&quot;https://firewalld.org/&quot;&gt;firewalld&lt;/a&gt;, que é o &lt;em&gt;firewall&lt;/em&gt; padrão do Linux Kamarada, o protocolo RDP está pré-cadastrado com o nome de &lt;code class=&quot;highlighter-rouge&quot;&gt;ms-wbt&lt;/code&gt; (sigla para &lt;em&gt;Microsoft Windows-Based Terminal&lt;/em&gt;). Você só precisa habilitá-lo na zona da sua interface de rede. Supondo que seja a zona pública (&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;), você pode habilitá-lo com o comando (modifique conforme necessário):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# firewall-cmd --permanent --zone=public --add-service=ms-wbt
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Depois, recarregue as regras do firewalld:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# firewall-cmd --reload
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Caso você use o &lt;a href=&quot;/pt/2019/11/18/proteja-se-com-o-firewall-iptables/&quot;&gt;&lt;em&gt;firewall&lt;/em&gt; &lt;strong&gt;iptables&lt;/strong&gt;&lt;/a&gt;, para liberar a porta 3389 TCP, adicione essas linhas ao seu &lt;em&gt;script&lt;/em&gt; de configuração:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# RDP (porta 3389/TCP)
-iptables -A INPUT -p tcp --dport 3389 -j ACCEPT
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note que você só precisa fazer essa configuração no servidor. Se ela fosse necessária também no cliente, teríamos feito também no &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;encerrando-a-sessão-no-servidor&quot;&gt;Encerrando a sessão no servidor&lt;/h2&gt;
-
-&lt;p&gt;Enquanto usa a área de trabalho remota do Windows, você não pode usar o servidor (sentando-se em frente a ele) e acessa-lo remotamente ao mesmo tempo: se você inicia um acesso remoto, a tela no servidor é bloqueada. Bem assim, se você faz &lt;em&gt;logon&lt;/em&gt; no servidor, o acesso remoto é interrompido.&lt;/p&gt;
-
-&lt;p&gt;O XRDP funciona de forma semelhante, com a diferença que o encerramento da sessão não é feito de forma automática, mas manual. Antes de iniciar um acesso remoto a um servidor XRDP, você deve encerrar sua sessão nesse servidor.&lt;/p&gt;
-
-&lt;p&gt;Para encerrar sua sessão no Linux Kamarada, abra o &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, expanda seu nome de usuário e clique em &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;acesso-remoto-a-partir-do-windows&quot;&gt;Acesso remoto a partir do Windows&lt;/h2&gt;
-
-&lt;p&gt;No computador com Windows a partir do qual você fará o acesso remoto, abra o &lt;strong&gt;menu Iniciar&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;conexao&lt;/code&gt; e clique no ícone do aplicativo &lt;strong&gt;Conexão de Área de Trabalho Remota&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Digite o endereço IP ou o nome de rede (&lt;em&gt;hostname&lt;/em&gt;) do &lt;strong&gt;Computador&lt;/strong&gt; que deseja acessar (no meu exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;10.0.0.253&lt;/code&gt;) e clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-08-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-08-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O aplicativo pergunta se pode confiar na conexão com o computador remoto. Marque a opção &lt;strong&gt;Não perguntar novamente sobre conexões com este computador&lt;/strong&gt; e clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-09-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-09-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O cliente de área de trabalho remota do Windows mostra a tela de &lt;em&gt;login&lt;/em&gt; do XRDP:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-10.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-10.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Digite seu nome de usuário (&lt;em&gt;username&lt;/em&gt;) e senha (&lt;em&gt;password&lt;/em&gt;) no servidor Linux acessado e clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Feito isso, você terá acesso à sua área de trabalho no servidor Linux acessado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;(note que, inicialmente, o acesso é feito em tela cheia, mas você pode mudar para uma janela)&lt;/p&gt;
-
-&lt;p&gt;Quando não precisar mais do acesso remoto, lembre-se de encerrar sua sessão no Linux.&lt;/p&gt;
-
-&lt;h2 id=&quot;dica-criando-um-atalho-para-a-conexão&quot;&gt;Dica: criando um atalho para a conexão&lt;/h2&gt;
-
-&lt;p&gt;Se pretende acessar esse servidor Linux com frequência, você pode, para a sua conveniência, salvar as configurações da conexão em algum local de fácil acesso, como a Área de Trabalho.&lt;/p&gt;
-
-&lt;p&gt;Para isso, na tela inicial do aplicativo Conexão de Área de Trabalho Remota, clique em &lt;strong&gt;Mostrar Opções&lt;/strong&gt;. Digite o endereço IP ou nome de rede do &lt;strong&gt;Computador&lt;/strong&gt; remoto com Linux. Digite também seu &lt;strong&gt;Nome de usuário&lt;/strong&gt; nesse computador. Opcionalmente, marque a opção &lt;strong&gt;Permitir salvar minhas credenciais&lt;/strong&gt; se você também deseja salvar a senha. Por fim, clique em &lt;strong&gt;Salvar como&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-12-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-12-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Escolha um local e um nome para o arquivo e salve-o.&lt;/p&gt;
-
-&lt;p&gt;Em seguida, clique em &lt;strong&gt;Conectar&lt;/strong&gt;. Vamos fazer uma conexão apenas para salvar a senha.&lt;/p&gt;
-
-&lt;p&gt;O aplicativo pergunta se você confia conectar com o computador remoto. Marque a opção &lt;strong&gt;Não perguntar novamente sobre conexões com este computador&lt;/strong&gt; e clique em &lt;strong&gt;Conectar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-13-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-13-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você optou por salvar a senha, digite-a na caixa de diálogo seguinte, certifique-se de que a opção &lt;strong&gt;Lembrar-me&lt;/strong&gt; esteja marcada (por padrão, está) e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-14-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-14-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Agora você terá acesso à área de trabalho remota. Apenas encerre sua sessão.&lt;/p&gt;
-
-&lt;p&gt;Pronto! Feito isso, para se conectar novamente a esse servidor, é só dar duplo-clique no arquivo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-15-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;acesso-remoto-a-partir-do-linux&quot;&gt;Acesso remoto a partir do Linux&lt;/h2&gt;
-
-&lt;p&gt;Se seu computador com Linux possui um cliente RDP instalado, pode acessar remotamente outro computador ou servidor com Linux rodando o XRDP — ou seja, uma conexão RDP Linux para Linux:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/rdp-server-16-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/rdp-server-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para mais informações sobre os clientes RDP existentes para Linux, consulte o &lt;em&gt;post&lt;/em&gt; anterior:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;Conexão de área de trabalho remota do Windows no Linux com clientes RDP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
-
-&lt;p&gt;Como vimos, o XRDP é uma forma prática de prover acesso remoto ao Linux a partir do Windows, uma vez que não é necessário instalar &lt;em&gt;software&lt;/em&gt; adicional no Windows, que já possui um cliente RDP nativo.&lt;/p&gt;
-
-&lt;p&gt;De certa forma, é também uma forma prática de prover acesso remoto de Linux para Linux. Basta instalar no servidor o XRDP e nos clientes, um dos clientes RDP listados no &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.hiroom2.com/2018/06/14/opensuse-15-xrdp-kde-en/&quot;&gt;OpenSUSE Leap 15: Connect to KDE desktop environment via XRDP - Narrow Escape&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-vnc.html&quot;&gt;Remote Graphical Sessions with VNC - Reference - openSUSE Leap 15.1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://documentation.suse.com/sles-sap/15-SP1/html/SLES4SAP-guide/cha-s4s-configure-rdp.html&quot;&gt;Connecting via RDP - Guide - SUSE Linux Enterprise Server for SAP Applications 15 SP1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/a/480858/106621&quot;&gt;opensuse - Enabling XRDP for remote on SUSE Linux Enterprise Server 12 SP3 (HVM) - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.nextofwindows.com/how-to-save-password-in-a-remote-desktop-connection-in-windows-8&quot;&gt;How To Save Password in A Remote Desktop Connection in Windows 8 - Next of Windows&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=b3wTEelo7zo&quot;&gt;Virtual Desktop Infrastructure by xrdp - openSUSE - YouTube&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Mon, 27 Apr 2020 16:40:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/04/27/servindo-areas-de-trabalho-remotas-do-linux-para-clientes-windows-usando-xrdp/</guid>
                 
                 
                     <category>pt</category>
