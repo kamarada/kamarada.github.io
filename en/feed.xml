@@ -9,10 +9,266 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 18 Aug 2020 01:15:43 -0300</pubDate>
-        <lastBuildDate>Tue, 18 Aug 2020 01:15:43 -0300</lastBuildDate>
+        <pubDate>Thu, 20 Aug 2020 01:57:06 -0300</pubDate>
+        <lastBuildDate>Thu, 20 Aug 2020 01:57:06 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Firefox and Chromium cannot play videos: here is why and how to solve it</title>
+                <description>&lt;p&gt;If you use either &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; or &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, web browsers that come out-of-the-box with &lt;a href=&quot;/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/&quot;&gt;Linux Kamarada 15.2 RC&lt;/a&gt;, you may have come across a video that they can’t play. Error messages vary from site to site. Here are some examples:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-video-01-en.jpg&quot; title=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): The media could not be played.&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-video-01-en.jpg&quot; alt=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): The media could not be played.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/openSUSE/status/1290345568452202498&quot;&gt;Twitter&lt;/a&gt;: The media could not be played.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/chromium-video-01-en.jpg&quot; title=&quot;[Facebook](https://www.facebook.com/349474038443975/videos/2626269944056239/): Something Went Wrong. We&amp;apos;re having trouble playing this video.&quot;&gt;
+&lt;img src=&quot;/files/2020/08/chromium-video-01-en.jpg&quot; alt=&quot;[Facebook](https://www.facebook.com/349474038443975/videos/2626269944056239/): Something Went Wrong. We&amp;apos;re having trouble playing this video.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/349474038443975/videos/2626269944056239/&quot;&gt;Facebook&lt;/a&gt;: Something Went Wrong. We're having trouble playing this video.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;To put it shortly, this happens because your system is missing proprietary codecs. Today’s tip probably can help you solve this problem.&lt;/p&gt;
+
+&lt;p&gt;In case you didn’t know, Linux Kamarada is a &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; distribution based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap&lt;/a&gt;, so the following tip also applies to &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Other distributions may present a similar problem and provide a similar way to solve it. If you use other distribution, check its documentation.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-solve-this-problem&quot;&gt;How to solve this problem&lt;/h2&gt;
+
+&lt;p&gt;For Linux Kamarada and openSUSE users, the solution to this problem boils down to:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add the &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt; repository, if you don’t have it already added to your system;&lt;/li&gt;
+  &lt;li&gt;Refresh the list of available packages from the online repositories; and&lt;/li&gt;
+  &lt;li&gt;Update the system packages allowing &lt;a href=&quot;https://en.opensuse.org/SDB:Vendor_change_update&quot;&gt;vendor change&lt;/a&gt;, that should cause some packages provided by openSUSE to be replaced by packages from Packman, which contains the missing proprietary codecs.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are at least two ways to do this: through the graphical user interface, which can be more friendly especially for beginners, or through the command line interface.&lt;/p&gt;
+
+&lt;h3 id=&quot;solving-via-the-command-line-interface&quot;&gt;Solving via the command line interface&lt;/h3&gt;
+
+&lt;p&gt;The command line solution involves the &lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt; package manager. As explaining it is shorter, I’m going to start by it.&lt;/p&gt;
+
+&lt;p&gt;Run the following 3 commands, which correspond to the 3 steps above respectively, as administrator (root user):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.2/ packman
+# zypper ref
+# zypper up --allow-vendor-change
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;solving-via-the-graphical-user-interface&quot;&gt;Solving via the graphical user interface&lt;/h3&gt;
+
+&lt;p&gt;Although it is more user friendly, the GUI solution requires a few clicks and goes through more screens. But the easiness more than makes up for the longer path.&lt;/p&gt;
+
+&lt;h4 id=&quot;adding-the-packman-repository&quot;&gt;Adding the Packman repository&lt;/h4&gt;
+
+&lt;p&gt;Start the &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST Control Center&lt;/a&gt; by opening the &lt;strong&gt;Activities&lt;/strong&gt; menu, on the top-left screen corner, typing &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; and clicking the corresponding icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Within the &lt;strong&gt;Software&lt;/strong&gt; category (the first one), click &lt;strong&gt;Software Repositories&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Configured Software Repositories&lt;/strong&gt; screen, click the &lt;strong&gt;Add&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Community Repositories&lt;/strong&gt; option and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enable the &lt;strong&gt;Packman Repository&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-05-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;YaST itself takes care of refreshing the list of available packages from the repositories.&lt;/p&gt;
+
+&lt;p&gt;YaST asks for confirmation before importing the new repository’s key, click &lt;strong&gt;Trust&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-06-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Back to the &lt;strong&gt;Configured Software Repositories&lt;/strong&gt; screen, click &lt;strong&gt;OK&lt;/strong&gt; to close it.&lt;/p&gt;
+
+&lt;h4 id=&quot;switching-packages-to-the-packman-repository&quot;&gt;Switching packages to the Packman repository&lt;/h4&gt;
+
+&lt;p&gt;Back to the YaST main screen, click &lt;strong&gt;Software Management&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;View&lt;/strong&gt; menu and click &lt;strong&gt;Repositories&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;By the left, select the &lt;strong&gt;Packman Repository&lt;/strong&gt;, and by the right, click &lt;strong&gt;Switch system packages&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that many already installed packages, provided by openSUSE, have been marked to be updated to versions provided by Packman. Click the &lt;strong&gt;Accept&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;YaST warns you that additional packages are going to be installed, click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;YaST downloads and installs the packages:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It can take more or less time depending on your Internet connection speed.&lt;/p&gt;
+
+&lt;p&gt;In the end, click &lt;strong&gt;Finish&lt;/strong&gt; to close this window and then close YaST:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/yast-packman-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/yast-packman-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;thats-it&quot;&gt;That’s it!&lt;/h2&gt;
+
+&lt;p&gt;When you are finished with the above procedures, restart your browser.&lt;/p&gt;
+
+&lt;p&gt;The videos that were not playing before can be played now:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-video-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-video-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/chromium-video-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/chromium-video-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;in-case-you-want-to-know-more&quot;&gt;In case you want to know more&lt;/h2&gt;
+
+&lt;p&gt;MP4 and H.264 have become common video formats on the web. Strictly speaking, &lt;a href=&quot;https://en.wikipedia.org/wiki/MP4&quot;&gt;MP4&lt;/a&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Container_format_(computing)&quot;&gt;container&lt;/a&gt; format, which can store video tracks, audio tracks, embedded subtitles and other data in a single file. &lt;a href=&quot;https://en.wikipedia.org/wiki/H.264&quot;&gt;H.264&lt;/a&gt;, in its turn, is a high definition video compression format, that is, it encodes just the visual data (the video itself) and requires a container (such as MP4) to host the encoded video. Most of the time, an “H.264 video file” is a file with the &lt;code class=&quot;highlighter-rouge&quot;&gt;.mp4&lt;/code&gt; extension that contains a video track encoded with the H.264 &lt;a href=&quot;https://en.wikipedia.org/wiki/Codec&quot;&gt;codec&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The problem is that the H.264 codec is not a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt;. It is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Proprietary_software&quot;&gt;proprietary software&lt;/a&gt; licensed by the Moving Picture Experts Group Licensing Administration (&lt;a href=&quot;https://www.mpegla.com/&quot;&gt;MPEG LA&lt;/a&gt;) and therefore cannot be provided by Linux distributions such as Linux Kamarada and openSUSE.&lt;/p&gt;
+
+&lt;p&gt;If you visit a website that has an H.264 video, but the H.264 codec is not installed on your system — and it is not installed by default on both openSUSE and Linux Kamarada — then the video will not be played, as I showed earlier in this text.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, in the case of these two distros, there is the Packman repository that provides H.264 and other proprietary codecs in the form of packages that can be easily installed.&lt;/p&gt;
+
+&lt;p&gt;Note that this problem does not occur in the &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; browser. &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; probably made a commercial deal with MPEG LA to distribute the H.264 codec within Google Chrome.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-about-the-openh264-plugin-in-firefox&quot;&gt;What about the OpenH264 plugin in Firefox?&lt;/h3&gt;
+
+&lt;p&gt;If you use Firefox, you may have noticed that it has a plugin called “OpenH264 Video Codec”, which is automatically installed:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/firefox-openh264-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/firefox-openh264-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.openh264.org/&quot;&gt;OpenH264&lt;/a&gt; is the name of &lt;a href=&quot;https://www.cisco.com/&quot;&gt;Cisco&lt;/a&gt;’s implementation of the H.264 codec. Although it’s &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt;, it’s not free software as well, since its binaries are released under a license from Cisco, which covers MPEG LA licensing fees to provide this codec for free. Therefore, they must be downloaded from Cisco.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Mozilla&lt;/a&gt; has partnered with Cisco so that Firefox can use OpenH264. When you use Firefox for the first time, it automatically downloads the OpenH264 plugin from Cisco and installs it.&lt;/p&gt;
+
+&lt;p&gt;OpenH264 implements only the most basic part of the H.264 format, the baseline profile, so it’s used by Firefox only to support video calls such as those made using &lt;a href=&quot;https://webrtc.org/&quot;&gt;WebRTC&lt;/a&gt;. Examples of video calling services that depend on WebRTC include &lt;a href=&quot;https://meet.google.com/&quot;&gt;Google Meet&lt;/a&gt;, &lt;a href=&quot;https://hangouts.google.com/&quot;&gt;Google Hangouts&lt;/a&gt;, &lt;a href=&quot;https://www.messenger.com/&quot;&gt;Facebook Messenger&lt;/a&gt; and &lt;a href=&quot;https://discord.com/&quot;&gt;Discord&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Shortly, the Firefox OpenH264 plugin does not enable video playback, only video calls. I just wanted to clarify that.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/questions/1188176&quot;&gt;Twitter says “The media could not be played”. | Firefox Support Forum | Mozilla Support&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support&quot;&gt;SDB:Firefox MP4/H.264 Video Support - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fsf.org/licensing/h264-patent-license&quot;&gt;Information about the H.264 patent license - Free Software Foundation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/kb/open-h264-plugin-firefox&quot;&gt;Why is there an OpenH264 plugin in Firefox? | Firefox Help&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2018-02/msg00846.html&quot;&gt;[opensuse-factory] Status of x264 libraries in the standard distribution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fedoraproject.org/wiki/OpenH264&quot;&gt;OpenH264 - Fedora Project Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.iorgsoft.com/compare/mp4-vs-h.264-comparison.html&quot;&gt;MP4 vs H.264, difference between MP4 and H.264 format - iOrgsoft&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bloggeek.me/massive-applications-using-webrtc/&quot;&gt;10 Massive Applications Using WebRTC - BlogGeek.me&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Thu, 20 Aug 2020 01:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Linux Kamarada 15.2 enters Release Candidate (RC) phase</title>
@@ -2381,125 +2637,6 @@ Failed to connect, CredSSP required by server.
                 <pubDate>Tue, 14 Apr 2020 23:15:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Streaming from VLC to TV using Chromecast</title>
-                <description>&lt;p&gt;&lt;a href=&quot;https://www.videolan.org/vlc/&quot;&gt;VLC&lt;/a&gt; is the default &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada&lt;/a&gt; multimedia player. I have already praised it a few times here for supporting various multimedia formats and having many nice features, it’s really smart! Among those features, today I’m going to show you how to cast videos or music from VLC to TV via &lt;a href=&quot;https://store.google.com/product/chromecast&quot;&gt;Chromecast&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/vlc-chromecast.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/vlc-chromecast.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Chromecast is a small gadget created by &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; that allows you to stream media content from your devices (smartphone, tablet or PC) to your TV screen via Wi-Fi. It turns simple TVs into smart TVs and eliminates the need for HDMI cables, which were previously used to connect things to TVs. Fewer cables, less mess, more convenience!&lt;/p&gt;
-
-&lt;h2 id=&quot;before-we-get-started&quot;&gt;Before we get started&lt;/h2&gt;
-
-&lt;p&gt;Make sure your Chromecast device is ready to receive streams.&lt;/p&gt;
-
-&lt;p&gt;In case you haven’t setup your Chromecast yet, use a mobile device with &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; or &lt;a href=&quot;https://www.apple.com/ios/&quot;&gt;iOS&lt;/a&gt; to set it up. If you need help on how to do that, take a look at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.google.com/chromecast/answer/2998456&quot;&gt;Set up your Chromecast device - Chromecast Help&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;On your computer, you need to set up the firewall to allow the ports used by Chromecast to communicate with the computer. If you haven’t done that already, see:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/&quot;&gt;Streaming from Linux to TV using Chromecast&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Also, you must be using VLC version 3.0 or later, because the support for Chromecast on VLC arrived with the &lt;a href=&quot;https://www.videolan.org/vlc/releases/3.0.0.html&quot;&gt;release of VLC 3.0&lt;/a&gt;. Linux Kamarada 15.1 comes out-of-the-box with VLC 3.0.7.&lt;/p&gt;
-
-&lt;p&gt;Finally, both your computer and Chromecast must be connected to the same local network (for instance, your home Wi-Fi).&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-cast-from-vlc&quot;&gt;How to cast from VLC&lt;/h2&gt;
-
-&lt;p&gt;Having the prerequisites met, casting from VLC to TV using Chromecast is simple.&lt;/p&gt;
-
-&lt;p&gt;To do this, start VLC, open the &lt;strong&gt;Playback&lt;/strong&gt; menu and hover the mouse pointer on &lt;strong&gt;Renderer&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/vlc-chromecast-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/vlc-chromecast-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;By default, VLC will have &lt;strong&gt;Local&lt;/strong&gt; selected, meaning that it will play multimedia files on the computer itself. VLC searches the local network for casting compatible devices and lists them. If your Chromecast appears in the list, select it.&lt;/p&gt;
-
-&lt;p&gt;Now just open the multimedia file you want to play with VLC:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/vlc-chromecast-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/vlc-chromecast-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;And streaming begins:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/vlc-chromecast-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/vlc-chromecast-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;To control playback (pause, resume, stop, increase or decrease the sound volume, etc), you can use the playback controls on the VLC window or your TV’s remote control.&lt;/p&gt;
-
-&lt;h2 id=&quot;troubleshooting&quot;&gt;Troubleshooting&lt;/h2&gt;
-
-&lt;p&gt;If your Chromecast device does not appear in the list of available renderers (it just shows &lt;strong&gt;Scanning&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/vlc-chromecast-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/vlc-chromecast-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Maybe your firewall is blocking VLC to connect to Chromecast. In this case, allow the ports used by Chromecast to make the connection possible. Here is how you can do it:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/04/01/streaming-from-linux-to-tv-using-chromecast/&quot;&gt;Streaming from Linux to TV using Chromecast&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Another possible reason is that your router is blocking &lt;a href=&quot;https://en.wikipedia.org/wiki/Multicast_DNS&quot;&gt;multicast DNS (mDNS)&lt;/a&gt; packets, which are used to discover neighbor devices on the network. If you need help with this, contact your ISP support to check your router’s configuration.&lt;/p&gt;
-
-&lt;h2 id=&quot;did-you-know&quot;&gt;Did you know?&lt;/h2&gt;
-
-&lt;p&gt;The movie in the picture above is the first of the &lt;a href=&quot;http://www.caminandes.com/&quot;&gt;Caminandes&lt;/a&gt; trilogy, an independently produced short animated series made with &lt;a href=&quot;https://www.blender.org/&quot;&gt;Blender&lt;/a&gt;, a &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;free and open source&lt;/a&gt; 3D creation suite. Just as Blender is open source, those movies are also &lt;a href=&quot;https://en.wikipedia.org/wiki/Open-source_film&quot;&gt;open movies&lt;/a&gt;: not only the movies themselves are available for download (for free and completely legal), but also are all the source files used to produce them.&lt;/p&gt;
-
-&lt;p&gt;You can download the movies (and the source) of the Caminandes trilogy at &lt;a href=&quot;http://www.caminandes.com/&quot;&gt;www.caminandes.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can find other open movies of the &lt;a href=&quot;https://www.blender.org/institute/&quot;&gt;Blender Institute&lt;/a&gt; at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.blender.org/about/projects/&quot;&gt;Open Projects - blender.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Have a lot of fun!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.addictivetips.com/ubuntu-linux-tips/use-vlc-with-chromecast-on-linux/&quot;&gt;How To Use VLC With Chromecast On Linux - AddictiveTips&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fossbytes.com/connect-vlc-chromecast-stream-from-pc/&quot;&gt;How To Connect Your Chromecast To VLC? - Stream From VLC To Chromecast - Fossbytes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://forum.videolan.org/viewtopic.php?t=145455&quot;&gt;Unable to find chromecast with “Render” Stuck on “Scanning” - The VideoLAN Forums&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sat, 04 Apr 2020 13:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/04/04/streaming-from-vlc-to-tv-using-chromecast/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/04/04/streaming-from-vlc-to-tv-using-chromecast/</guid>
                 
                 
                     <category>en</category>

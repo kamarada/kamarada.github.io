@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -203,7 +207,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -306,7 +310,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2020-08-18" />
+                <meta itemprop="dateModified" content="2020-08-20" />
             </div>
             <div class='col-sm-6'>
                 
@@ -352,7 +356,7 @@
         
 
         <div itemprop="articleBody mainEntity">
-            <p>Se você usa o <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a> ou o <a href="https://www.chromium.org/">Chromium</a>, navegadores que vem no <a href="https://kamarada.github.io/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/">Linux Kamarada 15.2 RC</a>, talvez já tenha se deparado com algum vídeo que eles não conseguem reproduzir. As mensagens de erro variam de <em>site</em> para <em>site</em>. Veja alguns exemplos:</p>
+            <p>Se você usa o <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a> ou o <a href="https://www.chromium.org/">Chromium</a>, navegadores que vem no <a href="/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/">Linux Kamarada 15.2 RC</a>, talvez já tenha se deparado com algum vídeo que eles não conseguem reproduzir. As mensagens de erro variam de <em>site</em> para <em>site</em>. Veja alguns exemplos:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/08/firefox-video-01-pt.jpg" title="[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): Não foi possível reproduzir a mídia.">
@@ -380,7 +384,7 @@
 
 <p>De forma resumida, isso acontece porque estão faltando <em>codecs</em> proprietários no seu computador. A dica a seguir pode te ajudar a resolver esse problema.</p>
 
-<p>Caso você ainda não conheça, o Linux Kamarada é uma distribuição <a href="https://www.vivaolinux.com.br/linux/">Linux</a> baseada no <a href="https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">openSUSE Leap</a>, portanto a dica a seguir também serve para usuários do <a href="https://www.opensuse.org/">openSUSE</a>. Outras distribuições podem enfrentar problema semelhante e ter também solução análoga.</p>
+<p>Caso você ainda não conheça, o Linux Kamarada é uma distribuição <a href="https://www.vivaolinux.com.br/linux/">Linux</a> baseada no <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">openSUSE Leap</a>, portanto a dica a seguir também serve para usuários do <a href="https://www.opensuse.org/">openSUSE</a>. Outras distribuições podem enfrentar problema semelhante e ter também solução análoga.</p>
 
 <h2 id="como-resolver-esse-problema">Como resolver esse problema</h2>
 
@@ -389,7 +393,7 @@
 <ol>
   <li>Adicionar o repositório do projeto <a href="http://packman.links2linux.com/">Packman</a>, caso você ainda não tenha esse repositório adicionado no seu sistema;</li>
   <li>Obter a lista atualizada de pacotes disponíveis nos repositórios; e</li>
-  <li>Atualizar os pacotes do sistema permitindo a mudança de fornecedor, o que deve fazer com que alguns pacotes fornecidos pelo openSUSE sejam substituídos por pacotes do Packman, que contém os  <em>codecs</em> proprietários faltantes.</li>
+  <li>Atualizar os pacotes do sistema permitindo a <a href="https://en.opensuse.org/SDB:Vendor_change_update">mudança de fornecedor</a>, o que deve fazer com que alguns pacotes fornecidos pelo openSUSE sejam substituídos por pacotes do Packman, que contém os  <em>codecs</em> proprietários faltantes.</li>
 </ol>
 
 <p>Há pelo menos duas formas de fazer isso: pela interface gráfica, que pode ser mais amigável especialmente para os iniciantes, ou pela interface de linha de comando.</p>
@@ -577,7 +581,7 @@
 
 <p><a href="http://www.openh264.org/">OpenH264</a> é o nome da implementação do <em>codec</em> do H.264 feita pela <a href="https://www.cisco.com/c/pt_br/index.html">Cisco</a>. Essa implementação tem seu <a href="https://pt.wikipedia.org/wiki/Software_de_código_aberto">código aberto</a>, porém também não é um <em>software</em> livre, visto que seus binários são lançados sob uma licença da Cisco, que cobre os custos de licenciamento junto à MPEG LA para fornecer esse <em>codec</em> de graça. Por isso, ele deve ser baixado da Cisco.</p>
 
-<p>A Mozilla fez uma parceria com a Cisco para que o Firefox possa usar o OpenH264. Quando você usa o Firefox pela primeira vez, ele baixa o <em>plugin</em> do OpenH264 do <em>site</em> da Cisco.</p>
+<p>A <a href="https://www.mozilla.org/pt-BR/">Mozilla</a> fez uma parceria com a Cisco para que o Firefox possa usar o OpenH264. Quando você usa o Firefox pela primeira vez, ele baixa o <em>plugin</em> do OpenH264 do <em>site</em> da Cisco.</p>
 
 <p>O OpenH264 implementa apenas a parte mais básica (<em>baseline profile</em>) do formato H.264, de modo que só é usado pelo Firefox para dar suporte a chamadas de vídeo, como as feitas usando a tecnologia <a href="https://webrtc.org/">WebRTC</a>. Exemplos de serviços de chamadas de vídeo que usam essa tecnologia incluem o <a href="https://meet.google.com/">Google Meet</a>, o <a href="https://hangouts.google.com/">Google Hangouts</a>, o <a href="https://www.messenger.com/">Facebook Messenger</a> e o <a href="https://discord.com/">Discord</a>.</p>
 
@@ -592,6 +596,7 @@
   <li><a href="https://support.mozilla.org/pt-BR/kb/por-que-existe-um-plugin-openh264-no-firefox">Por que existe um plugin OpenH264 no Firefox? | Ajuda do Firefox</a></li>
   <li><a href="https://lists.opensuse.org/opensuse-factory/2018-02/msg00846.html">[opensuse-factory] Status of x264 libraries in the standard distribution</a></li>
   <li><a href="https://fedoraproject.org/wiki/OpenH264">OpenH264 - Fedora Project Wiki</a></li>
+  <li><a href="http://www.iorgsoft.com/compare/mp4-vs-h.264-comparison.html">MP4 vs H.264, difference between MP4 and H.264 format - iOrgsoft</a></li>
   <li><a href="https://bloggeek.me/massive-applications-using-webrtc/">10 Massive Applications Using WebRTC - BlogGeek.me</a></li>
 </ul>
 
@@ -1004,7 +1009,7 @@
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
