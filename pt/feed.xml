@@ -9,10 +9,475 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 26 Aug 2020 01:40:41 -0300</pubDate>
-        <lastBuildDate>Wed, 26 Aug 2020 01:40:41 -0300</lastBuildDate>
+        <pubDate>Mon, 31 Aug 2020 11:33:58 -0300</pubDate>
+        <lastBuildDate>Mon, 31 Aug 2020 11:33:58 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Linux Kamarada e openSUSE Leap: como atualizar da versão 15.1 para a 15.2</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você acompanha esse &lt;em&gt;site&lt;/em&gt; há um tempo, sabe que eu sempre faço um tutorial mostrando como atualizar a distribuição &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt; de uma versão para outra. Dessa vez, temos uma novidade: é o primeiro tutorial que mostra também como atualizar o Linux Kamarada, que, caso você ainda não conheça, é uma distribuição baseada no openSUSE Leap.&lt;/p&gt;
+
+&lt;p&gt;O Linux Kamarada &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;foi lançado em fevereiro&lt;/a&gt; e sua primeira versão foi numerada 15.1, alinhada com a versão 15.1 do openSUSE Leap, que então era a versão mais atual. Hoje, o openSUSE Leap está na &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;versão 15.2, lançada em julho&lt;/a&gt;. O Linux Kamarada 15.2 será lançado nos próximos dias. Por enquanto, temos a &lt;a href=&quot;/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/&quot;&gt;versão candidata a lançamento (RC)&lt;/a&gt;, que já apresenta uma boa estabilidade. Nos meus testes, a atualização do Linux Kamarada 15.1 Final para o 15.2 RC ocorreu sem problemas.&lt;/p&gt;
+
+&lt;p&gt;Como o Linux Kamarada 15.2 ainda não foi finalizado, não recomendo a atualização para todos os usuários. Mas, se você se sente “corajoso” e quer ajudar no desenvolvimento, testando a atualização e reportando quaisquer problemas, por favor, sinta-se à vontade.&lt;/p&gt;
+
+&lt;p&gt;O processo de atualização (&lt;em&gt;upgrade&lt;/em&gt;) de uma versão para outra no openSUSE Leap é um processo fácil e tranquilo. Eu sigo a “receita de bolo” que aprendi na &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;&lt;em&gt;wiki&lt;/em&gt; do openSUSE&lt;/a&gt;. É praticamente a mesma “receita” desde 2012, quando comecei a usar o openSUSE. Como o Linux Kamarada é baseado no openSUSE Leap, sua atualização segue a mesma “receita”, a única diferença é a configuração de mais um repositório, que é o do Linux Kamarada.&lt;/p&gt;
+
+&lt;p&gt;Caso você tenha curiosidade de conferir as edições anteriores desse tutorial:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/31/como-atualizar-do-opensuse-leap-421-para-o-422/&quot;&gt;Como atualizar do openSUSE Leap 42.1 para o 42.2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/08/01/como-atualizar-do-opensuse-leap-422-para-o-423/&quot;&gt;Como atualizar do openSUSE Leap 42.2 para o 42.3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Eu não escrevi sobre a atualização do openSUSE Leap 42.3 para o 15.0&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/&quot;&gt;Como atualizar do openSUSE Leap 15.0 para o 15.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A seguir, você verá como atualizar o openSUSE Leap e o Linux Kamarada da versão 15.1 para a 15.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; para não ficar repetitivo, o que eu falo sobre o openSUSE Leap se aplica às duas distribuições, o que eu falo sobre o Linux Kamarada é específico deste.&lt;/p&gt;
+
+&lt;h2 id=&quot;algumas-recomendações&quot;&gt;Algumas recomendações&lt;/h2&gt;
+
+&lt;p&gt;A atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;) no openSUSE Leap é um procedimento seguro, que deve funcionar para a maioria dos casos, mas que requer alguns cuidados. É sempre bom relembrar as recomendações a seguir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Você deve estar usando a versão imediatamente anterior do openSUSE Leap.&lt;/strong&gt; Isso quer dizer que se você pretende atualizar para a versão 15.2, deve estar usando agora a versão 15.1. Saltos de versões não são suportados. Podem funcionar, mas não há garantia. Portanto, se agora você está usando a versão 15.0, por exemplo, é melhor que primeiro atualize para a versão 15.1, para então atualizar para a versão 15.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sua instalação do openSUSE Leap deve estar atualizada&lt;/strong&gt; com as versões mais recentes dos pacotes lançadas até o momento. Observe que há dois tipos de atualização: neste &lt;em&gt;post&lt;/em&gt;, você vai ver como atualizar a distribuição (&lt;em&gt;upgrade&lt;/em&gt;), mas antes você deve atualizar os pacotes (&lt;em&gt;update&lt;/em&gt;). Para mais informações sobre os dois tipos de atualizações e como atualizar os pacotes, consulte o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Você deve se informar sobre a versão do openSUSE Leap que vai instalar.&lt;/strong&gt; Consulte as &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/15.2/RELEASE-NOTES.pt_BR.html&quot;&gt;notas de lançamento&lt;/a&gt;, que descrevem o que muda na nova versão e listam alguns &lt;em&gt;bugs&lt;/em&gt; conhecidos, como preveni-los e/ou solucioná-los.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Você deve fazer uma cópia de segurança (&lt;em&gt;backup&lt;/em&gt;) de arquivos importantes.&lt;/strong&gt; apesar de a atualização do openSUSE ser segura (fazendo lembrar, para quem conhece, a atualização do &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;), não quer dizer que seja perfeita. Ganhar na loteria é difícil, mas uma hora alguém ganha. Algo dar errado na atualização é difícil, especialmente se você toma todos os cuidados, mas pode acontecer. Eu, particularmente, já atualizei algumas vezes sem problema. Nunca é demais fazer uma cópia dos seus arquivos pessoais por precaução, especialmente se a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; não está em uma partição reservada. Se o computador não pode ficar parado por muito tempo (um servidor, por exemplo), considere fazer uma cópia de todo o sistema, a fim de restaurá-la imediatamente caso algo não funcione como esperado.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Você não deve usar repositórios não oficiais (de terceiros) durante a atualização.&lt;/strong&gt; Antes de começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), removeremos os &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;repositórios de terceiros&lt;/a&gt;. É possível que isso ocasione a remoção também de programas de terceiros. Você pode devolvê-los depois. Isso não quer dizer que não seja possível atualizar com esses repositórios presentes, mas usar apenas os &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;repositórios oficiais&lt;/a&gt; é mais garantido. A base do sistema será atualizada para uma nova base estável, sólida, confiável. Depois, sobre essa base, você poderá instalar o que quiser. Faça diferente dessa recomendação apenas se souber o que está fazendo.&lt;/p&gt;
+
+&lt;p&gt;Recomendo também que você leia toda essa página antes de começar de fato a agir. Para organizá-la melhor, vou dividi-la em 6 etapas. Conhecendo todo o processo, você terá condição de agendá-lo melhor. Você pode até fazer outras coisas usando o computador enquanto segue o passo a passo, mas depois que começar a atualização (&lt;em&gt;upgrade&lt;/em&gt;), só poderá usar o computador quando ela for concluída.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-atualização-dos-pacotes-update&quot;&gt;1) Atualização dos pacotes (&lt;em&gt;update&lt;/em&gt;)&lt;/h2&gt;
+
+&lt;p&gt;Certifique-se de que sua instalação do openSUSE Leap está atualizada. Para isso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se você obtém atualizações pela interface gráfica, abra o Atualizador de pacotes, ele deve informar que o sistema está totalmente atualizado:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se você usa a interface de linha de comando, execute o comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt; como usuário &lt;em&gt;root&lt;/em&gt; (administrador), ele deve informar que não há o que fazer:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para mais informações sobre atualização dos pacotes (&lt;em&gt;update&lt;/em&gt;), consulte o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-backup-dos-repositórios-atuais&quot;&gt;2) &lt;em&gt;Backup&lt;/em&gt; dos repositórios atuais&lt;/h2&gt;
+
+&lt;p&gt;Essa etapa, na verdade, é opcional.&lt;/p&gt;
+
+&lt;p&gt;Talvez você queira fazer &lt;em&gt;backup&lt;/em&gt; da sua lista atual de repositórios para devolvê-la depois da atualização. O openSUSE Leap guarda as configurações de repositórios na pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/repos.d&lt;/code&gt;, sendo um arquivo de texto para cada repositório.&lt;/p&gt;
+
+&lt;p&gt;Vamos copiar a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d&lt;/code&gt;, em &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp&lt;/code&gt;, para outra no mesmo lugar, chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;. Para isso, usaremos a interface de linha de comando.&lt;/p&gt;
+
+&lt;p&gt;Se não já o fez, alterne do seu usuário para o usuário &lt;em&gt;root&lt;/em&gt; executando o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Forneça a senha do usuário &lt;em&gt;root&lt;/em&gt; para continuar.&lt;/p&gt;
+
+&lt;p&gt;Se você já fez alguma atualização de versão seguindo alguma edição anterior desse mesmo tutorial, talvez ainda tenha o &lt;em&gt;backup&lt;/em&gt; antigo guardado. Se esse é o seu caso, execute o comando a seguir para excluir a pasta &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.antigos&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Então, ordene a cópia:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.antigos
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-03-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-03-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você ainda não fez &lt;em&gt;backup&lt;/em&gt; dos seus arquivos pessoais e/ou do seu sistema, considere fazê-lo agora.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-faxina-dos-repositórios&quot;&gt;3) Faxina dos repositórios&lt;/h2&gt;
+
+&lt;p&gt;Como expliquei antes, durante a atualização usaremos apenas os repositórios oficiais. Mais especificamente, apenas dois deles, no caso do openSUSE Leap:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main Repository&lt;/strong&gt; (repositório principal): contém apenas &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;&lt;em&gt;softwares&lt;/em&gt; de código aberto&lt;/a&gt; (do inglês &lt;em&gt;open source sofware&lt;/em&gt;, OSS).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL (para o 15.1): &lt;a href=&quot;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main Update Repository&lt;/strong&gt; (repositório de atualização principal): contém atualizações (&lt;em&gt;updates&lt;/em&gt;) oficiais para os pacotes do repositório principal.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL (para o 15.1): &lt;a href=&quot;http://download.opensuse.org/update/leap/15.1/oss/&quot;&gt;http://download.opensuse.org/update/leap/15.1/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;No caso do Linux Kamarada, além dos repositórios acima, usaremos também o repositório oficial do Linux Kamarada, que é gentilmente hospedado pela &lt;a href=&quot;https://pt.osdn.net/&quot;&gt;OSDN&lt;/a&gt; em espelhos (&lt;em&gt;mirrors&lt;/em&gt;) em diversos países. Se você está no Brasil, use o espelho da &lt;a href=&quot;https://www.c3sl.ufpr.br/&quot;&gt;C3SL (UFPR)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;URL (para o 15.1): &lt;a href=&quot;http://c3sl.dl.osdn.jp/storage/g/k/ka/kamarada/15.1/openSUSE_Leap_15.1/&quot;&gt;http://c3sl.dl.osdn.jp/storage/g/k/ka/kamarada/15.1/openSUSE_Leap_15.1/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Se você está em outro país, consulte a &lt;a href=&quot;https://github.com/kamarada/Linux-Kamarada-GNOME/wiki/Mirrors&quot;&gt;lista de espelhos na &lt;em&gt;wiki&lt;/em&gt; do Linux Kamarada no GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vamos fazer uma faxina nos repositórios, excluindo quaisquer outros repositórios configurados (vamos excluir inclusive quaisquer repositórios de terceiros).&lt;/p&gt;
+
+&lt;p&gt;Abra o &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de Controle do YaST&lt;/a&gt;. Para isso, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Será solicitada a você a senha do usuário &lt;em&gt;root&lt;/em&gt;. Digite-a e clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-05-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentro da categoria &lt;strong&gt;Software&lt;/strong&gt;, a primeira, clique no item &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-06-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-06-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você será apresentado à lista de repositórios do seu sistema:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-07-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Para cada repositório que não seja um dos listados acima, selecione o repositório na lista e clique em &lt;strong&gt;Remover&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Aparecerá uma mensagem de confirmação. Clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-08-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça isso com todos os repositórios até que só sobrem os repositórios listados acima:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-09-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Esses repositórios podem estar com nomes diferentes no seu computador. Se esse for o caso, você pode se orientar pela &lt;a href=&quot;https://pt.wikipedia.org/wiki/URL&quot;&gt;URL&lt;/a&gt; em vez do nome. Se não encontrá-los, não tem problema: apague todos os repositórios e já adicione os novos a seguir.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-repositórios-da-nova-versão&quot;&gt;4) Repositórios da nova versão&lt;/h2&gt;
+
+&lt;p&gt;Vamos agora mudar para os repositórios da nova versão.&lt;/p&gt;
+
+&lt;p&gt;Nessa versão do tutorial temos mais uma novidade: a variável &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt;, que é substituída pela versão da distribuição atualmente em uso. Ela já está disponível no openSUSE &lt;a href=&quot;https://lists.opensuse.org/opensuse/2015-01/msg00413.html&quot;&gt;há um tempo&lt;/a&gt;, infelizmente eu só a descobri recentemente, senão já teria incluído no Linux Kamarada 15.1… mas tudo bem, como eu escrevi no &lt;a href=&quot;/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/&quot;&gt;lançamento da primeira versão beta há quase 1 ano&lt;/a&gt;, o Linux Kamarada é um projeto de constante aprendizado e aperfeiçoamento. Agora que conheço essa facilidade, ela já virá por padrão na versão 15.2.&lt;/p&gt;
+
+&lt;p&gt;Selecione o repositório &lt;strong&gt;Main Repository&lt;/strong&gt; e clique em &lt;strong&gt;Editar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Caso a &lt;strong&gt;URL do repositório&lt;/strong&gt; já contenha a variável &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt;, não precisa alterar nada, só clique em &lt;strong&gt;OK&lt;/strong&gt;. Caso a versão da distribuição (no momento, &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1&lt;/code&gt;) apareça em algum trecho da URL, substitua essa versão por &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-10-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Faça o mesmo procedimento para os outros repositórios.&lt;/p&gt;
+
+&lt;p&gt;No caso do &lt;strong&gt;Linux Kamarada&lt;/strong&gt;, faça 2 substituições de &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1&lt;/code&gt; por &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; na URL:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-11-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Ao final, sua lista de repositórios deve estar assim:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; para gravar as alterações. Pode fechar o YaST.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-download-dos-pacotes&quot;&gt;5) &lt;em&gt;Download&lt;/em&gt; dos pacotes&lt;/h2&gt;
+
+&lt;p&gt;Já podemos começar a baixar os pacotes da nova versão do openSUSE Leap.&lt;/p&gt;
+
+&lt;p&gt;De volta à interface de linha de comando, baixe a lista de pacotes dos novos repositórios (note que vamos usar a opção &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever=15.2&lt;/code&gt; para indicar o uso da versão nova):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --releasever=15.2 ref
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --releasever=15.2 dup --download-only
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(&lt;em&gt;distribution upgrade&lt;/em&gt;, atualização da distribuição, &lt;em&gt;download only&lt;/em&gt;, apenas baixar)&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-13-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-13-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O gerenciador de pacotes &lt;strong&gt;&lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt; passa um tempo “pensando” e logo depois mostra o que precisa fazer para atualizar o openSUSE Leap para a próxima versão.&lt;/p&gt;
+
+&lt;p&gt;É possível que ele precise &lt;a href=&quot;https://en.opensuse.org/SDB:Vendor_change_update&quot;&gt;mudar o fornecedor&lt;/a&gt; de alguns pacotes, como na imagem abaixo:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-14-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-14-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se isso acontecer, leia atentamente as opções apresentadas e escolha aquela que indica a &lt;strong&gt;alteração do fornecedor&lt;/strong&gt;. No exemplo acima, seria a &lt;strong&gt;Solução 1&lt;/strong&gt;. Portanto, você digitaria &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; e teclaria &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; lista as alterações que fará no sistema (quais pacotes serão atualizados, quais serão removidos, quais mudarão de fornecedor, etc) e pergunta se você deseja continuar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-15-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-15-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que essa lista de ações é semelhante à produzida pelo comando &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt;, apresentado no &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;&lt;em&gt;post&lt;/em&gt; sobre atualização de pacotes&lt;/a&gt;. No entanto, como agora estamos fazendo uma atualização de distribuição, a lista do que precisa ser feito é bem maior.&lt;/p&gt;
+
+&lt;p&gt;Confira essa lista com cuidado. Você pode ir para cima ou para baixo usando a barra de rolagem à direita da tela ou a roda (&lt;em&gt;scroll&lt;/em&gt;) do &lt;em&gt;mouse&lt;/em&gt;, se utiliza o Terminal, ou as combinações de teclas &lt;strong&gt;Shift + Page Up&lt;/strong&gt; ou &lt;strong&gt;Shift + Page Down&lt;/strong&gt;, se está em uma interface puramente textual (elas também funcionam no Terminal).&lt;/p&gt;
+
+&lt;p&gt;A opção padrão é continuar (&lt;strong&gt;s&lt;/strong&gt;). Se você concorda, pode apenas teclar &lt;strong&gt;Enter&lt;/strong&gt; e o &lt;em&gt;download&lt;/em&gt; dos novos pacotes começará. Enquanto isso, você pode usar seu computador normalmente. A atualização propriamente dita ainda não começou.&lt;/p&gt;
+
+&lt;p&gt;Observe que o &lt;strong&gt;zypper&lt;/strong&gt; apenas baixa os pacotes, ele não inicia a atualização:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-16-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-16-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Isso porque ordenamos a ele por ora apenas baixar os pacotes (opção &lt;code class=&quot;highlighter-rouge&quot;&gt;--download-only&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Termine o que está fazendo e salve os arquivos abertos para iniciarmos a atualização da distribuição. Note que ela pode levar alguns (vários) minutos e você só poderá voltar a usar o computador quando ela for concluída.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-atualização-da-distribuição-upgrade&quot;&gt;6) Atualização da distribuição (&lt;em&gt;upgrade&lt;/em&gt;)&lt;/h2&gt;
+
+&lt;p&gt;Agora que já baixamos os pacotes necessários para atualizar o openSUSE Leap da versão 15.1 para a 15.2, vamos sair da interface gráfica e usar a linha de comando para realizar a instalação. Aqui, você não poderá usar o Terminal.&lt;/p&gt;
+
+&lt;p&gt;Isso é necessário porque inclusive a própria interface gráfica será atualizada. Se estivermos usando a interface gráfica durante a atualização, pode ser que o sistema trave no meio da processo e as consequências disso são imprevisíveis.&lt;/p&gt;
+
+&lt;p&gt;Considere abrir essa página em outro computador, em um &lt;em&gt;smartphone&lt;/em&gt; ou &lt;em&gt;tablet&lt;/em&gt;, imprimi-la ou anotar o que vai fazer.&lt;/p&gt;
+
+&lt;p&gt;Se o sistema que você vai atualizar está em um &lt;em&gt;notebook&lt;/em&gt;, certifique-se de que ele esteja com a bateria completamente carregada e conectado à fonte de alimentação. Não desconecte a bateria ou a fonte durante a atualização. Vamos prevenir qualquer possibilidade de problema.&lt;/p&gt;
+
+&lt;p&gt;Encerre sua sessão (&lt;em&gt;logout&lt;/em&gt;). Para isso, clique no &lt;strong&gt;menu do sistema&lt;/strong&gt;, no canto superior direito da tela, clique no seu nome de usuário e escolha a opção &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-17-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-17-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você será apresentado à tela de &lt;em&gt;login&lt;/em&gt;, onde você poderia informar seu nome de usuário e senha caso quisesse iniciar uma nova sessão na interface gráfica:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-18-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-18-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Mas não é isso que queremos. Aperte a combinação de teclas &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; para alternar para uma interface puramente textual:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-19.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-19.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Caso isso seja novidade para você, saiba que o Linux disponibiliza seis &lt;a href=&quot;http://www.hardware.com.br/livros/linux/usando-terminal.html&quot;&gt;consoles&lt;/a&gt; (terminais) além da interface gráfica. Você pode usar as teclas de &lt;strong&gt;F1&lt;/strong&gt; a &lt;strong&gt;F6&lt;/strong&gt; na mesma combinação (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; e assim por diante) para alternar entre os consoles, assim como pressionar &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; para retornar à interface gráfica.&lt;/p&gt;
+
+&lt;p&gt;Vamos permanecer no primeiro console.&lt;/p&gt;
+
+&lt;p&gt;Entre com o usuário &lt;em&gt;root&lt;/em&gt;. Para isso, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;. Depois, digite a senha do usuário &lt;em&gt;root&lt;/em&gt; e tecle &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vamos alternar do nível de execução (&lt;em&gt;&lt;a href=&quot;http://www.hardware.com.br/termos/runlevel&quot;&gt;runlevel&lt;/a&gt;&lt;/em&gt;) 5, nível padrão, no qual o sistema nos provê interface gráfica, para o nível de execução 3, no qual temos apenas a interface de linha de comando e conexão de rede.&lt;/p&gt;
+
+&lt;p&gt;Para &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;alterar o nível de execução&lt;/a&gt; para 3, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# init 3
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finalmente, vamos realizar a atualização de distribuição propriamente dita. Para isso, execute o comando (se atente, também aqui, à opção &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever=15.2&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --no-refresh --releasever=15.2 dup
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-20.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-20.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A opção &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-refresh&lt;/code&gt; faz com que o &lt;strong&gt;zypper&lt;/strong&gt; não atualize a lista de pacotes dos repositórios. Com isso, garantimos que ele não tente baixar mais algum pacote além dos que nós já baixamos. Isso pode ser útil especialmente em &lt;em&gt;notebooks&lt;/em&gt;, que podem perder a conexão com a rede Wi-Fi ao sair da interface gráfica.&lt;/p&gt;
+
+&lt;p&gt;Como antes, o &lt;strong&gt;zypper&lt;/strong&gt; vai processar a atualização e mostrar o que vai fazer (se ele fizer as mesmas perguntas sobre mudança de fornecedor, responda da mesma forma):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-21-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-21-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que todos os pacotes que ele precisa já foram baixados: ao final ele mostra “Tamanho total do download: 0 B. Já em cache: 1,93 GiB.”&lt;/p&gt;
+
+&lt;p&gt;Apenas tecle &lt;strong&gt;Enter&lt;/strong&gt; para que a atualização comece.&lt;/p&gt;
+
+&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; pula o &lt;em&gt;download&lt;/em&gt; dos pacotes e já vai direto para a instalação:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-22-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-22-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A atualização da distribuição pode demorar alguns (vários) minutos.&lt;/p&gt;
+
+&lt;p&gt;Quando ela terminar, o &lt;strong&gt;zypper&lt;/strong&gt; vai sugerir reiniciar. É o que vamos fazer executando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-23-pt.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-23-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;pronto&quot;&gt;Pronto&lt;/h2&gt;
+
+&lt;p&gt;Se você conseguiu fazer tudo até aqui, seu computador já está com o Linux Kamarada 15.2 (ou com o openSUSE Leap 15.2).&lt;/p&gt;
+
+&lt;p&gt;Observe que o menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt;, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui Windows e Linux instalados na mesma máquina), já está diferente:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;E &lt;em&gt;voilà&lt;/em&gt;! O Linux Kamarada 15.2 (ou o openSUSE Leap 15.2) está instalado e pronto para uso!&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-25-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-25-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Verifique se está tudo no lugar.&lt;/p&gt;
+
+&lt;p&gt;Agora você pode devolver os repositórios que excluiu, lembrando de substituir a versão do openSUSE Leap, onde aparecer, pela variável &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt;. Pela interface de linha de comando, fazer isso é fácil:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sed -i 's/15.1/$releasever/g' /etc/zypp/repos.d.antigos/*
+# mv /etc/zypp/repos.d.antigos/* /etc/zypp/repos.d/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Feito isso, você pode excluir o &lt;em&gt;backup&lt;/em&gt; da sua antiga lista de repositórios:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.antigos/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você também pode tentar instalar qualquer programa que por ventura tenha sido removido durante a atualização.&lt;/p&gt;
+
+&lt;p&gt;Se lembre de regularmente &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;verificar se há atualizações (&lt;em&gt;updates&lt;/em&gt;)&lt;/a&gt; para sua nova distribuição. Note que no uso cotidiano do &lt;strong&gt;zypper&lt;/strong&gt; você não precisa usar a opção &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você encontrou alguma dificuldade durante a atualização ou possui alguma dúvida, não deixe de comentar!&lt;/p&gt;
+
+&lt;p&gt;Até a próxima!&lt;/p&gt;
+
+</description>
+                <pubDate>Mon, 31 Aug 2020 11:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Firefox e Chromium não conseguem reproduzir vídeos: veja como resolver</title>
@@ -2496,398 +2961,6 @@ $ dotfiles push
                 <pubDate>Fri, 22 May 2020 08:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/05/22/retroarch-um-emulador-so-para-varios-videogames/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/05/22/retroarch-um-emulador-so-para-varios-videogames/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Folding@home: veja como seu PC pode ajudar as pesquisas sobre a Covid-19</title>
-                <description>&lt;p&gt;No mundo todo, muitas pessoas estão dando seu melhor para combater a atual pandemia da &lt;a href=&quot;https://pt.wikipedia.org/wiki/COVID-19&quot;&gt;Covid-19&lt;/a&gt; das mais diferentes (e criativas) maneiras: seja &lt;a href=&quot;https://g1.globo.com/sp/piracicaba-regiao/noticia/2020/03/31/multinacional-e-universidade-da-regiao-de-piracicaba-criam-mascaras-com-impressoras-3d.ghtml&quot;&gt;fabricando viseiras protetoras com impressoras 3D&lt;/a&gt;, &lt;a href=&quot;https://g1.globo.com/rj/rio-de-janeiro/noticia/2020/04/10/artesaos-de-comunidades-do-rio-fabricam-mascaras-caseiras-para-intensificar-combate-a-covid-19.ghtml&quot;&gt;máscaras caseiras de pano&lt;/a&gt; ou &lt;a href=&quot;https://www.tecmundo.com.br/mercado/152167-respirador-brasileiro-37-barato-liberado-empresas.htm&quot;&gt;ventiladores alternativos mais baratos&lt;/a&gt;, a quantidade de ideias e colaborações tem sido impressionante e motivante. Nas universidades, os pesquisadores tentam modelar e entender o coronavírus, tarefa que envolve muitas contas e processamento, e que também tem recebido ajuda de voluntários.&lt;/p&gt;
-
-&lt;p&gt;Nesse sentido, o projeto mais conhecido é o &lt;a href=&quot;https://foldingathome.org/&quot;&gt;&lt;strong&gt;Folding@home&lt;/strong&gt;&lt;/a&gt;, também chamado abreviadamente &lt;strong&gt;F@h&lt;/strong&gt; ou &lt;strong&gt;FAH&lt;/strong&gt;. Ele disponibiliza um programa em seu &lt;em&gt;site&lt;/em&gt; que qualquer pessoa pode baixar e instalar em seu computador para contribuir com a pesquisa doando parte do seu poder computacional. O programa baixa uma tarefa para fazer, trabalha nessa tarefa e envia de volta o resultado, contribuindo para a tarefa maior, que é modelar o vírus.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fah.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fah.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;um-pouco-sobre-o-projeto&quot;&gt;Um pouco sobre o projeto&lt;/h2&gt;
-
-&lt;p&gt;O projeto Folding@home foi criado em 2000 pelo &lt;a href=&quot;https://www.pandelab.org/&quot;&gt;Pande Lab&lt;/a&gt; da &lt;a href=&quot;https://www.stanford.edu/&quot;&gt;Universidade de Stanford&lt;/a&gt;, comandado pelo professor &lt;a href=&quot;https://profiles.stanford.edu/vijay-pande&quot;&gt;Dr. Vijay Pande&lt;/a&gt;. Seu objetivo era entender como as proteínas se organizam (enovelamento de proteínas, em inglês &lt;em&gt;protein folding&lt;/em&gt;, daí o nome do projeto) e porque esse processo às vezes falha, causando doenças como &lt;a href=&quot;https://pt.wikipedia.org/wiki/Doença_de_Alzheimer&quot;&gt;Alzheimer&lt;/a&gt; e &lt;a href=&quot;https://pt.wikipedia.org/wiki/Câncer&quot;&gt;câncer&lt;/a&gt;. Em 2018, ele passou a liderança do projeto para um de seus ex-alunos, agora também professor, o &lt;a href=&quot;https://bowmanlab.biochem.wustl.edu/&quot;&gt;Dr. Gregory Bowman&lt;/a&gt; da &lt;a href=&quot;https://wustl.edu/&quot;&gt;Universidade Washington em St. Louis&lt;/a&gt;, que desde então tem coordenado o projeto em parceria com outras universidades e empresas.&lt;/p&gt;
-
-&lt;p&gt;O projeto já produziu descobertas impressionantes, relatadas em &lt;a href=&quot;https://foldingathome.org/papers-results/&quot;&gt;224 artigos científicos&lt;/a&gt;, que incluem trabalhos sobre bactérias resistentes a antibióticos e proteínas do &lt;a href=&quot;https://pt.wikipedia.org/wiki/Vírus_Ebola&quot;&gt;vírus Ebola&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Em janeiro de 2020, o Folding@home contava com a colaboração de 30 mil usuários, o que já era bom, mas rapidamente saltou para 400 mil em março, com o interesse das pessoas em ajudar as pesquisas sobre o coronavírus. Muitas dessas pessoas embarcaram no projeto junto com a &lt;a href=&quot;https://www.nvidia.com/&quot;&gt;NVIDIA&lt;/a&gt;, que o divulgou em suas redes sociais. No pico do seu &lt;a href=&quot;https://stats.foldingathome.org/os&quot;&gt;desempenho&lt;/a&gt;, o Folding@home atingiu a marca de 1,5 &lt;a href=&quot;https://pt.wikipedia.org/wiki/FLOPS&quot;&gt;exaFLOPs&lt;/a&gt;, tornando-o sete vezes mais rápido que &lt;a href=&quot;https://www.techtudo.com.br/noticias/2018/06/ibm-cria-summit-supercomputador-mais-rapido-do-mundo-de-200-petaflops.ghtml&quot;&gt;o supercomputador mais rápido do mundo atualmente, o IBM Summit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;d-flex justify-content-center&quot;&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;PC Gamers, let’s put those GPUs to work. &lt;br /&gt;&lt;br /&gt;Join us and our friends at &lt;a href=&quot;https://twitter.com/OfficialPCMR?ref_src=twsrc%5Etfw&quot;&gt;@OfficialPCMR&lt;/a&gt; in supporting folding@home and donating unused GPU computing power to fight against COVID-19! &lt;br /&gt;&lt;br /&gt;Learn more → &lt;a href=&quot;https://t.co/EQE4u7xTZT&quot;&gt;https://t.co/EQE4u7xTZT&lt;/a&gt; &lt;a href=&quot;https://t.co/uO0ZCq8PEv&quot;&gt;pic.twitter.com/uO0ZCq8PEv&lt;/a&gt;&lt;/p&gt;&amp;mdash; NVIDIA GeForce (@NVIDIAGeForce) &lt;a href=&quot;https://twitter.com/NVIDIAGeForce/status/1238496311776653312?ref_src=twsrc%5Etfw&quot;&gt;March 13, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;requisitos-mínimos&quot;&gt;Requisitos mínimos&lt;/h2&gt;
-
-&lt;p&gt;Não há requisitos mínimos de &lt;em&gt;hardware&lt;/em&gt; para participar do Folding@home, qualquer computador pode contribuir para o projeto. No entanto, se o computador for muito lento, pode não conseguir entregar tarefas no prazo necessário. O projeto &lt;a href=&quot;https://foldingathome.org/support/faq/project-details/&quot;&gt;estima&lt;/a&gt; que computadores com 5 anos de idade ou menos atendem bem à demanda. Por outro lado, se seu computador é um daqueles preparado para jogos, com uma placa de vídeo da NVIDIA ou &lt;a href=&quot;https://www.amd.com/&quot;&gt;AMD&lt;/a&gt;, é o candidato ideal por possuir maior capacidade de processamento paralelo.&lt;/p&gt;
-
-&lt;p&gt;Observe que as tarefas fazem uso intensivo do processador, o que pode esquentar seu computador.&lt;/p&gt;
-
-&lt;h2 id=&quot;esse-programa-é-código-aberto&quot;&gt;Esse programa é código aberto?&lt;/h2&gt;
-
-&lt;p&gt;Talvez isso seja importante para você, por isso acho que vale a pena observar: o programa do Folding@home &lt;strong&gt;não&lt;/strong&gt; é &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt;, embora use componentes de código aberto, dentre os quais são &lt;a href=&quot;https://foldingathome.org/support/faq/opensource/&quot;&gt;mencionados&lt;/a&gt; pelo &lt;em&gt;site&lt;/em&gt; do projeto: &lt;a href=&quot;http://www.gromacs.org&quot;&gt;Gromacs&lt;/a&gt;, &lt;a href=&quot;http://dasher.wustl.edu&quot;&gt;TINKER&lt;/a&gt;, &lt;a href=&quot;http://ambermd.org/&quot;&gt;Amber&lt;/a&gt; e &lt;a href=&quot;http://www-unix.mcs.anl.gov/mpi/mpich/&quot;&gt;MPICH&lt;/a&gt;. O projeto afirma que quaisquer modificações que faz nesses componentes são contribuídas de volta.&lt;/p&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://foldingathome.org/support/faq/project-details/&quot;&gt;justificativa&lt;/a&gt; do projeto para não divulgar o código-fonte do programa é a preocupação com a integridade científica, uma vez que pessoas mal intencionadas poderiam modificar o código para produzir resultados científicos errados, o que tornaria todo o projeto inútil.&lt;/p&gt;
-
-&lt;p&gt;Não vou discutir se concordo ou não, apenas repassei a informação como encontrei no &lt;em&gt;site&lt;/em&gt; do projeto.&lt;/p&gt;
-
-&lt;p&gt;Se mesmo assim você deseja usar seu computador para contribuir com as pesquisas sobre a Covid-19, vamos pôr a mão na massa! Como de costume, aqui eu falo das distribuições &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada&lt;/a&gt; e &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Em outras distribuições, o passo-a-passo pode ser um pouco diferente.&lt;/p&gt;
-
-&lt;h2 id=&quot;download&quot;&gt;Download&lt;/h2&gt;
-
-&lt;p&gt;Acesse a página de &lt;em&gt;download&lt;/em&gt; do Folding@home:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://foldingathome.org/start-folding/&quot;&gt;https://foldingathome.org/start-folding/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Observe que o Folding@home não suporta oficialmente o openSUSE, mas nada que não possamos contornar. Veja que há 3 pacotes RPM para distribuições próximas (&lt;a href=&quot;https://www.redhat.com/pt-br/technologies/linux-platforms/enterprise-linux&quot;&gt;RedHat&lt;/a&gt;, &lt;a href=&quot;https://www.centos.org/&quot;&gt;CentOS&lt;/a&gt; e &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fah-download.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fah-download.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Não é necessário instalar os 3 pacotes. Veja o que são cada um deles:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;cliente do FAH&lt;/strong&gt; (&lt;em&gt;FAH client&lt;/em&gt;): esse é o pacote mais importante, pois contém:
-    &lt;ul&gt;
-      &lt;li&gt;o programa cliente que baixa tarefas para serem executadas, as executa e devolve o resultado, normalmente é executado ao fundo (em &lt;em&gt;background&lt;/em&gt;), como um serviço do sistema, sem interação com o usuário (&lt;em&gt;back end&lt;/em&gt;)&lt;/li&gt;
-      &lt;li&gt;uma interface &lt;em&gt;web&lt;/em&gt; simples que pode ser usada pelo navegador para monitorar o cliente e fazer algumas poucas configurações (&lt;em&gt;front end&lt;/em&gt;)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;controle do FAH&lt;/strong&gt; (&lt;em&gt;FAH control&lt;/em&gt;): é um aplicativo com interface gráfica (GUI) que permite monitorar o cliente e fazer configurações mais avançadas, esse pacote é opcional&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;visualizador do FAH&lt;/strong&gt; (&lt;em&gt;FAH viewer&lt;/em&gt;): é um aplicativo com interface gráfica (GUI) que permite visualizar o modelo em que o cliente está trabalhando, esse pacote é opcional&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Para fins de demonstração, vou baixar e instalar cada um dos três. Fique a vontade para instalar o(s) que julgar necessário(s) no seu computador.&lt;/p&gt;
-
-&lt;h2 id=&quot;cliente-do-foldinghome-fahclient&quot;&gt;Cliente do Folding@home (FAHClient)&lt;/h2&gt;
-
-&lt;p&gt;Depois de baixar o pacote RPM do &lt;strong&gt;fahclient&lt;/strong&gt;, abra uma janela do terminal na pasta onde ele foi baixado e instale-o executando o comando a seguir como administrador (usuário &lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fahclient-7.6.9-1.x86_64.rpm
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O gerenciador de pacotes &lt;strong&gt;zypper&lt;/strong&gt; informa que não encontra uma dependência do pacote:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Carregando dados do repositório...
-Lendo os pacotes instalados...
-Resolvendo dependências de pacote...
-
-Problema: nada fornece bzip2-libs que é necessário a fahclient-7.6.9-1.x86_64
- Solução 1: não instalar fahclient-7.6.9-1.x86_64
- Solução 2: quebrar fahclient-7.6.9-1.x86_64 ao ignorar algumas das dependências
-
-Escolha uma das opções acima pelo número ou cancele [1/2/c/d/?] (c):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Lembre-se que esse pacote RPM não foi feito para o openSUSE, que fornece as bibliotecas do &lt;strong&gt;&lt;a href=&quot;http://www.bzip.org/&quot;&gt;bzip2&lt;/a&gt;&lt;/strong&gt; em um pacote chamado &lt;strong&gt;libbz2-1&lt;/strong&gt;, que já vem instalado por padrão. Portanto, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;2&lt;/code&gt; (que aqui equivale a ignorar a dependência não satisfeita) e pressione &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Escolha uma das opções acima pelo número ou cancele [1/2/c/d/?] (c): 2
-Resolvendo dependências...
-Resolvendo dependências de pacote...
-
-O seguinte pacote NOVO será instalado:
-  fahclient
-
-1 novo pacote a ser instalado.
-Tamanho total do download: 3,5 MiB. Já em cache: 0 B. Após a operação, 8,9 MiB
-adicionais serão utilizados.
-Continuar? [s/n/v/...? exibe todas as opções] (s):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tecle &lt;strong&gt;Enter&lt;/strong&gt; para aceitar a opção padrão (&lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt;, que aqui significa “sim, continuar”).&lt;/p&gt;
-
-&lt;p&gt;Na sequência, o &lt;strong&gt;zypper&lt;/strong&gt; se depara com outro problema. O pacote não está assinado e, por isso, não é possível fazer a &lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;verificação de autenticidade&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Baixando pacote fahclient-7.6.9-1.x86_64
-                                       (1/1),   3,5 MiB (  8,9 MiB descompactado)
-fahclient-7.6.9-1.x86_64.rpm:
-    O pacote não está assinado!
-
-fahclient-7.6.9-1.x86_64 (Cache de arquivos RPM simples): Falha na verificação da assinatura [6-O arquivo não está assinado]
-Cancelar, repetir ou ignorar? [c/r/i] (c):
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Essa mensagem de erro é comum ao instalar um pacote RPM baixado manualmente (sem ser de um repositório configurado). Você pode seguramente digitar &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; (ignorar) e pressionar &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Cancelar, repetir ou ignorar? [c/r/i] (c): i
-
-Verificando por conflito de arquivos: ................................[concluído]
-(1/1) Instalando: fahclient-7.6.9-1.x86_64 ...........................[concluído]
-Saída adicional do rpm:
-Unknown option: levels
-usage:
-        chkconfig -A|--allservices              (together with -l: show all services)
-        chkconfig -t|--terse [names]            (shows the links)
-        chkconfig -e|--edit  [names]            (configure services)
-        chkconfig -s|--set   [name state]...    (configure services)
-        chkconfig -l|--list [--deps] [names]    (shows the links)
-	chkconfig -L|--liston [--deps] [names]  (as -l, enabled in at least 1 level)
-        chkconfig -c|--check name [state]       (check state)
-        chkconfig -a|--add   [names]            (runs insserv)
-        chkconfig -d|--del   [names]            (runs insserv -r)
-        chkconfig -h|--help                     (print usage)
-        chkconfig -f|--force ...                (call insserv with -f)
-
-        chkconfig [name]             same as chkconfig -t
-        chkconfig name state...      same as chkconfig -s name state
-        chkconfig --root=&amp;lt;root&amp;gt; ...  use &amp;lt;root&amp;gt; as the root file system
-Starting fahclient ... FAIL
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O &lt;strong&gt;zypper&lt;/strong&gt; conclui a instalação, mas mostra mais algumas mensagens de erro. Mais uma vez, lembremos que esse pacote RPM não foi feito para o openSUSE. Embora uma dessas mensagens de erro indique que não conseguiu iniciar o cliente, isso não procede.&lt;/p&gt;
-
-&lt;p&gt;Se você usar o comando &lt;strong&gt;&lt;a href=&quot;http://hisham.hm/htop/&quot;&gt;htop&lt;/a&gt;&lt;/strong&gt;, perceberá que não só o cliente está em execução, como em pouco tempo põe seu processador pra trabalhar, atingindo 100% de uso:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ htop
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Para sair do &lt;strong&gt;htop&lt;/strong&gt;, tecle &lt;strong&gt;F10&lt;/strong&gt; ou clique em &lt;strong&gt;Quit&lt;/strong&gt; (sair) no canto inferior direito da tela.&lt;/p&gt;
-
-&lt;p&gt;Recarregue os serviços do sistema (necessário porque o FAHClient ainda é baseado no &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl daemon-reload
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;E habilite o serviço do FAHClient para que ele seja iniciado automaticamente durante o &lt;em&gt;boot&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# systemctl enable FAHClient
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para finalizar a configuração, abra o navegador e acesse &lt;a href=&quot;http://client.foldingathome.org/&quot;&gt;client.foldingathome.org&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A página redireciona para a interface &lt;em&gt;web&lt;/em&gt; do seu cliente do FAH. Se preferir, você pode acessá-la diretamente em &lt;a href=&quot;http://localhost:7396/&quot;&gt;localhost:7396&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note que em &lt;strong&gt;I support research fighting&lt;/strong&gt; (Eu suporto a pesquisa contra), há um menu &lt;em&gt;dropdown&lt;/em&gt; que você pode abrir e selecionar uma doença para direcionar sua contribuição:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode selecionar uma linha de pesquisa de sua preferência (por exemplo, &lt;strong&gt;COVID-19&lt;/strong&gt;) ou deixar o padrão, que é contribuir com a pesquisa contra qualquer doença (&lt;strong&gt;Any disease&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Em &lt;strong&gt;Power&lt;/strong&gt; (poder), você pode configurar quanto do seu poder de processamento será doado: pouco (&lt;strong&gt;Light&lt;/strong&gt;, padrão), médio (&lt;strong&gt;Medium&lt;/strong&gt;) ou todo (&lt;strong&gt;Full&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Em &lt;strong&gt;When&lt;/strong&gt; (quando), você pode definir quando o computador trabalhará na pesquisa: a qualquer momento, inclusive enquanto você estiver usando o computador (&lt;strong&gt;While I’m working&lt;/strong&gt;, padrão) ou apenas quando o computador estiver sem uso (&lt;strong&gt;Only when idle&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Se precisar, você pode interromper o trabalho do cliente do FAH a qualquer momento usando o botão &lt;strong&gt;Stop Folding&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note que fechar essa aba do navegador não interrompe o trabalho do cliente do FAH.&lt;/p&gt;
-
-&lt;p&gt;Você já está contribuindo com o trabalho dos pesquisadores, parabéns! Se quiser, pode parar por aqui, os passos seguintes são opcionais. Sigam-me os curiosos!&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (09/05/2020):&lt;/strong&gt;
-    &lt;p&gt;A seguir, adicionei algumas linhas em que falo sobre identidade e equipes (opcional).&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Por padrão, você contribui para o projeto de forma anônima, não precisa se cadastrar. Mas, opcionalmente, você pode definir um nome de usuário para si, assim como indicar que pertence a um time (&lt;em&gt;team&lt;/em&gt;). Caso queira fazer isso, na interface &lt;em&gt;web&lt;/em&gt; do cliente do FAH, clique no &lt;em&gt;link&lt;/em&gt; &lt;strong&gt;Change Identity&lt;/strong&gt; (mudar identidade).&lt;/p&gt;
-
-&lt;p&gt;Em &lt;strong&gt;Name&lt;/strong&gt; (nome), informe um nome de usuário — você pode usar letras, números e &lt;em&gt;underline&lt;/em&gt; ( &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; ) — e em &lt;strong&gt;Team Number&lt;/strong&gt; informe o número do seu time, depois clique em &lt;strong&gt;Save&lt;/strong&gt; (salvar). Exemplos de times:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stats.foldingathome.org/team/35676&quot;&gt;Time de usuários do openSUSE&lt;/a&gt;: número 35676 (no momento da escrita, posição 389 no &lt;a href=&quot;https://stats.foldingathome.org/teams&quot;&gt;&lt;em&gt;ranking&lt;/em&gt; de times&lt;/a&gt;, dentre quase 253 mil times cadastrados)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://stats.foldingathome.org/team/12841&quot;&gt;Time SUSE&lt;/a&gt;: número 12841 (posição 212 no &lt;em&gt;ranking&lt;/em&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-04.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-04.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Feito isso, seu nome e time passam a aparecer na interface &lt;em&gt;web&lt;/em&gt;, assim como você começa a juntar pontos para você e seu time à medida em que seu computador avança nas tarefas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Creio que esses pontos não podem ser trocados por alguma recompensa concreta, mas estimulam uma competição entre os times pra ver qual contribui mais para o projeto.&lt;/p&gt;
-
-&lt;p&gt;O &lt;em&gt;site&lt;/em&gt; do projeto disponibiliza o &lt;a href=&quot;https://stats.foldingathome.org/teams&quot;&gt;&lt;em&gt;ranking&lt;/em&gt; dos times&lt;/a&gt;, no qual você também pode pesquisar por times existentes:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahclient-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahclient-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Me chamou a atenção que a &lt;a href=&quot;https://petrobras.com.br/&quot;&gt;Petrobras&lt;/a&gt; possui um &lt;a href=&quot;https://stats.foldingathome.org/team/247463&quot;&gt;time&lt;/a&gt;, que está em 59º no &lt;em&gt;ranking&lt;/em&gt;. Pesquisando, descobri que &lt;a href=&quot;https://tecnoblog.net/331130/petrobras-supercomputadores-pesquisas-folding-home-covid-19/&quot;&gt;a empresa brasileira contribui com dois de seus supercomputadores para o Folding@home&lt;/a&gt;. É do Brasil!&lt;/p&gt;
-
-&lt;p&gt;As pessoas do projeto &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; e da empresa &lt;a href=&quot;https://www.suse.com/pt-br/&quot;&gt;SUSE&lt;/a&gt; estão empenhadas em ajudar o projeto Folding@home e combater a Covid-19. Se quiser mais informações, veja:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/Folding@Home&quot;&gt;Folding@home - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://suse.com/c/suses-commitment-to-combat-covid-19/&quot;&gt;SUSE’s Commitment to Combat COVID-19 - SUSE Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/openSUSE/comments/fsoh6h/foldinghome_with_opensuse_to_assist_with_covid19/&quot;&gt;Folding@home with openSUSE to assist with COVID-19 - openSUSE - reddit&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://forums.opensuse.org/showthread.php/539432-FAH-(-Folding-Home)-packages-for-TW&quot;&gt;TUMBLEWEED FAH ( Folding@Home) packages for TW - openSUSE Forums&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;controle-do-foldinghome-fahcontrol&quot;&gt;Controle do Folding@home (FAHControl)&lt;/h2&gt;
-
-&lt;p&gt;A instalação do pacote &lt;strong&gt;fahcontrol&lt;/strong&gt; é semelhante:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fahcontrol-7.6.9-1.noarch.rpm
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Uma vez instalado, para iniciar o FAHControl, se você usa o ambiente &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;fah&lt;/code&gt; e clique no ícone do &lt;strong&gt;FAHControl&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahcontrol-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahcontrol-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que esse aplicativo apresenta as mesmas opções da interface &lt;em&gt;web&lt;/em&gt; e mais:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahcontrol-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahcontrol-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se precisar, você pode pausar o trabalho do cliente do FAH a qualquer momento usando o botão &lt;strong&gt;Pause&lt;/strong&gt;, ou para-lo completamente usando o botão &lt;strong&gt;Finish&lt;/strong&gt;. Em ambos os casos, para retomar o trabalho, clique em &lt;strong&gt;Fold&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note que fechar esse programa também não interrompe o trabalho do cliente do FAH.&lt;/p&gt;
-
-&lt;h2 id=&quot;visualizador-do-foldinghome-fahviewer&quot;&gt;Visualizador do Folding@home (FAHViewer)&lt;/h2&gt;
-
-&lt;p&gt;A instalação do pacote &lt;strong&gt;fahviewer&lt;/strong&gt; é semelhante:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fahviewer-7.6.9-1.noarch.rpm
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Uma vez instalado, para iniciar o FAHViewer, se você usa o ambiente GNOME, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;fah&lt;/code&gt; e clique no ícone do &lt;strong&gt;FAHViewer&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahviewer-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahviewer-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Nessa janela, é possível visualizar a modelagem em que seu computador está trabalhando:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/05/fahviewer-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/05/fahviewer-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se quiser, você pode rotacionar a imagem 3D usando o &lt;em&gt;mouse&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.techtudo.com.br/dicas-e-tutoriais/2020/03/coronavirus-saiba-como-usar-seu-pc-para-combater-a-pandemia.ghtml&quot;&gt;Coronavírus: saiba como usar seu PC para combater a pandemia - TechTudo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://foldingathome.org/&quot;&gt;Folding@home - Fighting disease with a world wide distributed super computer&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Folding@home&quot;&gt;Folding@home - Wikipedia&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackaday.com/2020/04/14/so-what-is-protein-folding-anyway/&quot;&gt;So What Is Protein Folding, Anyway? - Hackaday&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://arstechnica.com/science/2020/04/how-the-pandemic-revived-a-distributed-computing-project-and-made-history/&quot;&gt;The coronavirus pandemic turned Folding@Home into an exaFLOP supercomputer - Ars Technica&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://serverfault.com/a/713857/357679&quot;&gt;init.d - What’s the easiest way to make my old init script work in systemd? - Server Fault&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sat, 02 May 2020 18:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/05/02/folding-at-home-veja-como-seu-pc-pode-ajudar-as-pesquisas-sobre-a-covid-19/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/05/02/folding-at-home-veja-como-seu-pc-pode-ajudar-as-pesquisas-sobre-a-covid-19/</guid>
                 
                 
                     <category>pt</category>
