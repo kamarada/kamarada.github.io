@@ -9,10 +9,471 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 31 Aug 2020 11:33:58 -0300</pubDate>
-        <lastBuildDate>Mon, 31 Aug 2020 11:33:58 -0300</lastBuildDate>
+        <pubDate>Tue, 01 Sep 2020 10:38:53 -0300</pubDate>
+        <lastBuildDate>Tue, 01 Sep 2020 10:38:53 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Linux Kamarada and openSUSE Leap: how to upgrade from 15.1 to 15.2</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you’ve been following this website for a while now, you’ve already seen some how-tos explaining how to upgrade &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt; from one release to the next. In this edition, we have a first-timer: it’s the first how-to that also shows how to upgrade &lt;a href=&quot;/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/&quot;&gt;Linux Kamarada&lt;/a&gt;, which, in case you didn’t know it yet, is an openSUSE Leap based &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; distribution.&lt;/p&gt;
+
+&lt;p&gt;Linux Kamarada &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;was released in February&lt;/a&gt; with its first release being numbered as 15.1, aligned with the upstream &lt;a href=&quot;/en/2019/05/22/opensuse-community-releases-leap-15-1-version/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt;, then the latest release. Today, the latest openSUSE Leap is &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;15.2, released in July&lt;/a&gt;. Linux Kamarada 15.2 is going to be released in the next few days. For now, it is in &lt;a href=&quot;/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/&quot;&gt;release candidate&lt;/a&gt; stage, which has good stability already. In my tests, upgrading Linux Kamarada from 15.1 Final to 15.2 RC went flawlessly.&lt;/p&gt;
+
+&lt;p&gt;Since development is not finished yet, I don’t recommend upgrading to Linux Kamarada 15.2 to all users yet. But, if you feel “adventurous” enough and want to help in development, please feel free to test the upgrade procedure and report the problems you face, if any.&lt;/p&gt;
+
+&lt;p&gt;Upgrading from one openSUSE Leap release to the next is an easy and safe procedure. I always repeat the steps I learned reading the &lt;a href=&quot;https://en.opensuse.org/SDB:System_upgrade&quot;&gt;openSUSE wiki&lt;/a&gt;. It’s quite the same recipe since 2012, when I started using openSUSE. As Linux Kamarada is based on openSUSE Leap, upgrading it is done the same way, there is just one additional repository to setup.&lt;/p&gt;
+
+&lt;p&gt;If you are curious to check out previous editions of this how-to, here they are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2016/10/31/how-to-upgrade-from-opensuse-leap-421-to-422/&quot;&gt;How to upgrade from openSUSE Leap 42.1 to 42.2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2017/08/03/how-to-upgrade-from-opensuse-leap-422-to-423/&quot;&gt;How to upgrade from openSUSE Leap 42.2 to 42.3&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;There was no how-to showing how to upgrade from 42.3 to 15.0&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/27/how-to-upgrade-from-opensuse-leap-150-to-151/&quot;&gt;How to upgrade from openSUSE Leap 15.0 to 15.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this post, you are going to see how to upgrade openSUSE Leap and Linux Kamarada from 15.1 to 15.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; not to be repetitive, what I say about openSUSE Leap applies to both distributions, when I mention Linux Kamarada I’m talking specifically about it.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-few-recommendations&quot;&gt;A few recommendations&lt;/h2&gt;
+
+&lt;p&gt;Upgrading openSUSE is a safe procedure, which should work for most cases, but requires some cautions. It is always good to remember the following recommendations.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You must be using the immediately previous openSUSE Leap release.&lt;/strong&gt; It means that if you want to upgrade to 15.2, now you must be using 15.1. Hopping over one or more releases is not supported. It may work, but that is not guaranteeded. So if you use openSUSE Leap 15.0 now, for example, you should first upgrade to 15.1, and then to 15.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Your openSUSE Leap installation must be up to date&lt;/strong&gt; with the latest updates for the release you are currently running. There are differences between upgrading and updating. Here, you are going to see how to upgrade, but you may need to update first. For more information about those differences and how to update openSUSE Leap, please read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;How to get updates for openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;You should read about the openSUSE Leap release you are going to install.&lt;/strong&gt; Take a look at the &lt;a href=&quot;https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/15.2/&quot;&gt;release notes&lt;/a&gt;, which list changes and glitches in the new release.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You must backup all important data.&lt;/strong&gt; Even though upgrading openSUSE is a safe procedure (that resembles upgrading &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;, for those who know it), it is not perfect. Winning the lottery is difficult, but eventually someone wins. Something may go wrong during upgrade, although it is difficult, especially if you act cautiosly. I myself have been using openSUSE for some years now, and always have upgraded from one release to the next without a problem. Anyway, it never hurts to make a backup of your personal files as a precaution, especially if the &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; directory is not on a dedicated partition. If the computer is one that should not be down for long (a server, for example), consider backing up the entire system, so you will be able to restore it immediately if something does not work as expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You should not use third party repositories during upgrade.&lt;/strong&gt; Before upgrading, we are going to remove all &lt;a href=&quot;https://en.opensuse.org/Additional_package_repositories&quot;&gt;third party repositories&lt;/a&gt;. Doing that may cause third party software to be removed during upgrade. If that happens, you may try to reinstall it later. It is not that you cannot upgrade with third party repositories enabled, but using only the &lt;a href=&quot;https://en.opensuse.org/Package_repositories#Official_Repositories&quot;&gt;official repositories&lt;/a&gt; is more guaranteed. That way, the base system will be upgraded to a new stable, solid and reliable base. Then, on top of that base, you can install whatever you want. Do differently only if you know what you are doing.&lt;/p&gt;
+
+&lt;p&gt;I also recommend that you read this entire how-to before you start. I’m going to break the upgrade process down into 6 steps for better understading. Once you know the whole process, you will be able to better schedule it. You can even use your computer as normal while you follow the step by step, but after you start actually upgrading, your computer will become usable again only after upgrading is completed.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-update-your-current-system&quot;&gt;1) Update your current system&lt;/h2&gt;
+
+&lt;p&gt;Make sure your current openSUSE Leap installation is up to date. To do this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if you update your system using the GUI, open the Package Updater app, it should inform you the system is completely up to date:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-01-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if you update your system using the CLI, run &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt; as the root (administrator) user, it should inform you there is “nothing to do”:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-02-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you need more information on how to update your system, please read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;How to get updates for openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-backup-your-current-repositories&quot;&gt;2) Backup your current repositories&lt;/h2&gt;
+
+&lt;p&gt;Actually, this step is optional.&lt;/p&gt;
+
+&lt;p&gt;You may want to back up your current list of repositories to return them after upgrading. openSUSE Leap saves repository settings in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/repos.d&lt;/code&gt; folder. It has some text files, one for each repository.&lt;/p&gt;
+
+&lt;p&gt;Let’s copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d&lt;/code&gt; folder, in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/&lt;/code&gt;, to another one in the same place, called &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.old&lt;/code&gt;. It is easier to use the CLI for that.&lt;/p&gt;
+
+&lt;p&gt;Enter the CLI and switch to the root user, if you haven’t done that yet:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ su
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Enter the root password to continue.&lt;/p&gt;
+
+&lt;p&gt;If you have already upgraded following any previous edition of this same tutorial, you may still have the old backup. If that is the case, remove the existing &lt;code class=&quot;highlighter-rouge&quot;&gt;repos.d.old&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.old
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, order the copy:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# cp -Rv /etc/zypp/repos.d /etc/zypp/repos.d.old
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-03-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-03-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you have not made a backup of your data yet, consider doing that now.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-clean-up-repositories&quot;&gt;3) Clean up repositories&lt;/h2&gt;
+
+&lt;p&gt;As already mentioned, for upgrade we use only the official repositories. To be more precise, just two of them, in the case of openSUSE Leap:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main Repository&lt;/strong&gt;: the main repository, contains &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source software&lt;/a&gt; only.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL (for 15.1): &lt;a href=&quot;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&quot;&gt;http://download.opensuse.org/distribution/leap/15.1/repo/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main Update Repository&lt;/strong&gt;: contains official updates for OSS packages.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;URL (for 15.1): &lt;a href=&quot;http://download.opensuse.org/update/leap/15.1/oss/&quot;&gt;http://download.opensuse.org/update/leap/15.1/oss/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For &lt;strong&gt;Linux Kamarada,&lt;/strong&gt; besides the above repos, we’ll also use the official Linux Kamarada repo, which is kindly hosted by &lt;a href=&quot;https://osdn.net/&quot;&gt;OSDN&lt;/a&gt; mirrors in several countries. Users in Brazil are advised to use the &lt;a href=&quot;https://www.c3sl.ufpr.br/&quot;&gt;C3SL&lt;/a&gt; mirror. The international edition of the Linux Kamarada live image uses a mirror I picked at random from the &lt;a href=&quot;https://github.com/kamarada/Linux-Kamarada-GNOME/wiki/Mirrors&quot;&gt;list of OSDN mirrors&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;URL (for 15.1): &lt;a href=&quot;https://osdn.mirror.constant.com/storage/g/k/ka/kamarada/15.1/openSUSE_Leap_15.1/&quot;&gt;https://osdn.mirror.constant.com/storage/g/k/ka/kamarada/15.1/openSUSE_Leap_15.1/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are in another country, check the &lt;a href=&quot;https://github.com/kamarada/Linux-Kamarada-GNOME/wiki/Mirrors&quot;&gt;list of mirrors on the Linux Kamarada wiki on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s clean up our repositories removing any repository we won’t need (including any third party repositories).&lt;/p&gt;
+
+&lt;p&gt;Start the &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST Control Center&lt;/a&gt; by opening the &lt;strong&gt;Activities&lt;/strong&gt; menu, on the top-left screen corner, typing &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; and then clicking the corresponding icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked the root password. Type it and click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-05-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-05-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Within the &lt;strong&gt;Software&lt;/strong&gt; category (the first one), click &lt;strong&gt;Software Repositories&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-06-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-06-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to your system’s repository list:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-07-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;For each repository other than the ones listed above, select the repository from the list and click &lt;strong&gt;Delete&lt;/strong&gt;. YaST asks you for confirmation. Click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-08-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Do that with all repositories, until the list has only the repositories listed above:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-09-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Maybe those repositories are named differently on your system. If that is the case, try to recognize them by their &lt;a href=&quot;https://en.wikipedia.org/wiki/Uniform_Resource_Locator&quot;&gt;URL&lt;/a&gt; instead of their name. If you don’t find them, there is no problem: delete all repositories and just add the new ones in the next step.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-switch-to-the-new-repositories&quot;&gt;4) Switch to the new repositories&lt;/h2&gt;
+
+&lt;p&gt;Now let’s move to the new release’s repositories.&lt;/p&gt;
+
+&lt;p&gt;In this edition of the upgrading how-to, we have another new interesting thing: the &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; variable, which is substituted by the current distribution version. It has been available on openSUSE &lt;a href=&quot;https://lists.opensuse.org/opensuse/2015-01/msg00413.html&quot;&gt;for a while&lt;/a&gt;, it’s a pity that I only discovered it recently, otherwise I would have used it on Linux Kamarada 15.1… but that’s ok, as I wrote when &lt;a href=&quot;/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/&quot;&gt;the first beta was released almost 1 year ago&lt;/a&gt;, Linux Kamarada is a project about constantly learning and improving. Now that I’m aware of this feature, it is used by default on 15.2.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;Main Repository&lt;/strong&gt; and click &lt;strong&gt;Edit&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If the &lt;strong&gt;URL of the Repository&lt;/strong&gt; already contains the &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; variable, you don’t need to change anything, just click &lt;strong&gt;OK&lt;/strong&gt;. If you see the distribution version (currently 15.1) in any part of the URL, replace that version number with &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; and then click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-10-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Do the same for the other repositories.&lt;/p&gt;
+
+&lt;p&gt;In the case of &lt;strong&gt;Linux Kamarada&lt;/strong&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;15.1&lt;/code&gt; is going to be replaced by &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; twice:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-11-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;At the end, your system’s repository list should look like this:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;OK&lt;/strong&gt; to save changes. You can close YaST.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-download-packages&quot;&gt;5) Download packages&lt;/h2&gt;
+
+&lt;p&gt;We can start downloading the packages of the new openSUSE Leap release.&lt;/p&gt;
+
+&lt;p&gt;Back to the CLI, retrieve the list of available packages from the new repositories (observe that we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever&lt;/code&gt; option to indicate the use of the new version):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --releasever=15.2 ref
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --releasever=15.2 dup --download-only
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(&lt;code class=&quot;highlighter-rouge&quot;&gt;dup&lt;/code&gt; is an acronym for &lt;em&gt;distribution upgrade&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-13-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-13-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt; package manager spends some time “thinking”. Soon after, it shows what it needs to do in order to upgrade openSUSE Leap to the next release.&lt;/p&gt;
+
+&lt;p&gt;It is possible that it needs to &lt;a href=&quot;https://en.opensuse.org/SDB:Vendor_change_update&quot;&gt;change the vendor&lt;/a&gt; of some packages, as in the image below:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-14-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-14-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If this happens, carefully read the presented options and choose the one that suggests the &lt;strong&gt;vendor change&lt;/strong&gt;. In the example above, it would be &lt;strong&gt;Solution 1&lt;/strong&gt;. So, you would type &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; lists the changes it’s going to make to the system (which packages are going to be upgraded, which ones are going to be removed, which ones are going to change vendor, etc.) and asks if you want to continue:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-15-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-15-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That list of actions is similar to that produced by &lt;code class=&quot;highlighter-rouge&quot;&gt;zypper up&lt;/code&gt;, presented in the &lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;how-to about updating&lt;/a&gt;. However, as we are now doing a distribution upgrade, and not an ordinary update, the list of what is needed to be done is much bigger.&lt;/p&gt;
+
+&lt;p&gt;Review that list carefully. You can go up or down using the scrollbar at the right of the window or the mouse wheel (scroll wheel) if you are using Terminal, or the &lt;strong&gt;Shift + Page Up&lt;/strong&gt; / &lt;strong&gt;Shift + Page Down&lt;/strong&gt; key combinations if you are using a purely textual interface (they also work in Terminal).&lt;/p&gt;
+
+&lt;p&gt;The default option is to continue (&lt;strong&gt;y&lt;/strong&gt;). If you agree, you can just hit &lt;strong&gt;Enter&lt;/strong&gt; and downloading of the new packages will start. Meanwhile, you can use your computer normally. The upgrade itself has not started yet.&lt;/p&gt;
+
+&lt;p&gt;Note that &lt;strong&gt;zypper&lt;/strong&gt; only downloads packages, it does not start upgrading:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-16-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-16-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;That’s because we invoked it with the &lt;code class=&quot;highlighter-rouge&quot;&gt;--download-only&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Finish what you are doing and save any open files so we can start upgrading. Note that upgrading may take several minutes and you will be able to continue using your computer only after it is complete.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-upgrade-your-system&quot;&gt;6) Upgrade your system&lt;/h2&gt;
+
+&lt;p&gt;Now that we have already downloaded all the packages needed to upgrade our openSUSE Leap from 15.1 to 15.2, we need to leave the desktop environment and use the pure textual interface to perform the upgrade. Here on, you cannot use Terminal.&lt;/p&gt;
+
+&lt;p&gt;That is necessary because the desktop itself will be upgraded. If we run the upgrade while still using the desktop, it may stop/crash, causing the upgrade to abort, which in turn lefts the system in an inconsistent, unpredictable state.&lt;/p&gt;
+
+&lt;p&gt;Consider opening this page on another computer (or on a mobile device), print it or take note of the next actions.&lt;/p&gt;
+
+&lt;p&gt;If you are upgrading a laptop system, make sure its battery is fully charged and its AC adapter is plugged in. Do not remove the battery or unplug the AC adapter during the upgrade. We want to prevent any possibility of problem.&lt;/p&gt;
+
+&lt;p&gt;Logout by opening the &lt;strong&gt;system menu&lt;/strong&gt;, on the right side of the top bar, clicking on your username and then choosing &lt;strong&gt;Log Out&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-17-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-17-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You are presented to the login screen where you could enter your username and password to start a new desktop session:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-18-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-18-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;But that’s not what we want. Press the &lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt; key combination to switch to a purely textual interface:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-19.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-19.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If that was new to you, know that Linux provides six &lt;a href=&quot;http://opensuse-guide.org/command.php&quot;&gt;consoles&lt;/a&gt; (terminals) besides the graphical interface. You can use the keys F1 to F6 in that same combination (&lt;strong&gt;Ctrl + Alt + F1&lt;/strong&gt;, &lt;strong&gt;Ctrl + Alt + F2&lt;/strong&gt; and so on) to switch between consoles, pressing &lt;strong&gt;Ctrl + Alt + F7&lt;/strong&gt; you can return to the graphical interface.&lt;/p&gt;
+
+&lt;p&gt;But let’s stand on the first console.&lt;/p&gt;
+
+&lt;p&gt;Login as root. To do that, type &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;, then enter the root password and hit &lt;strong&gt;Enter&lt;/strong&gt; again.&lt;/p&gt;
+
+&lt;p&gt;Let’s switch from &lt;a href=&quot;https://en.wikipedia.org/wiki/Runlevel&quot;&gt;runlevel&lt;/a&gt; 5, the default runlevel, in which the system provides the GUI, to the runlevel 3, in which we have only the CLI and network connection.&lt;/p&gt;
+
+&lt;p&gt;To &lt;a href=&quot;https://en.opensuse.org/SDB:Switch_runlevel&quot;&gt;change to runlevel&lt;/a&gt; 3, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# init 3
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, we are going to start the distribution upgrade itself. Run (mind the &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever&lt;/code&gt; option):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper --no-refresh --releasever=15.2 dup
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-20.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-20.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-refresh&lt;/code&gt; option makes &lt;strong&gt;zypper&lt;/strong&gt; not retrieve the list of packages from repositories. Using that option, we ensure that &lt;strong&gt;zypper&lt;/strong&gt; won’t try to download any package in addition to those we have already downloaded. That can be useful especially for laptops, which may lose the Wi-Fi connection when leaving the GUI.&lt;/p&gt;
+
+&lt;p&gt;As before, &lt;strong&gt;zipper&lt;/strong&gt; is going to compute the upgrade and show what it is going to do (if it asks the same questions about changing vendors, answer them the same way as before):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-21-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-21-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that all the needed packages have already been downloaded: at the end, &lt;strong&gt;zypper&lt;/strong&gt;’s report shows “Overall download size: 0 B. Already cached: 1.93 GiB.”&lt;/p&gt;
+
+&lt;p&gt;Just hit &lt;strong&gt;Enter&lt;/strong&gt; to start upgrading.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;zypper&lt;/strong&gt; skips downloading packages and goes straight to upgrading:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-22-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-22-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Distribution upgrade may take several minutes.&lt;/p&gt;
+
+&lt;p&gt;When it finishes, &lt;strong&gt;zypper&lt;/strong&gt; suggests to restart. Let’s do that by running:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# reboot
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-23-en.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-23-en.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;thats-it-have-a-lot-of-fun&quot;&gt;That’s it! Have a lot of fun!&lt;/h2&gt;
+
+&lt;p&gt;If you did everything up to here, now your computer is running Linux Kamarada 15.2 (or openSUSE Leap 15.2).&lt;/p&gt;
+
+&lt;p&gt;You can see the &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; menu, the one that allows you to choose which operating system to boot when the computer turns on (useful especially if you have &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and Linux installed on the same machine), is already different:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;And &lt;em&gt;voilà&lt;/em&gt;! Linux Kamarada 15.2 (or openSUSE Leap 15.2) is installed and ready for use!&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-25-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-25-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Make sure everything is in place.&lt;/p&gt;
+
+&lt;p&gt;Now you may return any repositories you removed. Remember to make the appropriate adjustments with respect to the openSUSE Leap version, replacing it by &lt;code class=&quot;highlighter-rouge&quot;&gt;$releasever&lt;/code&gt; where it appears. It’s easy to do that using the CLI:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sed -i 's/15.1/$releasever/g' /etc/zypp/repos.d.old/*
+# mv /etc/zypp/repos.d.old/* /etc/zypp/repos.d/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That done, you can delete your repositories backup:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# rm -rf /etc/zypp/repos.d.old/
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You may also try to install any program that perhaps has been removed during the upgrade.&lt;/p&gt;
+
+&lt;p&gt;Remember to regularly &lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;check for updates&lt;/a&gt; for your new distribution. Note that, after upgrading, the daily use of &lt;strong&gt;zypper&lt;/strong&gt; does not require you to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;--releasever&lt;/code&gt; option .&lt;/p&gt;
+
+&lt;p&gt;If you find any difficulty during the upgrade or have any questions, don’t hesitate to comment!&lt;/p&gt;
+
+</description>
+                <pubDate>Tue, 01 Sep 2020 10:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>Firefox and Chromium cannot play videos: here is why and how to solve it</title>
@@ -2506,137 +2967,6 @@ Failed to connect, CredSSP required by server.
                 <pubDate>Mon, 20 Apr 2020 00:25:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Linux Kamarada 15.2 Beta makes your desktop greener than ever</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;As the upstream, the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE Leap&lt;/a&gt; distribution, announced that the next version &lt;a href=&quot;https://news.opensuse.org/2020/02/25/leap-15-2-enters-beta-builds-phase/&quot;&gt;15.2 entered the beta phase&lt;/a&gt;, the Kamarada Linux distribution announces that its 15.2 beta version is already available for download with the release of build 22.1.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;The &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page has been updated to offer both releases for download:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;15.1 Final, which you can install on your home or work computer; and&lt;/li&gt;
-  &lt;li&gt;15.2 Beta, which you can test if you want to help in development.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I want to emphasize that the version 15.2 is still in beta phase. Therefore, bugs are expected and this version is not ready for daily use. If you find a bug, please report it. Take a look at the &lt;a href=&quot;/en/help&quot;&gt;Help&lt;/a&gt; page to see how to get in touch.&lt;/p&gt;
-
-&lt;p&gt;Of course, bugs can be found and fixed anytime, but the sooner the better!&lt;/p&gt;
-
-&lt;p&gt;The easiest way to test Linux is using &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt;. For more information, please read:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you want to install Linux Kamarada on your computer for daily use, it is recommended that you install the 15.1 Final version, which is already ready, and then, when the 15.2 version is ready, update. For more information on Linux Kamarada 15.1 Final, see:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Kamarada 15.1 comes with everything you need to use Linux everyday&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;whats-new&quot;&gt;What’s new?&lt;/h2&gt;
-
-&lt;p&gt;For now, Linux Kamarada 15.2 comes down to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;same (but updated) applications as in 15.1, with new features and bug fixes;&lt;/li&gt;
-  &lt;li&gt;new wallpapers (but you can keep using the previous ones or the openSUSE defaults, if you prefer); and&lt;/li&gt;
-  &lt;li&gt;a new theme, that also follows &lt;a href=&quot;https://material.io/&quot;&gt;Material Design&lt;/a&gt; (the design that empowers &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt;), but newer, more consistent and featuring the &lt;a href=&quot;https://en.opensuse.org/Help:Colors&quot;&gt;openSUSE colors&lt;/a&gt; (mainly green).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2-desktop-en.jpg&quot; title=&quot;GNOME desktop&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2-desktop-en.jpg&quot; alt=&quot;GNOME desktop&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME desktop&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2-apps-en.jpg&quot; title=&quot;GNOME core apps&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2-apps-en.jpg&quot; alt=&quot;GNOME core apps&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GNOME core apps&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2-lock-en.jpg&quot; title=&quot;Lock screen&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2-lock-en.jpg&quot; alt=&quot;Lock screen&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Lock screen&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;specs&quot;&gt;Specs&lt;/h2&gt;
-
-&lt;p&gt;To allow comparison among Linux Kamarada versions, here is a summary of the software contained in 15.2 Beta Build 22.1:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linux kernel 5.3.18&lt;/li&gt;
-  &lt;li&gt;X.Org display server 1.20.3 (without Wayland)&lt;/li&gt;
-  &lt;li&gt;GNOME 3.34.4 desktop including its core apps, such as Files (previously Nautilus), Calculator, Terminal, Text editor (gedit), Screenshot and others&lt;/li&gt;
-  &lt;li&gt;LibreOffice office suite 6.4.2&lt;/li&gt;
-  &lt;li&gt;Chromium 80 web browser&lt;/li&gt;
-  &lt;li&gt;VLC media player 3.0.7&lt;/li&gt;
-  &lt;li&gt;Evolution email client&lt;/li&gt;
-  &lt;li&gt;YaST control center&lt;/li&gt;
-  &lt;li&gt;Brasero&lt;/li&gt;
-  &lt;li&gt;CUPS 2.2.7&lt;/li&gt;
-  &lt;li&gt;Firewalld 0.5.5&lt;/li&gt;
-  &lt;li&gt;GParted 0.31.0&lt;/li&gt;
-  &lt;li&gt;HPLIP 3.18.6&lt;/li&gt;
-  &lt;li&gt;Java (OpenJDK) 11.0.6&lt;/li&gt;
-  &lt;li&gt;KolourPaint 19.12.3&lt;/li&gt;
-  &lt;li&gt;Linphone 4.1.1&lt;/li&gt;
-  &lt;li&gt;PDFsam Basic 4.1.2&lt;/li&gt;
-  &lt;li&gt;Pidgin 2.13.0&lt;/li&gt;
-  &lt;li&gt;Samba 4.11.5&lt;/li&gt;
-  &lt;li&gt;Transmission 2.94&lt;/li&gt;
-  &lt;li&gt;Vim 8.0&lt;/li&gt;
-  &lt;li&gt;Wine 3.7&lt;/li&gt;
-  &lt;li&gt;games: Aisleriot (Solitaire), Chess, Hearts, Iagno (Reversi), Mahjongg, Mines (Minesweeper), Nibbles (Snake), Quadrapassel (Tetris), Sudoku&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That list is not exhaustive, but it gives a notion of what can be found in the distribution.&lt;/p&gt;
-
-</description>
-                <pubDate>Tue, 14 Apr 2020 23:15:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/</guid>
                 
                 
                     <category>en</category>

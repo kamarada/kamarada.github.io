@@ -32,6 +32,10 @@
     
     
         
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/" />
+        
+    
+        
     
 
     <!-- OpenSearch -->
@@ -203,7 +207,7 @@
                             <h6 class="dropdown-header">English</h6>
                             
                             
-                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/">This page in English</a>
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/">This page in English</a>
                             
                             <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
                             <div class="dropdown-divider"></div>
@@ -306,7 +310,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2020-08-31" />
+                <meta itemprop="dateModified" content="2020-09-01" />
             </div>
             <div class='col-sm-6'>
                 
@@ -359,13 +363,13 @@
 
 </div>
 
-<p>Se você acompanha esse <em>site</em> há um tempo, sabe que eu sempre faço um tutorial mostrando como atualizar a distribuição <a href="https://en.opensuse.org/Portal:Leap">openSUSE Leap</a> de uma versão para outra. Dessa vez, temos uma novidade: é o primeiro tutorial que mostra também como atualizar o Linux Kamarada, que, caso você ainda não conheça, é uma distribuição baseada no openSUSE Leap.</p>
+<p>Se você acompanha esse <em>site</em> há um tempo, sabe que eu sempre faço um tutorial mostrando como atualizar a distribuição <a href="https://en.opensuse.org/Portal:Leap">openSUSE Leap</a> de uma versão para outra. Dessa vez, temos uma novidade: é o primeiro tutorial que mostra também como atualizar o <a href="/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/">Linux Kamarada</a>, que, caso você ainda não conheça, é uma distribuição <a href="https://www.vivaolinux.com.br/linux/">Linux</a> baseada no openSUSE Leap.</p>
 
-<p>O Linux Kamarada <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">foi lançado em fevereiro</a> e sua primeira versão foi numerada 15.1, alinhada com a versão 15.1 do openSUSE Leap, que então era a versão mais atual. Hoje, o openSUSE Leap está na <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">versão 15.2, lançada em julho</a>. O Linux Kamarada 15.2 será lançado nos próximos dias. Por enquanto, temos a <a href="/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/">versão candidata a lançamento (RC)</a>, que já apresenta uma boa estabilidade. Nos meus testes, a atualização do Linux Kamarada 15.1 Final para o 15.2 RC ocorreu sem problemas.</p>
+<p>O Linux Kamarada <a href="/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/">foi lançado em fevereiro</a> e sua primeira versão foi numerada 15.1, alinhada com a <a href="/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/">versão 15.1 do openSUSE Leap</a>, que então era a versão mais atual. Hoje, o openSUSE Leap está na <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">versão 15.2, lançada em julho</a>. O Linux Kamarada 15.2 será lançado nos próximos dias. Por enquanto, temos a <a href="/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/">versão candidata a lançamento (RC)</a>, que já apresenta uma boa estabilidade. Nos meus testes, a atualização do Linux Kamarada 15.1 Final para o 15.2 RC ocorreu sem problemas.</p>
 
 <p>Como o Linux Kamarada 15.2 ainda não foi finalizado, não recomendo a atualização para todos os usuários. Mas, se você se sente “corajoso” e quer ajudar no desenvolvimento, testando a atualização e reportando quaisquer problemas, por favor, sinta-se à vontade.</p>
 
-<p>O processo de atualização (<em>upgrade</em>) de uma versão para outra no openSUSE Leap é um processo fácil e tranquilo. Eu sigo a “receita de bolo” que aprendi na <a href="https://en.opensuse.org/SDB:System_upgrade"><em>wiki</em> do openSUSE</a>. É praticamente a mesma “receita” desde 2012, quando comecei a usar o openSUSE. Como o Linux Kamarada é baseado no openSUSE Leap, sua atualização segue a mesma “receita”, a única diferença é a configuração de mais um repositório, que é o do Linux Kamarada.</p>
+<p>Atualizar (fazer o <em>upgrade</em>) de uma versão para outra no openSUSE Leap é um processo fácil e tranquilo. Eu sigo a “receita de bolo” que aprendi na <a href="https://en.opensuse.org/SDB:System_upgrade"><em>wiki</em> do openSUSE</a>. É praticamente a mesma “receita” desde 2012, quando comecei a usar o openSUSE. Como o Linux Kamarada é baseado no openSUSE Leap, sua atualização segue a mesma “receita”, a única diferença é a configuração de mais um repositório, que é o do Linux Kamarada.</p>
 
 <p>Caso você tenha curiosidade de conferir as edições anteriores desse tutorial:</p>
 
@@ -555,7 +559,7 @@
 
 <p>Vamos agora mudar para os repositórios da nova versão.</p>
 
-<p>Nessa versão do tutorial temos mais uma novidade: a variável <code class="highlighter-rouge">$releasever</code>, que é substituída pela versão da distribuição atualmente em uso. Ela já está disponível no openSUSE <a href="https://lists.opensuse.org/opensuse/2015-01/msg00413.html">há um tempo</a>, infelizmente eu só a descobri recentemente, senão já teria incluído no Linux Kamarada 15.1… mas tudo bem, como eu escrevi no <a href="/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/">lançamento da primeira versão beta há quase 1 ano</a>, o Linux Kamarada é um projeto de constante aprendizado e aperfeiçoamento. Agora que conheço essa facilidade, ela já virá por padrão na versão 15.2.</p>
+<p>Nessa versão do tutorial temos mais uma novidade: a variável <code class="highlighter-rouge">$releasever</code>, que é substituída pela versão da distribuição sendo usada. Ela já está disponível no openSUSE <a href="https://lists.opensuse.org/opensuse/2015-01/msg00413.html">há um tempo</a>, é uma pena que eu só a descobri recentemente, senão já teria incluído no Linux Kamarada 15.1… mas tudo bem, como eu escrevi no <a href="/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/">lançamento da primeira versão beta há quase 1 ano</a>, o Linux Kamarada é um projeto de constante aprendizado e aperfeiçoamento. Agora que conheço essa facilidade, ela já virá por padrão na versão 15.2.</p>
 
 <p>Selecione o repositório <strong>Main Repository</strong> e clique em <strong>Editar</strong>.</p>
 
@@ -763,7 +767,7 @@
 
 <p>Se você conseguiu fazer tudo até aqui, seu computador já está com o Linux Kamarada 15.2 (ou com o openSUSE Leap 15.2).</p>
 
-<p>Observe que o menu do <a href="https://www.gnu.org/software/grub/">GRUB</a>, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui Windows e Linux instalados na mesma máquina), já está diferente:</p>
+<p>Observe que o menu do <a href="https://www.gnu.org/software/grub/">GRUB</a>, aquele que permite a você escolher o sistema operacional quando o computador liga (útil especialmente se você possui <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e Linux instalados na mesma máquina), já está diferente:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/08/upgrade-to-15.2-24.png" title="">
@@ -1078,7 +1082,7 @@
     </div>
 </footer>
 
-<meta itemprop="description" content="Se você acompanha esse site há um tempo, sabe que eu sempre faço um tutorial mostrando como atualizar a distribuição openSUSE Leap de uma versão para outra. Dessa vez, temos uma novidade: é o primeiro tutorial que mostra também como atualizar o Linux Kamarada, que, caso você ainda não conheça, é uma distribuição baseada no...">
+<meta itemprop="description" content="Se você acompanha esse site há um tempo, sabe que eu sempre faço um tutorial mostrando como atualizar a distribuição openSUSE Leap de uma versão para outra. Dessa vez, temos uma novidade: é o primeiro tutorial que mostra também como atualizar o Linux Kamarada, que, caso você ainda não conheça, é uma distribuição Linux baseada...">
 
 
     <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
@@ -1214,7 +1218,7 @@
                         <a href="#" class="list-group-item list-group-item-action disabled">English</a>
                         
                         
-                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/">This page in English</a>
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/">This page in English</a>
                         
                         <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
                     
