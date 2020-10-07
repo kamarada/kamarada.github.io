@@ -9,10 +9,339 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 18 Sep 2020 09:45:20 -0300</pubDate>
-        <lastBuildDate>Fri, 18 Sep 2020 09:45:20 -0300</lastBuildDate>
+        <pubDate>Wed, 07 Oct 2020 19:52:54 -0300</pubDate>
+        <lastBuildDate>Wed, 07 Oct 2020 19:52:54 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>openSUSE no Raspberry Pi 4 — parte 1: download e instalação</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Sabia que já é possível rodar o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; no &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt;? Na primeira vez em que escrevi sobre o minicomputador do tamanho de um cartão de crédito, há pouco mais de um ano, o Projeto openSUSE ainda não oferecia suporte à geração mais nova do Raspberry Pi. Quem quisesse usar um Raspberry Pi 4 como um &lt;em&gt;desktop&lt;/em&gt; naquela época teria que recorrer a outra distribuição, como &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt; ou &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se quiser saber mais sobre o Raspberry Pi 4 e suas especificações técnicas, leia o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Primeiros passos no Raspberry Pi com NOOBS e Raspbian&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mesmo hoje, o suporte do openSUSE ao Raspberry Pi 4 ainda não é completo. Explico.&lt;/p&gt;
+
+&lt;h2 id=&quot;opensuse-versus-raspbian-e-manjaro&quot;&gt;openSUSE versus Raspbian e Manjaro&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Softwares&lt;/em&gt; específicos do Raspberry Pi — o &lt;em&gt;firmware&lt;/em&gt;, o &lt;em&gt;bootloader&lt;/em&gt; e os módulos do &lt;em&gt;kernel&lt;/em&gt; Linux — são de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;propriedade&lt;/a&gt; da fabricante do seu processador, a &lt;a href=&quot;https://www.broadcom.com/&quot;&gt;Broadcom&lt;/a&gt;, que não parece disposta a torná-los &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;abertos&lt;/a&gt;. Talvez isso não seja um problema para a maioria dos usuários do Raspberry Pi. É compreensível que foi uma concessão que os projetistas da placa tiveram que fazer para conseguir ofertá-la a preços acessíveis. Mas isso pode ser uma questão para os mais puristas do código aberto.&lt;/p&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://www.raspberrypi.org/about/&quot;&gt;Raspberry Pi Foundation&lt;/a&gt; disponibiliza no &lt;a href=&quot;https://github.com/raspberrypi/&quot;&gt;GitHub&lt;/a&gt; os códigos-fonte do seu próprio &lt;a href=&quot;https://github.com/raspberrypi/linux&quot;&gt;&lt;em&gt;fork&lt;/em&gt; do &lt;em&gt;kernel&lt;/em&gt; Linux&lt;/a&gt; e os &lt;a href=&quot;https://github.com/raspberrypi/firmware&quot;&gt;binários pré-compilados&lt;/a&gt; dos &lt;em&gt;softwares&lt;/em&gt; proprietários da Broadcom.&lt;/p&gt;
+
+&lt;p&gt;O Raspbian oferece suporte completo ao Raspberry Pi 4 porque usa o &lt;em&gt;kernel&lt;/em&gt; Linux e os binários pré-compilados obtidos da Raspberry Pi Foundation. O Manjaro seguiu o mesmo caminho e, por isso, também oferece suporte completo ao Raspberry Pi 4. Esse caminho é mais curto, fornece “para ontem” um sistema que funciona, e não há nada de errado nisso.&lt;/p&gt;
+
+&lt;p&gt;Mas o Projeto openSUSE optou por seguir um caminho diferente, tentando adicionar suporte ao Raspberry Pi 4 ao &lt;a href=&quot;https://www.kernel.org/&quot;&gt;&lt;em&gt;kernel&lt;/em&gt; Linux original&lt;/a&gt;, que é usado pela distribuição. É um caminho mais longo e demorado, mas que na teoria deve fornecer melhores resultados no longo prazo, que inclusive beneficiarão outras distribuições além do próprio openSUSE. A desvantagem dessa abordagem é que, enquanto módulos de código aberto não são desenvolvidos, não é possível usar alguns recursos do Raspberry Pi 4.&lt;/p&gt;
+
+&lt;h2 id=&quot;sabia-que-existem-dois-opensuses&quot;&gt;Sabia que existem “dois openSUSEs”?&lt;/h2&gt;
+
+&lt;p&gt;Até 2014, havia apenas uma distribuição chamada openSUSE, então na versão 13.2.&lt;/p&gt;
+
+&lt;p&gt;A partir daí, o Projeto openSUSE passou a oferecer duas distribuições:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;openSUSE Leap:&lt;/strong&gt; mais estável, sucessor do bom e velho openSUSE, mas com um novo processo de desenvolvimento, atualmente está na &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;versão 15.2&lt;/a&gt; e lança novas versões com regularidade (geralmente, uma nova versão por ano), de modo semelhante a distribuições mais tradicionais como &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;; e&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;openSUSE Tumbleweed:&lt;/strong&gt; com lançamentos contínuos (&lt;em&gt;rolling release&lt;/em&gt;), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os &lt;em&gt;softwares&lt;/em&gt; mais recentes, recebe atualizações pequenas e frequentes sempre que um &lt;em&gt;software&lt;/em&gt; é atualizado, semelhante a distribuições como &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; e Manjaro.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em Linux.&lt;/p&gt;
+
+&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. É a distribuição que eu uso e indico há anos, principalmente para usuários iniciantes, tanto que o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt; é baseado nele.&lt;/p&gt;
+
+&lt;p&gt;Mas hoje eu quero falar do Tumbleweed, que, nos meus testes, se saiu um pouco melhor que o Leap no Raspberry Pi 4. Isso já era esperado, uma vez que o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-funciona-e-o-que-não-funciona&quot;&gt;O que funciona e o que não funciona?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Resumo:&lt;/strong&gt; no que se refere ao suporte ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4, praticamente não há diferença entre o Leap e o Tumbleweed. Se você pretende usar o Raspberry Pi como um servidor doméstico, o openSUSE vai te atender muito bem. Se pretende usar como um &lt;em&gt;desktop&lt;/em&gt;, pode ser que sinta falta de alguns recursos, como o Bluetooth e o som.&lt;/p&gt;
+
+&lt;p&gt;Eu testei os seguintes recursos do Raspberry Pi 4 nas duas distribuições:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Rede sem fio Wi-Fi:&lt;/strong&gt; em ambas, consegui me conectar a redes de 2,4GHz e 5GHz;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rede cabeada Ethernet:&lt;/strong&gt; em ambas, consegui me conectar a uma rede cabeada;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bluetooth:&lt;/strong&gt; em ambas, &lt;strong&gt;não&lt;/strong&gt; consegui fazer o Bluetooth funcionar;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Portas USB:&lt;/strong&gt; em ambas, todas as 4 portas USB funcionaram, apenas faço algumas observações quanto a teclado e &lt;em&gt;mouse&lt;/em&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;o teclado não funciona no menu do GRUB;&lt;/li&gt;
+      &lt;li&gt;em ambas as distribuições, dependendo do modelo do teclado e/ou &lt;em&gt;mouse&lt;/em&gt;, ao reiniciar o Raspberry Pi pode ser que parem de funcionar, sendo necessário removê-los e plugá-los de novo para que voltem;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Portas micro-HDMI&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;no Tumbleweed, ambas funcionaram, mas ao mudar o cabo HDMI de uma porta para outra, não era exibida imagem nessa outra porta — então, se precisar mudar o cabo HDMI de porta, é necessário reiniciar o Raspberry Pi;&lt;/li&gt;
+      &lt;li&gt;no Leap, somente a porta HDMI 1 funcionou (a próxima da saída de som), a porta HDMI 0 &lt;strong&gt;não&lt;/strong&gt; funcionou (a próxima da porta USB-C);&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Saída de som:&lt;/strong&gt; em ambas as distribuições, &lt;strong&gt;não&lt;/strong&gt; consegui produzir som usando o Raspberry Pi de forma alguma — seja pela saída de som (conectando um fone de ouvido tradicional, por exemplo), pela HDMI (conectando uma TV) ou por Bluetooth.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O que eu não testei (não sei se funciona ou não):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usar dois monitores ao mesmo tempo, conectando cada um a uma porta HDMI;&lt;/li&gt;
+  &lt;li&gt;Pinos GPIO;&lt;/li&gt;
+  &lt;li&gt;Qualquer coisa que eu não tenha listado acima.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sabendo o que hoje funciona ou não no Raspberry Pi 4 com openSUSE, você pode decidir se usa o openSUSE (e qual variação usar: Leap ou Tumbleweed) ou se aguarda o suporte do openSUSE ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4 melhorar e usa outra distribuição enquanto isso.&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-a-imagem-do-opensuse&quot;&gt;Baixando a imagem do openSUSE&lt;/h2&gt;
+
+&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você vai precisar de um PC com Linux ou &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB. Provavelmente o passo-a-passo a seguir também funciona no &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eu vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Acesse a página do Raspberry Pi 4 na &lt;em&gt;wiki&lt;/em&gt; do openSUSE:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;https://en.opensuse.org/HCL:Raspberry_Pi4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que há várias opções de imagens tanto do Tumbleweed quanto do Leap 15.2. Se você pretende usar o Raspberry Pi como um servidor, a imagem JeOS (&lt;em&gt;Just enough Operating System&lt;/em&gt; — traduzindo: tão somente o sistema operacional) é a mais adequada. Se pretende usá-lo como um &lt;em&gt;desktop&lt;/em&gt;, pode escolher outra imagem com alguma área de trabalho.&lt;/p&gt;
+
+&lt;p&gt;Aqui, vou usar a imagem do Tumbleweed com a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, que é bem leve e, por isso, adequada para o Raspberry Pi. Se você prefere o Leap, o passo-a-passo é o mesmo.&lt;/p&gt;
+
+&lt;p&gt;Clique no &lt;em&gt;link&lt;/em&gt; para a imagem que deseja baixar. O &lt;em&gt;download&lt;/em&gt; pode demorar um pouco, considerando que o arquivo é grande (no meu caso, 1 GB).&lt;/p&gt;
+
+&lt;p&gt;Conecte ao computador o cartão de memória que receberá a imagem.&lt;/p&gt;
+
+&lt;p&gt;Note que gravar a imagem do openSUSE no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um &lt;em&gt;backup&lt;/em&gt; deles antes de continuar para não perdê-los.&lt;/p&gt;
+
+&lt;p&gt;Recomendo que você remova quaisquer outros dispositivos de armazenamento (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-o-balena-etcher&quot;&gt;Baixando o Balena Etcher&lt;/h2&gt;
+
+&lt;p&gt;Para gravar a imagem do openSUSE no cartão de memória, eu recomendo a ferramenta &lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;Balena Etcher&lt;/a&gt;, por ser simples e fácil de usar. Ela é gratuita e de &lt;a href=&quot;https://github.com/balena-io/etcher&quot;&gt;código aberto&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Apenas observo que há uma questão de &lt;strong&gt;privacidade&lt;/strong&gt; nessa ferramenta, mas creio ser um problema pequeno e fácil de contornar: durante o uso, o programa faz conexões de rede com servidores do &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt;, &lt;a href=&quot;https://pt-br.facebook.com/&quot;&gt;Facebook&lt;/a&gt; e outros serviços (mais informações &lt;a href=&quot;https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103&quot;&gt;aqui&lt;/a&gt; e &lt;a href=&quot;https://github.com/balena-io/etcher/issues/2977&quot;&gt;aqui&lt;/a&gt;), o que é intrigante, porque isso é totalmente desnecessário à sua função.&lt;/p&gt;
+
+&lt;p&gt;Se isso for uma questão pra você, creio ser suficiente desconectar o computador da Internet durante o uso do aplicativo. Outra alternativa, se você usa Linux, é usar o comando &lt;strong&gt;dd&lt;/strong&gt;, falo sobre ele mais adiante (se quiser, você pode pular toda essa parte sobre o Balena Etcher).&lt;/p&gt;
+
+&lt;p&gt;Seguindo com o Balena Etcher… acesse seu &lt;em&gt;site&lt;/em&gt; e clique no botão para &lt;em&gt;download&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;https://www.balena.io/etcher/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, abra a pasta &lt;strong&gt;Downloads&lt;/strong&gt; e extraia o conteúdo do arquivo compactado baixado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você vai desconectar seu computador da Internet, a hora de fazer isso é agora.&lt;/p&gt;
+
+&lt;p&gt;Abra a pasta criada e faça um clique-duplo no arquivo com extensão &lt;a href=&quot;https://appimage.org/&quot;&gt;AppImage&lt;/a&gt; (que é, na verdade, o programa Balena Etcher em si, isso vai iniciá-lo):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;gravando-a-imagem-no-cartão-de-memória&quot;&gt;Gravando a imagem no cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;No Balena Etcher, clique no botão &lt;strong&gt;Flash from file&lt;/strong&gt; (gravar a partir do arquivo) e informe a localização da imagem do openSUSE que você baixou:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois, clique no botão &lt;strong&gt;Select target&lt;/strong&gt; (selecionar destino):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Marque o cartão de memória e clique em &lt;strong&gt;Select&lt;/strong&gt; (selecionar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; certifique-se de selecionar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível. Eu costumo me orientar pela capacidade (&lt;strong&gt;Size&lt;/strong&gt;) do dispositivo.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, clique no último botão, &lt;strong&gt;Flash&lt;/strong&gt; (gravar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe a senha do administrador (no Linux, chamado de usuário &lt;em&gt;root&lt;/em&gt;) para prosseguir.&lt;/p&gt;
+
+&lt;p&gt;Aguarde a imagem ser gravada no cartão de memória, o Balena Etcher até informa uma estimativa de quanto tempo isso vai demorar (você pode sair e ir tomar um café):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois de gravar, o Balena Etcher verifica os arquivos no cartão de memória (você pode demorar mais um pouco no seu café):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No final, o Balena Etcher informa que a gravação está completa (&lt;strong&gt;Flash Complete&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode simplesmente fechar o Balena Etcher.&lt;/p&gt;
+
+&lt;p&gt;Se você desconectou seu computador da Internet, já pode conectá-lo de volta.&lt;/p&gt;
+
+&lt;h2 id=&quot;alternativa-ao-etcher-comando-dd&quot;&gt;Alternativa ao Etcher: comando dd&lt;/h2&gt;
+
+&lt;p&gt;Se você preferiu usar o Balena Etcher, pode pular essa seção.&lt;/p&gt;
+
+&lt;p&gt;Se você não quiser usar o Balena Etcher, uma alternativa é usar o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt;, que provavelmente está presente em todas as distribuições Linux.&lt;/p&gt;
+
+&lt;p&gt;Antes, identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/fdisk&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt;, que provavelmente também é outro comando universal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
+Disco /dev/sda: 447,1 GiB, 480103981056 bytes, 937703088 setores
+Modelo de disco: KINGSTON SA400S3
+[...]
+
+Disco /dev/mmcblk0: 29,7 GiB, 31914983424 bytes, 62333952 setores
+Unidades: setor de 1 * 512 = 512 bytes
+Tamanho de setor (lógico/físico): 512 bytes / 512 bytes
+Tamanho E/S (mínimo/ótimo): 512 bytes / 512 bytes
+Tipo de rótulo do disco: dos
+Identificador do disco: 0xf77ae276
+
+Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
+/dev/mmcblk0p1               2048 62332927 62330880   29,7G  b FAT32 W95
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No meu caso, o cartão de memória é o dispositivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/mmcblk0&lt;/code&gt;. Eu costumo me orientar pela capacidade do dispositivo (nesse caso, um cartão de memória de 32 GB, é normal o tamanho informado pelo sistema operacional diferir um pouco).&lt;/p&gt;
+
+&lt;p&gt;Então, execute o comando a seguir para gravar a imagem no cartão de memória, fazendo as substituições necessárias.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; certifique-se de identificar e informar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# xzcat [nome-do-arquivo].raw.xz | dd bs=4M of=[caminho-do-dispositivo] iflag=fullblock oflag=direct status=progress; sync
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/sync.1.html&quot;&gt;sync&lt;/a&gt;&lt;/strong&gt; ao final garante que dados que ainda estejam no cache na memória RAM sejam gravados. Com isso, é seguro remover o cartão de memória.&lt;/p&gt;
+
+&lt;h2 id=&quot;removendo-o-cartão-de-memória&quot;&gt;Removendo o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;O Balena Etcher, assim como o comando &lt;strong&gt;dd&lt;/strong&gt;, não monta o cartão de memória após a gravação.&lt;/p&gt;
+
+&lt;p&gt;Se você abrir o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, verá que não aparece o ícone de &lt;strong&gt;Desmontar&lt;/strong&gt; ao lado do cartão de memória:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Sendo assim, você pode simplesmente remover o cartão de memória do computador.&lt;/p&gt;
+
+&lt;h2 id=&quot;iniciando-o-opensuse&quot;&gt;Iniciando o openSUSE&lt;/h2&gt;
+
+&lt;p&gt;Insira o cartão de memória no Raspberry Pi e faça as devidas conexões, como vimos no &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;. Ligue o Raspberry Pi e o openSUSE será iniciado.&lt;/p&gt;
+
+&lt;p&gt;Na tela de &lt;em&gt;login&lt;/em&gt;, use as credenciais &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; como nome de usuário e &lt;code class=&quot;highlighter-rouge&quot;&gt;linux&lt;/code&gt; como senha.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Como percebi que o &lt;em&gt;post&lt;/em&gt; já estava grande, decidi dividi-lo em duas partes. Deixei as configurações básicas para o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Siga o Projeto Linux Kamarada para ler a segunda parte assim que ela for publicada!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Alguns dos textos que consultei para escrever o presente texto incluem:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackaday.com/2017/01/14/blob-less-raspberry-pi-linux-is-a-step-closer/&quot;&gt;Blob-less Raspberry Pi Linux Is A Step Closer | Hackaday&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-arm/2019-10/msg00003.html&quot;&gt;Re: [opensuse-arm] Raspberry Pi 4 Model B - opensuse-arm Mailinglist Archive&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;HCL:Raspberry Pi4 - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/linux.md&quot;&gt;Installing operating system images on Linux - Raspberry Pi Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 07 Oct 2020 19:50:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Programas: o jeito mais fácil de instalar aplicativos no GNOME</title>
@@ -2931,280 +3260,6 @@ you should exit browser before continuing this operation. Type
                 <pubDate>Wed, 01 Jul 2020 21:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Dinheiro: passado, presente e... Bitcoin!</title>
-                <description>&lt;p&gt;Eu acredito que o futuro do dinheiro é o &lt;a href=&quot;https://bitcoin.org/pt_BR/&quot;&gt;Bitcoin&lt;/a&gt;. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surgiu, porque foi criado, quais suas semelhanças e diferenças quanto ao dinheiro atual, quais problemas temos hoje e como o Bitcoin tenta resolvê-los, creio que estudar a história do dinheiro pode ajudar.&lt;/p&gt;
-
-&lt;p&gt;Nesse texto, apresento um resumo do que encontrei fazendo um breve estudo da história do dinheiro. Não pretendo ser preciso ou detalhado, o que tornaria o texto ainda mais longo, mas capturar os pontos mais importantes na história para a compreensão do Bitcoin. Como meu forte é Computação, não História, sugestões de como melhorar o texto são bem-vindas.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/historia-dinheiro.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/historia-dinheiro.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;1-escambo&quot;&gt;1) Escambo&lt;/h2&gt;
-
-&lt;p&gt;No início da história, os seres humanos eram caçadores-coletores nômades, obtinham da natureza apenas o necessário para consumo imediato e migravam quando os recursos do local se tornavam escassos. Cada bando tinha que providenciar tudo de que necessitava.&lt;/p&gt;
-
-&lt;p&gt;Por volta de 10 mil a.C., desenvolveram a agricultura e a pecuária, o que os possibilitou fixar moradia e produzir além do necessário. O excedente era trocado com outras tribos, que produziam outros bens. Não precisava mais cada tribo produzir tudo de que necessitava.&lt;/p&gt;
-
-&lt;p&gt;Assim surgiu a forma mais primitiva de comércio: o &lt;strong&gt;escambo&lt;/strong&gt;, que era a troca simples e direta de um bem por outro bem. Por exemplo, se uma tribo pescava e outra tribo produzia milho, podiam trocar seus excedentes.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/escambo1.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/escambo1.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O escambo permitiu que cada tribo se especializasse na produção de determinado bem. Surgiram os diferentes ofícios e profissões, que passaram a produzir variados bens com diferentes propósitos e níveis de complexidade.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-moeda-mercadoria&quot;&gt;2) Moeda-mercadoria&lt;/h2&gt;
-
-&lt;p&gt;O escambo se tornou cada vez mais difícil conforme mais pessoas e bens eram envolvidos. O problema era coincidir os desejos das pessoas e os valores que elas dão a cada bem.&lt;/p&gt;
-
-&lt;p&gt;Imagine que Dalila produz milho e precisa de café. Kalil produz café, mas precisa de carne. Quem produz carne é o José, mas ele precisa de peixe. Sofia produz peixe e precisa de milho. Dessa forma, Dalila precisa trocar seu milho pelo peixe da Sofia, depois trocar peixe por carne com José, para enfim conseguir café com Kalil. Além disso, todas essas pessoas precisam saber quantas espigas de milho valem um peixe, quantos peixes valem um bife de carne, quantos bifes valem um saco de café.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/escambo2.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/escambo2.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A humanidade percebeu a necessidade de combinar um &lt;strong&gt;meio de troca&lt;/strong&gt; universal.&lt;/p&gt;
-
-&lt;p&gt;A primeira forma de dinheiro conhecida apareceu na Suméria por volta de 3 mil a.C. Os sumérios, o mesmo povo que inventou a escrita, usavam grãos de cevada como medida universal para avaliar e trocar por todos os outros bens e serviços. Essa forma de dinheiro é classificada como &lt;strong&gt;moeda-mercadoria&lt;/strong&gt; ou moeda-&lt;em&gt;commodity&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/moeda-mercadoria.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/moeda-mercadoria.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com o tempo, a sociedade foi selecionando os melhores bens para servir como meio de troca. Diversos bens chegaram a ser usados, tais como trigo, carne, couro, sal (daí veio a palavra &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sal%C3%A1rio&quot;&gt;salário&lt;/a&gt;, que era o pagamento, em sal, que a pessoa recebia por seu trabalho), entre outros.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-moedas-metálicas&quot;&gt;3) Moedas metálicas&lt;/h2&gt;
-
-&lt;p&gt;Um bem deve apresentar as seguintes características para que seja um bom meio de troca:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;liquidez: fácil de trocar por outros bens, amplamente aceito no mercado&lt;/li&gt;
-  &lt;li&gt;escassez: sua oferta deve ser limitada, inelástica, ou seja, deve ser difícil produzir mais desse bem, que deve ser um meio termo entre raro (para ser valioso) e abundante (para ter ampla circulação)&lt;/li&gt;
-  &lt;li&gt;fácil de custodiar (armazenar)&lt;/li&gt;
-  &lt;li&gt;fácil de transportar&lt;/li&gt;
-  &lt;li&gt;homogêneo&lt;/li&gt;
-  &lt;li&gt;fácil de dividir&lt;/li&gt;
-  &lt;li&gt;fácil de medir, pesar, quantificar&lt;/li&gt;
-  &lt;li&gt;durável, não perecível, resistente a intempéries&lt;/li&gt;
-  &lt;li&gt;difícil de falsificar&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Além de permitir trocas, uma boa moeda deve permitir também a &lt;strong&gt;reserva de valor&lt;/strong&gt;, ou seja, a preservação do poder de compra com o passar do tempo. Por exemplo, quando Kalil troca seu café por moedas, ele não precisa trocá-las imediatamente por outros bens: pode escolher guardá-las para adquirir outros bens depois. Outros bens podem ser usados como reserva de valor, como imóveis, mas geralmente apresentam menor liquidez que as moedas.&lt;/p&gt;
-
-&lt;p&gt;Acabaram se revelando como melhores meios de troca os &lt;strong&gt;metais preciosos&lt;/strong&gt;, como &lt;strong&gt;ouro&lt;/strong&gt;, prata e bronze. Eles atendiam a todos esses requisitos quase que perfeitamente. O que mais os distinguiu dos outros meios de troca foi a sua escassez natural: sua oferta era rígida e limitada pela própria natureza. Para aumentar a oferta de ouro, é preciso extrair mais ouro das &lt;strong&gt;minas&lt;/strong&gt;, não é possível criar ouro em laboratório. Se isso fosse possível, alguém poderia ficar rico simplesmente criando ouro indefinidamente (os alquimistas bem que tentaram).&lt;/p&gt;
-
-&lt;p&gt;Por volta de 640 a.C., começaram a ser cunhadas as primeiras &lt;strong&gt;moedas metálicas&lt;/strong&gt;. Elas simplificaram e facilitaram bastante as trocas, que passaram a ser indiretas: os produtores forneciam seus produtos em troca de moedas e as usavam para adquirir outros produtos.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/moeda-metalica.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/moeda-metalica.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;4-casas-de-custódia-e-papel-moeda&quot;&gt;4) Casas de custódia e papel-moeda&lt;/h2&gt;
-
-&lt;p&gt;Apesar de suas qualidades, as moedas de metais preciosos possuíam alguns problemas: eram pesadas e muito valiosas, de modo que era difícil transportá-las e armazená-las com segurança, especialmente em grandes quantidades. Por exemplo, um comerciante com muitas moedas de ouro era um alvo fácil para ladrões.&lt;/p&gt;
-
-&lt;p&gt;Diante desses problemas das moedas de ouro, surgiram as &lt;strong&gt;casas de custódia&lt;/strong&gt;, que eram lugares onde as pessoas guardavam ouro e recebiam certificados, que podiam ser usados no futuro para resgatar a mesma quantidade de ouro guardada (podem ser entendidos como um “vale ouro”). As pessoas começaram a usar esses certificados nas transações no lugar do ouro e assim surgiu a moeda-papel, mais comumente chamada de &lt;strong&gt;papel-moeda&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/papel-moeda.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/papel-moeda.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No início, o papel-moeda tinha &lt;strong&gt;lastro&lt;/strong&gt; no ouro, ou seja, havia a garantia de que era possível trocar papel-moeda por ouro. Cada cédula de papel representava determinado peso em ouro. Por exemplo, do século XIX até o início do século XX, o dólar era definido como sendo 1/20 de uma &lt;a href=&quot;https://pt.wikipedia.org/wiki/On%C3%A7a_(massa)&quot;&gt;onça&lt;/a&gt; de ouro, já a libra esterlina equivalia a 1/4 de uma onça de ouro.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-bancos-centrais-e-moedas-fiduciárias&quot;&gt;5) Bancos centrais e moedas fiduciárias&lt;/h2&gt;
-
-&lt;p&gt;As casas de custódia perceberam que as pessoas não sacavam todo o seu ouro ao mesmo tempo. Diante disso, começaram a emitir quantias em certificados além do que tinham em ouro estocado. Esses novos certificados sem lastro eram emprestados para pessoas que pagariam &lt;strong&gt;juros&lt;/strong&gt; às casas de custódia, que mais tarde se tornariam os atuais &lt;strong&gt;bancos&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mas os bancos ainda eram obrigados a lastrear nem que fosse parte dos certificados em ouro — prática chamada de &lt;strong&gt;reserva fracionária&lt;/strong&gt;, que é feita até hoje — e isso lhes impunha certa disciplina. Um banco que emitisse muitos certificados sem lastro corria o risco de falir se os clientes, desconfiados, exigissem em massa o resgate do ouro em espécie.&lt;/p&gt;
-
-&lt;p&gt;Com o tempo e a competição bancária, os bancos maiores foram incorporando os menores e passaram a servir de lastro para os restantes. Assim surgiram os &lt;strong&gt;bancos centrais&lt;/strong&gt;, que ficaram com a custódia de grande parte do ouro da população. Exemplos incluem o Banco da Inglaterra, existente desde 1694, e o Federal Reserve System (mais conhecido como FED), o banco central norte-americano, criado em 1913. Decretos governamentais atribuíram aos bancos centrais o monopólio da emissão de papel-moeda em seus respectivos países.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/1928-dollar.jpg&quot; title=&quot;Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: [Cointimes](https://cointimes.com.br/a-historia-do-dinheiro/).&quot;&gt;
-&lt;img src=&quot;/files/2020/06/1928-dollar.jpg&quot; alt=&quot;Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: [Cointimes](https://cointimes.com.br/a-historia-do-dinheiro/).&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: &lt;a href=&quot;https://cointimes.com.br/a-historia-do-dinheiro/&quot;&gt;Cointimes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Com a intensificação da reserva fracionária, as moedas foram perdendo gradativamente sua ligação com o ouro. O fim definitivo do lastro no ouro ocorreu em 1971 quando Richard Nixon, então presidente dos Estados Unidos, com o objetivo de evitar a fuga de ouro do país, suspendeu a conversão do dólar em ouro, encerrando de forma unilateral o &lt;a href=&quot;https://pt.wikipedia.org/wiki/Acordos_de_Bretton_Woods&quot;&gt;Acordo de Bretton Woods&lt;/a&gt;. O ouro perdeu sua função monetária e passou a ser apenas uma mercadoria (&lt;em&gt;commodity&lt;/em&gt;), embora ainda hoje seja considerado por investidores um ativo de proteção.&lt;/p&gt;
-
-&lt;p&gt;Sem qualquer lastro em ouro, o papel-moeda se tornou a moeda propriamente dita. Surgiram assim as atuais &lt;strong&gt;moedas fiduciárias&lt;/strong&gt;, cujo valor é baseado na confiança (fé) das pessoas no governo emissor. Os países emitem leis que obrigam seus cidadãos a aceitarem suas moedas. Muitos Estados passaram a adotar o dólar como reserva de valor e moeda global. O câmbio fixo em relação ao ouro foi substituído pelo &lt;strong&gt;câmbio flutuante&lt;/strong&gt; em relação ao dólar.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/1995-dollar.jpg&quot; title=&quot;Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: [Wikipedia](https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill).&quot;&gt;
-&lt;img src=&quot;/files/2020/06/1995-dollar.jpg&quot; alt=&quot;Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: [Wikipedia](https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill).&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: &lt;a href=&quot;https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se o que tornava o ouro um bom meio de troca era sua escassez, esse não é um ponto forte das moedas fiduciárias. Para que houvesse mais ouro em circulação, era necessário extrair mais ouro das minas. Para que haja mais papel-moeda em circulação, basta o governo decidir imprimir mais papel-moeda. E a experiência de quase 50 anos do fim do lastro em ouro mostrou que todos os bancos centrais imprimiram muito papel-moeda. Isso fez com que as moedas perdessem valor com o tempo, um processo conhecido como &lt;strong&gt;inflação&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Muitas pessoas percebem a inflação quando os preços dos produtos no supermercado aumentam. Na verdade, esse aumento de preços é o sintoma, não a causa da inflação. Para entender como a impressão de papel-moeda reduz o valor da moeda, é preciso entender a &lt;a href=&quot;https://blog.magnetis.com.br/oferta-e-demanda/&quot;&gt;&lt;strong&gt;lei da oferta e procura&lt;/strong&gt;&lt;/a&gt;, conceito formulado em 1776 pelo economista Adam Smith.&lt;/p&gt;
-
-&lt;p&gt;Parte desse conceito explica que quanto mais oferta de uma mercadoria existe, menor é o valor dela. Lembremos que a moeda em si também é uma mercadoria. Logo, quanto mais oferta de moeda existe, menor é o valor dela. Se certa quantidade de um produto equivale a certa quantidade de moeda, e em algum momento a oferta da moeda aumenta mas a oferta do produto permanece a mesma, o produto se torna mais escasso em relação à moeda, então se pede uma quantidade maior da moeda pela mesma quantidade do produto.&lt;/p&gt;
-
-&lt;p&gt;O gráfico a seguir mostra a evolução da inflação nos Estados Unidos de 1913 a 2020, medida pelo Índice de Preços ao Consumidor (&lt;em&gt;Consumer Price Index&lt;/em&gt; ou CDI, semelhante ao brasileiro &lt;a href=&quot;https://pt.wikipedia.org/wiki/Índices_de_inflação_do_Brasil#IPCA&quot;&gt;IPCA&lt;/a&gt;). É perceptível que a inflação acelerou após o fim do lastro no ouro em 1971.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/cdi-1913-2020.gif&quot; title=&quot;Evolução do Índice de Preços ao Consumidor. Fonte: [U.S. Bureau of Labor Statistics](https://www.bls.gov/data/).&quot;&gt;
-&lt;img src=&quot;/files/2020/06/cdi-1913-2020.gif&quot; alt=&quot;Evolução do Índice de Preços ao Consumidor. Fonte: [U.S. Bureau of Labor Statistics](https://www.bls.gov/data/).&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Evolução do Índice de Preços ao Consumidor. Fonte: &lt;a href=&quot;https://www.bls.gov/data/&quot;&gt;U.S. Bureau of Labor Statistics&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O poder de compra de 1 dólar em 1959 está agora um pouco abaixo de 12 centavos de dólar.&lt;/p&gt;
-
-&lt;p&gt;Em julho de 1994, uma cédula de 1 real tinha o mesmo poder de compra de atuais R$ 6,22.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-dinheiro-eletrônico&quot;&gt;6) Dinheiro eletrônico&lt;/h2&gt;
-
-&lt;p&gt;Com o surgimento e a popularização do computador e da Internet, o dinheiro passou a ser representado também de forma eletrônica, como números no computador. Além da impressão de papel-moeda, os bancos centrais passaram a dispor de uma nova forma de aumentar a oferta de dinheiro: a criação de &lt;strong&gt;dinheiro eletrônico&lt;/strong&gt;. Boa parte do dinheiro que circula no mundo hoje é eletrônica, não impressa. Se todas as pessoas decidissem sacar todo o seu dinheiro dos bancos ao mesmo tempo, faltariam cédulas.&lt;/p&gt;
-
-&lt;p&gt;Em 2012, apenas 10% da oferta de dinheiro dos Estados Unidos — cerca de 1 trilhão do total de aproximadamente 10 trilhões de dólares — existia na forma de dinheiro físico (cédulas de papel e moedas). No Brasil, no mesmo ano, o total de dinheiro físico era de R$ 153 bilhões, enquanto o dinheiro eletrônico totalizava R$ 2,17 trilhões, ou seja, 14 vezes a quantidade total de papel-moeda existente.&lt;/p&gt;
-
-&lt;p&gt;O meio eletrônico facilita as transações, assim como facilita o empréstimo de dinheiro — operação chamada de &lt;strong&gt;crédito&lt;/strong&gt;. Agora as pessoas podem solicitar empréstimos e receber o dinheiro ainda no mesmo dia. Os &lt;strong&gt;cartões de crédito&lt;/strong&gt; possibilitaram às pessoas fazer compras usando dinheiro de que não necessariamente dispõem no momento. Os bancos e as operadoras de cartões de crédito passaram a atuar como &lt;strong&gt;intermediários&lt;/strong&gt; nas compras.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/cartao-de-credito.jpg&quot; title=&quot;Cartão de crédito&quot;&gt;
-&lt;img src=&quot;/files/2020/06/cartao-de-credito.jpg&quot; alt=&quot;Cartão de crédito&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Cartão de crédito&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se, por um lado, isso tornou a vida das pessoas mais prática, por outro lado, contribuiu para aumentar o nível de endividamento das famílias, empresas e governos.&lt;/p&gt;
-
-&lt;p&gt;Toda essa facilidade para criar e emprestar dinheiro, seja de forma impressa ou eletrônica, fez com que bancos e governos gerenciassem a oferta de dinheiro de forma imprudente, o que por sua vez culminou em &lt;strong&gt;crises financeiras&lt;/strong&gt; como a Grande Depressão, em 1929, e a crise do &lt;em&gt;subprime&lt;/em&gt;, em 2008. No Brasil, temos o exemplo do confisco da poupança em 1990.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/the-big-short.jpg&quot; title=&quot;Cena do filme [A Grande Aposta (2015)](http://www.adorocinema.com/filmes/filme-227900/), que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale).&quot;&gt;
-&lt;img src=&quot;/files/2020/06/the-big-short.jpg&quot; alt=&quot;Cena do filme [A Grande Aposta (2015)](http://www.adorocinema.com/filmes/filme-227900/), que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale).&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Cena do filme &lt;a href=&quot;http://www.adorocinema.com/filmes/filme-227900/&quot;&gt;A Grande Aposta (2015)&lt;/a&gt;, que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale).&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;7-o-bitcoin-e-as-criptomoedas&quot;&gt;7) O Bitcoin e as criptomoedas&lt;/h2&gt;
-
-&lt;p&gt;No auge da crise financeira de 2008, mais precisamente em &lt;a href=&quot;https://www.metzdowd.com/pipermail/cryptography/2008-October/014810.html&quot;&gt;31 de outubro de 2008&lt;/a&gt;, foi proposta em uma lista de discussão sobre criptografia a criação de um novo sistema de dinheiro eletrônico chamado de &lt;strong&gt;&lt;a href=&quot;https://bitcoin.org/pt_BR/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Um &lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;artigo&lt;/a&gt; (&lt;em&gt;white paper&lt;/em&gt;) assinado por Satoshi Nakamoto explicava o conceito do Bitcoin.&lt;/p&gt;
-
-&lt;p&gt;Depois, em &lt;a href=&quot;https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html&quot;&gt;09 de janeiro de 2009&lt;/a&gt;, Nakamoto liberou a primeira versão do programa que implementa o Bitcoin como &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;. Seu código-fonte está disponível no &lt;a href=&quot;https://github.com/bitcoin/bitcoin&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Satoshi Nakamoto é na verdade um pseudônimo, sua real identidade segue desconhecida até hoje, podendo ser inclusive um grupo de pessoas, em vez de apenas uma pessoa.&lt;/p&gt;
-
-&lt;p&gt;O artigo que definiu o Bitcoin critica a inerente fraqueza do sistema financeiro atual, baseado na confiança em terceiros, e propõe um sistema em que pessoas podem transferir dinheiro diretamente entre si pela Internet, independentemente da quantia ou de suas localizações geográficas, sem precisar de bancos, governos ou qualquer outra forma de autoridade central. Por isso, diz-se que o sistema Bitcoin é &lt;strong&gt;descentralizado&lt;/strong&gt; ou &lt;a href=&quot;https://pt.wikipedia.org/wiki/Peer-to-peer&quot;&gt;&lt;em&gt;&lt;strong&gt;peer-to-peer&lt;/strong&gt;&lt;/em&gt;&lt;/a&gt; (expressão em inglês que significa “par-a-par” ou “pessoa-a-pessoa” e é mais conhecida por &lt;a href=&quot;https://pt.wikipedia.org/wiki/Peer-to-peer&quot;&gt;P2P&lt;/a&gt;).&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/bitcoin.jpg&quot; title=&quot;Uma moeda decorativa do Bitcoin&quot;&gt;
-&lt;img src=&quot;/files/2020/06/bitcoin.jpg&quot; alt=&quot;Uma moeda decorativa do Bitcoin&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Uma moeda decorativa do Bitcoin&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A segurança do Bitcoin é garantida pela &lt;strong&gt;&lt;a href=&quot;https://noticias.r7.com/tecnologia-e-ciencia/tudo-que-voce-sempre-quis-saber-sobre-criptografia-e-nao-perguntou-24012018&quot;&gt;criptografia&lt;/a&gt;&lt;/strong&gt; e pela divulgação (&lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Broadcasting_(rede_de_computadores)&quot;&gt;broadcasting&lt;/a&gt;&lt;/em&gt;) de todas as transações para toda a rede de usuários, que é testemunha de toda e qualquer transação. Toda a rede verifica e &lt;strong&gt;confirma&lt;/strong&gt; cada transação e a registra criptografada sobre as anteriores. Para fazer uma transação, uma pessoa deve assiná-la com sua &lt;a href=&quot;https://pt.wikipedia.org/wiki/Criptografia_de_chave_p%C3%BAblica&quot;&gt;&lt;strong&gt;chave privada&lt;/strong&gt;&lt;/a&gt;, à qual só ela tem acesso. Com isso, fraudes são muito difíceis (pra não dizer impossíveis).&lt;/p&gt;
-
-&lt;p&gt;O Bitcoin não existe fisicamente na forma de moeda ou cédula. Não é possível imprimir ou tocar em um &lt;em&gt;bitcoin&lt;/em&gt;. O que existem são transferências de &lt;em&gt;bitcoins&lt;/em&gt; registradas em um banco de dados chamado de &lt;em&gt;&lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Blockchain&quot;&gt;blockchain&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;. Esse banco de dados é gigantesco, dado que registra todas as transações de &lt;em&gt;bitcoins&lt;/em&gt; que já aconteceram na história, e é distribuído: várias cópias estão armazenadas em vários computadores da rede, que o atualizam em sincronia.&lt;/p&gt;
-
-&lt;p&gt;Para confirmar uma transferência de &lt;em&gt;bitcoins&lt;/em&gt;, o computador precisa fazer muitos cálculos, uma vez que precisa criptografar essa transferência em cima da anterior. Essas operações de criptografia custam tempo do processador e energia elétrica. Por isso, quem faz a transferência paga uma pequena &lt;strong&gt;taxa&lt;/strong&gt; em &lt;em&gt;bitcoins&lt;/em&gt; aos computadores que a confirmam. Essa taxa é um incentivo para que pessoas se voluntariem a manter a rede funcionando.&lt;/p&gt;
-
-&lt;p&gt;Além disso, na fase inicial de implantação da rede, o sistema também premia com novos &lt;em&gt;bitcoins&lt;/em&gt; quem confirma blocos de transações inteiros. Foi a forma proposta para resolver o problema da distribuição inicial das moedas, uma vez que não há um banco central emitindo &lt;em&gt;bitcoins&lt;/em&gt;. Essa premiação é chamada de &lt;strong&gt;mineração&lt;/strong&gt; de &lt;em&gt;bitcoins&lt;/em&gt; e permite que novos &lt;em&gt;bitcoins&lt;/em&gt; sejam criados de forma lenta e gradual por diversas pessoas.&lt;/p&gt;
-
-&lt;p&gt;Há um limite de 21 milhões de &lt;em&gt;bitcoins&lt;/em&gt; a serem criados, fixado no código-fonte do sistema. Estima-se que esse limite será atingido por volta de 2140. Daí em diante, não será possível produzir novos &lt;em&gt;bitcoins&lt;/em&gt;. As pessoas terão que “se virar” com os &lt;em&gt;bitcoins&lt;/em&gt; que já existem.&lt;/p&gt;
-
-&lt;p&gt;O Bitcoin foi a primeira de uma nova categoria de moedas chamadas de &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Criptomoeda&quot;&gt;criptomoedas&lt;/a&gt;&lt;/strong&gt;, que recebem esse nome por serem baseadas em criptografia. Elas são a forma mais abstrata de moeda já inventada pelo homem e, por isso, representam a evolução do dinheiro. Existem atualmente mais de 5 mil criptomoedas em uso. Além do Bitcoin, exemplos notórios incluem &lt;a href=&quot;https://ethereum.org/&quot;&gt;Ethereum&lt;/a&gt; (ETH), &lt;a href=&quot;https://ripple.com/xrp/&quot;&gt;XRP&lt;/a&gt;, &lt;a href=&quot;https://tether.to/&quot;&gt;Tether&lt;/a&gt; (USDT), &lt;a href=&quot;https://www.bitcoincash.org/&quot;&gt;Bitcoin Cash&lt;/a&gt; (BCH), &lt;a href=&quot;https://bitcoinsv.io/&quot;&gt;Bitcoin SV&lt;/a&gt; (BSV) e &lt;a href=&quot;https://litecoin.org/&quot;&gt;Litecoin&lt;/a&gt; (LTC).&lt;/p&gt;
-
-&lt;h2 id=&quot;criptomoedas-versus-outras-moedas&quot;&gt;Criptomoedas versus outras moedas&lt;/h2&gt;
-
-&lt;p&gt;O Bitcoin não sofre do principal problema das atuais moedas fiduciárias, que é o excesso de oferta que causa a inflação e as crises financeiras. Existe um limite para a quantidade de &lt;em&gt;bitcoins&lt;/em&gt; que podem ser criados, enquanto na prática não há limite para a quantidade de papel-moeda que pode ser impresso. O Bitcoin não depende de banco central para sua emissão, assim como não depende de instituições financeiras intermediando sua circulação. As moedas fiduciárias se baseiam na confiança no governo emissor e nas leis que obrigam o seu uso, enquanto o Bitcoin se apóia na confiança na criptografia, na rede distribuída que é testemunha das transações e no algoritmo que rege o seu funcionamento.&lt;/p&gt;
-
-&lt;p&gt;O Bitcoin retoma as características que faziam do ouro uma boa moeda. Ambos são escassos, um pelas leis da natureza, o outro pelas leis da matemática. Ambos são difíceis (pra não dizer impossíveis) de falsificar. Por outro lado, o Bitcoin também não sofre dos principais problemas do ouro. Como são imateriais, &lt;em&gt;bitcoins&lt;/em&gt; não se desgastam com o tempo, não pesam, são fáceis de transportar e armazenar, não precisam de casas de custódia: o dono é o próprio custodiante. A existência e a posse dos &lt;em&gt;bitcoins&lt;/em&gt; é garantida enquanto existirem a Internet e computadores com cópias do &lt;em&gt;blockchain&lt;/em&gt;. A rede e a criptografia garantem que não é possível confiscar &lt;em&gt;bitcoins&lt;/em&gt;, como é possível confiscar ouro ou poupança.&lt;/p&gt;
-
-&lt;p&gt;Assim como aconteceu com as moedas-mercadoria, agora a humanidade novamente tem a oportunidade de escolher qual moeda (ou quais moedas) prefere usar como meio de troca.&lt;/p&gt;
-
-&lt;p&gt;Encerro esse texto com uma citação do livro &lt;a href=&quot;https://pt.wikipedia.org/wiki/Sapiens:_Uma_Breve_Hist%C3%B3ria_da_Humanidade&quot;&gt;Sapiens: Uma Breve História da Humanidade&lt;/a&gt;, de autoria de Yuval Noah Harari, professor de História:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Dinheiro não se resume a moedas e cédulas. Dinheiro é qualquer coisa que as pessoas estejam dispostas a usar para representar sistematicamente o valor de outras coisas com o propósito de trocar bens e serviços.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Siga o Linux Kamarada nas redes sociais para receber notificações dos próximos textos sobre Bitcoin!&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;p&gt;Além do livro supracitado e das páginas que já aparecem em &lt;em&gt;links&lt;/em&gt; ao longo do texto, para escrevê-lo, consultei também as seguintes páginas:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://cointimes.com.br/a-historia-do-dinheiro/&quot;&gt;Do Escambo ao Bitcoin: A história do dinheiro - Cointimes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.infomoney.com.br/colunistas/moeda-na-era-digital/a-verdade-sobre-o-lastro-do-bitcoin/&quot;&gt;A verdade sobre o lastro do Bitcoin - InfoMoney&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mises.org.br/article/2149/ouro-nao-e-mais-dinheiro-e-nao-voltara-a-ser&quot;&gt;Ouro não é mais dinheiro e não voltará a ser - Instituto Mises Brasil&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mises.org.br/Article.aspx?id=258&quot;&gt;As crises monetárias mundiais - Instituto Mises Brasil&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.infoescola.com/economia/dinheiro-ou-moeda/&quot;&gt;Dinheiro ou moeda - InfoEscola&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.migalhas.com.br/depeso/267056/do-sal-as-criptomoedas-os-desafios-da-regulamentacao-das-moedas-virtuais&quot;&gt;Do sal às criptomoedas: Os desafios da regulamentação das moedas virtuais - Migalhas&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://cabecalivre.com/2020/05/25/voce-nao-entende-bitcoin-porque-acha-que-dinheiro-e-real/&quot;&gt;Você não entende Bitcoin porque acha que dinheiro é real - Cabeça Livre&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot;&gt;Bitcoin: A Peer-to-Peer Electronic Cash System&lt;/a&gt; (artigo do Bitcoin)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://finance.yahoo.com/news/top-10-cryptocurrencies-market-capitalisation-160046487.html&quot;&gt;Top 10 cryptocurrencies by market capitalisation - Yahoo Finance&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Sat, 20 Jun 2020 10:50:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/</guid>
                 
                 
                     <category>pt</category>
