@@ -9,10 +9,428 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 08 Oct 2020 21:59:19 -0300</pubDate>
-        <lastBuildDate>Thu, 08 Oct 2020 21:59:19 -0300</lastBuildDate>
+        <pubDate>Sat, 10 Oct 2020 23:12:56 -0300</pubDate>
+        <lastBuildDate>Sat, 10 Oct 2020 23:12:56 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>openSUSE no Raspberry Pi 4 — parte 2: configurações básicas</title>
+                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, ligamos nosso &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; com o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Diferente do &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;, o openSUSE não apresenta um assistente de configuração no primeiro uso. Por isso, vejamos quais são as primeiras configurações que devemos fazer para que o nosso Raspberry Pi esteja realmente pronto para as tarefas do dia a dia.&lt;/p&gt;
+
+&lt;p&gt;Se você chegou aqui sem ter passado pelo &lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, recomendo que comece sua leitura por ele (a menos, claro, que o openSUSE já esteja rodando no seu Raspberry Pi):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;openSUSE no Raspberry Pi 4 — parte 1: &lt;em&gt;download&lt;/em&gt; e instalação&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lembrando que escolhi usar a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, mas não tem problema se você escolheu outra. Praticamente todos as configurações que faremos serão no &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;, presente em toda instalação do openSUSE, nada específico do XFCE.&lt;/p&gt;
+
+&lt;p&gt;Se você vai usar o Raspberry Pi como servidor e, por isso, escolheu a imagem JeOS, sem área de trabalho, recomendo que leia esse texto, em vez do atual:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/&quot;&gt;Levante um servidor com o Linux openSUSE Leap (parte 2)&lt;/a&gt; (embora fale do openSUSE Leap, se você escolheu usar o openSUSE Tumbleweed, tudo é bem parecido)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;gerenciando-a-rede-pelo-networkmanager&quot;&gt;Gerenciando a rede pelo NetworkManager&lt;/h2&gt;
+
+&lt;p&gt;O openSUSE dispõe de duas ferramentas para gerenciar a rede:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Wicked&quot;&gt;Wicked&lt;/a&gt;&lt;/strong&gt;: uma ferramenta própria do openSUSE, que visa substituir os antigos comandos da família do &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/ifup&quot;&gt;ifup&lt;/a&gt;&lt;/strong&gt;, mais adequada para servidores; e&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.gnome.org/projects/NetworkManager/&quot;&gt;NetworkManager&lt;/a&gt;&lt;/strong&gt;: uma ferramenta presente em praticamente todas as distribuições &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, que visa facilitar o gerenciamento da rede para o usuário final, fazendo com que ela “simplesmente funcione”, mais adequada para &lt;em&gt;desktops&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você já usou o Linux em um &lt;em&gt;notebook&lt;/em&gt;, sabe que quando chega a um lugar que tem uma rede Wi-Fi à qual já se conectou antes, o sistema se conecta a ela de novo automaticamente. Quem faz isso nos bastidores, sem que talvez você nem se dê conta, é o NetworkManager. Essa não é a única facilidade que ele traz, mas é um dos melhores exemplos.&lt;/p&gt;
+
+&lt;p&gt;Se você vai usar o Raspberry Pi como &lt;em&gt;desktop&lt;/em&gt;, provavelmente vai querer gerenciar a rede com o NetworkManager. Mas essa não é a configuração padrão do openSUSE no Raspberry Pi. Para alterá-la, vamos ao Centro de controle do YaST.&lt;/p&gt;
+
+&lt;p&gt;Para iniciar o YaST, abra o &lt;strong&gt;Menu&lt;/strong&gt; do XFCE, no canto inferior esquerdo da tela, e clique no ícone do &lt;strong&gt;YaST&lt;/strong&gt;, convenientemente disponível nos favoritos (&lt;strong&gt;Favorites&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-14.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-14.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você já usa o openSUSE há um tempo, já conhece o YaST. Senão, saiba que o &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; (sigla do inglês &lt;em&gt;Yet another Setup Tool&lt;/em&gt;, que quer dizer “apenas mais uma ferramenta de configuração”, muito humilde) é a ferramenta central do openSUSE para administrar o sistema. Ele apresenta uma interface amigável e reúne em um só lugar todas as configurações administrativas (as que afetam todos os usuários), como instalação e remoção de programas, impressoras, usuários, idioma, data e hora, etc.&lt;/p&gt;
+
+&lt;p&gt;Quem já usou &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; talvez ache o YaST parecido com o &lt;a href=&quot;http://www.techtudo.com.br/dicas-e-tutoriais/noticia/2015/06/como-acessar-o-painel-de-controle-antigo-no-windows-10.html&quot;&gt;Painel de Controle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;À esquerda, selecione a categoria &lt;strong&gt;System&lt;/strong&gt; (Sistema) e à direita, a opção &lt;strong&gt;Network Settings&lt;/strong&gt; (Configurações da rede):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-15.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-15.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a aba &lt;strong&gt;Global Options&lt;/strong&gt; (Opções globais) e em &lt;strong&gt;Network Setup Method&lt;/strong&gt; (Método de configuração da rede), selecione &lt;strong&gt;Network Manager&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-16.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-16.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt; e aguarde as configurações serem aplicadas.&lt;/p&gt;
+
+&lt;h2 id=&quot;conectando-à-rede-wi-fi&quot;&gt;Conectando à rede Wi-Fi&lt;/h2&gt;
+
+&lt;p&gt;Também é graças ao NetworkManager que você pode convenientemente gerenciar suas conexões de rede da área de trabalho, sem precisar recorrer ao YaST ou a comandos no terminal.&lt;/p&gt;
+
+&lt;p&gt;Para se conectar a uma rede Wi-Fi, simplesmente clique no ícone de rede próximo do relógio, no canto inferior direito da tela, e escolha a rede Wi-Fi à qual deseja se conectar:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-17.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-17.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe a senha da rede Wi-Fi e tecle &lt;strong&gt;Enter&lt;/strong&gt; ou clique em &lt;strong&gt;Connect&lt;/strong&gt; (Conectar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-18.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-18.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;instalando-traduções&quot;&gt;Instalando traduções&lt;/h2&gt;
+
+&lt;p&gt;Conectado à Internet, agora seu Raspberry Pi consegue baixar traduções para o openSUSE.&lt;/p&gt;
+
+&lt;p&gt;Volte para o YaST e, também na categoria &lt;strong&gt;System&lt;/strong&gt; (Sistema), selecione a opção &lt;strong&gt;Language&lt;/strong&gt; (Idioma):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-19.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-19.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Em &lt;strong&gt;Primary Language&lt;/strong&gt; (Idioma primário), selecione &lt;strong&gt;Portuguese (Brazilian) - Português brasileiro&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-20.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-20.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Marque também as opções &lt;strong&gt;Adapt Keyboard Layout to Portuguese (Brazil)&lt;/strong&gt; (Adaptar Layout de Teclado para Português Brasil) e &lt;strong&gt;Adapt Time Zone to Brazil/East&lt;/strong&gt; (Adaptar Fuso Horário para Brasil/Leste). Por fim, clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O YaST baixa e instala os pacotes de tradução:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-21.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-21.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Porém, por algum motivo, essa tela não baixa todas as traduções necessárias. Vamos instalar mais alguns pacotes que ela deixa faltando.&lt;/p&gt;
+
+&lt;p&gt;Para isso, de volta ao YaST, selecione a categoria &lt;strong&gt;Software&lt;/strong&gt; e, depois, &lt;strong&gt;Software Management&lt;/strong&gt; (Gerenciamento de software):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-22.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-22.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Abra a aba &lt;strong&gt;Installation Summary&lt;/strong&gt; (Resumo da instalação) e perceba quantos pacotes já foram automaticamente marcados para instalação:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-23.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-23.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Podemos adicionar ainda mais um pacote a essa lista. Mude para a aba &lt;strong&gt;Search&lt;/strong&gt; (Pesquisar), pesquise pelo pacote &lt;strong&gt;desktop-translations&lt;/strong&gt; e marque-o para instalação também.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;Accept&lt;/strong&gt; (Aceitar).&lt;/p&gt;
+
+&lt;p&gt;Aguarde o &lt;em&gt;download&lt;/em&gt; e instalação dos pacotes e, ao final, clique em &lt;strong&gt;Finish&lt;/strong&gt; (Concluir):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-24.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-24.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Também por algum motivo a tela da tradução não altera todos os arquivos de configuração que deveria alterar (depois, vou reportar isso como um &lt;em&gt;bug&lt;/em&gt; pros desenvolvedores do YaST). Precisaremos fazer ainda mais alguns ajustes manualmente, mas são só mais esses.&lt;/p&gt;
+
+&lt;p&gt;De volta ao YaST, selecione a categoria &lt;strong&gt;System&lt;/strong&gt; (Sistema) e, depois, a opção &lt;strong&gt;Sysconfig Editor&lt;/strong&gt; (Editor do Sysconfig):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-25.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-25.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na árvore à esquerda, expanda o caminho: &lt;strong&gt;System / Environment / Language&lt;/strong&gt; e selecione a variável &lt;strong&gt;RC_LANG&lt;/strong&gt;. À direita, no campo &lt;strong&gt;Setting&lt;/strong&gt; (Configurações), digite &lt;code class=&quot;highlighter-rouge&quot;&gt;pt_BR.UTF-8&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-26.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-26.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quem já usou Windows talvez ache essa tela parecida com o &lt;a href=&quot;https://canaltech.com.br/windows/o-que-e-e-como-funciona-o-registro-do-windows/&quot;&gt;Editor do Registro&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na árvore à esquerda, no mesmo caminho, selecione a variável &lt;strong&gt;ROOT_USES_LANG&lt;/strong&gt; e à direita, no campo &lt;strong&gt;Setting&lt;/strong&gt; (Configurações), digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yes&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-27.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-27.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;. O YaST confirma as alterações, clique em &lt;strong&gt;Save&lt;/strong&gt; (Salvar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-28.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-28.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Agora sim estamos prontos para usar nosso openSUSE totalmente traduzido. É só reiniciar.&lt;/p&gt;
+
+&lt;h2 id=&quot;reiniciando&quot;&gt;Reiniciando&lt;/h2&gt;
+
+&lt;p&gt;Para reiniciar o openSUSE, abra o &lt;strong&gt;Menu&lt;/strong&gt; do XFCE e clique no botão &lt;strong&gt;Log Out&lt;/strong&gt; (Sair):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-29.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-29.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Dentre as várias opções, escolha &lt;strong&gt;Restart&lt;/strong&gt; (Reiniciar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-30.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-30.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Aguarde alguns segundos e o openSUSE estará de volta.&lt;/p&gt;
+
+&lt;h2 id=&quot;renomeando-as-pastas-pessoais&quot;&gt;Renomeando as pastas pessoais&lt;/h2&gt;
+
+&lt;p&gt;No primeiro uso após a mudança de idioma, o sistema pergunta se você quer traduzir também os nomes das pastas pessoais (por exemplo, de &lt;code class=&quot;highlighter-rouge&quot;&gt;Documents&lt;/code&gt; para &lt;code class=&quot;highlighter-rouge&quot;&gt;Documentos&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-31-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-31-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Eu acho interessante fazer isso. Se concordar, clique em &lt;strong&gt;Atualizar nomes&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;sincronizando-a-data-e-a-hora&quot;&gt;Sincronizando a data e a hora&lt;/h2&gt;
+
+&lt;p&gt;O Raspberry Pi 4 não tem um circuito de relógio embutido com pilha, como nos computadores tradicionais. Isso permite que ao ligar esses computadores, mesmo que tenham passado muito tempo desligados e não estejam conectados à Internet, a data e hora ainda estejam certas. Em um Raspberry Pi, sempre ao ligar, a data e hora estão erradas, por isso precisamos configurar o sistema para obter a data e hora certas da Internet.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/cmos-battery.jpg&quot; title=&quot;Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso.&quot;&gt;
+&lt;img src=&quot;/files/2020/10/cmos-battery.jpg&quot; alt=&quot;Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso.&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Nós já definimos o fuso horário quando mudamos o idioma, então não precisamos rever todas as configurações de data e hora. Aqui, vou resumidamente explicar como configurar a sincronização. Se precisar de mais informações sobre essas configurações, consulte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/&quot;&gt;Mantenha a hora do seu computador sempre certa com o NTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Inicie o YaST. Selecione a categoria &lt;strong&gt;Sistema&lt;/strong&gt; e, depois, a opção &lt;strong&gt;Data e hora&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-32-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-32-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Na tela seguinte, clique em &lt;strong&gt;Outras Configurações&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-33-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-33-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Selecione a opção &lt;strong&gt;Sincronizar com o servidor NTP&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-34-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-34-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No campo &lt;strong&gt;Endereço do servidor NTP&lt;/strong&gt;, informe &lt;code class=&quot;highlighter-rouge&quot;&gt;pool.ntp.br&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Aceitar&lt;/strong&gt; e, de volta à tela anterior, em &lt;strong&gt;OK&lt;/strong&gt; para aplicar as configurações.&lt;/p&gt;
+
+&lt;h2 id=&quot;adicionando-usuários&quot;&gt;Adicionando usuários&lt;/h2&gt;
+
+&lt;p&gt;Por padrão, a imagem do openSUSE para o Raspberry Pi vem apenas com o usuário &lt;em&gt;root&lt;/em&gt;. Por questão de segurança, vamos criar outra conta para usar o sistema no dia a dia.&lt;/p&gt;
+
+&lt;p&gt;Na tela principal do YaST, selecione a categoria &lt;strong&gt;Segurança e usuários&lt;/strong&gt; e a opção &lt;strong&gt;Gerenciamento de usuários e grupos&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-35-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-35-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No momento, o sistema não tem outro usuário além do &lt;em&gt;root&lt;/em&gt;, por isso nenhum é listado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-36-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-36-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Clique em &lt;strong&gt;Adicionar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;A seguir, informe os dados do novo usuário e quando terminar clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-37-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-37-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;De volta à tela anterior, o novo usuário agora aparece na lista de usuários:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-38-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-38-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se precisar, você pode criar mais usuários repetindo esses passos.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar, clique em &lt;strong&gt;OK&lt;/strong&gt; para aplicar as configurações. As novas contas de usuário serão criadas e você voltará à tela principal do YaST.&lt;/p&gt;
+
+&lt;p&gt;Pode fechar o YaST, não vamos mais usá-lo para ajustar mais configurações.&lt;/p&gt;
+
+&lt;h2 id=&quot;mudando-a-senha-do-usuário-root&quot;&gt;Mudando a senha do usuário root&lt;/h2&gt;
+
+&lt;p&gt;Também por questão de segurança, vamos mudar a senha do usuário &lt;em&gt;root&lt;/em&gt;, que é a mesma para todas as instalações do openSUSE no Raspberry Pi e, portanto, amplamente conhecida.&lt;/p&gt;
+
+&lt;p&gt;Até poderíamos fazer isso pelo YaST, mas eu acho mais prático pelo terminal.&lt;/p&gt;
+
+&lt;p&gt;Para iniciar o terminal, abra o &lt;strong&gt;Menu&lt;/strong&gt; do XFCE e clique no ícone do &lt;strong&gt;Emulador de Terminal&lt;/strong&gt;, convenientemente disponível nos &lt;strong&gt;Favoritos&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;No terminal, execute o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/passwd.1.html&quot;&gt;passwd&lt;/a&gt;&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# passwd
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Digite a nova senha, tecle &lt;strong&gt;Enter&lt;/strong&gt;, depois digite a nova senha mais uma vez e tecle &lt;strong&gt;Enter&lt;/strong&gt; de novo.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Nova senha:
+Redigite a nova senha:
+passwd: senha atualizada com sucesso
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;verificando-atualizações&quot;&gt;Verificando atualizações&lt;/h2&gt;
+
+&lt;p&gt;Aproveitando o terminal aberto como &lt;em&gt;root&lt;/em&gt;, vamos verificar se há atualizações para o sistema e obtê-las, se houver. Para isso, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Não vou entrar em detalhes aqui porque isso já foi assunto de outro texto.&lt;/p&gt;
+
+&lt;p&gt;Se precisar de mais informações sobre como atualizar pacotes (&lt;em&gt;update&lt;/em&gt;), consulte:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ao terminar, pode fechar a janela do terminal.&lt;/p&gt;
+
+&lt;h2 id=&quot;encerrando-a-sessão&quot;&gt;Encerrando a sessão&lt;/h2&gt;
+
+&lt;p&gt;Agora você pode encerrar sua sessão como usuário &lt;em&gt;root&lt;/em&gt; e começar a usar o Raspberry Pi com a conta de usuário que você criou.&lt;/p&gt;
+
+&lt;p&gt;Para encerrar a sessão, abra o &lt;strong&gt;Menu&lt;/strong&gt; do XFCE e clique no botão &lt;strong&gt;Sair&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dentre as várias opções, escolha &lt;strong&gt;Encerrar sessão&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-39-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-39-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;desligando-o-raspberry-pi&quot;&gt;Desligando o Raspberry Pi&lt;/h2&gt;
+
+&lt;p&gt;O Raspberry Pi não tem um botão de liga/desliga. Mas, assim como o Raspbian, o openSUSE também tem um comando para desligar. Usá-lo é necessário para que o sistema operacional desmonte corretamente os sistemas de arquivos e evite perda de dados. Para ligar um Raspberry Pi, basta plugar a fonte de alimentação na energia, mas para desligá-lo, não é só desplugar a fonte. Antes, devemos usar o comando de desligar do sistema.&lt;/p&gt;
+
+&lt;p&gt;Quando terminar de usar o openSUSE no Raspberry Pi, para desligá-lo com segurança, abra o &lt;strong&gt;Menu&lt;/strong&gt; do XFCE, clique no botão &lt;strong&gt;Sair&lt;/strong&gt; e escolha a opção &lt;strong&gt;Desligar&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Aguarde até que o Raspberry Pi desligue completamente. Repare nas luzes LED: chega um momento em que a luz PWR apaga e a ACT pisca algumas vezes, depois a ACT apaga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-40-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-40-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Espero que você faça bom proveito do openSUSE no Raspberry Pi e que esses tutoriais tenham te ajudado a deixá-lo redondinho!&lt;/p&gt;
+
+&lt;p&gt;Espero também que o openSUSE melhore seu suporte ao Raspberry Pi para que possamos tirar o máximo proveito desses incríveis computador e sistema operacional.&lt;/p&gt;
+
+</description>
+                <pubDate>Sat, 10 Oct 2020 23:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>openSUSE no Raspberry Pi 4 — parte 1: download e instalação</title>
@@ -319,6 +737,12 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
 &lt;/div&gt;
 
 &lt;p&gt;Como percebi que o &lt;em&gt;post&lt;/em&gt; já estava grande, decidi dividi-lo em duas partes. Deixei as configurações básicas para o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (10/10/2020):&lt;/strong&gt;
+    &lt;p&gt;&lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;A segunda parte desse tutorial já está aqui! (clique para acessá-la)&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;Siga o Projeto Linux Kamarada para ler a segunda parte assim que ela for publicada!&lt;/p&gt;
 
@@ -3123,143 +3547,6 @@ you should exit browser before continuing this operation. Type
                 <pubDate>Wed, 08 Jul 2020 01:20:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/07/08/assinando-emails-enviados-com-certificado-digital-no-evolution/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/07/08/assinando-emails-enviados-com-certificado-digital-no-evolution/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Versão 15.2 do openSUSE Leap traz novos e empolgantes pacotes de Inteligência Artificial, aprendizagem de máquina e containers</title>
-                <description>
-&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
-    &lt;div class=&quot;media&quot;&gt;
-        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Nota do Linux Kamarada:&lt;/h6&gt;
-            
-&lt;p&gt;Esta é uma tradução não oficial da notícia originalmente publicada por Douglas DeMaio no site &lt;a href=&quot;https://news.opensuse.org/2020/07/02/opensuse-leap-15-2-release-brings-exciting-new-packages/&quot;&gt;news.opensuse.org&lt;/a&gt;.&lt;/p&gt;
-
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/Leap-container.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/Leap-container.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;NUREMBERGUE, Alemanha (02/07/2020) – A equipe de lançamento do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; tem o orgulho de anunciar que já está disponível o &lt;a href=&quot;https://en.opensuse.org/Portal:15.2&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;, distribuição desenvolvida pela comunidade. Usuários profissionais, de &lt;em&gt;desktops&lt;/em&gt; e servidores de &lt;em&gt;datacenter&lt;/em&gt; a hospedagens de &lt;em&gt;containers&lt;/em&gt; e máquinas virtuais (VMs), poderão usar o Leap 15.2 como um sistema operacional Linux de alta qualidade, fácil de usar e de nível empresarial.&lt;/p&gt;
-
-&lt;center&gt;&lt;h4&gt;&lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;Baixe o openSUSE Leap 15.2&lt;/a&gt;&lt;/h4&gt;&lt;/center&gt;
-
-&lt;p&gt;Essa versão fornece atualizações de segurança, correções de &lt;em&gt;bugs&lt;/em&gt;, melhorias na rede e muitos novos recursos para usuários do openSUSE que contam com uma distribuição estável e escalonável. A plataforma Linux rica e madura do openSUSE suporta cargas de trabalho em sistemas x86-64, ARM64 e POWER. A confiabilidade dos pacotes principais encontrada nas versões anteriores do Leap 15 e as tecnologias mais recentes de código aberto no Leap 15.2 estão prontas para vários casos de uso e cargas de trabalho.&lt;/p&gt;
-
-&lt;p&gt;“O Leap 15.2 representa um grande avanço na área de Inteligência Artificial”, disse Marco Varlese, um desenvolvedor e membro do projeto. “Estou muito empolgado que os usuários finais do openSUSE agora possam finalmente consumir &lt;em&gt;frameworks&lt;/em&gt; e aplicativos de Aprendizagem de Máquina (&lt;em&gt;machine learning&lt;/em&gt;) / Aprendizado Profundo (&lt;em&gt;deep learning&lt;/em&gt;) por meio de nossos repositórios para desfrutar de um ecossistema estável e atualizado.”&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-há-de-novo&quot;&gt;O que há de novo&lt;/h2&gt;
-
-&lt;p&gt;Vários empolgantes pacotes de Inteligência Artificial (IA) e aprendizagem de máquina foram adicionados no Leap 15.2.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.tensorflow.org/&quot;&gt;Tensorflow&lt;/a&gt;: um &lt;em&gt;framework&lt;/em&gt; para aprendizado profundo que pode ser usado por cientistas de dados, fornece cálculos numéricos e gráficos de fluxo de dados. Sua arquitetura flexível permite aos usuários implantar cálculos em uma ou mais CPUs em um &lt;em&gt;desktop&lt;/em&gt;, servidor ou dispositivo móvel sem reescrever código.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pytorch.org/tutorials/&quot;&gt;PyTorch&lt;/a&gt;: feita para os recursos tanto de servidores quanto de computadores, essa biblioteca de aprendizagem de máquina permite a usuários avançados prototipar um projeto e desenvolvê-lo até a implantação em produção com mais agilidade.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://onnx.ai/&quot;&gt;ONNX&lt;/a&gt;: um formato aberto criado para representar modelos de aprendizado de máquina, fornece interoperabilidade no espaço de ferramentas de IA. Ele permite que os desenvolvedores de IA usem modelos com uma variedade de &lt;em&gt;frameworks&lt;/em&gt;, ferramentas, &lt;em&gt;runtimes&lt;/em&gt; e compiladores.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://grafana.com/&quot;&gt;Grafana&lt;/a&gt; e &lt;a href=&quot;https://prometheus.io/&quot;&gt;Prometheus&lt;/a&gt; são dois novos pacotes mantidos que abrem novas possibilidades para especialistas em análise. O Grafana oferece aos usuários finais a capacidade de criar análises visuais interativas. Pacotes de modelagem de dados cheios de recursos como Graphite, Elastic e Prometheus fornecem aos usuários do openSUSE maior latitude para construir, computar e decifrar dados de forma mais inteligível.&lt;/p&gt;
-
-&lt;p&gt;Em geral, os pacotes de &lt;em&gt;software&lt;/em&gt; na distribuição cresceram às centenas. Fusão de dados, aprendizagem de máquina e IA não são tudo o que há de novo no openSUSE Leap 15.2; um &lt;em&gt;kernel&lt;/em&gt; de tempo real para gerenciar o tempo dos microprocessadores para garantir que eventos críticos sejam processados ​​da forma mais eficiente possível está disponível nessa versão.&lt;/p&gt;
-
-&lt;p&gt;“A adição de um &lt;em&gt;kernel&lt;/em&gt; de tempo real ao openSUSE Leap abre novas possibilidades”, disse Gerald Pfeifer, presidente do conselho do projeto. “Pense em computação de borda, sistemas embarcados, captura de dados, todas áreas que tem visto imenso crescimento. Historicamente, muitas delas tem sido o domínio de abordagens proprietárias; o openSUSE agora abre as comportas para desenvolvedores, pesquisadores e empresas interessadas em testar recursos de tempo real ou talvez até mesmo contribuir. Mais um domínio que o código aberto ajuda a abrir!”&lt;/p&gt;
-
-&lt;h2 id=&quot;tecnologias-de-container&quot;&gt;Tecnologias de container&lt;/h2&gt;
-
-&lt;p&gt;Os usuários do openSUSE terão mais poder para desenvolver, enviar e implantar aplicativos containerizados usando as mais novas tecnologias de &lt;em&gt;container&lt;/em&gt; que estão sendo mantidas pela distribuição.&lt;/p&gt;
-
-&lt;p&gt;Pela primeira vez, o &lt;a href=&quot;https://kubernetes.io/&quot;&gt;Kubernetes&lt;/a&gt; é um pacote oficial na versão. Isso dá um enorme impulso à capacidade de orquestração de &lt;em&gt;containers&lt;/em&gt;, permitindo aos usuários automatizar implantações, escalonar e gerenciar aplicativos containerizados.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://helm.sh/&quot;&gt;Helm&lt;/a&gt;, gerenciador de pacotes do Kubernetes, também foi adicionado. O Helm ajuda desenvolvedores e administradores de sistemas a gerenciar complexidade definindo, instalando e atualizando aplicativos Kubernetes os mais complexos.&lt;/p&gt;
-
-&lt;p&gt;A &lt;em&gt;Container Runtime Interface&lt;/em&gt; (CRI) usando &lt;em&gt;runtimes&lt;/em&gt; compatíveis com a Open Container Initiative (OCI) também é uma novidade dessa versão. A CRI-O é uma alternativa leve ao uso do Docker como &lt;em&gt;runtime&lt;/em&gt;, o que permite ao Kubernetes usar qualquer &lt;em&gt;runtime&lt;/em&gt; de &lt;em&gt;container&lt;/em&gt; compatível com a OCI para executar &lt;em&gt;pods&lt;/em&gt; ou processos em execução em um &lt;em&gt;cluster&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mesmo com o Docker, o uso de microsserviços será seguro graças à chegada de mais pacotes de &lt;em&gt;containers&lt;/em&gt; nessa versão.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://cilium.io/&quot;&gt;Cilium&lt;/a&gt; ajuda a proteger de forma transparente a conectividade de rede e o balanceamento de carga entre &lt;em&gt;containers&lt;/em&gt; de aplicativos e serviços implantados usando &lt;em&gt;frameworks&lt;/em&gt; de &lt;em&gt;containers&lt;/em&gt; para Linux como Docker e Kubernetes. O Cilium fornece uma maneira eficiente de definir e aplicar as políticas de segurança da camada de rede e da camada de aplicação, que são baseadas em identidades de &lt;em&gt;containers&lt;/em&gt;/&lt;em&gt;pods&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Leap 15.2 oferece as funções de sistema (&lt;em&gt;system roles&lt;/em&gt;) Servidor e Servidor Transacional. A função de sistema Servidor usa um pequeno conjunto de pacotes adequados para servidores com uma interface em modo de texto, enquanto a função de sistema Servidor Transacional é semelhante à função Servidor, mas usa um sistema de arquivos raiz somente leitura para possibilitar atualizações atômicas e automáticas para o sistema sem interferir no sistema em execução.&lt;/p&gt;
-
-&lt;h2 id=&quot;processo-de-instalação&quot;&gt;Processo de instalação&lt;/h2&gt;
-
-&lt;p&gt;O instalador do openSUSE continua poderoso e versátil como sempre, permitindo facilmente ajustar todos os aspectos do sistema. O processo de instalação apresenta várias melhorias, como uma caixa de diálogo mais amigável para a seleção da função do sistema, mais informações sobre o progresso da instalação, melhor compatibilidade com idiomas escritos da direita para a esquerda, como o árabe, e muitas outras pequenas melhorias.&lt;/p&gt;
-
-&lt;p&gt;No Leap 15.2, o instalador detecta com mais precisão as partições do Microsoft Windows criptografadas com BitLocker e faz melhor gerenciamento dos dispositivos de armazenamento do Raspberry Pi. O instalador também facilita ajustar a mitigação de ataques baseados na CPU, como Spectre ou Meltdown.&lt;/p&gt;
-
-&lt;p&gt;As instalações autônomas com o AutoYaST foram bastante melhoradas. Muitos aspectos foram polidos em todos os níveis. Mais opções de configuração foram adicionadas e os possíveis erros no perfil do usuário e no processo de instalação agora são tratados e relatados de maneira mais sensata e informativa.&lt;/p&gt;
-
-&lt;h2 id=&quot;melhorias-no-yast---a-mais-completa-ferramenta-de-configuração-para-linux&quot;&gt;Melhorias no YaST - a mais completa ferramenta de configuração para Linux&lt;/h2&gt;
-
-&lt;p&gt;O Particionador do YaST continua sendo a ferramenta mais poderosa para configurar todos os tipos de tecnologias de armazenamento no Linux, seja durante a instalação do sistema ou em qualquer momento depois. Essa versão incorpora a possibilidade de criar e gerenciar um sistema de arquivos Btrfs que se expande por vários dispositivos e permite o uso de tecnologias de criptografia mais avançadas.&lt;/p&gt;
-
-&lt;p&gt;O Leap 15.2 é a primeira versão do openSUSE a introduzir uma mudança gradual que divide a configuração do sistema entre os diretórios &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/etc&lt;/code&gt; e &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc&lt;/code&gt;. O YaST suporta essa nova estrutura em todos os módulos afetados, oferecendo aos administradores de sistemas um ponto central para inspecionar configuração que os ajudará durante a transição e no futuro.&lt;/p&gt;
-
-&lt;p&gt;O openSUSE Leap pode ser executado sobre o Windows Subsystem for Linux (WSL), fornecendo o poder do openSUSE para o mundo Windows. A versão do YaST no Leap 15.2 melhora a compatibilidade com essa plataforma, especialmente ao executar o YaST Firstboot para executar todos os ajustes necessários no primeiro uso.&lt;/p&gt;
-
-&lt;h2 id=&quot;áreas-de-trabalho&quot;&gt;Áreas de trabalho&lt;/h2&gt;
-
-&lt;p&gt;Embora as áreas de trabalho nessa versão sejam novas, o foco permanece na versão fixa mais conservadora.&lt;/p&gt;
-
-&lt;p&gt;A versão com suporte estendido (&lt;em&gt;long-term support&lt;/em&gt;, LTS) mais recente do &lt;a href=&quot;https://kde.org/&quot;&gt;KDE&lt;/a&gt; Plasma 5.18 está disponível no Leap 15.2 e possui uma quantidade significativa de recursos novos e polidos. As notificações são mais claras, as configurações foram simplificadas e a aparência de forma geral é mais atraente.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.gnome.org/&quot;&gt;GNOME&lt;/a&gt; foi atualizado da versão 3.26 que estava disponível no Leap 15.1 para a versão 3.34 no Leap 15.2. O novo GNOME traz uma quantidade considerável de atualizações visuais para vários aplicativos. Mais fontes de dados no Sysprof facilitam ainda mais a criação de perfis de desempenho de um aplicativo e há várias melhorias no Builder, incluindo um inspetor D-Bus integrado.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.xfce.org/&quot;&gt;Xfce&lt;/a&gt; teve uma atualização menor para a versão 4.14 depois de mais de quatro anos de desenvolvimento; a nova versão produziu uma enorme quantidade de atualizações e novos recursos, incluindo melhorias no gerenciador de janelas, gerenciador de arquivos, localizador de aplicativos e gerenciamento de energia.&lt;/p&gt;
-
-&lt;h2 id=&quot;imagens-hardware-e-arquiteturas-de-nuvem&quot;&gt;Imagens, hardware e arquiteturas de nuvem&lt;/h2&gt;
-
-&lt;p&gt;Imagens do Leap para a nuvem do &lt;a href=&quot;https://www.linode.com/&quot;&gt;Linode&lt;/a&gt; já estão disponíveis hoje e prontas para todas as necessidades de infraestrutura. Serviços de armazenamento na nuvem, como Amazon Web Services, Azure, Google Compute Engine e OpenStack, oferecerão imagens do Leap 15.2 nas próximas semanas. A série 15 do Leap é continuamente otimizada para cenários de uso virtualizado na nuvem tanto como hospedeiro quanto como convidado.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Desktops&lt;/em&gt; e &lt;em&gt;notebooks&lt;/em&gt; Linux da &lt;a href=&quot;https://www.tuxedocomputers.com/&quot;&gt;TUXEDO Computers&lt;/a&gt; podem ser adquiridos com o Leap 15.2 pré-instalado. O Leap 15.2 também pode ser encomendado pré-instalado da &lt;a href=&quot;https://slimbook.es/en/linux2&quot;&gt;Slimbooks&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Leap pode ser instalado em computadores físicos ou virtuais, como hospedeiro ou convidado, e na nuvem. Portes para outras arquiteturas como ARM64 e POWER são esperados nas próximas semanas&lt;/p&gt;
-
-&lt;h2 id=&quot;componentes-principais&quot;&gt;Componentes principais&lt;/h2&gt;
-
-&lt;p&gt;Compiladores, linguagens de &lt;em&gt;script&lt;/em&gt;, ferramentas de configuração do sistema e interfaces gráficas do usuário foram aprimoradas.&lt;/p&gt;
-
-&lt;p&gt;A GNU Compiler Collection versões 7 a 9 estão disponíveis nessa nova versão menor do Leap juntamente com uma versão atualizada do pacote de gráficos 3D Mesa para suportar o uso do sistema operacional de nível profissional. O Leap 15.2 traz a mesma versão 234 do systemd usada no Leap 15.0 e 15.1.&lt;/p&gt;
-
-&lt;p&gt;O suporte a novos &lt;em&gt;hardwares&lt;/em&gt; gráficos foi retroportado (&lt;em&gt;backported&lt;/em&gt;) para o &lt;em&gt;kernel&lt;/em&gt; Linux 5.3 que será usado na versão 15.2 do Leap. As funcionalidades do &lt;em&gt;kernel&lt;/em&gt; automaticamente se tornam disponíveis no Leap, uma vez que a distribuição compartilha o mesmo &lt;em&gt;kernel&lt;/em&gt; com o SUSE Linux Enterprise (SLE).&lt;/p&gt;
-
-&lt;p&gt;O openSUSE Leap 15.2 é uma distribuição com pacotes comunitários construídos sobre os fontes do coração do SLE 15 Service Pack 2. O núcleo comum compartilhado e o alinhamento com o SLE facilitam migrações para o produto corporativo da SUSE para profissionais que queiram estender o ciclo de vida de manutenção e segurança, uma vez passado o ciclo de vida do Leap. Migrar da versão comunitária do Leap para o SUSE Linux Enterprise é uma opção disponível para quem desejar migrar. A migração de servidores com openSUSE Leap para o SUSE Linux Enterprise é fácil para os integradores de sistema que trabalham sobre o código do Leap e podem decidir migrar para uma versão corporativa para SLAs, certificação, implantação em massa ou suporte estendido.&lt;/p&gt;
-
-&lt;h2 id=&quot;pacotes-de-saúde&quot;&gt;Pacotes de saúde&lt;/h2&gt;
-
-&lt;p&gt;Esta versão do Leap traz mais funcionalidades para os serviços de saúde. O GNU Health, premiado sistema de gerenciamento de informações hospitalares, vem na versão 3.6.4. Apresenta uma interface gráfica atualizada e está preparado para o rastreamento da pandemia de Covid-19, incluindo códigos atualizados do CID-10 e funções laboratoriais aprimoradas. O GNU Health pode interagir diretamente com o Orthanc, o servidor PACS gratuito, que é um pacote novo nessa versão. Com o openSUSE Leap, os desenvolvedores das áreas médica e da saúde tem várias ferramentas de código aberto que podem ser usadas para criar poderosas interfaces (GUI) e experiências de usuário (UX) para dispositivos médicos. Os desenvolvedores de dispositivos de assistência médica podem confiar no uso, desempenho e suporte a &lt;em&gt;hardwares&lt;/em&gt; tanto novos quanto antigos do Leap.&lt;/p&gt;
-
-&lt;h2 id=&quot;gerenciamento-de-configurações&quot;&gt;Gerenciamento de configurações&lt;/h2&gt;
-
-&lt;p&gt;Administradores de sistemas terão as ferramentas mais atuais para gerenciamento de configurações. O Salt 3000 chegou no Leap; a nova versão do Salt remove o versionamento da data e fornece novas funções para chroot: apply, sls e highstate. Ela também atualiza a sintaxe de &lt;em&gt;slot&lt;/em&gt; para suportar análise de respostas de dicionário e anexar texto. O Ansible também está disponível para administradores de sistemas. Funciona sobre SSH e não requer que nenhum &lt;em&gt;software&lt;/em&gt; ou &lt;em&gt;daemon&lt;/em&gt; seja instalado em nós remotos.&lt;/p&gt;
-
-&lt;h2 id=&quot;groupware-e-hospedagem-de-arquivos&quot;&gt;Groupware e hospedagem de arquivos&lt;/h2&gt;
-
-&lt;p&gt;Os serviços de nuvem e de compartilhamento de arquivos incluem &lt;em&gt;softwares&lt;/em&gt; como o NextCloud e até a suíte de aplicativos de &lt;em&gt;groupware&lt;/em&gt; Kopano (antes conhecida como Zarafa) faz parte dos repositórios oficiais do Leap 15.2.&lt;/p&gt;
-
-&lt;p&gt;Como nas versões anteriores, administradores de sistemas e pequenos negócios podem usar o Leap para hospedar servidores &lt;em&gt;web&lt;/em&gt; e de &lt;em&gt;e-mail&lt;/em&gt; ou para gerenciar suas redes com DHCP, DNS, NTP, Samba, NFS, LDAP e centenas de outros serviços.&lt;/p&gt;
-
-&lt;h2 id=&quot;ciclo-de-vida-do-leap&quot;&gt;Ciclo de vida do Leap&lt;/h2&gt;
-
-&lt;p&gt;Versões menores da série Leap 15 tem um ciclo de vida de aproximadamente 18 meses e são lançadas aproximadamente uma vez por ano. Usuários do openSUSE Leap 15.1, que foi lançado em maio de 2019, são aconselhados a atualizar para o Leap 15.2 dentro dos próximos 6 meses. A primeira versão do Leap 15 foi lançada há dois anos.&lt;/p&gt;
-
-&lt;center&gt;&lt;h4&gt;&lt;a href=&quot;https://software.opensuse.org/distributions/leap&quot;&gt;Baixe o openSUSE Leap 15.2&lt;/a&gt;&lt;/h4&gt;&lt;/center&gt;
-
-&lt;p&gt;O Projeto openSUSE é uma comunidade ao redor do mundo que promove o uso do Linux em todos os lugares. Ele cria duas das melhores distribuições Linux do mundo: a Tumbleweed, atualizada continuamente (&lt;em&gt;rolling-release&lt;/em&gt;), e a Leap, distribuição híbrida de empresa e comunidade. O openSUSE trabalha continuamente de maneira conjunta, aberta, transparente e amigável como parte da comunidade internacional de &lt;em&gt;software&lt;/em&gt; livre e de código aberto (&lt;em&gt;Free and Open Source Software&lt;/em&gt; – FOSS). O projeto é comandado por sua comunidade e depende das contribuições de indivíduos que trabalham como testadores, escritores, tradutores, especialistas em usabilidade, artistas, embaixadores ou desenvolvedores. O projeto abrange uma ampla variedade de tecnologias, pessoas com diferentes níveis de conhecimentos, que falam diferentes línguas e possuem diversas raízes culturais. Saiba mais sobre o Projeto openSUSE em &lt;a href=&quot;https://opensuse.org&quot;&gt;opensuse.org&lt;/a&gt;.&lt;/p&gt;
-</description>
-                <pubDate>Wed, 01 Jul 2020 21:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/</guid>
                 
                 
                     <category>pt</category>
