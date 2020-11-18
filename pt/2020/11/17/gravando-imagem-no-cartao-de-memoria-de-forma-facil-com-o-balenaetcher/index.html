@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Gravando imagem no cartão de memória de forma fácil com o balenaEtcher - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="O Etcher é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e pendrives inicializáveis (“bootáveis”) a partir de imagens de sistemas...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-11-17 23:30:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="O Etcher é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e pendrives inicializáveis (“bootáveis”) a partir de imagens de sistemas..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2020/10/rpi4b-opensuse-08.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Gravando imagem no cartão de memória de forma fácil com o balenaEtcher" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <meta name="msapplication-TileColor" content="#43a047">
+    <meta name="theme-color" content="#43a047">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/',
+                    title: document.title,
+                    description: 'O Etcher é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e pendrives inicializáveis (“bootáveis”) a partir de imagens de sistemas...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/" itemprop="mainEntityOfPage url">
+                Gravando imagem no cartão de memória de forma fácil com o balenaEtcher
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-11-17">
+                    <a href="/2020/11/17/">
+                        
+    17 de
+    
+    Novembro
+        
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-11-17" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/balena-etcher.svg" title="">
+<img src="/files/2020/11/balena-etcher.svg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.balena.io/etcher/">Etcher</a> é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e <em>pendrives</em> inicializáveis (“bootáveis”) a partir de imagens de sistemas operacionais. Ele possui uma interface limpa que ajuda a selecionar corretamente o dispositivo que receberá a imagem, protegendo você de apagar acidentalmente seu disco rígido, o que poderia causar perda de dados irreversível. Após a gravação, o Etcher também verifica se cada <em>byte</em> foi gravado corretamente, evitando que a mídia acabe com arquivos corrompidos.</p>
+
+<p>Se você não é exatamente um <em>expert</em> em tecnologia, saiba que essas imagens não são como as que você produz com uma câmera, geralmente arquivos com extensão <strong>.jpeg</strong> ou <strong>.jpg</strong>. Uma imagem de sistema operacional é um arquivo só que contém todo o sistema (como <a href="https://www.vivaolinux.com.br/linux/">Linux</a> ou <a href="https://www.microsoft.com/pt-br/windows/">Windows</a>), todos os seus arquivos. Normalmente essas imagens são compactadas e nomeadas com extensões como <strong>.iso</strong>, <strong>.img</strong>, <strong>.xz</strong>, <strong>.gz</strong> ou <strong>.zip</strong>.</p>
+
+<p>O Etcher é um <em>software</em> livre, gratuito e multi-plataforma desenvolvido pela <a href="https://www.balena.io/">Balena</a>, por isso também é chamado de <a href="https://www.balena.io/etcher/">balenaEtcher</a>. Seu código-fonte está disponível no <a href="https://github.com/balena-io/etcher">GitHub</a>.</p>
+
+<h2 id="quem-ou-o-que-é-a-balena">Quem ou o que é a Balena?</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/balena.svg" title="">
+<img src="/files/2020/11/balena.svg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 250px;" />
+</a>
+
+</div>
+
+<p>Balena é tanto o nome de <a href="https://www.balena.io/what-is-balena">um conjunto de ferramentas de código aberto</a> para gerenciar dispositivos conectados à Internet das Coisas, como é também o nome da <a href="https://www.balena.io/blog/resin-io-changes-name-to-balena-releases-open-source-edition/">empresa</a> que desenvolve essas ferramentas e oferece <a href="https://www.balena.io/cloud/">infraestrutura na nuvem</a> para conectar esses dispositivos. A Balena é conhecida não só pelo Etcher, mas também por seus vários outros produtos, como <a href="https://www.balena.io/open/">openBalena</a>, <a href="https://www.balena.io/os/">balenaOS</a>, <a href="https://www.balena.io/engine/">balenaEngine</a> e mais.</p>
+
+<p>A Balena criou o Etcher para facilitar a gravação de imagens de SOs em mídias removíveis, como cartões de memória e <em>pendrives</em>. Para ensinar seus clientes a gravarem suas imagens, eles forneciam um tutorial para cada sistema (Linux, Windows e <a href="https://www.apple.com/br/macos/">macOS</a>). Cada tutorial tinha várias etapas manuais e era propenso a erros. Antes, não havia uma ferramenta que atendesse todas as necessidades da Balena, então criaram o Etcher, que é simples para os usuários finais e tem a mesma aparência e funcionamento no Linux, Windows e macOS.</p>
+
+<h2 id="o-que-posso-fazer-com-o-etcher">O que posso fazer com o Etcher?</h2>
+
+<p>O balenaEtcher pode ser usado em diversos cenários, como por exemplo:</p>
+
+<ul>
+  <li>
+    <p>Lembra do <a href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Raspbian</a>? (<a href="https://www.debian.org/index.pt.html">Debian</a> para <a href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Raspberry Pi</a>) Agora ele se chama <a href="https://www.raspberrypi.org/software/">Raspberry Pi OS</a> e disponibiliza imagens do sistema na sua <a href="https://www.raspberrypi.org/software/operating-systems/">página de <em>downloads</em></a>. Agora elas podem ser instaladas no cartão de memória usando o Etcher, dispensando o uso do <a href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">NOOBS</a>.</p>
+  </li>
+  <li>
+    <p>Também já falamos como usar o <a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/">openSUSE no Raspberry Pi</a>, naquele tutorial usamos o balenaEtcher para gravar a imagem do <a href="https://www.opensuse.org/">openSUSE</a> no cartão de memória.</p>
+  </li>
+  <li>
+    <p>No texto sobre o <a href="/pt/2020/10/14/pinephone-o-smartphone-que-roda-linux-saiba-tudo-sobre-ele/">PinePhone</a>, vimos que já existem pelo menos <a href="https://wiki.pine64.org/index.php?title=PinePhone_Software_Releases">18 sistemas operacionais</a> que o suportam. Se você quiser testar um desses sistemas sem instala-lo direto no celular, pode usar o Etcher para grava-lo no cartão de memória.</p>
+  </li>
+</ul>
+
+<p>O que vem a seguir estava originalmente no tutorial sobre o <a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/">openSUSE no Raspberry Pi</a>. Como o balenaEtcher pode aparecer em vários tutoriais, decidi mover as instruções de como usá-lo para esse tutorial dedicado a ele e criar <em>links</em> dos outros tutoriais para esse.</p>
+
+<h2 id="um-pequeno-problema">Um pequeno problema…</h2>
+
+<p>Antes de começar, só quero observar que há uma questão de <strong>privacidade</strong> no balenaEtcher, mas creio ser um problema pequeno e fácil de contornar: durante o uso, o programa faz conexões de rede com servidores do <a href="https://www.google.com.br/">Google</a>, <a href="https://pt-br.facebook.com/">Facebook</a> e outros serviços (mais informações <a href="https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103">aqui</a> e <a href="https://github.com/balena-io/etcher/issues/2977">aqui</a>), o que é intrigante, porque isso é totalmente desnecessário à sua função.</p>
+
+<p>Se isso for uma questão pra você, creio ser suficiente desconectar o computador da Internet durante o uso do aplicativo.</p>
+
+<p>Se não quiser usar o Etcher, uma alternativa para usuários de Linux é o comando <strong><a href="https://man7.org/linux/man-pages/man1/dd.1.html">dd</a></strong>.</p>
+
+<h2 id="o-que-preciso-para-usar-o-etcher">O que preciso para usar o Etcher?</h2>
+
+<p>O balenaEtcher requer um computador <em>desktop</em> com Linux, Windows ou macOS.</p>
+
+<p>Aqui, como de costume, vou usar o <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada 15.2</a>.</p>
+
+<p>Mas o passo a passo a seguir deve ser mais ou menos parecido em todos esses sistemas.</p>
+
+<p>Você também vai precisar de um cartão de memória que comporte a imagem de sistema que você quer gravar nele. Você deve baixar essa imagem previamente.</p>
+
+<h2 id="inserindo-o-cartão-de-memória">Inserindo o cartão de memória</h2>
+
+<p>Conecte ao computador o cartão de memória no qual será gravada a imagem.</p>
+
+<p>Note que gravar a imagem no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um <em>backup</em> deles antes de continuar para não perdê-los.</p>
+
+<p>Recomendo que você remova quaisquer outros dispositivos de armazenamento (<em>pendrives</em>, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).</p>
+
+<h2 id="baixando-o-etcher">Baixando o Etcher</h2>
+
+<p>Para baixar o balenaEtcher, acesse seu <em>site</em> e clique no botão para <em>download</em>:</p>
+
+<ul>
+  <li><a href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a></li>
+</ul>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-02.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Quando o <em>download</em> terminar, abra a pasta <strong>Downloads</strong> e extraia o conteúdo do arquivo compactado baixado:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-03-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se você vai desconectar seu computador da Internet, a hora de fazer isso é agora.</p>
+
+<p>Abra a pasta criada e faça um clique-duplo no arquivo com extensão <a href="https://appimage.org/">AppImage</a> (que é, na verdade, o programa balenaEtcher em si, isso vai iniciá-lo):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-04-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="gravando-a-imagem-no-cartão-de-memória">Gravando a imagem no cartão de memória</h2>
+
+<p>No balenaEtcher, clique no botão <strong>Flash from file</strong> (gravar a partir do arquivo) e informe a localização da imagem que você baixou:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-05.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Depois, clique no botão <strong>Select target</strong> (selecionar destino):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-06.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Marque o cartão de memória e clique em <strong>Select</strong> (selecionar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-07.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><strong>Cuidado:</strong> certifique-se de selecionar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível. Eu costumo me orientar pela capacidade (<strong>Size</strong>) do dispositivo.</p>
+
+<p>Finalmente, clique no último botão, <strong>Flash</strong> (gravar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-08.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Informe a senha do administrador (no Linux, chamado de usuário <em>root</em>) para prosseguir.</p>
+
+<p>Aguarde a imagem ser gravada no cartão de memória, o balenaEtcher até informa uma estimativa de quanto tempo isso vai demorar (você pode sair e ir tomar um café):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-09.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Depois de gravar, o balenaEtcher verifica os arquivos no cartão de memória (você pode demorar mais um pouco no seu café):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-10.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-10.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>No final, o Etcher informa que a gravação está completa (<strong>Flash Complete</strong>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-11.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-11.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Você pode simplesmente fechar o programa.</p>
+
+<p>Se você desconectou seu computador da Internet, já pode conectá-lo de volta.</p>
+
+<h2 id="removendo-o-cartão-de-memória">Removendo o cartão de memória</h2>
+
+<p>O balenaEtcher não monta o cartão de memória após a gravação da imagem.</p>
+
+<p>Se você abrir o aplicativo <strong>Arquivos</strong>, verá que o cartão de memória até aparece listado, mas não aparece o ícone de <strong>Desmontar</strong> ao lado dele:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-12-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-12-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Sendo assim, você pode simplesmente remover o cartão de memória do computador.</p>
+
+<h2 id="removendo-o-etcher">Removendo o Etcher</h2>
+
+<p>Note que o Etcher não foi instalado no computador. O programa inteiro é formado só por aquele arquivo com extensão AppImage que você abriu. Se não vai mais usá-lo, você pode exclui-lo, se quiser.</p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Espero que esse texto tenha sido útil. Como eu disse, e você deve ter percebido, o Etcher é um programa bem simples e fácil de usar. Mas se tem dúvidas, escreve nos comentários.</p>
+
+<p>Faça bom proveito gravando imagens e divirta-se brincando com seus <em>gadgets</em>!</p>
+
+<h2 id="referências">Referências</h2>
+
+<p>Além dos <em>links</em> que aparecem ao longo do texto, eu consultei também essa página:</p>
+
+<ul>
+  <li><a href="https://etcher.download/">A Step-by-Step Guide to Downloading and Using Etcher</a></li>
+</ul>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://kamarada.github.io/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='https://www.padrim.com.br/LinuxKamarada' title='Padrim' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='https://apoia.se/LinuxKamarada' title='APOIA.se' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2020 <a href='#author'>Antônio Vinícius</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="O Etcher é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e pendrives inicializáveis (“bootáveis”) a partir de imagens de sistemas operacionais. Ele possui uma interface limpa que ajuda a selecionar corretamente o dispositivo que receberá a imagem, protegendo você de apagar acidentalmente seu disco rígido, o que poderia causar perda...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2020/10/rpi4b-opensuse-08.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>

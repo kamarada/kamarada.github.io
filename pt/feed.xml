@@ -9,10 +9,233 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 11 Nov 2020 23:21:21 -0300</pubDate>
-        <lastBuildDate>Wed, 11 Nov 2020 23:21:21 -0300</lastBuildDate>
+        <pubDate>Tue, 17 Nov 2020 23:39:37 -0300</pubDate>
+        <lastBuildDate>Tue, 17 Nov 2020 23:39:37 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Gravando imagem no cartão de memória de forma fácil com o balenaEtcher</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/balena-etcher.svg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/balena-etcher.svg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;Etcher&lt;/a&gt; é uma ferramenta versátil, mas fácil de usar, para criar cartões de memória e &lt;em&gt;pendrives&lt;/em&gt; inicializáveis (“bootáveis”) a partir de imagens de sistemas operacionais. Ele possui uma interface limpa que ajuda a selecionar corretamente o dispositivo que receberá a imagem, protegendo você de apagar acidentalmente seu disco rígido, o que poderia causar perda de dados irreversível. Após a gravação, o Etcher também verifica se cada &lt;em&gt;byte&lt;/em&gt; foi gravado corretamente, evitando que a mídia acabe com arquivos corrompidos.&lt;/p&gt;
+
+&lt;p&gt;Se você não é exatamente um &lt;em&gt;expert&lt;/em&gt; em tecnologia, saiba que essas imagens não são como as que você produz com uma câmera, geralmente arquivos com extensão &lt;strong&gt;.jpeg&lt;/strong&gt; ou &lt;strong&gt;.jpg&lt;/strong&gt;. Uma imagem de sistema operacional é um arquivo só que contém todo o sistema (como &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; ou &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt;), todos os seus arquivos. Normalmente essas imagens são compactadas e nomeadas com extensões como &lt;strong&gt;.iso&lt;/strong&gt;, &lt;strong&gt;.img&lt;/strong&gt;, &lt;strong&gt;.xz&lt;/strong&gt;, &lt;strong&gt;.gz&lt;/strong&gt; ou &lt;strong&gt;.zip&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Etcher é um &lt;em&gt;software&lt;/em&gt; livre, gratuito e multi-plataforma desenvolvido pela &lt;a href=&quot;https://www.balena.io/&quot;&gt;Balena&lt;/a&gt;, por isso também é chamado de &lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;balenaEtcher&lt;/a&gt;. Seu código-fonte está disponível no &lt;a href=&quot;https://github.com/balena-io/etcher&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;quem-ou-o-que-é-a-balena&quot;&gt;Quem ou o que é a Balena?&lt;/h2&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/balena.svg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/balena.svg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 250px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Balena é tanto o nome de &lt;a href=&quot;https://www.balena.io/what-is-balena&quot;&gt;um conjunto de ferramentas de código aberto&lt;/a&gt; para gerenciar dispositivos conectados à Internet das Coisas, como é também o nome da &lt;a href=&quot;https://www.balena.io/blog/resin-io-changes-name-to-balena-releases-open-source-edition/&quot;&gt;empresa&lt;/a&gt; que desenvolve essas ferramentas e oferece &lt;a href=&quot;https://www.balena.io/cloud/&quot;&gt;infraestrutura na nuvem&lt;/a&gt; para conectar esses dispositivos. A Balena é conhecida não só pelo Etcher, mas também por seus vários outros produtos, como &lt;a href=&quot;https://www.balena.io/open/&quot;&gt;openBalena&lt;/a&gt;, &lt;a href=&quot;https://www.balena.io/os/&quot;&gt;balenaOS&lt;/a&gt;, &lt;a href=&quot;https://www.balena.io/engine/&quot;&gt;balenaEngine&lt;/a&gt; e mais.&lt;/p&gt;
+
+&lt;p&gt;A Balena criou o Etcher para facilitar a gravação de imagens de SOs em mídias removíveis, como cartões de memória e &lt;em&gt;pendrives&lt;/em&gt;. Para ensinar seus clientes a gravarem suas imagens, eles forneciam um tutorial para cada sistema (Linux, Windows e &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt;). Cada tutorial tinha várias etapas manuais e era propenso a erros. Antes, não havia uma ferramenta que atendesse todas as necessidades da Balena, então criaram o Etcher, que é simples para os usuários finais e tem a mesma aparência e funcionamento no Linux, Windows e macOS.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-posso-fazer-com-o-etcher&quot;&gt;O que posso fazer com o Etcher?&lt;/h2&gt;
+
+&lt;p&gt;O balenaEtcher pode ser usado em diversos cenários, como por exemplo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lembra do &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspbian&lt;/a&gt;? (&lt;a href=&quot;https://www.debian.org/index.pt.html&quot;&gt;Debian&lt;/a&gt; para &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi&lt;/a&gt;) Agora ele se chama &lt;a href=&quot;https://www.raspberrypi.org/software/&quot;&gt;Raspberry Pi OS&lt;/a&gt; e disponibiliza imagens do sistema na sua &lt;a href=&quot;https://www.raspberrypi.org/software/operating-systems/&quot;&gt;página de &lt;em&gt;downloads&lt;/em&gt;&lt;/a&gt;. Agora elas podem ser instaladas no cartão de memória usando o Etcher, dispensando o uso do &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;NOOBS&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Também já falamos como usar o &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;openSUSE no Raspberry Pi&lt;/a&gt;, naquele tutorial usamos o balenaEtcher para gravar a imagem do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; no cartão de memória.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;No texto sobre o &lt;a href=&quot;/pt/2020/10/14/pinephone-o-smartphone-que-roda-linux-saiba-tudo-sobre-ele/&quot;&gt;PinePhone&lt;/a&gt;, vimos que já existem pelo menos &lt;a href=&quot;https://wiki.pine64.org/index.php?title=PinePhone_Software_Releases&quot;&gt;18 sistemas operacionais&lt;/a&gt; que o suportam. Se você quiser testar um desses sistemas sem instala-lo direto no celular, pode usar o Etcher para grava-lo no cartão de memória.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O que vem a seguir estava originalmente no tutorial sobre o &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;openSUSE no Raspberry Pi&lt;/a&gt;. Como o balenaEtcher pode aparecer em vários tutoriais, decidi mover as instruções de como usá-lo para esse tutorial dedicado a ele e criar &lt;em&gt;links&lt;/em&gt; dos outros tutoriais para esse.&lt;/p&gt;
+
+&lt;h2 id=&quot;um-pequeno-problema&quot;&gt;Um pequeno problema…&lt;/h2&gt;
+
+&lt;p&gt;Antes de começar, só quero observar que há uma questão de &lt;strong&gt;privacidade&lt;/strong&gt; no balenaEtcher, mas creio ser um problema pequeno e fácil de contornar: durante o uso, o programa faz conexões de rede com servidores do &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt;, &lt;a href=&quot;https://pt-br.facebook.com/&quot;&gt;Facebook&lt;/a&gt; e outros serviços (mais informações &lt;a href=&quot;https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103&quot;&gt;aqui&lt;/a&gt; e &lt;a href=&quot;https://github.com/balena-io/etcher/issues/2977&quot;&gt;aqui&lt;/a&gt;), o que é intrigante, porque isso é totalmente desnecessário à sua função.&lt;/p&gt;
+
+&lt;p&gt;Se isso for uma questão pra você, creio ser suficiente desconectar o computador da Internet durante o uso do aplicativo.&lt;/p&gt;
+
+&lt;p&gt;Se não quiser usar o Etcher, uma alternativa para usuários de Linux é o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-preciso-para-usar-o-etcher&quot;&gt;O que preciso para usar o Etcher?&lt;/h2&gt;
+
+&lt;p&gt;O balenaEtcher requer um computador &lt;em&gt;desktop&lt;/em&gt; com Linux, Windows ou macOS.&lt;/p&gt;
+
+&lt;p&gt;Aqui, como de costume, vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mas o passo a passo a seguir deve ser mais ou menos parecido em todos esses sistemas.&lt;/p&gt;
+
+&lt;p&gt;Você também vai precisar de um cartão de memória que comporte a imagem de sistema que você quer gravar nele. Você deve baixar essa imagem previamente.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserindo-o-cartão-de-memória&quot;&gt;Inserindo o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;Conecte ao computador o cartão de memória no qual será gravada a imagem.&lt;/p&gt;
+
+&lt;p&gt;Note que gravar a imagem no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um &lt;em&gt;backup&lt;/em&gt; deles antes de continuar para não perdê-los.&lt;/p&gt;
+
+&lt;p&gt;Recomendo que você remova quaisquer outros dispositivos de armazenamento (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).&lt;/p&gt;
+
+&lt;h2 id=&quot;baixando-o-etcher&quot;&gt;Baixando o Etcher&lt;/h2&gt;
+
+&lt;p&gt;Para baixar o balenaEtcher, acesse seu &lt;em&gt;site&lt;/em&gt; e clique no botão para &lt;em&gt;download&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;https://www.balena.io/etcher/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, abra a pasta &lt;strong&gt;Downloads&lt;/strong&gt; e extraia o conteúdo do arquivo compactado baixado:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se você vai desconectar seu computador da Internet, a hora de fazer isso é agora.&lt;/p&gt;
+
+&lt;p&gt;Abra a pasta criada e faça um clique-duplo no arquivo com extensão &lt;a href=&quot;https://appimage.org/&quot;&gt;AppImage&lt;/a&gt; (que é, na verdade, o programa balenaEtcher em si, isso vai iniciá-lo):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;gravando-a-imagem-no-cartão-de-memória&quot;&gt;Gravando a imagem no cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;No balenaEtcher, clique no botão &lt;strong&gt;Flash from file&lt;/strong&gt; (gravar a partir do arquivo) e informe a localização da imagem que você baixou:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois, clique no botão &lt;strong&gt;Select target&lt;/strong&gt; (selecionar destino):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Marque o cartão de memória e clique em &lt;strong&gt;Select&lt;/strong&gt; (selecionar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; certifique-se de selecionar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível. Eu costumo me orientar pela capacidade (&lt;strong&gt;Size&lt;/strong&gt;) do dispositivo.&lt;/p&gt;
+
+&lt;p&gt;Finalmente, clique no último botão, &lt;strong&gt;Flash&lt;/strong&gt; (gravar):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Informe a senha do administrador (no Linux, chamado de usuário &lt;em&gt;root&lt;/em&gt;) para prosseguir.&lt;/p&gt;
+
+&lt;p&gt;Aguarde a imagem ser gravada no cartão de memória, o balenaEtcher até informa uma estimativa de quanto tempo isso vai demorar (você pode sair e ir tomar um café):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Depois de gravar, o balenaEtcher verifica os arquivos no cartão de memória (você pode demorar mais um pouco no seu café):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No final, o Etcher informa que a gravação está completa (&lt;strong&gt;Flash Complete&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Você pode simplesmente fechar o programa.&lt;/p&gt;
+
+&lt;p&gt;Se você desconectou seu computador da Internet, já pode conectá-lo de volta.&lt;/p&gt;
+
+&lt;h2 id=&quot;removendo-o-cartão-de-memória&quot;&gt;Removendo o cartão de memória&lt;/h2&gt;
+
+&lt;p&gt;O balenaEtcher não monta o cartão de memória após a gravação da imagem.&lt;/p&gt;
+
+&lt;p&gt;Se você abrir o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, verá que o cartão de memória até aparece listado, mas não aparece o ícone de &lt;strong&gt;Desmontar&lt;/strong&gt; ao lado dele:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Sendo assim, você pode simplesmente remover o cartão de memória do computador.&lt;/p&gt;
+
+&lt;h2 id=&quot;removendo-o-etcher&quot;&gt;Removendo o Etcher&lt;/h2&gt;
+
+&lt;p&gt;Note que o Etcher não foi instalado no computador. O programa inteiro é formado só por aquele arquivo com extensão AppImage que você abriu. Se não vai mais usá-lo, você pode exclui-lo, se quiser.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Espero que esse texto tenha sido útil. Como eu disse, e você deve ter percebido, o Etcher é um programa bem simples e fácil de usar. Mas se tem dúvidas, escreve nos comentários.&lt;/p&gt;
+
+&lt;p&gt;Faça bom proveito gravando imagens e divirta-se brincando com seus &lt;em&gt;gadgets&lt;/em&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Além dos &lt;em&gt;links&lt;/em&gt; que aparecem ao longo do texto, eu consultei também essa página:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://etcher.download/&quot;&gt;A Step-by-Step Guide to Downloading and Using Etcher&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Tue, 17 Nov 2020 23:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Microsoft tira do ar repositório GitHub do projeto de código-aberto youtube-dl</title>
@@ -669,12 +892,12 @@
         
             <item>
                 <title>openSUSE no Raspberry Pi 4 — parte 2: configurações básicas</title>
-                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, ligamos nosso &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; com o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Diferente do &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;, o openSUSE não apresenta um assistente de configuração no primeiro uso. Por isso, vejamos quais são as primeiras configurações que devemos fazer para que o nosso Raspberry Pi esteja realmente pronto para as tarefas do dia a dia.&lt;/p&gt;
+                <description>&lt;p&gt;No &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, ligamos nosso &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; com o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Diferente do &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt;, o openSUSE não apresenta um assistente de configuração no primeiro uso. Por isso, vejamos quais são as primeiras configurações que devemos fazer para que o nosso Raspberry Pi esteja realmente pronto para as tarefas do dia a dia.&lt;/p&gt;
 
-&lt;p&gt;Se você chegou aqui sem ter passado pelo &lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, recomendo que comece sua leitura por ele (a menos, claro, que o openSUSE já esteja rodando no seu Raspberry Pi):&lt;/p&gt;
+&lt;p&gt;Se você chegou aqui sem ter passado pelo &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;&lt;em&gt;post&lt;/em&gt; anterior&lt;/a&gt;, recomendo que comece sua leitura por ele (a menos, claro, que o openSUSE já esteja rodando no seu Raspberry Pi):&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;openSUSE no Raspberry Pi 4 — parte 1: &lt;em&gt;download&lt;/em&gt; e instalação&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;openSUSE no Raspberry Pi 4 — parte 1: &lt;em&gt;download&lt;/em&gt; e instalação&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Lembrando que escolhi usar a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, mas não tem problema se você escolheu outra. Praticamente todos as configurações que faremos serão no &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;, presente em toda instalação do openSUSE, nada específico do XFCE.&lt;/p&gt;
@@ -1125,7 +1348,7 @@ passwd: senha atualizada com sucesso
   &lt;li&gt;&lt;strong&gt;openSUSE Tumbleweed:&lt;/strong&gt; com lançamentos contínuos (&lt;em&gt;rolling release&lt;/em&gt;), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os &lt;em&gt;softwares&lt;/em&gt; mais recentes, recebe atualizações pequenas e frequentes sempre que um &lt;em&gt;software&lt;/em&gt; é atualizado, semelhante a distribuições como &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; e Manjaro.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em Linux.&lt;/p&gt;
+&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. É a distribuição que eu uso e indico há anos, principalmente para usuários iniciantes, tanto que o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt; é baseado nele.&lt;/p&gt;
 
@@ -1168,7 +1391,7 @@ passwd: senha atualizada com sucesso
 
 &lt;h2 id=&quot;baixando-a-imagem-do-opensuse&quot;&gt;Baixando a imagem do openSUSE&lt;/h2&gt;
 
-&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você vai precisar de um PC com Linux ou &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB. Provavelmente o passo-a-passo a seguir também funciona no &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você precisará de um PC com Linux, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB.&lt;/p&gt;
 
 &lt;p&gt;Eu vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;.&lt;/p&gt;
 
@@ -1191,133 +1414,39 @@ passwd: senha atualizada com sucesso
 
 &lt;p&gt;Clique no &lt;em&gt;link&lt;/em&gt; para a imagem que deseja baixar. O &lt;em&gt;download&lt;/em&gt; pode demorar um pouco, considerando que o arquivo é grande (no meu caso, 1 GB).&lt;/p&gt;
 
-&lt;p&gt;Conecte ao computador o cartão de memória que receberá a imagem.&lt;/p&gt;
+&lt;h2 id=&quot;gravando-a-imagem-no-cartão-de-memória-com-o-balenaetcher&quot;&gt;Gravando a imagem no cartão de memória com o balenaEtcher&lt;/h2&gt;
+
+&lt;p&gt;Para gravar a imagem do openSUSE no cartão de memória, eu recomendo o programa &lt;a href=&quot;/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/&quot;&gt;balenaEtcher&lt;/a&gt;, por ser simples e fácil de usar. Ele é gratuito e de código aberto.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (17/11/2020):&lt;/strong&gt;
+    &lt;p&gt;Na versão original deste tutorial, eu falava sobre o balenaEtcher. Como pretendo usar o balenaEtcher também em outros tutoriais, decidi mover as instruções de como usá-lo para um tutorial próprio dele.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Veja como usar o balenaEtcher em:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/&quot;&gt;Gravando imagem no cartão de memória de forma fácil com o balenaEtcher&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Só observo que há um pequeno problema quanto a privacidade, que explico no tutorial e apresento uma solução de contorno, mas isso não me impede de usar o balenaEtcher.&lt;/p&gt;
+
+&lt;p&gt;Se isso for uma questão pra você, uma alternativa é usar o comando &lt;strong&gt;dd&lt;/strong&gt;, se você usa Linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;alternativa-ao-etcher-comando-dd&quot;&gt;Alternativa ao Etcher: comando dd&lt;/h2&gt;
+
+&lt;p&gt;Se você preferiu seguir minha recomendação e usar o balenaEtcher, pode pular essa seção.&lt;/p&gt;
+
+&lt;p&gt;O comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; provavelmente está presente em todas as distribuições Linux.&lt;/p&gt;
+
+&lt;p&gt;Conecte ao computador o cartão de memória no qual será gravada a imagem.&lt;/p&gt;
 
 &lt;p&gt;Note que gravar a imagem do openSUSE no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um &lt;em&gt;backup&lt;/em&gt; deles antes de continuar para não perdê-los.&lt;/p&gt;
 
 &lt;p&gt;Recomendo que você remova quaisquer outros dispositivos de armazenamento (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).&lt;/p&gt;
 
-&lt;h2 id=&quot;baixando-o-balena-etcher&quot;&gt;Baixando o Balena Etcher&lt;/h2&gt;
-
-&lt;p&gt;Para gravar a imagem do openSUSE no cartão de memória, eu recomendo a ferramenta &lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;Balena Etcher&lt;/a&gt;, por ser simples e fácil de usar. Ela é gratuita e de &lt;a href=&quot;https://github.com/balena-io/etcher&quot;&gt;código aberto&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Apenas observo que há uma questão de &lt;strong&gt;privacidade&lt;/strong&gt; nessa ferramenta, mas creio ser um problema pequeno e fácil de contornar: durante o uso, o programa faz conexões de rede com servidores do &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt;, &lt;a href=&quot;https://pt-br.facebook.com/&quot;&gt;Facebook&lt;/a&gt; e outros serviços (mais informações &lt;a href=&quot;https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103&quot;&gt;aqui&lt;/a&gt; e &lt;a href=&quot;https://github.com/balena-io/etcher/issues/2977&quot;&gt;aqui&lt;/a&gt;), o que é intrigante, porque isso é totalmente desnecessário à sua função.&lt;/p&gt;
-
-&lt;p&gt;Se isso for uma questão pra você, creio ser suficiente desconectar o computador da Internet durante o uso do aplicativo. Outra alternativa, se você usa Linux, é usar o comando &lt;strong&gt;dd&lt;/strong&gt;, falo sobre ele mais adiante (se quiser, você pode pular toda essa parte sobre o Balena Etcher).&lt;/p&gt;
-
-&lt;p&gt;Seguindo com o Balena Etcher… acesse seu &lt;em&gt;site&lt;/em&gt; e clique no botão para &lt;em&gt;download&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;https://www.balena.io/etcher/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, abra a pasta &lt;strong&gt;Downloads&lt;/strong&gt; e extraia o conteúdo do arquivo compactado baixado:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você vai desconectar seu computador da Internet, a hora de fazer isso é agora.&lt;/p&gt;
-
-&lt;p&gt;Abra a pasta criada e faça um clique-duplo no arquivo com extensão &lt;a href=&quot;https://appimage.org/&quot;&gt;AppImage&lt;/a&gt; (que é, na verdade, o programa Balena Etcher em si, isso vai iniciá-lo):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;gravando-a-imagem-no-cartão-de-memória&quot;&gt;Gravando a imagem no cartão de memória&lt;/h2&gt;
-
-&lt;p&gt;No Balena Etcher, clique no botão &lt;strong&gt;Flash from file&lt;/strong&gt; (gravar a partir do arquivo) e informe a localização da imagem do openSUSE que você baixou:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Depois, clique no botão &lt;strong&gt;Select target&lt;/strong&gt; (selecionar destino):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Marque o cartão de memória e clique em &lt;strong&gt;Select&lt;/strong&gt; (selecionar):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; certifique-se de selecionar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível. Eu costumo me orientar pela capacidade (&lt;strong&gt;Size&lt;/strong&gt;) do dispositivo.&lt;/p&gt;
-
-&lt;p&gt;Finalmente, clique no último botão, &lt;strong&gt;Flash&lt;/strong&gt; (gravar):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Informe a senha do administrador (no Linux, chamado de usuário &lt;em&gt;root&lt;/em&gt;) para prosseguir.&lt;/p&gt;
-
-&lt;p&gt;Aguarde a imagem ser gravada no cartão de memória, o Balena Etcher até informa uma estimativa de quanto tempo isso vai demorar (você pode sair e ir tomar um café):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Depois de gravar, o Balena Etcher verifica os arquivos no cartão de memória (você pode demorar mais um pouco no seu café):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No final, o Balena Etcher informa que a gravação está completa (&lt;strong&gt;Flash Complete&lt;/strong&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode simplesmente fechar o Balena Etcher.&lt;/p&gt;
-
-&lt;p&gt;Se você desconectou seu computador da Internet, já pode conectá-lo de volta.&lt;/p&gt;
-
-&lt;h2 id=&quot;alternativa-ao-etcher-comando-dd&quot;&gt;Alternativa ao Etcher: comando dd&lt;/h2&gt;
-
-&lt;p&gt;Se você preferiu usar o Balena Etcher, pode pular essa seção.&lt;/p&gt;
-
-&lt;p&gt;Se você não quiser usar o Balena Etcher, uma alternativa é usar o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt;, que provavelmente está presente em todas as distribuições Linux.&lt;/p&gt;
-
-&lt;p&gt;Antes, identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/fdisk&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt;, que provavelmente também é outro comando universal:&lt;/p&gt;
+&lt;p&gt;Identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/fdisk&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt;, que provavelmente também é outro comando universal:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -1361,11 +1490,9 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
 
 &lt;p&gt;O comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/sync.1.html&quot;&gt;sync&lt;/a&gt;&lt;/strong&gt; ao final garante que dados que ainda estejam no cache na memória RAM sejam gravados. Com isso, é seguro remover o cartão de memória.&lt;/p&gt;
 
-&lt;h2 id=&quot;removendo-o-cartão-de-memória&quot;&gt;Removendo o cartão de memória&lt;/h2&gt;
+&lt;p&gt;Os comandos &lt;strong&gt;dd&lt;/strong&gt; e &lt;strong&gt;sync&lt;/strong&gt; não montam o cartão de memória após a gravação.&lt;/p&gt;
 
-&lt;p&gt;O Balena Etcher, assim como o comando &lt;strong&gt;dd&lt;/strong&gt;, não monta o cartão de memória após a gravação.&lt;/p&gt;
-
-&lt;p&gt;Se você abrir o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, verá que não aparece o ícone de &lt;strong&gt;Desmontar&lt;/strong&gt; ao lado do cartão de memória:&lt;/p&gt;
+&lt;p&gt;Se você abrir o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, verá que o cartão de memória até aparece listado, mas não aparece o ícone de &lt;strong&gt;Desmontar&lt;/strong&gt; ao lado dele:&lt;/p&gt;
 
 &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
 &lt;a href=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; title=&quot;&quot;&gt;
@@ -3009,360 +3136,6 @@ $ gpg --import public_key
                 <pubDate>Sat, 08 Aug 2020 20:20:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Ventoy: crie um pendrive multiboot simplesmente copiando imagens ISO para ele</title>
-                <description>&lt;p&gt;Sabia que você pode instalar &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; usando o mesmo &lt;em&gt;pendrive&lt;/em&gt;, sem precisar formatá-lo duas vezes? Assim como usar o mesmo &lt;em&gt;pendrive&lt;/em&gt; para testar &lt;a href=&quot;/pt/2015/11/25/o-que-e-um-livecd-um-livedvd-um-liveusb/&quot;&gt;imagens &lt;em&gt;live&lt;/em&gt;&lt;/a&gt; de várias distribuições Linux, sem formatá-lo de novo e de novo? É bem verdade que existem várias ferramentas para criar &lt;em&gt;pendrives&lt;/em&gt; inicializáveis (ou “bootáveis”, na gíria técnica), dentre as quais &lt;a href=&quot;/pt/2016/02/21/como-preparar-um-liveusb/&quot;&gt;já falamos aqui&lt;/a&gt; sobre o &lt;a href=&quot;https://rufus.ie/&quot;&gt;Rufus&lt;/a&gt; (para Windows), o &lt;a href=&quot;https://github.com/openSUSE/imagewriter&quot;&gt;SUSE Studio Imagewriter&lt;/a&gt; e o &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; (para Linux), mas nenhuma delas é mais fácil de usar que o recém-chegado Ventoy.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://www.ventoy.net/&quot;&gt;Ventoy&lt;/a&gt; é uma ferramenta de &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt; para criar &lt;em&gt;pendrives&lt;/em&gt; inicializáveis com &lt;a href=&quot;https://pt.wikipedia.org/wiki/Imagem_ISO&quot;&gt;imagens ISO&lt;/a&gt;. O Ventoy formata o &lt;em&gt;pendrive&lt;/em&gt; uma única vez e se instala nele. A partir daí, basta você copiar imagens ISO para o &lt;em&gt;pendrive&lt;/em&gt;. Reinicie o computador com o &lt;em&gt;pendrive&lt;/em&gt; conectado e o Ventoy apresentará um menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; listando as imagens ISO que estão no &lt;em&gt;pendrive&lt;/em&gt;. Escolha uma e o sistema operacional será iniciado a partir dela. O Ventoy suporta &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos&quot;&gt;BIOS&lt;/a&gt; tradicional e &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos&quot;&gt;UEFI&lt;/a&gt; (com e sem &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos&quot;&gt;&lt;em&gt;boot&lt;/em&gt; seguro&lt;/a&gt;), partições &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos&quot;&gt;MBR&lt;/a&gt; e &lt;a href=&quot;https://www.vivaolinux.com.br/artigo/UEFI-e-Boot-Seguro-Conceitos-basicos&quot;&gt;GPT&lt;/a&gt;, o que o torna universal.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Outras ferramentas do gênero, como as citadas anteriormente, extraem o conteúdo da imagem ISO para o &lt;em&gt;pendrive&lt;/em&gt;, permitindo que apenas uma imagem ISO seja usada por vez. Com isso, você precisa formatar o &lt;em&gt;pendrive&lt;/em&gt; cada vez que quiser usar outra imagem ISO. Além disso, normalmente elas impedem que ele seja usado para outras finalidades (não permitem copiar outros arquivos). Com o Ventoy, você pode copiar e excluir imagens ISO do &lt;em&gt;pendrive&lt;/em&gt;, assim como quaisquer outros arquivos, sem precisar formatá-lo de novo e de novo.&lt;/p&gt;
-
-&lt;p&gt;O Ventoy é uma “mão na roda” para quem trabalha formatando e reparando computadores, ou quem gosta de experimentar várias distribuições Linux. Eu mesmo conheci o Ventoy por indicação de um amigo e tenho usado para testar o &lt;a href=&quot;/pt/2020/04/14/linux-kamarada-15.2-beta-deixa-o-seu-desktop-ainda-mais-verde/&quot;&gt;Linux Kamarada 15.2 Beta&lt;/a&gt;. Semana passada o Ventoy me foi muito útil para instalar o Windows e o Linux no meu novo &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SSD Kingston A400&lt;/a&gt;, que recebi da garantia após o anterior apresentar o &lt;em&gt;bug&lt;/em&gt; &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SATAFIRM S11&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;A primeira versão do Ventoy (1.0.0) foi lançada em &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;05 de abril&lt;/a&gt;. A versão mais recente (1.0.17) foi lançada há 4 dias, em &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;25 de julho&lt;/a&gt;, e é essa versão que vou usar aqui hoje.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-preciso-para-usar-o-ventoy&quot;&gt;O que preciso para usar o Ventoy?&lt;/h2&gt;
-
-&lt;p&gt;Para usar o Ventoy, você precisa de um &lt;em&gt;pendrive&lt;/em&gt; ou equivalente (por exemplo, HD externo, cartão de memória, etc.) em que caibam as imagens ISO que você vai usar. Por exemplo, a &lt;a href=&quot;/pt/download/15.1/&quot;&gt;imagem ISO do Linux Kamarada 15.1&lt;/a&gt; ocupa 1,5GB. Se vai usar somente ela, você precisa de um &lt;em&gt;pendrive&lt;/em&gt; de pelo menos 2GB. Já a &lt;a href=&quot;https://www.microsoft.com/pt-br/software-download/windows10&quot;&gt;ISO do Windows 10 versão 2004&lt;/a&gt; ocupa 4,6GB. Para usar ambas, você precisa de um &lt;em&gt;pendrive&lt;/em&gt; de pelo menos 8GB, e assim por diante.&lt;/p&gt;
-
-&lt;p&gt;Além disso, você precisa de um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Computador_pessoal&quot;&gt;PC&lt;/a&gt; com Windows ou Linux para preparar o &lt;em&gt;pendrive&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;Antes de continuar, observe que o &lt;em&gt;pendrive&lt;/em&gt; será formatado pelo Ventoy, portanto &lt;strong&gt;os dados presentes no &lt;em&gt;pendrive&lt;/em&gt; serão perdidos&lt;/strong&gt;! Se deseja manter esses dados no &lt;em&gt;pendrive&lt;/em&gt;, o que você pode fazer é copiá-los para outro local (para o computador, por exemplo), instalar o Ventoy no &lt;em&gt;pendrive&lt;/em&gt; e então devolver os dados para o &lt;em&gt;pendrive&lt;/em&gt;.&lt;/p&gt;
-    &lt;p&gt;Também é recomendado que você remova quaisquer outros dispositivos de armazenamento conectados ao computador (como outros &lt;em&gt;pendrives&lt;/em&gt;, HDs externos, cartões de memória, etc.) para prevenir que sejam formatados por engano.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Sem mais delongas, vejamos como instalar e usar essa poderosa ferramenta!&lt;/p&gt;
-
-&lt;h2 id=&quot;como-instalar-o-ventoy-no-pendrive&quot;&gt;Como instalar o Ventoy no pendrive&lt;/h2&gt;
-
-&lt;p&gt;Comece baixando o Ventoy para o seu sistema operacional a partir da página de versões lançadas (&lt;em&gt;releases&lt;/em&gt;) do Ventoy no GitHub:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/ventoy/Ventoy/releases&quot;&gt;https://github.com/ventoy/Ventoy/releases&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-02.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-02.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A seguir, veja instruções de como instalar o Ventoy no &lt;em&gt;pendrive&lt;/em&gt; conforme o sistema operacional que você usa.&lt;/p&gt;
-
-&lt;h3 id=&quot;como-instalar-o-ventoy-usando-o-windows&quot;&gt;Como instalar o Ventoy usando o Windows&lt;/h3&gt;
-
-&lt;p&gt;Baixe o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt; referente ao Ventoy para Windows.&lt;/p&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, extraia os conteúdos do arquivo. Para isso, você pode usar o assistente do próprio Windows ou um programa como o &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7-Zip&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Entre na pasta extraída e inicie o executável &lt;strong&gt;Ventoy2Disk&lt;/strong&gt; dando um duplo-clique nele:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode traduzir a interface do Ventoy abrindo o menu &lt;strong&gt;Language&lt;/strong&gt; (idioma) e selecionando o &lt;strong&gt;Portuguese Brazilian (Português do Brasil)&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Selecione o &lt;strong&gt;Dispositivo&lt;/strong&gt; que receberá o Ventoy (nesse caso, o &lt;em&gt;pendrive&lt;/em&gt;) e clique em &lt;strong&gt;Instalar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Ventoy faz o alerta que eu antecipei. Clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O Ventoy alerta mais uma vez (pense duas vezes), clique em &lt;strong&gt;Sim&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Após alguns segundos ou minutos, a instalação do Ventoy no &lt;em&gt;pendrive&lt;/em&gt; é concluída:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Note que agora o Ventoy informa qual versão está instalada no dispositivo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Você pode fechar o programa agora.&lt;/p&gt;
-
-&lt;p&gt;Com o &lt;em&gt;pendrive&lt;/em&gt; preparado, copie para ele as imagens ISO que vai usar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que você pode organizá-las dentro de uma pasta, para separá-las dos demais arquivos do &lt;em&gt;pendrive&lt;/em&gt;. Para montar o menu durante o &lt;em&gt;boot&lt;/em&gt;, o Ventoy procura recursivamente por imagens ISO em pastas e subpastas dentro do &lt;em&gt;pendrive&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;como-instalar-o-ventoy-usando-o-linux&quot;&gt;Como instalar o Ventoy usando o Linux&lt;/h3&gt;
-
-&lt;p&gt;Para demonstrar como instalar o Ventoy usando o Linux, vou usar o &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Baixe o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;.tar.gz&lt;/code&gt; referente ao Ventoy para Linux.&lt;/p&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; terminar, extraia os conteúdos do arquivo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Entre na pasta criada e verifique a existência do arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Abra uma janela do terminal nessa pasta.&lt;/p&gt;
-
-&lt;p&gt;Antes de continuar, identifique o &lt;em&gt;pendrive&lt;/em&gt; no qual o Ventoy será instalado. Você pode fazer isso usando o aplicativo &lt;strong&gt;Discos&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ou o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man8/fdisk.8.html&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
-
-[...]
-
-Disco /dev/sdb: 7,5 GiB, 8022654976 bytes, 15669248 setores
-Modelo de disco: USB Flash Disk  
-Unidades: setor de 1 * 512 = 512 bytes
-Tamanho de setor (lógico/físico): 512 bytes / 512 bytes
-Tamanho E/S (mínimo/ótimo): 512 bytes / 512 bytes
-Tipo de rótulo do disco: dos
-Identificador do disco: 0x7b65b335
-
-Dispositivo Inicializar Início      Fim  Setores Tamanho Id Tipo
-/dev/sdb1   *             2048 15669247 15667200    7,5G  c FAT32 W95 (LBA)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;No meu caso, o &lt;em&gt;pendrive&lt;/em&gt; é o dispositivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sdb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;Certifique-se de identificar corretamente o &lt;em&gt;pendrive&lt;/em&gt;, assim como informá-lo corretamente a seguir, para não formatar outro dispositivo por engano.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Estamos prontos para instalar o Ventoy no &lt;em&gt;pendrive&lt;/em&gt;. Execute o &lt;em&gt;script&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt; como usuário administrador (&lt;em&gt;root&lt;/em&gt;), passando como argumento a identificação do dispositivo:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sh Ventoy2Disk.sh -i /dev/sdb
-
-***********************************************************
-*                Ventoy2Disk Script                       *
-*             longpanda  admin@ventoy.net                 *
-***********************************************************
-
-Disk : /dev/sdb
-Modelo:  USB DISK 2.0 (scsi)
-Size : 7 GB
-Style: MBR
-
-
-Attention:
-You will install Ventoy to /dev/sdb.
-All the data on the disk /dev/sdb will be lost!!!
-
-Continue? (y/n)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O Ventoy alerta que os dados no &lt;em&gt;pendrive&lt;/em&gt; serão destruídos e pergunta se deseja continuar.&lt;/p&gt;
-
-&lt;p&gt;Tecle &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; (de &lt;em&gt;yes&lt;/em&gt;, que quer dizer “sim” em inglês) e depois &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Continue? (y/n)y
-
-All the data on the disk /dev/sdb will be lost!!!
-Double-check. Continue? (y/n)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O Ventoy alerta mais uma vez (pense duas vezes). De novo, tecle &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; e &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Double-check. Continue? (y/n)y
-
-Create partitions on /dev/sdb by parted in MBR style ...
-Done
-mkfs on disk partitions ...
-create efi fat fs /dev/sdb2 ...
-mkfs.fat 4.1 (2017-01-24)
-success
-mkexfatfs 1.3.0
-Creating... done.
-Flushing... done.
-File system created successfully.
-writing data to disk ...
-sync data ...
-esp partition processing ...
-umount: /home/linux/Downloads/ventoy-1.0.17-linux/ventoy-1.0.17/tmp_mnt: o alvo está ocupado.
-rm: não foi possível remover './tmp_mnt': Dispositivo ou recurso está ocupado
-
-Install Ventoy to /dev/sdb successfully finished.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Após alguns segundos ou minutos, a instalação do Ventoy no &lt;em&gt;pendrive&lt;/em&gt; é concluída.&lt;/p&gt;
-
-&lt;p&gt;No Linux Kamarada 15.1, uma mensagem de erro foi exibida, como você pode ver acima. Isso ocorreu porque o Ventoy formata o &lt;em&gt;pendrive&lt;/em&gt; com o sistema de arquivos &lt;a href=&quot;https://pt.wikipedia.org/wiki/ExFAT&quot;&gt;exFAT&lt;/a&gt; e o suporte a esse sistema de arquivos não vem instalado por padrão no Linux Kamarada 15.1.&lt;/p&gt;
-
-&lt;p&gt;Caso você se depare com essa mensagem no Linux Kamarada 15.1, no &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap&lt;/a&gt;, ou em outra distribuição baseada no &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, instale o suporte ao exFAT com:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fuse-exfat
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O Linux Kamarada 15.2 virá com suporte nativo ao sistema de arquivos exFAT.&lt;/p&gt;
-
-&lt;p&gt;Com o &lt;em&gt;pendrive&lt;/em&gt; preparado, copie para ele as imagens ISO que vai usar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que você pode organizá-las dentro de uma pasta, para separá-las dos demais arquivos do &lt;em&gt;pendrive&lt;/em&gt;. Para montar o menu durante o &lt;em&gt;boot&lt;/em&gt;, o Ventoy procura recursivamente por imagens ISO em pastas e subpastas dentro do &lt;em&gt;pendrive&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;usando-o-pendrive-com-o-ventoy&quot;&gt;Usando o pendrive com o Ventoy&lt;/h2&gt;
-
-&lt;p&gt;Depois de instalar o Ventoy no &lt;em&gt;pendrive&lt;/em&gt; e copiar imagens ISO para ele, é hora de usá-lo: reinicie o computador com o &lt;em&gt;pendrive&lt;/em&gt; conectado para “dar o &lt;em&gt;boot&lt;/em&gt;” por ele. O Ventoy listará as imagens ISO presentes no &lt;em&gt;pendrive&lt;/em&gt; em um menu, semelhante ao da primeira foto desse texto. Escolha a imagem ISO desejada e tecle &lt;strong&gt;Enter&lt;/strong&gt; para iniciar o sistema contido nela.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=YxW_L2Us0Is&quot;&gt;Instale Linux &amp;amp; Windows com O MESMO Pen Drive - Ventoy - Diolinux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/artigo/Ventoy-crie-pendrives-multiboot-para-quantas-e-quais-ISOs-quiser/&quot;&gt;Ventoy: crie pendrives multiboot para quantas e quais ISOs quiser - Viva o Linux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.ventoy.net/en/doc_start.html&quot;&gt;Ventoy - Documentation - Get Started&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 29 Jul 2020 00:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/</guid>
                 
                 
                     <category>pt</category>

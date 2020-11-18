@@ -307,7 +307,7 @@
 
                     </a>
                 </p>
-                <meta itemprop="dateModified" content="2020-10-10" />
+                <meta itemprop="dateModified" content="2020-11-17" />
             </div>
             <div class='col-sm-6'>
                 
@@ -391,7 +391,7 @@
   <li><strong>openSUSE Tumbleweed:</strong> com lançamentos contínuos (<em>rolling release</em>), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os <em>softwares</em> mais recentes, recebe atualizações pequenas e frequentes sempre que um <em>software</em> é atualizado, semelhante a distribuições como <a href="https://www.archlinux.org/">Arch</a> e Manjaro.</li>
 </ul>
 
-<p>O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em Linux.</p>
+<p>O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em <a href="https://www.vivaolinux.com.br/linux/">Linux</a>.</p>
 
 <p>Normalmente, eu falo aqui do openSUSE Leap. É a distribuição que eu uso e indico há anos, principalmente para usuários iniciantes, tanto que o <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada</a> é baseado nele.</p>
 
@@ -434,7 +434,7 @@
 
 <h2 id="baixando-a-imagem-do-opensuse">Baixando a imagem do openSUSE</h2>
 
-<p>Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você vai precisar de um PC com Linux ou <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> e um cartão de memória micro-SD de pelo menos 8GB. Provavelmente o passo-a-passo a seguir também funciona no <a href="https://www.apple.com/br/macos/">macOS</a>.</p>
+<p>Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você precisará de um PC com Linux, <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> ou <a href="https://www.apple.com/br/macos/">macOS</a> e um cartão de memória micro-SD de pelo menos 8GB.</p>
 
 <p>Eu vou usar o <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada 15.2</a>.</p>
 
@@ -457,133 +457,39 @@
 
 <p>Clique no <em>link</em> para a imagem que deseja baixar. O <em>download</em> pode demorar um pouco, considerando que o arquivo é grande (no meu caso, 1 GB).</p>
 
-<p>Conecte ao computador o cartão de memória que receberá a imagem.</p>
+<h2 id="gravando-a-imagem-no-cartão-de-memória-com-o-balenaetcher">Gravando a imagem no cartão de memória com o balenaEtcher</h2>
+
+<p>Para gravar a imagem do openSUSE no cartão de memória, eu recomendo o programa <a href="/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">balenaEtcher</a>, por ser simples e fácil de usar. Ele é gratuito e de código aberto.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (17/11/2020):</strong>
+    <p>Na versão original deste tutorial, eu falava sobre o balenaEtcher. Como pretendo usar o balenaEtcher também em outros tutoriais, decidi mover as instruções de como usá-lo para um tutorial próprio dele.</p>
+
+</div>
+
+<p>Veja como usar o balenaEtcher em:</p>
+
+<ul>
+  <li><a href="/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/">Gravando imagem no cartão de memória de forma fácil com o balenaEtcher</a></li>
+</ul>
+
+<p>Só observo que há um pequeno problema quanto a privacidade, que explico no tutorial e apresento uma solução de contorno, mas isso não me impede de usar o balenaEtcher.</p>
+
+<p>Se isso for uma questão pra você, uma alternativa é usar o comando <strong>dd</strong>, se você usa Linux.</p>
+
+<h2 id="alternativa-ao-etcher-comando-dd">Alternativa ao Etcher: comando dd</h2>
+
+<p>Se você preferiu seguir minha recomendação e usar o balenaEtcher, pode pular essa seção.</p>
+
+<p>O comando <strong><a href="https://man7.org/linux/man-pages/man1/dd.1.html">dd</a></strong> provavelmente está presente em todas as distribuições Linux.</p>
+
+<p>Conecte ao computador o cartão de memória no qual será gravada a imagem.</p>
 
 <p>Note que gravar a imagem do openSUSE no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um <em>backup</em> deles antes de continuar para não perdê-los.</p>
 
 <p>Recomendo que você remova quaisquer outros dispositivos de armazenamento (<em>pendrives</em>, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).</p>
 
-<h2 id="baixando-o-balena-etcher">Baixando o Balena Etcher</h2>
-
-<p>Para gravar a imagem do openSUSE no cartão de memória, eu recomendo a ferramenta <a href="https://www.balena.io/etcher/">Balena Etcher</a>, por ser simples e fácil de usar. Ela é gratuita e de <a href="https://github.com/balena-io/etcher">código aberto</a>.</p>
-
-<p>Apenas observo que há uma questão de <strong>privacidade</strong> nessa ferramenta, mas creio ser um problema pequeno e fácil de contornar: durante o uso, o programa faz conexões de rede com servidores do <a href="https://www.google.com.br/">Google</a>, <a href="https://pt-br.facebook.com/">Facebook</a> e outros serviços (mais informações <a href="https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103">aqui</a> e <a href="https://github.com/balena-io/etcher/issues/2977">aqui</a>), o que é intrigante, porque isso é totalmente desnecessário à sua função.</p>
-
-<p>Se isso for uma questão pra você, creio ser suficiente desconectar o computador da Internet durante o uso do aplicativo. Outra alternativa, se você usa Linux, é usar o comando <strong>dd</strong>, falo sobre ele mais adiante (se quiser, você pode pular toda essa parte sobre o Balena Etcher).</p>
-
-<p>Seguindo com o Balena Etcher… acesse seu <em>site</em> e clique no botão para <em>download</em>:</p>
-
-<ul>
-  <li><a href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a></li>
-</ul>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-02.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Quando o <em>download</em> terminar, abra a pasta <strong>Downloads</strong> e extraia o conteúdo do arquivo compactado baixado:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-03-pt.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Se você vai desconectar seu computador da Internet, a hora de fazer isso é agora.</p>
-
-<p>Abra a pasta criada e faça um clique-duplo no arquivo com extensão <a href="https://appimage.org/">AppImage</a> (que é, na verdade, o programa Balena Etcher em si, isso vai iniciá-lo):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-04-pt.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<h2 id="gravando-a-imagem-no-cartão-de-memória">Gravando a imagem no cartão de memória</h2>
-
-<p>No Balena Etcher, clique no botão <strong>Flash from file</strong> (gravar a partir do arquivo) e informe a localização da imagem do openSUSE que você baixou:</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-05.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Depois, clique no botão <strong>Select target</strong> (selecionar destino):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-06.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Marque o cartão de memória e clique em <strong>Select</strong> (selecionar):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-07.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p><strong>Cuidado:</strong> certifique-se de selecionar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível. Eu costumo me orientar pela capacidade (<strong>Size</strong>) do dispositivo.</p>
-
-<p>Finalmente, clique no último botão, <strong>Flash</strong> (gravar):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-08.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Informe a senha do administrador (no Linux, chamado de usuário <em>root</em>) para prosseguir.</p>
-
-<p>Aguarde a imagem ser gravada no cartão de memória, o Balena Etcher até informa uma estimativa de quanto tempo isso vai demorar (você pode sair e ir tomar um café):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-09.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Depois de gravar, o Balena Etcher verifica os arquivos no cartão de memória (você pode demorar mais um pouco no seu café):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-10.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-10.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>No final, o Balena Etcher informa que a gravação está completa (<strong>Flash Complete</strong>):</p>
-
-<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
-<a href="/files/2020/10/rpi4b-opensuse-11.jpg" title="">
-<img src="/files/2020/10/rpi4b-opensuse-11.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
-</a>
-
-</div>
-
-<p>Você pode simplesmente fechar o Balena Etcher.</p>
-
-<p>Se você desconectou seu computador da Internet, já pode conectá-lo de volta.</p>
-
-<h2 id="alternativa-ao-etcher-comando-dd">Alternativa ao Etcher: comando dd</h2>
-
-<p>Se você preferiu usar o Balena Etcher, pode pular essa seção.</p>
-
-<p>Se você não quiser usar o Balena Etcher, uma alternativa é usar o comando <strong><a href="https://man7.org/linux/man-pages/man1/dd.1.html">dd</a></strong>, que provavelmente está presente em todas as distribuições Linux.</p>
-
-<p>Antes, identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando <strong><a href="https://linux.die.net/man/8/fdisk">fdisk</a></strong>, que provavelmente também é outro comando universal:</p>
+<p>Identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando <strong><a href="https://linux.die.net/man/8/fdisk">fdisk</a></strong>, que provavelmente também é outro comando universal:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -627,11 +533,9 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
 
 <p>O comando <strong><a href="https://man7.org/linux/man-pages/man1/sync.1.html">sync</a></strong> ao final garante que dados que ainda estejam no cache na memória RAM sejam gravados. Com isso, é seguro remover o cartão de memória.</p>
 
-<h2 id="removendo-o-cartão-de-memória">Removendo o cartão de memória</h2>
+<p>Os comandos <strong>dd</strong> e <strong>sync</strong> não montam o cartão de memória após a gravação.</p>
 
-<p>O Balena Etcher, assim como o comando <strong>dd</strong>, não monta o cartão de memória após a gravação.</p>
-
-<p>Se você abrir o aplicativo <strong>Arquivos</strong>, verá que não aparece o ícone de <strong>Desmontar</strong> ao lado do cartão de memória:</p>
+<p>Se você abrir o aplicativo <strong>Arquivos</strong>, verá que o cartão de memória até aparece listado, mas não aparece o ícone de <strong>Desmontar</strong> ao lado dele:</p>
 
 <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
 <a href="/files/2020/10/rpi4b-opensuse-12-pt.jpg" title="">
