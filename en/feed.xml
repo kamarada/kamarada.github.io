@@ -9,10 +9,299 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 30 Nov 2020 23:27:31 -0300</pubDate>
-        <lastBuildDate>Mon, 30 Nov 2020 23:27:31 -0300</lastBuildDate>
+        <pubDate>Fri, 04 Dec 2020 00:21:51 -0300</pubDate>
+        <lastBuildDate>Fri, 04 Dec 2020 00:21:51 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Installing the Electrum Bitcoin wallet on Linux</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-2020-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-2020-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://electrum.org/&quot;&gt;Electrum&lt;/a&gt; is the &lt;a href=&quot;https://bitcoin.org/&quot;&gt;Bitcoin&lt;/a&gt; wallet recommended by the official Bitcoin website (&lt;a href=&quot;https://bitcoin.org/en/choose-your-wallet&quot;&gt;bitcoin.org&lt;/a&gt;) for &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; users who are starting to pĺay with bitcoins, so they are looking for an easy-to-use wallet, but also for those who want some more advanced features, such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Lightning_Network&quot;&gt;Lightning Network&lt;/a&gt;  support and integration with hardware wallets. Electrum allows you to easily recover your wallet from a secret phrase (seed).&lt;/p&gt;
+
+&lt;p&gt;It’s possible to install Electrum in some ways, from the quickest — and safe, but not so safe — for the hurried ones, to the safest rocky road for the cautious. Today I’m going to show you four ways of installing Electrum. See the options, choose your favorite one and hands-on!&lt;/p&gt;
+
+&lt;p&gt;At the moment, the latest version of Electrum is &lt;a href=&quot;https://github.com/spesmilo/electrum/releases/tag/4.0.5&quot;&gt;4.0.5&lt;/a&gt;, released on &lt;a href=&quot;https://github.com/spesmilo/electrum/releases/tag/4.0.5&quot;&gt;November 18, 2020&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here I use &lt;a href=&quot;/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;, which is a Linux distro based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-opensuses-1-click-install&quot;&gt;1) openSUSE’s 1 Click Install&lt;/h2&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-softwareoo.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-softwareoo.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The Electrum Bitcoin wallet is not available on the official &lt;a href=&quot;https://en.opensuse.org/Package_repositories&quot;&gt;openSUSE repositories&lt;/a&gt;. But if you search for it at &lt;a href=&quot;https://software.opensuse.org/package/electrum&quot;&gt;software.opensuse.org&lt;/a&gt;, you will find that it is available on the semi-official &lt;a href=&quot;https://build.opensuse.org/package/show/network:cryptocurrencies/electrum&quot;&gt;network:cryptocurrencies&lt;/a&gt; repository. If you are an &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; (or Linux Kamarada) user, getting the Electrum wallet from this repository is the easiest way to install it.&lt;/p&gt;
+
+&lt;p&gt;openSUSE Tumbleweed users are going to get Electrum 4.0.5, while openSUSE Leap 15.2 (and Linux Kamarada 15.2) users are going to get Electrum 4.0.2. That’s because the latest Electrum version depends on a &lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; library that is not yet available for Leap 15.2, which is &lt;a href=&quot;https://software.opensuse.org/package/python3-aiorpcX&quot;&gt;python3-aiorpcX&lt;/a&gt;. That library is now available for Tumbleweed only.&lt;/p&gt;
+
+&lt;p&gt;There are two different methods for installing the Electrum wallet package on openSUSE: from the graphical interface using 1 Click Install or from the terminal using the &lt;strong&gt;zypper&lt;/strong&gt; package manager — choose whichever method you prefer.&lt;/p&gt;
+
+&lt;p&gt;To install Electrum using 1 Click Install, just click the following button:&lt;/p&gt;
+
+&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/electrum.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; 1 Click Install&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To install Electrum using the terminal, first add the needed repository:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for openSUSE Leap 15.2 or Linux Kamarada 15.2:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f https://download.opensuse.org/repositories/network:/cryptocurrencies/openSUSE_Leap_15.2/ cryptocurrencies
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for openSUSE Tumbleweed:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f https://download.opensuse.org/repositories/network:/cryptocurrencies/openSUSE_Tumbleweed/ cryptocurrencies
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, install the Electrum package itself:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in electrum
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The source code of this package can be found on the &lt;a href=&quot;https://build.opensuse.org/package/show/network:cryptocurrencies/electrum&quot;&gt;openSUSE Build Service&lt;/a&gt;. I’m familiar with packaging for openSUSE using the OBS — not least because I use that same infrastructure to build Linux Kamarada packages — so I inspected the source files, mainly the &lt;code class=&quot;highlighter-rouge&quot;&gt;electrum.spec&lt;/code&gt; file. The files &lt;code class=&quot;highlighter-rouge&quot;&gt;Electrum-4.0.5.tar.gz&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Electrum-4.0.5.tar.gz.asc&lt;/code&gt; match those available on the &lt;a href=&quot;https://electrum.org/&quot;&gt;official Electrum website&lt;/a&gt;. I believe it is safe to install Electrum from that openSUSE repository.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-installing-electrum-with-flatpak&quot;&gt;2) Installing Electrum with Flatpak&lt;/h2&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-flatpak.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-flatpak.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://flatpak.org/&quot;&gt;Flatpak&lt;/a&gt; is a distribution-agnostic package manager. Until recently, different Linux distros used different package formats, often incompatible with each other. For example, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; and &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; use &lt;a href=&quot;https://en.wikipedia.org/wiki/Deb_(file_format)&quot;&gt;DEB&lt;/a&gt; packages, while &lt;a href=&quot;https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux&quot;&gt;RedHat&lt;/a&gt;, &lt;a href=&quot;https://getfedora.org/&quot;&gt;Fedora&lt;/a&gt; and openSUSE use &lt;a href=&quot;https://en.wikipedia.org/wiki/RPM_Package_Manager&quot;&gt;RPM&lt;/a&gt; packages. Flatpak brought a simpler alternative to install programs on different distros: as long as Flatpak is installed, the same Flatpak package can be installed on any distro.&lt;/p&gt;
+
+&lt;p&gt;There is a &lt;a href=&quot;https://flathub.org/apps/details/org.electrum.electrum&quot;&gt;Flatpak package for the Electrum wallet&lt;/a&gt;. At the moment, it brings Electrum version 4.0.4. It is an alternative that allows openSUSE Leap and Linux Kamarada users to get a newer version of the wallet with ease.&lt;/p&gt;
+
+&lt;p&gt;First, to install Flatpak on openSUSE, in case you haven’t done it already, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in flatpak
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After installing Flatpak, add the &lt;a href=&quot;https://flathub.org/&quot;&gt;Flathub&lt;/a&gt; repository, which is the main Flatpak repository:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, to install Electrum using Flatpak, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# flatpak install org.electrum.electrum
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The source code of the Electrum Flatpak package can be found on &lt;a href=&quot;https://github.com/flathub/org.electrum.electrum&quot;&gt;GitHub&lt;/a&gt;. I haven’t inspected this source code because I don’t understand how Flatpak packaging is done. But I believe it’s just as safe to install Electrum using Flatpak.&lt;/p&gt;
+
+&lt;p&gt;Note that the Flatpak package, like the openSUSE package, was also contributed by the community. I haven’t found any mention to those packages on the &lt;a href=&quot;https://electrum.org/&quot;&gt;official Electrum website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-download-from-electrum-website&quot;&gt;3) Download from Electrum website&lt;/h2&gt;
+
+&lt;p&gt;In fact, this is the recommendation of the Electrum’s creator: “do not download Electrum from another source than &lt;a href=&quot;https://electrum.org/&quot;&gt;electrum.org&lt;/a&gt;, and learn to verify GPG signatures”.&lt;/p&gt;
+
+&lt;p&gt;However, it is worth noting that Electrum depends on the &lt;a href=&quot;https://github.com/bitcoin-core/secp256k1&quot;&gt;secp256k1&lt;/a&gt; library, which can be easily installed from the official repositories of Linux distros such as &lt;a href=&quot;https://packages.debian.org/search?keywords=libsecp256k1&quot;&gt;Debian&lt;/a&gt; or &lt;a href=&quot;https://packages.ubuntu.com/search?keywords=libsecp256k1&quot;&gt;Ubuntu&lt;/a&gt;, but is not available on the official openSUSE repositories.&lt;/p&gt;
+
+&lt;p&gt;That creates a problem for openSUSE users, which is installing this library before actually installing Electrum. It could be retrieved from the &lt;a href=&quot;https://software.opensuse.org/package/libsecp256k1&quot;&gt;network:cryptocurrencies&lt;/a&gt; repo, but then it would make more sense to also install Electrum from that same repo (option #1). Another option is compiling both the library and the wallet from their source codes.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-compiling-from-source&quot;&gt;4) Compiling from source&lt;/h2&gt;
+
+&lt;p&gt;People concerned about security are going to prefer compiling the Electrum Bitcoin wallet from its source code, because doing that makes it possible to &lt;a href=&quot;/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;verify the integrity and authenticity&lt;/a&gt; of the code. It’s also possible to audit the source before installing — as long as you have the knowledge and the time that requires, of course.&lt;/p&gt;
+
+&lt;p&gt;Start by installing everything you will need to compile and use both the Electrum wallet and the secp256k1 library. To do this, open the terminal and run the following command as root:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install autoconf automake gcc gettext-tools git libtool make python3-cryptography python3-devel python3-pip python3-requests python3-setuptools
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To verify the integrity and authenticity of the source, we need to import the developer’s public key. I’m going to explain the process briefly, if you want more information, read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;Verifying data integrity and authenticity using SHA-256 and GPG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Go to the official Electrum wallet website (&lt;a href=&quot;https://electrum.org/&quot;&gt;electrum.org&lt;/a&gt;) and click &lt;strong&gt;Download&lt;/strong&gt;. On the next page, click the &lt;strong&gt;ThomasV&lt;/strong&gt; link at the beginning of the page, where it reads “Sources and executables are signed by ThomasV”:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-thomasv.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-thomasv.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Your browser downloads the developer’s public key, a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;ThomasV.asc&lt;/code&gt;. To import it, run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --import ThomasV.asc
+
+gpg: key 2BD5824B7F9470E6: public key &quot;Thomas Voegtlin (https://electrum.org) &amp;lt;thomasv@electrum.org&amp;gt;&quot; imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Optionally, if you have your own GPG key, sign the imported key:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ gpg --edit-key 2BD5824B7F9470E6
+&amp;gt; trust
+&amp;gt; sign
+&amp;gt; quit
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now let’s get the source of the Electrum wallet, which is hosted on &lt;a href=&quot;https://github.com/spesmilo/electrum&quot;&gt;GitHub&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git clone https://github.com/spesmilo/electrum.git
+$ cd electrum
+$ git submodule update --init
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At the moment, the latest version of Electrum is 4.0.5, and the developer follows the good practice of creating a &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; tag for each version. Check out the source code of this version:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git checkout 4.0.5
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source codes versioned with Git have their own way of verifying integrity and authenticity. To verify this source code on this specific tag, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ git verify-tag 4.0.5
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Make sure the &lt;strong&gt;good signature&lt;/strong&gt; message appears:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gpg: Signature made qua 18 nov 2020 16:24:04 -03
+gpg:                using RSA key 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
+gpg: Good signature from &quot;Thomas Voegtlin (https://electrum.org) &amp;lt;thomasv@electrum.org&amp;gt;&quot; [ultimate]
+gpg:                 aka &quot;ThomasV &amp;lt;thomasv1@gmx.de&amp;gt;&quot; [ultimate]
+gpg:                 aka &quot;Thomas Voegtlin &amp;lt;thomasv1@gmx.de&amp;gt;&quot; [ultimate]
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If the verification was successful, we can trust this source code and move on.&lt;/p&gt;
+
+&lt;p&gt;The Electrum source comes with a script to download and build the secp256k1 library, whose source is also hosted on &lt;a href=&quot;https://github.com/bitcoin-core/secp256k1&quot;&gt;GitHub&lt;/a&gt;. Run this script:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ./contrib/make_libsecp256k1.sh
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The secp256k1 binaries are created inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;electrum&lt;/code&gt; folder, at &lt;code class=&quot;highlighter-rouge&quot;&gt;contrib/secp256k1/dist/lib&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To install Electrum’s Python dependencies, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ python3 -m pip install --user -e .
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Optionally, to download and build Electrum translations, run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ./contrib/pull_locale
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point, you’re already able to start Electrum from the source folder:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ ./run_electrum
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-run-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-run-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Cancel&lt;/strong&gt; to exit Electrum.&lt;/p&gt;
+
+&lt;p&gt;Note that to start Electrum from the source code, it is always needed to enter the source folder and run that command. For daily usage, it is more interesting to install Electrum.&lt;/p&gt;
+
+&lt;p&gt;To do this, start by copying the secp256k1 library to the system libraries folder:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# cp --preserve=links contrib/secp256k1/dist/lib/*.so.* /usr/lib64/
+# ldconfig
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, install the Electrum wallet:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ python3 -m pip install --user .
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Make sure the command informs that the installation was successful:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Successfully installed Electrum-4.0.5
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can close the terminal window now.&lt;/p&gt;
+
+&lt;p&gt;Finally, you can delete the &lt;code class=&quot;highlighter-rouge&quot;&gt;electrum&lt;/code&gt; folder containing the source code, if you want. As the wallet has been installed on the system, this folder is not needed for everyday use. However, I recommend keeping it, as it may make it easier to update Electrum in the future.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-electrum&quot;&gt;Starting Electrum&lt;/h2&gt;
+
+&lt;p&gt;Regardless of the installation method you have chosen, to start the Electrum Bitcoin wallet, click &lt;strong&gt;Activities&lt;/strong&gt;, by the upper-left corner of the screen, type &lt;code class=&quot;highlighter-rouge&quot;&gt;electrum&lt;/code&gt; and click its icon:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/electrum-activities-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/electrum-activities-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When run for the first time, Electrum presents a configuration wizard.&lt;/p&gt;
+
+&lt;p&gt;The goal of this how-to (installing Electrum) was met, so today I’m going to stop here.&lt;/p&gt;
+
+&lt;h2 id=&quot;do-you-want-to-know-more&quot;&gt;Do you want to know more?&lt;/h2&gt;
+
+&lt;p&gt;Using Electrum to make Bitcoin transactions will be the subject of a future post.&lt;/p&gt;
+
+&lt;p&gt;In the meanwhile, if you want to know more about bitcoins and the Electrum wallet, I recommend you this great guide:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bitzuma.com/posts/a-beginners-guide-to-the-electrum-bitcoin-wallet/&quot;&gt;A Beginner’s Guide to the Electrum Bitcoin Wallet - Bitzuma&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 04 Dec 2020 00:10:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/12/04/installing-the-electrum-bitcoin-wallet-on-linux/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/12/04/installing-the-electrum-bitcoin-wallet-on-linux/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>PinePhone, the Linux-based smartphone: everything you need to know about it</title>
@@ -2606,165 +2895,6 @@ Download Leap 15.2&lt;/p&gt;
                 <pubDate>Wed, 01 Jul 2020 21:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Manage your dotfiles with Git</title>
-                <description>
-&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
-    &lt;div class=&quot;media&quot;&gt;
-        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Note from Linux Kamarada:&lt;/h6&gt;
-            
-&lt;p&gt;The following is a copy of the text originally written by Sébastien ‘sogal’ Poher and published at &lt;a href=&quot;https://news.opensuse.org/2020/03/27/Manage-dotfiles-with-Git/&quot;&gt;news.opensuse.org&lt;/a&gt;. I just added a note of mine.&lt;/p&gt;
-
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/06/git_logo.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/06/git_logo.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;dot-what-&quot;&gt;Dot what ???&lt;/h2&gt;
-
-&lt;p&gt;What is commonly referred to as &lt;em&gt;dotfiles&lt;/em&gt; are all those small plain text files that contain your softwares’ configuration. Most of the time they reside in your &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; directory but are hidden as they are prefixed with a dot, hence their name. For some apps, you can find them as well in the &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.config&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;p&gt;When it comes to managing them (i.e keep track of the changes, moving them around between different workstations, backing them up,…), there are different solutions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the good old USB stick&lt;/li&gt;
-  &lt;li&gt;rsyncing them&lt;/li&gt;
-  &lt;li&gt;syncing them in the “cloud”&lt;/li&gt;
-  &lt;li&gt;copying them in a central folder and symlinking them to where they are supposed to be found&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this article, we will focus on how to manage them in an efficient and simple way with &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;git-comes-to-rescue&quot;&gt;Git comes to rescue&lt;/h2&gt;
-
-&lt;p&gt;In this example, we will use &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/Dotfiles&lt;/code&gt; as the Git repository, but feel free to change it to your needs.&lt;/p&gt;
-
-&lt;p&gt;First of all, we will initialize this repository&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git init --bare $HOME/Dotfiles
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then, as all the &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; commands that we will use will refer to this repository, it is advised to create an alias, such as:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can add this line to your $SHELL configuration file (&lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.bashrc&lt;/code&gt; if you use &lt;a href=&quot;https://www.gnu.org/software/bash/&quot;&gt;Bash&lt;/a&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.zshrc&lt;/code&gt; if you use &lt;a href=&quot;https://www.zsh.org/&quot;&gt;zsh&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Next, we will configure Git so it will not show all the untracked files. This is required as we use the entire &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; as work tree.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;dotfiles config --local status.showUntrackedFiles no
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;At that point, you should be able to check the state of this repository:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;dotfiles status
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then you can add your configuration files and commit as you wish. For example, let’s add our &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; :&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;dotfiles add .bashrc
-dotfiles commit -m &quot;Added .bashrc&quot;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now just add a remote repository (your self-hosted Git or a public one) and push your changes to it:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;dotfiles remote add origin git@yourgit.example.com/dotfiles.git
-dotfiles push
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
-    &lt;div class=&quot;media&quot;&gt;
-        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Note from Linux Kamarada:&lt;/h6&gt;
-            
-&lt;p&gt;Online services such as &lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;, &lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt; and &lt;a href=&quot;https://gitlab.com/&quot;&gt;GitLab&lt;/a&gt; allow you to create private repositories. Unless you really want to share your dotfiles with other people, I recommend you to create a private repository, so that only you have access to your personal files.&lt;/p&gt;
-
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;setup-a-new-machine&quot;&gt;Setup a new machine&lt;/h2&gt;
-
-&lt;p&gt;Now that you have it all set, let’s configure a new system with the dotfiles you have in your repository.&lt;/p&gt;
-
-&lt;p&gt;First, clone locally your online repository:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;git clone --bare git@yourgit.example.com/dotfiles.git $HOME/Dotfiles
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Again, you have to defined the same alias as before:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Remember to put it in your $SHELL configuration file.
-Now, just apply the changes from the repository you have just cloned to your system:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;dotfiles checkout
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If some of the files already exist, you will get an error. This will probably happen with files created by default during the openSUSE installation and user account creation, such as the &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME/.bashrc&lt;/code&gt; file, no worries, just rename or delete them.&lt;/p&gt;
-
-&lt;p&gt;Now, each time you change your configuration files tracked by Git, remember to commit and push your changes.&lt;/p&gt;
-
-&lt;h2 id=&quot;sources&quot;&gt;Sources&lt;/h2&gt;
-
-&lt;p&gt;The following articles where used as sources of this article. Thanks a lot to their authors:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lord.re/en/posts/62-dotfiles-home-git/&quot;&gt;Easily manage your dotfiles with git&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.freecodecamp.org/news/dive-into-dotfiles-part-2-6321b4a73608/&quot;&gt;How to make your Dotfile management a painless affair&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/toutsbrasil/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b&quot;&gt;How to manage your dotfiles with git&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;alert alert-success no-ads-here&quot; role=&quot;alert&quot;&gt;
-    &lt;div class=&quot;media&quot;&gt;
-        &lt;img class=&quot;mr-3&quot; src=&quot;/favicon.png&quot; style=&quot;max-width: 64px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;alert-heading mt-0&quot;&gt;Note from Linux Kamarada:&lt;/h6&gt;
-            
-&lt;p&gt;The sources above were cited by the author of the original text:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://news.opensuse.org/2020/03/27/Manage-dotfiles-with-Git/&quot;&gt;Manage your dotfiles with Git - openSUSE News&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Thank you, Sébastien ‘sogal’ Poher, for the great tip!&lt;/p&gt;
-
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-</description>
-                <pubDate>Fri, 05 Jun 2020 11:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/06/05/manage-your-dotfiles-with-git/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/06/05/manage-your-dotfiles-with-git/</guid>
                 
                 
                     <category>en</category>
