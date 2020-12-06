@@ -9,10 +9,107 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 04 Dec 2020 00:21:51 -0300</pubDate>
-        <lastBuildDate>Fri, 04 Dec 2020 00:21:51 -0300</lastBuildDate>
+        <pubDate>Sun, 06 Dec 2020 00:25:16 -0300</pubDate>
+        <lastBuildDate>Sun, 06 Dec 2020 00:25:16 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>openSUSE Leap e openSUSE Tumbleweed: qual é a diferença?</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/leap-tumbleweed.png&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/leap-tumbleweed.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Quando eu comecei a usar o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, em &lt;a href=&quot;https://vinyanalista.github.io/blog/2012/04/21/problemas-envolvendo-bootloaders-mbr-e-tabela-de-particoes/&quot;&gt;2012&lt;/a&gt;, “openSUSE” era o nome tanto da distribuição &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; quanto do projeto que a desenvolvia. Hoje, o Projeto openSUSE disponibiliza duas distribuições, chamadas &lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;Leap&lt;/a&gt; e &lt;a href=&quot;https://en.opensuse.org/Portal:Tumbleweed&quot;&gt;Tumbleweed&lt;/a&gt;. Nesse texto, você vai ver as diferenças entre essas distribuições e como elas começaram.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Primeiro, vejamos o que são essas distribuições e as diferenças entre elas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Leap&quot;&gt;openSUSE Leap&lt;/a&gt;:&lt;/strong&gt; mais estável, sucessor do bom e velho openSUSE, mas com um novo processo de desenvolvimento, atualmente está na &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;versão 15.2&lt;/a&gt; e lança novas versões com regularidade (geralmente, uma nova versão por ano), de modo semelhante a distribuições mais tradicionais como &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;; e&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Tumbleweed&quot;&gt;openSUSE Tumbleweed&lt;/a&gt;:&lt;/strong&gt; com lançamentos contínuos (&lt;em&gt;rolling release&lt;/em&gt;), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os &lt;em&gt;softwares&lt;/em&gt; mais recentes, recebe atualizações pequenas e frequentes sempre que um &lt;em&gt;software&lt;/em&gt; é atualizado, semelhante a distribuições como &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt;, &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt; e &lt;a href=&quot;http://www.gentoo.org/&quot;&gt;Gentoo&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em Linux.&lt;/p&gt;
+
+&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. É a distribuição que eu uso e indico há anos, principalmente para usuários iniciantes, tanto que o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt; é baseado nele. O Linux Kamarada está atualmente na &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;versão 15.2&lt;/a&gt;, baseada na versão mais atual do openSUSE Leap, também 15.2. Eu uso números de versões iguais para mostrar esse alinhamento.&lt;/p&gt;
+
+&lt;h2 id=&quot;um-pouco-de-história-e-mais-detalhes&quot;&gt;Um pouco de história e mais detalhes&lt;/h2&gt;
+
+&lt;p&gt;O desenvolvimento da distribuição openSUSE ocorre no &lt;a href=&quot;https://build.opensuse.org/&quot;&gt;openSUSE Build Service&lt;/a&gt;, mais precisamente no repositório &lt;a href=&quot;https://pt.opensuse.org/Portal:Factory&quot;&gt;Factory&lt;/a&gt; (“fábrica”, no inglês). Novas versões de pacotes sempre entram no openSUSE por esse repositório. Para quem conhece o Debian, o repositório Factory do openSUSE é equivalente ao &lt;a href=&quot;https://www.debian.org/releases/sid/&quot;&gt;repositório instável&lt;/a&gt; (&lt;em&gt;unstable&lt;/em&gt;, “Sid”) do Debian.&lt;/p&gt;
+
+&lt;p&gt;O projeto Tumbleweed foi iniciado em &lt;a href=&quot;https://lists.opensuse.org/opensuse-project/2010-11/msg00206.html&quot;&gt;novembro de 2010&lt;/a&gt; por &lt;a href=&quot;https://pt.wikipedia.org/wiki/Greg_Kroah-Hartman&quot;&gt;Greg Kroah-Hartman&lt;/a&gt;, desenvolvedor do &lt;a href=&quot;https://www.kernel.org/&quot;&gt;&lt;em&gt;kernel&lt;/em&gt; Linux&lt;/a&gt; que na época trabalhava na &lt;a href=&quot;https://pt.wikipedia.org/wiki/Novell&quot;&gt;Novell&lt;/a&gt;, então proprietária da &lt;a href=&quot;https://www.suse.com/pt-br/&quot;&gt;SUSE&lt;/a&gt;. No início, não era propriamente uma distribuição inteira, mas um conjunto adicional de atualizações contínuas que podia ser instalado sobre a versão regular do openSUSE.&lt;/p&gt;
+
+&lt;p&gt;Nesse momento, o Projeto openSUSE tinha apenas uma distribuição, o openSUSE 11.3.&lt;/p&gt;
+
+&lt;p&gt;Quatro anos depois, em &lt;a href=&quot;https://news.opensuse.org/2014/11/04/opensuse-13-2-green-light-to-freedom/&quot;&gt;novembro de 2014&lt;/a&gt;, foi lançado o openSUSE 13.2, que acabou sendo a última versão regular da distribuição que se chamava apenas openSUSE. Ao mesmo tempo, os projetos Factory e Tumbleweed foram &lt;a href=&quot;https://news.opensuse.org/2014/10/24/tumbleweed-factory-rolling-releases-to-merge/&quot;&gt;mesclados&lt;/a&gt; e passou a existir a distribuição chamada openSUSE Tumbleweed.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/tumbleweed.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/tumbleweed.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Internamente, no OBS, ainda existe o repositório &lt;a href=&quot;https://build.opensuse.org/project/show/openSUSE:Factory&quot;&gt;Factory&lt;/a&gt;. Os pacotes considerados mais essenciais para o sistema são submetidos a testes automatizados da ferramenta &lt;a href=&quot;https://openqa.opensuse.org/&quot;&gt;openQA&lt;/a&gt; integrada ao OBS. Quando os testes são concluídos e o repositório está em um estado considerado estável, o repositório é então sincronizado com os &lt;a href=&quot;https://en.opensuse.org/openSUSE:Mirrors&quot;&gt;espelhos&lt;/a&gt; (&lt;em&gt;mirrors&lt;/em&gt;) e publicado como openSUSE Tumbleweed. Cada atualização dessa é chamada de &lt;em&gt;&lt;a href=&quot;https://www.vivaolinux.com.br/artigo/openSUSE-Tumbleweed-Snapshots-A-Melhor-Forma-de-Controle-de-Atualizacoes-e-Quebras-do-Sistema&quot;&gt;snapshot&lt;/a&gt;&lt;/em&gt; (instantâneo) e normalmente é feita de duas a três vezes na semana.&lt;/p&gt;
+
+&lt;p&gt;Já no final de 2014, portanto, o Projeto openSUSE oferecia 2 distribuições: openSUSE 13.2 e openSUSE Tumbleweed.&lt;/p&gt;
+
+&lt;p&gt;Visando melhorar o processo de lançamento de novas versões, a SUSE decidiu liberar os códigos-fonte do &lt;a href=&quot;https://www.suse.com/pt-br/products/&quot;&gt;SUSE Linux Enterprise&lt;/a&gt; (SLE) para a comunidade e ajudar a oferecer uma distribuição baseada neles. Para marcar a mudança, o Projeto openSUSE decidiu que na próxima versão da distribuição regular o &lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2015-06/msg00203.html&quot;&gt;número&lt;/a&gt; saltaria para 42 e o &lt;a href=&quot;https://lists.opensuse.org/opensuse-project/2015-07/msg00054.html&quot;&gt;nome&lt;/a&gt; mudaria para Leap. E assim foi lançado o &lt;a href=&quot;/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/&quot;&gt;openSUSE Leap 42.1&lt;/a&gt;, sucessor do openSUSE 13.2, em &lt;a href=&quot;/pt/2015/11/04/opensuse-leap-42-1-se-torna-a-primeira-distribuicao-linux-hibrida/&quot;&gt;novembro de 2015&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/leap.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/leap.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Portanto, no final de 2015, o Projeto openSUSE já oferecia suas 2 distribuições com os nomes que usam até hoje: openSUSE Leap 42.1 e openSUSE Tumbleweed.&lt;/p&gt;
+
+&lt;p&gt;O número 42 — a resposta para “o significado da vida, do universo e tudo mais” — era uma referência ao &lt;a href=&quot;https://geekness.com.br/porque-42/&quot;&gt;Guia do Mochileiro das Galáxias&lt;/a&gt;. O número 1 indicava o alinhamento com o Service Pack 1 (SP1) do SLE 12.&lt;/p&gt;
+
+&lt;p&gt;Pode-se dizer que esse salto no número foi principalmente uma estratégia de &lt;em&gt;marketing&lt;/em&gt;, porque depois das versões &lt;a href=&quot;/pt/2016/11/16/opensuse-leap-42-2-versao-otima-para-profissionais-linux/&quot;&gt;42.2&lt;/a&gt; e &lt;a href=&quot;/pt/2017/08/07/atualizacao-de-distribuicao-linux-continua-empoderando-a-comunidade-e-as-empresas-se-beneficiam/&quot;&gt;42.3&lt;/a&gt;, voltaram os números mais baixos, mais próximos dos usados antes. A SUSE e o Projeto openSUSE &lt;a href=&quot;https://lists.opensuse.org/opensuse-project/2017-04/msg00014.html&quot;&gt;decidiram&lt;/a&gt; que as próximas versões das suas distribuições seriam numeradas &lt;a href=&quot;/pt/2018/05/25/baseado-no-codigo-do-enterprise-testado-milhoes-de-vezes-opensuse-leap-15-lancado/&quot;&gt;openSUSE Leap 15.0&lt;/a&gt; e SLE 15. Desde então, tivemos &lt;a href=&quot;/pt/2019/05/22/comunidade-opensuse-lanca-a-versao-15-1-da-distribuicao-leap/&quot;&gt;openSUSE Leap 15.1&lt;/a&gt; e &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;15.2&lt;/a&gt; e a próxima versão será a &lt;a href=&quot;https://lists.opensuse.org/opensuse-announce/2020-04/msg00000.html&quot;&gt;15.3&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/opensuse-releases.png&quot; title=&quot;Versões do openSUSE (fonte: [Wikipedia](https://en.wikipedia.org/wiki/OpenSUSE_version_history))&quot;&gt;
+&lt;img src=&quot;/files/2020/12/opensuse-releases.png&quot; alt=&quot;Versões do openSUSE (fonte: [Wikipedia](https://en.wikipedia.org/wiki/OpenSUSE_version_history))&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;Versões do openSUSE (fonte: &lt;a href=&quot;https://en.wikipedia.org/wiki/OpenSUSE_version_history&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Já o nome Leap (“salto”, em inglês) remete à forma como a distribuição evolui, o que a distingue da outra distribuição, Tumbleweed (“erva daninha”, em inglês, daquelas que andam aos saltos enroladas em bola, muito comuns em filmes de &lt;em&gt;cowboys&lt;/em&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/tumbleweed.gif&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/tumbleweed.gif&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Enquanto usuários do Leap “saltam” de uma versão para outra (da 15.0 para a 15.1, da 15.1 para a 15.2, e assim por diante), usuários do Tumbleweed estão constantemente “rolando” na única versão que existe, que é sempre a mais recente.&lt;/p&gt;
+
+</description>
+                <pubDate>Sun, 06 Dec 2020 00:15:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Bitcoin: instalando a carteira Electrum</title>
@@ -3041,262 +3138,6 @@ $ gpg --import public_key
                 <pubDate>Mon, 31 Aug 2020 11:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Firefox e Chromium não conseguem reproduzir vídeos: veja como resolver</title>
-                <description>&lt;p&gt;Se você usa o &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; ou o &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, navegadores que vem no &lt;a href=&quot;/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/&quot;&gt;Linux Kamarada 15.2 RC&lt;/a&gt;, talvez já tenha se deparado com algum vídeo que eles não conseguem reproduzir. As mensagens de erro variam de &lt;em&gt;site&lt;/em&gt; para &lt;em&gt;site&lt;/em&gt;. Veja alguns exemplos:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-video-01-pt.jpg&quot; title=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): Não foi possível reproduzir a mídia.&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-video-01-pt.jpg&quot; alt=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): Não foi possível reproduzir a mídia.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/openSUSE/status/1290345568452202498&quot;&gt;Twitter&lt;/a&gt;: Não foi possível reproduzir a mídia.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/chromium-video-01-pt.jpg&quot; title=&quot;[Facebook](https://www.facebook.com/167950666638006/videos/1043355016062250/): Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&quot;&gt;
-&lt;img src=&quot;/files/2020/08/chromium-video-01-pt.jpg&quot; alt=&quot;[Facebook](https://www.facebook.com/167950666638006/videos/1043355016062250/): Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/167950666638006/videos/1043355016062250/&quot;&gt;Facebook&lt;/a&gt;: Ocorreu um erro. Estamos tendo problemas ao reproduzir este vídeo.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De forma resumida, isso acontece porque estão faltando &lt;em&gt;codecs&lt;/em&gt; proprietários no seu computador. A dica a seguir pode te ajudar a resolver esse problema.&lt;/p&gt;
-
-&lt;p&gt;Caso você ainda não conheça, o Linux Kamarada é uma distribuição &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; baseada no &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap&lt;/a&gt;, portanto a dica a seguir também serve para usuários do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Outras distribuições podem enfrentar problema semelhante e ter também solução análoga.&lt;/p&gt;
-
-&lt;h2 id=&quot;como-resolver-esse-problema&quot;&gt;Como resolver esse problema&lt;/h2&gt;
-
-&lt;p&gt;A solução, no caso do Linux Kamarada e do openSUSE Leap, se resume a:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Adicionar o repositório do projeto &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt;, caso você ainda não tenha esse repositório adicionado no seu sistema;&lt;/li&gt;
-  &lt;li&gt;Obter a lista atualizada de pacotes disponíveis nos repositórios; e&lt;/li&gt;
-  &lt;li&gt;Atualizar os pacotes do sistema permitindo a &lt;a href=&quot;https://en.opensuse.org/SDB:Vendor_change_update&quot;&gt;mudança de fornecedor&lt;/a&gt;, o que deve fazer com que alguns pacotes fornecidos pelo openSUSE sejam substituídos por pacotes do Packman, que contém os  &lt;em&gt;codecs&lt;/em&gt; proprietários faltantes.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Há pelo menos duas formas de fazer isso: pela interface gráfica, que pode ser mais amigável especialmente para os iniciantes, ou pela interface de linha de comando.&lt;/p&gt;
-
-&lt;h3 id=&quot;pela-interface-de-linha-de-comando&quot;&gt;Pela interface de linha de comando&lt;/h3&gt;
-
-&lt;p&gt;A solução pela linha de comando usa o gerenciador de pacotes &lt;strong&gt;&lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt;. Como ela é mais resumida, vou começar mostrando ela.&lt;/p&gt;
-
-&lt;p&gt;Execute os 3 comandos a seguir, que correspondem aos 3 passos acima respectivamente, como usuário administrador (&lt;em&gt;root&lt;/em&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.2/ packman
-# zypper ref
-# zypper up --allow-vendor-change
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;pela-interface-gráfica&quot;&gt;Pela interface gráfica&lt;/h3&gt;
-
-&lt;p&gt;Embora seja mais amigável, a solução pela interface gráfica requer alguns cliques e passa por mais telas. Mas a facilidade mais que compensa esse caminho mais longo.&lt;/p&gt;
-
-&lt;h4 id=&quot;adicionando-o-repositório-do-projeto-packman&quot;&gt;Adicionando o repositório do projeto Packman&lt;/h4&gt;
-
-&lt;p&gt;Abra o &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;. Para isso, abra o menu &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; e clique no ícone correspondente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Dentro da categoria &lt;strong&gt;Software&lt;/strong&gt;, a primeira, clique no item &lt;strong&gt;Repositórios de software&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela &lt;strong&gt;Repositórios de software configurados&lt;/strong&gt;, clique no botão &lt;strong&gt;Adicionar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na tela seguinte, selecione a opção &lt;strong&gt;Repositórios da comunidade&lt;/strong&gt; e clique no botão &lt;strong&gt;Próximo&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Na &lt;strong&gt;Lista de repositórios online&lt;/strong&gt;, ative o &lt;strong&gt;Packman Repository&lt;/strong&gt; e clique em &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-05-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-05-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O próprio YaST se encarrega de obter a lista atualizada de pacotes disponíveis nos repositórios. Ele pergunta se pode confiar no novo repositório, clique em &lt;strong&gt;Confiar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;De volta à tela &lt;strong&gt;Repositórios de software configurados&lt;/strong&gt;, clique em &lt;strong&gt;OK&lt;/strong&gt; para sair dela.&lt;/p&gt;
-
-&lt;h4 id=&quot;obtendo-os-pacotes-do-repositório-do-packman&quot;&gt;Obtendo os pacotes do repositório do Packman&lt;/h4&gt;
-
-&lt;p&gt;De volta à tela principal do YaST, clique no item &lt;strong&gt;Gerenciamento de software&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Na janela que se abre, abra o menu &lt;strong&gt;Ver&lt;/strong&gt; e clique em &lt;strong&gt;Repositórios&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;À esquerda, selecione o &lt;strong&gt;Packman Repository&lt;/strong&gt;, e à direita, clique em &lt;strong&gt;Comutar pacotes do sistema&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que vários pacotes que já estavam instalados no sistema, mas eram fornecidos pelo openSUSE, foram marcados para serem atualizados, para versões fornecidas pelo Packman:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique no botão &lt;strong&gt;Aceitar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;O YaST alerta que vai instalar mais alguns pacotes, clique em &lt;strong&gt;Continuar&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O YaST baixa e instala os pacotes, o que pode demorar mais ou menos dependendo da sua conexão de Internet:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-11-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-11-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ao final, o YaST avisa que a instalação dos pacotes foi concluída com sucesso:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Clique em &lt;strong&gt;Concluir&lt;/strong&gt; para fechar essa janela e depois feche o YaST.&lt;/p&gt;
-
-&lt;h2 id=&quot;prontinho&quot;&gt;Prontinho!&lt;/h2&gt;
-
-&lt;p&gt;Quando terminar os procedimentos acima, feche o navegador e abra-o de novo.&lt;/p&gt;
-
-&lt;p&gt;Feito isso, os vídeos que antes não eram reproduzidos passam a aparecer:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-video-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-video-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/chromium-video-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/chromium-video-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;caso-você-queira-mais-informações&quot;&gt;Caso você queira mais informações&lt;/h2&gt;
-
-&lt;p&gt;O MP4 e o H.264 se tornaram formatos de vídeo comuns na Internet. A rigor, o &lt;a href=&quot;https://pt.wikipedia.org/wiki/MP4&quot;&gt;MP4&lt;/a&gt; é um formato de &lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Arquivo_recipiente&quot;&gt;container&lt;/a&gt;&lt;/em&gt;, que pode armazenar em um único arquivo trilha de vídeo, trilhas de áudio, legendas embutidas e outras informações. Já o &lt;a href=&quot;https://pt.wikipedia.org/wiki/H.264&quot;&gt;H.264&lt;/a&gt; é um formato de vídeo de alta definição comprimido, ou seja, ele codifica apenas a informação visual (o vídeo em si) e vem dentro de um &lt;em&gt;container&lt;/em&gt; (como o MP4). Geralmente, “arquivo de vídeo H.264” refere-se a um arquivo com extensão &lt;code class=&quot;highlighter-rouge&quot;&gt;.mp4&lt;/code&gt; que contém uma trilha de vídeo codificada com o H.264.&lt;/p&gt;
-
-&lt;p&gt;Ocorre que o &lt;em&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Codec&quot;&gt;codec&lt;/a&gt;&lt;/em&gt; do H.264 não é um &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.pt-br.html&quot;&gt;&lt;em&gt;software&lt;/em&gt; livre&lt;/a&gt;, mas um &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;&lt;em&gt;software&lt;/em&gt; proprietário&lt;/a&gt; da Moving Picture Experts Group Licensing Administration (&lt;a href=&quot;https://www.mpegla.com/&quot;&gt;MPEG LA&lt;/a&gt;) e, portanto, não pode ser fornecido em distribuições Linux como o Linux Kamarada e o openSUSE.&lt;/p&gt;
-
-&lt;p&gt;Se você abre uma página no navegador que tem um vídeo H.264, mas o &lt;em&gt;codec&lt;/em&gt; do H.264 não está instalado no sistema — e ele não vem instalado por padrão nem no openSUSE, nem no Linux Kamarada — então o vídeo não é reproduzido, como mostrei no início do texto.&lt;/p&gt;
-
-&lt;p&gt;Felizmente, no caso dessas duas distribuições, existe o projeto Packman que fornece esse e outros &lt;em&gt;codecs&lt;/em&gt; proprietários na forma de pacotes que podem ser instalados com facilidade.&lt;/p&gt;
-
-&lt;p&gt;Note que esse problema não ocorre no navegador &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt;. Provavelmente a &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; fez um acordo comercial com a MPEG LA para distribuir o &lt;em&gt;codec&lt;/em&gt; do H.264 embutido no Chrome.&lt;/p&gt;
-
-&lt;h3 id=&quot;mas-e-o-plugin-openh264-do-firefox&quot;&gt;Mas e o plugin OpenH264 do Firefox?&lt;/h3&gt;
-
-&lt;p&gt;Se você usa o Firefox, talvez tenha reparado que ele tem um &lt;em&gt;plugin&lt;/em&gt; chamado “Codec de vídeo OpenH264”, que é instalado automaticamente:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-openh264-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-openh264-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.openh264.org/&quot;&gt;OpenH264&lt;/a&gt; é o nome da implementação do &lt;em&gt;codec&lt;/em&gt; do H.264 feita pela &lt;a href=&quot;https://www.cisco.com/c/pt_br/index.html&quot;&gt;Cisco&lt;/a&gt;. Essa implementação tem seu &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;código aberto&lt;/a&gt;, porém também não é um &lt;em&gt;software&lt;/em&gt; livre, visto que seus binários são lançados sob uma licença da Cisco, que cobre os custos de licenciamento junto à MPEG LA para fornecer esse &lt;em&gt;codec&lt;/em&gt; de graça. Por isso, ele deve ser baixado da Cisco.&lt;/p&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://www.mozilla.org/pt-BR/&quot;&gt;Mozilla&lt;/a&gt; fez uma parceria com a Cisco para que o Firefox possa usar o OpenH264. Quando você usa o Firefox pela primeira vez, ele baixa o &lt;em&gt;plugin&lt;/em&gt; do OpenH264 do &lt;em&gt;site&lt;/em&gt; da Cisco.&lt;/p&gt;
-
-&lt;p&gt;O OpenH264 implementa apenas a parte mais básica (&lt;em&gt;baseline profile&lt;/em&gt;) do formato H.264, de modo que só é usado pelo Firefox para dar suporte a chamadas de vídeo, como as feitas usando a tecnologia &lt;a href=&quot;https://webrtc.org/&quot;&gt;WebRTC&lt;/a&gt;. Exemplos de serviços de chamadas de vídeo que usam essa tecnologia incluem o &lt;a href=&quot;https://meet.google.com/&quot;&gt;Google Meet&lt;/a&gt;, o &lt;a href=&quot;https://hangouts.google.com/&quot;&gt;Google Hangouts&lt;/a&gt;, o &lt;a href=&quot;https://www.messenger.com/&quot;&gt;Facebook Messenger&lt;/a&gt; e o &lt;a href=&quot;https://discord.com/&quot;&gt;Discord&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Portanto, o &lt;em&gt;plugin&lt;/em&gt; OpenH264 do Firefox nada tem a ver com os vídeos que não são reproduzidos. Falei dele aqui apenas para esclarecer isso.&lt;/p&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/questions/1188176&quot;&gt;Twitter says “The media could not be played”. | Firefox Support Forum | Mozilla Support&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support&quot;&gt;SDB:Firefox MP4/H.264 Video Support - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.fsf.org/licensing/h264-patent-license&quot;&gt;Information about the H.264 patent license - Free Software Foundation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/pt-BR/kb/por-que-existe-um-plugin-openh264-no-firefox&quot;&gt;Por que existe um plugin OpenH264 no Firefox? | Ajuda do Firefox&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2018-02/msg00846.html&quot;&gt;[opensuse-factory] Status of x264 libraries in the standard distribution&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fedoraproject.org/wiki/OpenH264&quot;&gt;OpenH264 - Fedora Project Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.iorgsoft.com/compare/mp4-vs-h.264-comparison.html&quot;&gt;MP4 vs H.264, difference between MP4 and H.264 format - iOrgsoft&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bloggeek.me/massive-applications-using-webrtc/&quot;&gt;10 Massive Applications Using WebRTC - BlogGeek.me&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Tue, 18 Aug 2020 01:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/08/18/firefox-e-chromium-nao-conseguem-reproduzir-videos-veja-como-resolver/</guid>
                 
                 
                     <category>pt</category>
