@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Como programar um robô que tuíta toda manhã com Node.js - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="Esse é mais um da série: resolvendo problemas do dia a dia de forma criativa com scripts.Provavelmente você já conhece a rede social Twitter. Se acompanha as...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-12-11 19:10:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Esse é mais um da série: resolvendo problemas do dia a dia de forma criativa com scripts.Provavelmente você já conhece a rede social Twitter. Se acompanha as..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2020/12/twitter-bot.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Como programar um robô que tuíta toda manhã com Node.js" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <meta name="msapplication-TileColor" content="#43a047">
+    <meta name="theme-color" content="#43a047">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/',
+                    title: document.title,
+                    description: 'Esse é mais um da série: resolvendo problemas do dia a dia de forma criativa com scripts.Provavelmente você já conhece a rede social Twitter. Se acompanha as...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/" itemprop="mainEntityOfPage url">
+                Como programar um robô que tuíta toda manhã com Node.js
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-12-11">
+                    <a href="/2020/12/11/">
+                        
+    11 de
+    
+    Dezembro
+    
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-12-11" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot.jpg" title="">
+<img src="/files/2020/12/twitter-bot.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Esse é mais um da série: <a href="/pt/2020/07/13/resolvendo-problemas-de-forma-criativa-com-scripts-comparando-paletas-de-cores-usando-python/">resolvendo problemas do dia a dia de forma criativa com <em>scripts</em></a>.</p>
+
+<p>Provavelmente você já conhece a rede social <a href="https://twitter.com/">Twitter</a>. Se acompanha as notícias, talvez já tenha ouvido falar em robôs do Twitter. Mas o que são esses robôs do Twitter?</p>
+
+<p>Um <a href="https://en.wikipedia.org/wiki/Twitter_bot"><strong>robô (<em>bot</em>) do Twitter</strong></a> é um programa de computador que controla uma conta do Twitter. Ele consegue fazer praticamente todas as ações que um usuário humano pode fazer no Twitter: tuitar, retuitar, curtir, seguir ou deixar de seguir outras contas, enviar ou responder mensagens diretas, monitorar tuítes contendo determinada palavra ou <em>hashtag</em>.</p>
+
+<p>Robôs podem ser usados para as mais diversas finalidades: eu já vi robôs que compartilham a previsão do tempo de cidades, tem um robô que retuíta postagens sobre <a href="https://www.vivaolinux.com.br/linux/">Linux</a> que é o <a href="https://twitter.com/LlnuxBot">@LlnuxBot</a> (sic) — quase sempre ele retuíta as postagens do <a href="https://twitter.com/LinuxKamarada">@LinuxKamarada</a>. Há também robôs mais polêmicos, que disparam mensagens em crítica ou apoio a políticos.</p>
+
+<p>Nesse tutorial, você verá como programar um robô do Twitter. Aqui, vou usar como referência o sistema operacional Linux, mais especificamente a distribuição <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada</a>. Usuários do <a href="https://www.opensuse.org/">openSUSE</a> ou derivados também podem seguir à risca esse tutorial.</p>
+
+<p>As tecnologias que vou usar não são exclusivas do Linux ou do Linux Kamarada, de modo que usuários de outros sistemas, como, por exemplo, <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> ou <a href="https://www.apple.com/br/macos/">macOS</a>, com alguma pesquisa adicional também podem reproduzir esse tutorial.</p>
+
+<p>Na verdade, o objetivo desse texto não é ser uma aula completa de programação nos mínimos detalhes, mas um estudo de caso de como programação pode ser usada de forma simples para resolver problemas simples do dia a dia, e quem sabe te motivar a aprender a programar. Ao longo do texto, deixarei <em>links</em> onde você pode ler mais sobre os componentes.</p>
+
+<p>Todo estudo de caso começa com a análise do problema a ser resolvido. Então, vamos lá.</p>
+
+<p>Por que eu decidi criar um robô do Twitter?</p>
+
+<h2 id="o-problema">O problema</h2>
+
+<p>Nessa seção, vou tirar um pouco o chapéu de “eu técnico” e ser apenas o “eu pessoa”. Você pode imaginar como se o “eu pessoa” estivesse demandando um serviço para o “eu técnico.”</p>
+
+<p>Nesse ano de 2020, é desnecessária uma longa introdução sobre o tema <a href="https://pt.wikipedia.org/wiki/COVID-19">Covid-19</a>. A pandemia, seu avanço e medidas de prevenção são constantemente abordadas pelos jornais e discutidas pelas pessoas. Inclusive eu já fiz um texto aqui sobre como seu computador com Linux pode ajudar nas pesquisas científicas sobre a Covid-19:</p>
+
+<ul>
+  <li><a href="/pt/2020/05/02/folding-at-home-veja-como-seu-pc-pode-ajudar-as-pesquisas-sobre-a-covid-19/">Folding@home: veja como seu PC pode ajudar as pesquisas sobre a Covid-19</a></li>
+</ul>
+
+<p>No entanto, pessoalmente, me incomoda a percepção de que alguns veículos de mídia trazem com muita ênfase os dados <strong>total acumulado de casos confirmados</strong> e <strong>total acumulado de mortes</strong>, mas não trazem o dado <strong>total acumulado de casos recuperados</strong>. Veja bem, não é que eles trazem esse dado com pouca ênfase: eles <strong>simplesmente não trazem</strong>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/g1-covid.jpg" title="Exemplo de [notícia do G1](https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/10/casos-e-mortes-por-coronavirus-no-brasil-em-10-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml) que enumera os casos confirmados e as mortes, mas não os casos recuperados.">
+<img src="/files/2020/12/g1-covid.jpg" alt="Exemplo de [notícia do G1](https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/10/casos-e-mortes-por-coronavirus-no-brasil-em-10-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml) que enumera os casos confirmados e as mortes, mas não os casos recuperados." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Exemplo de <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/10/casos-e-mortes-por-coronavirus-no-brasil-em-10-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">notícia do G1</a> que enumera os casos confirmados e as mortes, mas não os casos recuperados.</p>
+
+</em>
+
+</div>
+
+<p>Experimente abrir qualquer uma das notícias a seguir, teclar <strong>Ctrl + F</strong> e procurar na página por <code class="highlighter-rouge">recupera</code> (não precisa digitar a palavra toda, na verdade essa pesquisa poderia trazer várias palavras parecidas, como <code class="highlighter-rouge">recuperar</code>, <code class="highlighter-rouge">recuperados</code>, <code class="highlighter-rouge">recuperaram</code>, <code class="highlighter-rouge">recuperação</code>, etc.):</p>
+
+<ul>
+  <li>10 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/10/casos-e-mortes-por-coronavirus-no-brasil-em-10-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">Brasil se aproxima de 180 mil mortos por Covid-19 com alta nas médias móveis de óbitos e casos | Coronavírus | G1</a></li>
+  <li>9 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/09/casos-e-mortes-por-coronavirus-no-brasil-em-9-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">Com 848 óbitos por coronavírus em 24 horas, Brasil tem recorde com alta de mortes em 21 estados e no DF | Coronavírus | G1</a></li>
+  <li>8 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/08/casos-e-mortes-por-coronavirus-no-brasil-em-8-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">Brasil tem quase 800 mortes por Covid em 24 horas, e passa de 178 mil no total | Coronavírus | G1</a></li>
+  <li>7 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/07/casos-e-mortes-por-coronavirus-no-brasil-em-7-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">Média móvel de mortes por Covid no Brasil volta a ficar acima de 600 por dia; 17 estados e DF têm alta nos óbitos | Coronavírus | G1</a></li>
+  <li>6 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/06/casos-e-mortes-por-coronavirus-no-brasil-em-6-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml">Brasil tem média de 588 mortes por Covid-19 por dia, a mais alta em quase dois meses | Coronavírus | G1</a></li>
+  <li>5 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/05/casos-e-mortes-por-coronavirus-no-brasil-em-5-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa-atualizacao-das-13h.ghtml">Brasil passa de 176 mil mortes por Covid-19; 17 estados e o DF têm tendência de alta nas mortes | Coronavírus | G1</a></li>
+  <li>4 de dezembro: <a href="https://g1.globo.com/bemestar/coronavirus/noticia/2020/12/04/casos-e-mortes-por-coronavirus-no-brasil-em-4-de-dezembro-segundo-consorcio-de-veiculos-de-imprensa.ghtml?utm_source=twitter&amp;utm_medium=social&amp;utm_campaign=g1">Brasil passa marca de 6,5 milhões de casos de Covid; 18 estados têm tendência de alta nas mortes | Coronavírus | G1</a></li>
+</ul>
+
+<p>O navegador vai informar que não encontrou nada parecido com <code class="highlighter-rouge">recupera</code> nessas páginas.</p>
+
+<p>Uma estatística mais completa — que inclui o total acumulado de casos recuperados — pode ser obtida no <em>site</em> do Ministério da Saúde sobre a Covid-19 (<a href="https://covid.saude.gov.br/">covid.saude.gov.br</a>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/covid-saude-gov.jpg" title="">
+<img src="/files/2020/12/covid-saude-gov.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Repare que os números desse <em>site</em> não são exatamente iguais aos daquela notícia, mas são bem próximos. Isso pode ser devido aos diferentes horários em que foram atualizados.</p>
+
+<p>Minha opinião é que as pessoas deveriam ser informadas das estatísticas completas. Se, por um lado, o número de mortes pode trazer medo, por outro lado, o número de recuperados (muito maior, aliás) pode trazer esperança, que nesse momento muita gente precisa. E foi pensando em balancear essa divulgação de informações que eu decidi criar um robô do Twitter para divulgar todo dia o número de recuperados até o momento.</p>
+
+<p>Certo, vestindo de novo o chapéu do “eu técnico” a partir de agora…</p>
+
+<p><strong>Resumo:</strong> o objetivo é desenvolver um robô que todo dia vai obter do <em>site</em> do governo o número de pessoas que se recuperaram da Covid-19 até o momento e compartilhar esse número no Twitter.</p>
+
+<h2 id="lista-de-ingredientes">Lista de “ingredientes”</h2>
+
+<p>Para desenvolver esse robô, que será em formato de um <em>script</em>, vamos precisar de:</p>
+
+<ol>
+  <li>Uma linguagem de programação;</li>
+  <li>Uma conta no Twitter (uma conta normal e uma conta de desenvolvedor);</li>
+  <li>Uma forma de tuitar a partir do <em>script</em>;</li>
+  <li>Uma forma rodar o <em>script</em> de tempos em tempos; e</li>
+  <li>Uma forma de o <em>script</em> obter os números do <em>site</em> do governo.</li>
+</ol>
+
+<h2 id="1-linguagem-javascript">1) Linguagem: JavaScript</h2>
+
+<p>Como vamos obter informações a partir de uma página da Internet, pensei que não haveria linguagem de programação melhor para implementar nosso robô que aquela já presente nos navegadores e já usada em muitos <em>sites</em>: <strong><a href="https://pt.wikipedia.org/wiki/JavaScript">JavaScript</a></strong>.</p>
+
+<p>Vejamos como extrair da página o número de recuperados usando JavaScript.</p>
+
+<p>Clique com o botão direito do <em>mouse</em> em cima do número de casos recuperados e clique em <strong>Inspecionar Elemento</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-01.jpg" title="">
+<img src="/files/2020/12/twitter-bot-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Aqui estou usando o navegador <a href="https://www.mozilla.org/pt-BR/firefox/">Mozilla Firefox</a>, mas isso pode ser feito de forma semelhante em qualquer navegador.</p>
+
+<p>Identifique no código-fonte onde está o número de recuperados:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-02.jpg" title="">
+<img src="/files/2020/12/twitter-bot-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Perceba que ele é um texto dentro da primeira <code class="highlighter-rouge">&lt;div&gt;</code> de classe <code class="highlighter-rouge">lb-total</code> da página.</p>
+
+<p>Alterne para a aba <strong>Console</strong> e execute o seguinte comando em JavaScript:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">lb-total</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ele retorna direitinho o número de recuperados como está na página:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-03.jpg" title="">
+<img src="/files/2020/12/twitter-bot-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Confesso que “descobrir” esse comando foi uma combinação de pesquisa e tentativa e erro.</p>
+
+<p>Mas aí pode surgir a pergunta: normalmente o JavaScript é usado dentro de <em>sites</em> e navegadores. Podemos usá-lo também para escrever programas de computador <em>desktop</em>?</p>
+
+<p>Desde 2009, a resposta a essa pergunta é sim, graças ao <strong><a href="https://nodejs.org/pt-br/">Node.js</a></strong>, que é um ambiente de execução (<em>runtime</em>) do JavaScript que permite desenvolver tanto sistemas <em>web</em> quanto programas <em>desktop</em> usando essa linguagem de programação.</p>
+
+<p>Para <a href="https://nodejs.org/pt-br/download/package-manager/#opensuse-e-sle">instalar o Node.js no openSUSE</a>, abra uma janela do <strong>Terminal</strong> e execute como <em>root</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in nodejs14
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Para referência futura, hoje esse comando instala no <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">openSUSE Leap 15.2</a> (assim como no <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada 15.2</a>) a versão 14.15.0 do Node.js, e no <a href="/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/">openSUSE Tumbleweed</a> a versão 14.15.1. Você pode pesquisar pelos pacotes do Node.js em <a href="https://software.opensuse.org/search?q=nodejs">software.opensuse.org</a>.</p>
+
+<p>O <a href="https://nodejs.org/pt-br/"><em>site</em> do Node.js</a> oferece as versões 14.15.1 LTS (suporte por mais tempo) ou 15.3.0 Atual.</p>
+
+<p>O comando acima também instala, além do Node.js, o <strong><a href="https://www.npmjs.com/">NPM</a></strong>, que é o <em>Node Package Manager</em> (gerenciador de pacotes do Node.js). Vamos usá-lo para instalar as bibliotecas de terceiros que vamos precisar para desenvolver nosso robô.</p>
+
+<p>Dando prosseguimento, execute o comando a seguir para se certificar de que o Node.js está funcionando, ele deve informar a versão do Node.js que foi instalada:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ node -v
+v14.15.0
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Façamos um rápido “olá, mundo” em JavaScript com Node.js.</p>
+
+<p>Para isso, crie uma pasta para o projeto. Vou chamá-la de <code class="highlighter-rouge">twitter-bot</code>.</p>
+
+<p>Abra o aplicativo <strong>Editor de texto</strong>, copie o seguinte conteúdo e cole dentro do editor:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="dl">'</span><span class="s1">Olá, mundo!</span><span class="dl">'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Salve esse arquivo dentro da pasta do projeto com o nome <code class="highlighter-rouge">robo.js</code>.</p>
+
+<p>No terminal, na pasta do projeto, execute o <em>script</em> com o comando a seguir:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ node robo.js
+Olá, mundo!
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Como prometido, não entrarei em detalhes. Se quiser mais informações, consulte:</p>
+
+<ul>
+  <li><a href="http://www.w3big.com/pt/nodejs/default.html">Node.js tutorial - w3big.com</a> (em português)</li>
+</ul>
+
+<p>Linguagem escolhida, ambiente instalado e testado, vamos para o próximo passo.</p>
+
+<h2 id="2-criando-as-contas-no-twitter">2) Criando as contas no Twitter</h2>
+
+<p>Vamos precisar de uma conta (normal) no Twitter e uma conta de desenvolvedor do Twitter.</p>
+
+<p>Não vou mostrar aqui como criar uma conta no Twitter porque é trivial: você acessa <a href="https://twitter.com/">twitter.com</a>, clica no botão <strong>Inscrever-se</strong> e segue as instruções na tela. Se você já tem uma conta pessoal no Twitter, pode usá-la para o robô, se quiser.</p>
+
+<p>Eu preferi criar uma conta só para o robô: <a href="https://twitter.com/RecuperaCovidBR">@RecuperaCovidBR</a>.</p>
+
+<p>Para criar uma conta de desenvolvedor do Twitter, acesse o <a href="https://developer.twitter.com/en">Twitter Developer</a> (Twitter para desenvolvedores) em <a href="https://developer.twitter.com/en">developer.twitter.com</a> e clique em <strong>Apply</strong> (candidatar). Não vou entrar em detalhes de como criar essa conta, mas resumidamente o Twitter vai te pedir informações sobre você e o que pretende fazer com o robô. Todas as telas são em inglês.</p>
+
+<p>Com a conta de desenvolvedor já criada, vamos precisar cadastrar o robô (<em>bot</em>) como um aplicativo (<em>app</em>) e obter as chaves de acesso. Vejamos como fazer isso.</p>
+
+<p>Na página inicial do <a href="https://developer.twitter.com/en">Twitter Developer</a>, clique em <strong>Developer Portal</strong> (portal do desenvolvedor):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-04.jpg" title="">
+<img src="/files/2020/12/twitter-bot-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>À esquerda, expanda <strong>Projects &amp; Apps</strong> (projetos e aplicativos), clique em <strong>Overview</strong> (visão geral). À direita, em <strong>Standalone Apps</strong> (aplicativos “soltos”, que não pertencem a um projeto), clique em <strong>Create App</strong> (criar aplicativo):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-05.jpg" title="">
+<img src="/files/2020/12/twitter-bot-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Dê um nome para o seu aplicativo e clique em <strong>Complete</strong> (completar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-06.jpg" title="">
+<img src="/files/2020/12/twitter-bot-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na tela seguinte, copie as informações desses campos e salve-as em algum lugar seguro:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-07.jpg" title="">
+<img src="/files/2020/12/twitter-bot-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>À esquerda, clique no aplicativo recém-criado. À direita, em <strong>App permissions</strong> (permissões do aplicativo), clique em <strong>Edit</strong> (editar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-08.jpg" title="">
+<img src="/files/2020/12/twitter-bot-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Mude do padrão <strong>Read Only</strong> (somente leitura) para <strong>Read and Write</strong> (leitura e escrita), para que o robô possa tuitar usando a conta.</p>
+
+<p>De volta à tela anterior, mude da aba <strong>Settings</strong> (configurações) para a aba <strong>Keys and tokens</strong> (chaves e <em>tokens</em>). Em <strong>Access token &amp; secret</strong> (<em>token</em> de acesso e segredo), clique em <strong>Generate</strong> (gerar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-09.jpg" title="">
+<img src="/files/2020/12/twitter-bot-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Também nessa tela, copie as informações desses campos para algum lugar seguro:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-10.jpg" title="">
+<img src="/files/2020/12/twitter-bot-10.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="3-twit-cliente-do-twitter-para-nodejs">3) Twit: cliente do Twitter para Node.js</h2>
+
+<p>Agora a brincadeira vai começar a ficar realmente interessante. Vamos fazer nosso <em>script</em> tuitar “Olá, Twitter!” Para isso, vamos usar a biblioteca <strong><a href="https://www.npmjs.com/package/twit">twit</a></strong> do Node.js. Vamos usar também a biblioteca <strong><a href="https://www.npmjs.com/package/dotenv">dotenv</a></strong> para armazenar aquelas chaves do aplicativo separadas do código.</p>
+
+<p>Como vamos começar a usar bibliotecas de terceiros, vamos inicializar um projeto do NPM para gerenciar as dependências. Na pasta do robô, execute o comando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ npm init -y
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Então, instale as bibliotecas necessárias:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ npm install dotenv twit
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Crie um arquivo com o nome <code class="highlighter-rouge">.env</code> com o seguinte conteúdo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>CONSUMER_KEY=........................................
+CONSUMER_SECRET=.....................................
+ACCESS_TOKEN_KEY=....................................
+ACCESS_TOKEN_SECRET=.................................
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>E cole as chaves obtidas na etapa anterior, na mesma sequência, pulando o <strong>Bearer token</strong>.</p>
+
+<p>Agora substitua o conteúdo do <em>script</em> <code class="highlighter-rouge">robo.js</code> pelo seguinte:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">Twit</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">twit</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dotenv</span><span class="dl">'</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nx">tuitar</span><span class="p">(</span><span class="nx">mensagem</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">twitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Twit</span><span class="p">({</span>
+        <span class="na">consumer_key</span><span class="p">:</span>         <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CONSUMER_KEY</span><span class="p">,</span>
+        <span class="na">consumer_secret</span><span class="p">:</span>      <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CONSUMER_SECRET</span><span class="p">,</span>
+        <span class="na">access_token</span><span class="p">:</span>         <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ACCESS_TOKEN</span><span class="p">,</span>
+        <span class="na">access_token_secret</span><span class="p">:</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ACCESS_TOKEN_SECRET</span><span class="p">,</span>
+        <span class="na">timeout_ms</span><span class="p">:</span>           <span class="mi">60</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="na">strictSSL</span><span class="p">:</span>            <span class="kc">true</span>
+    <span class="p">});</span>
+    <span class="nx">twitter</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">statuses/update</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="na">status</span><span class="p">:</span> <span class="nx">mensagem</span>
+    <span class="p">},</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">tuitar</span><span class="p">(</span><span class="dl">'</span><span class="s1">Olá, Twitter!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Salve o <em>script</em> e execute-o:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ node robo.js
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Parabéns, seu robô acabou de dizer “olá” para o Twitter:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-11.jpg" title="">
+<img src="/files/2020/12/twitter-bot-11.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se quiser mais informações sobre o que acabamos de fazer nessa etapa, consulte:</p>
+
+<ul>
+  <li><a href="https://www.maistecnologia.com/twitter-bot-aprenda-a-criar-um-bot-para-a-rede-social/">Twitter Bot: Aprenda a criar um bot para a rede social | MaisTecnologia</a> (em português)</li>
+  <li><a href="https://www.loginradius.com/blog/async/build-a-twitter-bot-using-nodejs/">Build A Twitter Bot Using NodeJS - LoginRadius Engineering</a> (em inglẽs)</li>
+</ul>
+
+<h2 id="4-agendando-tarefas-com-o-node-cron">4) Agendando tarefas com o node-cron</h2>
+
+<p>No Linux, podemos agendar que o sistema execute programas ou <em>scripts</em> em determinada data e hora ou de tempos em tempos. Para isso, configuramos o serviço <strong><a href="https://medium.com/totvsdevelopers/entendendo-o-crontab-607bc9f00ed3">cron</a></strong> usando o comando <strong><a href="http://crontab.org/">crontab</a></strong>. Existe um equivalente no Node.js que é a biblioteca <strong><a href="https://www.npmjs.com/package/node-cron">node-cron</a></strong>.</p>
+
+<p>Lembremos que o <em>script</em> deve ser executado uma vez ao dia, de manhã. Eu poderia deixar o <em>script</em> como está e fazer esse agendamento a nível de sistema usando o cron. Mas vou preferir usar a biblioteca node-cron e modificar o <em>script</em> para ele mesmo se repetir.</p>
+
+<p>Comece instalando a biblioteca node-cron:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ npm install node-cron
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Adicione ao início do <em>script</em> a importação dessa biblioteca:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">Cron</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-cron</span><span class="dl">'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No final do <em>script</em>, comente a chamada à função <code class="highlighter-rouge">main()</code> e adicione o agendamento:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">// main();</span>
+
+<span class="nx">Cron</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="dl">'</span><span class="s1">*/2 * * * * *</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Esse agendamento roda segundo sim, segundo não</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A expressão <code class="highlighter-rouge">*/2 * * * * *</code> é um jargão próprio do cron e quer dizer que o agendamento deve ser executado em metade de todos os segundos, ou seja, segundo sim, segundo não. Existem ferramentas <em>online</em> que podem te ajudar a escrever essas expressões, como <a href="https://crontab.guru/">crontab.guru</a> ou <a href="https://cronjob.xyz/">cronjob.xyz</a>. Note que o cron do Linux permite agendar só até minutos, enquanto a biblioteca node-cron permite agendar até segundos, mas a sintaxe é semelhante.</p>
+
+<p>Salve e execute o <em>script</em> e veja que ele escreve no terminal segundo sim, segundo não:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>$ node robo.js
+Esse agendamento roda segundo sim, segundo não
+Esse agendamento roda segundo sim, segundo não
+Esse agendamento roda segundo sim, segundo não
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O <em>script</em> não vai parar sozinho. Para interrompê-lo, tecle <strong>Ctrl + C</strong>.</p>
+
+<p>Você pode modificar o trecho do agendamento para:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">Cron</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="dl">'</span><span class="s1">30 6 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bom dia!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Nesse caso, se você iniciar o <em>script</em> e deixar o computador ligado, verá que todo dia às 6:30 da manhã ele te dará bom dia. Simpático ele, não?</p>
+
+<p>Se quiser mais informações sobre o que acabamos de fazer nessa etapa, consulte:</p>
+
+<ul>
+  <li><a href="https://medium.com/manacespereira/criando-e-configurando-cronjobs-com-nodejs-883c83a94b1a">Criando e configurando CronJobs com NodeJS | by Manacés Pereira | Manacés Pereira | Medium</a> (em português)</li>
+  <li><a href="https://blog.logrocket.com/task-scheduling-or-cron-jobs-in-node-using-node-cron/">Scheduling tasks in Node.js using node-cron - LogRocket Blog</a> (em inglẽs)</li>
+</ul>
+
+<h2 id="5-obtendo-números-do-site-do-governo">5) Obtendo números do site do governo</h2>
+
+<p>Para obter o número de pessoas recuperadas do <em>site</em> do governo, vamos usar uma técnica conhecida como <em><strong><a href="https://pt.wikipedia.org/wiki/Coleta_de_dados_web">web scraping</a></strong></em> (coleta de dados <em>web</em>), que consiste em baixar automaticamente uma página da Internet e depois extrair informações específicas dela.</p>
+
+<p>Para isso, vamos usar a biblioteca <strong><a href="https://www.npmjs.com/package/puppeteer">Puppeteer</a></strong> do Node.js, que inicia uma instância do navegador <a href="https://www.chromium.org/Home">Chromium</a> nos bastidores e permite controlá-la via programação. A maioria das coisas que você pode fazer manualmente no navegador podem ser feitas via programação com o Puppeteer, inclusive usar as ferramentas do desenvolvedor, como fizemos antes.</p>
+
+<p>Comece instalando a biblioteca Puppeteer:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ npm install puppeteer
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Adicione ao início do <em>script</em> a importação dessa biblioteca:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Adicione ao <em>script</em> também a função <code class="highlighter-rouge">obterNumeroDeRecuperados()</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="k">async</span> <span class="kd">function</span> <span class="nx">obterNumeroDeRecuperados</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">setViewport</span><span class="p">({</span>
+        <span class="na">width</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+        <span class="na">height</span><span class="p">:</span> <span class="mi">768</span><span class="p">,</span>
+    <span class="p">});</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://covid.saude.gov.br/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">timeout</span><span class="p">:</span> <span class="mi">60</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="na">waitUntil</span><span class="p">:</span> <span class="dl">'</span><span class="s1">networkidle2</span><span class="dl">'</span>
+    <span class="p">});</span>
+    <span class="kd">var</span> <span class="nx">recuperados</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">numeroNaPagina</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">lb-total</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">lastChild</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">numeroNaPagina</span>
+    <span class="p">});</span>
+    <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nx">recuperados</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No final do <em>script</em>, remova o agendamento, descomente a chamada à função <code class="highlighter-rouge">main()</code> e também mude a implementação dessa função:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">recuperados</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">obterNumeroDeRecuperados</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">recuperados</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Salve e execute o <em>script</em>. Aguarde alguns segundos e você terá o número obtido do <em>site</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ node robo.js
+5.931.777
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Se quiser mais informações sobre o que acabamos de fazer nessa etapa, consulte:</p>
+
+<ul>
+  <li><a href="https://medium.com/@fabiojanio/node-js-web-scraping-com-puppeteer-29dd974eb042">Node.js: web scraping com Puppeteer | Fábio Jânio | Medium</a> (em português)</li>
+  <li><a href="https://beshaimakes.com/js-scrape-data#write-a-nodejs-script-to-scrape-the-page-after-running-javascript">How to scrape the web with JavaScript - Peter Beshai</a> (em inglês)</li>
+</ul>
+
+<h2 id="unindo-tudo">Unindo tudo</h2>
+
+<p>Pois bem, já temos tudo de que precisamos, chegou a hora de unir todos os “ingredientes” e fazer o robô funcionar. Ao final, o <em>script</em> deve apresentar: as importações das bibliotecas e as funções <code class="highlighter-rouge">obterNumeroDeRecuperados()</code> e <code class="highlighter-rouge">tuitar()</code>. Remova a implementação da função <code class="highlighter-rouge">main()</code> e sua chamada e adicione o código a seguir:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">recuperados</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">obterNumeroDeRecuperados</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">tuite</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Bom dia!</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">tuite</span> <span class="o">+=</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">tuite</span> <span class="o">+=</span> <span class="nx">recuperados</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> brasileiros se recuperaram da #Covid19 até o momento</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">tuite</span> <span class="o">+=</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">tuite</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">Fonte: https://covid.saude.gov.br</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">tuitar</span><span class="p">(</span><span class="nx">tuite</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">Cron</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="dl">'</span><span class="s1">30 6 * * *</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">main</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Agora é só iniciar o <em>script</em> e deixá-lo rodando com o computador ligado:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ node robo.js
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No dia seguinte, passada 6:30 da manhã, o robô terá tuitado o número de recuperados:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/twitter-bot-12.jpg" title="">
+<img src="/files/2020/12/twitter-bot-12.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se não quiser esperar o dia seguinte para testar o robô, mude a expressão do agendamento. Por exemplo, se agora são 19:28, você pode agenda-lo para as 19:30 com: <code class="highlighter-rouge">30 19 * * *</code>.</p>
+
+<p>Você deve interromper o robô sempre antes de fazer qualquer alteração no seu código-fonte, ou quando não precisar mais dele. Para interromper o robô, tecle <strong>Ctrl + C</strong>.</p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Publiquei o código-fonte do robô como está agora e demais arquivos que usei no GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/kamarada/twitter-bot/">kamarada/twitter-bot - GitHub</a> (a versão desse tutorial está no <em>commit</em> <a href="https://github.com/kamarada/twitter-bot/tree/e1509be02aa87c24e955bca92c9b7b0331b7c4e6"><code class="highlighter-rouge">e1509be</code></a>)</li>
+</ul>
+
+<p>Se quiser saber diariamente quantas pessoas já se recuperaram da Covid-19, siga meu robô <a href="https://twitter.com/RecuperaCovidBR">@RecuperaCovidBR</a> no Twitter. Siga também o <a href="https://twitter.com/LinuxKamarada">@LinuxKamarada</a> se quiser saber de novos textos como esse. Se tiver dúvidas, escreva nos comentários. Até mais!</p>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://kamarada.github.io/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='https://www.padrim.com.br/LinuxKamarada' title='Padrim' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='https://apoia.se/LinuxKamarada' title='APOIA.se' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2020 <a href='#author'>Antônio Vinícius</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Esse é mais um da série: resolvendo problemas do dia a dia de forma criativa com scripts.Provavelmente você já conhece a rede social Twitter. Se acompanha as notícias, talvez já tenha ouvido falar em robôs do Twitter. Mas o que são esses robôs do Twitter?Um robô (bot) do Twitter é um programa de computador que...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2020/12/twitter-bot.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/12/11/como-programar-um-robo-que-tuita-toda-manha-com-nodejs/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>
