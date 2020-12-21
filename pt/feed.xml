@@ -9,8 +9,8 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 11 Dec 2020 19:13:58 -0300</pubDate>
-        <lastBuildDate>Fri, 11 Dec 2020 19:13:58 -0300</lastBuildDate>
+        <pubDate>Mon, 21 Dec 2020 11:35:01 -0300</pubDate>
+        <lastBuildDate>Mon, 21 Dec 2020 11:35:01 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
         
@@ -2342,18 +2342,21 @@ passwd: senha atualizada com sucesso
 
 &lt;p&gt;Até 2014, havia apenas uma distribuição chamada openSUSE, então na versão 13.2.&lt;/p&gt;
 
-&lt;p&gt;A partir daí, o Projeto openSUSE passou a oferecer duas distribuições:&lt;/p&gt;
+&lt;p&gt;A partir daí, o Projeto openSUSE passou a oferecer duas distribuições: openSUSE Leap e openSUSE Tumbleweed.&lt;/p&gt;
+
+&lt;p&gt;Se você ainda não conhecia essas distribuições, confira as diferenças entre elas no texto:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE Leap:&lt;/strong&gt; mais estável, sucessor do bom e velho openSUSE, mas com um novo processo de desenvolvimento, atualmente está na &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;versão 15.2&lt;/a&gt; e lança novas versões com regularidade (geralmente, uma nova versão por ano), de modo semelhante a distribuições mais tradicionais como &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;, &lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; e &lt;a href=&quot;https://getfedora.org/pt_BR/&quot;&gt;Fedora&lt;/a&gt;; e&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;openSUSE Tumbleweed:&lt;/strong&gt; com lançamentos contínuos (&lt;em&gt;rolling release&lt;/em&gt;), ou seja, não possui versões distintas, apenas a versão mais recente, que contém sempre os &lt;em&gt;softwares&lt;/em&gt; mais recentes, recebe atualizações pequenas e frequentes sempre que um &lt;em&gt;software&lt;/em&gt; é atualizado, semelhante a distribuições como &lt;a href=&quot;https://www.archlinux.org/&quot;&gt;Arch&lt;/a&gt; e Manjaro.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/&quot;&gt;openSUSE Leap e openSUSE Tumbleweed: qual é a diferença?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;O openSUSE Leap é mais indicado para usuários iniciantes e organizações, que tendem a evitar atualizações frequentes. Já o openSUSE Tumbleweed é preferido por usuários entusiastas que desejam usar sempre o que há de mais novo em &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (21/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Na versão original deste tutorial, eu explicava a diferença entre essas distribuições. Como percebi que essa informação estava se repetindo também em outros textos, decidi movê-la para um texto próprio.&lt;/p&gt;
 
-&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. É a distribuição que eu uso e indico há anos, principalmente para usuários iniciantes, tanto que o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt; é baseado nele.&lt;/p&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Mas hoje eu quero falar do Tumbleweed, que, nos meus testes, se saiu um pouco melhor que o Leap no Raspberry Pi 4. Isso já era esperado, uma vez que o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed.&lt;/p&gt;
+&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. Mas hoje quero falar do Tumbleweed, que, nos meus testes, se saiu um pouco melhor que o Leap no Raspberry Pi 4. Isso já era esperado, uma vez que o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed.&lt;/p&gt;
 
 &lt;h2 id=&quot;o-que-funciona-e-o-que-não-funciona&quot;&gt;O que funciona e o que não funciona?&lt;/h2&gt;
 
@@ -2392,9 +2395,9 @@ passwd: senha atualizada com sucesso
 
 &lt;h2 id=&quot;baixando-a-imagem-do-opensuse&quot;&gt;Baixando a imagem do openSUSE&lt;/h2&gt;
 
-&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você precisará de um PC com Linux, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB.&lt;/p&gt;
+&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você precisará de um PC com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB.&lt;/p&gt;
 
-&lt;p&gt;Eu vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Eu vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;, baseado no &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Acesse a página do Raspberry Pi 4 na &lt;em&gt;wiki&lt;/em&gt; do openSUSE:&lt;/p&gt;
 
