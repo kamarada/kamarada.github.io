@@ -9,10 +9,526 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 21 Dec 2020 11:35:01 -0300</pubDate>
-        <lastBuildDate>Mon, 21 Dec 2020 11:35:01 -0300</lastBuildDate>
+        <pubDate>Sat, 26 Dec 2020 15:12:44 -0300</pubDate>
+        <lastBuildDate>Sat, 26 Dec 2020 15:12:44 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>openSUSE on the Raspberry Pi 4 — part 1: downloading and installing</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Did you know that it’s already possible to run &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; on a &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt;? The first time I wrote about this credit-card sized computer, a year ago, its fourth generation was not yet supported by the openSUSE Project. At that time, anyone wishing to use a Raspberry Pi 4 as a desktop would have to resort to another &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; distro, such as &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt; or &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you want to know more about the Raspberry Pi 4 and its tech specs, please read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Getting started on Raspberry Pi with NOOBS and Raspbian&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even nowadays, openSUSE support for the Raspberry Pi 4 is not yet complete. I explain.&lt;/p&gt;
+
+&lt;h2 id=&quot;opensuse-vs-raspbian-and-manjaro&quot;&gt;openSUSE vs Raspbian and Manjaro&lt;/h2&gt;
+
+&lt;p&gt;Pieces of the software specific to the Raspberry Pi — firmware, bootloader and Linux kernel modules — are released &lt;a href=&quot;https://en.wikipedia.org/wiki/Proprietary_software&quot;&gt;closed source&lt;/a&gt; by its processor manufacturer, &lt;a href=&quot;https://www.broadcom.com/&quot;&gt;Broadcom&lt;/a&gt;, which has been unwilling to make them &lt;a href=&quot;https://en.wikipedia.org/wiki/Open-source_software&quot;&gt;open source&lt;/a&gt;. This may not be an issue for most Raspberry Pi users. That was understandably a trade-off that the board’s creators had to make to offer it at an affordable price. But that could be an issue for open-source purists.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://www.raspberrypi.org/about/&quot;&gt;Raspberry Pi Foundation&lt;/a&gt; makes available on &lt;a href=&quot;https://github.com/raspberrypi/&quot;&gt;GitHub&lt;/a&gt; the source code of their own &lt;a href=&quot;https://github.com/raspberrypi/linux&quot;&gt;fork of the Linux kernel&lt;/a&gt; and the &lt;a href=&quot;https://github.com/raspberrypi/firmware&quot;&gt;pre-compiled binaries&lt;/a&gt; of the closed-source Broadcom software.&lt;/p&gt;
+
+&lt;p&gt;Raspbian offers full Raspberry Pi 4 support because it uses the Linux kernel and pre-compiled binaries from the Raspberry Pi Foundation. Manjaro has followed the same path and, therefore, also offers full Raspberry Pi 4 support right now. This path is shorter, provides a system that just works as soon as possible, and there is nothing wrong with that.&lt;/p&gt;
+
+&lt;p&gt;But openSUSE chose to take a different approach, trying to add Raspberry Pi 4 support to the &lt;a href=&quot;https://www.kernel.org/&quot;&gt;mainline Linux kernel&lt;/a&gt;, which is used by the distro. It is a longer and more time-consuming path, but at least in theory it should deliver better results in the long run, which also may benefit other Linux distros. The downside of this approach is that, while open-source modules are not developed, it’s not possible to use some  of the Raspberry Pi 4 features.&lt;/p&gt;
+
+&lt;h2 id=&quot;opensuse-leap-vs-opensuse-tumbleweed&quot;&gt;openSUSE Leap vs openSUSE Tumbleweed&lt;/h2&gt;
+
+&lt;p&gt;Did you know that there are two openSUSE distros?&lt;/p&gt;
+
+&lt;p&gt;Until 2014, there was only one Linux distro called openSUSE, which was then at version 13.2.&lt;/p&gt;
+
+&lt;p&gt;Later, the openSUSE Project started to offer two Linux distros: openSUSE Leap and openSUSE Tumbleweed. If you didn’t know them already, you may want to read:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2020/12/07/opensuse-leap-vs-opensuse-tumbleweed-what-is-the-difference/&quot;&gt;openSUSE Leap vs openSUSE Tumbleweed: what is the difference?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Usually I write about openSUSE Leap here. But today I want to talk about Tumbleweed.&lt;/p&gt;
+
+&lt;p&gt;When I wrote the original version of &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;this text in Brazilian Portuguese&lt;/a&gt;, a few months ago, openSUSE Tumbleweed did a little better than openSUSE Leap on the Raspberry Pi 4, but today both perform the same. Anyway, I think it’s interesting to keep and eye on Tumbleweed, because support for the board is still being developed and new features always arrive in Tumbleweed first. So, let’s try Tumbleweed today.&lt;/p&gt;
+
+&lt;p&gt;If you prefer to use Leap, you can follow this how-to the same way. Instructions are the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-works-what-does-not-work&quot;&gt;What works, what does not work&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Brief:&lt;/strong&gt; when it comes to hardware support for the Raspberry Pi 4, there is no difference between Leap and Tumbleweed. If you plan to use your Raspberry Pi as a home server, any of the openSUSE distros will suit you very well. If you plan to use it as a desktop, you may miss some features on both distros, such as Bluetooth and sound.&lt;/p&gt;
+
+&lt;p&gt;I tested the following Raspberry Pi 4 features on both openSUSE distros:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Wi-Fi network:&lt;/strong&gt; on both, I was able to connect to both 2.4GHz and 5GHz networks;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ethernet network:&lt;/strong&gt; on both, I was able to connect to an Ethernet wired network;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bluetooth:&lt;/strong&gt; on both, Bluetooth did &lt;strong&gt;not&lt;/strong&gt; work;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;USB ports:&lt;/strong&gt; on both, all the 4 USB ports worked, I just found a few issues regarding keyboard and mouse:
+    &lt;ul&gt;
+      &lt;li&gt;keyboard does not work on the GRUB menu;&lt;/li&gt;
+      &lt;li&gt;on both distros, depending on the model of the keyboard and/or mouse, when rebooting the Raspberry Pi, they may stop working. If that happens, you need to unplug and plug them back so they get to work again;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HDMI ports&lt;/strong&gt;: on both distros, both HDMI ports worked, but when changing the HDMI cable from one port to the other, no image was immediately displayed on the new port — so, if you need to switch the HDMI port, you need to reboot the Raspberry Pi;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Audio output:&lt;/strong&gt; on both distros, I was &lt;strong&gt;unable&lt;/strong&gt; to output any sound from the Raspberry Pi in any way — be it via the analog output (e.g. connecting a 3.5mm jack headset), via HDMI (e.g. connecting a TV) or via Bluetooth.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What I haven’t tested (so I don’t know whether it works or not):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;running a dual monitor setup using the two micro-HDMI ports at the same time;&lt;/li&gt;
+  &lt;li&gt;GPIO pins;&lt;/li&gt;
+  &lt;li&gt;anything I haven’t listed above.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Knowing what you can expect if you install openSUSE on your Raspberry Pi 4 today, you can decide whether to use openSUSE (and which distro to use: Leap or Tumbleweed) or to use another distro and wait for the Raspberry Pi 4 support on openSUSE to improve.&lt;/p&gt;
+
+&lt;h2 id=&quot;downloading-the-opensuse-image&quot;&gt;Downloading the openSUSE image&lt;/h2&gt;
+
+&lt;p&gt;To download the openSUSE image and save it to the memory card, you will need a PC running Linux, &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; or &lt;a href=&quot;https://www.apple.com/macos/&quot;&gt;macOS&lt;/a&gt; and a micro-SD memory card of at least 8GB.&lt;/p&gt;
+
+&lt;p&gt;I’m going to use &lt;a href=&quot;/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;, which is a Linux distro based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go to the Raspberry Pi 4 page on the openSUSE wiki:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;https://en.opensuse.org/HCL:Raspberry_Pi4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note that there are several image options for both Tumbleweed and Leap 15.2. If you want to use the Raspberry Pi as a server, the JeOS image (Just enough Operating System) is the best choice. If it’s going to be a desktop, you can choose another image with a graphical desktop.&lt;/p&gt;
+
+&lt;p&gt;Here, I’m going to use the Tumbleweed XFCE image. The &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt; desktop is very lightweight and therefore appropriate for the Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;Click the link for the image you chose. Downloading it may take a while, considering that the image file is large (mine was almost 1GB).&lt;/p&gt;
+
+&lt;h2 id=&quot;flashing-the-image-to-the-memory-card-using-balenaetcher&quot;&gt;Flashing the image to the memory card using balenaEtcher&lt;/h2&gt;
+
+&lt;p&gt;To flash the downloaded openSUSE image to the memory card, I recommend you to use &lt;a href=&quot;/en/2020/12/26/flashing-os-images-to-memory-cards-easily-with-balenaetcher/&quot;&gt;balenaEtcher&lt;/a&gt;, which is a simple and easy to use, &lt;a href=&quot;https://en.wikipedia.org/wiki/Free_and_open-source_software&quot;&gt;free and open source software&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;balenaEtcher can be handful in some scenarios, so it has a how-to of its own:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2020/12/26/flashing-os-images-to-memory-cards-easily-with-balenaetcher/&quot;&gt;Flashing OS images to memory cards easily with balenaEtcher&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Just observe that there is a little issue regarding privacy, which I explain in the how-to and has a simple workaround. For me, that doesn’t seem as a big reason to avoid balenaEtcher.&lt;/p&gt;
+
+&lt;p&gt;If that is an issue for you, an alternative is to use the &lt;strong&gt;dd&lt;/strong&gt; command, if you are on Linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;alternative-to-etcher-the-dd-command&quot;&gt;Alternative to Etcher: the dd command&lt;/h2&gt;
+
+&lt;p&gt;If you chose to follow my recommendation and use balenaEtcher, you can skip this section.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; command is probably present on all Linux distros.&lt;/p&gt;
+
+&lt;p&gt;Connect the micro-SD card to your computer, maybe using an adapter or a USB card reader.&lt;/p&gt;
+
+&lt;p&gt;Before proceeding, please note that anything currently stored on the SD card will be overwritten during flashing. So, if the card currently has any files on it, you may wish to back those files up first to not lose them permanently.&lt;/p&gt;
+
+&lt;p&gt;It is also recommended that you remove any other storage devices, other than the SD card, connected to your computer (such as other USB sticks, external hard drives, memory cards, etc.) to prevent them from being erased by mistake (and losing files, probably irreversibly).&lt;/p&gt;
+
+&lt;p&gt;Identify the memory card that is going to receive the image. You can do this with the aid of the &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/fdisk&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt; command, which is probably another universal command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
+Disk /dev/sda: 447.1 GiB, 480103981056 bytes, 937703088 sectors
+Disk model: KINGSTON SA400S3
+[...]
+
+Disk /dev/mmcblk0: 29.7 GiB, 31914983424 bytes, 62333952 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc74ce35c
+
+Device         Boot   Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1         2048 62332927 62330880 29.7G  b FAT32 W95
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In my case, the memory card is the &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/mmcblk0&lt;/code&gt; device. I usually look at the device’s size (here, a 32GB memory card, the size informed by the operating system differs slightly).&lt;/p&gt;
+
+&lt;p&gt;Then, run the following command to flash the image into the memory card, making the necessary adjustments.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; be sure to correctly identify the memory card, as well as correctly type its name next, so as not to format another device by mistake (and irreversibly lose data).&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# xzcat [image].raw.xz | dd bs=4M of=[device] iflag=fullblock oflag=direct status=progress; sync
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/sync.1.html&quot;&gt;sync&lt;/a&gt;&lt;/strong&gt; command at the end ensures that data that are eventually still cached on RAM are persisted, making it safe to remove the memory card.&lt;/p&gt;
+
+&lt;p&gt;Neither the &lt;strong&gt;dd&lt;/strong&gt; nor the &lt;strong&gt;sync&lt;/strong&gt; command mounts the memory card.&lt;/p&gt;
+
+&lt;p&gt;If you open the &lt;strong&gt;Files&lt;/strong&gt; app, you will see that the memory card is listed, but the usual &lt;strong&gt;Unmount&lt;/strong&gt; icon is not shown next to it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-opensuse-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-opensuse-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Therefore, you can simply remove the SD card from your computer.&lt;/p&gt;
+
+&lt;h2 id=&quot;starting-opensuse&quot;&gt;Starting openSUSE&lt;/h2&gt;
+
+&lt;p&gt;Insert the memory card on the Raspberry Pi and make the necessary connections, as we saw on &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;the previous post about the Raspberry Pi&lt;/a&gt;. Turn it on and openSUSE will start.&lt;/p&gt;
+
+&lt;p&gt;On the login screen, use the credentials: &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; as username and &lt;code class=&quot;highlighter-rouge&quot;&gt;linux&lt;/code&gt; as password.&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;what-if-tumbleweed-does-not-boot&quot;&gt;What if Tumbleweed does not boot?&lt;/h2&gt;
+
+&lt;p&gt;In case you tried to boot Tumbleweed on your Raspberry Pi 4 and you got this:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; title=&quot;The system keeps repeatedly saying: Waiting for PHY auto negotiation to complete...&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; alt=&quot;The system keeps repeatedly saying: Waiting for PHY auto negotiation to complete...&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;The system keeps repeatedly saying: Waiting for PHY auto negotiation to complete…&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This is a known Tumbleweed bug and you can find more info about it and how to fix it here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/&quot;&gt;Tumbleweed needs a workaround to boot on the Raspberry Pi 4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This bug does not affect Leap.&lt;/p&gt;
+
+&lt;h2 id=&quot;to-be-continued&quot;&gt;To be continued…&lt;/h2&gt;
+
+&lt;p&gt;If I included what to do after installing openSUSE on the Raspberry Pi here on this text, it would be very long, so I decided to split it in two parts.&lt;/p&gt;
+
+&lt;p&gt;Follow the Linux Kamarada Project to read the second part as soon as it’s published!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackaday.com/2017/01/14/blob-less-raspberry-pi-linux-is-a-step-closer/&quot;&gt;Blob-less Raspberry Pi Linux Is A Step Closer | Hackaday&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-arm/2019-10/msg00003.html&quot;&gt;Re: [opensuse-arm] Raspberry Pi 4 Model B - opensuse-arm Mailinglist Archive&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;HCL:Raspberry Pi4 - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/linux.md&quot;&gt;Installing operating system images on Linux - Raspberry Pi Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 26 Dec 2020 14:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/12/26/opensuse-on-the-raspberry-pi-4-part-1-downloading-and-installing/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/12/26/opensuse-on-the-raspberry-pi-4-part-1-downloading-and-installing/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
+        
+            <item>
+                <title>Tumbleweed needs a workaround to boot on the Raspberry Pi 4</title>
+                <description>&lt;p&gt;&lt;a href=&quot;/en/2020/12/07/opensuse-leap-vs-opensuse-tumbleweed-what-is-the-difference/&quot;&gt;openSUSE Tumbleweed&lt;/a&gt; works well on the &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; (and also on the brand new &lt;a href=&quot;https://www.raspberrypi.org/blog/raspberry-pi-400-the-70-desktop-pc/&quot;&gt;Raspberry Pi 400&lt;/a&gt;), although &lt;a href=&quot;/en/2020/12/26/opensuse-on-the-raspberry-pi-4-part-1-downloading-and-installing/&quot;&gt;hardware support for it is still being developed&lt;/a&gt;, so a few features such as Bluetooth and sound still don’t work. &lt;/p&gt;
+
+&lt;p&gt;But recent Tumbleweed images for the Raspberry Pi 4 don’t boot. The system keeps repeatedly saying: &lt;code class=&quot;highlighter-rouge&quot;&gt;Waiting for PHY auto negotiation to complete... TIMEOUT !&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;And reboots. The &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; menu is not displayed.&lt;/p&gt;
+
+&lt;p&gt;I faced this problem while trying to boot the latest Tumbleweed &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt; image, based on snapshot 20201214. It does not happen with the latest Leap 15.2 XFCE image.&lt;/p&gt;
+
+&lt;p&gt;I asked for help on the &lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/&quot;&gt;openSUSE ARM mailing list&lt;/a&gt; and people pointed me to a workaround.&lt;/p&gt;
+
+&lt;p&gt;If you are a Tumbleweed user trying to boot your Raspberry Pi 4/400 and you are facing this problem as well, while it does not get definitively solved, you can download the &lt;code class=&quot;highlighter-rouge&quot;&gt;u-boot.bin&lt;/code&gt; file from &lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/message/J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW/attachment/3/u-boot.bin&quot;&gt;here&lt;/a&gt; or from &lt;a href=&quot;/files/2020/12/u-boot.bin&quot;&gt;here&lt;/a&gt; (I mirrored it) and replace the one in your SD card’s EFI partition.&lt;/p&gt;
+
+&lt;p&gt;Doing that, you should be able to boot Tumbleweed on your Raspberry Pi 4/400 again.&lt;/p&gt;
+
+&lt;p&gt;This is &lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1180338&quot;&gt;a known bug&lt;/a&gt; and the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; team is working to solve it.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;If you want to know more about the bug and its workaround, take a look at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/&quot;&gt;Tumbleweed 20201214 on RPi4 - Waiting for PHY auto negotiation to complete - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/QTYDOH45WSLGC4KKBTGK5YXMZZUHIXWC/#J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW&quot;&gt;raspberry pi 400 - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/5BEWN672GVVCJCMPZTYC2QCNO7AMBS2Y/&quot;&gt;Regression observed on Rasbperry Pi 4 with snapshot 20201214 - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1180338&quot;&gt;Bug 1180338 — [RPi4] u-boot can’t handle DMA addresses different from CPU’s&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 26 Dec 2020 14:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
+        
+            <item>
+                <title>Flashing OS images to memory cards easily with balenaEtcher</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/balena-etcher.svg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/balena-etcher.svg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;Etcher&lt;/a&gt; is a versatile yet easy to use tool to create bootable SD cards and USB flash drives from operating system images. It provides a clean user interface that helps you selecting the right device to write to, protecting you from accidentally wiping your hard-drive, which could cause irreversible data loss. After writing, Etcher also ensures every byte of data was written correctly, which prevents you end up with a corrupted drive.&lt;/p&gt;
+
+&lt;p&gt;For users who are not exactly tech-savvy, those images are not the same kind of images you produce with a camera, commonly files with a &lt;strong&gt;.jpeg&lt;/strong&gt; or &lt;strong&gt;.jpg&lt;/strong&gt; extension. An OS image is an archive containing the whole operating system (such as &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; or &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt;), all of its files. Commonly OS images are compressed and have extensions like &lt;strong&gt;.iso&lt;/strong&gt;, &lt;strong&gt;.img&lt;/strong&gt;, &lt;strong&gt;.xz&lt;/strong&gt;, &lt;strong&gt;.gz&lt;/strong&gt; or &lt;strong&gt;.zip&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Etcher is a free, open-source and cross-platform software developed by &lt;a href=&quot;https://www.balena.io/&quot;&gt;Balena&lt;/a&gt;, hence it is also called &lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;balenaEtcher&lt;/a&gt;. Its source code is available on &lt;a href=&quot;https://github.com/balena-io/etcher&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-or-who-is-balena&quot;&gt;What or who is Balena?&lt;/h2&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/11/balena.svg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/11/balena.svg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; style=&quot;max-width: 250px;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Balena is the name of both &lt;a href=&quot;https://www.balena.io/what-is-balena&quot;&gt;a set of open source tools&lt;/a&gt; for managing connected IoT (Internet of Things) devices, and the &lt;a href=&quot;https://www.balena.io/blog/resin-io-changes-name-to-balena-releases-open-source-edition/&quot;&gt;company&lt;/a&gt; who develops those tools and offer &lt;a href=&quot;https://www.balena.io/cloud/&quot;&gt;cloud infrastructure&lt;/a&gt; for connecting those devices. Balena is known not only for Etcher, but for several other products as well such as &lt;a href=&quot;https://www.balena.io/open/&quot;&gt;openBalena&lt;/a&gt;, &lt;a href=&quot;https://www.balena.io/os/&quot;&gt;balenaOS&lt;/a&gt;, &lt;a href=&quot;https://www.balena.io/engine/&quot;&gt;balenaEngine&lt;/a&gt; and more.&lt;/p&gt;
+
+&lt;p&gt;The Balena team created the Etcher software to solve the complexity of writing OS images to removable media, such as SD cards and USB flash drives. To teach their clients how to flash their images, they used to provide a how-to for each of the systems (Linux, Windows and &lt;a href=&quot;https://www.apple.com/macos/&quot;&gt;macOS&lt;/a&gt;), each of them composed of several manual and error-prone steps. Previously there was no tool that fitted all of their needs, so they built Etcher, which is simple for end users and works and looks the same on Linux, Windows and macOS.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-can-i-do-with-etcher&quot;&gt;What can I do with Etcher?&lt;/h2&gt;
+
+&lt;p&gt;balenaEtcher can be used for many purposes. Below are some examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Remember &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Raspbian&lt;/a&gt;? (&lt;a href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; for &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;Raspberry Pi&lt;/a&gt;) It has been renamed to &lt;a href=&quot;https://www.raspberrypi.org/software/&quot;&gt;Raspberry Pi OS&lt;/a&gt;. Images of this operating system are available on its &lt;a href=&quot;https://www.raspberrypi.org/software/operating-systems/&quot;&gt;downloads page&lt;/a&gt;. Now they can be flashed to the memory card using Etcher, eliminating the need for &lt;a href=&quot;/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/&quot;&gt;NOOBS&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We also showed how to setup &lt;a href=&quot;/en/2020/12/26/opensuse-on-the-raspberry-pi-4-part-1-downloading-and-installing/&quot;&gt;openSUSE on the Raspberry Pi 4&lt;/a&gt;, in that how-to we recommend balenaEtcher to flash the &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; image to the memory card.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the &lt;a href=&quot;/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/&quot;&gt;PinePhone&lt;/a&gt; review, we saw that there are at least &lt;a href=&quot;https://wiki.pine64.org/index.php?title=PinePhone_Software_Releases&quot;&gt;18 operating systems&lt;/a&gt; that support it already. If you want to try one of these systems without installing it on your phone’s internal storage, you can use Etcher to flash it to a memory card.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What comes next would originally be part of the &lt;a href=&quot;/en/2020/12/26/opensuse-on-the-raspberry-pi-4-part-1-downloading-and-installing/&quot;&gt;openSUSE on the Raspberry Pi 4&lt;/a&gt; how-to. But as balenaEtcher can be useful in many how-tos, I decided to move all the information about it to this text dedicated to it and link other how-tos to this one.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-little-issue-regarding-privacy&quot;&gt;A little issue regarding privacy…&lt;/h2&gt;
+
+&lt;p&gt;Before we begin, I just want to note that there is a &lt;strong&gt;privacy&lt;/strong&gt; issue in Etcher, but I think this is a small problem, easy to workaround: during use, balenaEtcher makes network connections to &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt;, &lt;a href=&quot;https://www.facebook.com/&quot;&gt;Facebook&lt;/a&gt; and other services (more information &lt;a href=&quot;https://forums.balena.io/t/serious-privacy-concerns-with-etcher-1-4-4/4103&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://github.com/balena-io/etcher/issues/2977&quot;&gt;here&lt;/a&gt;), which is intriguing, because that’s totally unnecessary for its function.&lt;/p&gt;
+
+&lt;p&gt;If this is an issue for you, I believe it’s enough to disconnect your computer from the Internet while using Etcher.&lt;/p&gt;
+
+&lt;p&gt;If you don’t want to use Etcher and you’re a Linux user, an alternative is the &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; command.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-do-i-need-to-use-etcher&quot;&gt;What do I need to use Etcher?&lt;/h2&gt;
+
+&lt;p&gt;balenaEtcher requires a desktop with Linux, Windows or macOS.&lt;/p&gt;
+
+&lt;p&gt;I’m going to use &lt;a href=&quot;/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;, which is a Linux distro based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But the steps to follow should be more or less similar in all of those systems.&lt;/p&gt;
+
+&lt;p&gt;You will also need a memory card with enough capacity to store the OS image you want to flash to it. You need to download this image beforehand.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserting-the-memory-card&quot;&gt;Inserting the memory card&lt;/h2&gt;
+
+&lt;p&gt;Connect the memory card to your computer, maybe using an adapter or a USB card reader.&lt;/p&gt;
+
+&lt;p&gt;Before proceeding, please note that anything currently stored on the memory card will be overwritten during flashing. So, if the card currently has any files on it, you may wish to back those files up first to not lose them permanently.&lt;/p&gt;
+
+&lt;p&gt;It is also recommended that you remove any other storage devices, other than the memory card, connected to your computer (such as other USB sticks, external hard drives, etc.) to prevent them from being erased by mistake (and losing files, probably irreversibly).&lt;/p&gt;
+
+&lt;h2 id=&quot;downloading-etcher&quot;&gt;Downloading Etcher&lt;/h2&gt;
+
+&lt;p&gt;To download balenaEtcher, go to its website and click the download button:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.balena.io/etcher/&quot;&gt;https://www.balena.io/etcher/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-02.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When the download is complete, open the &lt;strong&gt;Downloads&lt;/strong&gt; folder and extract the contents of the downloaded compressed file:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-opensuse-03-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-opensuse-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;If you are going to disconnect your computer from the Internet, the time to do that is now.&lt;/p&gt;
+
+&lt;p&gt;Open the extracted folder and double-click the file with &lt;a href=&quot;https://appimage.org/&quot;&gt;AppImage&lt;/a&gt; extension (which is actually the balenaEtcher program itself, doing that is going to start it):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-opensuse-04-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-opensuse-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;flashing-the-image-to-the-memory-card&quot;&gt;Flashing the image to the memory card&lt;/h2&gt;
+
+&lt;p&gt;On balenaEtcher, click the &lt;strong&gt;Flash from file&lt;/strong&gt; button and select the image file you downloaded:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-05.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Then, click the &lt;strong&gt;Select target&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-06.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Tick the memory card and click &lt;strong&gt;Select&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-07.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; be sure to correctly identify the memory card, otherwise the image will be written to the wrong device and you will lose data irreversibly. I usually look at the device’s &lt;strong&gt;Size&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, click the last button, &lt;strong&gt;Flash&lt;/strong&gt;, to start:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-08.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You will be asked for the administrator password (Linux calls it the root user), which you must provide to proceed.&lt;/p&gt;
+
+&lt;p&gt;Wait for the image to be flashed to the memory card. Etcher shows an estimate of how long that is going to take (you can go have a coffee and come back later):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-09.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;After flashing, balenaEtcher checks the files on the memory card (your coffee time can last a little longer):&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-10.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;At the end, balenaEtcher informs you that flashing is complete:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-11.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;You can simply close the program.&lt;/p&gt;
+
+&lt;p&gt;If you disconnected your computer from the Internet, you can now connect it back.&lt;/p&gt;
+
+&lt;h2 id=&quot;removing-the-memory-card&quot;&gt;Removing the memory card&lt;/h2&gt;
+
+&lt;p&gt;balenaEtcher does not mount the memory card after flashing the image.&lt;/p&gt;
+
+&lt;p&gt;If you open the &lt;strong&gt;Files&lt;/strong&gt; app, you will see that the memory card is listed, but the usual &lt;strong&gt;Unmount&lt;/strong&gt; icon is not shown next to it:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-opensuse-12-en.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-opensuse-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Therefore, you can simply remove the memory card from your computer.&lt;/p&gt;
+
+&lt;h2 id=&quot;uninstalling-etcher&quot;&gt;Uninstalling Etcher&lt;/h2&gt;
+
+&lt;p&gt;Note that Etcher was not actually installed to your system. The entire program consists only of that file with AppImage extension that you opened. If you are not going to use it anymore, you can simply delete it, if you want.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I hope this text was helpful to you. As I said, and you may have noticed, Etcher is very simple and easy to use. But if you have any doubts, don’t hesitate to write in the comments.&lt;/p&gt;
+
+&lt;p&gt;Have a lot of fun flashing images and playing with your gadgets!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;In addition to the links that appear throughout the text, I also consulted this page:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://etcher.download/&quot;&gt;A Step-by-Step Guide to Downloading and Using Etcher&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sat, 26 Dec 2020 13:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2020/12/26/flashing-os-images-to-memory-cards-easily-with-balenaetcher/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2020/12/26/flashing-os-images-to-memory-cards-easily-with-balenaetcher/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>openSUSE Leap vs openSUSE Tumbleweed: what is the difference?</title>
@@ -2113,755 +2629,6 @@ $ gpg --import public_key
                 <pubDate>Tue, 01 Sep 2020 10:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Firefox and Chromium cannot play videos: here is why and how to solve it</title>
-                <description>&lt;p&gt;If you use either &lt;a href=&quot;https://www.mozilla.org/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; or &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, web browsers that come out-of-the-box with &lt;a href=&quot;/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/&quot;&gt;Linux Kamarada 15.2 RC&lt;/a&gt;, you may have come across a video that they can’t play. Error messages vary from site to site. Here are some examples:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-video-01-en.jpg&quot; title=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): The media could not be played.&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-video-01-en.jpg&quot; alt=&quot;[Twitter](https://twitter.com/openSUSE/status/1290345568452202498): The media could not be played.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://twitter.com/openSUSE/status/1290345568452202498&quot;&gt;Twitter&lt;/a&gt;: The media could not be played.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/chromium-video-01-en.jpg&quot; title=&quot;[Facebook](https://www.facebook.com/349474038443975/videos/2626269944056239/): Something Went Wrong. We&amp;apos;re having trouble playing this video.&quot;&gt;
-&lt;img src=&quot;/files/2020/08/chromium-video-01-en.jpg&quot; alt=&quot;[Facebook](https://www.facebook.com/349474038443975/videos/2626269944056239/): Something Went Wrong. We&amp;apos;re having trouble playing this video.&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.facebook.com/349474038443975/videos/2626269944056239/&quot;&gt;Facebook&lt;/a&gt;: Something Went Wrong. We're having trouble playing this video.&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;To put it shortly, this happens because your system is missing proprietary codecs. Today’s tip probably can help you solve this problem.&lt;/p&gt;
-
-&lt;p&gt;In case you didn’t know, Linux Kamarada is a &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; distribution based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap&lt;/a&gt;, so the following tip also applies to &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;. Other distributions may present a similar problem and provide a similar way to solve it. If you use other distribution, check its documentation.&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-solve-this-problem&quot;&gt;How to solve this problem&lt;/h2&gt;
-
-&lt;p&gt;For Linux Kamarada and openSUSE users, the solution to this problem boils down to:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Add the &lt;a href=&quot;http://packman.links2linux.com/&quot;&gt;Packman&lt;/a&gt; repository, if you don’t have it already added to your system;&lt;/li&gt;
-  &lt;li&gt;Refresh the list of available packages from the online repositories; and&lt;/li&gt;
-  &lt;li&gt;Update the system packages allowing &lt;a href=&quot;https://en.opensuse.org/SDB:Vendor_change_update&quot;&gt;vendor change&lt;/a&gt;, that should cause some packages provided by openSUSE to be replaced by packages from Packman, which contains the missing proprietary codecs.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;There are at least two ways to do this: through the graphical user interface, which can be more friendly especially for beginners, or through the command line interface.&lt;/p&gt;
-
-&lt;h3 id=&quot;solving-via-the-command-line-interface&quot;&gt;Solving via the command line interface&lt;/h3&gt;
-
-&lt;p&gt;The command line solution involves the &lt;strong&gt;&lt;a href=&quot;https://en.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt; package manager. As explaining it is shorter, I’m going to start by it.&lt;/p&gt;
-
-&lt;p&gt;Run the following 3 commands, which correspond to the 3 steps above respectively, as administrator (root user):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper ar -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.2/ packman
-# zypper ref
-# zypper up --allow-vendor-change
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;solving-via-the-graphical-user-interface&quot;&gt;Solving via the graphical user interface&lt;/h3&gt;
-
-&lt;p&gt;Although it is more user friendly, the GUI solution requires a few clicks and goes through more screens. But the easiness more than makes up for the longer path.&lt;/p&gt;
-
-&lt;h4 id=&quot;adding-the-packman-repository&quot;&gt;Adding the Packman repository&lt;/h4&gt;
-
-&lt;p&gt;Start the &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST Control Center&lt;/a&gt; by opening the &lt;strong&gt;Activities&lt;/strong&gt; menu, on the top-left screen corner, typing &lt;code class=&quot;highlighter-rouge&quot;&gt;yast&lt;/code&gt; and clicking the corresponding icon:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Within the &lt;strong&gt;Software&lt;/strong&gt; category (the first one), click &lt;strong&gt;Software Repositories&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;On the &lt;strong&gt;Configured Software Repositories&lt;/strong&gt; screen, click the &lt;strong&gt;Add&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;Community Repositories&lt;/strong&gt; option and click &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enable the &lt;strong&gt;Packman Repository&lt;/strong&gt; and click &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;YaST itself takes care of refreshing the list of available packages from the repositories.&lt;/p&gt;
-
-&lt;p&gt;YaST asks for confirmation before importing the new repository’s key, click &lt;strong&gt;Trust&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Back to the &lt;strong&gt;Configured Software Repositories&lt;/strong&gt; screen, click &lt;strong&gt;OK&lt;/strong&gt; to close it.&lt;/p&gt;
-
-&lt;h4 id=&quot;switching-packages-to-the-packman-repository&quot;&gt;Switching packages to the Packman repository&lt;/h4&gt;
-
-&lt;p&gt;Back to the YaST main screen, click &lt;strong&gt;Software Management&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Open the &lt;strong&gt;View&lt;/strong&gt; menu and click &lt;strong&gt;Repositories&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;By the left, select the &lt;strong&gt;Packman Repository&lt;/strong&gt;, and by the right, click &lt;strong&gt;Switch system packages&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that many already installed packages, provided by openSUSE, have been marked to be updated to versions provided by Packman. Click the &lt;strong&gt;Accept&lt;/strong&gt; button:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;YaST warns you that additional packages are going to be installed, click &lt;strong&gt;Continue&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-10-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-10-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;YaST downloads and installs the packages:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-11-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-11-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;It can take more or less time depending on your Internet connection speed.&lt;/p&gt;
-
-&lt;p&gt;In the end, click &lt;strong&gt;Finish&lt;/strong&gt; to close this window and then close YaST:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/yast-packman-12-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/yast-packman-12-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;thats-it&quot;&gt;That’s it!&lt;/h2&gt;
-
-&lt;p&gt;When you are finished with the above procedures, restart your browser.&lt;/p&gt;
-
-&lt;p&gt;The videos that were not playing before can be played now:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-video-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-video-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/chromium-video-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/chromium-video-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;in-case-you-want-to-know-more&quot;&gt;In case you want to know more&lt;/h2&gt;
-
-&lt;p&gt;MP4 and H.264 have become common video formats on the web. Strictly speaking, &lt;a href=&quot;https://en.wikipedia.org/wiki/MP4&quot;&gt;MP4&lt;/a&gt; is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Container_format_(computing)&quot;&gt;container&lt;/a&gt; format, which can store video tracks, audio tracks, embedded subtitles and other data in a single file. &lt;a href=&quot;https://en.wikipedia.org/wiki/H.264&quot;&gt;H.264&lt;/a&gt;, in its turn, is a high definition video compression format, that is, it encodes just the visual data (the video itself) and requires a container (such as MP4) to host the encoded video. Most of the time, an “H.264 video file” is a file with the &lt;code class=&quot;highlighter-rouge&quot;&gt;.mp4&lt;/code&gt; extension that contains a video track encoded with the H.264 &lt;a href=&quot;https://en.wikipedia.org/wiki/Codec&quot;&gt;codec&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The problem is that the H.264 codec is not a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt;. It is a &lt;a href=&quot;https://en.wikipedia.org/wiki/Proprietary_software&quot;&gt;proprietary software&lt;/a&gt; licensed by the Moving Picture Experts Group Licensing Administration (&lt;a href=&quot;https://www.mpegla.com/&quot;&gt;MPEG LA&lt;/a&gt;) and therefore cannot be provided by Linux distributions such as Linux Kamarada and openSUSE.&lt;/p&gt;
-
-&lt;p&gt;If you visit a website that has an H.264 video, but the H.264 codec is not installed on your system — and it is not installed by default on both openSUSE and Linux Kamarada — then the video will not be played, as I showed earlier in this text.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, in the case of these two distros, there is the Packman repository that provides H.264 and other proprietary codecs in the form of packages that can be easily installed.&lt;/p&gt;
-
-&lt;p&gt;Note that this problem does not occur in the &lt;a href=&quot;https://www.google.com/chrome/&quot;&gt;Google Chrome&lt;/a&gt; browser. &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; probably made a commercial deal with MPEG LA to distribute the H.264 codec within Google Chrome.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-about-the-openh264-plugin-in-firefox&quot;&gt;What about the OpenH264 plugin in Firefox?&lt;/h3&gt;
-
-&lt;p&gt;If you use Firefox, you may have noticed that it has a plugin called “OpenH264 Video Codec”, which is automatically installed:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/firefox-openh264-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/08/firefox-openh264-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.openh264.org/&quot;&gt;OpenH264&lt;/a&gt; is the name of &lt;a href=&quot;https://www.cisco.com/&quot;&gt;Cisco&lt;/a&gt;’s implementation of the H.264 codec. Although it’s &lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;open source&lt;/a&gt;, it’s not free software as well, since its binaries are released under a license from Cisco, which covers MPEG LA licensing fees to provide this codec for free. Therefore, they must be downloaded from Cisco.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.mozilla.org/&quot;&gt;Mozilla&lt;/a&gt; has partnered with Cisco so that Firefox can use OpenH264. When you use Firefox for the first time, it automatically downloads the OpenH264 plugin from Cisco and installs it.&lt;/p&gt;
-
-&lt;p&gt;OpenH264 implements only the most basic part of the H.264 format, the baseline profile, so it’s used by Firefox only to support video calls such as those made using &lt;a href=&quot;https://webrtc.org/&quot;&gt;WebRTC&lt;/a&gt;. Examples of video calling services that depend on WebRTC include &lt;a href=&quot;https://meet.google.com/&quot;&gt;Google Meet&lt;/a&gt;, &lt;a href=&quot;https://hangouts.google.com/&quot;&gt;Google Hangouts&lt;/a&gt;, &lt;a href=&quot;https://www.messenger.com/&quot;&gt;Facebook Messenger&lt;/a&gt; and &lt;a href=&quot;https://discord.com/&quot;&gt;Discord&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Shortly, the Firefox OpenH264 plugin does not enable video playback, only video calls. I just wanted to clarify that.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/questions/1188176&quot;&gt;Twitter says “The media could not be played”. | Firefox Support Forum | Mozilla Support&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/SDB:Firefox_MP4/H.264_Video_Support&quot;&gt;SDB:Firefox MP4/H.264 Video Support - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.fsf.org/licensing/h264-patent-license&quot;&gt;Information about the H.264 patent license - Free Software Foundation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://support.mozilla.org/en-US/kb/open-h264-plugin-firefox&quot;&gt;Why is there an OpenH264 plugin in Firefox? | Firefox Help&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-factory/2018-02/msg00846.html&quot;&gt;[opensuse-factory] Status of x264 libraries in the standard distribution&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fedoraproject.org/wiki/OpenH264&quot;&gt;OpenH264 - Fedora Project Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.iorgsoft.com/compare/mp4-vs-h.264-comparison.html&quot;&gt;MP4 vs H.264, difference between MP4 and H.264 format - iOrgsoft&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bloggeek.me/massive-applications-using-webrtc/&quot;&gt;10 Massive Applications Using WebRTC - BlogGeek.me&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Thu, 20 Aug 2020 01:50:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/08/20/firefox-and-chromium-cannot-play-videos-here-is-why-and-how-to-solve-it/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Linux Kamarada 15.2 enters Release Candidate (RC) phase</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Development is almost finished: I’m happy to unveil the Release Candidate (RC) for Linux Kamarada 15.2! Based on &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;, it is now available for &lt;a href=&quot;/en/download&quot;&gt;download&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Right now, the &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page offers two releases to download:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;15.1 Final&lt;/a&gt;, which you can install on your home or work computer; and&lt;/li&gt;
-  &lt;li&gt;15.2 RC, which you can test if you want to help in development.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The easiest way to test &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; is using a &lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox&lt;/a&gt; virtual machine. Read about it here:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Or, if you want to test Linux Kamarada on your own machine, the easiest way to do this is using a USB stick that you can make bootable with &lt;a href=&quot;/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/&quot;&gt;Ventoy&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/&quot;&gt;Ventoy: create a multiboot USB drive by simply copying ISO images to it&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;what-is-a-release-candidate&quot;&gt;What is a release candidate?&lt;/h2&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate&quot;&gt;&lt;strong&gt;release candidate&lt;/strong&gt;&lt;/a&gt; (&lt;strong&gt;RC&lt;/strong&gt;) is a software version that is almost ready to be released to the market as a stable product. This release may become the final release, unless significant bugs are detected. At this stage of development, all features planned at the beginning are already present and no new features are added.&lt;/p&gt;
-
-&lt;p&gt;A release candidate is also a kind of &lt;a href=&quot;https://en.wikipedia.org/wiki/Software_release_life_cycle#BETA&quot;&gt;beta&lt;/a&gt; version. Therefore, bugs are expected. If you find a bug, please report it. Take a look at the &lt;a href=&quot;/en/help&quot;&gt;Help&lt;/a&gt; page to see how to get in touch.&lt;/p&gt;
-
-&lt;p&gt;Of course, bugs can be found and fixed anytime, but the sooner the better!&lt;/p&gt;
-
-&lt;h2 id=&quot;whats-new&quot;&gt;What’s new?&lt;/h2&gt;
-
-&lt;p&gt;In addition to what was new on &lt;a href=&quot;/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/&quot;&gt;15.2 Beta&lt;/a&gt;, released in April, on the new 15.2 RC you will find:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/firefox/new/&quot;&gt;Mozilla Firefox&lt;/a&gt; is now the default web browser, Linux Kamarada comes with the &lt;a href=&quot;https://www.mozilla.org/firefox/enterprise/&quot;&gt;Extended Support Release (ESR)&lt;/a&gt; distributed by openSUSE Leap (&lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, the previous default browser, has been kept as alternative, at least for now)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/#remmina&quot;&gt;Remmina&lt;/a&gt; is now the default &lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/&quot;&gt;remote desktop client&lt;/a&gt; (&lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/#vinagre&quot;&gt;Vinagre&lt;/a&gt; has been removed because it is unmaintained for some time now)&lt;/li&gt;
-  &lt;li&gt;new &lt;a href=&quot;https://www.privacytools.io/&quot;&gt;privacy&lt;/a&gt; tools: &lt;a href=&quot;https://keepassxc.org/&quot;&gt;KeePassXC&lt;/a&gt; password manager and native support for &lt;a href=&quot;https://www.torproject.org/&quot;&gt;Tor&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;updated software and bugs fixed&lt;/li&gt;
-  &lt;li&gt;new logo and new visual identity (branding)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/keepassxc-en.png&quot; title=&quot;KeePassXC password manager&quot;&gt;
-&lt;img src=&quot;/files/2020/08/keepassxc-en.png&quot; alt=&quot;KeePassXC password manager&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KeePassXC password manager&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/tor-en.jpg&quot; title=&quot;Tor anonymity network&quot;&gt;
-&lt;img src=&quot;/files/2020/08/tor-en.jpg&quot; alt=&quot;Tor anonymity network&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tor anonymity network&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;specs&quot;&gt;Specs&lt;/h2&gt;
-
-&lt;p&gt;To allow comparing Linux Kamarada releases, here is a summary of the software contained on Linux Kamarada 15.2 RC 1 Build 42.1:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linux kernel 5.3.18&lt;/li&gt;
-  &lt;li&gt;X.Org display server 1.20.3 (without Wayland)&lt;/li&gt;
-  &lt;li&gt;GNOME 3.34.4 desktop including its core apps, such as Files (previously Nautilus), Calculator, Terminal, Text editor (gedit), Screenshot and others&lt;/li&gt;
-  &lt;li&gt;LibreOffice office suite 6.4.4&lt;/li&gt;
-  &lt;li&gt;Mozilla Firefox ESR 78.1.0 (default web browser)&lt;/li&gt;
-  &lt;li&gt;Chromium 84 (alternative web browser)&lt;/li&gt;
-  &lt;li&gt;VLC media player 3.0.10&lt;/li&gt;
-  &lt;li&gt;Evolution email client&lt;/li&gt;
-  &lt;li&gt;YaST control center&lt;/li&gt;
-  &lt;li&gt;Brasero&lt;/li&gt;
-  &lt;li&gt;CUPS 2.2.7&lt;/li&gt;
-  &lt;li&gt;Firewalld 0.5.5&lt;/li&gt;
-  &lt;li&gt;GParted 0.31.0&lt;/li&gt;
-  &lt;li&gt;HPLIP 3.19.12&lt;/li&gt;
-  &lt;li&gt;Java (OpenJDK) 11.0.7&lt;/li&gt;
-  &lt;li&gt;KeePassXC 2.6.0&lt;/li&gt;
-  &lt;li&gt;KolourPaint 20.04.2&lt;/li&gt;
-  &lt;li&gt;Linphone 4.1.1&lt;/li&gt;
-  &lt;li&gt;PDFsam Basic 4.1.4&lt;/li&gt;
-  &lt;li&gt;Pidgin 2.13.0&lt;/li&gt;
-  &lt;li&gt;Samba 4.11.5&lt;/li&gt;
-  &lt;li&gt;Tor 0.4.2&lt;/li&gt;
-  &lt;li&gt;Transmission 2.94&lt;/li&gt;
-  &lt;li&gt;Vim 8.0&lt;/li&gt;
-  &lt;li&gt;Wine 5.0&lt;/li&gt;
-  &lt;li&gt;games: Aisleriot (Solitaire), Chess, Hearts, Iagno (Reversi), Mahjongg, Mines (Minesweeper), Nibbles (Snake), Quadrapassel (Tetris), Sudoku&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That list is not exhaustive, but it gives a notion of what can be found in the distribution.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-linux-kamarada&quot;&gt;About Linux Kamarada&lt;/h2&gt;
-
-&lt;p&gt;The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. It started as a blog about &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, which is the Linux distribution I’ve been using for 8 years (since &lt;a href=&quot;https://vinyanalista.github.io/blog/2012/04/21/problemas-envolvendo-bootloaders-mbr-e-tabela-de-particoes/&quot;&gt;April 2012&lt;/a&gt;, when I installed openSUSE 11.4 and then upgraded to 12.1). Now the project offers its own Linux distribution, which brings much of the software presented on the blog pre-installed and ready for use.&lt;/p&gt;
-
-&lt;p&gt;The Kamarada Linux distribution is based on openSUSE Leap and is intended for use on desktops at home and at work, in both private companies and government entities. It features the essential software selection for any Linux installation and a nice looking modern desktop.&lt;/p&gt;
-
-&lt;p&gt;It is not recommended to use Linux Kamarada on servers, although it is possible. openSUSE is better suited for that use case, because it offers a server configuration during installation, which is going to set up a server with just a small set of packages and a text mode interface.&lt;/p&gt;
-
-&lt;p&gt;If you didn’t know the Kamarada Linux distribution yet, take a look at the &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1 release announcement&lt;/a&gt; (the first release) for more information.&lt;/p&gt;
-
-&lt;p&gt;Follow Linux Kamarada on &lt;a href=&quot;#about&quot;&gt;social networks&lt;/a&gt; to be notified of new releases.&lt;/p&gt;
-
-</description>
-                <pubDate>Sat, 08 Aug 2020 20:20:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Ventoy: create a multiboot USB drive by simply copying ISO images to it</title>
-                <description>&lt;p&gt;Did you know that you can install &lt;a href=&quot;https://www.microsoft.com/windows/&quot;&gt;Windows&lt;/a&gt; and &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; using the same USB stick, without having to format it twice? Also, you can use the same USB stick to test live images of many Linux distributions, without having to format it again and again. Indeed, there are several tools to create bootable USB drives (good ones include &lt;a href=&quot;https://rufus.ie/&quot;&gt;Rufus&lt;/a&gt; for Windows, &lt;a href=&quot;https://github.com/openSUSE/imagewriter&quot;&gt;SUSE Studio Imagewriter&lt;/a&gt; and &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; for Linux), but none of them is easier to use than the fairly new Ventoy.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.ventoy.net/&quot;&gt;Ventoy&lt;/a&gt; is a &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;free software&lt;/a&gt; tool to create bootable USB drives with &lt;a href=&quot;https://en.wikipedia.org/wiki/ISO_image&quot;&gt;ISO images&lt;/a&gt;. You format a USB drive and install Ventoy to it just once. Thereafter, you can simply copy some ISO files to the USB drive and boot from it. Ventoy presents a &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; menu listing the ISO images present on the USB drive, from where you can choose which one to boot and start using it right away.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ventoy supports legacy &lt;a href=&quot;https://en.wikipedia.org/wiki/BIOS&quot;&gt;BIOS&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface&quot;&gt;UEFI&lt;/a&gt; (with and without &lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface#Secure_boot&quot;&gt;secure boot&lt;/a&gt;), &lt;a href=&quot;https://en.wikipedia.org/wiki/Master_boot_record&quot;&gt;MBR&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/GUID_Partition_Table&quot;&gt;GPT&lt;/a&gt; partition tables, which makes it kind of universal.&lt;/p&gt;
-
-&lt;p&gt;Commonly, tools to create bootable USB drives extract the ISO image contents to the drive, allowing just one ISO image to be used at a time. That way, you need to reformat the drive every time you want to boot another ISO image. Besides that, tools usually prevent the drive from being used for other purposes (it’s not possible to copy other files). With Ventoy, you don’t need to format the drive again and again: you can copy and delete ISO images as you wish. You can also copy other files to drive, so you can continue to use it for other purposes.&lt;/p&gt;
-
-&lt;p&gt;You can find Ventoy very handy if you work on formatting and repairing computers, or if you like to try out different Linux distros. I myself started using Ventoy on the recommendation of a friend. I have been using it to test &lt;a href=&quot;/en/2020/04/14/linux-kamarada-15.2-beta-makes-your-desktop-greener-than-ever/&quot;&gt;Linux Kamarada 15.2 Beta&lt;/a&gt;. Ventoy was very useful for me last week, when I installed Windows and Linux on my new &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SSD Kingston A400&lt;/a&gt;, which I received from warranty after the previous one suffered from the &lt;a href=&quot;https://vinyanalista.github.io/blog/2020/07/24/como-resolver-o-problema-do-satafirm-s11-do-ssd-kingston-a400-e-outros-modelos/&quot;&gt;SATAFIRM S11&lt;/a&gt; bug.&lt;/p&gt;
-
-&lt;p&gt;The first release of Ventoy (1.0.0) was made available on &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;April 5th&lt;/a&gt;. The latest release (1.0.17) is just 4 days old, from &lt;a href=&quot;https://www.ventoy.net/en/doc_news.html&quot;&gt;July 25th&lt;/a&gt;. For future reference, to write this text I use this version.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-do-i-need-to-use-ventoy&quot;&gt;What do I need to use Ventoy?&lt;/h2&gt;
-
-&lt;p&gt;To use Ventoy, you need a USB drive (be it a USB stick, an external hard drive, a memory card, etc.) that is large enough to hold the ISO images you are going to use. For instance, the &lt;a href=&quot;/en/download/15.1/&quot;&gt;Linux Kamarada 15.1 ISO image&lt;/a&gt; is 1.5GB. If you are going to use just that image, you need at least a 2GB drive. The &lt;a href=&quot;https://www.microsoft.com/software-download/windows10&quot;&gt;Windows 10 version 2004 ISO image&lt;/a&gt; is 4.9GB. To use both images, you need at least an 8GB drive, and so on.&lt;/p&gt;
-
-&lt;p&gt;In addition, you need a Windows or Linux &lt;a href=&quot;https://en.wikipedia.org/wiki/Personal_computer&quot;&gt;PC&lt;/a&gt; to prepare the USB drive.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;Before proceeding, please note that the USB drive will be formatted by Ventoy, so &lt;strong&gt;the data on the USB drive will be lost&lt;/strong&gt;! If you want to keep the data on it, here's what you can do: copy the data to another location (e.g. to the computer), install Ventoy on the USB drive, then move the data back to the USB drive.&lt;/p&gt;
-    &lt;p&gt;It is also recommended that you remove any other storage devices connected to your computer (such as other USB sticks, external hard drives, memory cards, etc.) to prevent them from being formatted by mistake.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;No more talking, let’s see how to install and use this powerful tool!&lt;/p&gt;
-
-&lt;h2 id=&quot;how-to-install-ventoy-to-the-usb-drive&quot;&gt;How to install Ventoy to the USB drive&lt;/h2&gt;
-
-&lt;p&gt;Start by downloading Ventoy for your operating system from the Ventoy releases page on GitHub:
- &lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/ventoy/Ventoy/releases&quot;&gt;https://github.com/ventoy/Ventoy/releases&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-02.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-02.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Below are instructions on how to install Ventoy to the USB drive depending on the operating system you use.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-install-ventoy-using-windows&quot;&gt;How to install Ventoy using Windows&lt;/h3&gt;
-
-&lt;p&gt;Download the &lt;code class=&quot;highlighter-rouge&quot;&gt;.zip&lt;/code&gt; file corresponding to Ventoy for Windows.&lt;/p&gt;
-
-&lt;p&gt;When the download is complete, extract the contents of the archive. To do this, you can use the wizard that comes with Windows itself or a program such as &lt;a href=&quot;https://www.7-zip.org/&quot;&gt;7-Zip&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enter the extracted folder and launch the &lt;strong&gt;Ventoy2Disk&lt;/strong&gt; executable by double-clicking it:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Optionally, you can translate the Ventoy interface to your language by opening the &lt;strong&gt;Language&lt;/strong&gt; menu and selecting the desired language:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-03.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;To this tutorial, I’m going to stay with the default language, which is &lt;strong&gt;English (English)&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Select the USB drive from the &lt;strong&gt;Device&lt;/strong&gt; list and click &lt;strong&gt;Install&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Ventoy warns you of the risk of data loss (what I said before). Click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-05-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-05-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Double check you are formatting the right device and click &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-06-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-06-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;After a few seconds or minutes, Ventoy finishes installing itself to the USB drive:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-07-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-07-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;You can click &lt;strong&gt;OK&lt;/strong&gt; to dismiss that dialog box and close the Ventoy window. Before closing, observe that the program now informs you which Ventoy version is installed on the device:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-08-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-08-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Now that your USB drive is ready, copy the ISO images you are going to use onto it:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-windows-09-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-windows-09-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that you can organize them inside a folder, to keep them separated from other files on the USB drive. During boot, Ventoy searches all the directories and subdirectories recursively to find all the ISO files inside the USB drive.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-install-ventoy-using-linux&quot;&gt;How to install Ventoy using Linux&lt;/h3&gt;
-
-&lt;p&gt;To show how to install Ventoy using Linux, I’m going to use &lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Download the &lt;code class=&quot;highlighter-rouge&quot;&gt;.tar.gz&lt;/code&gt; file corresponding to Ventoy for Linux.&lt;/p&gt;
-
-&lt;p&gt;When the download is complete, extract the contents of the archive:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Enter the extracted folder and you will find the &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt; script:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Open a terminal window from within this folder.&lt;/p&gt;
-
-&lt;p&gt;Before proceeding, you need to find out the device name of your USB drive. To do this, you can use the &lt;strong&gt;Disks&lt;/strong&gt; app:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-03-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-03-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Or the &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man8/fdisk.8.html&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt; command line utility:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
-
-[...]
-
-Disk /dev/sdb: 7.2 GiB, 7744782336 bytes, 15126528 sectors
-Disk model: USB DISK 2.0    
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x789ef007
-
-Device     Boot Start      End  Sectors  Size Id Type
-/dev/sdb1        2048 15126527 15124480  7.2G  b W95 FAT32
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In my case, the USB drive name is &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/sdb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
-    &lt;p&gt;Be sure to correctly identify the USB drive, as well as correctly type its name next, so as not to format another device by mistake.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We are ready to install Ventoy to the USB drive. Run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Ventoy2Disk.sh&lt;/code&gt; script as the administrator user (root), informing the device name as argument:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# sh Ventoy2Disk.sh -i /dev/sdb
-
-***********************************************************
-*                Ventoy2Disk Script                       *
-*             longpanda  admin@ventoy.net                 *
-***********************************************************
-
-Disk : /dev/sdb
-Modelo:  USB DISK 2.0 (scsi)
-Size : 7 GB
-Style: MBR
-
-
-Attention:
-You will install Ventoy to /dev/sdb.
-All the data on the disk /dev/sdb will be lost!!!
-
-Continue? (y/n)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ventoy warns you of the risk of data loss and asks if you want to continue.&lt;/p&gt;
-
-&lt;p&gt;Type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; (from &lt;em&gt;yes&lt;/em&gt;) and then hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Continue? (y/n)y
-
-All the data on the disk /dev/sdb will be lost!!!
-Double-check. Continue? (y/n)
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Ventoy warns you once more (think twice). Again, type &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; and hit &lt;strong&gt;Enter&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Double-check. Continue? (y/n)y
-
-Create partitions on /dev/sdb by parted in MBR style ...
-Done
-mkfs on disk partitions ...
-create efi fat fs /dev/sdb2 ...
-mkfs.fat 4.1 (2017-01-24)
-success
-mkexfatfs 1.3.0
-Creating... done.
-Flushing... done.
-File system created successfully.
-writing data to disk ...
-sync data ...
-esp partition processing ...
-umount: /home/linux/Downloads/ventoy-1.0.17-linux/ventoy-1.0.17/tmp_mnt: target is busy.
-rm: cannot remove './tmp_mnt': Device or resource busy
-
-Install Ventoy to /dev/sdb successfully finished.
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After a few seconds or minutes, Ventoy finishes installing itself to the USB drive.&lt;/p&gt;
-
-&lt;p&gt;Using Linux Kamarada 15.1, an error message was displayed, as you can see above. This is because Ventoy formats the USB drive with the &lt;a href=&quot;https://en.wikipedia.org/wiki/ExFAT&quot;&gt;exFAT&lt;/a&gt; file system, and support for that file system is not installed out-of-the-box on Linux Kamarada 15.1.&lt;/p&gt;
-
-&lt;p&gt;In case you see that error message on Linux Kamarada 15.1, &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap&lt;/a&gt;, or another Linux distribution based on &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, install the exFAT support with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in fuse-exfat
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Linux Kamarada 15.2 will come with native support for the exFAT file system.&lt;/p&gt;
-
-&lt;p&gt;Now that your USB drive is ready, copy the ISO images you are going to use onto it:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/07/ventoy-linux-04-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/07/ventoy-linux-04-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note that you can organize them inside a folder, to keep them separated from other files on the USB drive. During boot, Ventoy searches all the directories and subdirectories recursively to find all the ISO files inside the USB drive.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-the-usb-drive-with-ventoy&quot;&gt;Using the USB drive with Ventoy&lt;/h2&gt;
-
-&lt;p&gt;After installing Ventoy to the USB drive and copying ISO images onto it, it’s time to use it: reboot your computer with the USB drive plugged in. Ventoy will list the ISO images on the USB drive in a menu, similar to the one presented on the first photo in this text. Select the desired ISO image and hit &lt;strong&gt;Enter&lt;/strong&gt; to boot the system it contains.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linuxuprising.com/2020/06/create-bootable-usb-drive-by-simply.html&quot;&gt;Create A Bootable USB Drive By Simply Copying The ISO To The USB With Ventoy (Linux And Windows) - Linux Uprising Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ostechnix.com/how-to-create-multiboot-usb-drives-with-ventoy-in-linux/&quot;&gt;How To Create Multiboot USB Drives With Ventoy In Linux - OSTechNix&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.ventoy.net/en/doc_start.html&quot;&gt;Get Started - Ventoy&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://linuxconfig.org/how-to-create-a-multiboot-usb-with-ventoy&quot;&gt;How to create a multiboot USB with Ventoy - LinuxConfig.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 29 Jul 2020 11:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/</guid>
                 
                 
                     <category>en</category>
