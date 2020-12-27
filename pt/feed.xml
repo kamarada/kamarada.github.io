@@ -9,10 +9,60 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 26 Dec 2020 15:12:44 -0300</pubDate>
-        <lastBuildDate>Sat, 26 Dec 2020 15:12:44 -0300</lastBuildDate>
+        <pubDate>Sun, 27 Dec 2020 18:22:38 -0300</pubDate>
+        <lastBuildDate>Sun, 27 Dec 2020 18:22:38 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Tumbleweed não inicia no Raspberry Pi 4: veja como resolver</title>
+                <description>&lt;p&gt;O &lt;a href=&quot;/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/&quot;&gt;openSUSE Tumbleweed&lt;/a&gt; funciona bem no &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt; (e também no recém-lançado &lt;a href=&quot;https://www.raspberrypi.org/blog/raspberry-pi-400-the-70-desktop-pc/&quot;&gt;Raspberry Pi 400&lt;/a&gt;), embora &lt;a href=&quot;/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/&quot;&gt;o suporte ao &lt;em&gt;hardware&lt;/em&gt; ainda não esteja completo&lt;/a&gt;, de modo que alguns recursos como Bluetooth e som ainda não funcionam. &lt;/p&gt;
+
+&lt;p&gt;Mas as imagens mais recentes do Tumbleweed para o Raspberry Pi 4 não inicializam (não “dão &lt;em&gt;boot&lt;/em&gt;”, na gíria técnica). O sistema mostra várias vezes na tela a mensagem:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Waiting for PHY auto negotiation to complete... TIMEOUT !&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;E reinicia. O menu do &lt;a href=&quot;https://www.gnu.org/software/grub/&quot;&gt;GRUB&lt;/a&gt; sequer é exibido.&lt;/p&gt;
+
+&lt;p&gt;Eu me deparei com esse problema enquanto tentava testar a última imagem do Tumbleweed com área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, baseada no &lt;em&gt;snapshot&lt;/em&gt; 20201214.&lt;/p&gt;
+
+&lt;p&gt;Esse problema não acontece com a última imagem do &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;Leap 15.2&lt;/a&gt; com XFCE.&lt;/p&gt;
+
+&lt;p&gt;Eu pedi ajuda na &lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/&quot;&gt;lista de discussão openSUSE ARM&lt;/a&gt; e me indicaram uma solução de contorno (nome bonito para “gambiarra”, “armengue”, no Brasil varia de região pra região).&lt;/p&gt;
+
+&lt;p&gt;Se você está tentando iniciar o Tumbleweed no seu Raspberry Pi 4/400 e está se deparando com esse mesmo problema, enquanto ele não é resolvido em definitivo, você pode baixar o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;u-boot.bin&lt;/code&gt; &lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/message/J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW/attachment/3/u-boot.bin&quot;&gt;daqui&lt;/a&gt; ou &lt;a href=&quot;/files/2020/12/u-boot.bin&quot;&gt;daqui&lt;/a&gt; (eu fiz uma cópia dele) e substituir o arquivo de mesmo nome que está na partição EFI do seu cartão SD.&lt;/p&gt;
+
+&lt;p&gt;Com isso, você já deve conseguir usar o Tumbleweed no seu Raspberry Pi 4/400 de novo.&lt;/p&gt;
+
+&lt;p&gt;Esse é um &lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1180338&quot;&gt;&lt;em&gt;bug&lt;/em&gt; conhecido&lt;/a&gt; e a equipe do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; já está trabalhando para resolvê-lo.&lt;/p&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Se você quiser saber mais sobre esse &lt;em&gt;bug&lt;/em&gt;, assim como sua solução de contorno, consulte os &lt;em&gt;links&lt;/em&gt; a seguir (todos em inglês):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/&quot;&gt;Tumbleweed 20201214 on RPi4 - Waiting for PHY auto negotiation to complete - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/QTYDOH45WSLGC4KKBTGK5YXMZZUHIXWC/#J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW&quot;&gt;raspberry pi 400 - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/5BEWN672GVVCJCMPZTYC2QCNO7AMBS2Y/&quot;&gt;Regression observed on Rasbperry Pi 4 with snapshot 20201214 - openSUSE ARM - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1180338&quot;&gt;Bug 1180338 — [RPi4] u-boot can’t handle DMA addresses different from CPU’s&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Sun, 27 Dec 2020 18:00:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Como programar um robô que tuíta toda manhã com Node.js</title>
@@ -2344,23 +2394,33 @@ passwd: senha atualizada com sucesso
 
 &lt;p&gt;A partir daí, o Projeto openSUSE passou a oferecer duas distribuições: openSUSE Leap e openSUSE Tumbleweed.&lt;/p&gt;
 
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Na versão original desse tutorial, eu explicava a diferença entre essas distribuições. Como percebi que essa informação estava se repetindo também em outros textos, decidi movê-la para um texto próprio e adicionar mais algumas informações.&lt;/p&gt;
+
+&lt;/div&gt;
+
 &lt;p&gt;Se você ainda não conhecia essas distribuições, confira as diferenças entre elas no texto:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/&quot;&gt;openSUSE Leap e openSUSE Tumbleweed: qual é a diferença?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. Mas hoje quero falar do Tumbleweed.&lt;/p&gt;
+
 &lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (21/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Na versão original deste tutorial, eu explicava a diferença entre essas distribuições. Como percebi que essa informação estava se repetindo também em outros textos, decidi movê-la para um texto próprio.&lt;/p&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Na versão original desse texto, o openSUSE Tumbleweed se saía um pouco melhor que o Leap no Raspberry Pi 4, mas hoje não há diferença entre eles no que se refere a suporte de &lt;em&gt;hardware&lt;/em&gt;, então atualizei o texto de acordo.&lt;/p&gt;
 
 &lt;/div&gt;
 
-&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. Mas hoje quero falar do Tumbleweed, que, nos meus testes, se saiu um pouco melhor que o Leap no Raspberry Pi 4. Isso já era esperado, uma vez que o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed.&lt;/p&gt;
+&lt;p&gt;Como o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed, acho interessante ficar de olho no Tumbleweed. Por isso, vamos experimentar o Tumbleweed hoje.&lt;/p&gt;
+
+&lt;p&gt;Se você prefere usar o Leap, pode seguir esse passo-a-passo da mesma forma. As instruções são as mesmas.&lt;/p&gt;
 
 &lt;h2 id=&quot;o-que-funciona-e-o-que-não-funciona&quot;&gt;O que funciona e o que não funciona?&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Resumo:&lt;/strong&gt; no que se refere ao suporte ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4, praticamente não há diferença entre o Leap e o Tumbleweed. Se você pretende usar o Raspberry Pi como um servidor doméstico, o openSUSE vai te atender muito bem. Se pretende usar como um &lt;em&gt;desktop&lt;/em&gt;, pode ser que sinta falta de alguns recursos, como o Bluetooth e o som.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Resumo:&lt;/strong&gt; no que se refere ao suporte ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4, não há diferença entre o Leap e o Tumbleweed. Se você pretende usar o Raspberry Pi como um servidor doméstico, ambas as distribuições do openSUSE vão te atender muito bem. Se pretende usar como um &lt;em&gt;desktop&lt;/em&gt;, pode ser que sinta falta de alguns recursos, como o Bluetooth e o som.&lt;/p&gt;
 
 &lt;p&gt;Eu testei os seguintes recursos do Raspberry Pi 4 nas duas distribuições:&lt;/p&gt;
 
@@ -2374,12 +2434,16 @@ passwd: senha atualizada com sucesso
       &lt;li&gt;em ambas as distribuições, dependendo do modelo do teclado e/ou &lt;em&gt;mouse&lt;/em&gt;, ao reiniciar o Raspberry Pi pode ser que parem de funcionar, sendo necessário removê-los e plugá-los de novo para que voltem;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Portas micro-HDMI&lt;/strong&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;no Tumbleweed, ambas funcionaram, mas ao mudar o cabo HDMI de uma porta para outra, não era exibida imagem nessa outra porta — então, se precisar mudar o cabo HDMI de porta, é necessário reiniciar o Raspberry Pi;&lt;/li&gt;
-      &lt;li&gt;no Leap, somente a porta HDMI 1 funcionou (a próxima da saída de som), a porta HDMI 0 &lt;strong&gt;não&lt;/strong&gt; funcionou (a próxima da porta USB-C);&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Portas HDMI&lt;/strong&gt;: em ambas as distribuições, ambas as portas HDMI funcionaram, mas ao mudar o cabo HDMI de uma porta para outra, não foi exibida imagem nessa outra porta de imediato — então, se precisar mudar o cabo HDMI de porta, é necessário reiniciar o Raspberry Pi;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Quando eu escrevi esse texto pela primeira vez, ambas as portas HDMI funcionavam no Tumbleweed, mas apenas uma funcionava no Leap. Hoje, ambas as portas HDMI funcionam em ambas as distribuições, então atualizei o texto de acordo.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Saída de som:&lt;/strong&gt; em ambas as distribuições, &lt;strong&gt;não&lt;/strong&gt; consegui produzir som usando o Raspberry Pi de forma alguma — seja pela saída de som (conectando um fone de ouvido tradicional, por exemplo), pela HDMI (conectando uma TV) ou por Bluetooth.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2414,7 +2478,7 @@ passwd: senha atualizada com sucesso
 
 &lt;p&gt;Note que há várias opções de imagens tanto do Tumbleweed quanto do Leap 15.2. Se você pretende usar o Raspberry Pi como um servidor, a imagem JeOS (&lt;em&gt;Just enough Operating System&lt;/em&gt; — traduzindo: tão somente o sistema operacional) é a mais adequada. Se pretende usá-lo como um &lt;em&gt;desktop&lt;/em&gt;, pode escolher outra imagem com alguma área de trabalho.&lt;/p&gt;
 
-&lt;p&gt;Aqui, vou usar a imagem do Tumbleweed com a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, que é bem leve e, por isso, adequada para o Raspberry Pi. Se você prefere o Leap, o passo-a-passo é o mesmo.&lt;/p&gt;
+&lt;p&gt;Aqui, vou usar a imagem do Tumbleweed com a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, que é bem leve e, por isso, adequada para o Raspberry Pi.&lt;/p&gt;
 
 &lt;p&gt;Clique no &lt;em&gt;link&lt;/em&gt; para a imagem que deseja baixar. O &lt;em&gt;download&lt;/em&gt; pode demorar um pouco, considerando que o arquivo é grande (no meu caso, 1 GB).&lt;/p&gt;
 
@@ -2423,8 +2487,8 @@ passwd: senha atualizada com sucesso
 &lt;p&gt;Para gravar a imagem do openSUSE no cartão de memória, eu recomendo o programa &lt;a href=&quot;/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/&quot;&gt;balenaEtcher&lt;/a&gt;, por ser simples e fácil de usar. Ele é gratuito e de código aberto.&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (17/11/2020):&lt;/strong&gt;
-    &lt;p&gt;Na versão original deste tutorial, eu falava sobre o balenaEtcher. Como pretendo usar o balenaEtcher também em outros tutoriais, decidi mover as instruções de como usá-lo para um tutorial próprio dele.&lt;/p&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Na versão original deste tutorial, eu falava sobre o balenaEtcher. Como pretendo usar o balenaEtcher também em outros tutoriais, decidi mover as instruções de como usá-lo para um tutorial próprio dele e adicionar mais algumas informações.&lt;/p&gt;
 
 &lt;/div&gt;
 
@@ -2520,6 +2584,38 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
 
 &lt;/div&gt;
 
+&lt;h2 id=&quot;tumbleweed-não-inicia-e-agora&quot;&gt;Tumbleweed não inicia, e agora?&lt;/h2&gt;
+
+&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
+    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
+    &lt;p&gt;Essa seção não existia na versão original desse texto, foi incluída para falar desse &lt;em&gt;bug&lt;/em&gt; que começou a acontecer recentemente.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Se em vez da tela de &lt;em&gt;login&lt;/em&gt;, o Tumbleweed no seu Raspberry Pi 4 mostra isso:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; title=&quot;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete...&quot;&gt;
+&lt;img src=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; alt=&quot;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete...&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
+&lt;p&gt;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete…&lt;/p&gt;
+
+&lt;/em&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Esse é um &lt;em&gt;bug&lt;/em&gt; conhecido do Tumbleweed e você pode encontrar mais informações a respeito dele, assim como uma forma de resolvê-lo, no texto:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/&quot;&gt;Tumbleweed não inicia no Raspberry Pi 4: veja como resolver&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Esse &lt;em&gt;bug&lt;/em&gt; não afeta o Leap.&lt;/p&gt;
+
+&lt;h2 id=&quot;continua&quot;&gt;Continua…&lt;/h2&gt;
+
 &lt;p&gt;Como percebi que o &lt;em&gt;post&lt;/em&gt; já estava grande, decidi dividi-lo em duas partes. Deixei as configurações básicas para o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
@@ -2527,8 +2623,6 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
     &lt;p&gt;&lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;A segunda parte desse tutorial já está aqui! (clique para acessá-la)&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
-
-&lt;p&gt;Siga o Projeto Linux Kamarada para ler a segunda parte assim que ela for publicada!&lt;/p&gt;
 
 &lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
 
@@ -2670,617 +2764,6 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
                 <pubDate>Thu, 17 Sep 2020 19:30:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/09/17/programas-o-jeito-mais-facil-de-instalar-aplicativos-no-gnome/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/09/17/programas-o-jeito-mais-facil-de-instalar-aplicativos-no-gnome/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Linux Kamarada 15.2: venha para o lado verde, elegante e moderno da força!</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;É com enorme satisfação que venho a público anunciar que o &lt;strong&gt;Linux Kamarada 15.2&lt;/strong&gt; está pronto para ser usado por todos! O Linux Kamarada 15.2 é uma distribuição &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; baseada em outra distribuição maior, o &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;. Enquanto o openSUSE Leap tem um propósito mais geral, fornecendo um sistema operacional estável para computadores pessoais e servidores, assim como ferramentas para desenvolvedores e administradores de sistemas, o Linux Kamarada é focado em computadores pessoais e em usuários iniciantes.&lt;/p&gt;
-
-&lt;p&gt;Novos usuários podem encontrar a nova versão na página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Quem já usa o &lt;a href=&quot;/pt/2020/02/24/kamarada-15.1-vem-com-tudo-que-voce-precisa-para-usar-o-linux-no-dia-a-dia/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt; pode atualizar para a nova versão seguindo o tutorial:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/&quot;&gt;Linux Kamarada e openSUSE Leap: como atualizar da versão 15.1 para a 15.2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Confira a seguir o que mudou no Linux Kamarada da versão anterior (15.1) para a nova versão (15.2).&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/09/kamarada-15.2-logo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Novo logo, tema, plano de fundo&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Eu queria dar um ar mais moderno e profissional ao Linux Kamarada, mas sem perder o ar simpático, carismático e amigável. Tendo isso em mente, fiz algumas mudanças na marca e no tema:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;o mascote teve sua versão original com &lt;em&gt;gloss&lt;/em&gt; substituída por uma nova versão &lt;em&gt;flat&lt;/em&gt;, baseada no &lt;a href=&quot;https://icons8.com/icon/17842/linux&quot;&gt;ícone do Linux originalmente desenhado por Icons8&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;o tema, de modo geral, continuou alinhado ao &lt;a href=&quot;https://material.io/&quot;&gt;Material Design&lt;/a&gt; do &lt;a href=&quot;https://www.google.com.br/&quot;&gt;Google&lt;/a&gt; (o mesmo &lt;em&gt;design&lt;/em&gt; do &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;foram adotadas cores do Material Design próximas às &lt;a href=&quot;https://en.opensuse.org/Help:Colors&quot;&gt;cores do openSUSE&lt;/a&gt; (para os curiosos, o processo &lt;a href=&quot;/pt/2020/07/13/resolvendo-problemas-de-forma-criativa-com-scripts-comparando-paletas-de-cores-usando-python/&quot;&gt;como as cores foram selecionadas&lt;/a&gt; foi explicado aqui no &lt;em&gt;blog&lt;/em&gt;)&lt;/li&gt;
-  &lt;li&gt;o tema &lt;a href=&quot;https://www.gtk.org/&quot;&gt;GTK&lt;/a&gt; usado na versão 15.1, o tema &lt;a href=&quot;https://github.com/adapta-project/adapta-gtk-theme&quot;&gt;Adapta&lt;/a&gt;, foi descontinuado e não recebe mais manutenção, por isso foi substituído por uma versão do tema &lt;a href=&quot;https://github.com/nana-4/materia-theme&quot;&gt;Materia&lt;/a&gt; personalizada com as cores adotadas&lt;/li&gt;
-  &lt;li&gt;o tema de ícones &lt;a href=&quot;https://github.com/PapirusDevelopmentTeam/papirus-icon-theme&quot;&gt;Papirus&lt;/a&gt; foi atualizado e suas cores, personalizadas&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-tux-before-after.png&quot; title=&quot;Tux Kamarada: antes e depois&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-tux-before-after.png&quot; alt=&quot;Tux Kamarada: antes e depois&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tux Kamarada: antes e depois&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; title=&quot;Menu do GRUB&quot;&gt;
-&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; alt=&quot;Menu do GRUB&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Menu do GRUB&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-plymouth.jpg&quot; title=&quot;Plymouth&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-plymouth.jpg&quot; alt=&quot;Plymouth&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Plymouth&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2-lock-pt.jpg&quot; title=&quot;Tela de bloqueio&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2-lock-pt.jpg&quot; alt=&quot;Tela de bloqueio&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tela de bloqueio&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gdm-pt.jpg&quot; title=&quot;Tela de login&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gdm-pt.jpg&quot; alt=&quot;Tela de login&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tela de login&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-desktop-pt.jpg&quot; title=&quot;Área de trabalho&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-desktop-pt.jpg&quot; alt=&quot;Área de trabalho&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Área de trabalho&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-theme-pt.jpg&quot; title=&quot;Tema Materia com cores personalizadas&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-theme-pt.jpg&quot; alt=&quot;Tema Materia com cores personalizadas&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tema Materia com cores personalizadas&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/desktop-environment-gnome.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Melhorias no GNOME&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;A área de trabalho &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt; deu um salto da versão 3.26 no Linux Kamarada 15.1 para a versão 3.34 no Linux Kamarada 15.2. Além do perceptível ganho de desempenho, houve várias mudanças e melhorias. A seguir, menciono algumas que me chamaram a atenção.&lt;/p&gt;
-
-&lt;p&gt;As opções que antes ficavam no menu do aplicativo, na barra do topo da área de trabalho, agora estão no menu principal dentro da janela do próprio aplicativo:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-app-menu-pt.png&quot; title=&quot;Menu do aplicativo: antes e depois&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-app-menu-pt.png&quot; alt=&quot;Menu do aplicativo: antes e depois&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Menu do aplicativo: antes e depois&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;No aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt; agora é possível favoritar arquivos e pastas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Os itens favoritados podem ser facilmente acessados por uma seção na barra lateral:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O aplicativo &lt;strong&gt;Contatos&lt;/strong&gt; também permite favoritar contatos, que passam a aparecer no topo da lista. Ótimo para localizar facilmente pessoas que você contata com frequência.&lt;/p&gt;
-
-&lt;p&gt;No aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, a barra de localização agora expande um menu com opções quando você clica na pasta atual:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-menu-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-menu-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A barra de pesquisa foi integrada à barra de localização, tornando a interface mais compacta:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-search-pt.png&quot; title=&quot;Barra de pesquisa: antes e depois&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-search-pt.png&quot; alt=&quot;Barra de pesquisa: antes e depois&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Barra de pesquisa: antes e depois&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Outro aplicativo cuja interface está mais limpa e organizada é o &lt;strong&gt;Terminal&lt;/strong&gt;. Vários menus foram agrupados em apenas um menu principal e a barra de menus foi removida:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-terminal-pt.png&quot; title=&quot;Terminal: antes e depois&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-terminal-pt.png&quot; alt=&quot;Terminal: antes e depois&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Terminal: antes e depois&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;A seção &lt;strong&gt;Plano de fundo&lt;/strong&gt; do aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; foi redesenhada:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-background-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-background-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se quiser saber mais sobre a evolução do GNOME da versão 3.26 até a versão 3.34, recomendo a leitura dessas notícias publicadas no &lt;em&gt;blog&lt;/em&gt; &lt;a href=&quot;https://diolinux.com.br/&quot;&gt;Diolinux&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://diolinux.com.br/2018/03/lancado-gnome-328-com-polimentos.html&quot;&gt;Lançado GNOME 3.28 com vários polimentos visuais - Diolinux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://diolinux.com.br/2018/09/conheca-os-novos-recursos-gnome330.html&quot;&gt;Conheça os novos recursos adicionados ao GNOME 3.30 - Diolinux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://diolinux.com.br/2019/03/gnome-332-taipei-e-lancado.html&quot;&gt;GNOME 3.32 é lançado com codinome “Taipei” e conta com novidades, confira - Diolinux&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://diolinux.com.br/2019/09/gnome-3-34-lancado-confira-as-novidades.html&quot;&gt;GNOME 3.34 lançado, confira as novidades - Diolinux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/libreoffice-main.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;LibreOffice focado no desempenho&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; 6.4 trouxe melhor compatibilidade com os arquivos do &lt;a href=&quot;https://www.office.com/&quot;&gt;Microsoft Office&lt;/a&gt;, além de várias correções, novas funcionalidades e melhorias de desempenho.&lt;/p&gt;
-
-&lt;p&gt;Uma novidade que me chamou a atenção foi a possibilidade de criar e inserir &lt;a href=&quot;https://pt.wikipedia.org/wiki/Código_QR&quot;&gt;&lt;em&gt;QR codes&lt;/em&gt;&lt;/a&gt; nos arquivos do LibreOffice, o que pode ser útil para quem precisa desses códigos em cartazes, revistas, panfletos e propagandas, por exemplo. Para inserir um &lt;em&gt;QR code&lt;/em&gt;, em qualquer aplicativo do LibreOffice, clique no menu &lt;strong&gt;Inserir&lt;/strong&gt;, aponte para &lt;strong&gt;Objeto&lt;/strong&gt; e clique em &lt;strong&gt;Código QR&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-libreoffice-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-libreoffice-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se quiser saber mais sobre as novidades do LibreOffice 6.4, em comparação com o LibreOffice 6.3 que vinha no Linux Kamarada 15.1, leia essa excelente matéria do Diolinux:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://diolinux.com.br/2020/01/libreoffice-64-e-lancado-com-varias-melhorias-inclusive-com-formatos-microsoft.html&quot;&gt;LibreOffice 6.4 é lançado com várias melhorias, inclusive com formatos Microsoft - Diolinux&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/preferences-desktop-remote-desktop.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Acesso remoto e VPN atualizados&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Como deve ser do conhecimento de todos, recentemente tivemos um aumento na demanda por acesso remoto, que foi tema de alguns tutoriais aqui no &lt;em&gt;blog&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;O &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/&quot;&gt;cliente de área de trabalho remota&lt;/a&gt; padrão do Linux Kamarada 15.1, que era o &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/#vinagre&quot;&gt;Vinagre&lt;/a&gt;, também padrão do GNOME, não recebe manutenção há algum tempo já. Para o Linux Kamarada 15.2, ele foi substituído pelo &lt;a href=&quot;/pt/2020/04/11/conexao-de-area-de-trabalho-remota-do-windows-no-linux-com-clientes-rdp/#remmina&quot;&gt;Remmina&lt;/a&gt;, que é também o cliente padrão do &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;O Linux Kamarada 15.2 traz o cliente de VPN do &lt;a href=&quot;https://www.infradead.org/openconnect/&quot;&gt;OpenConnect&lt;/a&gt; instalado por padrão na versão 8.05. Uma das novidades dessa versão é o suporte à VPN &lt;a href=&quot;/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/&quot;&gt;GlobalProtect&lt;/a&gt;. Nesse sentido, o Linux Kamarada 15.2 apresenta uma pequena melhoria em relação ao openSUSE Leap 15.2, que ainda traz a versão 7.08 (e, portanto, sem suporte à GlobalProtect), embora não seja difícil instalar a versão mais atual no openSUSE Leap.&lt;/p&gt;
-
-&lt;p&gt;Note que pela interface gráfica do aplicativo &lt;strong&gt;Configurações&lt;/strong&gt; do GNOME é possível configurar alguns tipos de VPN, mas não a GlobalProtect, que deve ser configurada usando o terminal. Se você precisa usar uma VPN GlobalProtect, veja como conectar-se a ela no &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/03/17/como-conectar-a-uma-vpn-do-globalprotect/&quot;&gt;Como conectar a uma VPN do GlobalProtect&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-remmina-pt.jpg&quot; title=&quot;Cliente de área de trabalho remota Remmina&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-remmina-pt.jpg&quot; alt=&quot;Cliente de área de trabalho remota Remmina&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Cliente de área de trabalho remota Remmina&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-globalprotect-pt.jpg&quot; title=&quot;OpenConnect versão 8.05&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-globalprotect-pt.jpg&quot; alt=&quot;OpenConnect versão 8.05&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;OpenConnect versão 8.05&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/09/privacy.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Privacidade&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;O que talvez nem todos tenham percebido é que recentemente também tivemos um aumento da &lt;a href=&quot;https://pt.wikipedia.org/wiki/Vigilância_em_massa&quot;&gt;vigilância em massa&lt;/a&gt;. Se você não percebeu, recomendo que leia essa entrevista:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://observador.pt/2020/04/12/governos-estao-a-aproveitar-covid-19-para-avancar-na-arquitetura-da-opressao-alerta-edward-snowden/&quot;&gt;Governos estão a aproveitar Covid-19 para avançar na “arquitetura da opressão”, alerta Edward Snowden - Observador&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(se você sabe inglês, veja também o vídeo, que tem a entrevista completa)&lt;/p&gt;
-
-&lt;p&gt;Estamos sendo observados o tempo todo por empresas e governos.&lt;/p&gt;
-
-&lt;p&gt;Você provavelmente já ouviu o ditado “&lt;a href=&quot;https://canalcienciascriminais.jusbrasil.com.br/artigos/449543046/quem-nao-deve-nao-teme-e-a-presuncao-de-inocencia&quot;&gt;quem não deve, não teme&lt;/a&gt;”. Ele é comumente usado como argumento para relativizar ou concordar com essa vigilância. Talvez você concorde que se não fez nada de errado, não precisa se esconder. Mas pense nessa questão por outro ângulo: se eu não fiz nada de errado, por que preciso ser vigiado, monitorado?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://tab.uol.com.br/edicao/privacidade&quot;&gt;Privacidade&lt;/a&gt; é um direito. Não há nada de errado em não querer compartilhar certas partes da sua vida, mantê-las para si mesmo(a), da mesma forma como não há nada de errado em ter cortinas ou persianas nas janelas de casa. Isso é importante para a sua tranquilidade. Seus dados são seus e você deve poder escolher o que deseja compartilhar e com quem.&lt;/p&gt;
-
-&lt;p&gt;Tenho lido sobre ferramentas de privacidade em &lt;em&gt;sites&lt;/em&gt; (que eu indico) como o &lt;a href=&quot;https://www.privacidade.digital/&quot;&gt;Privacidade Digital&lt;/a&gt; e o &lt;a href=&quot;https://securityinabox.org/pt/&quot;&gt;Security in a Box&lt;/a&gt; e pretendo falar sobre elas em futuros textos aqui no &lt;em&gt;blog&lt;/em&gt;. Mas já me adiantei em adicionar algumas delas ao novo Linux Kamarada 15.2:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;o navegador padrão agora é o &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/new/&quot;&gt;Mozilla Firefox&lt;/a&gt;, na versão com suporte estendido (&lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/enterprise/&quot;&gt;ESR&lt;/a&gt;, &lt;em&gt;Extended Support Release&lt;/em&gt;) distribuída pelo openSUSE Leap (o &lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, navegador padrão na versão anterior, foi mantido como alternativa, pelo menos por enquanto)&lt;/li&gt;
-  &lt;li&gt;o gerenciador de senhas &lt;a href=&quot;https://keepassxc.org/&quot;&gt;KeePassXC&lt;/a&gt; permite que você guarde suas senhas em um arquivo de banco de dados seguro que independe do navegador que você usa, se quiser pode guardar esse arquivo em um serviço de nuvem (como o &lt;a href=&quot;/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/#4-dropbox&quot;&gt;Dropbox&lt;/a&gt;) ou fazer cópias dele &lt;em&gt;offline&lt;/em&gt; manualmente entre seus dispositivos, o que você achar melhor&lt;/li&gt;
-  &lt;li&gt;suporte à rede &lt;a href=&quot;https://www.torproject.org/&quot;&gt;Tor&lt;/a&gt;, que permite que você use a Internet de forma anônima, criptografada, privada, segura e livre de censura&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-firefox-pt.jpg&quot; title=&quot;Navegador Mozilla Firefox&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-firefox-pt.jpg&quot; alt=&quot;Navegador Mozilla Firefox&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Navegador Mozilla Firefox&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/keepassxc-pt.png&quot; title=&quot;Gerenciador de senhas KeePassXC&quot;&gt;
-&lt;img src=&quot;/files/2020/08/keepassxc-pt.png&quot; alt=&quot;Gerenciador de senhas KeePassXC&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Gerenciador de senhas KeePassXC&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/tor-pt.jpg&quot; title=&quot;Rede de anonimato Tor&quot;&gt;
-&lt;img src=&quot;/files/2020/08/tor-pt.jpg&quot; alt=&quot;Rede de anonimato Tor&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Rede de anonimato Tor&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Note que, embora o cliente da rede Tor já venha instalado e disponível para uso no Linux Kamarada, ele não vem habilitado por padrão: se quiser usá-lo, você deve iniciá-lo e configurar os aplicativos para trafegar dados por meio dele. Se você precisa de um sistema que use a rede Tor por padrão, talvez queira conferir o &lt;a href=&quot;https://tails.boum.org/index.pt.html&quot;&gt;Tails&lt;/a&gt; ou o &lt;a href=&quot;https://www.whonix.org/&quot;&gt;Whonix&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-baixo-o-linux-kamarada&quot;&gt;Onde baixo o Linux Kamarada?&lt;/h2&gt;
-
-&lt;p&gt;A página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt; foi atualizada com o &lt;em&gt;link&lt;/em&gt; para &lt;em&gt;download&lt;/em&gt; da versão 15.2 Final.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; não é recomendado usar o Linux Kamarada em servidores, embora seja possível. Nesse caso, a distribuição openSUSE Leap é mais adequada, por fornecer uma opção de instalação própria para servidores, sem área de trabalho.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-faço-em-seguida&quot;&gt;O que faço em seguida?&lt;/h2&gt;
-
-&lt;p&gt;Quando o &lt;em&gt;download&lt;/em&gt; estiver concluído, verifique a integridade da imagem ISO calculando sua soma de verificação (&lt;em&gt;checksum&lt;/em&gt;), que deve coincidir com a soma que aparece na página &lt;a href=&quot;/pt/download&quot;&gt;Download&lt;/a&gt;. Se a soma não corresponder, faça o &lt;em&gt;download&lt;/em&gt; novamente.&lt;/p&gt;
-
-&lt;p&gt;Se não estiver com pressa, é recomendado verificar também a autenticidade da imagem ISO.&lt;/p&gt;
-
-&lt;p&gt;A impressão digital (&lt;em&gt;fingerprint&lt;/em&gt;) da chave pública do Projeto Linux Kamarada é:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;6b18 52e7 764f b302 b805 a4a0 a575 bcce 1737 8ecc
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para importá-la, execute os comandos a seguir:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ wget https://build.opensuse.org/projects/home:kamarada:15.2/public_key
-$ gpg --import public_key
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Para mais informações sobre essas verificações, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/&quot;&gt;Verificação de integridade e autenticidade com SHA-256 e GPG&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Com a imagem ISO baixada e as verificações feitas e bem-sucedidas, você tem 3 opções:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-burner.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;1) Gravar a imagem ISO em um DVD (gerando, assim, um LiveDVD)&lt;/h6&gt;
-
-            &lt;p&gt;Use um aplicativo como o &lt;a href=&quot;https://cdburnerxp.se/&quot;&gt;CDBurnerXP&lt;/a&gt; (no Windows), o &lt;a href=&quot;http://www.k3b.org/&quot;&gt;K3b&lt;/a&gt; (em um Linux com KDE) ou o &lt;a href=&quot;https://wiki.gnome.org/Apps/Brasero&quot;&gt;Brasero&lt;/a&gt; (em um Linux com GNOME) para gravar a imagem ISO em um DVD. Ligue o computador com o LiveDVD na unidade de DVD para iniciar o Linux Kamarada.&lt;/p&gt;
-
-            &lt;p&gt;Esse &lt;em&gt;post&lt;/em&gt; pode te ajudar com a gravação do DVD:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2016/04/22/como-gravar-um-livedvd/&quot;&gt;Como gravar um LiveDVD&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/usb-creator.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;2) Gravar a imagem ISO em um &lt;em&gt;pendrive&lt;/em&gt; (gerando, assim, um LiveUSB)&lt;/h6&gt;
-
-            &lt;p&gt;Use o &lt;a href=&quot;https://www.ventoy.net/&quot;&gt;Ventoy&lt;/a&gt; (disponível para Windows e Linux) para preparar o &lt;em&gt;pendrive&lt;/em&gt; e copie a imagem ISO para ele. Ligue o computador com o LiveUSB para iniciar o Linux Kamarada.&lt;/p&gt;
-
-            &lt;p&gt;Esse &lt;em&gt;post&lt;/em&gt; pode te ajudar com a preparação do LiveUSB:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2020/07/29/ventoy-crie-pendrives-multiboot-simplesmente-copiando-imagens-iso-para-ele/&quot;&gt;Ventoy: crie um pendrive multiboot simplesmente copiando imagens ISO para ele&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/virtualbox.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;3) Criar uma máquina virtual e usar a imagem ISO para iniciá-la&lt;/h6&gt;
-
-            &lt;p&gt;Essa opção te possibilita testar o Linux Kamarada sem precisar reiniciar o computador e sair do sistema operacional que você já usa.&lt;/p&gt;
-
-            &lt;p&gt;Para mais informações, leia:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/&quot;&gt;VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            Depois de testar o Linux Kamarada, caso queira instalá-lo no seu computador ou na máquina virtual, inicie o instalador clicando nesse ícone, situado na &lt;em&gt;dock&lt;/em&gt; (à esquerda, na tela).
-        &lt;/div&gt;
-        &lt;img src=&quot;/files/2020/02/calamares.svg&quot; class=&quot;ml-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O instalador apenas fará o particionamento e a cópia do sistema para o computador. Ao final, reinicie o computador. Então, um assistente do &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; fará as configurações iniciais.&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-calamares-pt.jpg&quot; title=&quot;Instalador&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-calamares-pt.jpg&quot; alt=&quot;Instalador&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Instalador&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-yast-firstboot-pt.jpg&quot; title=&quot;Configurações iniciais&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-yast-firstboot-pt.jpg&quot; alt=&quot;Configurações iniciais&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Configurações iniciais&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;e-se-eu-já-uso-o-linux-kamarada&quot;&gt;E se eu já uso o Linux Kamarada?&lt;/h2&gt;
-
-&lt;p&gt;A imagem ISO não se destina a atualizações, apenas para testes e instalações novas. Se você já usa o Linux Kamarada 15.1 e quer atualizar sua instalação existente para o 15.2, leia:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/&quot;&gt;Linux Kamarada e openSUSE Leap: como atualizar da versão 15.1 para a 15.2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;e-se-eu-já-uso-o-opensuse-leap&quot;&gt;E se eu já uso o openSUSE Leap?&lt;/h2&gt;
-
-&lt;p&gt;Você já usa o openSUSE Leap e quer transformá-lo no Linux Kamarada? Simples!&lt;/p&gt;
-
-&lt;p&gt;Basta adicionar o repositório do Linux Kamarada e instalar o pacote &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/patterns-kamarada-gnome&quot;&gt;patterns-kamarada-gnome&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Você pode fazer isso de duas formas: pela interface gráfica, usando a instalação com 1 clique (&lt;em&gt;1-Click Install&lt;/em&gt;), ou pelo terminal, usando o gerenciador de pacotes &lt;strong&gt;zypper&lt;/strong&gt;. Escolha a que prefere.&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando a instalação com 1 clique, clique no botão abaixo:&lt;/p&gt;
-
-&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/patterns-kamarada-gnome-pt.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; Instalação com 1 clique&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Para instalar usando o terminal, primeiro adicione o repositório do Linux Kamarada:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f -K -n &quot;Linux Kamarada&quot; -p 95 &quot;http://c3sl.dl.osdn.jp/storage/g/k/ka/kamarada/\$releasever/openSUSE_Leap_\$releasever/&quot; kamarada
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O repositório do Linux Kamarada é gentilmente hospedado pela &lt;a href=&quot;https://osdn.net/projects/kamarada/&quot;&gt;OSDN&lt;/a&gt;, que replica seu conteúdo em alguns servidores de espelho (&lt;em&gt;mirrors&lt;/em&gt;) espalhados pelo mundo. A instalação com 1 clique e o comando acima instruem seu sistema a usar o espelho brasileiro do repositório, gentilmente hospedado pela &lt;a href=&quot;https://www.c3sl.ufpr.br/&quot;&gt;C3SL (UFPR)&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se você está em outro país, consulte a &lt;a href=&quot;https://github.com/kamarada/Linux-Kamarada-GNOME/wiki/Mirrors&quot;&gt;lista de espelhos na &lt;em&gt;wiki&lt;/em&gt; do Linux Kamarada no GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Depois, instale o pacote &lt;strong&gt;patterns-kamarada-gnome&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in patterns-kamarada-gnome
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Se você já usa a área de trabalho GNOME, provavelmente será necessário baixar poucos pacotes. Se você usa outra área de trabalho, o tamanho do &lt;em&gt;download&lt;/em&gt; será maior.&lt;/p&gt;
-
-&lt;p&gt;Quando a instalação terminar, se você criar um novo usuário, perceberá que ele receberá as configurações padrão do Linux Kamarada (como tema, papel de parede, etc.). Usuários já existentes podem seguir usando suas personalizações ou ajustar a aparência do sistema (por exemplo, usando os aplicativos &lt;strong&gt;Ajustes&lt;/strong&gt; e &lt;strong&gt;Configurações&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-obtenho-ajuda&quot;&gt;Onde obtenho ajuda?&lt;/h2&gt;
-
-&lt;p&gt;A página &lt;a href=&quot;/pt/ajuda&quot;&gt;Ajuda&lt;/a&gt; indica alguns lugares onde é possível obter auxílio com o Linux Kamarada, o openSUSE ou distribuições Linux em geral (incluindo essas duas).&lt;/p&gt;
-
-&lt;p&gt;O canal de suporte preferido pelos usuários tem sido o grupo &lt;a href=&quot;https://t.me/LinuxKamarada&quot;&gt;@LinuxKamarada&lt;/a&gt; no &lt;a href=&quot;/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/#12-telegram&quot;&gt;Telegram&lt;/a&gt;, que é um aplicativo de mensagens que pode ser instalado ou usado a partir do navegador.&lt;/p&gt;
-
-&lt;h2 id=&quot;onde-obtenho-os-códigos-fonte&quot;&gt;Onde obtenho os códigos-fonte?&lt;/h2&gt;
-
-&lt;p&gt;Como todo projeto de &lt;em&gt;software&lt;/em&gt; livre, o Linux Kamarada disponibiliza seus códigos-fonte para quem quiser estudá-los, adaptá-los ou contribuir com o projeto.&lt;/p&gt;
-
-&lt;p&gt;O desenvolvimento do Linux Kamarada ocorre no &lt;a href=&quot;https://github.com/kamarada&quot;&gt;GitHub&lt;/a&gt; e no &lt;a href=&quot;https://build.opensuse.org/project/subprojects/home:kamarada&quot;&gt;Open Build Service&lt;/a&gt;. Lá podem ser obtidos os códigos-fonte dos pacotes desenvolvidos especificamente para esse projeto (até mesmo &lt;a href=&quot;https://github.com/kamarada/kamarada-website&quot;&gt;o código-fonte deste &lt;em&gt;site&lt;/em&gt;&lt;/a&gt; que você lê está disponível).&lt;/p&gt;
-
-&lt;p&gt;Os códigos-fonte de pacotes herdados do openSUSE Leap podem ser obtidos diretamente dessa distribuição. Se precisar de ajuda para fazer isso, entre em contato, posso ajudar.&lt;/p&gt;
-
-&lt;h2 id=&quot;sobre-o-linux-kamarada&quot;&gt;Sobre o Linux Kamarada&lt;/h2&gt;
-
-&lt;p&gt;O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. O projeto começou como um &lt;em&gt;blog&lt;/em&gt; sobre o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, que é a distribuição Linux que eu uso há 8 anos (desde &lt;a href=&quot;https://vinyanalista.github.io/blog/2012/04/21/problemas-envolvendo-bootloaders-mbr-e-tabela-de-particoes/&quot;&gt;abril de 2012&lt;/a&gt;, na época eu instalei o openSUSE 11.4 e depois atualizei para o 12.1). Agora o projeto disponibiliza sua própria distribuição Linux, que traz vários programas apresentados no &lt;em&gt;blog&lt;/em&gt; já instalados e prontos para uso.&lt;/p&gt;
-
-&lt;p&gt;A distribuição Linux Kamarada é baseada no openSUSE Leap e se destina ao uso em &lt;em&gt;desktops&lt;/em&gt; em casa e no trabalho, seja em empresas privadas ou em órgãos públicos. Contém os programas essenciais a qualquer instalação do Linux e uma área de trabalho com visual moderno e agradável.&lt;/p&gt;
-
-&lt;h2 id=&quot;ficha-técnica&quot;&gt;Ficha técnica&lt;/h2&gt;
-
-&lt;p&gt;Para que seja possível comparar esta versão com a anterior e as futuras, segue um resumo do &lt;em&gt;software&lt;/em&gt; contido no Linux Kamarada 15.2 Final 1 Build 52.3:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;kernel&lt;/em&gt; Linux 5.3.18&lt;/li&gt;
-  &lt;li&gt;servidor gráfico X.Org 1.20.3 (sem Wayland)&lt;/li&gt;
-  &lt;li&gt;área de trabalho GNOME 3.34.4 acompanhada de seus principais aplicativos (&lt;em&gt;core apps&lt;/em&gt;), como Arquivos (antigo Nautilus), Calculadora, Terminal, Editor de texto (gedit), Captura de tela e outros&lt;/li&gt;
-  &lt;li&gt;suíte de aplicativos de escritório LibreOffice 6.4.4&lt;/li&gt;
-  &lt;li&gt;navegador Mozilla Firefox ESR 68.9.0 (navegador padrão)&lt;/li&gt;
-  &lt;li&gt;navegador Chromium 83 (navegador alternativo disponível)&lt;/li&gt;
-  &lt;li&gt;reprodutor multimídia VLC 3.0.10&lt;/li&gt;
-  &lt;li&gt;cliente de &lt;em&gt;e-mail&lt;/em&gt; Evolution&lt;/li&gt;
-  &lt;li&gt;centro de controle do YaST&lt;/li&gt;
-  &lt;li&gt;Brasero&lt;/li&gt;
-  &lt;li&gt;CUPS 2.2.7&lt;/li&gt;
-  &lt;li&gt;Firewalld 0.5.5&lt;/li&gt;
-  &lt;li&gt;GParted 0.31.0&lt;/li&gt;
-  &lt;li&gt;HPLIP 3.19.12&lt;/li&gt;
-  &lt;li&gt;Java (OpenJDK) 11.0.7&lt;/li&gt;
-  &lt;li&gt;KeePassXC 2.5.4&lt;/li&gt;
-  &lt;li&gt;KolourPaint 20.04.2&lt;/li&gt;
-  &lt;li&gt;Linphone 4.1.1&lt;/li&gt;
-  &lt;li&gt;PDFsam Basic 4.1.4&lt;/li&gt;
-  &lt;li&gt;Pidgin 2.13.0&lt;/li&gt;
-  &lt;li&gt;Samba 4.11.11&lt;/li&gt;
-  &lt;li&gt;Tor 0.4.2&lt;/li&gt;
-  &lt;li&gt;Transmission 2.94&lt;/li&gt;
-  &lt;li&gt;Vim 8.0&lt;/li&gt;
-  &lt;li&gt;Wine 5.0&lt;/li&gt;
-  &lt;li&gt;jogos: Aisleriot (Paciência), Copas, Iagno (Reversi), Mahjongg, Minas (Campo minado), Nibbles (Cobras), Quadrapassel (Tetris), Sudoku, Xadrez&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Essa lista não é exaustiva, mas já dá uma noção do que se encontra na distribuição.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Observação:&lt;/strong&gt; se você comparar essa lista com a da versão &lt;a href=&quot;/pt/2020/08/08/linux-kamarada-libera-versao-candidata-a-lancamento-15.2-rc/&quot;&gt;15.2 RC&lt;/a&gt;, perceberá que houve um &lt;em&gt;downgrade&lt;/em&gt; do Mozilla Firefox e de outros programas. Foi intencional. Isso ocorreu porque eu não usei o repositório de atualizações na criação da imagem do Linux Kamarada 15.2 Final. O objetivo disso foi evitar que a imagem apresentasse os &lt;em&gt;bugs&lt;/em&gt; &lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1173991&quot;&gt;boo#1173991&lt;/a&gt; e &lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1176304&quot;&gt;boo#1176304&lt;/a&gt; do openSUSE Leap, introduzidos por atualizações. Quando esses &lt;em&gt;bugs&lt;/em&gt; forem corrigidos, pretendo criar outra imagem atualizada. Mas você não precisa se preocupar com isso: pode instalar o Linux Kamarada e &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;obter atualizações para o sistema&lt;/a&gt; normalmente.&lt;/p&gt;
-
-</description>
-                <pubDate>Fri, 11 Sep 2020 02:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/</guid>
                 
                 
                     <category>pt</category>

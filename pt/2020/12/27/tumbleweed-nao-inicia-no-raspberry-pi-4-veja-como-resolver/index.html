@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("kamarada.github.io" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Tumbleweed não inicia no Raspberry Pi 4: veja como resolver - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Vinícius">
+    <meta name="description" content="O openSUSE Tumbleweed funciona bem no Raspberry Pi 4 (e também no recém-lançado Raspberry Pi 400), embora o suporte ao hardware ainda não esteja completo, de...">
+    <link rel="canonical" href="https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://kamarada.github.io/pt/feed.xml" />
+
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="en" href="https://kamarada.github.io/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://kamarada.github.io/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-12-27 18:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="O openSUSE Tumbleweed funciona bem no Raspberry Pi 4 (e também no recém-lançado Raspberry Pi 400), embora o suporte ao hardware ainda não esteja completo, de..." />
+    
+        <meta property="og:image" content="https://kamarada.github.io/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Tumbleweed não inicia no Raspberry Pi 4: veja como resolver" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <meta name="msapplication-TileColor" content="#43a047">
+    <meta name="theme-color" content="#43a047">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/',
+                    title: document.title,
+                    description: 'O openSUSE Tumbleweed funciona bem no Raspberry Pi 4 (e também no recém-lançado Raspberry Pi 400), embora o suporte ao hardware ainda não esteja completo, de...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://kamarada.github.io/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/" itemprop="mainEntityOfPage url">
+                Tumbleweed não inicia no Raspberry Pi 4: veja como resolver
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-12-27">
+                    <a href="/2020/12/27/">
+                        
+    27 de
+    
+    Dezembro
+    
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-12-27" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>O <a href="/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/">openSUSE Tumbleweed</a> funciona bem no <a href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Raspberry Pi 4</a> (e também no recém-lançado <a href="https://www.raspberrypi.org/blog/raspberry-pi-400-the-70-desktop-pc/">Raspberry Pi 400</a>), embora <a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/">o suporte ao <em>hardware</em> ainda não esteja completo</a>, de modo que alguns recursos como Bluetooth e som ainda não funcionam. </p>
+
+<p>Mas as imagens mais recentes do Tumbleweed para o Raspberry Pi 4 não inicializam (não “dão <em>boot</em>”, na gíria técnica). O sistema mostra várias vezes na tela a mensagem:</p>
+
+<p><code class="highlighter-rouge">Waiting for PHY auto negotiation to complete... TIMEOUT !</code></p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg" title="">
+<img src="/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>E reinicia. O menu do <a href="https://www.gnu.org/software/grub/">GRUB</a> sequer é exibido.</p>
+
+<p>Eu me deparei com esse problema enquanto tentava testar a última imagem do Tumbleweed com área de trabalho <a href="https://www.xfce.org/">XFCE</a>, baseada no <em>snapshot</em> 20201214.</p>
+
+<p>Esse problema não acontece com a última imagem do <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">Leap 15.2</a> com XFCE.</p>
+
+<p>Eu pedi ajuda na <a href="https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/">lista de discussão openSUSE ARM</a> e me indicaram uma solução de contorno (nome bonito para “gambiarra”, “armengue”, no Brasil varia de região pra região).</p>
+
+<p>Se você está tentando iniciar o Tumbleweed no seu Raspberry Pi 4/400 e está se deparando com esse mesmo problema, enquanto ele não é resolvido em definitivo, você pode baixar o arquivo <code class="highlighter-rouge">u-boot.bin</code> <a href="https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/message/J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW/attachment/3/u-boot.bin">daqui</a> ou <a href="/files/2020/12/u-boot.bin">daqui</a> (eu fiz uma cópia dele) e substituir o arquivo de mesmo nome que está na partição EFI do seu cartão SD.</p>
+
+<p>Com isso, você já deve conseguir usar o Tumbleweed no seu Raspberry Pi 4/400 de novo.</p>
+
+<p>Esse é um <a href="https://bugzilla.suse.com/show_bug.cgi?id=1180338"><em>bug</em> conhecido</a> e a equipe do <a href="https://www.opensuse.org/">openSUSE</a> já está trabalhando para resolvê-lo.</p>
+
+<h2 id="referências">Referências</h2>
+
+<p>Se você quiser saber mais sobre esse <em>bug</em>, assim como sua solução de contorno, consulte os <em>links</em> a seguir (todos em inglês):</p>
+
+<ul>
+  <li><a href="https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/CWV5EK7ZPVLT2CH4LGP77UL3DRA4GDXM/">Tumbleweed 20201214 on RPi4 - Waiting for PHY auto negotiation to complete - openSUSE ARM - openSUSE Mailing Lists</a></li>
+  <li><a href="https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/QTYDOH45WSLGC4KKBTGK5YXMZZUHIXWC/#J2YM5M5TMWZC5DUYHU2YQ2KLS2BUH6LW">raspberry pi 400 - openSUSE ARM - openSUSE Mailing Lists</a></li>
+  <li><a href="https://lists.opensuse.org/archives/list/arm@lists.opensuse.org/thread/5BEWN672GVVCJCMPZTYC2QCNO7AMBS2Y/">Regression observed on Rasbperry Pi 4 with snapshot 20201214 - openSUSE ARM - openSUSE Mailing Lists</a></li>
+  <li><a href="https://bugzilla.suse.com/show_bug.cgi?id=1180338">Bug 1180338 — [RPi4] u-boot can’t handle DMA addresses different from CPU’s</a></li>
+</ul>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://kamarada.github.io" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://kamarada.github.io/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://kamarada.github.io/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-body">
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        </div><!-- .col-xs-12 -->
+    </div><!-- .row -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://kamarada.github.io/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='https://www.padrim.com.br/LinuxKamarada' title='Padrim' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='https://apoia.se/LinuxKamarada' title='APOIA.se' target='_blank'>
+                <p><img src='https://kamarada.github.io/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' title='Antônio Vinícius'>
+                    <img src='https://secure.gravatar.com/avatar/5415f4267b44aa9f51b6f89ac4d1656b' alt='Antônio Vinícius' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Vinícius
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="http://www.vinyanalista.com.br" itemprop="url"><i class="fas fa-globe"></i> http://www.vinyanalista.com.br</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2020 <a href='#author'>Antônio Vinícius</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="O openSUSE Tumbleweed funciona bem no Raspberry Pi 4 (e também no recém-lançado Raspberry Pi 400), embora o suporte ao hardware ainda não esteja completo, de modo que alguns recursos como Bluetooth e som ainda não funcionam. Mas as imagens mais recentes do Tumbleweed para o Raspberry Pi 4 não inicializam (não “dão boot”, na gíria...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://kamarada.github.io/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://kamarada.github.io/en/2020/12/26/tumbleweed-needs-a-workaround-to-boot-on-the-raspberry-pi-4/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://kamarada.github.io/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://kamarada.github.io/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>
