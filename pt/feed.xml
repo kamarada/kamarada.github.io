@@ -9,10 +9,261 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 06 Jan 2021 20:47:23 -0300</pubDate>
-        <lastBuildDate>Wed, 06 Jan 2021 20:47:23 -0300</lastBuildDate>
+        <pubDate>Tue, 12 Jan 2021 11:33:29 -0300</pubDate>
+        <lastBuildDate>Tue, 12 Jan 2021 11:33:29 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>O que são pacotes recomendados e como instalá-los no openSUSE</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/recommended.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/recommended.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;No &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, &lt;strong&gt;pacotes&lt;/strong&gt; podem ser entendidos como “pedaços” do &lt;em&gt;software&lt;/em&gt; que compõe o sistema. Quando você quer adicionar uma funcionalidade ao sistema, geralmente você procura o pacote que a traz e o instala. Veja alguns exemplos do que pacotes podem trazer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Programas:&lt;/strong&gt; o navegador &lt;a href=&quot;https://www.mozilla.org/pt-BR/firefox/&quot;&gt;Mozilla Firefox&lt;/a&gt; corresponde ao pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaFirefox&quot;&gt;&lt;strong&gt;MozillaFirefox&lt;/strong&gt;&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Traduções:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/libreoffice-l10n-pt_BR&quot;&gt;&lt;strong&gt;libreoffice-l10n-pt_BR&lt;/strong&gt;&lt;/a&gt; traz a tradução do &lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; para o Português Brasileiro;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Documentações:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/man-pages&quot;&gt;&lt;strong&gt;man-pages&lt;/strong&gt;&lt;/a&gt; traz informações sobre vários comandos;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Personalizações:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/MozillaFirefox-branding-openSUSE&quot;&gt;&lt;strong&gt;MozillaFirefox-branding-openSUSE&lt;/strong&gt;&lt;/a&gt; traz personalizações do navegador Firefox para o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Drivers&lt;/em&gt;:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/hplip&quot;&gt;&lt;strong&gt;hplip&lt;/strong&gt;&lt;/a&gt; adiciona suporte a &lt;a href=&quot;/pt/2018/09/19/impressoras-hp-no-opensuse/&quot;&gt;impressoras da HP&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;Plugins&lt;/em&gt;:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/evince-plugin-xpsdocument&quot;&gt;&lt;strong&gt;evince-plugin-xpsdocument&lt;/strong&gt;&lt;/a&gt; faz com que o &lt;a href=&quot;https://wiki.gnome.org/Apps/Evince&quot;&gt;Visualizador de documentos do GNOME (Evince)&lt;/a&gt; consiga abrir documentos XPS;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bibliotecas:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/libavcodec58&quot;&gt;&lt;strong&gt;libavcodec58&lt;/strong&gt;&lt;/a&gt; traz &lt;em&gt;codecs&lt;/em&gt; para vários formatos multimídia;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fontes:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/google-roboto-fonts&quot;&gt;&lt;strong&gt;google-roboto-fonts&lt;/strong&gt;&lt;/a&gt; instala a família de fontes &lt;a href=&quot;https://fonts.google.com/specimen/Roboto&quot;&gt;Roboto&lt;/a&gt;; e&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ícones:&lt;/strong&gt; o pacote &lt;a href=&quot;https://software.opensuse.org/package/papirus-icon-theme&quot;&gt;&lt;strong&gt;papirus-icon-theme&lt;/strong&gt;&lt;/a&gt; traz o tema de ícones &lt;a href=&quot;https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/&quot;&gt;Papirus&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Provavelmente há mais exemplos de “categorias” de pacotes, mas acho que já deu pra entender a ideia. Todos os exemplos de pacotes listados acima são das distribuições do openSUSE e já vem instalados por padrão na distribuição &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;pacotes-requeridos&quot;&gt;Pacotes requeridos&lt;/h2&gt;
+
+&lt;p&gt;Há casos em que um pacote X traz um recurso que só funciona se também um pacote Y estiver instalado. Nesse caso, dizemos que o pacote X &lt;strong&gt;depende&lt;/strong&gt; do (ou &lt;strong&gt;requer&lt;/strong&gt; o) pacote Y ou que o pacote Y é uma &lt;strong&gt;dependência&lt;/strong&gt; ou &lt;strong&gt;requisito&lt;/strong&gt; do pacote X. Em casos assim, se você pedir ao sistema para instalar o pacote X, o pacote Y também será instalado. Ou, se por algum motivo não for possível instalar o pacote Y, o pacote X também não será instalado.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, o pacote &lt;a href=&quot;https://software.opensuse.org/package/inkscape&quot;&gt;&lt;strong&gt;inkscape&lt;/strong&gt;&lt;/a&gt;, que não vem instalado no Linux Kamarada, depende do pacote &lt;a href=&quot;https://software.opensuse.org/package/ImageMagick&quot;&gt;&lt;strong&gt;ImageMagick&lt;/strong&gt;&lt;/a&gt;. Se você pedir para instalar o pacote &lt;strong&gt;inkscape&lt;/strong&gt;, o pacote &lt;strong&gt;ImageMagick&lt;/strong&gt; será instalado automaticamente, porque é uma dependência do pacote &lt;strong&gt;inkscape&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;pacotes-recomendados&quot;&gt;Pacotes recomendados&lt;/h2&gt;
+
+&lt;p&gt;Há casos em que um pacote X traz um recurso que pode funcionar melhor se o pacote Y também estiver instalado. O pacote Y não é necessário para que o pacote X funcione, mas acrescenta ou melhora alguma funcionalidade do pacote X. Nesse caso, dizemos que o pacote X &lt;strong&gt;recomenda&lt;/strong&gt; o pacote Y ou que o pacote Y é &lt;strong&gt;recomendado&lt;/strong&gt; pelo pacote X.&lt;/p&gt;
+
+&lt;p&gt;Geralmente, as traduções são pacotes recomendados dos pacotes dos programas. Por exemplo, o pacote &lt;strong&gt;inkscape&lt;/strong&gt; recomenda o pacote &lt;a href=&quot;https://software.opensuse.org/package/inkscape-lang&quot;&gt;&lt;strong&gt;inkscape-lang&lt;/strong&gt;&lt;/a&gt;. O Inkscape funciona se a tradução não estiver instalada, você pode usá-lo com a interface não traduzida em inglês, mas para os usuários brasileiros imagino que seja mais confortável usá-lo no português.&lt;/p&gt;
+
+&lt;p&gt;Ao instalar um pacote, os pacotes recomendados podem ser instalados junto ou não.&lt;/p&gt;
+
+&lt;p&gt;A configuração padrão tanto do openSUSE quanto do Linux Kamarada é instalar tanto os pacotes requeridos quanto os recomendados. Provavelmente essa é a melhor configuração para a maioria das pessoas, já que melhora a experiência dos usuários.&lt;/p&gt;
+
+&lt;p&gt;Mas nem sempre esse é o caso. Veja alguns cenários em que instalar os pacotes recomendados pode não ser a melhor opção:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;se você está usando o Linux Kamarada em um &lt;em&gt;pendrive&lt;/em&gt;, por exemplo, pode preferir instalar somente os pacotes requeridos para economizar espaço&lt;/li&gt;
+  &lt;li&gt;se você está usando um &lt;a href=&quot;/pt/2021/01/12/o-que-sao-pacotes-recomendados-e-como-instala-los-no-opensuse/&quot;&gt;LiveDVD&lt;/a&gt;, alterações que você faz no sistema são armazenadas na memória RAM, nesse cenário a instalação de pacotes recomendados pode esgotar a memória e travar o sistema&lt;/li&gt;
+  &lt;li&gt;se você está usando o &lt;a href=&quot;/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/&quot;&gt;openSUSE em um servidor&lt;/a&gt;, onde as prioridades são espaço em disco, desempenho e segurança, instalar apenas pacotes requeridos te dá mais controle sobre o que de fato está instalado e rodando no seu servidor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por isso, preparei algumas dicas de como lidar com pacotes recomendados, veja a seguir.&lt;/p&gt;
+
+&lt;h2 id=&quot;mudando-a-configuração-padrão&quot;&gt;Mudando a configuração padrão&lt;/h2&gt;
+
+&lt;p&gt;No openSUSE e no Linux Kamarada, pacotes podem ser instalados usando o gerenciador de pacotes &lt;strong&gt;&lt;a href=&quot;https://pt.opensuse.org/Portal:Zypper&quot;&gt;zypper&lt;/a&gt;&lt;/strong&gt;. Por exemplo, você poderia instalar o &lt;a href=&quot;https://inkscape.org/pt-br/&quot;&gt;Inkscape&lt;/a&gt; com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in inkscape
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esse &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; é a abreviação de &lt;code class=&quot;highlighter-rouge&quot;&gt;install&lt;/code&gt; (instalar, em inglês). O comando também poderia ser:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install inkscape
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Outra opção é usar o módulo &lt;strong&gt;Gerenciamento de software&lt;/strong&gt; do &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;Centro de controle do YaST&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/recommended-01-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/recommended-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Note que quando você marca o pacote &lt;strong&gt;inkscape&lt;/strong&gt; para instalação, vários outros pacotes, tanto requeridos quanto recomendados, são marcados para instalação também.&lt;/p&gt;
+
+&lt;p&gt;Ambos usam nos bastidores a biblioteca &lt;a href=&quot;https://en.opensuse.org/Portal:Libzypp&quot;&gt;libzypp&lt;/a&gt;, cuja configuração fica no arquivo de texto &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/zypp.conf&lt;/code&gt;. Se você ainda não alterou esse arquivo, ele tem um trecho assim:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;##
+## Whether only required packages are installed.
+##
+## Recommended packages, will not be regarded.
+##
+## Valid values: boolean
+## Default value: false
+##
+# solver.onlyRequires = false
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Você pode usar a opção &lt;code class=&quot;highlighter-rouge&quot;&gt;solver.onlyRequires&lt;/code&gt; para definir se apenas pacotes requeridos devem ser instalados. Por padrão, ela está comentada (desabilitada) e seu valor é falso (&lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;), ou seja, tanto pacotes requeridos quanto recomendados devem ser instalados.&lt;/p&gt;
+
+&lt;p&gt;Caso queira alterar esse comportamento padrão, descomente essa linha e defina se apenas pacotes requeridos devem ser instalados (&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;) ou se pacotes recomendados também devem ser instalados (&lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;). Por exemplo:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;##
+## Whether only required packages are installed.
+##
+## Recommended packages, will not be regarded.
+##
+## Valid values: boolean
+## Default value: false
+##
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;solver.onlyRequires&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se prefere usar o YaST, você pode habilitar ou desabilitar a instalação de pacotes recomendados abrindo o menu &lt;strong&gt;Dependências&lt;/strong&gt; e marcando ou desmarcando a opção &lt;strong&gt;Instalar pacotes recomendados&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/recommended-02-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/recommended-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Essa opção do YaST se aplica apenas ao YaST, não muda a configuração da libzypp.&lt;/p&gt;
+
+&lt;h2 id=&quot;mudando-a-configuração-pontualmente&quot;&gt;Mudando a configuração pontualmente&lt;/h2&gt;
+
+&lt;p&gt;Se não quiser modificar o comportamento padrão do &lt;strong&gt;zypper&lt;/strong&gt;, você pode usar os parâmetros &lt;code class=&quot;highlighter-rouge&quot;&gt;--recommends&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;--no-recommends&lt;/code&gt; para mudar o comportamento só nessa instalação.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo, para instalar o Inkscape junto dos pacotes requeridos e recomendados:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in inkscape --recommends
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Para instalar o Inkscape junto dos pacotes requeridos, mas não os recomendados:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in inkscape --no-recommends
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Usando esses parâmetros, o &lt;strong&gt;zypper&lt;/strong&gt; ignora a opção &lt;code class=&quot;highlighter-rouge&quot;&gt;solver.onlyRequires&lt;/code&gt; do arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/zypp/zypp.conf&lt;/code&gt; e adota o comportamento que você pedir na hora.&lt;/p&gt;
+
+&lt;p&gt;Esses parâmetros também podem ser usados com outros comandos do &lt;strong&gt;zypper&lt;/strong&gt;, como o que busca atualizações (&lt;em&gt;updates&lt;/em&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper up --no-recommends
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No caso do YaST, não há como mudar a configuração pontualmente, porque ele sempre lembra a última usada. O que você pode fazer é mudar a configuração, instalar o que precisa, e depois mudar de novo.&lt;/p&gt;
+
+&lt;h2 id=&quot;instalando-os-recomendados-pelos-já-instalados&quot;&gt;Instalando os recomendados pelos já instalados&lt;/h2&gt;
+
+&lt;p&gt;Se em algum momento você desabilitou a instalação de pacotes recomendados, depois mudou de ideia e agora quer instalar os pacotes recomendados que não foram instalados, pode usar o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper inr
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ou, se você preferir:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper install-new-recommends
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(instalar novos recomendados)&lt;/p&gt;
+
+&lt;p&gt;Esse comando pode ser útil para instalar traduções, se você acabou de mudar o idioma do sistema, ou instalar &lt;em&gt;drivers&lt;/em&gt;, se você acabou de adicionar um componente de &lt;em&gt;hardware&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;No YaST, comando semelhante pode ser encontrado no menu &lt;strong&gt;Extras&lt;/strong&gt;, clique em &lt;strong&gt;Instalar todos os pacotes recomendados correspondentes&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/recommended-03-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/recommended-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;consultando-quais-pacotes-são-recomendados&quot;&gt;Consultando quais pacotes são recomendados&lt;/h2&gt;
+
+&lt;p&gt;Para consultar quais são os pacotes recomendados pelo pacote &lt;strong&gt;inkscape&lt;/strong&gt;, por exemplo, usando o &lt;strong&gt;zypper&lt;/strong&gt;, execute o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper info --recommends inkscape
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ele traz informações sobre o pacote &lt;strong&gt;inkscape&lt;/strong&gt;, mostrando os pacotes recomendados ao final:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Informação para pacote inkscape:
+--------------------------------
+Repositório             : Main Update Repository
+Nome                    : inkscape
+Versão                  : 0.92.2-lp152.8.3.1
+Arquitetura             : x86_64
+Fornecedor              : openSUSE
+Tamanho após instalação : 94,0 MiB
+Instalado               : Não
+Status                  : não instalado
+Pacote fonte            : inkscape-0.92.2-lp152.8.3.1.src
+Resumo                  : Vector Illustration Program
+Descrição               :
+    Inkscape is a vector illustration program for the GNOME desktop.
+Recomenda               : [2]
+    inkscape-lang
+    python-lxml
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No caso do YaST, selecione o pacote &lt;strong&gt;inkscape&lt;/strong&gt; e consulte a aba &lt;strong&gt;Dependências&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/recommended-04-pt.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/recommended-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+</description>
+                <pubDate>Tue, 12 Jan 2021 11:30:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2021/01/12/o-que-sao-pacotes-recomendados-e-como-instala-los-no-opensuse/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2021/01/12/o-que-sao-pacotes-recomendados-e-como-instala-los-no-opensuse/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>Tumbleweed não inicia no Raspberry Pi 4: veja como resolver</title>
@@ -2639,131 +2890,6 @@ Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
                 <pubDate>Wed, 07 Oct 2020 19:50:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>Programas: o jeito mais fácil de instalar aplicativos no GNOME</title>
-                <description>&lt;p&gt;Você acha fácil instalar programas no seu &lt;em&gt;smartphone&lt;/em&gt; com &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt; (ou &lt;a href=&quot;https://www.apple.com/br/ios/&quot;&gt;iOS&lt;/a&gt;) por meio da &lt;a href=&quot;https://play.google.com/store?hl=pt_BR&quot;&gt;Play Store&lt;/a&gt; (ou da &lt;a href=&quot;https://www.apple.com/br/ios/app-store/&quot;&gt;App Store&lt;/a&gt;)? Pois saiba que instalar programas no &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; geralmente é tão fácil quanto! Se você usa a área de trabalho &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt;, focada em simplicidade e usabilidade, e padrão no &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt;, pode instalar programas do mesmo jeito usando o aplicativo &lt;strong&gt;&lt;a href=&quot;https://wiki.gnome.org/Apps/Software&quot;&gt;Programas&lt;/a&gt;&lt;/strong&gt;. Veja a seguir como fazer isso.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;https://kamarada.github.io/files/2020/02/software-store.svg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;https://kamarada.github.io/files/2020/02/software-store.svg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;O aplicativo &lt;strong&gt;Programas&lt;/strong&gt; permite instalar e atualizar aplicativos e extensões do sistema.&lt;/p&gt;
-
-&lt;p&gt;Vejamos como alguém pode usá-lo para instalar o &lt;a href=&quot;/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/#14-gimp&quot;&gt;GIMP&lt;/a&gt;, por exemplo. Se você ainda não o conhece, GIMP é a sigla de &lt;em&gt;GNU Image Manipulation Program&lt;/em&gt; (programa de manipulação de imagens do GNU). O GIMP é um editor de imagens gratuito e &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw.html&quot;&gt;livre&lt;/a&gt;, que pode ser visto como uma alternativa ao &lt;a href=&quot;https://www.adobe.com/br/products/photoshop/&quot;&gt;Photoshop&lt;/a&gt; (desse provavelmente você já ouviu falar).&lt;/p&gt;
-
-&lt;p&gt;O GIMP é apenas um exemplo, você não precisa de fato instalá-lo, se não precisa dele. O objetivo aqui é apenas mostrar como instalar programas no Linux usando o aplicativo &lt;strong&gt;Programas&lt;/strong&gt;. Aprenda como fazer e instale quantos e quais programas quiser dessa forma.&lt;/p&gt;
-
-&lt;p&gt;Comece abrindo o aplicativo &lt;strong&gt;Programas&lt;/strong&gt;. Para isso, clique em &lt;strong&gt;Atividades&lt;/strong&gt;, no canto superior esquerdo da tela, digite &lt;code class=&quot;highlighter-rouge&quot;&gt;programas&lt;/code&gt; e clique no ícone do aplicativo &lt;strong&gt;Programas&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-01-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-01-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se é a primeira vez que você usa o aplicativo &lt;strong&gt;Programas&lt;/strong&gt;, ele vai mostrar uma mensagem de boas vindas:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-02-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-02-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;“Vamos às compras” é modo de dizer, porque a maioria (ou talvez a quase totalidade, ou mesmo a totalidade) dos programas que você vai encontrar nessa “loja” de aplicativos é gratuita. De qualquer modo, clique nesse botão para dispensar essa mensagem.&lt;/p&gt;
-
-&lt;p&gt;Clique no botão de pesquisar, no canto superior esquerdo da janela, e digite o nome do aplicativo que você procura (seguindo o nosso exemplo, &lt;code class=&quot;highlighter-rouge&quot;&gt;gimp&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-03-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-03-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Perceba que enquanto você digita os programas já são pesquisados e listados. Clique no programa desejado.&lt;/p&gt;
-
-&lt;p&gt;Na tela seguinte, você pode conferir informações detalhadas sobre o programa: capturas de tela, descrição, &lt;em&gt;site&lt;/em&gt;, avaliações e comentários dos usuários, entre outras informações.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-04-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-04-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-05-pt.png&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-05-pt.png&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se deseja mesmo instalar esse programa, clique no botão &lt;strong&gt;Instalar&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Será solicitada a senha do administrador (no Linux, ele é chamado de usuário &lt;em&gt;root&lt;/em&gt;), que você deve fornecer para que o programa seja instalado.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-06-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-06-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Quando a instalação terminar, você pode clicar em &lt;strong&gt;Executar&lt;/strong&gt; se já quiser usar o programa:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-07-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-07-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Pronto! Agora é só usar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-08-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-08-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Dica:&lt;/strong&gt; quer um caminho ainda mais curto para instalar programas? Da próxima vez, experimente abrir o menu &lt;strong&gt;Atividades&lt;/strong&gt; e pesquisar pelo programa que você ainda não tem instalado e deseja instalar. A própria área de trabalho GNOME o sugere. É só clicar no programa desejado para abrir o aplicativo &lt;strong&gt;Programas&lt;/strong&gt; com todas as informações sobre ele.&lt;/p&gt;
-
-&lt;p&gt;Vou usar como exemplo outro programa que não vem instalado por padrão no Linux Kamarada, o &lt;a href=&quot;/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/#15-inkscape&quot;&gt;Inkscape&lt;/a&gt;. Se você ainda não o conhece, o Inkscape também é um editor de imagens gratuito e livre, mas para um tipo diferente de imagem: &lt;a href=&quot;https://pt.wikipedia.org/wiki/Desenho_vetorial&quot;&gt;imagem vetorial&lt;/a&gt;. Se o GIMP faz lembrar o Photoshop, o Inkscape faz lembrar o &lt;a href=&quot;https://www.coreldraw.com/br/&quot;&gt;CorelDRAW&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Olha só que atalho:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-09-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-09-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/gnome-software-10-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/gnome-software-10-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Dedico esse texto aos usuários iniciantes de Linux, espero que possa ter ajudado e que tenha sido útil, e também a pessoas que acham que o Linux é algo difícil de usar, o que não é culpa delas, existe muita má propaganda nesse sentido. Mas desde o seu surgimento, o Linux evoluiu bastante, principalmente em termos de usabilidade para o usuário final. E se você parar pra pensar, mesmo sistemas normalmente considerados mais fáceis de usar, como &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; e Android, requerem algum aprendizado. Talvez o que ajude no caso desses sistemas é que tem mais pessoas usando e, por isso, mais pessoas ensinando e ajudando outras pessoas a aprender e usar. Daí a importância deste &lt;em&gt;blog&lt;/em&gt; e de outros canais de informação sobre o Linux divulgando e ensinando a usar esse sistema impressionante!&lt;/p&gt;
-
-</description>
-                <pubDate>Thu, 17 Sep 2020 19:30:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/09/17/programas-o-jeito-mais-facil-de-instalar-aplicativos-no-gnome/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/09/17/programas-o-jeito-mais-facil-de-instalar-aplicativos-no-gnome/</guid>
                 
                 
                     <category>pt</category>
