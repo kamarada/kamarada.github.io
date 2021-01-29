@@ -9,10 +9,136 @@
         
         <link>https://kamarada.github.io/en/</link>
         <atom:link href="https://kamarada.github.io/en/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 29 Jan 2021 01:16:27 -0300</pubDate>
-        <lastBuildDate>Fri, 29 Jan 2021 01:16:27 -0300</lastBuildDate>
+        <pubDate>Fri, 29 Jan 2021 15:47:00 -0300</pubDate>
+        <lastBuildDate>Fri, 29 Jan 2021 15:47:00 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Security vulnerability found in sudo: update your system!</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/hacker-access-granted.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/hacker-access-granted.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;A critical security vulnerability that affects a large number of &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; computers was disclosed this past &lt;a href=&quot;https://blog.qualys.com/vulnerabilities-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit&quot;&gt;Tuesday, 26&lt;/a&gt; by security auditing firm &lt;a href=&quot;https://www.qualys.com/company/&quot;&gt;Qualys&lt;/a&gt;. The vulnerability was found in the &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man8/sudo.8.html&quot;&gt;sudo&lt;/a&gt;&lt;/strong&gt; command, included in most (if not all) Linux distros (including &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; and &lt;a href=&quot;/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/&quot;&gt;Linux Kamarada&lt;/a&gt;), which have already published fixes and advise users to &lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;update&lt;/a&gt; their systems.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;sudo&lt;/strong&gt; command line utility allows normal system users to execute commands that normally are allowed to be executed only by the system administrator user, who in Linux is called &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Superuser&quot;&gt;superuser&lt;/a&gt;&lt;/strong&gt;. Hence the name of the &lt;strong&gt;sudo&lt;/strong&gt; command: su “do” (superuser does). The system administrator can grant permissions to certain users (or groups of users) to run some (or all) commands as root (or another user). To grant those permissions, the administrator has to edit the &lt;strong&gt;sudo&lt;/strong&gt; configuration file, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/sudoers&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The bug found by Qualys has been named “Baron Samedit” and registered in the &lt;a href=&quot;https://cve.mitre.org/index.html&quot;&gt;Common Vulnerabilities and Exposures (CVE)&lt;/a&gt; database with the identifier &lt;a href=&quot;https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156&quot;&gt;CVE-2021-3156&lt;/a&gt;. That vulnerability could be exploited by a malicious normal user (or an attacker who has gained access to a normal user account) to gain root access and take over the vulnerable system, even if that normal user account was not previously authorized in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/sudoers&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;For the technical details behind this bug, please refer to the &lt;a href=&quot;https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt&quot;&gt;Qualys report&lt;/a&gt; or the following &lt;a href=&quot;https://vimeo.com/504872555&quot;&gt;video&lt;/a&gt;, which demonstrates a way to exploit the vulnerability to gain root access from a normal user account.&lt;/p&gt;
+
+&lt;div style=&quot;padding:75% 0 0 0;position:relative;&quot;&gt;&lt;iframe src=&quot;https://player.vimeo.com/video/504872555&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; fullscreen; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;script src=&quot;https://player.vimeo.com/api/player.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Curiously, although this bug has only been disclosed now, checking the &lt;strong&gt;sudo&lt;/strong&gt; source code it has been identified that the erroneous piece of code was introduced in July 2011 (commit &lt;a href=&quot;https://github.com/sudo-project/sudo/commit/8255ed69&quot;&gt;8255ed69&lt;/a&gt;). So, this bug has been (hopefully) unnoticed for nearly 10 years. Fortunately, it has already been fixed.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-i-protect-myself-from-that&quot;&gt;How can I protect myself from that?&lt;/h2&gt;
+
+&lt;p&gt;All major Linux distributions have already released security updates with patches that fix this issue. Linux users are advised to update their systems.&lt;/p&gt;
+
+&lt;p&gt;The openSUSE Project has released updates for its &lt;a href=&quot;/en/2020/12/07/opensuse-leap-vs-opensuse-tumbleweed-what-is-the-difference/&quot;&gt;two distributions: Leap and Tumbleweed&lt;/a&gt;. In the case of openSUSE Leap, the current releases (15.1 and 15.2) have received updates.&lt;/p&gt;
+
+&lt;p&gt;Since Linux Kamarada is based on openSUSE Leap, Linux Kamarada users are by transitivity openSUSE Leap users and receive the same updates.&lt;/p&gt;
+
+&lt;p&gt;If you use one of these Linux distributions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;openSUSE Leap (or Linux Kamarada) 15.1&lt;/li&gt;
+  &lt;li&gt;openSUSE Leap (or Linux Kamarada) 15.2&lt;/li&gt;
+  &lt;li&gt;openSUSE Tumbleweed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can see how to get updates for your system here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;How to get updates for openSUSE Linux&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Users of &lt;a href=&quot;https://en.opensuse.org/Lifetime#Discontinued_distributions&quot;&gt;older openSUSE Leap releases that have been discontinued&lt;/a&gt; and no longer receive updates (e.g. 15.0) were instructed on the &lt;a href=&quot;https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/2LKJJVNGGGMLLF4242KK6HCCAQTTWPQS/&quot;&gt;openSUSE Users mailing list&lt;/a&gt; to download the source code for the &lt;strong&gt;sudo&lt;/strong&gt; package, manually build it and install it. If that is your case, see that mailing list thread for more information.&lt;/p&gt;
+
+&lt;p&gt;Another option if you use openSUSE Leap 15.0 is to upgrade to 15.1 and then to 15.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00040.html&quot;&gt;Leap 15.1 support is going to end this month&lt;/a&gt;, so 15.1 users are advised to upgrade as well.&lt;/p&gt;
+
+&lt;p&gt;If you need instructions on how to upgrade, take a look at:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2019/05/27/how-to-upgrade-from-opensuse-leap-150-to-151/&quot;&gt;How to upgrade from openSUSE Leap 15.0 to 15.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/&quot;&gt;Linux Kamarada and openSUSE Leap: how to upgrade from 15.1 to 15.2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-can-i-know-whether-i-am-vulnerable&quot;&gt;How can I know whether I am vulnerable?&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;sudo&lt;/strong&gt; developers also issued an &lt;a href=&quot;https://www.sudo.ws/alerts/unescape_overflow.html&quot;&gt;alert&lt;/a&gt; with information about the bug. They suggested a simple test to determine whether your version of &lt;strong&gt;sudo&lt;/strong&gt; is vulnerable.&lt;/p&gt;
+
+&lt;p&gt;Just open a terminal window and run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudoedit -s '\' `perl -e 'print &quot;A&quot; x 65536'`
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Before applying the fix, that command results in a &lt;a href=&quot;https://en.wikipedia.org/wiki/Segmentation_fault&quot;&gt;segmentation fault&lt;/a&gt;, &lt;strong&gt;sudo&lt;/strong&gt; is vulnerable.&lt;/p&gt;
+
+&lt;p&gt;After applying the fix, you should receive a usage or error message, &lt;strong&gt;sudo&lt;/strong&gt; is not vulnerable.&lt;/p&gt;
+
+&lt;p&gt;In my tests, after updating, the error message that appeared was:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;sudoedit: invalid mode flags from sudo front end: 0x20002
+sudoedit: unable to initialize policy plugin
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;openSUSE and Linux Kamarada are distributions that use the &lt;a href=&quot;https://en.wikipedia.org/wiki/RPM_Package_Manager&quot;&gt;RPM&lt;/a&gt; package format, so you can also check the &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/sudo&quot;&gt;sudo&lt;/a&gt;&lt;/strong&gt; package changelog. If you have the latest update installed, the new CVE should appear, as in the following example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rpm -q --changelog sudo | head
+* Sat Jan 23 2021 Simon Lees &amp;lt;sflees@suse.de&amp;gt;
+- Fix Heap-based buffer overflow in Sudo [bsc#1181090,CVE-2021-3156]
+  * sudo-CVE-2021-3156.patch
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;If you want to know more about the &lt;strong&gt;sudo&lt;/strong&gt; CVE-2021-3156 (“Baron Samedit”) bug, you can take a look at the texts I consulted to write this one:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;About the vulnerability in general:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://blog.qualys.com/vulnerabilities-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit&quot;&gt;CVE-2021-3156: Heap-Based Buffer Overflow in Sudo (Baron Samedit) - Qualys Security Blog&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.theregister.com/2021/01/26/qualys_sudo_bug/&quot;&gt;Decade-old bug in Linux world’s sudo can be abused by any logged-in user to gain root privileges - The Register&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.zdnet.com/article/10-years-old-sudo-bug-lets-linux-users-gain-root-level-access/&quot;&gt;10-year-old Sudo bug lets Linux users gain root-level access - ZDNet&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.sudo.ws/alerts/unescape_overflow.html&quot;&gt;Buffer overflow in command line unescaping - sudo&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Specific information for openSUSE:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/2LKJJVNGGGMLLF4242KK6HCCAQTTWPQS/&quot;&gt;sudo **BUG** (Mother of All sudo BUGS) – rebuild if you are using old release - openSUSE Users - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/SIYRY4CB5OM4W3DM7GPNUPGZXW6EOPQC/&quot;&gt;CVE-2021-3156 (sudo) vs Leap 15.1 - openSUSE Factory - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.suse.com/security/cve/CVE-2021-3156/&quot;&gt;CVE-2021-3156 - SUSE&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1181090&quot;&gt;Bug 1181090 – VUL-0: CVE-2021-3156: sudo: Heap-based buffer overflow in Sudo &quot;Baron Samedit&quot; - SUSE Bugzilla&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 29 Jan 2021 15:45:00 -0300</pubDate>
+                <link>https://kamarada.github.io/en/2021/01/29/security-vulnerability-found-in-sudo-update-your-system/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/en/2021/01/29/security-vulnerability-found-in-sudo-update-your-system/</guid>
+                
+                
+                    <category>en</category>
+                
+            </item>
         
             <item>
                 <title>openSUSE on the Raspberry Pi 4 — part 2: first settings</title>
@@ -1893,609 +2019,6 @@ gpg:                 aka &quot;Thomas Voegtlin &amp;lt;thomasv1@gmx.de&amp;gt;&q
                 <pubDate>Fri, 18 Sep 2020 09:40:00 -0300</pubDate>
                 <link>https://kamarada.github.io/en/2020/09/18/software-the-easiest-way-to-install-apps-on-gnome/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/en/2020/09/18/software-the-easiest-way-to-install-apps-on-gnome/</guid>
-                
-                
-                    <category>en</category>
-                
-            </item>
-        
-            <item>
-                <title>Linux Kamarada 15.2: come to the elegant modern green side of the force!</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;I am proud to announce that &lt;strong&gt;Linux Kamarada 15.2&lt;/strong&gt; is ready for everyone to use! Linux Kamarada 15.2 is a &lt;a href=&quot;https://www.kernel.org/linux.html&quot;&gt;Linux&lt;/a&gt; distribution based on a bigger distribution that is &lt;a href=&quot;/en/2020/07/01/opensuse-leap-15-2-release-brings-exciting-new-artificial-intelligence-ai-machine-learning-and-container-packages/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;. While openSUSE Leap is a general purpose Linux distro, offering a stable operating system for both personal computers and servers, as well as tools for developers and system administrators, Linux Kamarada is focused on personal computers and novice users.&lt;/p&gt;
-
-&lt;p&gt;Newcomers can find the new release on the &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/&quot;&gt;Linux Kamarada 15.1&lt;/a&gt; users can upgrade to the new release following this tutorial:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/&quot;&gt;Linux Kamarada and openSUSE Leap: how to upgrade from 15.1 to 15.2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let’s see what’s changed on Linux Kamarada from the previous release (15.1) to the new release (15.2).&lt;/p&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/09/kamarada-15.2-logo.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;New branding, theme, backgrounds&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;I wanted to give Linux Kamarada a more modern and professional look, but without losing its nice, charismatic and friendly face. With that in mind, I made some changes to the branding and theme:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;the mascot had its original gloss version replaced by a new flat version, based on the &lt;a href=&quot;https://icons8.com/icon/17842/linux&quot;&gt;original Linux icon by Icons8&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;the theme, in general, remains aligned with &lt;a href=&quot;https://material.io/&quot;&gt;Material Design&lt;/a&gt; by &lt;a href=&quot;https://www.google.com/&quot;&gt;Google&lt;/a&gt; (the design that empowers &lt;a href=&quot;https://www.android.com/&quot;&gt;Android&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Material Design colors near to &lt;a href=&quot;https://en.opensuse.org/Help:Colors&quot;&gt;openSUSE colors&lt;/a&gt; were adopted&lt;/li&gt;
-  &lt;li&gt;the &lt;a href=&quot;https://www.gtk.org/&quot;&gt;GTK&lt;/a&gt; theme used on 15.1, &lt;a href=&quot;https://github.com/adapta-project/adapta-gtk-theme&quot;&gt;Adapta&lt;/a&gt;, has been discontinued and no longer receives maintenance, so it has been replaced by a version of the &lt;a href=&quot;https://github.com/nana-4/materia-theme&quot;&gt;Materia&lt;/a&gt; theme customized with the adopted colors&lt;/li&gt;
-  &lt;li&gt;the &lt;a href=&quot;https://github.com/PapirusDevelopmentTeam/papirus-icon-theme&quot;&gt;Papirus&lt;/a&gt; icon theme has been updated and its colors have been customized too&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-tux-before-after.png&quot; title=&quot;Tux Kamarada: before and after&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-tux-before-after.png&quot; alt=&quot;Tux Kamarada: before and after&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tux Kamarada: before and after&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; title=&quot;GRUB menu&quot;&gt;
-&lt;img src=&quot;/files/2020/08/upgrade-to-15.2-24.png&quot; alt=&quot;GRUB menu&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;GRUB menu&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-plymouth.jpg&quot; title=&quot;Plymouth&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-plymouth.jpg&quot; alt=&quot;Plymouth&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Plymouth&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/04/kamarada-15.2-lock-en.jpg&quot; title=&quot;Lock screen&quot;&gt;
-&lt;img src=&quot;/files/2020/04/kamarada-15.2-lock-en.jpg&quot; alt=&quot;Lock screen&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Lock screen&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gdm-en.jpg&quot; title=&quot;Login screen&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gdm-en.jpg&quot; alt=&quot;Login screen&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Login screen&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-desktop-en.jpg&quot; title=&quot;Desktop&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-desktop-en.jpg&quot; alt=&quot;Desktop&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Desktop&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-theme-en.jpg&quot; title=&quot;Materia theme with custom colors&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-theme-en.jpg&quot; alt=&quot;Materia theme with custom colors&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Materia theme with custom colors&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/desktop-environment-gnome.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Improvements to GNOME&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://br.gnome.org/&quot;&gt;GNOME&lt;/a&gt; desktop has jumped from version 3.26 on Linux Kamarada 15.1 to version 3.34 on Linux Kamarada 15.2. In addition to the noticeable performance gain, there were several changes and improvements. Next, I mention some that caught my attention.&lt;/p&gt;
-
-&lt;p&gt;Core GNOME applications have moved the contents of the application menu, in the top bar, to a primary menu located within the application window:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-app-menu-en.png&quot; title=&quot;Application menu: before and after&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-app-menu-en.png&quot; alt=&quot;Application menu: before and after&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Application menu: before and after&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In &lt;strong&gt;Files&lt;/strong&gt;, it’s now possible to favorite files and folders:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-01-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-01-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Once they’ve been starred, they can be easily viewed in a special location that can be opened from the sidebar:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-02-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-favorites-02-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;strong&gt;Contacts&lt;/strong&gt; app allows you to favorite contacts too, which appear at the top of the list once starred. Great for easily locating people you contact frequently.&lt;/p&gt;
-
-&lt;p&gt;In &lt;strong&gt;Files&lt;/strong&gt;, the location bar now expands a menu with some useful options when you click the current folder:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-menu-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-menu-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The search bar has been streamlined with the location bar to compact the interface:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-files-search-en.png&quot; title=&quot;Search bar: before and after&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-files-search-en.png&quot; alt=&quot;Search bar: before and after&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Search bar: before and after&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Another app whose interface is now cleaner and more organized is the &lt;strong&gt;Terminal&lt;/strong&gt;. Several menus have been merged into just one main menu and the menu bar has been removed:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-terminal-en.png&quot; title=&quot;Terminal: before and after&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-terminal-en.png&quot; alt=&quot;Terminal: before and after&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Terminal: before and after&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;strong&gt;Settings&lt;/strong&gt; app &lt;strong&gt;Background&lt;/strong&gt; panel has been redesigned too:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-gnome-background-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-gnome-background-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If you want to know more things that changed between GNOME 3.26 and 3.34, I recommend reading the release notes for each version on the way:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/misc/release-notes/3.28/&quot;&gt;GNOME 3.28 Release Notes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/misc/release-notes/3.30/&quot;&gt;GNOME 3.30 Release Notes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/misc/release-notes/3.32/&quot;&gt;GNOME 3.32 Release Notes&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://help.gnome.org/misc/release-notes/3.34/&quot;&gt;GNOME 3.34 Release Notes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/libreoffice-main.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Performance-focused LibreOffice&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://pt-br.libreoffice.org/&quot;&gt;LibreOffice&lt;/a&gt; 6.4 brought better compatibility with &lt;a href=&quot;https://www.office.com/&quot;&gt;Microsoft Office&lt;/a&gt; files, in addition to several fixes, new features and performance improvements.&lt;/p&gt;
-
-&lt;p&gt;A new feature that caught my attention was the &lt;a href=&quot;https://en.wikipedia.org/wiki/QR_code&quot;&gt;QR code&lt;/a&gt; generator that has been added to the suite, which can be useful for those who need to add QR codes in posters, magazines and flyers, for example. To insert a QR code into any LibreOffice document, in any LibreOffice application, open the &lt;strong&gt;Insert&lt;/strong&gt; menu, expand &lt;strong&gt;Object&lt;/strong&gt; and click &lt;strong&gt;QR Code&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-libreoffice-en.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-libreoffice-en.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;If you want to know more about what’s new in LibreOffice 6.4, compared to LibreOffice 6.3 that came with Linux Kamarada 15.1, read the release announcement:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.documentfoundation.org/blog/2020/01/29/libreoffice-6-4/&quot;&gt;Performance-focused LibreOffice 6.4 is available for download - The Document Foundation Blog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/02/preferences-desktop-remote-desktop.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Remote access and VPN updated&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;As everyone knows, demand for remote access has been increasing and it has been the subject of some how-tos here on the blog.&lt;/p&gt;
-
-&lt;p&gt;The default &lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/&quot;&gt;remote desktop client&lt;/a&gt; on Linux Kamarada 15.1, &lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/#vinagre&quot;&gt;Vinagre&lt;/a&gt;, which is also GNOME’s default, is unmaintained for some time now. Linux Kamarada 15.2 replaces it by &lt;a href=&quot;/en/2020/04/20/remote-desktop-connection-to-windows-from-linux-using-rdp-clients/#remmina&quot;&gt;Remmina&lt;/a&gt;, which is also &lt;a href=&quot;https://ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;’s default remote desktop client.&lt;/p&gt;
-
-&lt;p&gt;Linux Kamarada 15.2 comes with &lt;a href=&quot;https://www.infradead.org/openconnect/&quot;&gt;OpenConnect&lt;/a&gt; 8.05 out of the box. This version introduces support for the &lt;a href=&quot;/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/&quot;&gt;GlobalProtect&lt;/a&gt; VPN. In this regard, Linux Kamarada 15.2 presents a little improvement over openSUSE Leap 15.2, which still brings OpenConnect 7.08 (and therefore without support for GlobalProtect), although it is not difficult for openSUSE Leap users to install OpenConnect 8.05.&lt;/p&gt;
-
-&lt;p&gt;Note that you can connect to some types of VPN using the GUI app &lt;strong&gt;Settings&lt;/strong&gt;, but not GlobalProtect. Connecting to a GlobalProtect VPN must be done using a terminal window. If you need help with this, take a look at the following post:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/03/19/how-to-connect-to-a-globalprotect-vpn/&quot;&gt;How to connect to a GlobalProtect VPN&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-remmina-en.jpg&quot; title=&quot;Remmina remote desktop client&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-remmina-en.jpg&quot; alt=&quot;Remmina remote desktop client&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Remmina remote desktop client&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-globalprotect-en.jpg&quot; title=&quot;OpenConnect 8.05&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-globalprotect-en.jpg&quot; alt=&quot;OpenConnect 8.05&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;OpenConnect 8.05&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;media mb-3&quot;&gt;
-    &lt;img src=&quot;/files/2020/09/privacy.png&quot; class=&quot;mr-3&quot; style=&quot;max-width: 60px;&quot; /&gt;
-    &lt;div class=&quot;media-body align-self-center&quot;&gt;
-        &lt;h2 class=&quot;mt-0 mb-0&quot;&gt;Privacy&lt;/h2&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;What perhaps not everyone has noticed is that recently &lt;a href=&quot;https://en.wikipedia.org/wiki/Mass_surveillance&quot;&gt;mass surveillance&lt;/a&gt; has been increasing too. If you haven’t, I recommend that you see this interview:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.foxnews.com/health/edward-snowden-warns-governments-may-use-coronavirus-remove-freedoms&quot;&gt;Edward Snowden warns that governments may use coronavirus to limit freedoms | Fox News&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We are being watched all the time by companies and governments.&lt;/p&gt;
-
-&lt;p&gt;Probably you have already heard the motto “&lt;a href=&quot;https://en.wikipedia.org/wiki/Nothing_to_hide_argument&quot;&gt;if you’ve got nothing to hide, you’ve got nothing to fear&lt;/a&gt;”. It is commonly used to defend surveillance. You may agree that if you haven’t done anything wrong, you don’t need to hide. But think about it from another angle: if I haven’t done anything wrong, why do they need to watch me?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.privacytools.io/&quot;&gt;Privacy&lt;/a&gt; is a right. There is nothing wrong with not wanting to share certain parts of your life, to keep them for yourself, just as there is nothing wrong with having curtains or blinds at home. This is important for your peace of mind. Your data is yours and you should be able to choose what you want to share and with whom.&lt;/p&gt;
-
-&lt;p&gt;I have been reading about privacy tools on websites (which I recommend) such as &lt;a href=&quot;https://www.privacytools.io/&quot;&gt;Privacy Tools&lt;/a&gt; and &lt;a href=&quot;https://securityinabox.org/&quot;&gt;Security in a Box&lt;/a&gt; and I want to talk about them in future posts here on the blog. But I anticipated adding some of them to the new Linux Kamarada 15.2:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.mozilla.org/firefox/new/&quot;&gt;Mozilla Firefox&lt;/a&gt; is now the default web browser, Linux Kamarada comes with the &lt;a href=&quot;https://www.mozilla.org/firefox/enterprise/&quot;&gt;Extended Support Release (ESR)&lt;/a&gt; distributed by openSUSE Leap (&lt;a href=&quot;https://www.chromium.org/&quot;&gt;Chromium&lt;/a&gt;, the previous default browser, has been kept as alternative, at least for now)&lt;/li&gt;
-  &lt;li&gt;the &lt;a href=&quot;https://keepassxc.org/&quot;&gt;KeePassXC&lt;/a&gt; password manager allows you to store your passwords inside a secure database file regardless of the browser you use, if you want you can save that file on a cloud service (such as &lt;a href=&quot;/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/#4-dropbox&quot;&gt;Dropbox&lt;/a&gt;) or manually make offline copies among your devices, whatever you think is best, you are in control&lt;/li&gt;
-  &lt;li&gt;native support for &lt;a href=&quot;https://www.torproject.org/&quot;&gt;Tor&lt;/a&gt;, which allows you to surf the web anonymously, encrypted, safely and free from censorship&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-firefox-en.jpg&quot; title=&quot;Mozilla Firefox web browser&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-firefox-en.jpg&quot; alt=&quot;Mozilla Firefox web browser&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Mozilla Firefox web browser&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/keepassxc-en.png&quot; title=&quot;KeePassXC password manager&quot;&gt;
-&lt;img src=&quot;/files/2020/08/keepassxc-en.png&quot; alt=&quot;KeePassXC password manager&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;KeePassXC password manager&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/08/tor-en.jpg&quot; title=&quot;Tor anonymity network&quot;&gt;
-&lt;img src=&quot;/files/2020/08/tor-en.jpg&quot; alt=&quot;Tor anonymity network&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Tor anonymity network&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Note that although the Tor network client comes out of the box installed and available for use on Linux Kamarada, it is not enabled by default: if you want to use it, you need to start it and configure applications to traffic data through it. If you need a system that starts connecting to the Tor network by default, you may want to take a look at &lt;a href=&quot;https://tails.boum.org/&quot;&gt;Tails&lt;/a&gt; or &lt;a href=&quot;https://www.whonix.org/&quot;&gt;Whonix&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;where-can-i-get-linux-kamarada&quot;&gt;Where can I get Linux Kamarada?&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page has been updated with the download link for the 15.2 Final release.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; it is not recommended to use Linux Kamarada on servers, although it is possible. openSUSE Leap is better suited for that use case, because it offers a server configuration during installation, which is going to set up a server with just a small set of packages and a text mode interface (without a desktop).&lt;/p&gt;
-
-&lt;h2 id=&quot;what-should-i-do-next&quot;&gt;What should I do next?&lt;/h2&gt;
-
-&lt;p&gt;When the download is complete, verify the integrity of the ISO image by calculating its checksum. Compare it with the checksum that appears on the &lt;a href=&quot;/en/download&quot;&gt;Download&lt;/a&gt; page. They must match. If they don’t, download the ISO image again.&lt;/p&gt;
-
-&lt;p&gt;If you are not in a hurry, it is recommended to also verify the authenticity of the ISO image.&lt;/p&gt;
-
-&lt;p&gt;The fingerprint of the Linux Kamarada Project public key is:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;6b18 52e7 764f b302 b805 a4a0 a575 bcce 1737 8ecc
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To import that key, run the following commands:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ wget https://build.opensuse.org/projects/home:kamarada:15.2/public_key
-$ gpg --import public_key
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For more information on those verifications, read:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2018/11/08/verifying-data-integrity-and-authenticity-using-sha-256-and-gpg/&quot;&gt;Verifying data integrity and authenticity using SHA-256 and GPG&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once the ISO image has been downloaded and those verifications have succeeded, you have 3 options:&lt;/p&gt;
-
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/disk-burner.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;1) Burn the ISO image to a DVD (thus generating a LiveDVD)&lt;/h6&gt;
-
-            Use an application such as &lt;a href=&quot;https://cdburnerxp.se/&quot;&gt;CDBurnerXP&lt;/a&gt; (on Windows), &lt;a href=&quot;http://www.k3b.org/&quot;&gt;K3b&lt;/a&gt; (on a Linux system with KDE desktop) or &lt;a href=&quot;https://wiki.gnome.org/Apps/Brasero&quot;&gt;Brasero&lt;/a&gt; (Linux with GNOME) to burn the ISO image to a DVD. Insert it on your computer DVD drive and reboot to start Linux Kamarada.
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/usb-creator.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;2) Write the ISO image to a USB flash drive (thus generating a LiveUSB)&lt;/h6&gt;
-
-            &lt;p&gt;Use &lt;a href=&quot;https://www.ventoy.net/&quot;&gt;Ventoy&lt;/a&gt; (available for Windows and Linux) to prepare the flash drive and copy the ISO image to it. Plug it to a USB port and reboot your computer to start Linux Kamarada.&lt;/p&gt;
-
-            &lt;p&gt;This how-to can help you to prepare the LiveUSB:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/en/2020/07/29/ventoy-create-a-multiboot-usb-drive-by-simply-copying-iso-images-to-it/&quot;&gt;Ventoy: create a multiboot USB drive by simply copying ISO images to it&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;img src=&quot;/files/2020/02/virtualbox.svg&quot; class=&quot;mr-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            &lt;h6 class=&quot;mt-0&quot;&gt;3) Create a virtual machine and use the ISO image to boot it&lt;/h6&gt;
-
-            &lt;p&gt;This option allows you to test Linux Kamarada without having to reboot your computer and leave the operating system you are familiar with.&lt;/p&gt;
-
-            &lt;p&gt;For more information, read:&lt;/p&gt;
-
-            &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/en/2019/10/10/virtualbox-the-easiest-way-to-try-linux-without-installing-it/&quot;&gt;VirtualBox: the easiest way to try Linux without installing it&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-        &lt;/div&gt;
-    &lt;/li&gt;
-
-    &lt;li class=&quot;media mb-3&quot;&gt;
-        &lt;div class=&quot;media-body&quot;&gt;
-            After testing Linux Kamarada, if you want to install it on your computer or virtual machine, start the installer by clicking this icon, located on the dock (on the left side of the screen).
-        &lt;/div&gt;
-        &lt;img src=&quot;/files/2020/02/calamares.svg&quot; class=&quot;ml-3&quot; style=&quot;max-width: 48px;&quot; /&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The installer will only partition the disk and copy system files to the computer. At the end, reboot your computer. Then, a &lt;a href=&quot;http://yast.opensuse.org/&quot;&gt;YaST&lt;/a&gt; wizard will guide you through some basic configuration.&lt;/p&gt;
-
-&lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-calamares-en.jpg&quot; title=&quot;Installer&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-calamares-en.jpg&quot; alt=&quot;Installer&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;Installer&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;col-md&quot;&gt;
-        &lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/09/kamarada-15.2-yast-firstboot-en.jpg&quot; title=&quot;First-boot setup wizard&quot;&gt;
-&lt;img src=&quot;/files/2020/09/kamarada-15.2-yast-firstboot-en.jpg&quot; alt=&quot;First-boot setup wizard&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;First-boot setup wizard&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;what-if-i-already-use-linux-kamarada&quot;&gt;What if I already use Linux Kamarada?&lt;/h2&gt;
-
-&lt;p&gt;The ISO image is not intended for upgrading, only for testing and installing. If you already use Linux Kamarada 15.1 and want to upgrade your existing installation to 15.2, take a look at:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/en/2020/09/01/linux-kamarada-and-opensuse-leap-how-to-upgrade-from-151-to-152/&quot;&gt;Linux Kamarada and openSUSE Leap: how to upgrade from 15.1 to 15.2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;what-if-i-already-use-opensuse-leap&quot;&gt;What if I already use openSUSE Leap?&lt;/h2&gt;
-
-&lt;p&gt;You already use openSUSE Leap and want to turn it into Linux Kamarada? It’s simple!&lt;/p&gt;
-
-&lt;p&gt;Just add the Linux Kamarada repository and install the &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/patterns-kamarada-gnome&quot;&gt;patterns-kamarada-gnome&lt;/a&gt;&lt;/strong&gt; package.&lt;/p&gt;
-
-&lt;p&gt;There are two different methods for doing that: from the graphical interface, using 1-Click Install, or from the terminal, using the &lt;strong&gt;zypper&lt;/strong&gt; package manager — choose whichever method you prefer.&lt;/p&gt;
-
-&lt;p&gt;To install Linux Kamarada using 1-Click Install, click the following button:&lt;/p&gt;
-
-&lt;p class=&quot;text-center&quot;&gt;&lt;a class=&quot;btn btn-sm btn-outline-primary&quot; href=&quot;/downloads/patterns-kamarada-gnome-en.ymp&quot;&gt;&lt;i class=&quot;fas fa-bolt&quot;&gt;&lt;/i&gt; 1-Click Install&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;To install Linux Kamarada using the terminal, first add its repository:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper addrepo -f -K -n &quot;Linux Kamarada&quot; -p 95 &quot;https://osdn.mirror.constant.com/storage/g/k/ka/kamarada/\$releasever/openSUSE_Leap_\$releasever/&quot; kamarada
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The Linux Kamarada repository is gently hosted by &lt;a href=&quot;https://osdn.net/projects/kamarada/&quot;&gt;OSDN&lt;/a&gt;, which replicates the repository contents on some mirror servers around the world. I picked a mirror at random to write the above command and 1-Click Install. You may want to take a look at the list of &lt;a href=&quot;https://github.com/kamarada/Linux-Kamarada-GNOME/wiki/Mirrors&quot;&gt;Linux Kamarada mirrors&lt;/a&gt; and choose a mirror closer to you.&lt;/p&gt;
-
-&lt;p&gt;Then, install the &lt;strong&gt;patterns-kamarada-gnome&lt;/strong&gt; package:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# zypper in patterns-kamarada-gnome
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you already use the GNOME desktop, probably you will need to download just a few packages. If you use another desktop, the download size will be larger.&lt;/p&gt;
-
-&lt;p&gt;When the installation is finished, if you create a new user, you will notice that they will receive the Linux Kamarada default settings (such as theme, wallpaper, etc.). Existing users can continue to use their customizations or adjust the system appearance (for instance, using the &lt;strong&gt;Tweaks&lt;/strong&gt; and &lt;strong&gt;Settings&lt;/strong&gt; apps).&lt;/p&gt;
-
-&lt;h2 id=&quot;where-can-i-get-help&quot;&gt;Where can I get help?&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;/en/help&quot;&gt;Help&lt;/a&gt; page suggests some places where you can get help with Linux Kamarada and openSUSE.&lt;/p&gt;
-
-&lt;p&gt;The support channel preferred by users has been the &lt;a href=&quot;https://t.me/LinuxKamaradaWW&quot;&gt;@LinuxKamaradaWW&lt;/a&gt; group on &lt;a href=&quot;/en/2019/08/12/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-2/#12-telegram&quot;&gt;Telegram&lt;/a&gt;, which is a messaging service that you can access from an app or a web browser.&lt;/p&gt;
-
-&lt;h2 id=&quot;where-can-i-get-the-source-code&quot;&gt;Where can I get the source code?&lt;/h2&gt;
-
-&lt;p&gt;Like any free software project, Linux Kamarada makes its source code available to anyone who wants to study it, adapt it, or contribute to the project.&lt;/p&gt;
-
-&lt;p&gt;Linux Kamarada development takes place at &lt;a href=&quot;https://github.com/kamarada&quot;&gt;GitHub&lt;/a&gt; and &lt;a href=&quot;https://build.opensuse.org/project/subprojects/home:kamarada&quot;&gt;Open Build Service&lt;/a&gt;. There you can get the source codes of the packages developed specifically for this project (even &lt;a href=&quot;https://github.com/kamarada/kamarada-website&quot;&gt;the source code of this web site&lt;/a&gt; you read is available).&lt;/p&gt;
-
-&lt;p&gt;Source codes of packages inherited from openSUSE Leap can be retrieved directly from that distribution. If you need help doing this, get in touch, I can help.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-linux-kamarada&quot;&gt;About Linux Kamarada&lt;/h2&gt;
-
-&lt;p&gt;The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. It started as a blog about &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt;, which is the Linux distribution I’ve been using for 8 years (since &lt;a href=&quot;https://vinyanalista.github.io/blog/2012/04/21/problemas-envolvendo-bootloaders-mbr-e-tabela-de-particoes/&quot;&gt;April 2012&lt;/a&gt;, when I installed openSUSE 11.4 and then upgraded to 12.1). Now the project offers its own Linux distribution, which brings much of the software presented on the blog pre-installed and ready for use.&lt;/p&gt;
-
-&lt;p&gt;The Kamarada Linux distribution is based on openSUSE Leap and is intended for use on desktops at home and at work, in both private companies and government entities. It features the essential software selection for any Linux installation and a nice looking modern desktop.&lt;/p&gt;
-
-&lt;h2 id=&quot;specs&quot;&gt;Specs&lt;/h2&gt;
-
-&lt;p&gt;To allow comparing Linux Kamarada releases, here is a summary of the software contained on Linux Kamarada 15.2 Final 1 Build 52.3:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linux kernel 5.3.18&lt;/li&gt;
-  &lt;li&gt;X.Org display server 1.20.3 (without Wayland)&lt;/li&gt;
-  &lt;li&gt;GNOME 3.34.4 desktop including its core apps, such as Files (previously Nautilus), Calculator, Terminal, Text editor (gedit), Screenshot and others&lt;/li&gt;
-  &lt;li&gt;LibreOffice office suite 6.4.4&lt;/li&gt;
-  &lt;li&gt;Mozilla Firefox ESR 68.9.0 (default web browser)&lt;/li&gt;
-  &lt;li&gt;Chromium 83 (alternative web browser)&lt;/li&gt;
-  &lt;li&gt;VLC media player 3.0.10&lt;/li&gt;
-  &lt;li&gt;Evolution email client&lt;/li&gt;
-  &lt;li&gt;YaST control center&lt;/li&gt;
-  &lt;li&gt;Brasero&lt;/li&gt;
-  &lt;li&gt;CUPS 2.2.7&lt;/li&gt;
-  &lt;li&gt;Firewalld 0.5.5&lt;/li&gt;
-  &lt;li&gt;GParted 0.31.0&lt;/li&gt;
-  &lt;li&gt;HPLIP 3.19.12&lt;/li&gt;
-  &lt;li&gt;Java (OpenJDK) 11.0.7&lt;/li&gt;
-  &lt;li&gt;KeePassXC 2.5.4&lt;/li&gt;
-  &lt;li&gt;KolourPaint 20.04.2&lt;/li&gt;
-  &lt;li&gt;Linphone 4.1.1&lt;/li&gt;
-  &lt;li&gt;PDFsam Basic 4.1.4&lt;/li&gt;
-  &lt;li&gt;Pidgin 2.13.0&lt;/li&gt;
-  &lt;li&gt;Samba 4.11.5&lt;/li&gt;
-  &lt;li&gt;Tor 0.4.2&lt;/li&gt;
-  &lt;li&gt;Transmission 2.94&lt;/li&gt;
-  &lt;li&gt;Vim 8.0&lt;/li&gt;
-  &lt;li&gt;Wine 5.0&lt;/li&gt;
-  &lt;li&gt;games: Aisleriot (Solitaire), Chess, Hearts, Iagno (Reversi), Mahjongg, Mines (Minesweeper), Nibbles (Snake), Quadrapassel (Tetris), Sudoku&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That list is not exhaustive, but it gives a notion of what can be found in the distribution.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; if you compare this list with that for version &lt;a href=&quot;/en/2020/08/08/linux-kamarada-15.2-enters-release-candidate-rc-phase/&quot;&gt;15.2 RC&lt;/a&gt;, you will notice that Mozilla Firefox and other programs have been downgraded. It was intentional. That happened because I disabled the update repo for creating the Linux Kamarada 15.2 Final image. The purpose of doing this was to prevent the image from having openSUSE Leap &lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1173991&quot;&gt;boo#1173991&lt;/a&gt; and &lt;a href=&quot;https://bugzilla.opensuse.org/show_bug.cgi?id=1176304&quot;&gt;boo#1176304&lt;/a&gt; bugs introduced by updates. When these bugs are fixed, I’m going to upload another updated image. But you don’t need to worry about that: you can install Linux Kamarada and &lt;a href=&quot;/en/2019/05/20/how-to-get-updates-for-opensuse-linux/&quot;&gt;get updates for the system&lt;/a&gt; as usual.&lt;/p&gt;
-
-</description>
-                <pubDate>Fri, 11 Sep 2020 02:00:00 -0300</pubDate>
-                <link>https://kamarada.github.io/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/en/2020/09/11/linux-kamarada-15.2-come-to-the-elegant-modern-green-side-of-the-force/</guid>
                 
                 
                     <category>en</category>
