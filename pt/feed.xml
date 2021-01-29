@@ -9,10 +9,134 @@
         
         <link>https://kamarada.github.io/pt/</link>
         <atom:link href="https://kamarada.github.io/pt/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 12 Jan 2021 11:33:29 -0300</pubDate>
-        <lastBuildDate>Tue, 12 Jan 2021 11:33:29 -0300</lastBuildDate>
+        <pubDate>Fri, 29 Jan 2021 01:16:27 -0300</pubDate>
+        <lastBuildDate>Fri, 29 Jan 2021 01:16:27 -0300</lastBuildDate>
         <generator>Jekyll v3.8.7</generator>
         
+        
+            <item>
+                <title>Falha de segurança no comando sudo: atualize seu sistema!</title>
+                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
+&lt;a href=&quot;/files/2021/01/hacker-access-granted.jpg&quot; title=&quot;&quot;&gt;
+&lt;img src=&quot;/files/2021/01/hacker-access-granted.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Uma falha de segurança grave que afeta grande parte dos computadores com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt; foi divulgada nessa &lt;a href=&quot;https://blog.qualys.com/vulnerabilities-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit&quot;&gt;terça 26&lt;/a&gt; pela empresa de auditoria de segurança &lt;a href=&quot;https://www.qualys.com/company/&quot;&gt;Qualys&lt;/a&gt;. A falha envolve o comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man8/sudo.8.html&quot;&gt;sudo&lt;/a&gt;&lt;/strong&gt;, presente em praticamente todas as instalações do Linux — inclusive do &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; e do &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada&lt;/a&gt;. A correção já foi disponibilizada pelas distribuições, que recomendam que os usuários instalem as últimas &lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;atualizações&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;O utilitário de linha de comando &lt;strong&gt;sudo&lt;/strong&gt; permite que usuários comuns do sistema executem comandos que normalmente só podem ser executados pelo administrador do sistema, que no Linux é chamado de &lt;em&gt;root&lt;/em&gt; ou &lt;strong&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Superusu%C3%A1rio&quot;&gt;superusuário&lt;/a&gt;&lt;/strong&gt;. Daí vem o nome do comando &lt;strong&gt;sudo&lt;/strong&gt;: &lt;em&gt;su “do”&lt;/em&gt; (“superusuário faz”, em inglês). O administrador pode conceder permissões para que certos usuários (ou grupos de usuários) sejam capazes de executar certos comandos (ou qualquer comando) como se fossem o &lt;em&gt;root&lt;/em&gt; ou outro usuário. Para isso, o administrador deve editar o arquivo de configuração do &lt;strong&gt;sudo&lt;/strong&gt;, que é o &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/sudoers&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;O &lt;em&gt;bug&lt;/em&gt; descoberto pela Qualys foi batizado de “Baron Samedit” e registrado no &lt;a href=&quot;https://cve.mitre.org/index.html&quot;&gt;CVE&lt;/a&gt; (&lt;em&gt;Common Vulnerabilities and Exposures&lt;/em&gt;, um banco de dados de falhas de segurança conhecidas) com o código &lt;a href=&quot;https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3156&quot;&gt;CVE-2021-3156&lt;/a&gt;. Essa falha de segurança permite que um usuário comum mal-intencionado (ou um invasor que conseguisse acesso a uma conta de usuário comum) obtivesse o mesmo nível de permissões que o usuário &lt;em&gt;root&lt;/em&gt;, mesmo que essa conta de usuário comum não tivesse sido previamente autorizada no arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/sudoers&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Para os detalhes técnicos a respeito dessa falha de segurança, você pode conferir o &lt;a href=&quot;https://www.qualys.com/2021/01/26/cve-2021-3156/baron-samedit-heap-based-overflow-sudo.txt&quot;&gt;relatório técnico da Qualys&lt;/a&gt; ou o &lt;a href=&quot;https://vimeo.com/504872555&quot;&gt;vídeo&lt;/a&gt; a seguir, que mostra uma forma de explorar a falha para ganhar acesso ao usuário &lt;em&gt;root&lt;/em&gt; a partir de uma conta comum (relatório e vídeo ambos em inglês).&lt;/p&gt;
+
+&lt;div style=&quot;padding:75% 0 0 0;position:relative;&quot;&gt;&lt;iframe src=&quot;https://player.vimeo.com/video/504872555&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; fullscreen; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;script src=&quot;https://player.vimeo.com/api/player.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Curiosamente, embora essa falha tenha sido identificada apenas agora, analisando o código-fonte do &lt;strong&gt;sudo&lt;/strong&gt; em busca do trecho de código que a causava, identificou-se que esse código foi introduzido em julho de 2011 (&lt;em&gt;commit&lt;/em&gt; &lt;a href=&quot;https://github.com/sudo-project/sudo/commit/8255ed69&quot;&gt;8255ed69&lt;/a&gt;). Ou seja, esse &lt;em&gt;bug&lt;/em&gt; passou 10 anos (espera-se) despercebido. Felizmente, já foi corrigido.&lt;/p&gt;
+
+&lt;h2 id=&quot;como-corrigir-essa-falha&quot;&gt;Como corrigir essa falha?&lt;/h2&gt;
+
+&lt;p&gt;Todas as maiores distribuições Linux já liberaram atualizações de segurança com correções (&lt;em&gt;patches&lt;/em&gt;) que resolvem esse problema. Cabe aos usuários baixarem essas atualizações.&lt;/p&gt;
+
+&lt;p&gt;O Projeto openSUSE liberou atualizações para suas &lt;a href=&quot;/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/&quot;&gt;duas distribuições: Leap e Tumbleweed&lt;/a&gt;. No caso do openSUSE Leap, receberam atualizações as versões 15.1 e 15.2.&lt;/p&gt;
+
+&lt;p&gt;Como o Linux Kamarada é baseado no openSUSE Leap, usuários do Linux Kamarada são, por tabela, usuários do openSUSE Leap e recebem essas mesmas atualizações.&lt;/p&gt;
+
+&lt;p&gt;Se você usa uma dessas distribuições:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;openSUSE Leap (ou Linux Kamarada) 15.1&lt;/li&gt;
+  &lt;li&gt;openSUSE Leap (ou Linux Kamarada) 15.2&lt;/li&gt;
+  &lt;li&gt;openSUSE Tumbleweed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Veja como obter atualizações no texto:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/&quot;&gt;Como obter atualizações para o Linux openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Se você usa uma versão do openSUSE Leap que já foi descontinuada e já não recebe mais suporte (por exemplo, a 15.0), a orientação passada na &lt;a href=&quot;https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/2LKJJVNGGGMLLF4242KK6HCCAQTTWPQS/&quot;&gt;lista de discussão do openSUSE&lt;/a&gt; foi baixar o código-fonte do pacote do &lt;strong&gt;sudo&lt;/strong&gt;, compilar e instalar manualmente. Se esse é o seu caso, consulte a lista de discussão (em inglês) para mais informações.&lt;/p&gt;
+
+&lt;p&gt;Outra opção se você usa o openSUSE Leap 15.0 é atualizar para a versão 15.1 e na sequência para a 15.2, já que &lt;a href=&quot;https://lists.opensuse.org/opensuse-security-announce/2020-11/msg00040.html&quot;&gt;o suporte para a versão 15.1 se encerrará agora em janeiro&lt;/a&gt;. Se quiser instruções de como fazer isso, consulte os textos:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2019/05/26/como-atualizar-do-opensuse-leap-150-para-o-151/&quot;&gt;Como atualizar do openSUSE Leap 15.0 para o 15.1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/pt/2020/08/31/linux-kamarada-e-opensuse-leap-como-atualizar-da-versao-151-para-a-152/&quot;&gt;Linux Kamarada e openSUSE Leap: como atualizar da versão 15.1 para a 15.2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;como-saber-se-estou-vulnerável&quot;&gt;Como saber se estou vulnerável?&lt;/h2&gt;
+
+&lt;p&gt;Os desenvolvedores do &lt;strong&gt;sudo&lt;/strong&gt; também emitiram um &lt;a href=&quot;https://www.sudo.ws/alerts/unescape_overflow.html&quot;&gt;alerta&lt;/a&gt; com informações sobre a falha. Eles sugerem um teste simples para saber se a versão do &lt;strong&gt;sudo&lt;/strong&gt; que você está usando está sujeita a essa falha. Abra uma janela do terminal e execute o comando a seguir:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ sudoedit -s '\' `perl -e 'print &quot;A&quot; x 65536'`
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Antes da correção, o comando deve informar que ocorreu uma &lt;a href=&quot;https://pt.wikipedia.org/wiki/Falha_de_segmenta%C3%A7%C3%A3o&quot;&gt;falha de segmentação&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Se você já está usando a versão corrigida, o comando deve mostrar uma mensagem de erro.&lt;/p&gt;
+
+&lt;p&gt;No meu teste, após instalar a correção, a mensagem que apareceu foi:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;sudoedit: invalid mode flags from sudo front end: 0x20002
+sudoedit: não foi possível inicializar plug-in de política
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No caso do openSUSE e do Linux Kamarada, distribuições que usam o formato de empacotamento &lt;a href=&quot;https://pt.wikipedia.org/wiki/RPM_(software)&quot;&gt;RPM&lt;/a&gt;, você também pode verificar a lista de mudanças (&lt;em&gt;changelog&lt;/em&gt;) do pacote &lt;strong&gt;&lt;a href=&quot;https://software.opensuse.org/package/sudo&quot;&gt;sudo&lt;/a&gt;&lt;/strong&gt;. Se a atualização foi instalada, ela deve aparecer, como no exemplo abaixo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;$ rpm -q --changelog sudo | head
+* sáb jan 23 2021 Simon Lees &amp;lt;sflees@suse.de&amp;gt;
+- Fix Heap-based buffer overflow in Sudo [bsc#1181090,CVE-2021-3156]
+  * sudo-CVE-2021-3156.patch
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
+
+&lt;p&gt;Se quiser saber mais sobre a falha de segurança do &lt;strong&gt;sudo&lt;/strong&gt; código CVE-2021-3156 codenome “Baron Samedit”, você pode dar uma conferida nos textos que consultei para escrever este:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sobre a falha, em português:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://canaltech.com.br/seguranca/vulnerabilidade-com-mais-de-dez-anos-de-idade-e-finalmente-corrigida-no-linux-178118/&quot;&gt;Vulnerabilidade com mais de dez anos de idade é finalmente corrigida no Linux - Canaltech&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://sempreupdate.com.br/bug-de-10-anos-permite-que-usuarios-linux-obtenham-acesso-nivel-root/&quot;&gt;Bug de 10 anos permite que usuários Linux obtenham acesso nível root - SempreUpdate&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sobre a falha, em inglês:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.theregister.com/2021/01/26/qualys_sudo_bug/&quot;&gt;Decade-old bug in Linux world’s sudo can be abused by any logged-in user to gain root privileges - The Register&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.zdnet.com/article/10-years-old-sudo-bug-lets-linux-users-gain-root-level-access/&quot;&gt;10-year-old Sudo bug lets Linux users gain root-level access - ZDNet&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Informações específicas para o openSUSE, em inglês:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/users@lists.opensuse.org/thread/2LKJJVNGGGMLLF4242KK6HCCAQTTWPQS/&quot;&gt;sudo **BUG** (Mother of All sudo BUGS) – rebuild if you are using old release - openSUSE Users - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/SIYRY4CB5OM4W3DM7GPNUPGZXW6EOPQC/&quot;&gt;CVE-2021-3156 (sudo) vs Leap 15.1 - openSUSE Factory - openSUSE Mailing Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.suse.com/security/cve/CVE-2021-3156/&quot;&gt;CVE-2021-3156 - SUSE&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://bugzilla.suse.com/show_bug.cgi?id=1181090&quot;&gt;Bug 1181090 – VUL-0: CVE-2021-3156: sudo: Heap-based buffer overflow in Sudo &quot;Baron Samedit&quot; - SUSE Bugzilla&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Fri, 29 Jan 2021 01:10:00 -0300</pubDate>
+                <link>https://kamarada.github.io/pt/2021/01/29/falha-de-seguranca-no-comando-sudo-atualize-seu-sistema/</link>
+                <guid isPermaLink="true">https://kamarada.github.io/pt/2021/01/29/falha-de-seguranca-no-comando-sudo-atualize-seu-sistema/</guid>
+                
+                
+                    <category>pt</category>
+                
+            </item>
         
             <item>
                 <title>O que são pacotes recomendados e como instalá-los no openSUSE</title>
@@ -2604,292 +2728,6 @@ passwd: senha atualizada com sucesso
                 <pubDate>Sat, 10 Oct 2020 23:00:00 -0300</pubDate>
                 <link>https://kamarada.github.io/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/</link>
                 <guid isPermaLink="true">https://kamarada.github.io/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/</guid>
-                
-                
-                    <category>pt</category>
-                
-            </item>
-        
-            <item>
-                <title>openSUSE no Raspberry Pi 4 — parte 1: download e instalação</title>
-                <description>&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Sabia que já é possível rodar o &lt;a href=&quot;https://www.opensuse.org/&quot;&gt;openSUSE&lt;/a&gt; no &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Raspberry Pi 4&lt;/a&gt;? Na primeira vez em que escrevi sobre o minicomputador do tamanho de um cartão de crédito, há pouco mais de um ano, o Projeto openSUSE ainda não oferecia suporte à geração mais nova do Raspberry Pi. Quem quisesse usar um Raspberry Pi 4 como um &lt;em&gt;desktop&lt;/em&gt; naquela época teria que recorrer a outra distribuição, como &lt;a href=&quot;http://www.raspbian.org/&quot;&gt;Raspbian&lt;/a&gt; ou &lt;a href=&quot;https://manjaro.org/&quot;&gt;Manjaro&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Se quiser saber mais sobre o Raspberry Pi 4 e suas especificações técnicas, leia o &lt;em&gt;post&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;Primeiros passos no Raspberry Pi com NOOBS e Raspbian&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mesmo hoje, o suporte do openSUSE ao Raspberry Pi 4 ainda não é completo. Explico.&lt;/p&gt;
-
-&lt;h2 id=&quot;opensuse-versus-raspbian-e-manjaro&quot;&gt;openSUSE versus Raspbian e Manjaro&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Softwares&lt;/em&gt; específicos do Raspberry Pi — o &lt;em&gt;firmware&lt;/em&gt;, o &lt;em&gt;bootloader&lt;/em&gt; e os módulos do &lt;em&gt;kernel&lt;/em&gt; Linux — são de &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_proprietário&quot;&gt;propriedade&lt;/a&gt; da fabricante do seu processador, a &lt;a href=&quot;https://www.broadcom.com/&quot;&gt;Broadcom&lt;/a&gt;, que não parece disposta a torná-los &lt;a href=&quot;https://pt.wikipedia.org/wiki/Software_de_código_aberto&quot;&gt;abertos&lt;/a&gt;. Talvez isso não seja um problema para a maioria dos usuários do Raspberry Pi. É compreensível que foi uma concessão que os projetistas da placa tiveram que fazer para conseguir ofertá-la a preços acessíveis. Mas isso pode ser uma questão para os mais puristas do código aberto.&lt;/p&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://www.raspberrypi.org/about/&quot;&gt;Raspberry Pi Foundation&lt;/a&gt; disponibiliza no &lt;a href=&quot;https://github.com/raspberrypi/&quot;&gt;GitHub&lt;/a&gt; os códigos-fonte do seu próprio &lt;a href=&quot;https://github.com/raspberrypi/linux&quot;&gt;&lt;em&gt;fork&lt;/em&gt; do &lt;em&gt;kernel&lt;/em&gt; Linux&lt;/a&gt; e os &lt;a href=&quot;https://github.com/raspberrypi/firmware&quot;&gt;binários pré-compilados&lt;/a&gt; dos &lt;em&gt;softwares&lt;/em&gt; proprietários da Broadcom.&lt;/p&gt;
-
-&lt;p&gt;O Raspbian oferece suporte completo ao Raspberry Pi 4 porque usa o &lt;em&gt;kernel&lt;/em&gt; Linux e os binários pré-compilados obtidos da Raspberry Pi Foundation. O Manjaro seguiu o mesmo caminho e, por isso, também oferece suporte completo ao Raspberry Pi 4. Esse caminho é mais curto, fornece “para ontem” um sistema que funciona, e não há nada de errado nisso.&lt;/p&gt;
-
-&lt;p&gt;Mas o Projeto openSUSE optou por seguir um caminho diferente, tentando adicionar suporte ao Raspberry Pi 4 ao &lt;a href=&quot;https://www.kernel.org/&quot;&gt;&lt;em&gt;kernel&lt;/em&gt; Linux original&lt;/a&gt;, que é usado pela distribuição. É um caminho mais longo e demorado, mas que na teoria deve fornecer melhores resultados no longo prazo, que inclusive beneficiarão outras distribuições além do próprio openSUSE. A desvantagem dessa abordagem é que, enquanto módulos de código aberto não são desenvolvidos, não é possível usar alguns recursos do Raspberry Pi 4.&lt;/p&gt;
-
-&lt;h2 id=&quot;sabia-que-existem-dois-opensuses&quot;&gt;Sabia que existem “dois openSUSEs”?&lt;/h2&gt;
-
-&lt;p&gt;Até 2014, havia apenas uma distribuição chamada openSUSE, então na versão 13.2.&lt;/p&gt;
-
-&lt;p&gt;A partir daí, o Projeto openSUSE passou a oferecer duas distribuições: openSUSE Leap e openSUSE Tumbleweed.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Na versão original desse tutorial, eu explicava a diferença entre essas distribuições. Como percebi que essa informação estava se repetindo também em outros textos, decidi movê-la para um texto próprio e adicionar mais algumas informações.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se você ainda não conhecia essas distribuições, confira as diferenças entre elas no texto:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/12/06/opensuse-leap-e-opensuse-tumbleweed-qual-e-a-diferenca/&quot;&gt;openSUSE Leap e openSUSE Tumbleweed: qual é a diferença?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Normalmente, eu falo aqui do openSUSE Leap. Mas hoje quero falar do Tumbleweed.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Na versão original desse texto, o openSUSE Tumbleweed se saía um pouco melhor que o Leap no Raspberry Pi 4, mas hoje não há diferença entre eles no que se refere a suporte de &lt;em&gt;hardware&lt;/em&gt;, então atualizei o texto de acordo.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Como o suporte ao Raspberry Pi 4 ainda está em desenvolvimento e as novidades chegam primeiro no Tumbleweed, acho interessante ficar de olho no Tumbleweed. Por isso, vamos experimentar o Tumbleweed hoje.&lt;/p&gt;
-
-&lt;p&gt;Se você prefere usar o Leap, pode seguir esse passo-a-passo da mesma forma. As instruções são as mesmas.&lt;/p&gt;
-
-&lt;h2 id=&quot;o-que-funciona-e-o-que-não-funciona&quot;&gt;O que funciona e o que não funciona?&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Resumo:&lt;/strong&gt; no que se refere ao suporte ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4, não há diferença entre o Leap e o Tumbleweed. Se você pretende usar o Raspberry Pi como um servidor doméstico, ambas as distribuições do openSUSE vão te atender muito bem. Se pretende usar como um &lt;em&gt;desktop&lt;/em&gt;, pode ser que sinta falta de alguns recursos, como o Bluetooth e o som.&lt;/p&gt;
-
-&lt;p&gt;Eu testei os seguintes recursos do Raspberry Pi 4 nas duas distribuições:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Rede sem fio Wi-Fi:&lt;/strong&gt; em ambas, consegui me conectar a redes de 2,4GHz e 5GHz;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Rede cabeada Ethernet:&lt;/strong&gt; em ambas, consegui me conectar a uma rede cabeada;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Bluetooth:&lt;/strong&gt; em ambas, &lt;strong&gt;não&lt;/strong&gt; consegui fazer o Bluetooth funcionar;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Portas USB:&lt;/strong&gt; em ambas, todas as 4 portas USB funcionaram, apenas faço algumas observações quanto a teclado e &lt;em&gt;mouse&lt;/em&gt;:
-    &lt;ul&gt;
-      &lt;li&gt;o teclado não funciona no menu do GRUB;&lt;/li&gt;
-      &lt;li&gt;em ambas as distribuições, dependendo do modelo do teclado e/ou &lt;em&gt;mouse&lt;/em&gt;, ao reiniciar o Raspberry Pi pode ser que parem de funcionar, sendo necessário removê-los e plugá-los de novo para que voltem;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Portas HDMI&lt;/strong&gt;: em ambas as distribuições, ambas as portas HDMI funcionaram, mas ao mudar o cabo HDMI de uma porta para outra, não foi exibida imagem nessa outra porta de imediato — então, se precisar mudar o cabo HDMI de porta, é necessário reiniciar o Raspberry Pi;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Quando eu escrevi esse texto pela primeira vez, ambas as portas HDMI funcionavam no Tumbleweed, mas apenas uma funcionava no Leap. Hoje, ambas as portas HDMI funcionam em ambas as distribuições, então atualizei o texto de acordo.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Saída de som:&lt;/strong&gt; em ambas as distribuições, &lt;strong&gt;não&lt;/strong&gt; consegui produzir som usando o Raspberry Pi de forma alguma — seja pela saída de som (conectando um fone de ouvido tradicional, por exemplo), pela HDMI (conectando uma TV) ou por Bluetooth.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;O que eu não testei (não sei se funciona ou não):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Usar dois monitores ao mesmo tempo, conectando cada um a uma porta HDMI;&lt;/li&gt;
-  &lt;li&gt;Pinos GPIO;&lt;/li&gt;
-  &lt;li&gt;Qualquer coisa que eu não tenha listado acima.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Sabendo o que hoje funciona ou não no Raspberry Pi 4 com openSUSE, você pode decidir se usa o openSUSE (e qual variação usar: Leap ou Tumbleweed) ou se aguarda o suporte do openSUSE ao &lt;em&gt;hardware&lt;/em&gt; do Raspberry Pi 4 melhorar e usa outra distribuição enquanto isso.&lt;/p&gt;
-
-&lt;h2 id=&quot;baixando-a-imagem-do-opensuse&quot;&gt;Baixando a imagem do openSUSE&lt;/h2&gt;
-
-&lt;p&gt;Para baixar a imagem do openSUSE e gravá-la no cartão de memória, você precisará de um PC com &lt;a href=&quot;https://www.vivaolinux.com.br/linux/&quot;&gt;Linux&lt;/a&gt;, &lt;a href=&quot;https://www.microsoft.com/pt-br/windows/&quot;&gt;Windows&lt;/a&gt; ou &lt;a href=&quot;https://www.apple.com/br/macos/&quot;&gt;macOS&lt;/a&gt; e um cartão de memória micro-SD de pelo menos 8GB.&lt;/p&gt;
-
-&lt;p&gt;Eu vou usar o &lt;a href=&quot;/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/&quot;&gt;Linux Kamarada 15.2&lt;/a&gt;, baseado no &lt;a href=&quot;/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/&quot;&gt;openSUSE Leap 15.2&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Acesse a página do Raspberry Pi 4 na &lt;em&gt;wiki&lt;/em&gt; do openSUSE:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;https://en.opensuse.org/HCL:Raspberry_Pi4&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-01.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Note que há várias opções de imagens tanto do Tumbleweed quanto do Leap 15.2. Se você pretende usar o Raspberry Pi como um servidor, a imagem JeOS (&lt;em&gt;Just enough Operating System&lt;/em&gt; — traduzindo: tão somente o sistema operacional) é a mais adequada. Se pretende usá-lo como um &lt;em&gt;desktop&lt;/em&gt;, pode escolher outra imagem com alguma área de trabalho.&lt;/p&gt;
-
-&lt;p&gt;Aqui, vou usar a imagem do Tumbleweed com a área de trabalho &lt;a href=&quot;https://www.xfce.org/&quot;&gt;XFCE&lt;/a&gt;, que é bem leve e, por isso, adequada para o Raspberry Pi.&lt;/p&gt;
-
-&lt;p&gt;Clique no &lt;em&gt;link&lt;/em&gt; para a imagem que deseja baixar. O &lt;em&gt;download&lt;/em&gt; pode demorar um pouco, considerando que o arquivo é grande (no meu caso, 1 GB).&lt;/p&gt;
-
-&lt;h2 id=&quot;gravando-a-imagem-no-cartão-de-memória-com-o-balenaetcher&quot;&gt;Gravando a imagem no cartão de memória com o balenaEtcher&lt;/h2&gt;
-
-&lt;p&gt;Para gravar a imagem do openSUSE no cartão de memória, eu recomendo o programa &lt;a href=&quot;/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/&quot;&gt;balenaEtcher&lt;/a&gt;, por ser simples e fácil de usar. Ele é gratuito e de código aberto.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Na versão original deste tutorial, eu falava sobre o balenaEtcher. Como pretendo usar o balenaEtcher também em outros tutoriais, decidi mover as instruções de como usá-lo para um tutorial próprio dele e adicionar mais algumas informações.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Veja como usar o balenaEtcher em:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/11/17/gravando-imagem-no-cartao-de-memoria-de-forma-facil-com-o-balenaetcher/&quot;&gt;Gravando imagem no cartão de memória de forma fácil com o balenaEtcher&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Só observo que há um pequeno problema quanto a privacidade, que explico no tutorial e apresento uma solução de contorno, mas isso não me impede de usar o balenaEtcher.&lt;/p&gt;
-
-&lt;p&gt;Se isso for uma questão pra você, uma alternativa é usar o comando &lt;strong&gt;dd&lt;/strong&gt;, se você usa Linux.&lt;/p&gt;
-
-&lt;h2 id=&quot;alternativa-ao-etcher-comando-dd&quot;&gt;Alternativa ao Etcher: comando dd&lt;/h2&gt;
-
-&lt;p&gt;Se você preferiu seguir minha recomendação e usar o balenaEtcher, pode pular essa seção.&lt;/p&gt;
-
-&lt;p&gt;O comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/dd.1.html&quot;&gt;dd&lt;/a&gt;&lt;/strong&gt; provavelmente está presente em todas as distribuições Linux.&lt;/p&gt;
-
-&lt;p&gt;Conecte ao computador o cartão de memória no qual será gravada a imagem.&lt;/p&gt;
-
-&lt;p&gt;Note que gravar a imagem do openSUSE no cartão de memória apagará quaisquer dados que porventura estejam nesse cartão. Se ele contém arquivos, talvez você queira fazer um &lt;em&gt;backup&lt;/em&gt; deles antes de continuar para não perdê-los.&lt;/p&gt;
-
-&lt;p&gt;Recomendo que você remova quaisquer outros dispositivos de armazenamento (&lt;em&gt;pendrives&lt;/em&gt;, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos, provavelmente de forma irreversível).&lt;/p&gt;
-
-&lt;p&gt;Identifique o cartão de memória que receberá a imagem. Você pode fazer isso com o auxílio do comando &lt;strong&gt;&lt;a href=&quot;https://linux.die.net/man/8/fdisk&quot;&gt;fdisk&lt;/a&gt;&lt;/strong&gt;, que provavelmente também é outro comando universal:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# fdisk -l
-Disco /dev/sda: 447,1 GiB, 480103981056 bytes, 937703088 setores
-Modelo de disco: KINGSTON SA400S3
-[...]
-
-Disco /dev/mmcblk0: 29,7 GiB, 31914983424 bytes, 62333952 setores
-Unidades: setor de 1 * 512 = 512 bytes
-Tamanho de setor (lógico/físico): 512 bytes / 512 bytes
-Tamanho E/S (mínimo/ótimo): 512 bytes / 512 bytes
-Tipo de rótulo do disco: dos
-Identificador do disco: 0xf77ae276
-
-Dispositivo    Inicializar Início      Fim  Setores Tamanho Id Tipo
-/dev/mmcblk0p1               2048 62332927 62330880   29,7G  b FAT32 W95
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;No meu caso, o cartão de memória é o dispositivo &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/mmcblk0&lt;/code&gt;. Eu costumo me orientar pela capacidade do dispositivo (nesse caso, um cartão de memória de 32 GB, é normal o tamanho informado pelo sistema operacional diferir um pouco).&lt;/p&gt;
-
-&lt;p&gt;Então, execute o comando a seguir para gravar a imagem no cartão de memória, fazendo as substituições necessárias.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Cuidado:&lt;/strong&gt; certifique-se de identificar e informar corretamente o cartão de memória, do contrário a imagem será gravada no dispositivo de armazenamento errado e você poderá perder dados de forma irreversível.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;# xzcat [nome-do-arquivo].raw.xz | dd bs=4M of=[caminho-do-dispositivo] iflag=fullblock oflag=direct status=progress; sync
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;O comando &lt;strong&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/sync.1.html&quot;&gt;sync&lt;/a&gt;&lt;/strong&gt; ao final garante que dados que ainda estejam no cache na memória RAM sejam gravados. Com isso, é seguro remover o cartão de memória.&lt;/p&gt;
-
-&lt;p&gt;Os comandos &lt;strong&gt;dd&lt;/strong&gt; e &lt;strong&gt;sync&lt;/strong&gt; não montam o cartão de memória após a gravação.&lt;/p&gt;
-
-&lt;p&gt;Se você abrir o aplicativo &lt;strong&gt;Arquivos&lt;/strong&gt;, verá que o cartão de memória até aparece listado, mas não aparece o ícone de &lt;strong&gt;Desmontar&lt;/strong&gt; ao lado dele:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-12-pt.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Sendo assim, você pode simplesmente remover o cartão de memória do computador.&lt;/p&gt;
-
-&lt;h2 id=&quot;iniciando-o-opensuse&quot;&gt;Iniciando o openSUSE&lt;/h2&gt;
-
-&lt;p&gt;Insira o cartão de memória no Raspberry Pi e faça as devidas conexões, como vimos no &lt;a href=&quot;/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/&quot;&gt;outro &lt;em&gt;post&lt;/em&gt;&lt;/a&gt;. Ligue o Raspberry Pi e o openSUSE será iniciado.&lt;/p&gt;
-
-&lt;p&gt;Na tela de &lt;em&gt;login&lt;/em&gt;, use as credenciais &lt;code class=&quot;highlighter-rouge&quot;&gt;root&lt;/code&gt; como nome de usuário e &lt;code class=&quot;highlighter-rouge&quot;&gt;linux&lt;/code&gt; como senha.&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; title=&quot;&quot;&gt;
-&lt;img src=&quot;/files/2020/10/rpi4b-opensuse-13.jpg&quot; alt=&quot;&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;tumbleweed-não-inicia-e-agora&quot;&gt;Tumbleweed não inicia, e agora?&lt;/h2&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (27/12/2020):&lt;/strong&gt;
-    &lt;p&gt;Essa seção não existia na versão original desse texto, foi incluída para falar desse &lt;em&gt;bug&lt;/em&gt; que começou a acontecer recentemente.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Se em vez da tela de &lt;em&gt;login&lt;/em&gt;, o Tumbleweed no seu Raspberry Pi 4 mostra isso:&lt;/p&gt;
-
-&lt;div class=&quot;image no-ads-here text-center mb-3&quot; itemscope=&quot;&quot; itemtype=&quot;http://schema.org/ImageObject&quot;&gt;
-&lt;a href=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; title=&quot;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete...&quot;&gt;
-&lt;img src=&quot;/files/2020/12/rpi4b-tumbleweed-waiting-for-phy-auto-negotiation.jpg&quot; alt=&quot;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete...&quot; class=&quot;img-fluid img-thumbnail&quot; itemprop=&quot;contentUrl&quot; /&gt;
-&lt;/a&gt;
-
-&lt;em class=&quot;caption&quot; itemprop=&quot;description&quot;&gt;
-&lt;p&gt;O sistema repete várias vezes a mensagem: Waiting for PHY auto negotiation to complete…&lt;/p&gt;
-
-&lt;/em&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Esse é um &lt;em&gt;bug&lt;/em&gt; conhecido do Tumbleweed e você pode encontrar mais informações a respeito dele, assim como uma forma de resolvê-lo, no texto:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/pt/2020/12/27/tumbleweed-nao-inicia-no-raspberry-pi-4-veja-como-resolver/&quot;&gt;Tumbleweed não inicia no Raspberry Pi 4: veja como resolver&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Esse &lt;em&gt;bug&lt;/em&gt; não afeta o Leap.&lt;/p&gt;
-
-&lt;h2 id=&quot;continua&quot;&gt;Continua…&lt;/h2&gt;
-
-&lt;p&gt;Como percebi que o &lt;em&gt;post&lt;/em&gt; já estava grande, decidi dividi-lo em duas partes. Deixei as configurações básicas para o próximo &lt;em&gt;post&lt;/em&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;alert alert-success alert-update&quot; role=&quot;alert&quot;&gt;
-    &lt;i class=&quot;fas fa-sync-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; &lt;strong&gt;Atualização (10/10/2020):&lt;/strong&gt;
-    &lt;p&gt;&lt;a href=&quot;/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/&quot;&gt;A segunda parte desse tutorial já está aqui! (clique para acessá-la)&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id=&quot;referências&quot;&gt;Referências&lt;/h2&gt;
-
-&lt;p&gt;Alguns dos textos que consultei para escrever o presente texto incluem:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackaday.com/2017/01/14/blob-less-raspberry-pi-linux-is-a-step-closer/&quot;&gt;Blob-less Raspberry Pi Linux Is A Step Closer | Hackaday&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://lists.opensuse.org/opensuse-arm/2019-10/msg00003.html&quot;&gt;Re: [opensuse-arm] Raspberry Pi 4 Model B - opensuse-arm Mailinglist Archive&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.opensuse.org/HCL:Raspberry_Pi4&quot;&gt;HCL:Raspberry Pi4 - openSUSE Wiki&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.raspberrypi.org/documentation/installation/installing-images/linux.md&quot;&gt;Installing operating system images on Linux - Raspberry Pi Documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 07 Oct 2020 19:50:00 -0300</pubDate>
-                <link>https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</link>
-                <guid isPermaLink="true">https://kamarada.github.io/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/</guid>
                 
                 
                     <category>pt</category>
