@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="No post anterior, ligamos nosso Raspberry Pi 4 com o openSUSE. Diferente do Raspbian, o openSUSE não apresenta um assistente de configuração no primeiro uso....">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">
+    
+    
+        
+            <link rel="alternate" hreflang="en" href="https://linuxkamarada.com/en/2021/01/06/opensuse-on-the-raspberry-pi-4-part-2-first-settings/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-10-10 23:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="No post anterior, ligamos nosso Raspberry Pi 4 com o openSUSE. Diferente do Raspbian, o openSUSE não apresenta um assistente de configuração no primeiro uso...." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2020/10/rpi4b-opensuse-40-pt.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="openSUSE no Raspberry Pi 4 — parte 2: configurações básicas" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1089 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/',
+                    title: document.title,
+                    description: 'No post anterior, ligamos nosso Raspberry Pi 4 com o openSUSE. Diferente do Raspbian, o openSUSE não apresenta um assistente de configuração no primeiro uso....'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2021/01/06/opensuse-on-the-raspberry-pi-4-part-2-first-settings/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/" itemprop="mainEntityOfPage url">
+                openSUSE no Raspberry Pi 4 — parte 2: configurações básicas
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-10-10">
+                    <a href="/2020/10/10/">
+                        
+    10 de
+    
+    Outubro
+        
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-11-17" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>No <a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/"><em>post</em> anterior</a>, ligamos nosso <a href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Raspberry Pi 4</a> com o <a href="https://www.opensuse.org/">openSUSE</a>. Diferente do <a href="http://www.raspbian.org/">Raspbian</a>, o openSUSE não apresenta um assistente de configuração no primeiro uso. Por isso, vejamos quais são as primeiras configurações que devemos fazer para que o nosso Raspberry Pi esteja realmente pronto para as tarefas do dia a dia.</p>
+
+<p>Se você chegou aqui sem ter passado pelo <a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/"><em>post</em> anterior</a>, recomendo que comece sua leitura por ele (a menos, claro, que o openSUSE já esteja rodando no seu Raspberry Pi):</p>
+
+<ul>
+  <li><a href="/pt/2020/10/07/opensuse-no-raspberry-pi-4-parte-1-download-e-instalacao/">openSUSE no Raspberry Pi 4 — parte 1: <em>download</em> e instalação</a></li>
+</ul>
+
+<p>Lembrando que escolhi usar a área de trabalho <a href="https://www.xfce.org/">XFCE</a>, mas não tem problema se você escolheu outra. Praticamente todos as configurações que faremos serão no <a href="http://yast.opensuse.org/">Centro de controle do YaST</a>, presente em toda instalação do openSUSE, nada específico do XFCE.</p>
+
+<p>Se você vai usar o Raspberry Pi como servidor e, por isso, escolheu a imagem JeOS, sem área de trabalho, recomendo que leia esse texto, em vez do atual:</p>
+
+<ul>
+  <li><a href="/pt/2017/02/18/levante-um-servidor-com-o-linux-opensuse-leap-parte-2/">Levante um servidor com o Linux openSUSE Leap (parte 2)</a> (embora fale do openSUSE Leap, se você escolheu usar o openSUSE Tumbleweed, tudo é bem parecido)</li>
+</ul>
+
+<h2 id="gerenciando-a-rede-pelo-networkmanager">Gerenciando a rede pelo NetworkManager</h2>
+
+<p>O openSUSE dispõe de duas ferramentas para gerenciar a rede:</p>
+
+<ul>
+  <li><strong><a href="https://en.opensuse.org/Portal:Wicked">Wicked</a></strong>: uma ferramenta própria do openSUSE, que visa substituir os antigos comandos da família do <strong><a href="https://linux.die.net/man/8/ifup">ifup</a></strong>, mais adequada para servidores; e</li>
+  <li><strong><a href="https://www.gnome.org/projects/NetworkManager/">NetworkManager</a></strong>: uma ferramenta presente em praticamente todas as distribuições <a href="https://www.vivaolinux.com.br/linux/">Linux</a>, que visa facilitar o gerenciamento da rede para o usuário final, fazendo com que ela “simplesmente funcione”, mais adequada para <em>desktops</em>.</li>
+</ul>
+
+<p>Se você já usou o Linux em um <em>notebook</em>, sabe que quando chega a um lugar que tem uma rede Wi-Fi à qual já se conectou antes, o sistema se conecta a ela de novo automaticamente. Quem faz isso nos bastidores, sem que talvez você nem se dê conta, é o NetworkManager. Essa não é a única facilidade que ele traz, mas é um dos melhores exemplos.</p>
+
+<p>Se você vai usar o Raspberry Pi como <em>desktop</em>, provavelmente vai querer gerenciar a rede com o NetworkManager. Mas essa não é a configuração padrão do openSUSE no Raspberry Pi. Para alterá-la, vamos ao Centro de controle do YaST.</p>
+
+<p>Para iniciar o YaST, abra o <strong>Menu</strong> do XFCE, no canto inferior esquerdo da tela, e clique no ícone do <strong>YaST</strong>, convenientemente disponível nos favoritos (<strong>Favorites</strong>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-14.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-14.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se você já usa o openSUSE há um tempo, já conhece o YaST. Senão, saiba que o <a href="http://yast.opensuse.org/">YaST</a> (sigla do inglês <em>Yet another Setup Tool</em>, que quer dizer “apenas mais uma ferramenta de configuração”, muito humilde) é a ferramenta central do openSUSE para administrar o sistema. Ele apresenta uma interface amigável e reúne em um só lugar todas as configurações administrativas (as que afetam todos os usuários), como instalação e remoção de programas, impressoras, usuários, idioma, data e hora, etc.</p>
+
+<p>Quem já usou <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> talvez ache o YaST parecido com o <a href="http://www.techtudo.com.br/dicas-e-tutoriais/noticia/2015/06/como-acessar-o-painel-de-controle-antigo-no-windows-10.html">Painel de Controle</a>.</p>
+
+<p>À esquerda, selecione a categoria <strong>System</strong> (Sistema) e à direita, a opção <strong>Network Settings</strong> (Configurações da rede):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-15.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-15.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Selecione a aba <strong>Global Options</strong> (Opções globais) e em <strong>Network Setup Method</strong> (Método de configuração da rede), selecione <strong>Network Manager</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-16.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-16.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>OK</strong> e aguarde as configurações serem aplicadas.</p>
+
+<h2 id="conectando-à-rede-wi-fi">Conectando à rede Wi-Fi</h2>
+
+<p>Também é graças ao NetworkManager que você pode convenientemente gerenciar suas conexões de rede da área de trabalho, sem precisar recorrer ao YaST ou a comandos no terminal.</p>
+
+<p>Para se conectar a uma rede Wi-Fi, simplesmente clique no ícone de rede próximo do relógio, no canto inferior direito da tela, e escolha a rede Wi-Fi à qual deseja se conectar:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-17.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-17.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Informe a senha da rede Wi-Fi e tecle <strong>Enter</strong> ou clique em <strong>Connect</strong> (Conectar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-18.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-18.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="instalando-traduções">Instalando traduções</h2>
+
+<p>Conectado à Internet, agora seu Raspberry Pi consegue baixar traduções para o openSUSE.</p>
+
+<p>Volte para o YaST e, também na categoria <strong>System</strong> (Sistema), selecione a opção <strong>Language</strong> (Idioma):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-19.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-19.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Em <strong>Primary Language</strong> (Idioma primário), selecione <strong>Portuguese (Brazilian) - Português brasileiro</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-20.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-20.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Marque também as opções <strong>Adapt Keyboard Layout to Portuguese (Brazil)</strong> (Adaptar Layout de Teclado para Português Brasil) e <strong>Adapt Time Zone to Brazil/East</strong> (Adaptar Fuso Horário para Brasil/Leste). Por fim, clique em <strong>OK</strong>.</p>
+
+<p>O YaST baixa e instala os pacotes de tradução:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-21.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-21.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Porém, por algum motivo, essa tela não baixa todas as traduções necessárias. Vamos instalar mais alguns pacotes que ela deixa faltando.</p>
+
+<p>Para isso, de volta ao YaST, selecione a categoria <strong>Software</strong> e, depois, <strong>Software Management</strong> (Gerenciamento de software):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-22.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-22.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Abra a aba <strong>Installation Summary</strong> (Resumo da instalação) e perceba quantos pacotes já foram automaticamente marcados para instalação:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-23.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-23.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Podemos adicionar ainda mais um pacote a essa lista. Mude para a aba <strong>Search</strong> (Pesquisar), pesquise pelo pacote <strong>desktop-translations</strong> e marque-o para instalação também.</p>
+
+<p>Quando terminar, clique em <strong>Accept</strong> (Aceitar).</p>
+
+<p>Aguarde o <em>download</em> e instalação dos pacotes e, ao final, clique em <strong>Finish</strong> (Concluir):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-24.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-24.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Também por algum motivo a tela da tradução não altera todos os arquivos de configuração que deveria alterar (depois, vou reportar isso como um <em>bug</em> pros desenvolvedores do YaST). Precisaremos fazer ainda mais alguns ajustes manualmente, mas são só mais esses.</p>
+
+<p>De volta ao YaST, selecione a categoria <strong>System</strong> (Sistema) e, depois, a opção <strong>Sysconfig Editor</strong> (Editor do Sysconfig):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-25.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-25.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na árvore à esquerda, expanda o caminho: <strong>System / Environment / Language</strong> e selecione a variável <strong>RC_LANG</strong>. À direita, no campo <strong>Setting</strong> (Configurações), digite <code class="highlighter-rouge">pt_BR.UTF-8</code>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-26.png" title="">
+<img src="/files/2020/10/rpi4b-opensuse-26.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Quem já usou Windows talvez ache essa tela parecida com o <a href="https://canaltech.com.br/windows/o-que-e-e-como-funciona-o-registro-do-windows/">Editor do Registro</a>.</p>
+
+<p>Na árvore à esquerda, no mesmo caminho, selecione a variável <strong>ROOT_USES_LANG</strong> e à direita, no campo <strong>Setting</strong> (Configurações), digite <code class="highlighter-rouge">yes</code>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-27.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-27.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>OK</strong>. O YaST confirma as alterações, clique em <strong>Save</strong> (Salvar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-28.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-28.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Agora sim estamos prontos para usar nosso openSUSE totalmente traduzido. É só reiniciar.</p>
+
+<h2 id="reiniciando">Reiniciando</h2>
+
+<p>Para reiniciar o openSUSE, abra o <strong>Menu</strong> do XFCE e clique no botão <strong>Log Out</strong> (Sair):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-29.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-29.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Dentre as várias opções, escolha <strong>Restart</strong> (Reiniciar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-30.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-30.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Aguarde alguns segundos e o openSUSE estará de volta.</p>
+
+<h2 id="renomeando-as-pastas-pessoais">Renomeando as pastas pessoais</h2>
+
+<p>No primeiro uso após a mudança de idioma, o sistema pergunta se você quer traduzir também os nomes das pastas pessoais (por exemplo, de <code class="highlighter-rouge">Documents</code> para <code class="highlighter-rouge">Documentos</code>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-31-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-31-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Eu acho interessante fazer isso. Se concordar, clique em <strong>Atualizar nomes</strong>.</p>
+
+<h2 id="sincronizando-a-data-e-a-hora">Sincronizando a data e a hora</h2>
+
+<p>O Raspberry Pi 4 não tem um circuito de relógio embutido com pilha, como nos computadores tradicionais. Isso permite que ao ligar esses computadores, mesmo que tenham passado muito tempo desligados e não estejam conectados à Internet, a data e hora ainda estejam certas. Em um Raspberry Pi, sempre ao ligar, a data e hora estão erradas, por isso precisamos configurar o sistema para obter a data e hora certas da Internet.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/cmos-battery.jpg" title="Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso.">
+<img src="/files/2020/10/cmos-battery.jpg" alt="Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Se você abrir seu desktop ou notebook (não faça isso se não souber como fazer), encontrará uma pilha de relógio dentro dele. O Raspberry Pi não tem isso.</p>
+
+</em>
+
+</div>
+
+<p>Nós já definimos o fuso horário quando mudamos o idioma, então não precisamos rever todas as configurações de data e hora. Aqui, vou resumidamente explicar como configurar a sincronização. Se precisar de mais informações sobre essas configurações, consulte:</p>
+
+<ul>
+  <li><a href="/pt/2016/10/15/mantenha-a-hora-do-seu-computador-sempre-certa-com-o-ntp/">Mantenha a hora do seu computador sempre certa com o NTP</a></li>
+</ul>
+
+<p>Inicie o YaST. Selecione a categoria <strong>Sistema</strong> e, depois, a opção <strong>Data e hora</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-32-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-32-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na tela seguinte, clique em <strong>Outras Configurações</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-33-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-33-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Selecione a opção <strong>Sincronizar com o servidor NTP</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-34-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-34-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>No campo <strong>Endereço do servidor NTP</strong>, informe <code class="highlighter-rouge">pool.ntp.br</code>.</p>
+
+<p>Clique em <strong>Aceitar</strong> e, de volta à tela anterior, em <strong>OK</strong> para aplicar as configurações.</p>
+
+<h2 id="adicionando-usuários">Adicionando usuários</h2>
+
+<p>Por padrão, a imagem do openSUSE para o Raspberry Pi vem apenas com o usuário <em>root</em>. Por questão de segurança, vamos criar outra conta para usar o sistema no dia a dia.</p>
+
+<p>Na tela principal do YaST, selecione a categoria <strong>Segurança e usuários</strong> e a opção <strong>Gerenciamento de usuários e grupos</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-35-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-35-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>No momento, o sistema não tem outro usuário além do <em>root</em>, por isso nenhum é listado:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-36-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-36-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>Adicionar</strong>.</p>
+
+<p>A seguir, informe os dados do novo usuário e quando terminar clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-37-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-37-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>De volta à tela anterior, o novo usuário agora aparece na lista de usuários:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-38-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-38-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se precisar, você pode criar mais usuários repetindo esses passos.</p>
+
+<p>Quando terminar, clique em <strong>OK</strong> para aplicar as configurações. As novas contas de usuário serão criadas e você voltará à tela principal do YaST.</p>
+
+<p>Pode fechar o YaST, não vamos mais usá-lo para ajustar mais configurações.</p>
+
+<h2 id="mudando-a-senha-do-usuário-root">Mudando a senha do usuário root</h2>
+
+<p>Também por questão de segurança, vamos mudar a senha do usuário <em>root</em>, que é a mesma para todas as instalações do openSUSE no Raspberry Pi e, portanto, amplamente conhecida.</p>
+
+<p>Até poderíamos fazer isso pelo YaST, mas eu acho mais prático pelo terminal.</p>
+
+<p>Para iniciar o terminal, abra o <strong>Menu</strong> do XFCE e clique no ícone do <strong>Emulador de Terminal</strong>, convenientemente disponível nos <strong>Favoritos</strong>.</p>
+
+<p>No terminal, execute o comando <strong><a href="https://man7.org/linux/man-pages/man1/passwd.1.html">passwd</a></strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># passwd
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Digite a nova senha, tecle <strong>Enter</strong>, depois digite a nova senha mais uma vez e tecle <strong>Enter</strong> de novo.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>Nova senha:
+Redigite a nova senha:
+passwd: senha atualizada com sucesso
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="verificando-atualizações">Verificando atualizações</h2>
+
+<p>Aproveitando o terminal aberto como <em>root</em>, vamos verificar se há atualizações para o sistema e obtê-las, se houver. Para isso, execute o comando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper up
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Não vou entrar em detalhes aqui porque isso já foi assunto de outro texto.</p>
+
+<p>Se precisar de mais informações sobre como atualizar pacotes (<em>update</em>), consulte:</p>
+
+<ul>
+  <li><a href="/pt/2019/05/14/como-obter-atualizacoes-para-o-linux-opensuse/">Como obter atualizações para o Linux openSUSE</a></li>
+</ul>
+
+<p>Ao terminar, pode fechar a janela do terminal.</p>
+
+<h2 id="encerrando-a-sessão">Encerrando a sessão</h2>
+
+<p>Agora você pode encerrar sua sessão como usuário <em>root</em> e começar a usar o Raspberry Pi com a conta de usuário que você criou.</p>
+
+<p>Para encerrar a sessão, abra o <strong>Menu</strong> do XFCE e clique no botão <strong>Sair</strong>.</p>
+
+<p>Dentre as várias opções, escolha <strong>Encerrar sessão</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-39-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-39-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="desligando-o-raspberry-pi">Desligando o Raspberry Pi</h2>
+
+<p>O Raspberry Pi não tem um botão de liga/desliga. Mas, assim como o Raspbian, o openSUSE também tem um comando para desligar. Usá-lo é necessário para que o sistema operacional desmonte corretamente os sistemas de arquivos e evite perda de dados. Para ligar um Raspberry Pi, basta plugar a fonte de alimentação na energia, mas para desligá-lo, não é só desplugar a fonte. Antes, devemos usar o comando de desligar do sistema.</p>
+
+<p>Quando terminar de usar o openSUSE no Raspberry Pi, para desligá-lo com segurança, abra o <strong>Menu</strong> do XFCE, clique no botão <strong>Sair</strong> e escolha a opção <strong>Desligar</strong>.</p>
+
+<p>Aguarde até que o Raspberry Pi desligue completamente. Repare nas luzes LED: chega um momento em que a luz PWR apaga e a ACT pisca algumas vezes, depois a ACT apaga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.</p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/rpi4b-opensuse-40-pt.jpg" title="">
+<img src="/files/2020/10/rpi4b-opensuse-40-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Espero que você faça bom proveito do openSUSE no Raspberry Pi e que esses tutoriais tenham te ajudado a deixá-lo redondinho!</p>
+
+<p>Espero também que o openSUSE melhore seu suporte ao Raspberry Pi para que possamos tirar o máximo proveito desses incríveis computador e sistema operacional.</p>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="No post anterior, ligamos nosso Raspberry Pi 4 com o openSUSE. Diferente do Raspbian, o openSUSE não apresenta um assistente de configuração no primeiro uso. Por isso, vejamos quais são as primeiras configurações que devemos fazer para que o nosso Raspberry Pi esteja realmente pronto para as tarefas do dia a dia.Se você chegou aqui...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2020/10/rpi4b-opensuse-40-pt.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2021/01/06/opensuse-on-the-raspberry-pi-4-part-2-first-settings/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/10/10/opensuse-no-raspberry-pi-4-parte-2-configuracoes-basicas/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

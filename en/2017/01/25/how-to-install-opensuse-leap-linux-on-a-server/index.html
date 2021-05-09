@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="When I say openSUSE Leap is a mature and stable Linux distribution, I’m not talking about other distributions’ concept of stability: old software that has be...">
+    <link rel="canonical" href="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/en/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://linuxkamarada.com/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://linuxkamarada.com/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2017-01-25 05:20:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="When I say openSUSE Leap is a mature and stable Linux distribution, I’m not talking about other distributions’ concept of stability: old software that has be..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2017/01/opensuse-server-01.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="How to install openSUSE Leap Linux on a server" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1232 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                The website has moved
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>It is now at: <strong>linuxkamarada.com</strong>.</p><p>Please, update your link or bookmark.</p><p>You are going be redirected to this same page at the new address in a few seconds.</p><p>If that does not happen, <a href="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">click here</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/',
+                    title: document.title,
+                    description: 'When I say openSUSE Leap is a mature and stable Linux distribution, I’m not talking about other distributions’ concept of stability: old software that has be...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/contribute">Contribute</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/contribute">Contribute</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.en.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/" itemprop="mainEntityOfPage url">
+                How to install openSUSE Leap Linux on a server
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2017-01-25">
+                    <a href="/2017/01/25/">
+                        
+    Jan 25, 2017
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-07-02" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>When I say <a href="/en/2016/11/16/optimal-release-for-linux-professionals-arrives-with-opensuse-leap-42-2/">openSUSE Leap</a> is a mature and stable Linux distribution, I’m not talking about other distributions’ concept of stability: old software that has been frozen, thoroughly tested and fixed. Each new openSUSE Leap release brings very fresh software components (released within the same month or year) that work well together. That is the result of the technology and effort employed in developing the distribution, which works fine on home desktops, workstations and also on <strong>servers</strong>!</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-01.jpg" title="">
+<img src="/files/2017/01/opensuse-server-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In this post you are going to see how to install and set up a server with openSUSE Leap. This howto resembles that on <a href="/en/2016/11/15/how-to-install-opensuse-leap-linux/">how to install openSUSE on a desktop</a>. They differ only by the differences between desktops and servers and by the text mode, which is the preferred way of using servers.</p>
+
+<h2 id="before-installation">Before installation</h2>
+
+<p>Before starting, there are a few things you should be aware of.</p>
+
+<p>openSUSE Leap supports a large variety of hardware devices. 32-bit processors are an exception to the rule: <a href="https://www.reddit.com/r/openSUSE/comments/3d711c/will_leap_42_support_32bit_machines_given_that/">they are not supported anymore</a>, but servers equipped with 64-bit processors are already very common.</p>
+
+<p>I could talk about the <a href="https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/art.opensuse.installquick.html#sec.osuse.installquick.sysreqs">system requirements</a> for using openSUSE. But, if it already runs smoothly on desktops, what about servers, which are much bigger in numbers (processor’s clock rate and number of cores, memory and hard disk, etc). Linux, in general, is a lightweight system.</p>
+
+<p>Here I’m going to recommend specifications for “a good start”:</p>
+
+<ul>
+  <li>2GB of RAM;</li>
+  <li>10GB hard disk; and</li>
+  <li>if possible, a dual core processor.</li>
+</ul>
+
+<p>Since network environments differ dramatically, it is difficult to recommend with precision how you should size your server hardware. Observe that the specs I suggested above can be achieved even with an ordinary computer and may be more than enough for some services but not suitable for others.</p>
+
+<p>If the new server will only serve DHCP, the specs above are more than necessary. If you are setting up a firewall for a home or small office network, those specs are adequate too. But if you need a file server or a web server, depending on the expected number of concurrent accesses and the size of the files, pages or downloads being served, the specs above may be insufficient.</p>
+
+<p>As a rule of thumb, you should always try to size your server beyond what you need today. For example, if you estimate that 9GB is enough to store your files today, it is wrong to think that the above setup (10GB hard disk) is enough. Your new file server should have a hard disk of 20GB or more so it may suffice for a few years.</p>
+
+<p>If you are going to install openSUSE Leap on a virtual machine, it’s easy to resize specs as needed. openSUSE can be installed as a guest system on top of various <a href="https://doc.opensuse.org/documentation/leap/virtualization/html/book.virt/cha.virt.support.html#virt.support.hosts">virtualization hosts (hypervisors)</a>, including <a href="http://xenserver.org/">XenServer</a> and <a href="https://www.vmware.com/products/vsphere-hypervisor.html">VMware vSphere</a>.</p>
+
+<p>I’m gonna leave the link for the <a href="https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/art.opensuse.installquick.html#sec.osuse.installquick.sysreqs">openSUSE minimum system requirements</a> for those who are curious to check them (on <a href="/en/2016/11/15/how-to-install-opensuse-leap-linux/">an earlier post</a>, I have already mentioned the requirements for using openSUSE on a desktop).</p>
+
+<p>Make sure your server is connected to the Internet and protected against power outages by a nobreak. Let’s get it started.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>As we are installing openSUSE on a server, I recommend you to use the official network installation medium instead of the Linux Kamarada <a href="/en/2015/12/09/what-is-a-livecd-dvd-usb/">LiveDVD</a> (not that it does not serve our purpose, just it’s not the most appropriate media for that).</p>
+
+<p>To download the network installation medium, go to the openSUSE’s official website at <a href="https://www.opensuse.org">www.opensuse.org</a>, hover over <strong>Leap</strong> and click on <strong>Install Leap</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-02-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-02-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Close to <strong>Network</strong>, click on <strong>Direct Link</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-03-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-03-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select <strong>Save File</strong> and click on <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-04-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-04-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Your browser will start downloading the network installation medium:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-05-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-05-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>It should not take too long, since that media contains just a minimal system, which is used only to boot the server, download and start the installer.</p>
+
+<p>After finished downloading the installation medium, let’s check its integrity: still at the <a href="https://software.opensuse.org/422/en">openSUSE Leap 42.2 official downloads page</a>, close to <strong>Network</strong>, click on <strong>SHA256 checksum</strong>. The checksum file should be downloaded at the same folder where was downloaded the installation medium.</p>
+
+<p>Then, open a terminal on that folder and run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ sha256sum -c openSUSE-Leap-42.2-NET-x86_64.iso.sha256
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>That command should return something like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>openSUSE-Leap-42.2-NET-x86_64.iso: OK
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Indicating that you have got a file identical to the original one, i.e. the download was not corrupted.</p>
+
+<p>Now, burn the ISO image you just downloaded to a CD or DVD and insert it in your server DVD drive. Or, if your server is actually a virtual machine, load the ISO image into the virtual DVD drive. Then, in both cases, restart your server.</p>
+
+<p>Within moments, you will see the bootloader menu:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-06.jpg" title="">
+<img src="/files/2017/01/opensuse-server-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>If you want, you can change the <strong>Language</strong> that will be used during installation: hit <strong>F2</strong>, then select the desired language using the <strong>arrow</strong> keys and hit <strong>Enter</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-07.jpg" title="">
+<img src="/files/2017/01/opensuse-server-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The bootloader menu gets translated into the language you selected.</p>
+
+<p>This tutorial assumes you will continue with the <strong>English (US)</strong> language (default).</p>
+
+<p>Similarly, hit <strong>F3</strong> to switch the <strong>Video Mode</strong> to <strong>Text Mode</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-08-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-08-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Hit <strong>F4</strong>, and in <strong>Network Config</strong> choose <strong>DHCP</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-09-en.png" title="">
+<img src="/files/2017/01/opensuse-server-09-en.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Usually server network settings are set up by hand. But my own experience was that I was not able to inform the network settings at boot time, because when I pressed the slash key (<strong>/</strong>) to type the network prefix (e.g. <code class="highlighter-rouge">192.168.25.100/24</code>) actually nothing showed up. Probably that happened because the bootloader did not properly recognize my keyboard layout. So, to make things easier, I decided to use DHCP by now, leaving the proper network configuration for later.</p>
+
+<p>Finally, on the bootloader menu, select <strong>Installation</strong> and hit <strong>Enter</strong> to start the installer.</p>
+
+<h2 id="1-language-keyboard-layout-and-license">1) Language, keyboard layout and license</h2>
+
+<p>On the first screen, you are presented to the language and keyboard layout settings and the <a href="https://en.opensuse.org/openSUSE:License">openSUSE Leap license</a>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-10-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-10-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Check that the language and keyboard layout settings are as desired.</p>
+
+<p>On text mode, you are not able to interact with the installer using the mouse, just the keyboard. To move from one field to the next, you can use the <strong>Tab</strong> key.</p>
+
+<p>Note that each field label has a highlighted letter (<strong>L</strong>anguage, <strong>K</strong>eyboard Layout, K<strong>e</strong>yboard Test, <strong>N</strong>ext, etc.). You can also select a field by pressing the <strong>Alt</strong> key together with its label highlighted letter. For instance, use the <strong>Alt + L</strong> key combination to access the <strong>L</strong>anguage field.</p>
+
+<p>To open a dropdown menu (such as <strong>Language</strong> or <strong>Keyboard Layout</strong>), select the desired menu and hit the <strong>down arrow</strong> key. Select an option using the <strong>up and down arrow</strong> keys and then confirm using the <strong>Enter</strong> key.</p>
+
+<p>The installer offers a text field in which you can type something to test your keyboard.</p>
+
+<p>You don’t need to worry about the software license: since openSUSE is a <a href="https://www.gnu.org/philosophy/free-sw.en.html">software <em>libre</em></a>, its license does not limit your use. You can read it just to know your rights as an openSUSE user. To do so, hit <strong>Tab</strong> until the <strong>License Agreement</strong> text area seems highlited and use the <strong>up and down arrow</strong> keys or the <strong>Page Up</strong> and <strong>Page Down</strong> keys to scroll the text up or downwards, respectively.</p>
+
+<p>When you finish, select <strong>Next</strong> and hit <strong>Enter</strong>.</p>
+
+<h2 id="2-installation-options">2) Installation options</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-11-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-11-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On that screen, you have got two choices:</p>
+
+<ul>
+  <li><strong>Add Online Repositories Before Installation</strong>: by default, only the main repository is used for installation. Activating that option, you allow the installer to use packages from the other <a href="https://en.opensuse.org/Package_repositories#Official_Repositories">official repositories</a>, including the update repository, which ensures that the system will be installed with the most current packages and you won’t have to manually apply updates after installation; and</li>
+  <li><strong>Include Add-on Products from Separate Media</strong>: activating that option, you can install software from additional repositories (<a href="https://en.opensuse.org/Package_repositories#Semi_official_repositories">semiofficial repositories</a> and/or <a href="https://en.opensuse.org/Additional_package_repositories">third-party repositories</a>). Right now, that may be useful only if you need to install any driver beforehand. Otherwise, you can wait to install any third-party software after the system itself is installed.</li>
+</ul>
+
+<p>Check the first option (<strong>Alt + A</strong>) and then choose <strong>Next</strong> (<strong>Alt + N</strong>).</p>
+
+<h2 id="3-partitioning">3) Partitioning</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-12-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-12-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>By default, openSUSE proposes to create three new partitions:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/</code> (root), for system files;</li>
+  <li><code class="highlighter-rouge">/home</code>, for personal files of users; and</li>
+  <li><a href="https://www.linux.com/news/all-about-linux-swap-space">swap</a>, which is used as a supplement for RAM, similar to the <a href="https://support.microsoft.com/kb/2160852">page file</a> in <a href="https://www.microsoft.com/windows/">Windows</a>.</li>
+</ul>
+
+<p>I’m not going to dive into details about partitioning here, as that would be a subject for an entire (and long) post. If you need more information, I suggest you take a look at the <a href="https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.inst.html#sec.i.yast2.inst_mode.partitioning">openSUSE Leap official documentation</a>.</p>
+
+<p>Note that the <code class="highlighter-rouge">/home</code> partition is not always useful on servers. Consider a DHCP server, for instance, probably only the network administrator will have a personal folder. So, as an alternative to the partitioning setup proposed by the openSUSE installer, here I suggest again “a good start” (following those specs):</p>
+
+<ul>
+  <li>a swap partition of 1GB; and</li>
+  <li>a <code class="highlighter-rouge">/</code> partition with the remaining disk space (9GB).</li>
+</ul>
+
+<p><strong>Some notes about the swap partition:</strong> some time ago, it was recommended that the swap partition size should be double of the RAM size. Since the Linux kernel 2.4.10, <a href="https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.advdisk.html">that does not apply anymore</a>. Nowadays, there is a consensus that having a swap partition is a must for both servers and desktops, but there is no consensus about a recommended size. The official openSUSE documentation (<a href="https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.advdisk.html">here</a> and <a href="https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.pmanage.html">here</a>) recommends creating a swap partition of at least 256MB. If needed, it’s preferable to add more RAM to the system instead of adding more swap space. For hibernation, the swap partition must be at least as big as the RAM, but hibernation is more common on laptops and desktops than on servers. Documentation of other Linux distributions that may help deciding the swap partition size: <a href="https://help.ubuntu.com/community/SwapFaq">Ubuntu</a> and <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/ch-swapspace.html">Red Hat</a>.</p>
+
+<p>Let’s see how we can create a new partition setup following my suggestion.</p>
+
+<p>On the <strong>Suggested Partitioning</strong> screen (see the above picture), choose <strong>Create Partition Setup</strong> (<strong>Alt + C</strong>).</p>
+
+<p>On the next screen, select <strong>Custom Partitioning</strong> (<strong>Alt + C</strong>) and then <strong>Next</strong> (<strong>Alt + N</strong>):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-13-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-13-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The next screen (<strong>Expert Partitioner</strong>) lists the available hard disks:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-14-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-14-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select the only disk available and hit <strong>Enter</strong>.</p>
+
+<p>The next screen lists the partitions in the selected disk (by now, none).</p>
+
+<p>Let’s create a new empty partition table for that disk. Choose <strong>Expert</strong>, select <strong>Create New Partition Table</strong> and hit <strong>Enter</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-15-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-15-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select <strong>MSDOS</strong> as the new partition table type and choose <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-16-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-16-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The partitioner warns about destroying hard disk data:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-17-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-17-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>As the disk has not been used yet, we can safely continue choosing <strong>Yes</strong>.</p>
+
+<p>Now, back to the list of patitions, choose <strong>Add</strong> to create the first partition, the swap partition of 1GB.</p>
+
+<p>Select <strong>Primary Partition</strong> as the new partition type and choose <strong>Next</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-18-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-18-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In <strong>Size</strong>, type <strong>1GB</strong>. Then, choose <strong>Next</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-19-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-19-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In <strong>Role</strong>, select <strong>Swap</strong>. Then, choose <strong>Next</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-20-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-20-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The next screen allows us to configure several options of the new partition. But when it comes to swap, we don’t need to change a thing: the default settings suggested by the installer are satisfying. We can just choose <strong>Finish</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-21-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-21-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Back to the list of partitions, now we have the swap partition being listed.</p>
+
+<p>Let’s choose <strong>Add</strong> once more to create our second partition, the <code class="highlighter-rouge">/</code> partition with the remaining disk space (9GB).</p>
+
+<p>Select <strong>Primary Partition</strong> as the new partition type and choose <strong>Next</strong>.</p>
+
+<p>On the next screen, select <strong>Maximum Size</strong> and then choose <strong>Next</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-22-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-22-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In <strong>Role</strong>, select <strong>Operating System</strong>. Then, <strong>Next</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-23-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-23-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In <strong>Formatting Options</strong>, let’s just change the <strong>File System</strong> to the more traditional <strong>Ext4</strong>. Finally, choose <strong>Finish</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-24-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-24-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Back to the list of patitions, now we have both the partitions created:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-25-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-25-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Choose <strong>Accept</strong>.</p>
+
+<p>The <strong>Suggested Partitioning</strong> screen now shows our custom partitioning:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-26-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-26-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Choose <strong>Next</strong>.</p>
+
+<h2 id="4-clock-and-time-zone">4) Clock and time zone</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-27-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-27-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Check that your time zone, date and time settings are correct.</p>
+
+<p>If you need to change the time zone, first select a <strong>Region</strong> (e.g. <strong>Brazil</strong>), then select a <strong>Time Zone</strong> (e.g. <strong>São Paulo</strong>).</p>
+
+<p>As your server is going to run Linux only, keep the <strong>Hardware Clock Set to UTC</strong> option checked (it is already checked by default). If you need further information about that option, please refer to the <a href="/en/2017/02/25/sync-your-system-time-with-ntp/">Sync your system time with NTP</a> post.</p>
+
+<p>When you finish, choose <strong>Next</strong> (<strong>Alt + N</strong>).</p>
+
+<h2 id="5-online-repositories">5) Online repositories</h2>
+
+<p>If you have selected the <strong>Add Online Repositories Before Installation</strong> option earlier, the <strong>List of Online Repositories</strong> screen lets you choose which official openSUSE Leap online repositories will be used during installation:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-28-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-28-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Enable only the following repositories:</p>
+
+<ul>
+  <li>
+    <p><strong>Main Repository (OSS)</strong>: the main openSUSE Leap repository, contains <a href="https://opensource.org/osd-annotated">open source software</a> only; and</p>
+  </li>
+  <li>
+    <p><strong>Main Update Repository</strong>: contains official updates for OSS packages.</p>
+  </li>
+</ul>
+
+<p>To enable or disable a repository on that list, select the desired repository using the <strong>up and down arrow</strong> keys and press the <strong>spacebar</strong>.</p>
+
+<p>When you finish, choose <strong>Next</strong>.</p>
+
+<h2 id="6-desktop-selection">6) Desktop selection</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-29-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-29-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On that screen, the installer offers some of the desktop environments available for openSUSE. Since graphical interfaces are not really common on servers (it makes more sense to use applications such as <a href="https://www.libreoffice.org/">LibreOffice</a>, <a href="https://www.mozilla.org/en-US/firefox/">Mozilla Firefox</a> or <a href="https://www.kde.org/applications/games/kmines/">KMines</a> on desktops), let’s choose <strong>Server (Text Mode)</strong> with <strong>Alt + S</strong> and then <strong>Next</strong> with <strong>Alt + N</strong>.</p>
+
+<h2 id="7-username-and-password">7) Username and password</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-30-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-30-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On that screen, you are going to create an user account for you to access the server. Enter your full name and the desired username and password.</p>
+
+<p>Note that the installer suggests to:</p>
+
+<ul>
+  <li>use the same password for the administrator user (in Linux, it is called superuser or <em>root</em>); and</li>
+  <li>automatically log in your user account when the server turns on.</li>
+</ul>
+
+<p>Those options are suggested for convenience, but actually they make your system a little less secure. As we are setting up a server and security is a concern, uncheck both the <strong>Use this password for system administrator</strong> and <strong>Automatic Login</strong> options, so that an username and password must be provided to access the server.</p>
+
+<p>When you finish, choose <strong>Next</strong> (<strong>Alt + N</strong>).</p>
+
+<p>The installer may complain about your password if it is considered easy to guess:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-31-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-31-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>If that is the case, it is strongly recommended that you choose <strong>No</strong> and set up a safer password.</p>
+
+<p>If you need help on how to elaborate a strong password, you may check this Lifehacker’s post <a href="http://lifehacker.com/four-methods-to-create-a-secure-password-youll-actually-1601854240">Four Methods to Create a Secure Password You’ll Actually Remember</a>.</p>
+
+<p>On the next screen, as you have unchecked the <strong>Use this password for system administrator</strong> option, you are asked to enter a password for the root user:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-32-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-32-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>When you finish, choose <strong>Next</strong>.</p>
+
+<h2 id="8-installation-overview">8) Installation overview</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-33-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-33-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>On the last screen before the real installation takes place, you can review the installation settings. Check that everything is as desired. Use the <strong>up and down arrow</strong> keys to inspect the overview. Once you choose <strong>Install</strong>, there will be no way back.</p>
+
+<p>If you need to change any setting, select the respective headline using the <strong>up and down arrow</strong> keys and hit <strong>Enter</strong> to go to the corresponding screen.</p>
+
+<p>Please observe that by default both the firewall and remote access via the <a href="https://en.wikipedia.org/wiki/Secure_Shell">secure shell (SSH)</a> are disabled:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-34-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-34-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select <strong>enable</strong> and hit <strong>Enter</strong> to turn the firewall on. Do that for SSH too:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-35-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-35-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>If there is nothing else to change, choose <strong>Install</strong> (<strong>Alt + I</strong>).</p>
+
+<p>A confirmation message is shown:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-36-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-36-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Choose <strong>Install</strong> (<strong>Alt + I</strong>) to start <em>de facto</em> installing openSUSE Leap.</p>
+
+<h2 id="9-actual-installation">9) Actual installation</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-37-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-37-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Now the actual installation is performed. That screen shows its progress in detail.</p>
+
+<p>Please note that, since packages are downloaded from the Internet, the installation may take longer or may be faster depending on the speed of your connection.</p>
+
+<p>When the installation is done, the installer asks you to reboot the server:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-38-en.jpg" title="">
+<img src="/files/2017/01/opensuse-server-38-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>You just need to hit <strong>Enter</strong> or wait for the server to restart by itself.</p>
+
+<p>While the server is restarted, you can remove the openSUSE installation medium, it is no longer needed.</p>
+
+<h2 id="server-installed">Server installed</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2017/01/opensuse-server-39.jpg" title="">
+<img src="/files/2017/01/opensuse-server-39.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Installation is now complete. The operating system is already on the hard disk. But there are still a few basic settings that need to be adjusted before the server can be actually considered ready to use.</p>
+
+<p>As I realized that this post is already very long, I decided to split it into two parts. I left some details for the next post.</p>
+
+<p>Follow the Linux Kamarada Project to read the second part as soon as it’s published!</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Update (Mar 15, 2018):</strong>
+    <p><a href="/en/2018/03/15/how-to-install-opensuse-leap-linux-on-a-server-part-2/">Sorry for the long wait, the second part of this tutorial is here. (click)</a></p>
+
+</div>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Would you buy me a coffee?" style='max-width: 48px;'>
+    <div class="media-body">
+        If you really liked it, if it was really helpful for you, is it worth a coffee? If you want, you can "buy me a coffee" with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US" title="PayPal" target="_blank">PayPal</a> or <a href="/en/contribute">contribute to the project in other ways</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_7gt3 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Ads</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Donate
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>You can make a one-time donation quickly with <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-en.gif' alt='PayPal' target='_blank'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="6MZ4CVA2WXLKA" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Or make monthly donations via one of these services:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Patreon' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/patreon.png' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Patreon</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='Ko-fi' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/ko-fi.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Ko-fi</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/en/contribute">More info and other ways to contribute ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="When I say openSUSE Leap is a mature and stable Linux distribution, I’m not talking about other distributions’ concept of stability: old software that has been frozen, thoroughly tested and fixed. Each new openSUSE Leap release brings very fresh software components (released within the same month or year) that work well together. That is the...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2017/01/opensuse-server-01.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2017/01/15/levante-um-servidor-com-o-linux-opensuse-leap/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2017/01/25/how-to-install-opensuse-leap-linux-on-a-server/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

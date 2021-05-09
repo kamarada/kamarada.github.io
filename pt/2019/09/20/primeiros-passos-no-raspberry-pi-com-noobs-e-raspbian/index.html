@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="O Raspberry Pi é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela Raspberry Pi Foundation, uma ...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">
+    
+    
+        
+            <link rel="alternate" hreflang="en" href="https://linuxkamarada.com/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-09-20 10:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="O Raspberry Pi é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela Raspberry Pi Foundation, uma ..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2019/09/raspbian.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Primeiros passos no Raspberry Pi com NOOBS e Raspbian" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1361 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/',
+                    title: document.title,
+                    description: 'O Raspberry Pi é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela Raspberry Pi Foundation, uma ...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/" itemprop="mainEntityOfPage url">
+                Primeiros passos no Raspberry Pi com NOOBS e Raspbian
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-09-20">
+                    <a href="/2019/09/20/">
+                        
+    20 de
+    
+    Setembro
+        
+    de 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-10-10" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (29/09/2019):</strong>
+    
+<p>O <em>post</em> foi revisado para se aproximar da <a href="/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">versão em inglês</a>, mais recente.</p>
+
+</div>
+
+<p>O <a href="https://www.raspberrypi.org/"><strong>Raspberry Pi</strong></a> é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela <a href="https://www.raspberrypi.org/about/">Raspberry Pi Foundation</a>, uma ONG do Reino Unido que objetiva facilitar e promover o ensino de computação e a inclusão digital.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspberry-pi-4-credit-card.jpg" title="Raspberry Pi: o computador do tamanho de um cartão de crédito">
+<img src="/files/2019/09/raspberry-pi-4-credit-card.jpg" alt="Raspberry Pi: o computador do tamanho de um cartão de crédito" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 400px" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Raspberry Pi: o computador do tamanho de um cartão de crédito</p>
+
+</em>
+
+</div>
+
+<p>Há quem use o Raspberry Pi para aprender e ensinar a programar, fazer projetos com <em>hardware</em>, automações em casa, há usos até mesmo na indústria e pesquisa.</p>
+
+<p>O Raspberry Pi fornece pinos que podem ser usados para fazer entrada e saída de forma genérica (GPIO, <em>general purpose input/output</em>). Com esses pinos, é possível fazer experiências com componentes eletrônicos e Internet das Coisas (IoT, <em>Internet of Things</em>).</p>
+
+<p>Veja um exemplo curioso de automação: acoplado a sensores e motores apropriados, esse Raspberry Pi foi programado para abrir a porta quando o cachorro chega perto e late.</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MWfl1Nl2WIM" allowfullscreen=""></iframe>
+</div>
+
+<p><strong>Curiosidade:</strong> o nome <a href="https://en.wikipedia.org/wiki/Raspberry">Raspberry</a> (<a href="https://pt.wikipedia.org/wiki/Framboesa">framboesa</a>, em inglês) vem de uma tradição de usar nomes de frutas na computação – veja, por exemplo, a <a href="https://www.apple.com/br/">Apple</a> (maçã) – e Pi vem da linguagem de programação <a href="https://www.python.org/">Python</a>, a ideia inicial era criar um computador que pudesse ser programado usando essa linguagem. Há quem acredite que Pi tem relação também com o <a href="https://pt.wikipedia.org/wiki/Pi">número π</a> (3,14…) ou que Raspberry Pi seja um trocadilho com <em>raspberry pie</em> (torta de framboesa).</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/10/raspberry-pi-4-and-raspberry-pie.jpg" title="Uma torta de framboesa (raspberry pie) e um computador Raspberry Pi">
+<img src="/files/2019/10/raspberry-pi-4-and-raspberry-pie.jpg" alt="Uma torta de framboesa (raspberry pie) e um computador Raspberry Pi" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 400px" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Uma torta de framboesa (raspberry pie) e um computador Raspberry Pi</p>
+
+</em>
+
+</div>
+
+<h2 id="arquitetura-arm">Arquitetura ARM</h2>
+
+<p>O Raspberry Pi é diferente dos computadores tradicionais não apenas no formato, mas também na <strong><a href="https://pt.wikipedia.org/wiki/Arquitetura_de_computadores">arquitetura</a></strong>, ou seja, <em>hardware</em> e <em>software</em> funcionam de forma totalmente diferente. Enquanto os <em>desktops</em> e <em>notebooks</em> são, na essência, iguais ao <a href="https://pt.wikipedia.org/wiki/IBM_PC">IBM PC</a> lançado em 1981 e se baseiam nas arquiteturas <a href="https://pt.wikipedia.org/wiki/X86">x86</a> (PCs de 32 <em>bits</em>) ou <a href="https://pt.wikipedia.org/wiki/AMD64">x86-64</a> (PCs de 64 <em>bits</em>), o Raspberry Pi se baseia na arquitetura <a href="https://pt.wikipedia.org/wiki/Arquitetura_ARM">ARM</a>, a mesma usada por <em>smartphones</em> com <a href="https://www.android.com/intl/pt-BR_br/">Android</a>.</p>
+
+<p>Na prática, isso significa que se você copiar um programa de um PC para um Raspberry Pi (ou vice-versa), não vai funcionar. O programa pode ter versões para ambos, mas são executáveis diferentes – por exemplo, <a href="https://pt-br.libreoffice.org/">LibreOffice</a> para PC e LibreOffice para Raspberry Pi.</p>
+
+<p>É possível instalar o <a href="https://www.vivaolinux.com.br/linux/">Linux</a> no Raspberry Pi e usá-lo como um <em>desktop</em> para as tarefas do dia-a-dia – navegar na Internet, editar textos, etc. Como fazer isso é o assunto desse <em>post</em>.</p>
+
+<h2 id="raspberry-pi-4-modelo-b">Raspberry Pi 4 Modelo B</h2>
+
+<p>O primeiro Raspberry Pi foi lançado em 2012 e desde então já foram fabricados <a href="https://www.raspberrypi.org/products/">vários modelos e variações</a>. Atualmente, ele se encontra na quarta geração, com o <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">Raspberry Pi 4</a>, lançado em julho. Geralmente, as gerações apresentam um Modelo A e um Modelo B. O Modelo A é uma variação mais barata, com menos memória RAM e menos portas (como USB e Ethernet). Por enquanto, a quarta geração possui apenas o Modelo B.</p>
+
+<p>O <strong>Raspberry Pi 4 Modelo B</strong> possui as seguintes <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/">especificações</a>:</p>
+
+<ul>
+  <li>processador Broadcom BCM2711, do tipo <a href="https://pt.wikipedia.org/wiki/System-on-a-chip"><em>system-on-a-chip</em></a> (SoC)
+    <ul>
+      <li>quatro núcleos (<em>quad core</em>) Cortex-A72</li>
+      <li>frequência de 1,5GHz</li>
+      <li>arquitetura ARMv8 de 64 <em>bits</em></li>
+    </ul>
+  </li>
+  <li>variações com 1GB, 2GB ou 4GB de memória RAM DDR4</li>
+  <li>rede Wi-Fi IEEE 802.11ac (conecta a redes de 2,4GHz e 5GHz)</li>
+  <li>Bluetooth 5.0</li>
+  <li>rede Ethernet Gigabit</li>
+  <li>2 portas USB 3.0 e 2 portas USB 2.0</li>
+  <li>2 portas micro-HDMI para conectar até 2 monitores ou TVs de resolução até 4K cada</li>
+  <li>saída de som para conectar caixa de som ou fone de ouvido estéreo usando <em>plug</em> P2</li>
+  <li>compartimento para cartão de memória micro-SD (usado para armazenar o sistema operacional, programas e arquivos pessoais)</li>
+  <li>40 pinos GPIO (entrada e saída de propósito geral)</li>
+  <li>e mais!</li>
+</ul>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject" id="components">
+<a href="/files/2019/09/raspberry-pi-4-components.jpg" title="Imagem extraída do site [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)">
+<img src="/files/2019/09/raspberry-pi-4-components.jpg" alt="Imagem extraída do site [Electronics-Lab](http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/)" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Imagem extraída do site <a href="http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/">Electronics-Lab</a></p>
+
+</em>
+
+</div>
+
+<p>Se quiser conferir as especificações técnicas desse modelo em mais detalhes, acesse o <a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications/"><em>site</em> do Raspberry Pi</a>.</p>
+
+<h2 id="qual-variação-escolher">Qual variação escolher?</h2>
+
+<p>O Raspberry Pi 4 B vem com 1GB, 2GB, ou 4GB of RAM.</p>
+
+<p>Para a maioria dos fins educacionais e uso em projetos como <em>hobby</em>, 1GB é suficiente.</p>
+
+<p>Para usar como um <em>desktop</em>, pelo menos 2GB é recomendado.</p>
+
+<p>É importante que você escolha a quantidade certa de RAM antes de comprar um Raspberry Pi, porque não é possível expandi-la depois, uma vez que a memória RAM é soldada na placa e não pode ser substituída.</p>
+
+<h2 id="quanto-custa">Quanto custa?</h2>
+
+<p>O preço de entrada do Raspberry Pi sempre foi 35 dólares (o equivalente a 145 reais, no momento da escrita). Esse é o preço do Raspberry Pi 4 B com 1GB de RAM.</p>
+
+<p>Observe que esse é o preço apenas da placa do Raspberry Pi. Além dela, é necessário comprar a fonte de alimentação, um cartão de memória micro-SD com capacidade de pelo menos 8GB e um cabo micro-HDMI. Além disso, é opcional, mas recomendado, comprar uma capa (<em>case</em>) para proteger a placa.</p>
+
+<p>Você pode comprar a placa e os acessórios separadamente ou comprar um <em>kit</em> que já vem com tudo que é preciso, que foi o que eu fiz (mais detalhes adiante).</p>
+
+<p>Se você já tem um computador, então provavelmente tem <em>mouse</em>, teclado e monitor. Você pode usá-los com o Raspberry Pi, que tem portas USB e HDMI. Senão, é necessário comprá-los também. Se você tem uma TV com entrada HDMI, pode usá-la no lugar do monitor.</p>
+
+<p><strong>Curiosidade:</strong> já houve modelos do Raspberry Pi ainda mais baratos que 35 dólares. O mais barato lançado até então foi o <a href="https://www.raspberrypi.org/products/raspberry-pi-zero/">Raspberry Pi Zero</a>, que custa apenas 5 dólares (20 reais). Ele é uma derivação do primeiro Raspberry Pi, mas ainda menor e mais barato.</p>
+
+<h2 id="onde-comprar">Onde comprar?</h2>
+
+<p>Diversas lojas vendem o Raspberry Pi e acessórios e <em>kits</em> dele. Mas há algumas lojas reconhecidas pela Raspberry Pi Foundation como revendedores aprovados (<em>approved resellers</em>).</p>
+
+<p>No Brasil, o revendedor aprovado do Raspberry Pi é o <a href="https://www.filipeflop.com/">FilipeFlop</a>. Infelizmente, ele ainda não vende o Raspberry Pi 4 B. O modelo mais recente que ele oferece no momento é o <a href="https://www.filipeflop.com/produto/raspberry-pi-3-a/">Raspberry Pi 3 A+</a>. Simulei uma compra: a placa, a capa, a fonte de alimentação e o cartão de memória custariam no total R$ 362,60. Para o meu CEP, a entrega sairia de graça e levaria 4 dias úteis.</p>
+
+<p>Eu comprei meu Raspberry Pi 4 B de um revendedor aprovado na China, a <a href="http://bit.ly/kamarada-rpi-4b">JunRoc Store</a>, por meio do <em>site</em> de compras <a href="http://bit.ly/kamarada-rpi-4b">AliExpress</a> (uma espécie de Mercado Livre chinês). Eu comprei um <em>kit</em> que contém a variação do Raspberry Pi 4 B com mais memória RAM (4GB) e mais:</p>
+
+<ul>
+  <li>cartão de memória micro-SD de 16GB</li>
+  <li>capa de acrílico com ventoinha (<em>fan</em>)</li>
+  <li>leitor de cartão de memória USB</li>
+  <li>dissipadores de calor (<em>heat sinks</em>)</li>
+  <li>fonte de alimentação</li>
+  <li>cabo de vídeo micro-HDMI para HDMI</li>
+</ul>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspberry-pi-4-kit.jpg" title="Um [kit do Raspberry Pi 4](http://bit.ly/kamarada-rpi-4b) é a melhor opção para quem está começando.">
+<img src="/files/2019/09/raspberry-pi-4-kit.jpg" alt="Um [kit do Raspberry Pi 4](http://bit.ly/kamarada-rpi-4b) é a melhor opção para quem está começando." class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Um <a href="http://bit.ly/kamarada-rpi-4b">kit do Raspberry Pi 4</a> é a melhor opção para quem está começando.</p>
+
+</em>
+
+</div>
+
+<p>Me custou ao todo R$ 370,29 (valor total, já somando inclusive o IOF do cartão de crédito referente a compra internacional). Fiz a compra em 26 de agosto. Chegou na minha casa em 17 de setembro, tudo em perfeito estado e funcionando bem. Recomendo!</p>
+
+<p>Se for comprar <a href="http://bit.ly/kamarada-rpi-4b">no mesmo lugar que eu comprei</a>, observe que pelo mesmo anúncio é possível comprar 6 variações: apenas a placa do Raspberry Pi 4 B com 1GB, 2GB ou 4GB de RAM ou os 3 <em>kits</em> correspondentes. Atente-se na hora de selecionar a variação que deseja.</p>
+
+<h2 id="raspbian-debian-para-raspberry-pi">Raspbian: Debian para Raspberry Pi</h2>
+
+<p>No momento da escrita, a distribuição <a href="https://www.opensuse.org/">openSUSE</a> suporta a família de computadores Raspberry Pi até a terceira geração:</p>
+
+<ul>
+  <li><a href="https://en.opensuse.org/HCL:Raspberry_Pi">Raspberry Pi 1</a></li>
+  <li><a href="https://en.opensuse.org/HCL:Raspberry_Pi2">Raspberry Pi 2</a></li>
+  <li><a href="https://en.opensuse.org/HCL:Raspberry_Pi3">Raspberry Pi 3</a></li>
+</ul>
+
+<p>A quarta geração (Raspberry Pi 4) ainda não é suportada, como você pode ver nesses <em>links</em>:</p>
+
+<ul>
+  <li><a href="https://forums.opensuse.org/showthread.php/536541-Can-Raspberry-Pi-4-run-openSUSE-LEAP-15-1/page2">LEAP 15.1 Can Raspberry Pi 4 run openSUSE LEAP 15.1? - openSUSE Forums</a></li>
+  <li><a href="https://www.reddit.com/r/openSUSE/comments/c6xvnr/raspberry_pi_4/">Raspberry Pi 4? - openSUSE reddit</a></li>
+  <li><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=244248">Raspberry Pi 4 and openSUSE LEAP 15.1? - Raspberry Pi Forums</a></li>
+</ul>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (29/09/2019):</strong>
+    
+<p>Os trabalhos para que o openSUSE suporte o Raspberry Pi 4 já começaram:</p>
+
+<ul>
+  <li><a href="https://lists.opensuse.org/opensuse-arm/2019-09/msg00037.html">[opensuse-arm] Raspberry Pi 4 Model B - openSUSE Mailinglist Archives</a></li>
+</ul>
+
+</div>
+
+<p>Por isso, embora normalmente os <em>posts</em> que faço aqui sejam verdes da cor do openSUSE, o <em>post</em> de hoje será vermelho, porque vamos falar de outra distribuição Linux: Raspbian!</p>
+
+<p>O nome <strong><a href="http://www.raspbian.org/">Raspbian</a></strong> é a combinação de Raspberry Pi e Debian: resumidamente, o Raspbian é uma versão da distribuição Debian portada e otimizada para o Raspberry Pi.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian.jpg" title="">
+<img src="/files/2019/09/raspbian.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <strong><a href="https://www.debian.org/index.pt.html">Debian</a></strong> é uma das maiores e mais antigas distribuições Linux, existe desde 1993. Introduziu o formato de empacotamento DEB (análogo ao RPM usado pelo openSUSE). É focada em estabilidade: fornece apenas versões bem testadas (geralmente antigas) de programas e a atualização da distribuição normalmente ocorre sem erros. Se você fizer uma árvore genealógica das distribuições Linux, o Debian será uma das que estarão no topo: deu origem ao <a href="https://ubuntu.com/">Ubuntu</a> e ao <a href="http://www.knopper.net/knoppix/index-en.html">Knoppix</a>, que por sua vez deram origem a várias distribuições, dentre elas as brasileiras <a href="https://www.hardware.com.br/kurumin/">Kurumin</a> (descontinuada) e <a href="https://www.biglinux.com.br/">BigLinux</a>, e o Raspbian.</p>
+
+<h2 id="noobs-o-instalador-do-raspbian">NOOBS: o instalador do Raspbian</h2>
+
+<p>Como estamos começando a mexer no Raspberry Pi, vamos instalar o sistema operacional usando o método recomendado pelo <em>site</em> oficial do Raspberry Pi, que é o NOOBS.</p>
+
+<p><strong><a href="https://www.raspberrypi.org/documentation/installation/noobs.md">NOOBS</a></strong> – <em>New Out Of the Box Software</em> (“novo <em>software</em> de fábrica”, em uma tradução livre), mas também parece um trocadilho com a gíria <em>noob</em>, que quer dizer “novato” – é o instalador que instala o Raspbian no cartão de memória. É a forma mais fácil de instalar o sistema operacional no Raspberry Pi. Além do Raspbian, o NOOBS também pode ser usado para instalar a distribuição <a href="https://libreelec.tv/">LibreELEC</a>, focada em multimídia.</p>
+
+<p>Há lojas que vendem cartões de memória que já vem com o NOOBS. Como no <em>kit</em> que eu comprei veio um cartão de memória lacrado, tive que baixar o NOOBS manualmente para o cartão de memória. Vou mostrar como fazer isso.</p>
+
+<p>Se o Raspberry Pi é seu primeiro computador e você não dispõe de outro computador para preparar o cartão de memória, você deve comprar um cartão que já vem com o NOOBS.</p>
+
+<p>Chega de conversa, vamos por a mão na massa!</p>
+
+<h2 id="baixando-o-noobs">Baixando o NOOBS</h2>
+
+<p>Visite a página <a href="https://www.raspberrypi.org/downloads">Downloads</a> do <em>site</em> do Raspberry Pi. Clique no <em>link</em> para o <strong>NOOBS</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-download-01.jpg" title="">
+<img src="/files/2019/09/noobs-download-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>Download ZIP</strong>, abaixo de <strong>NOOBS</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-download-02.jpg" title="">
+<img src="/files/2019/09/noobs-download-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Com isso, você vai baixar um arquivo que já contém o NOOBS e o Raspbian para instalação <em>offline</em>. O arquivo é grande (2,3GB), você pode tomar um café enquanto espera o <em>download</em>.</p>
+
+<p>Há também o <strong>NOOBS Lite</strong>, que contém apenas o NOOBS. Se você optasse por esse arquivo, o Raspbian seria baixado durante a instalação. Aqui, optamos por baixar tudo de uma vez.</p>
+
+<p>Atente-se ao nome do arquivo – <code class="highlighter-rouge">NOOBS_v3_2_0.zip</code> – e onde ele foi baixado – normalmente, por padrão, na pasta <code class="highlighter-rouge">Downloads</code> dentro da pasta pessoal.</p>
+
+<h2 id="verificando-a-integridade-do-download">Verificando a integridade do download</h2>
+
+<p>Normalmente, terminamos de baixar um arquivo da Internet e já o usamos. Em alguns casos, antes de usar o arquivo, é importante verificar se ele foi baixado corretamente. Especialmente nesse caso, em que estamos baixando um sistema operacional. Podemos evitar problemas fazendo uma breve <a href="/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">verificação de integridade</a>.</p>
+
+<p>Abra o aplicativo <strong>Terminal</strong> e execute o comando <strong>sha256sum</strong>, passando como argumento o caminho para o arquivo baixado:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ sha256sum Downloads/NOOBS_v3_2_0.zip
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O programa demora um tempo calculando a soma de verificação do arquivo e a exibe (é um número extenso em hexadecimal):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>d05bd794368ccfb516a9e7116d1c659c3d139f4393ee1f4450900080e877434e  Downloads/NOOBS_v3_2_0.zip
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Compare essa soma SHA-256 com a exibida na página onde você baixou o NOOBS:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-sha256-pt.jpg" title="">
+<img src="/files/2019/09/noobs-sha256-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se as somas conferem, o arquivo foi baixado corretamente: é seguro continuar e usá-lo.</p>
+
+<p>Se as somas diferem, algo deu errado (por exemplo, sua conexão com a Internet pode ter caído no meio do <em>download</em>). Nesse caso, exclua o arquivo e tente baixá-lo de novo.</p>
+
+<p>Aqui, escrevi resumidamente o que precisamos saber hoje sobre verificação de integridade para instalar o Raspbian. Caso queira saber mais sobre o assunto, leia o <em>post</em>:</p>
+
+<ul>
+  <li><a href="/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">Verificação de integridade e autenticidade com SHA-256 e GPG</a></li>
+</ul>
+
+<h2 id="formatando-o-cartão-de-memória">Formatando o cartão de memória</h2>
+
+<p>O cartão de memória deve ser formatado com o sistema de arquivos FAT32. A maioria dos cartões de memória já vem de fábrica formatados com esse sistema – inclusive o que veio no <em>kit</em> que eu comprei. Mas não custa formatar, especialmente se você vai reaproveitar um cartão que já possui. Nesse caso, observe que a formatação apagará tudo que estiver no cartão, talvez você queira fazer um <em>backup</em> antes de continuar para não perder dados.</p>
+
+<p>Conecte ao computador o cartão de memória que será formatado. Para isso, pode ser necessário usar um leitor de cartão – o <em>kit</em> indicado vem com um.</p>
+
+<p>Recomendo que você remova quaisquer outros dispositivos de armazenamento (<em>pendrives</em>, HDs externos, etc) conectados e deixe apenas o cartão de memória, pra não correr o risco de formatar o dispositivo errado (e perder arquivos).</p>
+
+<p>Abra o aplicativo <strong>GParted</strong>. Ele solicita a senha do administrador (usuário <em>root</em>), que você deve fornecer para continuar. O GParted demora um pouco verificando os dispositivos. Quando ele terminar, selecione o cartão de memória no canto superior direito:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-01-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique com o botão direito na única partição do cartão de memória (pode ser no gráfico ou na lista) e clique em <strong>Desmontar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-02-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique mais uma vez com o botão direito na partição, aponte para <strong>Formatar para</strong> e clique em <strong>fat32</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-03-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique no botão <strong>Aplicar todas as operações</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-04-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Leia atentamente a mensagem de alerta. Depois, clique em <strong>Aplicar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-05-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Ao final da formatação, clique em <strong>Fechar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/format-sd-card-06-pt.jpg" title="">
+<img src="/files/2019/09/format-sd-card-06-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Feche também o GParted.</p>
+
+<h2 id="extraindo-o-noobs-para-o-cartão-de-memória">Extraindo o NOOBS para o cartão de memória</h2>
+
+<p>Abra o arquivo compactado do NOOBS que você baixou. Ele deve ser aberto com o aplicativo <strong>Gerenciador de compactação</strong>. Clique em <strong>Extrair</strong>, no canto superior esquerdo da janela:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-extract-01-pt.jpg" title="">
+<img src="/files/2019/09/noobs-extract-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Certifique-se de que a opção <strong>Todos os arquivos</strong> esteja selecionada (padrão). Selecione o cartão de memória (para mim, ele aparece como <strong>Volume 16GB</strong>) e clique no botão <strong>Extrair</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-extract-02-pt.jpg" title="">
+<img src="/files/2019/09/noobs-extract-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Aguarde a extração do NOOBS para o cartão de memória:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-extract-03-pt.jpg" title="">
+<img src="/files/2019/09/noobs-extract-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Isso pode demorar. É outra oportunidade de tomar um café!</p>
+
+<p>Ao final da extração, clique em <strong>Fechar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-extract-04-pt.jpg" title="">
+<img src="/files/2019/09/noobs-extract-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Feche também o Gerenciador de compactação.</p>
+
+<h2 id="removendo-o-cartão-de-memória">Removendo o cartão de memória</h2>
+
+<p>O cartão de memória está pronto para ser usado no Raspberry Pi. É hora de removê-lo do computador.</p>
+
+<p>Para isso, abra o aplicativo <strong>Arquivos</strong> e, ao lado do cartão, clique no botão <strong>Desmontar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/eject-sdcard-01-pt.jpg" title="">
+<img src="/files/2019/09/eject-sdcard-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Aguarde aparecer a notificação informando que o dispositivo pode ser removido:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/eject-sdcard-02-pt.jpg" title="">
+<img src="/files/2019/09/eject-sdcard-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Depois que ela aparecer, remova o cartão de memória do computador e insira-o no Raspberry Pi. Observe que o compartimento para cartão fica do lado de baixo da placa.</p>
+
+<h2 id="conectando-tudo-ao-raspberry-pi">Conectando tudo ao Raspberry Pi</h2>
+
+<p>Agora conecte tudo ao Raspberry Pi: insira o cartão de memória, conecte o monitor (ou a TV) usando o cabo HDMI, o teclado e <em>mouse</em> às portas USB e o cabo de rede Ethernet se for usar a rede cabeada. Deixe por último a fonte de alimentação:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspberry-pi-4-connections-pt.jpg" title="Imagem adaptada da página [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)">
+<img src="/files/2019/09/raspberry-pi-4-connections-pt.jpg" alt="Imagem adaptada da página [Setting up your Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4)" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Imagem adaptada da página <a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/4">Setting up your Raspberry Pi</a></p>
+
+</em>
+
+</div>
+
+<h2 id="ligando-o-raspberry-pi">Ligando o Raspberry Pi</h2>
+
+<p>O Raspberry Pi não tem um botão ou um interruptor de liga/desliga: conecte a fonte de alimentação ao Raspberry Pi e depois a uma tomada na parede e ele ligará.</p>
+
+<p>Duas luzes LED acendem na placa do Raspberry Pi: uma indicando que ele está ligado à energia (PWR) e outra pisca, indicando que ele está acessando o cartão de memória (ACT).</p>
+
+<h2 id="instalando-o-raspbian">Instalando o Raspbian</h2>
+
+<p>Após um tempo carregando, o Raspberry Pi apresentará a tela inicial do NOOBS.</p>
+
+<p>Na tela inicial do NOOBS, embaixo, no campo <strong>Language</strong> (idioma), selecione <strong>português europeu</strong> (não há tradução do instalador para o português brasileiro):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-setup-01.jpg" title="">
+<img src="/files/2019/09/noobs-setup-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Depois, selecione na lista a distribuição <strong>Raspbian</strong> e clique em <strong>Instalar</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-setup-02-pt.jpg" title="">
+<img src="/files/2019/09/noobs-setup-02-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Na caixa de diálogo <strong>Confirmar</strong>, clique em <strong>Sim</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-setup-03-pt.jpg" title="">
+<img src="/files/2019/09/noobs-setup-03-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Aguarde a instalação do Raspbian:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-setup-04-pt.jpg" title="">
+<img src="/files/2019/09/noobs-setup-04-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O instalador passa vários <em>slides</em> apresentando o Raspbian. Você pode ver esses <em>slides</em> enquanto… toma um café!</p>
+
+<p>Ao final da instalação, clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/noobs-setup-05-pt.jpg" title="">
+<img src="/files/2019/09/noobs-setup-05-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O Raspberry Pi será reiniciado e carregará dessa vez o Raspbian, não mais o NOOBS.</p>
+
+<h2 id="configurando-o-raspbian">Configurando o Raspbian</h2>
+
+<p>Ao ser iniciado pela primeira vez, o Raspbian apresenta um assistente de configuração:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-01-pt.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>As telas são autoexplicativas. É uma pena que não possuam tradução para o português…</p>
+
+<p>Clique em <strong>Next</strong> (avançar) para começar a configuração.</p>
+
+<p>Selecione seu país (<strong>Country</strong>), idioma (<strong>Language</strong>) e fuso horário (<strong>Timezone</strong>) e clique em <strong>Next</strong> (avançar) de novo:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-02.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Crie uma nova senha para seu Raspberry Pi. Digite-a nos dois campos e clique em <strong>Next</strong> (avançar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-03.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se pretende se conectar a uma rede Wi-Fi, selecione-a na lista e clique em <strong>Next</strong> (avançar). Senão, clique em <strong>Skip</strong> (pular):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-04.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Caso você tenha selecionado uma rede Wi-Fi, digite a senha dela e clique em <strong>Next</strong> (avançar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-05.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O assistente oferece verificar, baixar e instalar atualizações para o sistema. Nesse momento também são obtidas as traduções para os programas, embora isso não esteja escrito na tela. Clique em <strong>Skip</strong> (pular) se preferir fazer você mesmo manualmente em outro momento ou em <strong>Next</strong> (avançar, o que eu recomendo) para deixar o assistente fazer agora:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-06.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Se você optou por baixar as atualizações agora, aguarde o processo:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-07.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>(haja café! hehehe)</p>
+
+<p>Quando a atualização terminar, clique em <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-08.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-08.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Por fim, clique em <strong>Restart</strong> (reiniciar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-wizard-09.jpg" title="">
+<img src="/files/2019/09/raspbian-wizard-09.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Quando o Raspberry Pi terminar de reiniciar, o sistema operacional estará novinho em folha, com todas as atualizações e traduções instaladas.</p>
+
+<h2 id="desligando-o-raspberry-pi">Desligando o Raspberry Pi</h2>
+
+<p>Embora o Raspberry Pi não tenha um botão de liga/desliga, o Raspbian tem um comando para desligar. Usá-lo é necessário para que o sistema operacional desmonte corretamente os sistemas de arquivos e evite perda de dados. Portanto, desligar um Raspberry Pi não é análogo a ligar (se fosse, seria só puxar a fonte de alimentação).</p>
+
+<p>Para desligar o Raspberry Pi com segurança, abra o <strong>menu de aplicativos</strong>, clicando no ícone do Raspberry Pi, no canto superior esquerdo da tela, e clique em <strong>Shutdown</strong> (desligar):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-shutdown-01-pt.jpg" title="">
+<img src="/files/2019/09/raspbian-shutdown-01-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px" />
+</a>
+
+</div>
+
+<p>Na caixa de diálogo <strong>Shutdown options</strong> (opções de desligamento), clique em <strong>Shutdown</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-shutdown-02.jpg" title="">
+<img src="/files/2019/09/raspbian-shutdown-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><strong>Aguarde</strong> até que o Raspberry Pi desligue completamente. Repare nas luzes LED: primeiro a PWR apaga e a ACT pisca, depois a ACT apaga e apenas a PWR fica acesa, indicando que o Raspberry Pi tem energia, mas não faz nada. Aí sim você pode desconectar a fonte de alimentação.</p>
+
+<p><strong>Observação:</strong> portas micro-USB tendem a ser frágeis. Por isso, dê preferência a remover a fonte de alimentação da tomada em vez de removê-la do Raspberry Pi.</p>
+
+<h2 id="terminando-a-montagem">Terminando a montagem</h2>
+
+<p>Como eu disse, eu comprei no AliExpress um <em>kit</em> que inclui dissipadores de calor, ventoinha e capa de acrílico. No AliExpress, caso tenha algum problema com a compra, o comprador tem até 15 dias após o recebimento do produto para abrir uma disputa com o vendedor. Por isso, eu preferi instalar o sistema e testar a placa (solta na mesa mesmo) antes de completar a montagem. Felizmente, tudo funcionou bem.</p>
+
+<p>Instalei cada dissipador de calor no <em>chip</em> de mesmo tamanho. Assim, colei os dissipadores no processador, na memória RAM e no controlador USB. Caso você tenha dificuldade em localizar esses <em>chips</em>, compare esta foto com o <a href="#components">diagrama de componentes</a> do início:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspberry-pi-4-heat-sinks.jpg" title="">
+<img src="/files/2019/09/raspberry-pi-4-heat-sinks.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (17/10/2019):</strong>
+    <p>Só depois, por acaso, eu descobri que a capa de acrílico vinha com adesivos protetores. Ela é de fato transparente, mas precisa remover os adesivos.</p>
+
+</div>
+
+<p>Cada peça da capa de acrílico vem com dois adesivos protetores, um de cada lado, remova-os:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/10/raspberry-pi-4-acrylic-shell-case.jpg" title="">
+<img src="/files/2019/10/raspberry-pi-4-acrylic-shell-case.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>A ventoinha deve ser ligada nos pinos de propósito geral. O fio da fase (vermelho) deve ser conectado ao pino 4 e o fio terra (preto) deve ser conectado ao pino 6. A fase também é indicada por uma seta no encaixe de plástico:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/10/raspberry-pi-4-fan.jpg" title="">
+<img src="/files/2019/10/raspberry-pi-4-fan.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Caso não tenha dado para identificar os pinos pelas fotos, esse diagrama pode ajudar:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspberry-pi-4-pinout.jpg" title="Imagem extraída do site [Raspberry Pi GPIO Pinout](https://pinout.xyz/)">
+<img src="/files/2019/09/raspberry-pi-4-pinout.jpg" alt="Imagem extraída do site [Raspberry Pi GPIO Pinout](https://pinout.xyz/)" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Imagem extraída do site <a href="https://pinout.xyz/">Raspberry Pi GPIO Pinout</a></p>
+
+</em>
+
+</div>
+
+<p>Foi super fácil instalar a capa de acrílico: exceto pela ventoinha, que foi aparafusada (enrosquei com a mão mesmo), o resto foi tudo encaixado. Não foi preciso sequer aparafusar a placa: ela ficou justa na capa, que foi feita sob medida.</p>
+
+<p>Você não precisa usar força para encaixar as peças. Se algo não está encaixando naturalmente, pare, olhe e pense: provavelmente você está tentando encaixar algo errado.</p>
+
+<h2 id="isso-é-tudo-pessoal">Isso é tudo, pessoal!</h2>
+
+<p>Agora que o Raspberry Pi e o Raspbian estão prontos, é só usar!</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/10/raspberry-pi-4-final.jpg" title="">
+<img src="/files/2019/10/raspberry-pi-4-final.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 440px" />
+</a>
+
+</div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/raspbian-final-pt.jpg" title="">
+<img src="/files/2019/09/raspbian-final-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O Raspbian usa por padrão a área de trabalho <a href="https://www.raspberrypi.org/blog/introducing-pixel/">PIXEL</a>, baseada no <a href="https://lxde.org/">LXDE</a>, com o gerenciador de janelas <a href="http://openbox.org/">Openbox</a>.</p>
+
+<p>Na sequência, recomendo a leitura do guia <a href="https://projects.raspberrypi.org/pt-BR/projects/raspberry-pi-using">Utilizando o Raspberry Pi</a>. Esse, felizmente, tem tradução para o português brasileiro.</p>
+
+<h2 id="referências">Referências</h2>
+
+<ul>
+  <li><a href="https://opensource.com/resources/raspberry-pi">What is a Raspberry Pi? - Opensource.com</a></li>
+  <li><a href="https://www.techspot.com/article/531-eben-upton-interview/">Interview with Raspberry’s Founder Eben Upton - TechSpot</a></li>
+  <li><a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">Setting up your Raspberry Pi</a></li>
+  <li><a href="http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/">NOOBS For Raspberry Pi – Rants &amp; Raves – The Blog!</a></li>
+  <li><a href="https://itsfoss.com/turn-on-raspberry-pi/">How To Turn On And Shutdown The Raspberry Pi - It’s FOSS</a></li>
+  <li><a href="http://www.electronics-lab.com/project/raspberry-pi-4-look-hood-make/">Raspberry Pi 4 - A Look Under the Hood and How to Make most of it - Electronics-Lab</a></li>
+  <li><a href="https://youtu.be/E-4GaAz7XNM">How to Install Heatsinks on the Raspberry Pi 4 (CanaKit) + Temperature Performance Comparison - Edje Electronics</a></li>
+  <li><a href="https://youtu.be/AVfvhEJ9XD0?t=770">Raspberry Pi 4 Cooling - ExplainingComputers</a></li>
+  <li><a href="https://pinout.xyz/">Raspberry Pi GPIO Pinout</a></li>
+  <li><a href="https://www.raspberrypi-spy.co.uk/2013/02/raspberry-pi-status-leds-explained/">Raspberry Pi Status LEDs Explained - Raspberry Pi Spy</a></li>
+</ul>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="O Raspberry Pi é um computador de baixo custo, formado por apenas uma placa do tamanho de um cartão de crédito e fabricado pela Raspberry Pi Foundation, uma ONG do Reino Unido que objetiva facilitar e promover o ensino de computação e a inclusão digital. É possível instalar o Linux no Raspberry Pi e usá-lo...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2019/09/raspbian.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/09/20/primeiros-passos-no-raspberry-pi-com-noobs-e-raspbian/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

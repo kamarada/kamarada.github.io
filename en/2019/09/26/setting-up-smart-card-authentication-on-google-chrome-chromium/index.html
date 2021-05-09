@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="Today you are going to see how to set up the Google Chrome web browser to use digital certificates stored on criptographic media, such as smart cards or toke...">
+    <link rel="canonical" href="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/en/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://linuxkamarada.com/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://linuxkamarada.com/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-09-26 09:00:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Today you are going to see how to set up the Google Chrome web browser to use digital certificates stored on criptographic media, such as smart cards or toke..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2019/09/chrome-token.png" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Setting up smart card authentication on Google Chrome / Chromium" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,946 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                The website has moved
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>It is now at: <strong>linuxkamarada.com</strong>.</p><p>Please, update your link or bookmark.</p><p>You are going be redirected to this same page at the new address in a few seconds.</p><p>If that does not happen, <a href="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">click here</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/',
+                    title: document.title,
+                    description: 'Today you are going to see how to set up the Google Chrome web browser to use digital certificates stored on criptographic media, such as smart cards or toke...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/contribute">Contribute</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/contribute">Contribute</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.en.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/" itemprop="mainEntityOfPage url">
+                Setting up smart card authentication on Google Chrome / Chromium
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-09-26">
+                    <a href="/2019/09/26/">
+                        
+    Sep 26, 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-09-26" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>Today you are going to see how to set up the <a href="https://www.google.com/chrome/">Google Chrome</a> web browser to use digital certificates stored on criptographic media, such as smart cards or tokens. Same instructions for Chrome apply to its <a href="https://opensource.org/osd-annotated">open source</a> base <a href="https://www.chromium.org/">Chromium</a>. To test your setup, you are going to log in to a smart card enabled website using your certificate.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/chrome-token.png" title="">
+<img src="/files/2019/09/chrome-token.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>For future reference, here I use <a href="/en/2019/09/13/first-beta-release-of-the-kamarada-linux-distribution/">Linux Kamarada 15.1 Beta</a> (based on <a href="/en/2019/05/22/opensuse-community-releases-leap-15-1-version/">openSUSE Leap 15.1</a>).</p>
+
+<h2 id="previous-reading">Previous reading</h2>
+
+<p>Before starting, to get everyone on the same page, I recommend reading previous posts about digital certificates:</p>
+
+<ul>
+  <li><a href="/en/2018/10/30/how-to-install-website-certificates-on-linux/">How to install website certificates on Linux</a>: here you are going to see how to install the CA certificate on Chrome</li>
+  <li><a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">Using smart cards on openSUSE Linux</a>: here you are going to see how to install support for smart cards and tokens (you don’t need to read from the browser configuration part to the end, which is what we are going to do here, but using Chrome instead of <a href="https://www.mozilla.org/firefox/">Mozilla Firefox</a>, which was the browser used in that post)</li>
+</ul>
+
+<h2 id="setting-up-chrome-to-use-your-token">Setting up Chrome to use your token</h2>
+
+<p>Chrome for Linux manages digital certificates similarly to Firefox — using <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS">Mozilla NSS</a> as backend. But, unlike Firefox, Chrome does not provide a graphical user interface to install <a href="https://en.wikipedia.org/wiki/PKCS_11">PKCS11</a> modules. So, to set up Chrome you need to use the command line.</p>
+
+<p>Plug in your token before proceeding.</p>
+
+<p>First, start by opening the terminal and installing <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Tools">Mozilla NSS Tools</a> (they may be already installed on your system):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in mozilla-nss-tools
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Then, make sure you are on your home folder and run the following command (making the appropriate substitutions) to add your token to the list of security modules and devices:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ cd
+$ modutil -dbdir sql:.pki/nssdb/ -add "token_name" -libfile /path/to/library
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Replace <code class="highlighter-rouge">token_name</code> by a name that identifies your token (for instance, <code class="highlighter-rouge">eToken</code>).</p>
+
+<p>Replace <code class="highlighter-rouge">/path/to/library</code> with the path to your token’s library:</p>
+
+<ul>
+  <li>if your token is supported by <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">OpenSC</a>, type <code class="highlighter-rouge">/usr/lib64/opensc-pkcs11.so</code>;</li>
+  <li>if you have a SafeNet token and needed to install <a href="/en/2019/06/28/using-smart-cards-on-opensuse-linux/">SAC</a> (like me), type <code class="highlighter-rouge">/usr/lib64/libeToken.so</code>;</li>
+  <li>for other token models, ask your token vendor or your certificate authority which path should be informed.</li>
+</ul>
+
+<p>I currently use a <a href="https://safenet.gemalto.com/multi-factor-authentication/authenticators/pki-usb-authentication/etoken-5110-usb-token/">SafeNet eToken 5110</a>. So, for me, that command ended like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ modutil -dbdir sql:.pki/nssdb/ -add "eToken" -libfile /usr/lib64/libeToken.so
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>modutil</strong> alerts you that you need to close your browser:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>WARNING: Performing this operation while the browser is running could cause
+corruption of your security databases. If the browser is currently running,
+you should exit browser before continuing this operation. Type
+'q &lt;enter&gt;' to abort, or &lt;enter&gt; to continue:
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Close any running web browsers and hit <strong>Enter</strong>. When the command finishes, you can reopen them:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Module "eToken" added to database.
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You can verify that the token has been successfully added by running:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+</pre></td><td class="rouge-code"><pre>$ modutil -dbdir sql:.pki/nssdb/ -list
+
+Listing of PKCS #11 Modules
+-----------------------------------------------------------
+  1. NSS Internal PKCS #11 Module
+	   uri: pkcs11:library-manufacturer=Mozilla%20Foundation;library-description=NSS%20Internal%20Crypto%20Services;library-version=3.45
+	 slots: 2 slots attached
+	status: loaded
+
+	 slot: NSS Internal Cryptographic Services
+	token: NSS Generic Crypto Services
+	  uri: pkcs11:token=NSS%20Generic%20Crypto%20Services;manufacturer=Mozilla%20Foundation;serial=0000000000000000;model=NSS%203
+
+	 slot: NSS User Private Key and Certificate Services
+	token: NSS Certificate DB
+	  uri: pkcs11:token=NSS%20Certificate%20DB;manufacturer=Mozilla%20Foundation;serial=0000000000000000;model=NSS%203
+
+  2. eToken
+	library name: /usr/lib64/libeToken.so
+	   uri: pkcs11:library-manufacturer=SafeNet,%20Inc.;library-description=SafeNet%20eToken%20PKCS%2311;library-version=9.0
+	 slots: 10 slots attached
+	status: loaded
+
+	 slot: AKS ifdh [eToken 5110 SC] 00 00
+	token: Vinicius
+	  uri: pkcs11:token=Vinicius;manufacturer=SafeNet,%20Inc.;serial=026a102c;model=eToken
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 0
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 1
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 2
+	token:
+	  uri: pkcs11:
+
+	 slot: ETOKEN HID READER 3
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+
+	 slot:
+	token:
+	  uri: pkcs11:
+-----------------------------------------------------------
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="logging-in-to-a-website-using-a-digital-certificate">Logging in to a website using a digital certificate</h2>
+
+<p>Let’s see how to access a smart card enabled website with Chrome.</p>
+
+<p>As I live in Brazil, I’m going to use Brazilian <a href="https://cav.receita.fazenda.gov.br/">eCAC</a> as example. Use whatever smart card enabled website you may have access.</p>
+
+<p>Make sure your smart card is plugged in.</p>
+
+<p>Navigate to your chosen website and choose to log in using your digital certificate:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/chrome-token-01.jpg" title="">
+<img src="/files/2019/09/chrome-token-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Enter the PIN for your smart card and click <strong>Unlock</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/chrome-token-02-en.jpg" title="">
+<img src="/files/2019/09/chrome-token-02-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select the certificate to use and click <strong>OK</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/chrome-token-03-en.jpg" title="">
+<img src="/files/2019/09/chrome-token-03-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Check the website displays your information and you successfully logged in:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/09/chrome-token-04-en.jpg" title="">
+<img src="/files/2019/09/chrome-token-04-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Now you are ready to access websites with your smart card and use it in other applications.</p>
+
+<p>Have a lot of fun!</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>See how you can use your digital certificate in openSUSE:</p>
+
+<ul>
+  <li><a href="/en/2019/07/02/sending-digitally-signed-emails-with-thunderbird/">Sending digitally signed emails with Thunderbird</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://help.ubuntu.com/community/CommonAccessCard#Google_Chrome.2FChromium_Setup">CommonAccessCard - Community Help Wiki - Ubuntu</a></li>
+  <li><a href="https://homepage.ruhr-uni-bochum.de/jan.holthuis/posts/smartcard-authentification-in-chrome">Smartcard authentification in Chromium - Jan Holthuis</a></li>
+</ul>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Would you buy me a coffee?" style='max-width: 48px;'>
+    <div class="media-body">
+        If you really liked it, if it was really helpful for you, is it worth a coffee? If you want, you can "buy me a coffee" with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US" title="PayPal" target="_blank">PayPal</a> or <a href="/en/contribute">contribute to the project in other ways</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_7gt3 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Ads</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Donate
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>You can make a one-time donation quickly with <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-en.gif' alt='PayPal' target='_blank'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="6MZ4CVA2WXLKA" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Or make monthly donations via one of these services:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Patreon' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/patreon.png' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Patreon</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='Ko-fi' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/ko-fi.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Ko-fi</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/en/contribute">More info and other ways to contribute ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Today you are going to see how to set up the Google Chrome web browser to use digital certificates stored on criptographic media, such as smart cards or tokens. Same instructions for Chrome apply to its open source base Chromium. To test your setup, you are going to log in to a smart card enabled...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2019/09/chrome-token.png"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2019/09/26/configurando-certificado-digital-no-navegador-google-chrome-chromium/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

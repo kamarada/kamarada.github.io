@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="The PinePhone is an affordable Linux smartphone created by PINE64. It is ideal for Linux fans looking for an alternative to the most common Android and iOS d...">
+    <link rel="canonical" href="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/en/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://linuxkamarada.com/pt/2020/10/14/pinephone-o-smartphone-que-roda-linux-saiba-tudo-sobre-ele/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://linuxkamarada.com/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-11-02 22:45:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="The PinePhone is an affordable Linux smartphone created by PINE64. It is ideal for Linux fans looking for an alternative to the most common Android and iOS d..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2020/10/pinephone-manjaro-banner.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="PinePhone, the Linux-based smartphone: everything you need to know about it" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1134 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                The website has moved
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>It is now at: <strong>linuxkamarada.com</strong>.</p><p>Please, update your link or bookmark.</p><p>You are going be redirected to this same page at the new address in a few seconds.</p><p>If that does not happen, <a href="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">click here</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/',
+                    title: document.title,
+                    description: 'The PinePhone is an affordable Linux smartphone created by PINE64. It is ideal for Linux fans looking for an alternative to the most common Android and iOS d...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/contribute">Contribute</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2020/10/14/pinephone-o-smartphone-que-roda-linux-saiba-tudo-sobre-ele/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/contribute">Contribute</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.en.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/" itemprop="mainEntityOfPage url">
+                PinePhone, the Linux-based smartphone: everything you need to know about it
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-11-02">
+                    <a href="/2020/11/02/">
+                        
+    Nov 2, 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-11-02" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-manjaro-banner.jpg" title="">
+<img src="/files/2020/10/pinephone-manjaro-banner.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The <strong><a href="https://www.pine64.org/pinephone/">PinePhone</a></strong> is an affordable <a href="https://www.kernel.org/linux.html">Linux</a> smartphone created by <a href="https://www.pine64.org/">PINE64</a>. It is ideal for Linux fans looking for an alternative to the most common <a href="https://www.android.com/">Android</a> and <a href="https://www.apple.com/ios/">iOS</a> devices. PinePhone users have full control over the phone: in addition to the <a href="https://opensource.org/osd-annotated">open source</a> Linux system, it has six hardware kill switches for disabling components that are critical for security and privacy (such as the camera and GPS). Also, the phone is assembled with screws so it’s easy to disassemble it and replace parts for repairs or upgrades.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-switches.jpg" title="Hardware kill switches allow you to disable hardware components: a remarkable difference from PinePhone to other more common smartphones">
+<img src="/files/2020/10/pinephone-switches.jpg" alt="Hardware kill switches allow you to disable hardware components: a remarkable difference from PinePhone to other more common smartphones" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 400px" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Hardware kill switches allow you to disable hardware components: a remarkable difference from PinePhone to other more common smartphones</p>
+
+</em>
+
+</div>
+
+<h2 id="made-by-pine64">Made by PINE64</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pine64-logo.png" title="">
+<img src="/files/2020/10/pine64-logo.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.pine64.org/">PINE64</a> is a community-driven company focused on creating high-quality, low-cost ARM devices that run mainline Linux — as well as any other operating systems that you port to them. PINE64 made its debut with the <a href="https://www.pine64.org/devices/single-board-computers/pine-a64/">PINE A64</a>, a single-board computer (similar to the <a href="/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">Raspberry Pi</a>), which successfully launched on the <a href="https://www.kickstarter.com/">Kickstarter</a> crowdfunding platform in 2015. Since then, PINE64 has launched several other devices, both for designers and end users. Its product line based on the ARM architecture and the Linux system includes:</p>
+
+<ul>
+  <li>the <a href="https://www.pine64.org/devices/single-board-computers/pine-a64/">PINE A64</a> and <a href="https://www.pine64.org/devices/single-board-computers/rock64/">ROCK64</a> single board computers;</li>
+  <li>the <a href="https://www.pine64.org/pinebook/">PineBook</a> laptop;</li>
+  <li>the <a href="https://www.pine64.org/pinephone/">PinePhone</a> smartphone;</li>
+  <li>the <a href="https://www.pine64.org/pinetab/">PineTab</a> tablet; and</li>
+  <li>the <a href="https://www.pine64.org/pinetime/">PineTime</a> smartwatch.</li>
+</ul>
+
+<p>Have you ever thought of using Linux on all your devices? As for PINE64, that will be possible.</p>
+
+<h2 id="arm-architecture">ARM architecture</h2>
+
+<p>PinePhone is based on the <a href="https://en.wikipedia.org/wiki/ARM_architecture">ARM</a> architecture, as well as the Raspberry Pi and most Android smartphones.</p>
+
+<p>Then, does that mean that I will be able to use the apps I downloaded from the <a href="https://play.google.com/store/">Play Store</a> on my PinePhone with Linux? Well, it’s not that simple…</p>
+
+<p>Note that you are actually talking about two different operating systems: it is true that <a href="https://www.howtogeek.com/189036/android-is-based-on-linux-but-what-does-that-mean/">Android is based on the Linux kernel</a>, but that does not make Android a Linux distribution like <a href="https://www.opensuse.org/">openSUSE</a> or <a href="https://ubuntu.com/">Ubuntu</a>. Android apps are developed for Android, not for Linux. The same logic applies to programs for Linux. So if you copy an app from a smartphone with Android to a PinePhone with Linux (or vice-versa), it won’t work.</p>
+
+<p>The same happens if you have a computer with Windows and another computer with Linux: they may have the same architecture, but as their operating systems are different, you can’t just copy applications from one to the other.</p>
+
+<p>Because of that, don’t expect that you will just unbox your PinePhone and install <a href="https://www.whatsapp.com/">WhatsApp</a> or <a href="https://www.instagram.com/">Instagram</a> on it, for example. If you need to use Android apps on the PinePhone, at the moment there are two solutions you can try:</p>
+
+<ul>
+  <li>install Android on the PinePhone: there is a project called <a href="https://github.com/GloDroid/glodroid_manifest">GloDroid</a>, which aims to port Android to PinePhone, Raspberry Pi and other devices</li>
+  <li>use a software compatibility layer that allows you to run Android apps on Linux, such as <a href="https://anbox.io/">Anbox</a> (it’s somehow similar to <a href="https://www.winehq.org/">Wine</a>, which allows you to use Windows programs on Linux)</li>
+</ul>
+
+<p>You can try them, but they are not guaranteed to work. I myself have not tested them yet, for now I just know they exist.</p>
+
+<p>Ideally, developers should release versions of their applications for Linux ARM devices.</p>
+
+<h2 id="pinephone-braveheart-edition">PinePhone BraveHeart Edition</h2>
+
+<p>PINE64 started selling the PinePhone to the general public in <a href="https://www.pine64.org/2019/11/05/brave-heart-edition-pinephones/">November 2019</a> and shipped the purchased units in <a href="https://www.pine64.org/2020/01/15/pinephones-start-shipping-all-you-want-to-know/">January 2020</a>. The first edition of the PinePhone was named BraveHeart and was intended for early adopters and software developers. It wasn’t preloaded with an operating system, but just a <a href="https://wiki.pine64.org/index.php/PinePhone_Software_Releases#Factory_Test_OS">factory test image</a> instead. The user needed to download and install a Linux distribution — or even create one.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-factory-test.jpg" title="The factory test image preloaded on the PinePhone BraveHeart">
+<img src="/files/2020/10/pinephone-factory-test.jpg" alt="The factory test image preloaded on the PinePhone BraveHeart" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 400px;" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>The factory test image preloaded on the PinePhone BraveHeart</p>
+
+</em>
+
+</div>
+
+<p>Some of the Linux distros that already supported the PinePhone since that beginning included: <a href="https://ubports.com/">Ubuntu Touch (UBports)</a>, <a href="https://postmarketos.org/">postmarketOS</a>, <a href="https://www.plasma-mobile.org/get/">KDE Neon (Plasma Mobile)</a> and <a href="http://www.webos-ports.org/">LuneOS</a>.</p>
+
+<p>The following image summarizes the PinePhone specs. You can check the complete technical specifications at the end of this text.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-specs.jpg" title="PinePhone specs brief">
+<img src="/files/2020/10/pinephone-specs.jpg" alt="PinePhone specs brief" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>PinePhone specs brief</p>
+
+</em>
+
+</div>
+
+<p>It’s a humble phone indeed, it doesn’t compare to a high-end Android smartphone or an <a href="https://www.apple.com/iphone/">iPhone</a>. But it is more than enough to entertain geeks looking for fun.</p>
+
+<h2 id="pinephone-community-edition">PinePhone Community Edition</h2>
+
+<p>The purpose of the PinePhone isn’t only to deliver a functioning Linux phone to end-users, but also to encourage the creation of a whole market and ecosystem for it. PINE64 has supported Linux distros that develop for the PinePhone.</p>
+
+<p>Thus, PINE64 has been making PinePhone editions preloaded with Linux distributions. For each unit sold, <a href="https://www.pine64.org/2019/08/19/its-time-to-start-giving-back/">PINE64 donates part of their income to the included distribution</a>.</p>
+
+<p>The first PinePhone Community Edition featured Ubuntu Touch (UBports) with the <a href="https://ubports.com/blog/ubport-blogs-news-1/post/lomiri-new-name-same-great-unity8-115">Lomiri</a> (formerly <a href="https://unity8.io/">Unity8</a>) user interface. It began taking orders in <a href="https://www.pine64.org/2020/04/02/pinephone-ubports-community-edition-pre-orders-now-open/">April</a> and shipped in May.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-ubports.png" title="">
+<img src="/files/2020/10/pinephone-ubports.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px;" />
+</a>
+
+</div>
+
+<p>The second PinePhone Community Edition was announced in <a href="https://www.pine64.org/2020/06/15/june-update-postmarketos-ce-pinephone-shipping-pine64-cluster/">June</a>, it featured postmarketOS with the <a href="https://wiki.postmarketos.org/wiki/Phosh">Phosh</a> interface (based on <a href="https://www.gnome.org/">GNOME</a>) and shipped in late August.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-postmarketos.png" title="">
+<img src="/files/2020/10/pinephone-postmarketos.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px;" />
+</a>
+
+</div>
+
+<p>This edition brought a new optional version called Convergence Package with more RAM (3GB instead of 2GB), double the internal storage (32GB versus 16GB) and a compatible USB-C dock for connecting a monitor via HDMI, desktop peripherals such as mouse and keyboard via USB, etc so the PinePhone could be used as if it were a desktop.</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/yBeza4UNOm8" allowfullscreen=""></iframe>
+</div>
+
+<p>The third PinePhone Community Edition, available for preorder since <a href="https://www.pine64.org/2020/08/31/pinephone-manjaro-community-edition/">September</a>, features <a href="https://manjaro.org/">Manjaro</a> with Phosh and is also available in both the regular and Convergence Package versions. Shipping <a href="https://forum.pine64.org/showthread.php?tid=11959">already started</a>, but it’s still possible to order it.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-manjaro.png" title="">
+<img src="/files/2020/10/pinephone-manjaro.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px;" />
+</a>
+
+</div>
+
+<p>It’s interesting to note that the PinePhone received some <a href="https://wiki.pine64.org/index.php?title=PinePhone#Hardware_revisions">hardware revisions</a> with each edition:</p>
+
+<ul>
+  <li>PinePhone BraveHeart Edition was considered version 1.1</li>
+  <li>PinePhone UBports Community Edition: version 1.2</li>
+  <li>PinePhone postmarketOS Community Edition: version 1.2a</li>
+  <li>PinePhone Manjaro Community Edition: version 1.2b</li>
+</ul>
+
+<p>Those revisions didn’t change the specs, but brought minor fixes and improvements.</p>
+
+<h2 id="supported-linux-distributions">Supported Linux distributions</h2>
+
+<p>You don’t need to be stuck with the distro your PinePhone shipped with. Unlike most smartphones that come with a vendor lock-in that prevents you from installing other operating systems, the PinePhone allows you to boot from a microSD card, which is as easy as using a <a href="/en/2015/12/09/what-is-a-livecd-dvd-usb/">LiveUSB</a> to boot a desktop. The PinePhone also allows you to flash an operating system to its internal memory using the <a href="https://wiki.pine64.org/PinePhone#Flashing_eMMC_using_Jumpdrive">Jumpdrive</a> utility.</p>
+
+<p>Besides that, all the hardware components selected by PINE64 to make the PinePhone have modules in the <a href="https://www.kernel.org/">mainline Linux kernel</a>, which makes it easy to port Linux distros for it. They did different from, for example, the Raspberry Pi Foundation, which maintains its own fork of the Linux kernel and uses hardware components from Broadcom, which require proprietary kernel modules. That’s why openSUSE is taking longer to support the Raspberry Pi.</p>
+
+<p>At the moment, there are at least <a href="https://wiki.pine64.org/index.php?title=PinePhone_Software_Releases">18 operating systems available for the PinePhone</a>, some designed from the ground up for mobile devices, such as Ubuntu Touch, others based on existing desktop Linux distributions, such as <a href="https://mobian-project.org/">Mobian</a> (Debian). The list of systems you can test on your PinePhone today includes:</p>
+
+<ul>
+  <li><a href="https://ubports.com/">Ubuntu Touch (UBports)</a></li>
+  <li><a href="https://www.plasma-mobile.org/get/">KDE Neon (Plasma Mobile)</a></li>
+  <li><a href="https://mobian-project.org/">Mobian</a> (Debian for mobile)</li>
+  <li><a href="https://pureos.net/">PureOS</a></li>
+  <li><a href="https://getfedora.org/">Fedora</a></li>
+  <li><a href="https://archlinuxarm.org">Arch Linux</a></li>
+  <li><a href="https://manjaro.org/">Manjaro</a></li>
+  <li><a href="https://www.opensuse.org/">openSUSE</a> (yes, there is an <a href="https://wiki.pine64.org/index.php?title=PinePhone_Software_Releases#openSUSE">openSUSE image</a> being developed, we’ll talk about it soon)</li>
+  <li><a href="https://postmarketos.org/">postmarketOS</a></li>
+  <li><a href="https://www.gentoo.org/">Gentoo</a></li>
+  <li><a href="https://github.com/GloDroid/glodroid_manifest">GloDroid</a></li>
+</ul>
+
+<p>Note that not all of those images are officially provided by the distributions themselves (many are contributed by users) and most are in development. So, today, not all of the PinePhone features work on all Linux distributions.</p>
+
+<p>There is a <a href="https://xnux.eu/p-boot-demo/">multiboot image</a> that allows you to test 13 distributions from a microSD card.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-multiboot-image.jpg" title="">
+<img src="/files/2020/10/pinephone-multiboot-image.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-height: 400px;" />
+</a>
+
+</div>
+
+<h2 id="where-to-buy-how-does-shipping-work">Where to buy? How does shipping work?</h2>
+
+<p>You won’t find the PinePhone on retailer stores together with other more common smartphones, at least not for now. If you want to buy a PinePhone, you have to access the <a href="https://pine64.com/">Pine Store</a>. There you will find not only the PinePhone itself, but also accessories for it (such as protective cases and screen protectors) and spare parts (such as the mainboard, the battery, the screen glass and others) in case you need to replace them in the future.</p>
+
+<div class="row">
+    <div class="col-md">
+        <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-pine-store.jpg" title="PinePhone for sale at the Pine Store">
+<img src="/files/2020/10/pinephone-pine-store.jpg" alt="PinePhone for sale at the Pine Store" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>PinePhone for sale at the Pine Store</p>
+
+</em>
+
+</div>
+
+    </div>
+    <div class="col-md">
+        <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-parts.jpg" title="PinePhone spare parts at the Pine Store">
+<img src="/files/2020/10/pinephone-parts.jpg" alt="PinePhone spare parts at the Pine Store" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>PinePhone spare parts at the Pine Store</p>
+
+</em>
+
+</div>
+
+    </div>
+</div>
+
+<p>Since the PinePhone contains a lithium-ion battery, the Pine Store does not allow combining it with other products, the PinePhone can only be shipped on its own, separately from other items. The reason for that was not clear for me, but I believe it is because of restrictions imposed to international air freight services. If you want to buy other PINE64 products besides the PinePhone, you will have to place more than one order.</p>
+
+<p>Payment is made using a credit card, either via <a href="https://www.paypal.com/">PayPal</a> or by entering the credit card data directly on the website, in which case the payment is processed by <a href="https://stripe.com/">Stripe</a>.</p>
+
+<p>Speaking of PayPal, in the PinePhone product page, there is an information that needs to be noticed: a warning about possible hardware defects.</p>
+
+<blockquote>
+  <p>Small numbers (1-3) of stuck or dead pixels are a characteristic of LCD screens. This is very rare, but normal and should not be considered a defect. When fulfilling the purchase, please bear in mind that we are offering the PinePhone at this price as a community service to PINE64 and Manjaro communities. If you think that a minor dissatisfaction, such as a dead pixel, will prompt you to file a PayPal dispute then please do not purchase the PinePhone. Thank you!</p>
+</blockquote>
+
+<p>Another difference from usual orders is that the PinePhone is not shipped as soon as you buy it: the Pine Store keeps it available for sale for a while, usually a month or two, orders are gathered, and then the purchased units are sent all at once only the following month. The <a href="https://www.pine64.org/shipping/">Shipping Information</a> page on the PINE64 website estimates when product batches are going to be shipped. The PinePhone is always shipped by a courier service (currently, <a href="https://www.dhl.com/">DHL</a>).</p>
+
+<p>Accessories, unlike the handset, are shipped immediately and you can choose between courier and postal services.</p>
+
+<p>When you purchase the PinePhone, you will receive an email confirming the order. When the PinePhone is sent, you will receive another email with the tracking code for the shipment.</p>
+
+<p>The edition that is now on sale <a href="https://forum.pine64.org/showthread.php?tid=11959">already started to ship</a>. Selling is probably going to end soon.</p>
+
+<h2 id="warranty">Warranty</h2>
+
+<p>It’s important to test all of the PinePhone features as soon as you receive it, as the product page informs it has a <strong>30-day warranty</strong>. You may need to flash other Linux distributions to the microSD card to be able to test all of the features.</p>
+
+<h2 id="how-much-is-the-pinephone">How much is the PinePhone?</h2>
+
+<p>The PinePhone costs 150 dollars (the store actually says $149.99, but I always round up to avoid <a href="https://en.wikipedia.org/wiki/Psychological_pricing">psychological pricing</a>). The Convergence Package, which adds the dock, increases the RAM memory and doubles the internal storage, costs 200 dollars ($199.99), so $50 more. For each PinePhone sold, $10 will be donated for the preloaded distro (currently, Manjaro).</p>
+
+<p>Thinking on dollars, it’s not an unrealistic price. It is close to some of the <a href="https://www.androidcentral.com/best-cheap-android-phones">cheapest Android smartphones</a>, like the <a href="https://www.gsmarena.com/motorola_moto_e_(2020)-10287.php">Motorola Moto E</a>, which can be found on <a href="https://www.amazon.com/dp/B086H3HH5V">Amazon</a> by the same $150. It is true that comparing specs the Moto E beats the PinePhone, but who buys a PinePhone probably prefers it because it’s a Linux-based smartphone that puts the user in control.</p>
+
+<p>Note that these prices do not include import taxes (where appropriate) and shipping.</p>
+
+<h2 id="mind-the-import-taxes">Mind the import taxes!</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/my-pinephone.jpg" title="My PinePhone">
+<img src="/files/2020/10/my-pinephone.jpg" alt="My PinePhone" class="img-fluid img-thumbnail" itemprop="contentUrl" style="max-width: 400px" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>My PinePhone</p>
+
+</em>
+
+</div>
+
+<p>I bought the PinePhone postmarketOS Community Edition with the dock (the Convergence Package, $199.99), as well as a <a href="https://pine64.com/product/pinephone-hard-protective-case/">hard case</a> ($9.99) and a <a href="https://pine64.com/product/pinephone-tempered-glass-screen-protector/">glass screen protector</a> ($4.99). Due to the lithium-ion battery issue, I placed 2 orders: one for the phone and other for the accessories. The accessories were exempted from import taxes, but the phone was not.</p>
+
+<p>My PinePhone was shipped by DHL. It was told on the <a href="https://forum.pine64.org/showthread.php?tid=11134">PINE64 forum</a> that the phones after leaving Hong Kong should arrive at their destinations within 5-10 days regardless of the geographic location (depending on import procedures in each country, of course). The service of this courier company is indeed very good and fast. But to achieve such a fast delivery, <a href="https://www.dhl.com/en/express/customs_support/duties_taxes/duties_taxes_receivers.html">DHL pays the customs authority on your behalf</a> for any import taxes that are due on the product, and then delivers it to you after you repay them.</p>
+
+<p>I live in Brazil, <a href="https://www.ft.com/content/d5251061-1f09-3beb-94c9-fa7c09c622fa">a country known for charging high taxes and offering poor public services</a>. Only on import taxes I had to pay 1,274.17 Brazilian reais — 221.98 dollars, in current quotation (1 USD = 5.74 BRL). So, import taxes costed me more than the cell phone itself.</p>
+
+<p>Until then, I had bought abroad just a few times, and I had been “lucky” that my imports were exempted from import taxes. This time, I’ve got this bad surprise. Because of what happened to me, here is my advice: get informed about import taxes in your country. International shopping is not my expertise, so I suggest that you search and read about it on other sites.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Perhaps you have noticed, but in case you haven’t, it’s important to make it very clear: today, the PinePhone is still unable to replace the smartphone you use daily. It is still more akin to a hardware and software prototype than a completed product. The user experience is still rough, the user interface isn’t glamorous, there are still just a few compatible apps, but in part this is what makes the PinePhone so exciting: it is a technology that is beginning right now!</p>
+
+<p>At the moment, the idea is that it will be acquired by enthusiastic users and software developers who will assist in developing the product.</p>
+
+<p>It is also worth it noticing that the PinePhone is a cheap ($150) cell phone, produced in limited batches by a company with no previous experience in the smartphone industry. Flagship-level performance is out of the question for this phone, which isn’t trying to compete with Samsung’s or Apple’s latest handsets.</p>
+
+<p>PinePhone’s ambitions are more “humble”: to provide an open, reliable, “hackable” (and possibly upgradeable) smartphone based on the mainline Linux kernel.</p>
+
+<p>Let’s see what the community around the PinePhone can accomplish. We probably won’t see it on the shelves of big stores anytime soon. But for people who appreciate the combination of free software and hardware kill switches, which are perfect for privacy and allow full user control over the phone, the PinePhone is certainly a very promising option.</p>
+
+<h2 id="references">References</h2>
+
+<p>In addition to the various links spread across the text, to write it I also consulted the following:</p>
+
+<ul>
+  <li><a href="https://wiki.pine64.org/index.php?title=PinePhone">PinePhone - PINE64 wiki</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/PinePhone">PinePhone - Wikipedia</a></li>
+  <li><a href="https://pine64.com/product/pinephone-community-edition-manjaro-with-convergence-package-limited-edition-linux-smartphone/">PINEPHONE – “Community Edition: Manjaro with Convergence Package” Limited Edition Linux SmartPhone – Pine Store</a></li>
+  <li><a href="https://postmarketos.org/blog/2020/06/15/pinephone-postmarketos-community-edition/">postmarketOS // PinePhone: postmarketOS community edition</a></li>
+  <li><a href="https://www.androidpolice.com/2020/08/13/the-linux-based-pinephone-is-the-most-interesting-smartphone-ive-tried-in-years/">The Linux-based PinePhone is the most interesting smartphone I’ve tried in years - Android Police</a></li>
+  <li><a href="https://www.omgubuntu.co.uk/2019/11/pinephone-specs-price-release-date">PinePhone: What You Need to Know About This Linux Phone - OMG! Ubuntu!</a></li>
+  <li><a href="https://www.omgubuntu.co.uk/2020/07/buy-pinephone-postmarketos">New PinePhone with 3GB RAM and USB Dock Goes on Sale - OMG! Ubuntu!</a></li>
+  <li><a href="https://wiki.pine64.org/images/f/f7/USER_MANUAL_-_QUICK_START_GUIDE_EN_GER_FR_ESP_V1.3.pdf">PinePhone User Manual - Quick Start Guide (EN)</a></li>
+</ul>
+
+<h2 id="technical-specifications">Technical specifications</h2>
+
+<ul>
+  <li><strong>Mobile networks:</strong>
+    <ul>
+      <li>2G (GSM/GPRS/EDGE)</li>
+      <li>3G (UMTS/HSPA)</li>
+      <li>4G (LTE)</li>
+      <li>all the worldwide bands</li>
+      <li>micro-SIM card</li>
+    </ul>
+  </li>
+  <li><strong>Wireless networks:</strong>
+    <ul>
+      <li>Wi-Fi 802.11 b/g/n, single-band (2.4GHz), hotspot capable</li>
+      <li>Bluetooth 4.0, A2DP</li>
+    </ul>
+  </li>
+  <li><strong>Location:</strong>
+    <ul>
+      <li>GPS/GLONASS/BeiDou/Galileo/QZSS, with A-GPS</li>
+    </ul>
+  </li>
+  <li><strong>Display:</strong>
+    <ul>
+      <li>HD IPS LCD</li>
+      <li>5.95 inches</li>
+      <li>1440 × 720 pixels resolution, 18:9 ratio</li>
+      <li>16 million colors</li>
+      <li>hardened glass</li>
+      <li>capacitive touchscreen</li>
+    </ul>
+  </li>
+  <li><strong>Platform:</strong>
+    <ul>
+      <li>Allwinner A64 system-on-a-chip (SoC)</li>
+      <li>processor (CPU): ARM Cortex-A53</li>
+      <li>quad core</li>
+      <li>1.2GHz clock</li>
+      <li>64-bit ARMv8 architecture</li>
+      <li>graphics (GPU): ARM Mali-400 MP2</li>
+    </ul>
+  </li>
+  <li><strong>Memory:</strong>
+    <ul>
+      <li>system memory: 2GB or 3GB LPDDR3 SDRAM</li>
+      <li>internal storage: 16GB or 32GB eMMC</li>
+      <li>microSD card slot, support up to 2TB, SDHC/SDXC, bootable</li>
+    </ul>
+  </li>
+  <li><strong>Cameras:</strong>
+    <ul>
+      <li>rear (main) camera: 5MP, 1/4”, LED flash</li>
+      <li>front (selfie) camera: 2MP, 1/5”, f/2.8 aperture</li>
+    </ul>
+  </li>
+  <li><strong>Sound:</strong>
+    <ul>
+      <li>built-in mono loudspeaker</li>
+      <li>built-in microphone</li>
+      <li>3.5mm jack connector for stereo headphone with microphone</li>
+    </ul>
+  </li>
+  <li><strong>Sensors:</strong>
+    <ul>
+      <li>accelerometer</li>
+      <li>gyro</li>
+      <li>proximity</li>
+      <li>ambient light</li>
+      <li>compass</li>
+      <li>barometer</li>
+    </ul>
+  </li>
+  <li><strong>Battery:</strong>
+    <ul>
+      <li>lithium-ion, removable, 3,000 mAh</li>
+      <li>Samsung J7 form-factor</li>
+      <li>requires a 15W (5V 3A) charger</li>
+    </ul>
+  </li>
+  <li><strong>External buttons and connectors:</strong>
+    <ul>
+      <li>volume up/down and power buttons</li>
+      <li>USB-C port (for charging, transfering data and connecting the dock)</li>
+    </ul>
+  </li>
+  <li><strong>Body:</strong> matte black finished plastic</li>
+  <li><strong>Other:</strong>
+    <ul>
+      <li>hardware kill switches:
+        <ul>
+          <li>LTE and GPS</li>
+          <li>Wi-Fi and Bluetooth</li>
+          <li>microphone</li>
+          <li>rear camera</li>
+          <li>front camera</li>
+          <li>headphone</li>
+        </ul>
+      </li>
+      <li>expansion pins for serial connection using the I2C protocol</li>
+      <li>multi-color notification LED</li>
+      <li>vibration</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-pins.jpg" title="Breakout board for the PinePhone&apos;s expansion pins. Source of images: [https://github.com/SMR404/PinephonePogoBreakout](https://github.com/SMR404/PinephonePogoBreakout)">
+<img src="/files/2020/10/pinephone-pins.jpg" alt="Breakout board for the PinePhone&apos;s expansion pins. Source of images: [https://github.com/SMR404/PinephonePogoBreakout](https://github.com/SMR404/PinephonePogoBreakout)" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Breakout board for the PinePhone's expansion pins. Source of images: <a href="https://github.com/SMR404/PinephonePogoBreakout">https://github.com/SMR404/PinephonePogoBreakout</a></p>
+
+</em>
+
+</div>
+
+<ul>
+  <li><strong>Size and weight of the phone:</strong>
+    <ul>
+      <li>height: 160.5mm</li>
+      <li>width: 76.6mm</li>
+      <li>depth: 9.2mm</li>
+      <li>weight: between 180 and 200 grams</li>
+    </ul>
+  </li>
+  <li><strong>Package contents:</strong>
+    <ul>
+      <li>PinePhone</li>
+      <li>USB-A to USB-C cable</li>
+      <li>quick start guide (you can see a PDF copy of it <a href="https://wiki.pine64.org/images/f/f7/USER_MANUAL_-_QUICK_START_GUIDE_EN_GER_FR_ESP_V1.3.pdf">here</a>)</li>
+      <li>nano-SIM to micro-SIM adapter</li>
+      <li>USB-C docking bar (optional): contains HDMI video output,
+ 2 USB-A ports, 10/100Mbps Ethernet port and USB-C port (for power)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/10/pinephone-sim-adapter.jpg" title="Only later I realized that a nano-SIM to micro-SIM adapter came in the box.">
+<img src="/files/2020/10/pinephone-sim-adapter.jpg" alt="Only later I realized that a nano-SIM to micro-SIM adapter came in the box." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Only later I realized that a nano-SIM to micro-SIM adapter came in the box.</p>
+
+</em>
+
+</div>
+
+<ul>
+  <li><strong>Size and weight of the package:</strong>
+    <ul>
+      <li>length: 18cm</li>
+      <li>width: 10cm</li>
+      <li>height: 4cm</li>
+      <li>weight: 0.5kg</li>
+    </ul>
+  </li>
+</ul>
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Would you buy me a coffee?" style='max-width: 48px;'>
+    <div class="media-body">
+        If you really liked it, if it was really helpful for you, is it worth a coffee? If you want, you can "buy me a coffee" with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US" title="PayPal" target="_blank">PayPal</a> or <a href="/en/contribute">contribute to the project in other ways</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_7gt3 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Ads</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Donate
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>You can make a one-time donation quickly with <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-en.gif' alt='PayPal' target='_blank'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="6MZ4CVA2WXLKA" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Or make monthly donations via one of these services:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Patreon' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/patreon.png' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Patreon</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='Ko-fi' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/ko-fi.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Ko-fi</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/en/contribute">More info and other ways to contribute ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="The PinePhone is an affordable Linux smartphone created by PINE64. It is ideal for Linux fans looking for an alternative to the most common Android and iOS devices. PinePhone users have full control over the phone: in addition to the open source Linux system, it has six hardware kill switches for disabling components that are...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2020/10/pinephone-manjaro-banner.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2020/10/14/pinephone-o-smartphone-que-roda-linux-saiba-tudo-sobre-ele/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2020/11/02/pinephone-the-linux-based-smartphone-everything-you-need-to-know-about-it/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="Tradicionalmente, sistemas cujo acesso é restrito autenticam seus usuários por uma combinação de nome de usuário (mais conhecido como login) e senha.Um ataqu...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">
+    
+    
+        
+            <link rel="alternate" hreflang="en" href="https://linuxkamarada.com/en/2020/01/07/mitigating-brute-force-attacks-on-linux-using-fail2ban/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-12-14 00:50:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Tradicionalmente, sistemas cujo acesso é restrito autenticam seus usuários por uma combinação de nome de usuário (mais conhecido como login) e senha.Um ataqu..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2019/12/fail2ban.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Mitigando ataques de força bruta no Linux com fail2ban" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1272 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/',
+                    title: document.title,
+                    description: 'Tradicionalmente, sistemas cujo acesso é restrito autenticam seus usuários por uma combinação de nome de usuário (mais conhecido como login) e senha.Um ataqu...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2020/01/07/mitigating-brute-force-attacks-on-linux-using-fail2ban/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/" itemprop="mainEntityOfPage url">
+                Mitigando ataques de força bruta no Linux com fail2ban
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-12-14">
+                    <a href="/2019/12/14/">
+                        
+    14 de
+    
+    Dezembro
+    
+    de 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-01-07" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/12/fail2ban.jpg" title="">
+<img src="/files/2019/12/fail2ban.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Tradicionalmente, sistemas cujo acesso é restrito autenticam seus usuários por uma combinação de nome de usuário (mais conhecido como <em>login</em>) e senha.</p>
+
+<p>Um <a href="https://www.vivaolinux.com.br/artigo/O-que-e-e-como-funciona-um-ataque-de-forca-bruta"><strong>ataque de força bruta</strong></a> (do inglês <em>brute force attack</em>) é um tipo de ataque que consiste em tentar adivinhar uma combinação de <em>login</em> e senha que libere o acesso ao sistema. Se o invasor souber pelo menos um <em>login</em>, já tem meio caminho andado, porque aí só precisa descobrir a senha. Normalmente, isso é feito na base da tentativa e erro, testando todas as combinações de senhas possíveis (por exemplo, <code class="highlighter-rouge">aaaa</code>, <code class="highlighter-rouge">aaab</code>, <code class="highlighter-rouge">aaac</code> … <code class="highlighter-rouge">1234</code>, <code class="highlighter-rouge">1235</code>, etc).</p>
+
+<p>É um dos tipos de ataque mais simples e antigos, mas que ainda acontece e — pasme — por vezes funciona, uma vez que muitos usuários criam senhas curtas, fracas, fáceis de adivinhar ou mesmo óbvias. Dependendo do tamanho e da complexidade da senha, um ataque de força bruta pode levar segundos ou séculos para descobri-la.</p>
+
+<p>Administradores de sistemas <a href="https://www.vivaolinux.com.br/linux/">Linux</a> devem proteger os servidores contra tentativas de ataque e acessos não autorizados. Já falamos do <a href="/pt/2019/11/18/proteja-se-com-o-firewall-iptables/"><em>firewall</em> <strong>iptables</strong></a>, que atua nas camadas de rede e transporte do modelo TCP/IP. Ele é capaz de impedir ataques de força bruta, que ocorrem na camada de aplicação, com o auxílio de uma ferramenta chamada <strong>fail2ban</strong>.</p>
+
+<h2 id="o-que-é-o-fail2ban">O que é o fail2ban?</h2>
+
+<p>O <strong><a href="https://www.fail2ban.org/">fail2ban</a></strong> é um IPS (<em>Intrusion Prevention System</em>, <a href="https://www.portalgsti.com.br/sistema-prevencao-intrusos/sobre/">sistema de prevenção de intrusos</a>) na forma de um <em><a href="https://pt.wikipedia.org/wiki/Daemon_(computa%C3%A7%C3%A3o)">daemon</a></em> (processo que fica executando ao fundo) que monitora as tentativas de acesso aos serviços do sistema e age proativamente quando detecta um endereço IP que aparenta comportamento suspeito — várias tentativas de fazer <em>login</em> malsucedidas, exploração de brechas, etc.</p>
+
+<p>O <strong>fail2ban</strong> fica o tempo todo escaneando os registros (<em>logs</em>) do sistema (por exemplo: <code class="highlighter-rouge">/var/log/messages</code>, <code class="highlighter-rouge">/var/log/apache2/access_log</code>, <code class="highlighter-rouge">/var/log/apache2/error_log</code>, etc.) e “de fábrica” já é capaz de monitorar diversos serviços (por exemplo: SSH, Apache, FTP, SMTP, MySQL, etc). Geralmente, a ação adotada pelo <strong>fail2ban</strong> quando detecta um endereço IP suspeito é adicionar uma regra no <strong>iptables</strong> para rejeitar esse endereço, embora qualquer outra ação possa ser configurada (por exemplo, enviar um <em>e-mail</em> para o administrador).</p>
+
+<div class="alert alert-warning" role="alert">
+
+<p>Note que o <strong>fail2ban</strong> reduz a taxa de tentativas incorretas de autenticação, mas não elimina o risco inerente a uma autenticação fraca (por exemplo, se a senha de um usuário é <code>123456</code>, e um invasor iniciar seu ataque testando essa senha, conseguirá acessar o sistema em sua primeira tentativa). Para aumentar a segurança dos serviços, configure-os para usar mecanismos de autenticação mais seguros, como autenticação de dois fatores ou autenticação usando par de chaves pública e privada.</p>
+
+</div>
+
+<h2 id="instalando-o-fail2ban">Instalando o fail2ban</h2>
+
+<div class="alert alert-info" role="alert">
+
+<p>Repetindo a recomendação do <a href="/pt/2019/11/18/proteja-se-com-o-firewall-iptables/">tutorial sobre <strong>iptables</strong></a>, para acompanhar este tutorial, sugiro que você use uma máquina virtual. Com isso, você não precisa modificar as configurações do seu servidor ou <em>desktop</em> até que esteja familiarizado com o <strong>fail2ban</strong>.</p>
+
+<p>Para mais informações, leia:</p>
+
+<ul>
+  <li><a href="/pt/2019/10/08/virtualbox-a-forma-mais-facil-de-conhecer-o-linux-sem-precisar-instala-lo/">VirtualBox: a forma mais fácil de conhecer o Linux sem precisar instalá-lo</a></li>
+</ul>
+
+</div>
+
+<p>Para instalar o <strong>fail2ban</strong> no <a href="https://www.opensuse.org/">openSUSE</a> e em distribuições derivadas (como é o caso do <a href="/pt/2019/09/13/primeira-versao-beta-da-distribuicao-linux-kamarada/">Linux Kamarada</a>), execute o comando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in fail2ban
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="configurando-o-fail2ban">Configurando o fail2ban</h2>
+
+<p>Por padrão, o <strong>fail2ban</strong> mantém seus arquivos de configuração na pasta <code class="highlighter-rouge">/etc/fail2ban/</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre># cd /etc/fail2ban
+# ls -lah
+total 40K
+drwxr-xr-x 6 root root  220 dez 14 20:05 .
+drwxr-xr-x 1 root root  760 dez 14 20:05 ..
+drwxr-xr-x 2 root root 1,3K dez 14 20:05 action.d
+-rw-r--r-- 1 root root 2,3K out  4  2018 fail2ban.conf
+drwxr-xr-x 2 root root   40 mar 27  2019 fail2ban.d
+drwxr-xr-x 3 root root 1,7K dez 14 20:05 filter.d
+-rw-r--r-- 1 root root  23K mar 27  2019 jail.conf
+drwxr-xr-x 2 root root   40 mar 27  2019 jail.d
+-rw-r--r-- 1 root root   71 mar 27  2019 jail.local
+-rw-r--r-- 1 root root 2,8K mar 27  2019 paths-common.conf
+-rw-r--r-- 1 root root  975 mar 27  2019 paths-opensuse.conf
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Os principais arquivos de configuração são o <code class="highlighter-rouge">fail2ban.conf</code> e o <code class="highlighter-rouge">jail.conf</code>. Não é recomendado editá-los diretamente, porque eles pertencem ao pacote RPM <a href="https://software.opensuse.org/package/fail2ban"><strong>fail2ban</strong></a> e podem ser sobrescritos pelo sistema durante atualizações, ocasionando a perda de personalizações. Em vez de editá-los, crie cópias chamadas <code class="highlighter-rouge">fail2ban.local</code> e <code class="highlighter-rouge">jail.local</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># cp fail2ban.conf fail2ban.local
+# cp jail.conf jail.local
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O <strong>fail2ban</strong> lê primeiro os arquivos com extensão <code class="highlighter-rouge">.conf</code> e depois os <code class="highlighter-rouge">.local</code>. As configurações nos <code class="highlighter-rouge">.local</code> sobrescrevem as configurações nos <code class="highlighter-rouge">.conf</code>. Portanto, um arquivo <code class="highlighter-rouge">.local</code> não precisa ter todas as configurações que já estão no seu correspondente <code class="highlighter-rouge">.conf</code>. Uma alternativa à cópia seria criar novos arquivos de texto chamados <code class="highlighter-rouge">fail2ban.local</code> e <code class="highlighter-rouge">jail.local</code> para adicionar a eles apenas as configurações que devem diferir dos padrões.</p>
+
+<p>Se você possui conhecimento ao menos técnico de inglês, esses arquivos possuem comentários que documentam as configurações do <strong>fail2ban</strong> e são uma mão na roda.</p>
+
+<p>A seguir, veremos as principais configurações do <strong>fail2ban</strong>.</p>
+
+<h3 id="configurações-gerais-fail2banlocal">Configurações gerais (fail2ban.local)</h3>
+
+<p>O arquivo <code class="highlighter-rouge">fail2ban.conf</code> (e seu correspondente <code class="highlighter-rouge">fail2ban.local</code>) contém configurações gerais do <strong>fail2ban</strong>, como o nível de <em>log</em> e onde o <em>log</em> deve ser gravado.</p>
+
+<p>Vejamos os trechos mais relevantes desse arquivo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>[Definition]
+
+# Option: loglevel
+# Notes.: Set the log level output.
+#         CRITICAL
+#         ERROR
+#         WARNING
+#         NOTICE
+#         INFO
+#         DEBUG
+# Values: [ LEVEL ]  Default: ERROR
+#
+loglevel = INFO
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A opção <code class="highlighter-rouge">loglevel</code> define o nível de detalhamento do <em>log</em>. Por padrão, esse nível é <code class="highlighter-rouge">INFO</code>, ou seja, o <strong>fail2ban</strong> registra simples informações, assim como erros ou mensagens mais críticas. Já fornece um bom nível de detalhamento.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre># Option: logtarget
+# Notes.: Set the log target. This could be a file, SYSLOG, STDERR or STDOUT.
+#         Only one log target can be specified.
+#         If you change logtarget from the default value and you are
+#         using logrotate -- also adjust or disable rotation in the
+#         corresponding configuration file
+#         (e.g. /etc/logrotate.d/fail2ban on Debian systems)
+# Values: [ STDOUT | STDERR | SYSLOG | SYSOUT | FILE ]  Default: STDERR
+#
+logtarget = /var/log/fail2ban.log
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A opção <code class="highlighter-rouge">logtarget</code> define onde o <em>log</em> deve ser gravado. Por padrão, o <strong>fail2ban</strong> faz <em>log</em> no arquivo <code class="highlighter-rouge">/var/log/fail2ban.log</code>. Você pode consultar esse arquivo quando precisar conferir se tudo está funcionando.</p>
+
+<p>Normalmente, não é necessário alterar o <code class="highlighter-rouge">fail2ban.conf</code> (ou o <code class="highlighter-rouge">fail2ban.local</code>).</p>
+
+<h3 id="configurações-gerais-das-jaulas-jaillocal">Configurações gerais das jaulas (jail.local)</h3>
+
+<p>O arquivo <code class="highlighter-rouge">jail.conf</code> (e seu correspondente <code class="highlighter-rouge">jail.local</code>) provavelmente é o arquivo mais importante. Ele contém a declaração e configuração das <strong>jaulas</strong> (<em>jails</em>), que correspondem aos serviços monitorados pelo <strong>fail2ban</strong>. Por padrão, todas as jaulas vem desabilitadas. Você deve habilitar as que precisa e adaptar suas configurações à realidade do seu servidor.</p>
+
+<p>O arquivo <code class="highlighter-rouge">jail.local</code> é dividido em seções. Cada jaula possui sua própria seção. No início do arquivo, antes das seções da jaulas, há uma seção <code class="highlighter-rouge">[DEFAULT]</code> (padrão). As configurações nessa seção são aplicadas a todas as jaulas. Configurações específicas podem ser sobrescritas por jaulas específicas, se necessário.</p>
+
+<p>Vejamos os trechos mais relevantes da seção <code class="highlighter-rouge">[DEFAULT]</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre># The DEFAULT allows a global definition of the options. They can be overridden
+# in each jail afterwards.
+
+[DEFAULT]
+
+...
+
+# "ignoreip" can be a list of IP addresses, CIDR masks or DNS hosts. Fail2ban
+# will not ban a host which matches an address in this list. Several addresses
+# can be defined using space (and/or comma) separator.
+#ignoreip = 127.0.0.1/8 ::1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A opção <code class="highlighter-rouge">ignoreip</code> nos permite definir exceções ao monitoramento do <strong>fail2ban</strong>. O valor dessa opção é uma lista que pode conter:</p>
+
+<ul>
+  <li>endereços IP de computadores (por exemplo, <code class="highlighter-rouge">127.0.0.1</code>);</li>
+  <li>endereços IP de redes/sub-redes, com máscaras em notação <a href="https://doc.m0n0.ch/quickstartpc/intro-CIDR.html">CIDR</a> (<code class="highlighter-rouge">192.168.0.1/24</code>); e/ou</li>
+  <li>nomes de computadores, inclusive com domínio (<a href="https://pt.wikipedia.org/wiki/FQDN">FQDN</a>, <code class="highlighter-rouge">kamarada.github.io</code>).</li>
+</ul>
+
+<p>As exceções da lista devem estar separadas por espaço e/ou vírgula. O <strong>fail2ban</strong> não banirá endereços IP que se enquadrem nessa lista.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre># "bantime" is the number of seconds that a host is banned.
+bantime  = 10m
+
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds.
+findtime  = 10m
+
+# "maxretry" is the number of failures before a host get banned.
+maxretry = 5
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Na minha humilde opinião, essas opções fariam mais sentido listadas ao contrário. Vejamos.</p>
+
+<p>A opção <code class="highlighter-rouge">maxretry</code> define quantas tentativas de acesso podem ser feitas antes que ocorra o bloqueio.</p>
+
+<p>A opção <code class="highlighter-rouge">findtime</code> define durante quanto tempo as tentativas de acesso são contabilizadas.</p>
+
+<p>A opção <code class="highlighter-rouge">bantime</code> define durante quanto tempo ficará bloqueado o <em>host</em> que excedeu a quantidade limite de tentativas de acesso.</p>
+
+<p>Podemos ler a configuração padrão assim: uma pessoa que erre a senha 5 vezes (<code class="highlighter-rouge">maxretry</code>) em 10 minutos (<code class="highlighter-rouge">findtime</code>) terá seu <em>host</em> bloqueado por 10 minutos (<code class="highlighter-rouge">bantime</code>), ou seja, da última tentativa de acesso, ela terá que aguardar 10 minutos para poder tentar de novo.</p>
+
+<p>Parece uma boa configuração padrão, mas você pode mudar conforme ache necessário.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>#
+# ACTIONS
+#
+
+# Some options used for actions
+
+# Destination email address used solely for the interpolations in
+# jail.{conf,local,d/*} configuration files.
+destemail = root@localhost
+
+# Sender email address used solely for some actions
+sender = root@&lt;fq-hostname&gt;
+
+# E-mail action. Since 0.8.1 Fail2Ban uses sendmail MTA for the
+# mailing. Change mta configuration parameter to mail if you want to
+# revert to conventional 'mail'.
+mta = sendmail
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A opção <code class="highlighter-rouge">destemail</code> define o <em>e-mail</em> para o qual o <strong>fail2ban</strong> deve enviar notificações de bloqueios, para as jaulas em que as notificações por <em>e-mail</em> estejam ativadas. De forma análoga, a opção <code class="highlighter-rouge">sender</code> define o <em>e-mail</em> que deve ser informado como remetente.</p>
+
+<p>A opção <code class="highlighter-rouge">mta</code> define o programa que deve ser usado para enviar as notificações por <em>e-mail</em>, por padrão o <a href="http://www.sendmail.org/">Sendmail</a>. Observe que as notificações só são enviadas de fato se esse programa estiver instalado e configurado no servidor.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre># Choose default action.  To change, just override value of 'action' with the
+# interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
+# globally (section [DEFAULT]) or per specific section
+action = %(action_)s
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>A opção <code class="highlighter-rouge">action</code> define a ação que o <strong>fail2ban</strong> deve tomar ao perceber um comportamento suspeito de um <em>host</em>. Na seção <code class="highlighter-rouge">[DEFAULT]</code>, essa opção define a ação padrão para todas as jaulas. No arquivo <code class="highlighter-rouge">jail.local</code>, acima da opção <code class="highlighter-rouge">action</code>, são definidas algumas opções de ações (<code class="highlighter-rouge">action_</code>, <code class="highlighter-rouge">action_mw</code>, <code class="highlighter-rouge">action_mwl</code>, etc). O valor padrão é <code class="highlighter-rouge">action_</code>, que corresponde à ação mais básica (apenas bloquear). Se você configurou o envio de <em>e-mail</em>, talvez queira mudar esse valor para <code class="highlighter-rouge">action_mw</code>, que corresponde a bloquear e notificar por <em>e-mail</em>.</p>
+
+<h3 id="configuração-da-jaula-ssh">Configuração da jaula SSH</h3>
+
+<p>O <strong>fail2ban</strong> é capaz de monitorar vários serviços. Como exemplo, vejamos como configurá-lo para monitorar tentativas de acesso via SSH. Para isso, vamos à seção <code class="highlighter-rouge">[sshd]</code> do arquivo <code class="highlighter-rouge">jail.local</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>[sshd]
+
+# To use more aggressive sshd modes set filter parameter "mode" in jail.local:
+# normal (default), ddos, extra or aggressive (combines all).
+# See "tests/files/logs/sshd" or "filter.d/sshd.conf" for usage example and details.
+#mode   = normal
+port    = ssh
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Comece adicionando <code class="highlighter-rouge">enabled = true</code> para habilitar essa jaula.</p>
+
+<p>A opção <code class="highlighter-rouge">port</code> define a porta na qual o serviço escuta. Se o serviço escuta na porta padrão (no caso do SSH, a porta 22), deixe o valor padrão, que é o nome do serviço (<code class="highlighter-rouge">ssh</code>). Se o serviço escuta em uma porta diferente da padrão, informe aqui o número da porta.</p>
+
+<p>A opção <code class="highlighter-rouge">logpath</code> define o caminho para o arquivo de <em>log</em> do serviço. De forma análoga, só mude o valor dessa opção se o serviço registra seu <em>log</em> em um arquivo diferente do padrão.</p>
+
+<h2 id="iniciando-o-fail2ban">Iniciando o fail2ban</h2>
+
+<p>Feita a configuração inicial, é hora de iniciar o <strong>fail2ban</strong>. Para isso, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># systemctl start fail2ban
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Para se certificar de que o <strong>fail2ban</strong> está em execução, verifique o estado (<em>status</em>) do serviço:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre># systemctl status fail2ban
+● fail2ban.service - Fail2Ban Service
+   Loaded: loaded (/usr/lib/systemd/system/fail2ban.service; disabled; vendor preset: disabled)
+   Active: active (running) since Fri 2019-12-13 23:07:09 -03; 1s ago
+     Docs: man:fail2ban(1)
+  Process: 5931 ExecStartPre=/bin/mkdir -p /var/run/fail2ban (code=exited, status=0/SUCCESS)
+ Main PID: 5932 (fail2ban-server)
+    Tasks: 3 (limit: 4915)
+   CGroup: /system.slice/fail2ban.service
+           └─5932 /usr/bin/python /usr/bin/fail2ban-server -xf start
+
+dez 13 23:07:09 kamarada-pc systemd[1]: Starting Fail2Ban Service...
+dez 13 23:07:09 kamarada-pc systemd[1]: Started Fail2Ban Service.
+dez 13 23:07:09 kamarada-pc fail2ban-server[5932]: Server ready
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Habilite o serviço do <strong>fail2ban</strong> para que ele seja iniciado automaticamente durante o <em>boot</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># systemctl enable fail2ban
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="testando-o-fail2ban">Testando o fail2ban</h2>
+
+<p>Vejamos o <strong>fail2ban</strong> agindo na prática.</p>
+
+<div class="alert alert-danger" role="alert">
+
+<p><strong>Não</strong> teste os comandos desse tutorial em um servidor que você acessa remotamente via SSH: você corre o risco de perder o acesso ao servidor.</p>
+
+</div>
+
+<p>Usando um computador diferente daquele no qual você instalou o  <strong>fail2ban</strong>, tente estabelecer um acesso remoto via SSH, mas erre a senha propositalmente algumas vezes:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>$ ssh kamarada@10.0.0.250
+Password:
+Password:
+Password:
+kamarada@10.0.0.250's password:
+Permission denied, please try again.
+kamarada@10.0.0.250's password:
+Received disconnect from 10.0.0.250 port 22:2: Too many authentication failures
+Disconnected from 10.0.0.250 port 22
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Se você esgotar o limite de tentativas configurado, será desconectado do servidor.</p>
+
+<p>Perceba que novas tentativas de acesso são recusadas de imediato:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>$ ssh kamarada@10.0.0.250
+ssh: connect to host 10.0.0.250 port 22: Connection refused
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="consultando-o-log-do-fail2ban">Consultando o log do fail2ban</h2>
+
+<p>Como vimos, por padrão, o <strong>fail2ban</strong> guarda seu <em>log</em> no arquivo <code class="highlighter-rouge">/var/log/fail2ban.log</code>.</p>
+
+<p>Para abrir esse arquivo, você pode usar comandos como <strong><a href="http://man7.org/linux/man-pages/man1/cat.1.html">cat</a></strong>, <strong><a href="http://man7.org/linux/man-pages/man1/less.1.html">less</a></strong> ou <strong><a href="http://man7.org/linux/man-pages/man1/tail.1.html">tail</a></strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># less /var/log/fail2ban.log
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O <em>log</em> do <strong>fail2ban</strong> mostra nossas tentativas frustradas de acesso e o efetivo bloqueio:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>2019-12-13 23:24:01,169 fail2ban.filter         [6803]: INFO    [sshd] Found 10.0.0.10 - 2019-12-13 23:24:00
+2019-12-13 23:24:04,638 fail2ban.filter         [6803]: INFO    [sshd] Found 10.0.0.10 - 2019-12-13 23:24:04
+2019-12-13 23:24:07,919 fail2ban.filter         [6803]: INFO    [sshd] Found 10.0.0.10 - 2019-12-13 23:24:07
+2019-12-13 23:24:12,335 fail2ban.filter         [6803]: INFO    [sshd] Found 10.0.0.10 - 2019-12-13 23:24:12
+2019-12-13 23:24:12,361 fail2ban.filter         [6803]: INFO    [sshd] Found 10.0.0.10 - 2019-12-13 23:24:12
+2019-12-13 23:24:12,896 fail2ban.actions        [6803]: NOTICE  [sshd] Ban 10.0.0.10
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="verificando-as-regras-do-iptables">Verificando as regras do iptables</h2>
+
+<p>Para bloquear <em>hosts</em> com comportamento suspeito, o <strong>fail2ban</strong> adiciona regras ao <strong>iptables</strong>.</p>
+
+<p>Se você listar as regras em uso pelo <strong>iptables</strong>, verá a regra adicionada pelo <strong>fail2ban</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre># iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+f2b-sshd   tcp  --  anywhere             anywhere             multiport dports ssh
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain f2b-sshd (1 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Perceba que o <strong>fail2ban</strong> cria suas próprias <em>chains</em> para gerenciar suas regras.</p>
+
+<h2 id="desfazendo-um-bloqueio-do-fail2ban">Desfazendo um bloqueio do fail2ban</h2>
+
+<p>Pode acontecer de um usuário legítimo do servidor ter esquecido sua senha e ter sido bloqueado pelo <strong>fail2ban</strong> após sucessivas tentativas de acesso. Nesse caso, você precisa desfazer o bloqueio feito pelo <strong>fail2ban</strong> para que o usuário possa voltar a acessar o servidor.</p>
+
+<p>Para desfazer um bloqueio a um <em>host</em> feito anteriormente pelo <strong>fail2ban</strong>, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># fail2ban-client set JAULA unbanip ENDERECO_IP
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Por exemplo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># fail2ban-client set sshd unbanip 10.0.0.10
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Se você tentar novo acesso remoto via SSH, dessa vez informando a senha certa, conseguirá conectar ao servidor.</p>
+
+<h2 id="interrompendo-o-fail2ban">Interrompendo o fail2ban</h2>
+
+<p>Se por qualquer motivo você precisar interromper o monitoramento do <strong>fail2ban</strong>, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ systemctl stop fail2ban
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note que isso também exclui as regras adicionadas ao <strong>iptables</strong> pelo <strong>fail2ban</strong>, permitindo que <em>hosts</em> que antes estavam bloqueados façam novas tentativas de acesso ao servidor.</p>
+
+<h2 id="incrementando-o-script-do-iptables">Incrementando o script do iptables</h2>
+
+<p>No <a href="/pt/2019/11/18/proteja-se-com-o-firewall-iptables/"><em>post</em> anterior sobre o <strong>iptables</strong></a>, fizemos um <em>script</em> para iniciá-lo e configurá-lo durante o <em>boot</em>. Agora podemos incrementar aquele <em>script</em> interrompendo o <strong>fail2ban</strong> antes da limpeza das regras e iniciando-o novamente ao final:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+<span class="nb">set</span> <span class="nt">-ex</span>
+
+<span class="c"># Interromper o fail2ban</span>
+systemctl stop fail2ban
+
+<span class="c"># Limpar as regras</span>
+iptables <span class="nt">-F</span>
+iptables <span class="nt">-X</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-F</span>
+iptables <span class="nt">-t</span> nat <span class="nt">-X</span>
+iptables <span class="nt">-t</span> mangle <span class="nt">-F</span>
+iptables <span class="nt">-t</span> mangle <span class="nt">-X</span>
+iptables <span class="nt">-t</span> raw <span class="nt">-F</span>
+iptables <span class="nt">-t</span> raw <span class="nt">-X</span>
+
+<span class="c"># Politica padrao: bloquear todas as conexoes de entrada</span>
+iptables <span class="nt">-P</span> FORWARD DROP
+iptables <span class="nt">-P</span> INPUT DROP
+iptables <span class="nt">-P</span> OUTPUT ACCEPT
+
+<span class="c"># Aceitar conexoes estabelecidas previamente</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-m</span> state <span class="nt">--state</span> ESTABLISHED,RELATED <span class="nt">-j</span> ACCEPT
+
+<span class="c"># Aceitar tudo vindo da interface de loopback</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-i</span> lo <span class="nt">-j</span> ACCEPT
+
+<span class="c"># SSH (porta 22/TCP,UDP)</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 22 <span class="nt">-j</span> ACCEPT
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> udp <span class="nt">--dport</span> 22 <span class="nt">-j</span> ACCEPT
+
+<span class="c"># HTTP (porta 80/TCP)</span>
+iptables <span class="nt">-A</span> INPUT <span class="nt">-p</span> tcp <span class="nt">--dport</span> 80 <span class="nt">-j</span> ACCEPT
+
+<span class="c"># Iniciar o fail2ban</span>
+systemctl start fail2ban
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="referências">Referências</h2>
+
+<p>Espero que esse texto tenha sido útil. Oportunamente, conforme estudemos diversos servidores (servidor <em>web</em>, banco de dados, servidor de FTP, servidor de <em>e-mail</em>, etc), veremos como podemos protegê-los usando a dupla <strong>iptables</strong> e <strong>fail2ban</strong>.</p>
+
+<p>Se tiver alguma dúvida ou informação útil a acrescentar, por favor, deixe um comentário.</p>
+
+<p>Até mais!</p>
+
+<ul>
+  <li><a href="https://www.vivaolinux.com.br/artigo/O-que-e-e-como-funciona-um-ataque-de-forca-bruta">O que é e como funciona um ataque de força bruta - Artigo - Viva o Linux</a></li>
+  <li><a href="https://www.kaspersky.com/resource-center/definitions/brute-force-attack">What’s a Brute Force Attack? - Kaspersky</a></li>
+  <li><a href="https://www.2daygeek.com/how-to-install-setup-configure-fail2ban-on-linux/">How To Protect Server Against Brute Force Attacks With Fail2ban On Linux - 2daygeek.com</a></li>
+  <li><a href="https://www.fail2ban.org/wiki/index.php/MANUAL_0_8">Manual - Fail2ban</a></li>
+  <li><a href="https://www.vivaolinux.com.br/artigo/Protecao-utilizando-fail2ban-contra-ataques-do-tipo">Proteção utilizando fail2ban contra ataques do tipo - Artigo - Viva o Linux</a></li>
+  <li><a href="https://www.vivaolinux.com.br/dica/Fail2ban-Aprendendo-a-instalar-e-configurar">Fail2ban - Aprendendo a instalar e configurar - Dica - Viva o Linux</a></li>
+  <li><a href="https://serverfault.com/a/336001/357679">firewall - How to Unban an IP properly with Fail2Ban - Server Fault</a></li>
+</ul>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Tradicionalmente, sistemas cujo acesso é restrito autenticam seus usuários por uma combinação de nome de usuário (mais conhecido como login) e senha.Um ataque de força bruta (do inglês brute force attack) é um tipo de ataque que consiste em tentar adivinhar uma combinação de login e senha que libere o acesso ao sistema. Se o...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2019/12/fail2ban.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2020/01/07/mitigating-brute-force-attacks-on-linux-using-fail2ban/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/12/14/mitigando-ataques-de-forca-bruta-no-linux-com-fail2ban/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="A carteira Electrum é a recomendada pelo site oficial do Bitcoin (bitcoin.org) para quem usa Linux e está começando a mexer com bitcoins, e por isso procura ...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">
+    
+    
+        
+            <link rel="alternate" hreflang="en" href="https://linuxkamarada.com/en/2020/12/04/installing-the-electrum-bitcoin-wallet-on-linux/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-11-30 23:20:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="A carteira Electrum é a recomendada pelo site oficial do Bitcoin (bitcoin.org) para quem usa Linux e está começando a mexer com bitcoins, e por isso procura ..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2020/11/electrum-2020-pt.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Bitcoin: instalando a carteira Electrum" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,970 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/',
+                    title: document.title,
+                    description: 'A carteira Electrum é a recomendada pelo site oficial do Bitcoin (bitcoin.org) para quem usa Linux e está começando a mexer com bitcoins, e por isso procura ...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2020/12/04/installing-the-electrum-bitcoin-wallet-on-linux/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/" itemprop="mainEntityOfPage url">
+                Bitcoin: instalando a carteira Electrum
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-11-30">
+                    <a href="/2020/11/30/">
+                        
+    30 de
+    
+    Novembro
+        
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-12-04" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-2020-pt.jpg" title="">
+<img src="/files/2020/11/electrum-2020-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>A carteira <a href="https://electrum.org/">Electrum</a> é a recomendada pelo <em>site</em> oficial do Bitcoin (<a href="https://bitcoin.org/pt_BR/escolha-sua-carteira">bitcoin.org</a>) para quem usa <a href="http://www.vivaolinux.com.br/linux/">Linux</a> e está começando a mexer com <em>bitcoins</em>, e por isso procura uma carteira fácil de usar, mas também para quem deseja que alguns recursos mais avançados já estejam disponíveis, como suporte à <a href="https://pt.wikipedia.org/wiki/Lightning_Network">Lightning Network</a> e integração com carteiras de <em>hardware</em>. A Electrum permite recuperar a carteira facilmente a partir de uma frase secreta (semente ou <em>seed</em>).</p>
+
+<p>Eu até já falei sobre a carteira Electrum em outro texto sobre <a href="/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">Bitcoin para iniciantes</a>, mas isso foi há quase 2 anos. O modo de instalar a carteira Electrum mudou desde então.</p>
+
+<p>No momento, a versão mais atual da carteira Electrum é a <a href="https://github.com/spesmilo/electrum/releases/tag/4.0.5">4.0.5</a>, lançada em <a href="https://github.com/spesmilo/electrum/releases/tag/4.0.5">18/11/2020</a>.</p>
+
+<p>Hoje, é possível instalar a Electrum de algumas maneiras, desde a mais rápida — e segura, mas não tão segura — para os mais tranquilos e/ou apressados, até a mais trabalhosa mas mais segura para os mais desconfiados. A seguir, vou mostrar essas formas de instalação.</p>
+
+<p>Veja as opções, escolha a sua preferida e mão na massa! (não precisa fazer todas, só uma)</p>
+
+<p>Aqui eu uso a distribuição <a href="/pt/2020/09/11/linux-kamarada-15.2-venha-para-o-lado-verde-elegante-e-moderno-da-forca/">Linux Kamarada 15.2</a>, que é baseada no <a href="/pt/2020/07/01/versao-15.2-do-opensuse-leap-traz-novos-e-empolgantes-pacotes-de-inteligencia-artificial-aprendizagem-de-maquina-e-containers/">openSUSE Leap 15.2</a>.</p>
+
+<h2 id="1-instalação-com-1-clique-no-opensuse">1) Instalação com 1 clique no openSUSE</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-softwareoo.jpg" title="">
+<img src="/files/2020/11/electrum-softwareoo.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>A carteira Electrum não está disponível nos <a href="https://en.opensuse.org/Package_repositories">repositórios oficiais do openSUSE</a>, mas se você procurá-la em <a href="https://software.opensuse.org/package/electrum">software.opensuse.org</a>, verá que está disponível no repositório semi-oficial <a href="https://build.opensuse.org/package/show/network:cryptocurrencies/electrum">network:cryptocurrencies</a>. Se você é usuário do <a href="https://www.opensuse.org/">openSUSE</a> (ou do Linux Kamarada), obter a carteira Electrum desse repositório é a forma mais fácil de instalá-la.</p>
+
+<p>Usuários do openSUSE Tumbleweed vão obter desse repositório a versão 4.0.5 da Electrum, enquanto usuários do openSUSE Leap 15.2 (e do Linux Kamarada 15.2) vão obter a versão 4.0.2. Isso acontece porque a versão mais recente da Electrum depende de uma biblioteca do <a href="https://www.python.org/">Python</a> que ainda não está disponível no openSUSE Leap 15.2, que é a <a href="https://software.opensuse.org/package/python3-aiorpcX">python3-aiorpcX</a>. No momento, essa biblioteca está disponível apenas para o openSUSE Tumbleweed.</p>
+
+<p>Você pode instalar o pacote da carteira Electrum no openSUSE de duas formas: pela interface gráfica, usando a instalação com 1 clique (<em>1 Click Install</em>), ou pelo terminal, usando o gerenciador de pacotes <strong>zypper</strong>. Escolha a que prefere.</p>
+
+<p>Para instalar usando a instalação com 1 clique, clique no botão abaixo:</p>
+
+<p class="text-center"><a class="btn btn-sm btn-outline-primary" href="/downloads/electrum.ymp"><i class="fas fa-bolt"></i> Instalação com 1 clique</a></p>
+
+<p>Para instalar usando o terminal, primeiro adicione o repositório necessário:</p>
+
+<ul>
+  <li>para o openSUSE Leap 15.2 ou o Linux Kamarada 15.2:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper addrepo -f https://download.opensuse.org/repositories/network:/cryptocurrencies/openSUSE_Leap_15.2/ criptomoedas
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>para o openSUSE Tumbleweed:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper addrepo -f https://download.opensuse.org/repositories/network:/cryptocurrencies/openSUSE_Tumbleweed/ criptomoedas
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Depois, instale o pacote propriamente dito:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in electrum
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O código-fonte desse pacote pode ser encontrado no <a href="https://build.opensuse.org/package/show/network:cryptocurrencies/electrum">openSUSE Build Service</a>. Eu tenho familiaridade com o empacotamento <a href="https://pt.wikipedia.org/wiki/RPM_(software)">RPM</a> para openSUSE usando o OBS — até porque uso essa mesma infraestrutura para empacotar para o Linux Kamarada — e por isso inspecionei esses arquivos, principalmente o <code class="highlighter-rouge">electrum.spec</code>. Os arquivos <code class="highlighter-rouge">Electrum-4.0.5.tar.gz</code> e <code class="highlighter-rouge">Electrum-4.0.5.tar.gz.asc</code> coincidem com os disponíveis no <a href="https://electrum.org/"><em>site</em> oficial da carteira Electrum</a>. Acredito ser seguro instalar a Electrum a partir desse repositório do openSUSE.</p>
+
+<h2 id="2-instalação-usando-flatpak">2) Instalação usando Flatpak</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-flatpak.jpg" title="">
+<img src="/files/2020/11/electrum-flatpak.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://flatpak.org/">Flatpak</a> é um gerenciador de pacotes independente de distribuição. Até pouco tempo atrás, diferentes distribuições Linux usavam diferentes formatos de pacotes, geralmente incompatíveis entre si. Por exemplo, <a href="https://www.debian.org/index.pt.html">Debian</a> e <a href="https://ubuntu.com/">Ubuntu</a> usam pacotes <a href="https://pt.wikipedia.org/wiki/.deb">DEB</a>, enquanto <a href="https://www.redhat.com/pt-br/technologies/linux-platforms/enterprise-linux">RedHat</a>, <a href="https://getfedora.org/pt_BR/">Fedora</a> e openSUSE usam pacotes RPM. O Flatpak trouxe uma alternativa mais simples para instalar programas em diferentes distribuições: contanto que o Flatpak esteja instalado no sistema, o mesmo pacote Flatpak pode ser instalado em qualquer distribuição.</p>
+
+<p>Existe um <a href="https://flathub.org/apps/details/org.electrum.electrum">pacote Flatpak da carteira Electrum</a>. No momento, ele traz a versão 4.0.4 da Electrum. É uma alternativa que usuários do openSUSE Leap e do Linux Kamarada tem para usar uma versão mais recente da carteira sem maiores dificuldades.</p>
+
+<p>Para instalar o Flatpak no openSUSE, caso você ainda não o tenha instalado, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in flatpak
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Com o Flatpak instalado, adicione o principal repositório do Flatpak, o <a href="https://flathub.org/">Flathub</a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Por fim, para instalar a carteira Electrum usando o Flatpak:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># flatpak install org.electrum.electrum
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No caso do Flatpak, o código-fonte do pacote da Electrum pode ser encontrado no <a href="https://github.com/flathub/org.electrum.electrum">GitHub</a>. Não examinei esse código-fonte porque não entendo como funciona o empacotamento usando Flatpak. Mas acredito ser igualmente seguro instalar a Electrum dessa forma.</p>
+
+<p>Note que o pacote Flatpak, assim como o pacote do openSUSE, também foi contribuído pela comunidade. Não encontrei menção a esses pacotes no <a href="https://electrum.org/"><em>site</em> oficial da carteira Electrum</a>.</p>
+
+<h2 id="3-download-do-site-da-própria-electrum">3) Download do site da própria Electrum</h2>
+
+<p>Na verdade, essa é a recomendação do criador da Electrum: não baixar a Electrum de outro lugar que não seja o seu <em>site</em> oficial (<a href="https://electrum.org/">electrum.org</a>) e verificar a assinatura GPG.</p>
+
+<p>No entanto, vale observar que a Electrum depende da biblioteca <a href="https://github.com/bitcoin-core/secp256k1">secp256k1</a>, que pode ser facilmente instalada a partir dos repositórios oficiais de distribuições Linux como <a href="https://packages.debian.org/search?keywords=libsecp256k1">Debian</a> ou <a href="https://packages.ubuntu.com/search?keywords=libsecp256k1">Ubuntu</a>, mas não está disponível nos repositórios oficiais do openSUSE.</p>
+
+<p>Para usuários do openSUSE, isso gera um problema, que é instalar essa biblioteca antes de instalar a Electrum. Ela até pode ser obtida do repositório <a href="https://software.opensuse.org/package/libsecp256k1">network:cryptocurrencies</a>, mas aí faria mais sentido instalar também a Electrum a partir desse mesmo repositório (opção 1). Ou compilar tanto a biblioteca quanto a carteira a partir de seus códigos-fonte.</p>
+
+<h2 id="4-compilando-a-partir-do-código-fonte">4) Compilando a partir do código-fonte</h2>
+
+<p>Para quem é mais detalhista, mais desconfiado ou mais preocupado com a segurança, compilar a carteira Electrum a partir do seu código-fonte pode ser mais interessante devido à possibilidade de <a href="/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">verificar a integridade e autenticidade</a> do código, além de auditá-lo antes da instalação — contanto que tenha o conhecimento técnico e tempo necessários, claro.</p>
+
+<p>Comece instalando tudo que vai precisar para compilar e depois usar a carteira Electrum e a biblioteca secp256k1. Para isso, abra o terminal e execute o comando a seguir como <em>root</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper install autoconf automake gcc gettext-tools git libtool make python3-cryptography python3-devel python3-pip python3-requests python3-setuptools
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Para verificar a integridade e autenticidade do código-fonte, vamos obter a chave pública do desenvolvedor. Vou explicar o processo de forma resumida, se quiser mais informações, leia:</p>
+
+<ul>
+  <li><a href="/pt/2018/10/06/verificacao-de-integridade-e-autenticidade-com-sha-256-e-gpg/">Verificação de integridade e autenticidade com SHA-256 e GPG</a></li>
+</ul>
+
+<p>Acesse o <em>site</em> oficial da carteira Electrum (<a href="https://electrum.org/">electrum.org</a>) e clique em <strong>Download</strong>. Na página seguinte, clique no <em>link</em> <strong>ThomasV</strong>, no início da página, onde se lê <em>Sources and executables are signed by ThomasV</em> (códigos-fonte e executáveis são assinados por ThomasV):</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-thomasv.jpg" title="">
+<img src="/files/2020/11/electrum-thomasv.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Com isso, você baixará a chave pública do desenvolvedor, um arquivo chamado <code class="highlighter-rouge">ThomasV.asc</code>. Para importá-la, execute o comando a seguir:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>$ gpg --import ThomasV.asc
+
+gpg: key 2BD5824B7F9470E6: public key "Thomas Voegtlin (https://electrum.org) &lt;thomasv@electrum.org&gt;" imported
+gpg: Número total processado: 1
+gpg:               importados: 1
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Opcionalmente, se você possui uma chave GPG, assine a chave pública importada:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>$ gpg --edit-key 2BD5824B7F9470E6
+&gt; trust
+&gt; sign
+&gt; quit
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Agora vamos obter o código-fonte da carteira Electrum, que está hospedado no <a href="https://github.com/spesmilo/electrum">GitHub</a>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>$ git clone https://github.com/spesmilo/electrum.git
+$ cd electrum
+$ git submodule update --init
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No momento, a versão mais atual da Electrum é a 4.0.5, e o desenvolvedor segue a boa prática de criar uma <em>tag</em> do <a href="https://git-scm.com/">Git</a> para cada versão. Mude o código-fonte para essa <em>tag</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ git checkout 4.0.5
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Códigos-fonte versionados pelo Git possuem uma forma própria de verificar integridade e autenticidade. Para verificar esse código-fonte nessa <em>tag</em> específica, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ git verify-tag 4.0.5
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Certifique-se de que aparece o aviso de boa assinatura (<em>good signature</em>):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>gpg: Signature made qua 18 nov 2020 16:24:04 -03
+gpg:                using RSA key 6694D8DE7BE8EE5631BED9502BD5824B7F9470E6
+gpg: Good signature from "Thomas Voegtlin (https://electrum.org) &lt;thomasv@electrum.org&gt;" [ultimate]
+gpg:                 aka "ThomasV &lt;thomasv1@gmx.de&gt;" [ultimate]
+gpg:                 aka "Thomas Voegtlin &lt;thomasv1@gmx.de&gt;" [ultimate]
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Se a verificação sucedeu, podemos confiar no código-fonte e seguir em frente.</p>
+
+<p>No fonte da carteira Electrum, há um <em>script</em> para facilitar o <em>download</em> e a compilação da biblioteca secp256k1, cujo fonte também está hospedado no <a href="https://github.com/bitcoin-core/secp256k1">GitHub</a>. Execute esse <em>script</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ./contrib/make_libsecp256k1.sh
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Isso vai criar os binários da biblioteca secp256k1 dentro da pasta <code class="highlighter-rouge">electrum</code>, em <code class="highlighter-rouge">contrib/secp256k1/dist/lib</code>.</p>
+
+<p>Para instalar as dependências em Python da Electrum, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ python3 -m pip install --user -e .
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Opcionalmente, para baixar e compilar as traduções da Electrum, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ./contrib/pull_locale
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Nesse ponto, você já é capaz de iniciar a carteira Electrum a partir da pasta do código-fonte:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ ./run_electrum
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-run-pt.jpg" title="">
+<img src="/files/2020/11/electrum-run-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Clique em <strong>Cancelar</strong> para sair da Electrum.</p>
+
+<p>Note que para iniciar a carteira Electrum a partir do código-fonte, é necessário sempre acessar essa pasta e executar esse comando. Para o uso no dia a dia, é mais interessante instalá-la no sistema.</p>
+
+<p>Para isso, comece copiando a biblioteca secp256k1 para a pasta de bibliotecas do sistema:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># cp --preserve=links contrib/secp256k1/dist/lib/*.so.* /usr/lib64/
+# ldconfig
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Depois, instale a carteira Electrum:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ python3 -m pip install --user .
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Certifique-se de que o comando informou que a instalação foi feita com sucesso:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>Successfully installed Electrum-4.0.5
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Você pode fechar a janela do terminal.</p>
+
+<p>Depois disso, se quiser, você pode excluir a pasta <code class="highlighter-rouge">electrum</code> contendo os códigos-fonte baixados. Como a carteira foi instalada no sistema, essa pasta não é necessária para o uso cotidiano. No entanto, eu recomendo mantê-la, pois pode facilitar a atualização no futuro.</p>
+
+<h2 id="iniciando-a-carteira-electrum">Iniciando a carteira Electrum</h2>
+
+<p>Independente da forma de instalação que você escolheu, para iniciar a carteira Electrum, clique em <strong>Atividades</strong>, no canto superior esquerdo da tela, digite <code class="highlighter-rouge">electrum</code> e clique no ícone correspondente:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/11/electrum-activities-pt.jpg" title="">
+<img src="/files/2020/11/electrum-activities-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>No primeiro uso, a Electrum apresenta um assistente de configuração.</p>
+
+<p>A partir daí, você já pode voltar a seguir as instruções do tutorial anterior:</p>
+
+<ul>
+  <li><a href="/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">Bitcoin para iniciantes com a carteira Electrum</a></li>
+</ul>
+
+<h2 id="quer-saber-mais">Quer saber mais?</h2>
+
+<p>Se você quiser saber mais sobre <em>bitcoins</em> e sobre a carteira Electrum, aqui no <em>site</em> do Linux Kamarada há outros textos sobre esses assuntos:</p>
+
+<ul>
+  <li><a href="/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">Bitcoin para iniciantes com a carteira Electrum</a></li>
+  <li><a href="/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">Dinheiro: passado, presente e… Bitcoin!</a></li>
+</ul>
+
+<p>Eu também recomendo que você confira o <a href="https://bitcoinheiros.com/"><em>site</em></a> assim como o <a href="https://www.youtube.com/c/bitcoinheiros">canal no YouTube</a> dos <a href="https://bitcoinheiros.com/">Bitcoinheiros</a>. Eles tem os melhores materiais sobre Bitcoin em português brasileiro de toda a Internet. O canal no YouTube tem uma <a href="https://www.youtube.com/playlist?list=PLgcVYwONyxmjZuXVmllvk1H5Yyb95u0X2"><em>playlist</em> de vídeos sobre a carteira Electrum</a>. Mas o principal, na minha opinião, é o guia <a href="https://bitcoinheiros.com/intro-bitcoin/">Introdução ao Bitcoin</a>, que é um índice para vários tutoriais deles, ordenados em etapas que um “bitcoinheiro” deve percorrer para começar a usar o Bitcoin e ir melhorando suas práticas e conhecimentos até se tornar um <em>expert</em>.</p>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="A carteira Electrum é a recomendada pelo site oficial do Bitcoin (bitcoin.org) para quem usa Linux e está começando a mexer com bitcoins, e por isso procura uma carteira fácil de usar, mas também para quem deseja que alguns recursos mais avançados já estejam disponíveis, como suporte à Lightning Network e integração com carteiras de...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2020/11/electrum-2020-pt.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2020/12/04/installing-the-electrum-bitcoin-wallet-on-linux/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/11/30/bitcoin-instalando-a-carteira-electrum/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

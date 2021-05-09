@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Bitcoin for beginners with the Electrum wallet — part 2: buying and transferring bitcoins to the wallet - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="This is the part 2 of our trilogy of posts about how to transact bitcoins using the Electrum Bitcoin wallet. In part 1, you’ve seen what Bitcoin is and some ...">
+    <link rel="canonical" href="https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/en/feed.xml" />
+
+    
+    
+        
+    
+        
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://linuxkamarada.com/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://linuxkamarada.com/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2021-04-27 23:30:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="This is the part 2 of our trilogy of posts about how to transact bitcoins using the Electrum Bitcoin wallet. In part 1, you’ve seen what Bitcoin is and some ..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2021/04/bitcoin-electrum-binance.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Bitcoin for beginners with the Electrum wallet — part 2: buying and transferring bitcoins to the wallet" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
+    <meta name="msapplication-TileColor" content="#43a047">
+    <meta name="theme-color" content="#43a047">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css" integrity="sha256-0fuNgzfNIlaClbDtmYyFxY8LTNCDrwsNshywr4AALy0=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.1-lts/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/js/all.js" integrity="sha256-pvPP8sWBrowznHv1xsjTBO7/74OBKzmOCGaEeq3q+TQ=" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/',
+                    title: document.title,
+                    description: 'This is the part 2 of our trilogy of posts about how to transact bitcoins using the Electrum Bitcoin wallet. In part 1, you’ve seen what Bitcoin is and some ...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/contribute">Contribute</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2021/05/03/bitcoin-for-beginners-with-the-electrum-wallet-part-3-transferring-from-the-wallet-and-selling-bitcoins/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/contribute">Contribute</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.en.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/" itemprop="mainEntityOfPage url">
+                Bitcoin for beginners with the Electrum wallet — part 2: buying and transferring bitcoins to the wallet
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2021-04-27">
+                    <a href="/2021/04/27/">
+                        
+    Apr 27, 2021
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2021-05-03" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/bitcoin-electrum-binance.jpg" title="">
+<img src="/files/2021/04/bitcoin-electrum-binance.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>This is the part 2 of our trilogy of posts about how to transact bitcoins using the <a href="https://electrum.org/">Electrum</a> Bitcoin wallet. In part 1, you’ve seen what Bitcoin is and some basic concepts, how to install Electrum and set it up. If you fell into this page, I recommend you start reading at the first part:</p>
+
+<ul>
+  <li><a href="/en/2021/04/23/bitcoin-for-beginners-with-the-electrum-wallet-part-1-basic-concepts-and-setup/">Bitcoin for beginners with the Electrum wallet — part 1: basic concepts and setup</a></li>
+</ul>
+
+<p>Now that our Electrum wallet is ready to use, today let’s see how to transfer bitcoins to it.</p>
+
+<p>As I said, someone who already has bitcoins can transfer you some (in this case, this someone can follow today’s post). Another option is: you can buy bitcoins on an exchange and transfer them to your wallet (whole bitcoins are very expensive today, I recommend you to buy satoshis to get started). This is the quickest way of getting bitcoins and usually the way people get started with it.</p>
+
+<p>Also as I said, I’m going to use the <a href="https://bit.ly/kamarada-binance">Binance</a> exchange as example, but you can buy bitcoins on any exchange you trust, the process of transferring them to Electrum should be similar.</p>
+
+<p>I’ll try not to dive into Binance details here, because I want to focus on Electrum, and also because Binance is an international exchange and how to use it may differ in your country. In case of doubt, you can refer to the <a href="https://www.binance.com/en/support">Binance Support</a>, which has lots of guides for everything.</p>
+
+<p>I’m going to assume you have already <a href="https://www.binance.com/en/support/faq/115003764911">registered</a> on Binance, enabled <a href="https://www.binance.com/en/support/faq/c-1?navId=1#/1/11">two-factor authentication (2FA)</a> and completed <a href="https://www.binance.com/en/support/faq/360027287111">identity verification</a> — you are going to supply the exchange with some identity information, a process required by most exchanges today and known in general as <a href="https://99bitcoins.com/bitcoin-exchanges/#kyc">Know Your Customer (KYC)</a>. Some people see it as good  — a safety measure — others see it as bad — privacy threat. I’m not going to discuss that here.</p>
+
+<p>Now, with no further ado, let’s move on!</p>
+
+<h2 id="deposit-transferring-fiat-from-bank-to-exchange">Deposit: transferring fiat from bank to exchange</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Fiat_money"><strong>Fiat currency</strong></a> (also known as <strong>fiduciary currency</strong>) is any government-backed currency, such as the United States dollar (symbol: $; code: USD) or the Brazilian real (symbol: R$; code: BRL).</p>
+
+<p>Binance allows credit card and wire transfer purchases of cryptocurrencies, depending on your country. Buying with a credit card is usually faster, but a little more expensive (up to 3.5% for USD purchases, according to <a href="https://99bitcoins.com/bitcoin-exchanges/binance-review/#payment-methods">99Bitcoins</a>). So, I prefer to deposit fiat to Binance by bank transfer and then buy crypto with the cash balance. Fiat deposits are free of <a href="https://www.binance.com/en/fee/schedule">fees</a> on Binance. You can find more information on the following texts on Binance Support:</p>
+
+<ul>
+  <li><a href="https://www.binance.com/en/support/faq/9480499f26494ec7999b006dfa271170">How to get started with Fiat Funding</a></li>
+  <li><a href="https://www.binance.com/en/support/faq/8df758a570ba4d18941f38423f63aae5">How to Buy Cryptos with Credit/Debit Card</a></li>
+  <li><a href="https://www.binance.com/en/support/faq/c-66?navId=66#/66/75">Bank Transfer</a></li>
+  <li><a href="https://www.binance.com/en/support/faq/53636607eebc42dbb513863b49bba98f">How to deposit BRL on Binance</a> (this probably interests Brazilian users only)</li>
+</ul>
+
+<p>For the purpose of demonstration, I’m going to transfer R$ 1,000.00 (a thousand reais, or nearly $ 180, in today’s exchange rate) to Binance. At first sight, it may seem a high amount, but a smaller amount may not be interesting, because of Bitcoin transaction fees.</p>
+
+<p>I would like to remember a note from the beginning: the Bitcoin price is volatile, I recommend that you do not follow this tutorial to the letter if there is no need, as you may <strong>lose money</strong>.</p>
+
+<p>To deposit fiat on Binance, once you are logged in, hover over <strong>Buy Crypto</strong> on the top navigation bar and then click <strong>Bank Deposit</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-fund-01.jpg" title="">
+<img src="/files/2021/04/binance-fund-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Select your currency and payment method, enter the amount you are going to transfer as well as any other requested information:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-fund-02.jpg" title="">
+<img src="/files/2021/04/binance-fund-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Make the transfer and wait for the Binance email informing your deposit has been received:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-fund-03.jpg" title="">
+<img src="/files/2021/04/binance-fund-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Now your Binance account is funded with fiat and you can proceed to buy bitcoins.</p>
+
+<h2 id="buy-converting-fiat-into-crypto">Buy: converting fiat into crypto</h2>
+
+<p>On Binance, you can buy bitcoins anytime, even on non-business hours and weekends.</p>
+
+<p>To buy bitcoins with your fiat balance, hover over <strong>Buy Crypto</strong> on the top navigation bar and then click <strong>Cash Balance</strong>.</p>
+
+<p>Select the fiat currency to spend (e.g. USD, EUR, BRL) and enter the amount (e.g. 1,000 BRL). Choose the crypto that you want to buy (in our case, <strong>BTC</strong>) and click <strong>Buy</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-buy-01.jpg" title="">
+<img src="/files/2021/04/binance-buy-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Check transaction details and click <strong>Confirm</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-buy-02.jpg" title="">
+<img src="/files/2021/04/binance-buy-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The purchase is executed immediately. Click <strong>Go To Wallet</strong> to see your BTC balance:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-buy-03.jpg" title="">
+<img src="/files/2021/04/binance-buy-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-buy-04.jpg" title="">
+<img src="/files/2021/04/binance-buy-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Another way to reach that same screen is <strong>Wallet</strong> &gt; <strong>Overview</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/binance-buy-05.jpg" title="">
+<img src="/files/2021/04/binance-buy-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The following pages of the Binance Support can give you more information about the buying options offered by Binance:</p>
+
+<ul>
+  <li><a href="https://www.binance.com/en/support/faq/c-66?navId=66">Buy Crypto (Fiat/P2P)</a></li>
+  <li><a href="https://www.binance.com/en/support/faq/b90065c7a7d44d0bb8b2ac7dc2cb0391">How to Buy Crypto with BRL</a></li>
+</ul>
+
+<h2 id="custodial-versus-non-custodial-wallets">Custodial versus non-custodial wallets</h2>
+
+<p>As we have seen <a href="/en/2021/04/23/bitcoin-for-beginners-with-the-electrum-wallet-part-1-basic-concepts-and-setup/#bitcoin-wallets">previously</a>, there are many <a href="https://99bitcoins.com/bitcoin-wallet/#wallet-type">types of wallets</a>. And now it’s a perfect time to explain another possible categorization for wallets: custodial versus non-custodial.</p>
+
+<p>A <strong>non-custodial wallet</strong> is a wallet that allows you as its user to own the private key. No one other than yourself has access to the private key. Remember that bitcoin transactions need to be signed using the private key. This means that a non-custodial wallet gives you full control of your funds, as only you (with your private key) are able to transfer your bitcoins. Electrum is an example of a desktop non-custodial wallet.</p>
+
+<p>A <strong>custodial wallet</strong> is similar to today’s bank accounts where you keep your money. If you don’t want to keep your bitcoins with you, you can keep them on a custodial wallet whose private keys are managed by a third party you trust. Any Bitcoin exchange like Binance is considered to be a web custodial wallet.</p>
+
+<p>Note that a custodial wallet does not give you the private key, so you don’t have full control of your funds. For instance, if the exchange goes offline for a while, you won’t be able to use your bitcoins during the outage. Worse, exchanges are subject to hacker attacks. Other risks include the company might freeze your funds, go bankrupt or commit fraud and steal your coins. There is a popular saying in the crypto community: “not your keys, not your coins”. You are advised not to keep your bitcoins on the exchange and transfer them to your own wallet.</p>
+
+<p>Of course, non-custodial wallets aren’t a perfect 100% safe solution. For instance, if your computer is taken away, you may lose your coins, if you don’t have written down your seed.</p>
+
+<p>It’s up to you to decide where you are going to keep your bitcoins.</p>
+
+<p>But following our how-to, let’s transfer our newly purchased bitcoins from Binance to Electrum.</p>
+
+<h2 id="withdraw-transferring-crypto-from-exchange-to-wallet">Withdraw: transferring crypto from exchange to wallet</h2>
+
+<p>Bitcoin transactions can be made at any time, including non-business hours and weekends. Remember that on every Bitcoin transaction there is a fee to be paid to miners, so you can’t transfer your total Bitcoin balance.</p>
+
+<p>Binance does not charge additional <a href="https://www.binance.com/en/support/faq/d9ff84dccc24423cbe6d59859d86afe3">fees</a> on top of that, just the transaction fee, which is estimated based on the current network transaction fees and cannot be changed by the user. Also, for each withdrawal request, Binance does not allow you to withdraw less than a minimum amount. Both the withdrawal fee and the minimum withdrawal are informed on the withdrawal page, but you can also check them visiting the <a href="https://www.binance.com/en/fee/depositFee">Fee Schedule page</a>.</p>
+
+<p>To receive bitcoins on your Bitcoin wallet, you need an address. Open Electrum and select the <strong>Receive</strong> tab:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-01.jpg" title="">
+<img src="/files/2021/04/electrum-receive-01.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Optionally, give a <strong>Description</strong> to the transaction. Then, click <strong>New Address</strong> to receive one.</p>
+
+<p>Copy the receiving address to the clipboard:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-02.jpg" title="">
+<img src="/files/2021/04/electrum-receive-02.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Open your Binance wallet (<strong>Wallet</strong> &gt; <strong>Overview</strong>) and click <strong>Withdraw</strong> on the BTC line.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-03.jpg" title="">
+<img src="/files/2021/04/electrum-receive-03.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>By the left, select the <strong>Coin</strong> you want to withdraw. Here, we are going to withdraw <strong>BTC</strong>.</p>
+
+<p>By the right, on <strong>Recipient’s BTC Address</strong>, paste the address copied from Electrum.</p>
+
+<p>On <strong>Transfer network</strong>, select <strong>Bitcoin (BTC)</strong>.</p>
+
+<p>Enter the withdrawal <strong>Amount</strong>. Here, I clicked <strong>Max</strong> (maximum).</p>
+
+<p>Check the <strong>Transaction Fee</strong> and the amount <strong>The receiver will get</strong> (which is equal to the <strong>Amount</strong> you informed less the <strong>Transaction Fee</strong>). Click <strong>Submit</strong> when you are ready.</p>
+
+<p>Click <strong>Send Code</strong> and Binance will send you an email with a verification code. Enter that code here to continue. Also, enter the 2FA code generated by your 2FA app. Pay attention to the warning on the screen: <strong>withdrawals cannot be canceled once submited</strong>. So, take a last look at the transaction information to ensure it is correct and click <strong>Submit</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-04.jpg" title="">
+<img src="/files/2021/04/electrum-receive-04.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>That’s it, we are done with Binance:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-05.jpg" title="">
+<img src="/files/2021/04/electrum-receive-05.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Usually exchanges don’t send funds immediately, they often batch users transfers to save on fees, so you can expect a few minutes delay.</p>
+
+<p>Wait for an email from Binance entitled <strong>Withdrawal Successful</strong>.</p>
+
+<p>When you receive that email, you can go back to Electrum and switch to the <strong>History</strong> tab:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-06.jpg" title="">
+<img src="/files/2021/04/electrum-receive-06.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The transaction will initially be marked as <strong>Unconfirmed</strong>, indicating that it has been broadcast, but it has not yet been added to the blockchain. Next, you need to wait for miners to confirm the transaction so you can use the bitcoins. Note that the status bar displays <strong>Balance: 0 mBTC</strong>, as if there were no bitcoins on the wallet yet.</p>
+
+<p>You can see transaction details by right clicking it and then clicking <strong>View Transaction</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-07.jpg" title="">
+<img src="/files/2021/04/electrum-receive-07.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The confirmation process takes a few minutes, but it’s automatic: it does not require human intervention, only the work of the computers connected to the Bitcoin network (the miners).</p>
+
+<p>After some confirmations (usually at least six), the transaction appears as confirmed, with a checkmark next to its timestamp:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/04/electrum-receive-08.png" title="">
+<img src="/files/2021/04/electrum-receive-08.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>That indicates that the transaction has been recorded into the blockchain and now you can use the bitcoins. Note the updated balance on the status bar.</p>
+
+<p>In case you need more information about the Binance withdrawal process, please refer to the following pages of the Binance Support:</p>
+
+<ul>
+  <li><a href="https://www.binance.com/en/support/faq/d9ff84dccc24423cbe6d59859d86afe3">Crypto Withdrawal Fees on Binance</a></li>
+  <li><a href="https://www.binance.com/en/support/faq/85a1c394ac1d489fb0bfac0ef2fceafd">How do I Deposit/Withdraw Cryptocurrency</a></li>
+</ul>
+
+<h2 id="to-be-continued">To be continued…</h2>
+
+<p>In <a href="/en/2021/05/03/bitcoin-for-beginners-with-the-electrum-wallet-part-3-transferring-from-the-wallet-and-selling-bitcoins/">part 3</a>, you are going to see how to transfer bitcoins from Electrum to an exchange, in case you need to sell them (and how to do so).</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Update (May 03, 2021):</strong>
+    <p><a href="/en/2021/05/03/bitcoin-for-beginners-with-the-electrum-wallet-part-3-transferring-from-the-wallet-and-selling-bitcoins/">Part 3 is here! (click)</a></p>
+
+</div>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Would you buy me a coffee?" style='max-width: 48px;'>
+    <div class="media-body">
+        If you really liked it, if it was really helpful for you, is it worth a coffee? If you want, you can "buy me a coffee" with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US" title="PayPal" target="_blank">PayPal</a> or <a href="/en/contribute">contribute to the project in other ways</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_7gt3 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Ads</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Donate
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>You can make a one-time donation quickly with <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-en.gif' alt='PayPal' target='_blank'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="6MZ4CVA2WXLKA" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Or make monthly donations via one of these services:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Patreon' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/patreon.png' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Patreon</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='Ko-fi' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/ko-fi.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Ko-fi</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/en/contribute">More info and other ways to contribute ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="This is the part 2 of our trilogy of posts about how to transact bitcoins using the Electrum Bitcoin wallet. In part 1, you’ve seen what Bitcoin is and some basic concepts, how to install Electrum and set it up. If you fell into this page, I recommend you start reading at the first part:...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2021/04/bitcoin-electrum-binance.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2021/05/03/bitcoin-for-beginners-with-the-electrum-wallet-part-3-transferring-from-the-wallet-and-selling-bitcoins/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2018/12/12/bitcoin-para-iniciantes-com-a-carteira-electrum/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2021/04/27/bitcoin-for-beginners-with-the-electrum-wallet-part-2-buying-and-transferring-bitcoins-to-the-wallet/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>

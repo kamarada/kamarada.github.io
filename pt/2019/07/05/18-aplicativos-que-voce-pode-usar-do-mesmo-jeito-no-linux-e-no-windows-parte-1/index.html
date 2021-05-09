@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="Talvez você não dê uma chance ao Linux por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te dis...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">
+    
+    
+        
+            <link rel="alternate" hreflang="en" href="https://linuxkamarada.com/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/" />
+        
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2019-07-05 01:40:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Talvez você não dê uma chance ao Linux por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te dis..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2019/07/apps-linux-windows.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="18 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 1" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,1032 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/',
+                    title: document.title,
+                    description: 'Talvez você não dê uma chance ao Linux por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te dis...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/" itemprop="mainEntityOfPage url">
+                18 aplicativos que você pode usar do mesmo jeito no Linux e no Windows — parte 1
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2019-07-05">
+                    <a href="/2019/07/05/">
+                        
+    05 de
+    
+    Julho
+        
+    de 2019
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2019-07-20" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/apps-linux-windows.jpg" title="">
+<img src="/files/2019/07/apps-linux-windows.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Talvez você não dê uma chance ao <a href="http://www.vivaolinux.com.br/linux/">Linux</a> por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te disser que existem pelo menos 18 aplicativos populares no <a href="https://www.microsoft.com/pt-br/windows/">Windows</a> que também podem ser usados do mesmo jeito no Linux, um sistema <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html">livre</a> e gratuito, se anima de experimentar?</p>
+
+<p>Perceba que não estou falando de <strong>alternativas</strong> do Linux para aplicativos do Windows: falo dos <strong>mesmos aplicativos</strong> sendo usados <strong>da mesma forma</strong> nos dois sistemas!</p>
+
+<p>Caso deseje migrar para o Linux, você pode inclusive começar a usar esses aplicativos no sistema operacional que já lhe é familiar, facilitando a mudança.</p>
+
+<p>Os aplicativos que vou mostrar aqui são:</p>
+
+<ul>
+  <li><strong>multi-plataforma:</strong> são feitos para vários sistemas, a exemplo de Linux e Windows, mas alguns também estão disponíveis para outros sistemas, como <a href="https://www.android.com/">Android</a> e <a href="https://www.apple.com/br/ios/">iOS</a>;</li>
+  <li><strong>conhecidos:</strong> populares, há muita informação sobre eles na Internet;</li>
+  <li><strong>gratuitos:</strong> podem ser usados sem custo, alguns possuem funcionalidades adicionais que podem ser compradas;</li>
+  <li>em sua maioria, <strong>livres</strong>: oferecem as quatro liberdades essenciais dos <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>softwares</em> livres</a> — seja livre para usar, estudar o <a href="https://www.codigofonte.com.br/artigos/o-que-e-codigo-fonte">código-fonte</a>, modificar e distribuir como quiser; e</li>
+  <li>em sua maioria, podem ser obtidos facilmente do <strong>repositório</strong> da própria distribuição.</li>
+</ul>
+
+<p>Aqui vou focar na distribuição Linux <a href="https://www.opensuse.org/">openSUSE</a>, que é a que eu uso e recomendo, mas esses programas podem ser facilmente instalados em outras distribuições.</p>
+
+<p>Para o <em>post</em> não ficar muito grande, decidi dividi-lo em duas partes.</p>
+
+<p>Sem mais delongas, vejamos os programas selecionados!</p>
+
+<h2 id="1-mozilla-firefox">1) Mozilla Firefox</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/mozilla-firefox-pt.jpg" title="">
+<img src="/files/2019/07/mozilla-firefox-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://mozilla.org/firefox">Mozilla Firefox</a> é um navegador gratuito, livre e multi-plataforma desenvolvido pela <a href="https://foundation.mozilla.org/">Fundação Mozilla</a> com ajuda de centenas de colaboradores. A intenção da fundação é desenvolver um navegador leve, seguro, intuitivo e altamente extensível.</p>
+
+<p>Segundo o <a href="http://gs.statcounter.com/">StatCounter</a>, serviço que analisa o tráfego da <em>web</em> desde 1999, atualmente o Firefox é usado por cerca de 9,78% dos usuários de <em>desktop</em> do mundo e 6,14% dos usuários de <em>desktop</em> brasileiros. É o navegador padrão das distribuições Linux mais populares.</p>
+
+<p>A distribuição <a href="https://en.opensuse.org/Portal:Leap">openSUSE Leap</a> utiliza uma versão do Firefox desenvolvida especialmente para grandes organizações (como empresas, universidades e órgãos públicos) chamada <a href="https://www.mozilla.org/en-US/firefox/organizations/">ESR</a> (<em>Extended Support Release</em>, versão com suporte estendido). Essa versão recebe atualizações de segurança sempre, mas novas funcionalidades apenas de tempos em tempos. Portanto, é atualizada com menor frequência.</p>
+
+<p>Você já deve ter o Firefox instalado no openSUSE, mas caso precise instalá-lo manualmente:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in MozillaFirefox MozillaFirefox-translations-common MozillaFirefox-branding-openSUSE
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Para instalar o Firefox no Windows, baixe o instalador de um dos seguintes <em>links</em>:</p>
+
+<ul>
+  <li>Versão padrão (no momento da escrita, a 67.0.4):
+    <ul>
+      <li><a href="https://www.mozilla.org/pt-BR/firefox/new/">https://www.mozilla.org/pt-BR/firefox/new/</a></li>
+    </ul>
+  </li>
+  <li>Versão ESR (60.7.2):
+    <ul>
+      <li><a href="https://www.mozilla.org/pt-BR/firefox/organizations/all/">https://www.mozilla.org/pt-BR/firefox/organizations/all/</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-google-chrome">2) Google Chrome</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/google-chrome-pt.jpg" title="">
+<img src="/files/2019/07/google-chrome-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.google.com/chrome/">Google Chrome</a> é um navegador <a href="https://pt.wikipedia.org/wiki/Software_propriet%C3%A1rio">proprietário</a> desenvolvido pela companhia <a href="https://www.google.com.br/">Google</a>. É gratuito, multi-plataforma e apresenta uma interface minimalista.</p>
+
+<p>Segundo o StatCounter, atualmente o Chrome é o navegador mais usado no mundo (70% dos usuários de <em>desktop</em>) e também no Brasil (85% dos usuários de <em>desktop</em>).</p>
+
+<p>Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a></li>
+</ul>
+
+<p>Por ser um <em>software</em> proprietário, o Chrome não é disponibilizado nos repositórios oficiais das distribuições Linux. O que talvez muitas pessoas não saibam é que a base do Chrome é um navegador livre chamado <a href="https://www.chromium.org/">Chromium</a>. O Chrome nada mais é que a base do Chromium acrescida de componentes proprietários inseridos pelo Google.</p>
+
+<p>Se você quiser instalar o Chromium no openSUSE, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in chromium
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>O Chrome é mais comum que o Chromium no Windows, mas caso você queira usar o Chromium no Windows, este <em>site</em> disponibiliza instaladores:</p>
+
+<ul>
+  <li><a href="https://chromium.woolyss.com/">https://chromium.woolyss.com/</a></li>
+</ul>
+
+<h2 id="3-libreoffice">3) LibreOffice</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/libreoffice-pt.jpg" title="">
+<img src="/files/2019/07/libreoffice-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://pt-br.libreoffice.org/">LibreOffice</a> é uma suíte de aplicativos de escritório livre e gratuita. Vem instalada por padrão nas distribuições Linux mais populares. Utiliza o formato padronizado <a href="http://www.opendocument.com.br/project-definition">OpenDocument</a> e também é compatível com os formatos do <a href="https://www.office.com/">Microsoft Office</a>, além de outros formatos mais antigos. O LibreOffice surgiu como uma ramificação do projeto original <a href="https://www.openoffice.org/pt-br/">OpenOffice</a>, que aqui no Brasil era chamado de <a href="https://www.vivaolinux.com.br/artigo/Conheca-o-OpenOffice.org-e-o-BrOffice.org?pagina=3">BrOffice</a>.</p>
+
+<p>Você já deve ter o LibreOffice instalado no openSUSE, mas caso precise instalá-lo manualmente, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in libreoffice-{writer,calc,impress,draw,base,math,l10n-pt_BR}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Para instalar o LibreOffice no Windows, baixe o instalador do <em>site</em> do LibreOffice:</p>
+
+<ul>
+  <li><a href="https://pt-br.libreoffice.org/">https://pt-br.libreoffice.org/</a></li>
+</ul>
+
+<h2 id="4-dropbox">4) Dropbox</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/dropbox-pt.jpg" title="">
+<img src="/files/2019/07/dropbox-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.dropbox.com/pt_BR/">Dropbox</a> é um serviço de armazenamento de arquivos na nuvem. Ele disponibiliza um programa cliente que cria uma pasta chamada Dropbox no computador e sincroniza os arquivos dessa pasta com os arquivos que estão na nuvem. O plano gratuito oferece 2GB de espaço. Há planos individuais e para empresas que oferecem mais espaço e recursos.</p>
+
+<p><strong>Dica:</strong> inscreva-se no Dropbox por <a href="https://db.tt/4VzN0K26">este <em>link</em> de indicação</a> e ganhe 500MB de espaço extra!</p>
+
+<p>Para instalar o cliente do Dropbox no Windows, baixe o instalador do <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.dropbox.com/pt_BR/">https://www.dropbox.com/pt_BR/</a></li>
+</ul>
+
+<p>Para instalar o cliente do Dropbox no openSUSE, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in dropbox
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Ao abrir o Dropbox pela primeira vez, ele baixará parte do cliente que é proprietária.</p>
+
+<p>Se você usa o ambiente de trabalho <a href="https://www.gnome.org/">GNOME</a>, instale também a integração com o gerenciador de arquivos, para que o estado da sincronização de pastas e arquivos seja exibido em seus ícones:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in nautilus-extension-dropbox
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Também observe que <a href="https://www.omgubuntu.co.uk/2017/09/will-you-miss-gnome-legacy-tray">o GNOME não exibe ícones da área de notificação</a> por padrão. Você pode instalar a extensão <a href="https://extensions.gnome.org/extension/1031/topicons/">TopIcons Plus</a> para que o ícone do Dropbox seja exibido na barra do topo, próximo ao relógio.</p>
+
+<p>Se você não sabe instalar extensões do GNOME, veja como fazer isso no <em>post</em>:</p>
+
+<ul>
+  <li><a href="/pt/2019/04/04/monitorando-recursos-do-sistema-com-a-extensao-do-gnome-system-monitor/">Monitorando recursos do sistema com a extensão do GNOME System Monitor</a></li>
+</ul>
+
+<h2 id="5-skype">5) Skype</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/skype-pt.jpg" title="">
+<img src="/files/2019/07/skype-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.skype.com/pt-br/">Skype</a> é um programa que permite enviar mensagens e fazer ligações de voz e vídeo pela Internet, tanto gratuitamente, entre usuários do Skype, quanto a preços acessíveis, do Skype para telefones fixos ou celulares em qualquer lugar do mundo.</p>
+
+<p>Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.skype.com/pt-br/">https://www.skype.com/pt-br/</a></li>
+</ul>
+
+<p>No Windows, também é possível <a href="https://www.microsoft.com/pt-br/search?q=skype">baixar o Skype pela Microsoft Store</a>.</p>
+
+<h2 id="6-teamviewer">6) TeamViewer</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/teamviewer-pt.jpg" title="">
+<img src="/files/2019/07/teamviewer-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.teamviewer.com/pt-br/">TeamViewer</a> é um serviço de acesso remoto, compartilhamento de área de trabalho, conferência online e transferência de arquivos entre computadores. É possível, a partir de um computador ou dispositivo móvel, visualizar a tela de outro computador ou dispositivo móvel e também controlá-lo. O uso pessoal é gratuito, há planos para empresas.</p>
+
+<p>Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.teamviewer.com/pt-br/">https://www.teamviewer.com/pt-br/</a></li>
+</ul>
+
+<h2 id="7-vlc">7) VLC</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/vlc-pt.jpg" title="">
+<img src="/files/2019/07/vlc-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.videolan.org/vlc/">VLC</a> é um reprodutor multimídia livre e gratuito que reproduz a maioria dos arquivos de mídia (por exemplo, <a href="https://pt.wikipedia.org/wiki/MP3">MP3</a> e <a href="https://pt.wikipedia.org/wiki/DivX">DivX</a>), mídias (CD, DVD, Blu-ray) e transmissões pela rede (<em>streamings</em>). Eu considero o VLC o “canivete suíço” multimídia: se há algum arquivo de mídia que o VLC não consegue abrir, provavelmente nenhum outro programa consegue!</p>
+
+<p>Para instalar o VLC no Windows, baixe o instalador do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.videolan.org/vlc/">https://www.videolan.org/vlc/</a></li>
+</ul>
+
+<p>No openSUSE, como o VLC é um <em>software</em> livre, pode ser obtido dos repositórios oficiais:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in vlc vlc-lang
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>No entanto, o pacote disponibilizado pelo openSUSE suporta apenas formatos multimídia livres (por exemplo, <a href="https://pt.wikipedia.org/wiki/XviD">Xvid</a>). Portanto, não consegue reproduzir muitos arquivos.</p>
+
+<p>A dica é baixar o VLC do repositório do projeto <a href="http://packman.links2linux.com/">Packman</a>, que disponibiliza o pacote <a href="http://packman.links2linux.com/package/vlc">vlc-codecs</a>, que contém os <a href="https://pt.wikipedia.org/wiki/Codec"><em>codecs</em></a> que não são empacotados pelo openSUSE:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre># zypper ar -cfK -p 90 -n "Packman Repository" http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_15.1/ packman
+# zypper in vlc vlc-lang vlc-codecs
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="8-spotify">8) Spotify</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/spotify-pt.jpg" title="">
+<img src="/files/2019/07/spotify-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://www.spotify.com/br/">Spotify</a> é o serviço de <em>streaming</em> de música e <em>podcasts</em> mais popular do mundo. É um serviço <em>freemium</em> (mistura de <em>free</em> — gratuito — com <em>premium</em>): todos os recursos básicos podem ser usados de graça, com propagandas, ou é possível pagar uma assinatura para ter acesso a recursos adicionais, como maior qualidade e possibilidade de baixar as músicas.</p>
+
+<p>Para instalar o cliente do Spotify no Windows, baixe o instalador do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.spotify.com/br/">https://www.spotify.com/br/</a></li>
+</ul>
+
+<p>No Windows, também é possível <a href="https://www.microsoft.com/pt-br/search?q=spotify">baixar o Spotify pela Microsoft Store</a>.</p>
+
+<p>Há um <a href="https://www.spotify.com/br/download/linux/">cliente do Spotify para Linux</a> que pode ser instalado pelo <a href="https://snapcraft.io/">Snap</a>, um gerenciador de pacotes independente de distribuição.</p>
+
+<p>Para instalar o Snap:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre># zypper ar --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Leap_15.1 snap
+# zypper in snapd
+# systemctl enable snapd
+# systemctl start snapd
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Depois, para instalar o cliente do Spotify para Linux:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>$ snap install spotify
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="9-java">9) Java</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/java-pt.jpg" title="">
+<img src="/files/2019/07/java-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p><a href="https://www.java.com/pt_BR/">Java</a> não é propriamente um programa, mas uma linguagem de programação, na qual vários programas são desenvolvidos. Para usar programas feitos em Java, é necessário instalar o ambiente de execução do Java (do inglês <em>Java Runtime Environment</em>, JRE), também conhecido como máquina virtual Java (<em>Java Virtual Machine</em>, JVM). Normalmente quando as pessoas falam em “instalar o Java”, elas querem dizer “instalar o JRE”.</p>
+
+<p>Há duas versões do JRE, ambas gratuitas e multi-plataforma: uma livre, fornecida pelo projeto <a href="https://openjdk.java.net/">OpenJDK</a>, e outra proprietária, fornecida pela empresa <a href="https://www.oracle.com/br/">Oracle</a>.</p>
+
+<p>No Windows, normalmente é instalado o JRE da Oracle, que pode ser baixado do <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://www.java.com/pt_BR/">https://www.java.com/pt_BR/</a></li>
+</ul>
+
+<p>No Linux, é mais fácil instalar o JRE do OpenJDK, que pode ser obtido dos repositórios oficiais das distribuições. Para instalá-lo no openSUSE, execute:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in java-openjdk
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Alguns programas, como o Imposto de Renda e os módulos de segurança de alguns bancos, como Banco do Brasil e Caixa, exigem que o JRE da Oracle esteja instalado no computador.</p>
+
+<p>Para mais informações sobre o JRE da Oracle e os programas citados no Linux, leia:</p>
+
+<ul>
+  <li><a href="/pt/2017/02/28/como-instalar-o-java-da-oracle-no-linux-opensuse/">Como instalar o Java da Oracle no Linux openSUSE</a></li>
+  <li><a href="/pt/2017/02/28/como-instalar-o-programa-do-imposto-de-renda-2017-no-linux-opensuse/">Como instalar o programa do Imposto de Renda 2017 no Linux openSUSE</a></li>
+  <li><a href="/pt/2017/06/03/como-acessar-o-netbanking-do-banco-do-brasil-no-opensuse/">Como acessar o netbanking do Banco do Brasil no openSUSE</a></li>
+  <li><a href="/pt/2017/06/04/como-acessar-o-netbanking-da-caixa-no-opensuse/">Como acessar o netbanking da Caixa no openSUSE</a></li>
+</ul>
+
+<h2 id="10-pdf-split-and-merge-pdfsam">10) PDF Split and Merge (PDFsam)</h2>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2019/07/pdfsam-pt.jpg" title="">
+<img src="/files/2019/07/pdfsam-pt.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O <a href="https://pdfsam.org/pt/">PDF Split and Merge</a>, também conhecido como PDFsam, é um programa que permite manipular documentos em <a href="https://pt.wikipedia.org/wiki/Portable_Document_Format">PDF</a>. A edição Basic é livre e gratuita e contempla todas as funcionalidades mais básicas, como dividir um documento em partes (seja pela quantidade de páginas, seja pelo tamanho do arquivo em <em>bytes</em>), unir documentos, girar ou extrair páginas. Há edições comerciais com funcionalidades adicionais.</p>
+
+<p>Para instalá-lo, tanto no Linux quanto no Windows, você deve baixá-lo do seu <em>site</em>:</p>
+
+<ul>
+  <li><a href="https://pdfsam.org/pt/">https://pdfsam.org/pt/</a></li>
+</ul>
+
+<h2 id="continua">Continua…</h2>
+
+<p>Na parte 2, veremos mais programas feitos tanto para Linux quanto para Windows.</p>
+
+<div class="alert alert-success alert-update" role="alert">
+    <i class="fas fa-sync-alt" aria-hidden="true"></i> <strong>Atualização (12/07/2019):</strong>
+    <p><a href="/pt/2019/07/12/20-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-2/">A segunda parte já está aqui! (clique para acessá-la)</a></p>
+
+</div>
+
+<h2 id="referências">Referências</h2>
+
+<p>Para escolher os aplicativos, consultei páginas que listam programas populares ou indicados para usuários de Windows:</p>
+
+<ul>
+  <li><a href="https://www.microsoft.com/pt-br/store/most-popular/apps/pc">Aplicativos mais populares - Microsoft Store</a></li>
+  <li><a href="https://www.baixaki.com.br/top-semanal.htm">Top Semanal de Downloads para Windows - Baixaki</a></li>
+  <li><a href="https://www.makeuseof.com/tag/getting-a-new-pc-12-must-have-applications-to-install-first/">New PC? 15 Must-Have Windows Applications You Should Install First</a></li>
+  <li><a href="https://www.techradar.com/news/software/applications/20-windows-7-free-apps-to-download-today-648954">20 of the best free Windows 7 apps 2019: bring your PC right up to date - TechRadar</a></li>
+  <li><a href="https://www.thewindowsclub.com/best-free-software-for-windows-10">Best free software for Windows 10 in 2019</a></li>
+</ul>
+
+<p>Portanto, tentei escrever do ponto de vista de alguém que usa Windows e se pergunta se existem os mesmos aplicativos no Linux.</p>
+
+<p>Espero que tenha ajudado. Ficou com alguma dúvida? Gostaria de sugerir algum programa para a próxima parte ou futuros textos? Escreva nos comentários!</p>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Talvez você não dê uma chance ao Linux por medo de não saber usar o sistema ou receio de que não encontre os programas que utiliza no dia-a-dia. Se eu te disser que existem pelo menos 18 aplicativos populares no Windows que também podem ser usados do mesmo jeito no Linux, um sistema livre e...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2019/07/apps-linux-windows.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2019/07/20/20-apps-you-can-use-the-same-way-on-both-linux-and-windows-part-1/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2019/07/05/18-aplicativos-que-voce-pode-usar-do-mesmo-jeito-no-linux-e-no-windows-parte-1/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

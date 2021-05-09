@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,58 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="An emulator is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for...">
+    <link rel="canonical" href="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/en/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">
+    
+    
+        
+    
+        
+            <link rel="alternate" hreflang="pt" href="https://linuxkamarada.com/pt/2020/05/22/retroarch-um-emulador-so-para-varios-videogames/" />
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Search Linux Kamarada" href="https://linuxkamarada.com/en/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-05-23 13:30:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="An emulator is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2020/05/retroarch.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="RetroArch: the ultimate all-in-one video game emulator" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamaradaWW" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +100,999 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                The website has moved
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>It is now at: <strong>linuxkamarada.com</strong>.</p><p>Please, update your link or bookmark.</p><p>You are going be redirected to this same page at the new address in a few seconds.</p><p>If that does not happen, <a href="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">click here</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'en'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/',
+                    title: document.title,
+                    description: 'An emulator is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Toggle drawer
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/help">Help</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/en/contribute">Contribute</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/en/search/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Translations" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item translation-en" href="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2020/05/22/retroarch-um-emulador-so-para-varios-videogames/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/en/search/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Search" type="text" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/help">Help</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/en/contribute">Contribute</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> English
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.en.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/" itemprop="mainEntityOfPage url">
+                RetroArch: the ultimate all-in-one video game emulator
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-05-23">
+                    <a href="/2020/05/23/">
+                        
+    May 23, 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-05-23" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>An <strong>emulator</strong> is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for that video game.</p>
+
+<p>For years, there have been several emulators for various video games and they make the joy of the nostalgic, who want to play games of video games they own but don’t work anymore, or those who don’t have video games to play.</p>
+
+<p>When I had my first contact with emulators, almost 20 years ago, I was using <a href="https://www.microsoft.com/windows/">Windows</a> and I needed to install an emulator for each video game I wanted to emulate, for example: to emulate <a href="https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System">Super Nintendo</a>, I used <a href="/en/2019/08/14/how-to-play-super-nintendo-games-on-opensuse-with-the-snes9x-emulator/">Snes9x</a>, to emulate <a href="https://en.wikipedia.org/wiki/Sega_Genesis">Sega Genesis</a>, I used <a href="http://www.gens.me/">Gens</a>, and so on.</p>
+
+<p>Is there an emulator for <a href="https://www.kernel.org/linux.html">Linux</a> capable of emulating all (or at least many) video games?</p>
+
+<p>Today, yes, there is: we have <a href="https://www.retroarch.com/">RetroArch</a>. Multi-platform free and open-source software, RetroArch is not actually an emulator, but an interface (frontend) for several emulators, a kind of emulation center, capable of running virtually every retro game imaginable. RetroArch interfaces with emulators through the <a href="http://www.libretro.com/">libretro</a> library (backend). Each emulator that libretro supports is encapsulated into what is called a libretro <strong>core</strong>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch.jpg" title="">
+<img src="/files/2020/05/retroarch.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>The list of video games that RetroArch can emulate includes, but is not limited to:</p>
+
+<ul>
+  <li>Atari 2600</li>
+  <li>Nintendo Entertainment System (NES)</li>
+  <li>Sega Genesis, also known as Mega Drive</li>
+  <li>Game Boy, Game Boy Color (GBC), Game Boy Advance (GBA)</li>
+  <li>Super Nintendo Entertainment System (SNES)</li>
+  <li>PlayStation (PS, PS1, PSX), PlayStation 2 (PS2), PlayStation Portable (PSP)</li>
+  <li>Nintendo 64 (N64)</li>
+  <li>GameCube</li>
+  <li>Nintendo DS</li>
+  <li>Nintendo Wii</li>
+</ul>
+
+<p>Did you like it? Then read on to see how to install and use RetroArch on <a href="/en/2020/02/27/kamarada-15.1-comes-with-everything-you-need-to-use-Linux-everyday/">Linux Kamarada</a> and <a href="https://www.opensuse.org/">openSUSE</a>.</p>
+
+<h2 id="where-to-download-games-roms">Where to download games (ROMs)</h2>
+
+<p>Files that contain games are commonly called <strong>ROMs</strong>.</p>
+
+<p>For cartridge-based video games, such as the Super Nintendo and the Sega Genesis, their ROMs are files that contain the contents dumped from the cartridges.</p>
+
+<p>RetroArch does not come with ROMs. Also there are no ROMs to download here on the Linux Kamarada website. You can search for ROMs on web search engines like <a href="https://www.google.com/">Google</a>.</p>
+
+<p>For example, try searching for <code class="highlighter-rouge">sega genesis roms</code>.</p>
+
+<p><strong>Tip:</strong> if you download a ROM compressed as a ZIP archive, you don’t need to unzip it, RetroArch can open it as is.</p>
+
+<h2 id="installing-retroarch">Installing RetroArch</h2>
+
+<p>There are two different methods for installing RetroArch on openSUSE: from the graphical interface using 1-Click Install or from the terminal using the <strong>zypper</strong> package manager — choose whichever method you prefer.</p>
+
+<p>To install RetroArch using 1-Click Install, click the following button:</p>
+
+<p class="text-center"><a class="btn btn-sm btn-outline-primary" href="/downloads/retroarch.ymp"><i class="fas fa-bolt"></i> 1-Click Install</a></p>
+
+<p>To install using the terminal, first add the needed repository:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper addrepo -f http://download.opensuse.org/repositories/Emulators/openSUSE_Leap_15.1/ emulators
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Then, install the RetroArch package:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre># zypper in retroarch
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>On openSUSE, each libretro core has its own package. Several cores are already installed by default as RetroArch dependencies. Later on, you can open <a href="http://yast.opensuse.org/">YaST</a>’s <strong>Software Management</strong>, search for <code class="highlighter-rouge">libretro</code> and install or remove cores as you wish.</p>
+
+<p>Right after installing, you should be able to launch RetroArch.</p>
+
+<h2 id="starting-retroarch">Starting RetroArch</h2>
+
+<p>To start RetroArch, if you use the <a href="https://www.gnome.org/">GNOME</a> desktop, click <strong>Activities</strong>, by the upper-left corner of the screen, start typing <code class="highlighter-rouge">retroarch</code> and click its icon:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-launching-en.jpg" title="">
+<img src="/files/2020/05/retroarch-launching-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-main-screen-en.jpg" title="The RetroArch main screen">
+<img src="/files/2020/05/retroarch-main-screen-en.jpg" alt="The RetroArch main screen" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>The RetroArch main screen</p>
+
+</em>
+
+</div>
+
+<h2 id="setting-up-controls">Setting up controls</h2>
+
+<p>An interesting feature of RetroArch is that it has a global control configuration, which needs to be set up just once. RetroArch then adapts this global control configuration for each video game in the best possible way. If you used many emulators individually instead, you would have to set up controls on each of them.</p>
+
+<p>RetroArch maps your real-world gamepad or keyboard buttons to a virtual controller called a <a href="https://docs.libretro.com/guides/input-and-controls/">RetroPad</a>, then it maps the RetroPad buttons to the video games controllers buttons. A RetroPad does not exist in real life, it’s only a concept within RetroArch.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retropad.jpg" title="Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers.">
+<img src="/files/2020/05/retropad.jpg" alt="Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Your gamepad or keyboard is mapped to RetroPad, which in turn is mapped to the video games controllers.</p>
+
+</em>
+
+</div>
+
+<p>RetroPad has the same layout of a <a href="https://www.playstation.com/en-us/explore/accessories/gaming-controllers/dualshock-4/">Sony DualShock</a>, the <a href="https://en.wikipedia.org/wiki/PlayStation_(console)">PlayStation</a> controller. So, if you are going to buy a gaming controller, I recommend you to buy a gaming controller for PC with that same layout. I have a controller like that and it’s the best controller for emulation, because it has many buttons, so it can be mapped to any video game controller.</p>
+
+<p>You can use a real controller with less buttons, that’s perfectly fine. However, if that is the case, you may be missing buttons to emulate some video games.</p>
+
+<p>If you are going to play with a gamepad, plug it in. RetroArch should detect it:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-joystick-detected-en.jpg" title="">
+<img src="/files/2020/05/retroarch-joystick-detected-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>RetroArch is also able to automatically configure many gamepad models: you plug your gamepad and it just works, like a real video game. Possibly your gamepad is ready to use right now and you can just start playing.</p>
+
+<p>To navigate the RetroArch menu, you can use your keyboard, mouse or the gamepad you just connected. To navigate using the mouse, simply click where you want to go.</p>
+
+<p>To navigate the menu using the keyboard, use the <strong>arrow keys</strong> to move through the options, <strong>Enter</strong> to advance in the menu, <strong>Backspace</strong> to go back and <strong>Esc</strong> to quit RetroArch.</p>
+
+<p>To navigate the menu using the gamepad, use the <strong>arrows</strong> to move through the options, <strong>O</strong> (circle) to advance in the menu and <strong>X</strong> (cross) to go back.</p>
+
+<p>If you want to change the mapping of your keyboard or gamepad to the RetroPad, enter the <strong>Settings</strong> menu, navigate to <strong>Input</strong> and finally select <strong>Port 1 Binds</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-setup-1-en.jpg" title="">
+<img src="/files/2020/05/retroarch-setup-1-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In my case, RetroArch has already mapped my gamepad:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-setup-2-en.jpg" title="">
+<img src="/files/2020/05/retroarch-setup-2-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>To quickly assign all buttons at once, choose <strong>Bind All</strong>.</p>
+
+<p>Press the buttons following the RetroArch guidelines:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-setup-3-en.jpg" title="">
+<img src="/files/2020/05/retroarch-setup-3-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In the end, you will have all buttons mapped and you will be back to the menu.</p>
+
+<p>If you are going to play two-player games, set up the second player controls in a similar way.</p>
+
+<h2 id="starting-a-game">Starting a game</h2>
+
+<p>To start a game (open a ROM) in RetroArch, go back to the <strong>Main Menu</strong> and select <strong>Load Content</strong>. Navigate to the game folder:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-open-rom-1-en.jpg" title="">
+<img src="/files/2020/05/retroarch-open-rom-1-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Find the game you want to start, select it once you have:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-open-rom-2-en.jpg" title="">
+<img src="/files/2020/05/retroarch-open-rom-2-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>If the game is zipped, you will be presented with two options, <strong>Browse Archive</strong> or <strong>Load Archive</strong>:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-open-rom-3-en.jpg" title="">
+<img src="/files/2020/05/retroarch-open-rom-3-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>In most cases, the ZIP archive contains just one game and you can just load it.</p>
+
+<p>Based on the selected file, RetroArch suggests some emulators (cores) to be used:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-open-rom-4-en.jpg" title="">
+<img src="/files/2020/05/retroarch-open-rom-4-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>You should always choose the platform the game was supposed to run on. For example, I’m loading a Sega Genesis game. So, I’m going to select the Sega Genesis core, which is based on the <a href="https://www.retrodev.com/blastem/">BlastEm</a> emulator.</p>
+
+<p>The game should start:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-open-rom-5.png" title="">
+<img src="/files/2020/05/retroarch-open-rom-5.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="accessing-the-in-game-menu">Accessing the in-game menu</h2>
+
+<p>If during the game you need to access the RetroArch menu, press <strong>F1</strong>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-game-menu-en.jpg" title="">
+<img src="/files/2020/05/retroarch-game-menu-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="saving-and-loading-game-states">Saving and loading game states</h2>
+
+<p>An advantage the emulator offers over the video game is that you can save the game state, as well as resume from where you saved it, at any time you want.</p>
+
+<p>Playing on RetroArch, you can save just like you would on the real video game (using the game’s own menu), or you can use one of the RetroArch slots.</p>
+
+<p>Another advantage is that generally video games offer only one memory to save the game, so that only one game can be saved. RetroArch offers dozens of memories (state slots).</p>
+
+<p>Note that the RetroArch in-game menu offers the <strong>Save State</strong> and <strong>Load State</strong> options, as well as the <strong>State Slot</strong> option that allows you to change the slot currently in use.</p>
+
+<p>If you need to use one of those options quickly during the game, you can use the keys:</p>
+
+<ul>
+  <li><strong>F2</strong> to save the game state</li>
+  <li><strong>F4</strong> to load the game state</li>
+  <li><strong>F7</strong> to increase the current state slot (from 0 to 1, from 1 to 2, and so on)</li>
+  <li><strong>F6</strong> to decrease the current state slot (from 2 to 1, from 1 to 0)</li>
+</ul>
+
+<h2 id="quitting-the-game">Quitting the game</h2>
+
+<p>When you no longer want to play, you can just close the RetroArch window or press <strong>Esc</strong>. Note that if you haven’t saved the game, when you quit, your progress will be lost.</p>
+
+<p>If you want to quit the current game but return to the RetroArch main menu, press <strong>F1</strong> to open the in-game menu and choose <strong>Close Content</strong>.</p>
+
+<h2 id="history">History</h2>
+
+<p>RetroArch allows you to easily access games you’ve already played by the <strong>History</strong> menu:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-history-en.jpg" title="">
+<img src="/files/2020/05/retroarch-history-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="favorites">Favorites</h2>
+
+<p>You can also add games you like most or play often to the list of your favorite games, which is another way to easily access them. There are two ways to do this.</p>
+
+<p>During the game, you can open the RetroArch menu and choose <strong>Add to Favorites</strong>.</p>
+
+<p>Or you can go to the <strong>History</strong> menu, select the game and use that same option:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-favorites-1-en.jpg" title="">
+<img src="/files/2020/05/retroarch-favorites-1-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Then, to access your favorite games, go to the <strong>Favorites</strong> menu:</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/05/retroarch-favorites-2-en.jpg" title="">
+<img src="/files/2020/05/retroarch-favorites-2-en.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="system-requirements">System requirements</h2>
+
+<p>RetroArch is, roughly speaking, a graphical user interface made up of menus. Thus, it has no minimum requirements and can be installed on any computer.</p>
+
+<p>But each emulator has its own requirements. Therefore, which video games your computer is capable of emulating depends on your hardware.</p>
+
+<p>To give you an idea, it’s very easy to use RetroArch on a <a href="/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">Raspberry Pi 4</a> thanks to the <a href="https://retropie.org.uk/">RetroPie</a> distribution (I can write about it in the future). You can check the technical specifications of the Raspberry Pi 4 computer in the text I wrote about it:</p>
+
+<ul>
+  <li><a href="/en/2019/09/29/getting-started-on-raspberry-pi-with-noobs-and-raspbian/">Getting started on Raspberry Pi with NOOBS and Raspbian</a></li>
+</ul>
+
+<p>Raspberry Pi 4 has a considerable computing power for a credit-card sized computer. Although it’s simpler than most nowadays PCs (both desktops and laptops), a Raspberry Pi 4 is able to emulate a PlayStation perfectly fine.</p>
+
+<p>Any working computer today should be able to emulate up to the fifth generation video games, such as PlayStation (launched in 1994) and <a href="https://en.wikipedia.org/wiki/Nintendo_64">Nintendo 64</a> (1996), or earlier ones, such as Super Nintendo (1990) and Sega Genesis (1988).</p>
+
+<p>For a complete list of video games classified by generations, see Wikipedia:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/List_of_home_video_game_consoles">List of home video game consoles – Wikipedia, the free encyclopedia</a></li>
+</ul>
+
+<p>Emulating newer and higher-spec video games, such as <a href="https://en.wikipedia.org/wiki/PlayStation_2">PlayStation 2</a> (2000), <a href="https://en.wikipedia.org/wiki/GameCube">GameCube</a> (2001), <a href="https://en.wikipedia.org/wiki/Nintendo_DS">Nintendo DS</a> (2004) and <a href="https://en.wikipedia.org/wiki/Wii">Nintendo Wii</a> (2006), certainly requires higher-spec computers. In such cases, you may want to consult the respective emulators requirements on the emulators websites to see if your computer can emulate those video games.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://www.howtogeek.com/260274/how-to-set-up-retroarch-the-ultimate-all-in-one-retro-games-emulator/">How to Set Up RetroArch, The Ultimate All-In-One Retro Games Emulator - How-To Geek</a></li>
+  <li><a href="https://docs.libretro.com/">Libretro Docs</a></li>
+  <li><a href="https://forums.libretro.com/t/system-requirements-analysis-work-in-progress/13746">System requirements (analysis, work in progress) - Cores - Libretro Forums</a></li>
+  <li><a href="https://en.opensuse.org/RetroArch">RetroArch - openSUSE Wiki</a></li>
+</ul>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Did you like it? What about sharing?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamaradaWW"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Would you buy me a coffee?" style='max-width: 48px;'>
+    <div class="media-body">
+        If you really liked it, if it was really helpful for you, is it worth a coffee? If you want, you can "buy me a coffee" with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US" title="PayPal" target="_blank">PayPal</a> or <a href="/en/contribute">contribute to the project in other ways</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comments
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "en";
+                        
+                        this.page.url = 'https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamaradaww.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              About
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                The Linux Kamarada Project aims to spread and promote Linux as a robust, secure, versatile and easy to use operating system, suitable for everyday use be at home, at work or on the server. The project focuses mainly on distribution and documentation.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_7gt3 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Ads</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Donate
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>You can make a one-time donation quickly with <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&lc=US' title='PayPal'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-en.gif' alt='PayPal' target='_blank'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="6MZ4CVA2WXLKA" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Or make monthly donations via one of these services:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Patreon' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/patreon.png' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Patreon</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='Ko-fi' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/ko-fi.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Ko-fi</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/en/contribute">More info and other ways to contribute ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamaradaWW?ref_src=twsrc%5Etfw">Tweets by LinuxKamaradaWW</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Author
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. All rights reversed. Based on <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="An emulator is a software that allows your computer to run software made for another device. A video game emulator allows your computer to run games made for that video game.For years, there have been several emulators for various video games and they make the joy of the nostalgic, who want to play games of...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2020/05/retroarch.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="en"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "en";
+                };
+            
+            var disqus_shortname = 'kamaradaww';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detective penguin" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Have you seen the ad that should be here?</h6>
+                It seems like you're using an ad blocker. But we depend on advertising to keep creating quality content for you to enjoy for free. If you enjoy our content, please support our website by disabling your ad blocker. Alternatively, if you come here often, please consider <a href='/en/contribute'>making a donation</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Translations</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-en" href="https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2020/05/22/retroarch-um-emulador-so-para-varios-videogames/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=en&u=https://linuxkamarada.com/en/2020/05/23/retroarch-the-ultimate-all-in-one-video-game-emulator/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

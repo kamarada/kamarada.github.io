@@ -1,11 +1,21 @@
-
-
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
 
     <title>
         
@@ -14,19 +24,54 @@
             
         
     </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="Eu acredito que o futuro do dinheiro é o Bitcoin. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surg...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
 
-    <!-- Redirect -->
-    <!-- https://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/ -->
-    <link rel="canonical" href="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/" />
-    <meta http-equiv="refresh" content="10; url=https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2020-06-20 10:50:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Eu acredito que o futuro do dinheiro é o Bitcoin. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surg..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2020/06/historia-dinheiro.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Dinheiro: passado, presente e... Bitcoin!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
 
     <!-- Favicons (made with RealFaviconGenerator.net) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://kamarada.github.io/apple-touch-icon.png?v=5">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://kamarada.github.io/favicon-32x32.png?v=5">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://kamarada.github.io/favicon-16x16.png?v=5">
-    <link rel="manifest" href="https://kamarada.github.io/site.webmanifest?v=5">
-    <link rel="mask-icon" href="https://kamarada.github.io/safari-pinned-tab.svg?v=5" color="#43a047">
-    <link rel="shortcut icon" href="https://kamarada.github.io/favicon.ico?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
     <meta name="msapplication-TileColor" content="#43a047">
     <meta name="theme-color" content="#43a047">
 
@@ -51,42 +96,945 @@
         <script src="/assets/js/adsbygoogle.js"></script>
     
     <script src="/assets/js/main.js"></script>
-</head>
-<body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="https://linuxkamarada.com/">
-                
-                    Linux Kamarada
-                
-            </a>
-        </div>
-    </nav>
 
-    <main role="main" class="container" id="main-container">
-        <div class="row">
-            <div class='col-sm-12'>
-                <div class="blog-post card mb-3">
-                    <header class="card-header">
-                        <h1 class="blog-post-title">
-                            <a class="blog-post-link">
-                                O site mudou de endereço
-                            </a>
-                        </h1>
-                    </header>
-                    <article class="blog-post-content card-body">
-                        <p>Agora está em: <strong>linuxkamarada.com</strong>.</p><p>Por favor, atualize seu <em>link</em> ou favorito.</p><p>Você será redirecionado(a) para essa mesma página no novo endereço em alguns segundos.</p><p>Se isso não acontecer, <a href="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">clique aqui</a>.</p>
-                    </article>
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/',
+                    title: document.title,
+                    description: 'Eu acredito que o futuro do dinheiro é o Bitcoin. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surg...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/" itemprop="mainEntityOfPage url">
+                Dinheiro: passado, presente e... Bitcoin!
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2020-06-20">
+                    <a href="/2020/06/20/">
+                        
+    20 de
+    
+    Junho
+        
+    de 2020
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2020-06-20" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            Copyleft 2021 <a href='https://antoniomedeiros.dev'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <p>Eu acredito que o futuro do dinheiro é o <a href="https://bitcoin.org/pt_BR/">Bitcoin</a>. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surgiu, porque foi criado, quais suas semelhanças e diferenças quanto ao dinheiro atual, quais problemas temos hoje e como o Bitcoin tenta resolvê-los, creio que estudar a história do dinheiro pode ajudar.</p>
+
+<p>Nesse texto, apresento um resumo do que encontrei fazendo um breve estudo da história do dinheiro. Não pretendo ser preciso ou detalhado, o que tornaria o texto ainda mais longo, mas capturar os pontos mais importantes na história para a compreensão do Bitcoin. Como meu forte é Computação, não História, sugestões de como melhorar o texto são bem-vindas.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/historia-dinheiro.jpg" title="">
+<img src="/files/2020/06/historia-dinheiro.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="1-escambo">1) Escambo</h2>
+
+<p>No início da história, os seres humanos eram caçadores-coletores nômades, obtinham da natureza apenas o necessário para consumo imediato e migravam quando os recursos do local se tornavam escassos. Cada bando tinha que providenciar tudo de que necessitava.</p>
+
+<p>Por volta de 10 mil a.C., desenvolveram a agricultura e a pecuária, o que os possibilitou fixar moradia e produzir além do necessário. O excedente era trocado com outras tribos, que produziam outros bens. Não precisava mais cada tribo produzir tudo de que necessitava.</p>
+
+<p>Assim surgiu a forma mais primitiva de comércio: o <strong>escambo</strong>, que era a troca simples e direta de um bem por outro bem. Por exemplo, se uma tribo pescava e outra tribo produzia milho, podiam trocar seus excedentes.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/escambo1.png" title="">
+<img src="/files/2020/06/escambo1.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>O escambo permitiu que cada tribo se especializasse na produção de determinado bem. Surgiram os diferentes ofícios e profissões, que passaram a produzir variados bens com diferentes propósitos e níveis de complexidade.</p>
+
+<h2 id="2-moeda-mercadoria">2) Moeda-mercadoria</h2>
+
+<p>O escambo se tornou cada vez mais difícil conforme mais pessoas e bens eram envolvidos. O problema era coincidir os desejos das pessoas e os valores que elas dão a cada bem.</p>
+
+<p>Imagine que Dalila produz milho e precisa de café. Kalil produz café, mas precisa de carne. Quem produz carne é o José, mas ele precisa de peixe. Sofia produz peixe e precisa de milho. Dessa forma, Dalila precisa trocar seu milho pelo peixe da Sofia, depois trocar peixe por carne com José, para enfim conseguir café com Kalil. Além disso, todas essas pessoas precisam saber quantas espigas de milho valem um peixe, quantos peixes valem um bife de carne, quantos bifes valem um saco de café.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/escambo2.png" title="">
+<img src="/files/2020/06/escambo2.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>A humanidade percebeu a necessidade de combinar um <strong>meio de troca</strong> universal.</p>
+
+<p>A primeira forma de dinheiro conhecida apareceu na Suméria por volta de 3 mil a.C. Os sumérios, o mesmo povo que inventou a escrita, usavam grãos de cevada como medida universal para avaliar e trocar por todos os outros bens e serviços. Essa forma de dinheiro é classificada como <strong>moeda-mercadoria</strong> ou moeda-<em>commodity</em>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/moeda-mercadoria.png" title="">
+<img src="/files/2020/06/moeda-mercadoria.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Com o tempo, a sociedade foi selecionando os melhores bens para servir como meio de troca. Diversos bens chegaram a ser usados, tais como trigo, carne, couro, sal (daí veio a palavra <a href="https://pt.wikipedia.org/wiki/Sal%C3%A1rio">salário</a>, que era o pagamento, em sal, que a pessoa recebia por seu trabalho), entre outros.</p>
+
+<h2 id="3-moedas-metálicas">3) Moedas metálicas</h2>
+
+<p>Um bem deve apresentar as seguintes características para que seja um bom meio de troca:</p>
+
+<ul>
+  <li>liquidez: fácil de trocar por outros bens, amplamente aceito no mercado</li>
+  <li>escassez: sua oferta deve ser limitada, inelástica, ou seja, deve ser difícil produzir mais desse bem, que deve ser um meio termo entre raro (para ser valioso) e abundante (para ter ampla circulação)</li>
+  <li>fácil de custodiar (armazenar)</li>
+  <li>fácil de transportar</li>
+  <li>homogêneo</li>
+  <li>fácil de dividir</li>
+  <li>fácil de medir, pesar, quantificar</li>
+  <li>durável, não perecível, resistente a intempéries</li>
+  <li>difícil de falsificar</li>
+</ul>
+
+<p>Além de permitir trocas, uma boa moeda deve permitir também a <strong>reserva de valor</strong>, ou seja, a preservação do poder de compra com o passar do tempo. Por exemplo, quando Kalil troca seu café por moedas, ele não precisa trocá-las imediatamente por outros bens: pode escolher guardá-las para adquirir outros bens depois. Outros bens podem ser usados como reserva de valor, como imóveis, mas geralmente apresentam menor liquidez que as moedas.</p>
+
+<p>Acabaram se revelando como melhores meios de troca os <strong>metais preciosos</strong>, como <strong>ouro</strong>, prata e bronze. Eles atendiam a todos esses requisitos quase que perfeitamente. O que mais os distinguiu dos outros meios de troca foi a sua escassez natural: sua oferta era rígida e limitada pela própria natureza. Para aumentar a oferta de ouro, é preciso extrair mais ouro das <strong>minas</strong>, não é possível criar ouro em laboratório. Se isso fosse possível, alguém poderia ficar rico simplesmente criando ouro indefinidamente (os alquimistas bem que tentaram).</p>
+
+<p>Por volta de 640 a.C., começaram a ser cunhadas as primeiras <strong>moedas metálicas</strong>. Elas simplificaram e facilitaram bastante as trocas, que passaram a ser indiretas: os produtores forneciam seus produtos em troca de moedas e as usavam para adquirir outros produtos.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/moeda-metalica.png" title="">
+<img src="/files/2020/06/moeda-metalica.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<h2 id="4-casas-de-custódia-e-papel-moeda">4) Casas de custódia e papel-moeda</h2>
+
+<p>Apesar de suas qualidades, as moedas de metais preciosos possuíam alguns problemas: eram pesadas e muito valiosas, de modo que era difícil transportá-las e armazená-las com segurança, especialmente em grandes quantidades. Por exemplo, um comerciante com muitas moedas de ouro era um alvo fácil para ladrões.</p>
+
+<p>Diante desses problemas das moedas de ouro, surgiram as <strong>casas de custódia</strong>, que eram lugares onde as pessoas guardavam ouro e recebiam certificados, que podiam ser usados no futuro para resgatar a mesma quantidade de ouro guardada (podem ser entendidos como um “vale ouro”). As pessoas começaram a usar esses certificados nas transações no lugar do ouro e assim surgiu a moeda-papel, mais comumente chamada de <strong>papel-moeda</strong>.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/papel-moeda.png" title="">
+<img src="/files/2020/06/papel-moeda.png" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>No início, o papel-moeda tinha <strong>lastro</strong> no ouro, ou seja, havia a garantia de que era possível trocar papel-moeda por ouro. Cada cédula de papel representava determinado peso em ouro. Por exemplo, do século XIX até o início do século XX, o dólar era definido como sendo 1/20 de uma <a href="https://pt.wikipedia.org/wiki/On%C3%A7a_(massa)">onça</a> de ouro, já a libra esterlina equivalia a 1/4 de uma onça de ouro.</p>
+
+<h2 id="5-bancos-centrais-e-moedas-fiduciárias">5) Bancos centrais e moedas fiduciárias</h2>
+
+<p>As casas de custódia perceberam que as pessoas não sacavam todo o seu ouro ao mesmo tempo. Diante disso, começaram a emitir quantias em certificados além do que tinham em ouro estocado. Esses novos certificados sem lastro eram emprestados para pessoas que pagariam <strong>juros</strong> às casas de custódia, que mais tarde se tornariam os atuais <strong>bancos</strong>.</p>
+
+<p>Mas os bancos ainda eram obrigados a lastrear nem que fosse parte dos certificados em ouro — prática chamada de <strong>reserva fracionária</strong>, que é feita até hoje — e isso lhes impunha certa disciplina. Um banco que emitisse muitos certificados sem lastro corria o risco de falir se os clientes, desconfiados, exigissem em massa o resgate do ouro em espécie.</p>
+
+<p>Com o tempo e a competição bancária, os bancos maiores foram incorporando os menores e passaram a servir de lastro para os restantes. Assim surgiram os <strong>bancos centrais</strong>, que ficaram com a custódia de grande parte do ouro da população. Exemplos incluem o Banco da Inglaterra, existente desde 1694, e o Federal Reserve System (mais conhecido como FED), o banco central norte-americano, criado em 1913. Decretos governamentais atribuíram aos bancos centrais o monopólio da emissão de papel-moeda em seus respectivos países.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/1928-dollar.jpg" title="Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: [Cointimes](https://cointimes.com.br/a-historia-do-dinheiro/).">
+<img src="/files/2020/06/1928-dollar.jpg" alt="Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: [Cointimes](https://cointimes.com.br/a-historia-do-dinheiro/)." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Cédula de 20 dólares de 1928, que podia ser resgatada em ouro. Fonte: <a href="https://cointimes.com.br/a-historia-do-dinheiro/">Cointimes</a>.</p>
+
+</em>
+
+</div>
+
+<p>Com a intensificação da reserva fracionária, as moedas foram perdendo gradativamente sua ligação com o ouro. O fim definitivo do lastro no ouro ocorreu em 1971 quando Richard Nixon, então presidente dos Estados Unidos, com o objetivo de evitar a fuga de ouro do país, suspendeu a conversão do dólar em ouro, encerrando de forma unilateral o <a href="https://pt.wikipedia.org/wiki/Acordos_de_Bretton_Woods">Acordo de Bretton Woods</a>. O ouro perdeu sua função monetária e passou a ser apenas uma mercadoria (<em>commodity</em>), embora ainda hoje seja considerado por investidores um ativo de proteção.</p>
+
+<p>Sem qualquer lastro em ouro, o papel-moeda se tornou a moeda propriamente dita. Surgiram assim as atuais <strong>moedas fiduciárias</strong>, cujo valor é baseado na confiança (fé) das pessoas no governo emissor. Os países emitem leis que obrigam seus cidadãos a aceitarem suas moedas. Muitos Estados passaram a adotar o dólar como reserva de valor e moeda global. O câmbio fixo em relação ao ouro foi substituído pelo <strong>câmbio flutuante</strong> em relação ao dólar.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/1995-dollar.jpg" title="Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: [Wikipedia](https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill).">
+<img src="/files/2020/06/1995-dollar.jpg" alt="Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: [Wikipedia](https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill)." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Cédula de 20 dólares de 1995, não mais resgatável em ouro. Fonte: <a href="https://en.wikipedia.org/wiki/United_States_twenty-dollar_bill">Wikipedia</a>.</p>
+
+</em>
+
+</div>
+
+<p>Se o que tornava o ouro um bom meio de troca era sua escassez, esse não é um ponto forte das moedas fiduciárias. Para que houvesse mais ouro em circulação, era necessário extrair mais ouro das minas. Para que haja mais papel-moeda em circulação, basta o governo decidir imprimir mais papel-moeda. E a experiência de quase 50 anos do fim do lastro em ouro mostrou que todos os bancos centrais imprimiram muito papel-moeda. Isso fez com que as moedas perdessem valor com o tempo, um processo conhecido como <strong>inflação</strong>.</p>
+
+<p>Muitas pessoas percebem a inflação quando os preços dos produtos no supermercado aumentam. Na verdade, esse aumento de preços é o sintoma, não a causa da inflação. Para entender como a impressão de papel-moeda reduz o valor da moeda, é preciso entender a <a href="https://blog.magnetis.com.br/oferta-e-demanda/"><strong>lei da oferta e procura</strong></a>, conceito formulado em 1776 pelo economista Adam Smith.</p>
+
+<p>Parte desse conceito explica que quanto mais oferta de uma mercadoria existe, menor é o valor dela. Lembremos que a moeda em si também é uma mercadoria. Logo, quanto mais oferta de moeda existe, menor é o valor dela. Se certa quantidade de um produto equivale a certa quantidade de moeda, e em algum momento a oferta da moeda aumenta mas a oferta do produto permanece a mesma, o produto se torna mais escasso em relação à moeda, então se pede uma quantidade maior da moeda pela mesma quantidade do produto.</p>
+
+<p>O gráfico a seguir mostra a evolução da inflação nos Estados Unidos de 1913 a 2020, medida pelo Índice de Preços ao Consumidor (<em>Consumer Price Index</em> ou CDI, semelhante ao brasileiro <a href="https://pt.wikipedia.org/wiki/Índices_de_inflação_do_Brasil#IPCA">IPCA</a>). É perceptível que a inflação acelerou após o fim do lastro no ouro em 1971.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/cdi-1913-2020.gif" title="Evolução do Índice de Preços ao Consumidor. Fonte: [U.S. Bureau of Labor Statistics](https://www.bls.gov/data/).">
+<img src="/files/2020/06/cdi-1913-2020.gif" alt="Evolução do Índice de Preços ao Consumidor. Fonte: [U.S. Bureau of Labor Statistics](https://www.bls.gov/data/)." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Evolução do Índice de Preços ao Consumidor. Fonte: <a href="https://www.bls.gov/data/">U.S. Bureau of Labor Statistics</a>.</p>
+
+</em>
+
+</div>
+
+<p>O poder de compra de 1 dólar em 1959 está agora um pouco abaixo de 12 centavos de dólar.</p>
+
+<p>Em julho de 1994, uma cédula de 1 real tinha o mesmo poder de compra de atuais R$ 6,22.</p>
+
+<h2 id="6-dinheiro-eletrônico">6) Dinheiro eletrônico</h2>
+
+<p>Com o surgimento e a popularização do computador e da Internet, o dinheiro passou a ser representado também de forma eletrônica, como números no computador. Além da impressão de papel-moeda, os bancos centrais passaram a dispor de uma nova forma de aumentar a oferta de dinheiro: a criação de <strong>dinheiro eletrônico</strong>. Boa parte do dinheiro que circula no mundo hoje é eletrônica, não impressa. Se todas as pessoas decidissem sacar todo o seu dinheiro dos bancos ao mesmo tempo, faltariam cédulas.</p>
+
+<p>Em 2012, apenas 10% da oferta de dinheiro dos Estados Unidos — cerca de 1 trilhão do total de aproximadamente 10 trilhões de dólares — existia na forma de dinheiro físico (cédulas de papel e moedas). No Brasil, no mesmo ano, o total de dinheiro físico era de R$ 153 bilhões, enquanto o dinheiro eletrônico totalizava R$ 2,17 trilhões, ou seja, 14 vezes a quantidade total de papel-moeda existente.</p>
+
+<p>O meio eletrônico facilita as transações, assim como facilita o empréstimo de dinheiro — operação chamada de <strong>crédito</strong>. Agora as pessoas podem solicitar empréstimos e receber o dinheiro ainda no mesmo dia. Os <strong>cartões de crédito</strong> possibilitaram às pessoas fazer compras usando dinheiro de que não necessariamente dispõem no momento. Os bancos e as operadoras de cartões de crédito passaram a atuar como <strong>intermediários</strong> nas compras.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/cartao-de-credito.jpg" title="Cartão de crédito">
+<img src="/files/2020/06/cartao-de-credito.jpg" alt="Cartão de crédito" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Cartão de crédito</p>
+
+</em>
+
+</div>
+
+<p>Se, por um lado, isso tornou a vida das pessoas mais prática, por outro lado, contribuiu para aumentar o nível de endividamento das famílias, empresas e governos.</p>
+
+<p>Toda essa facilidade para criar e emprestar dinheiro, seja de forma impressa ou eletrônica, fez com que bancos e governos gerenciassem a oferta de dinheiro de forma imprudente, o que por sua vez culminou em <strong>crises financeiras</strong> como a Grande Depressão, em 1929, e a crise do <em>subprime</em>, em 2008. No Brasil, temos o exemplo do confisco da poupança em 1990.</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/the-big-short.jpg" title="Cena do filme [A Grande Aposta (2015)](http://www.adorocinema.com/filmes/filme-227900/), que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale).">
+<img src="/files/2020/06/the-big-short.jpg" alt="Cena do filme [A Grande Aposta (2015)](http://www.adorocinema.com/filmes/filme-227900/), que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale)." class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Cena do filme <a href="http://www.adorocinema.com/filmes/filme-227900/">A Grande Aposta (2015)</a>, que mostra como ocorreu o estouro da bolha imobiliária que culminou na crise de 2008. Nessa cena, casas estão à venda (for sale).</p>
+
+</em>
+
+</div>
+
+<h2 id="7-o-bitcoin-e-as-criptomoedas">7) O Bitcoin e as criptomoedas</h2>
+
+<p>No auge da crise financeira de 2008, mais precisamente em <a href="https://www.metzdowd.com/pipermail/cryptography/2008-October/014810.html">31 de outubro de 2008</a>, foi proposta em uma lista de discussão sobre criptografia a criação de um novo sistema de dinheiro eletrônico chamado de <strong><a href="https://bitcoin.org/pt_BR/">Bitcoin</a></strong>.</p>
+
+<p>Um <a href="https://bitcoin.org/bitcoin.pdf">artigo</a> (<em>white paper</em>) assinado por Satoshi Nakamoto explicava o conceito do Bitcoin.</p>
+
+<p>Depois, em <a href="https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html">09 de janeiro de 2009</a>, Nakamoto liberou a primeira versão do programa que implementa o Bitcoin como <a href="https://www.gnu.org/philosophy/free-sw.pt-br.html"><em>software</em> livre</a>. Seu código-fonte está disponível no <a href="https://github.com/bitcoin/bitcoin">GitHub</a>.</p>
+
+<p>Satoshi Nakamoto é na verdade um pseudônimo, sua real identidade segue desconhecida até hoje, podendo ser inclusive um grupo de pessoas, em vez de apenas uma pessoa.</p>
+
+<p>O artigo que definiu o Bitcoin critica a inerente fraqueza do sistema financeiro atual, baseado na confiança em terceiros, e propõe um sistema em que pessoas podem transferir dinheiro diretamente entre si pela Internet, independentemente da quantia ou de suas localizações geográficas, sem precisar de bancos, governos ou qualquer outra forma de autoridade central. Por isso, diz-se que o sistema Bitcoin é <strong>descentralizado</strong> ou <a href="https://pt.wikipedia.org/wiki/Peer-to-peer"><em><strong>peer-to-peer</strong></em></a> (expressão em inglês que significa “par-a-par” ou “pessoa-a-pessoa” e é mais conhecida por <a href="https://pt.wikipedia.org/wiki/Peer-to-peer">P2P</a>).</p>
+
+<div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2020/06/bitcoin.jpg" title="Uma moeda decorativa do Bitcoin">
+<img src="/files/2020/06/bitcoin.jpg" alt="Uma moeda decorativa do Bitcoin" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+<em class="caption" itemprop="description">
+<p>Uma moeda decorativa do Bitcoin</p>
+
+</em>
+
+</div>
+
+<p>A segurança do Bitcoin é garantida pela <strong><a href="https://noticias.r7.com/tecnologia-e-ciencia/tudo-que-voce-sempre-quis-saber-sobre-criptografia-e-nao-perguntou-24012018">criptografia</a></strong> e pela divulgação (<em><a href="https://pt.wikipedia.org/wiki/Broadcasting_(rede_de_computadores)">broadcasting</a></em>) de todas as transações para toda a rede de usuários, que é testemunha de toda e qualquer transação. Toda a rede verifica e <strong>confirma</strong> cada transação e a registra criptografada sobre as anteriores. Para fazer uma transação, uma pessoa deve assiná-la com sua <a href="https://pt.wikipedia.org/wiki/Criptografia_de_chave_p%C3%BAblica"><strong>chave privada</strong></a>, à qual só ela tem acesso. Com isso, fraudes são muito difíceis (pra não dizer impossíveis).</p>
+
+<p>O Bitcoin não existe fisicamente na forma de moeda ou cédula. Não é possível imprimir ou tocar em um <em>bitcoin</em>. O que existem são transferências de <em>bitcoins</em> registradas em um banco de dados chamado de <em><strong><a href="https://pt.wikipedia.org/wiki/Blockchain">blockchain</a></strong></em>. Esse banco de dados é gigantesco, dado que registra todas as transações de <em>bitcoins</em> que já aconteceram na história, e é distribuído: várias cópias estão armazenadas em vários computadores da rede, que o atualizam em sincronia.</p>
+
+<p>Para confirmar uma transferência de <em>bitcoins</em>, o computador precisa fazer muitos cálculos, uma vez que precisa criptografar essa transferência em cima da anterior. Essas operações de criptografia custam tempo do processador e energia elétrica. Por isso, quem faz a transferência paga uma pequena <strong>taxa</strong> em <em>bitcoins</em> aos computadores que a confirmam. Essa taxa é um incentivo para que pessoas se voluntariem a manter a rede funcionando.</p>
+
+<p>Além disso, na fase inicial de implantação da rede, o sistema também premia com novos <em>bitcoins</em> quem confirma blocos de transações inteiros. Foi a forma proposta para resolver o problema da distribuição inicial das moedas, uma vez que não há um banco central emitindo <em>bitcoins</em>. Essa premiação é chamada de <strong>mineração</strong> de <em>bitcoins</em> e permite que novos <em>bitcoins</em> sejam criados de forma lenta e gradual por diversas pessoas.</p>
+
+<p>Há um limite de 21 milhões de <em>bitcoins</em> a serem criados, fixado no código-fonte do sistema. Estima-se que esse limite será atingido por volta de 2140. Daí em diante, não será possível produzir novos <em>bitcoins</em>. As pessoas terão que “se virar” com os <em>bitcoins</em> que já existem.</p>
+
+<p>O Bitcoin foi a primeira de uma nova categoria de moedas chamadas de <strong><a href="https://pt.wikipedia.org/wiki/Criptomoeda">criptomoedas</a></strong>, que recebem esse nome por serem baseadas em criptografia. Elas são a forma mais abstrata de moeda já inventada pelo homem e, por isso, representam a evolução do dinheiro. Existem atualmente mais de 5 mil criptomoedas em uso. Além do Bitcoin, exemplos notórios incluem <a href="https://ethereum.org/">Ethereum</a> (ETH), <a href="https://ripple.com/xrp/">XRP</a>, <a href="https://tether.to/">Tether</a> (USDT), <a href="https://www.bitcoincash.org/">Bitcoin Cash</a> (BCH), <a href="https://bitcoinsv.io/">Bitcoin SV</a> (BSV) e <a href="https://litecoin.org/">Litecoin</a> (LTC).</p>
+
+<h2 id="criptomoedas-versus-outras-moedas">Criptomoedas versus outras moedas</h2>
+
+<p>O Bitcoin não sofre do principal problema das atuais moedas fiduciárias, que é o excesso de oferta que causa a inflação e as crises financeiras. Existe um limite para a quantidade de <em>bitcoins</em> que podem ser criados, enquanto na prática não há limite para a quantidade de papel-moeda que pode ser impresso. O Bitcoin não depende de banco central para sua emissão, assim como não depende de instituições financeiras intermediando sua circulação. As moedas fiduciárias se baseiam na confiança no governo emissor e nas leis que obrigam o seu uso, enquanto o Bitcoin se apóia na confiança na criptografia, na rede distribuída que é testemunha das transações e no algoritmo que rege o seu funcionamento.</p>
+
+<p>O Bitcoin retoma as características que faziam do ouro uma boa moeda. Ambos são escassos, um pelas leis da natureza, o outro pelas leis da matemática. Ambos são difíceis (pra não dizer impossíveis) de falsificar. Por outro lado, o Bitcoin também não sofre dos principais problemas do ouro. Como são imateriais, <em>bitcoins</em> não se desgastam com o tempo, não pesam, são fáceis de transportar e armazenar, não precisam de casas de custódia: o dono é o próprio custodiante. A existência e a posse dos <em>bitcoins</em> é garantida enquanto existirem a Internet e computadores com cópias do <em>blockchain</em>. A rede e a criptografia garantem que não é possível confiscar <em>bitcoins</em>, como é possível confiscar ouro ou poupança.</p>
+
+<p>Assim como aconteceu com as moedas-mercadoria, agora a humanidade novamente tem a oportunidade de escolher qual moeda (ou quais moedas) prefere usar como meio de troca.</p>
+
+<p>Encerro esse texto com uma citação do livro <a href="https://pt.wikipedia.org/wiki/Sapiens:_Uma_Breve_Hist%C3%B3ria_da_Humanidade">Sapiens: Uma Breve História da Humanidade</a>, de autoria de Yuval Noah Harari, professor de História:</p>
+
+<blockquote>
+  <p>Dinheiro não se resume a moedas e cédulas. Dinheiro é qualquer coisa que as pessoas estejam dispostas a usar para representar sistematicamente o valor de outras coisas com o propósito de trocar bens e serviços.</p>
+</blockquote>
+
+<p>Siga o Linux Kamarada nas redes sociais para receber notificações dos próximos textos sobre Bitcoin!</p>
+
+<h2 id="referências">Referências</h2>
+
+<p>Além do livro supracitado e das páginas que já aparecem em <em>links</em> ao longo do texto, para escrevê-lo, consultei também as seguintes páginas:</p>
+
+<ul>
+  <li><a href="https://cointimes.com.br/a-historia-do-dinheiro/">Do Escambo ao Bitcoin: A história do dinheiro - Cointimes</a></li>
+  <li><a href="https://www.infomoney.com.br/colunistas/moeda-na-era-digital/a-verdade-sobre-o-lastro-do-bitcoin/">A verdade sobre o lastro do Bitcoin - InfoMoney</a></li>
+  <li><a href="https://www.mises.org.br/article/2149/ouro-nao-e-mais-dinheiro-e-nao-voltara-a-ser">Ouro não é mais dinheiro e não voltará a ser - Instituto Mises Brasil</a></li>
+  <li><a href="https://www.mises.org.br/Article.aspx?id=258">As crises monetárias mundiais - Instituto Mises Brasil</a></li>
+  <li><a href="https://www.infoescola.com/economia/dinheiro-ou-moeda/">Dinheiro ou moeda - InfoEscola</a></li>
+  <li><a href="https://www.migalhas.com.br/depeso/267056/do-sal-as-criptomoedas-os-desafios-da-regulamentacao-das-moedas-virtuais">Do sal às criptomoedas: Os desafios da regulamentação das moedas virtuais - Migalhas</a></li>
+  <li><a href="https://cabecalivre.com/2020/05/25/voce-nao-entende-bitcoin-porque-acha-que-dinheiro-e-real/">Você não entende Bitcoin porque acha que dinheiro é real - Cabeça Livre</a></li>
+  <li><a href="https://bitcoin.org/bitcoin.pdf">Bitcoin: A Peer-to-Peer Electronic Cash System</a> (artigo do Bitcoin)</li>
+  <li><a href="https://finance.yahoo.com/news/top-10-cryptocurrencies-market-capitalisation-160046487.html">Top 10 cryptocurrencies by market capitalisation - Yahoo Finance</a></li>
+</ul>
+
+
         </div>
-    </footer>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Eu acredito que o futuro do dinheiro é o Bitcoin. Se não o Bitcoin, algo semelhante, indo na mesma direção. Para melhor entender o que é o Bitcoin, como surgiu, porque foi criado, quais suas semelhanças e diferenças quanto ao dinheiro atual, quais problemas temos hoje e como o Bitcoin tenta resolvê-los, creio que estudar...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2020/06/historia-dinheiro.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2020/06/20/dinheiro-passado-presente-e-bitcoin/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
 </body>
 </html>

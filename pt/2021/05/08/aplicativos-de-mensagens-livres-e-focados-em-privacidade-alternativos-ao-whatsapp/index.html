@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt" prefix="
+    addthis: http://www.addthis.com/help/api-spec
+    og: http://ogp.me/ns#
+    fb: http://ogp.me/ns/fb#
+    article: http://ogp.me/ns/article#">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+        <script type="text/javascript">
+            if (("linuxkamarada.com" == window.location.host) && (window.location.protocol != "https:")) {
+                window.location = window.location.toString().replace(/^http:/, "https:");
+            }
+        </script>
+    
+
+    <title>
+        
+            
+                Aplicativos de mensagens livres e focados em privacidade alternativos ao WhatsApp - Linux Kamarada
+            
+        
+    </title>
+    <meta name="author" content="Antônio Medeiros">
+    <meta name="description" content="Nos últimos 20 anos, houve um aumento significativo no uso de mensageiros instantâneos, com os mais populares sendo usados ativamente por mais de 1 bilhão de...">
+    <link rel="canonical" href="https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">
+    <link rel="alternate" type="application/rss+xml" title="Linux Kamarada" href="https://linuxkamarada.com/pt/feed.xml" />
+
+    
+    
+        
+    
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Pesquisar Linux Kamarada" href="https://linuxkamarada.com/pt/opensearch.xml" />
+
+    <!-- Open Graph -->
+    
+        <meta property="article:published_time" content="2021-05-08 23:59:00 -0300"/>
+        
+            <meta property="article:publisher" content="https://facebook.com/LinuxKamarada" />
+        
+    
+    
+        <meta property="fb:app_id" content="2998145206923971" />
+    
+    
+        <meta property="fb:page_id" content="1700979763454346" />
+    
+    <meta property="og:description" content="Nos últimos 20 anos, houve um aumento significativo no uso de mensageiros instantâneos, com os mais populares sendo usados ativamente por mais de 1 bilhão de..." />
+    
+        <meta property="og:image" content="https://linuxkamarada.com/files/2021/05/messaging-apps.jpg" />
+    
+    <meta property="og:site_name" content="Linux Kamarada" />
+    <meta property="og:title" content="Aplicativos de mensagens livres e focados em privacidade alternativos ao WhatsApp" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@LinuxKamarada" />
+    
+
+    <!-- Favicons (made with RealFaviconGenerator.net) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://linuxkamarada.com/apple-touch-icon.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://linuxkamarada.com/favicon-32x32.png?v=5">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://linuxkamarada.com/favicon-16x16.png?v=5">
+    <link rel="manifest" href="https://linuxkamarada.com/site.webmanifest?v=5">
+    <link rel="mask-icon" href="https://linuxkamarada.com/safari-pinned-tab.svg?v=5" color="#43a047">
+    <link rel="shortcut icon" href="https://linuxkamarada.com/favicon.ico?v=5">
+    <meta name="msapplication-TileColor" content="#43a047">
+    <meta name="theme-color" content="#43a047">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    
+        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+        <!--<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.2/dist/css/bootstrap-material-design.min.css" integrity="sha384-dI6l3oYG+wVvjfdlixt6+FMddrb9+uejLU/wMhQFKklk7RDtSDBfe/XuF1dkcgVV" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="/libs/bootstrap-material-design/4.1.2/custom/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css" integrity="sha256-0fuNgzfNIlaClbDtmYyFxY8LTNCDrwsNshywr4AALy0=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- JS -->
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.16.1-lts/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.2/dist/js/bootstrap-material-design.min.js" integrity="sha384-aWO+CcMRDQLEvnT8RdnCxWbs4C76Ryoo4pzYpGNW2vlHTHiPA7gpBzIB5nYwYfLg" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/js/all.js" integrity="sha256-pvPP8sWBrowznHv1xsjTBO7/74OBKzmOCGaEeq3q+TQ=" crossorigin="anonymous"></script>
+        <script src="/assets/js/adsbygoogle.js"></script>
+    
+    <script src="/assets/js/main.js"></script>
+
+    
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65333685-3"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-65333685-3');
+        </script>
+        <!-- End Google Analytics -->
+    
+
+    
+        <!-- Google AdSense -->
+        <script data-ad-client="ca-pub-5193467168351289" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+
+    
+        
+            <!-- AddThis -->
+            <script async src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-563f92aa117815bd"></script>
+            <script type="text/javascript">
+                var addthis_config = {
+                    data_track_clickback: true,
+                    data_track_addressbar: true,
+                    
+                        ui_language: 'pt'
+                    
+                };
+                var addthis_share = {
+                    url: 'https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/',
+                    title: document.title,
+                    description: 'Nos últimos 20 anos, houve um aumento significativo no uso de mensageiros instantâneos, com os mais populares sendo usados ativamente por mais de 1 bilhão de...'
+                };
+            </script>
+            <!-- End AddThis -->
+        
+    
+</head>
+
+
+<body itemscope itemtype="http://schema.org/BlogPosting">
+    
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=&autoLogAppEvents=1"></script>
+        <!-- End Facebook SDK -->
+    
+
+    <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+        <!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button type="button" class="navbar-toggler" data-toggle="drawer" data-target="#drawer">
+            <span class="sr-only">
+                
+                    Exibir/esconder navegação
+                
+            </span>
+            <i class="material-icons">menu</i>
+        </button>
+
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav m-auto">
+                
+
+                
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/download">Download</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                        </li>
+                    
+                
+            </ul>
+            <form action="/pt/buscar/" class="form-inline search-form" id="navbar-search-form" method="get" role="search">
+                
+                
+                <div class="input-group">
+                    <input class="form-control search-field" id="navbar-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-number search-button" id="navbar-search-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="navbar-language-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Traduções" href="#" role="button"><i class="fas fa-globe-americas" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-language-button">
+                        
+                        
+                            <h6 class="dropdown-header">English</h6>
+                            
+                            
+                                <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">This page in English</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/en/">English home page</a>
+                            <div class="dropdown-divider"></div>
+                        
+                            <h6 class="dropdown-header">Português</h6>
+                            
+                            
+                                <a class="dropdown-item translation-pt" href="https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">Esta página em Português</a>
+                            
+                            <a class="dropdown-item" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                            <div class="dropdown-divider"></div>
+                        
+                        <h6 class="dropdown-header">Other languages (by Google Translate)</h6>
+                        <a class="dropdown-item" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">Translate this page</a>
+                    </div>
+                </div><!--.dropdown-->
+            </form>
+        </div><!--#navbar-->
+    </div><!--.container-->
+</nav>
+
+        <!-- Navigation drawer -->
+<div id="drawer" class="bmd-layout-drawer bg-faded">
+    <header>
+        <a class="navbar-brand" href="/">
+            
+                Linux Kamarada
+            
+        </a>
+    </header>
+    <form action="/pt/buscar/" class="form-inline border-top" id="drawer-search-form" method="get" role="search">
+        
+        
+        <div class="bmd-form-group-sm">
+            <div class="input-group">
+                <input class="form-control search-field" id="drawer-search-field" name="q" placeholder="Pesquisar" type="text" aria-label="Pesquisar">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary btn-number search-button" id="drawer-search-button" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div><!-- .input-group -->
+        </div><!-- .bmd-form-group-sm -->
+    </form>
+    <ul class="list-group list-group-flush border-top" id="drawer-links">
+        
+
+        
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/download">Download</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/ajuda">Ajuda</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/pt/contribuir">Contribuir</a>
+                </li>
+            
+        
+    </ul>
+
+    <div class="btn-group mb-3 mt-3">
+        <button type="button" class="btn btn-secondary" id="drawer-language-button">
+            <i class="fas fa-globe-americas" aria-hidden="true"></i> Português
+        </button>
+    </div>
+</div><!--.drawer-->
+
+
+        <main class="bmd-layout-content">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class='col-sm-8'>
+                        <!--<div class='gap-small'>
+                            <a href='http://en.opensuse.org/Portal:15.2'>
+                                <img class='img-fluid' id='countdown' src='http://countdown.opensuse.org/wide.pt.png'/>
+                            </a>
+                        </div>-->
+                        <div class="blog-post card mb-3">
+    <header class="card-header">
+        <h1 class="blog-post-title" itemprop="headline name">
+            <a class="blog-post-link" href="/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/" itemprop="mainEntityOfPage url">
+                Aplicativos de mensagens livres e focados em privacidade alternativos ao WhatsApp
+            </a>
+        </h1>
+        <div class="blog-post-meta row">
+            <div class='col-sm-6'>
+                <p class="blog-post-date" itemprop="datePublished" content="2021-05-08">
+                    <a href="/2021/05/08/">
+                        
+    08 de
+    
+    Maio
+        
+    de 2021
+
+
+                    </a>
+                </p>
+                <meta itemprop="dateModified" content="2021-05-09" />
+            </div>
+            <div class='col-sm-6'>
+                
+                    <div class='blog-post-share'>
+                        <!-- AddThis Sharing Buttons -->
+                        <div class="addthis_toolbox addthis_default_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                            <a class="addthis_button_telegram"></a>
+                            <a class="addthis_button_favorites"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <!-- AddThis Sharing Buttons End -->
+                    </div><!-- .blog-post-share -->
+                
+            </div><!-- .col-sm-6 -->
+        </div><!-- .blog-post-meta -->
+    </header>
+
+    <article class="blog-post-content card-body">
+        
+            
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_1"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="8945658251"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div itemprop="articleBody mainEntity">
+            <div class="image no-ads-here text-center mb-3" itemscope="" itemtype="http://schema.org/ImageObject">
+<a href="/files/2021/05/messaging-apps.jpg" title="">
+<img src="/files/2021/05/messaging-apps.jpg" alt="" class="img-fluid img-thumbnail" itemprop="contentUrl" />
+</a>
+
+</div>
+
+<p>Nos últimos 20 anos, houve um aumento significativo no uso de <a href="https://pt.wikipedia.org/wiki/Mensageiro_instantâneo">mensageiros instantâneos</a>, com os mais populares sendo usados ativamente por mais de 1 bilhão de pessoas cada.</p>
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pdZ179PmCPk" allowfullscreen=""></iframe>
+</div>
+
+<p>Hoje, o aplicativo de mensagens mais usado no mundo é o <a href="https://www.whatsapp.com/">WhatsApp</a>, que tem mais de 2 bilhões de usuários em mais de 180 países. O fato de muitas pessoas usarem o mesmo aplicativo pode por um lado ser conveniente, mas por outro lado gerou preocupações quanto à privacidade e segurança das conversas.</p>
+
+<p>Especialmente depois que <a href="https://www.tecmundo.com.br/facebook/51564-bomba-facebook-compra-o-whatsapp-por-us-16-bilhoes.htm">o Facebook comprou o WhatsApp em 2014 por 19 bilhões de dólares</a>, valor que chamou atenção para um aplicativo gratuito sem nenhuma forma aparente de monetização, como exibição de anúncios, assinatura ou funcionalidades pagas. Era especulado que o <a href="https://pt-br.facebook.com/">Facebook</a> tinha interesse no WhatsApp para <a href="https://tecnoblog.net/151635/potencial-whatsapp-mineracao-de-dados/">mineração de dados</a>.</p>
+
+<p>Na época, o Facebook prometeu que manteria os dados do WhatsApp privados e não os compartilharia com outros serviços. No entanto, desde então o WhatsApp já anunciou duas mudanças nos seus termos de serviço e política de privacidade, de modo a compartilhar cada vez mais dados com o Facebook: uma em <a href="https://tecnoblog.net/200144/whatsapp-novos-termos-privacidade-mudancas/">2016</a> e outra agora em <a href="https://www.tecmundo.com.br/seguranca/209001-whatsapp-obrigar-usuario-compartilhar-dados-facebook.htm">2021</a>.</p>
+
+<p>A primeira mudança parece ter passado despercebida, mas a recente ocasionou uma <a href="https://www.tecmundo.com.br/seguranca/209532-whatsapp-usa-jornais-stories-amenizar-debandada-usuarios.htm">debandada de usuários</a> para outros aplicativos como <a href="/pt/2021/05/09/o-mensageiro-telegram/">Telegram</a> e <a href="https://www.signal.org/pt_BR/">Signal</a>. O êxodo foi tão grande que <a href="https://www.tecmundo.com.br/seguranca/211325-whatsapp-anuncia-prazo-aceite-nova-politica-privacidade.htm">o WhatsApp adiou as mudanças</a>, antes previstas para 8 de fevereiro, para 15 de maio de 2021, e tem recorrido a <a href="https://www.tecmundo.com.br/seguranca/209532-whatsapp-usa-jornais-stories-amenizar-debandada-usuarios.htm">campanhas publicitárias</a> para melhor explicá-las.</p>
+
+<p>Talvez você queira aproveitar esse prazo para procurar outro aplicativo de mensagens. Se esse é o seu caso, a seguir você encontrará uma lista de possíveis alternativas ao WhatsApp. Eu pesquisei e testei alguns mensageiros instantâneos focados em segurança e privacidade e compilei essa lista. Todos são <a href="https://pt.wikipedia.org/wiki/Multiplataforma">multiplataforma</a> e tem versões para <a href="http://www.vivaolinux.com.br/linux/">Linux</a> e <a href="https://www.android.com/">Android</a> — que foram as que eu testei — mas podem também suportar outros sistemas.</p>
+
+<h2 id="o-que-torna-um-mensageiro-seguro">O que torna um mensageiro seguro?</h2>
+
+<p>A principal medida que aplicativos de mensagens tem usado para garantir a privacidade dos usuários é criptografar o conteúdo das mensagens.</p>
+
+<p><strong><a href="https://securityinabox.org/pt/guide/secure-communication/#criptografia">Criptografia</a></strong> é uma técnica que usa matemática para cifrar (“embaralhar”) o conteúdo de uma mensagem de forma que somente pode ser decifrada e lida por alguém que tenha determinada informação, como uma senha ou chave de criptografia (uma espécie de “segredo”). Se você pesquisar pela <a href="https://pt.wikipedia.org/wiki/Criptografia#História">história da criptografia</a>, verá que é usada há muito tempo: <a href="https://pt.wikipedia.org/wiki/Cifra_de_César">o imperador romano Júlio César já usava criptografia</a> para se comunicar com seus generais.</p>
+
+<p>É possível usar criptografia de diversas maneiras. Mais especificamente, os mensageiros mais seguros fazem <a href="https://pt.wikipedia.org/wiki/Criptografia_de_ponta-a-ponta"><strong>criptografia de ponta-a-ponta</strong></a>: quando você envia uma mensagem ou arquivo, o conteúdo é criptografado pelo aplicativo <strong>antes</strong> de deixar seu dispositivo (computador ou celular), e permanece assim criptografado até chegar no(s) dispositivo(s) da(s) outra(s) pessoa(s) com quem você está conversando. Somente o remetente e o(s) destinatário(s) possuem as chaves necessárias para decifrar — e, portanto, ler — as mensagens, de modo que ninguém além dos envolvidos na conversa consegue saber do que se fala, mesmo quando a conversa atravessa um meio inseguro como a Internet.</p>
+
+<p>Se atente também às <strong>configurações padrão</strong> dos aplicativos de mensagens: alguns mensageiros até oferecem criptografia de ponta-a-ponta, mas não a trazem ativada por padrão, de modo que você precisa acessar as configurações do aplicativo e realmente habilitá-la para usá-la. Outros mensageiros criptografam apenas alguns tipos de mensagens. Não presuma que o aplicativo é seguro só porque sua descrição menciona “criptografia de ponta-a-ponta”: procure saber se ou quando suas mensagens são criptografadas por ele.</p>
+
+<p>O aplicativo WhatsApp diz que usa criptografia de ponta-a-ponta. Em 2015 e 2016 ocorreram <a href="https://pt.wikipedia.org/wiki/Bloqueio_do_WhatsApp_no_Brasil">alguns episódios em que tribunais de justiça brasileiros solicitaram conteúdos de conversas ao WhatsApp</a> e não foram atendidos, no que puniram a empresa com suspensão temporária do serviço. Por um lado, isso pode ser visto como uma forte evidência de que o WhatsApp usa mesmo criptografia de ponta-a-ponta: o serviço não conseguiria fornecer as conversas dos usuários aos tribunais mesmo se quisesse. Se ele armazena mensagens criptografadas, isso seria de fato tecnicamente impossível. Por outro lado, não dá pra afirmar isso com total certeza, porque o código-fonte do WhatsApp não é aberto, o que nos leva ao próximo ponto.</p>
+
+<p><a href="https://pt.wikipedia.org/wiki/Software_de_código_aberto"><strong><em>Softwares</em> de código aberto</strong></a> são aqueles em que os desenvolvedores disponibilizam o <a href="https://pt.wikipedia.org/wiki/Código-fonte">código-fonte</a> para quem tiver interesse (e o conhecimento técnico necessário) poder analisar como o <em>software</em> funciona internamente. Os mensageiros considerados mais seguros são os de código aberto, porque podem ser auditados de forma mais fácil e independente, assim como erros (<em>bugs</em>) que sejam eventualmente encontrados podem ser corrigidos de forma mais fácil e rápida. De modo mais amplo, quando o <em>software</em> trata de privacidade, segurança e criptografia, revelar seu código-fonte é amplamente considerado um indicador da integridade desse <em>software</em>: é possível ver que ele de fato faz o que diz que faz.</p>
+
+<p>Mais seguros ainda são os aplicativos feitos com <strong>compilação determinística</strong> (<a href="https://www.suse.com/c/reproducible-builds-in-opensuse-and-sle/"><em>reproducible builds</em></a>), que, de forma simplificada, quer dizer que qualquer pessoa pode compilar a partir do código-fonte um binário igual <em>bit</em> a <em>bit</em> ao disponibilizado oficialmente para <em>download</em>. Ou seja, o aplicativo baixado da loja de fato foi construído com o código-fonte disponibilizado.</p>
+
+<p>Outro ponto a ser analisado em um aplicativo de mensagens é se, embora ele use criptografia de ponta-a-ponta, protegendo, assim, o conteúdo das mensagens, ainda coleta outras informações sobre os usuários, como endereço IP, número e modelo do celular, lista de contatos, frequência e horário das mensagens, etc. Esses tipos de “informações sobre as informações” são chamados de <strong>metadados</strong>. A existência e a análise desses metadados representam um risco para jornalistas, manifestantes e ativistas de direitos humanos.</p>
+
+<p>Também acho importante analisar quem são as pessoas por trás do aplicativo, tanto <strong>quem desenvolve</strong>, quanto <strong>quem financia</strong>. Dependendo do tipo de mensageiro, pode ser que ele precise de toda uma infraestrutura para armazenar e transmitir as mensagens. Se há um custo envolvido, é importante saber como é financiado. Afinal de contas, tem um ditado que diz “se o serviço parece ser de graça, pode ser que o produto seja, na verdade, você”.</p>
+
+<p>Todos os aplicativos apresentados a seguir usam criptografia de ponta-a-ponta, quase todos por padrão. Todos possuem código aberto (ainda que só do cliente, nem todos disponibilizam o código-fonte do servidor) e coletam poucos metadados ou nenhum.</p>
+
+<h2 id="lista-de-mensageiros-livres">Lista de mensageiros livres</h2>
+
+<p>Nos próximos dias, estarei analisando os aplicativos de mensagens a seguir:</p>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/telegram.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0"><a href="/pt/2021/05/09/o-mensageiro-telegram/">Telegram</a></h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/signal.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Signal</h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/session.png" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Session</h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/element.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Element</h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/jami.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Jami</h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/briar.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Briar</h3>
+    </div>
+</div>
+
+<div class="media mb-3">
+    <img src="/files/2021/05/wire.svg" class="mr-3" style="max-width: 48px;" />
+    <div class="media-body align-self-center">
+        <h3 class="mt-0 mb-0">Wire</h3>
+    </div>
+</div>
+
+<p>A <a href="/pt/2021/05/09/o-mensageiro-telegram/">análise do Telegram</a> já está disponível.</p>
+
+<p>Siga o Linux Kamarada nas <a href="#about">redes sociais</a> para ser avisado dos próximos textos.</p>
+
+<h2 id="referências">Referências</h2>
+
+<p>Me antecipo em compartilhar a lista de textos que consultei para escrever esta série:</p>
+
+<ul>
+  <li><a href="https://securityinabox.org/pt/guide/secure-communication/">Mantenha sua comunicação digital privada - Security-in-a-Box</a></li>
+  <li><a href="https://www.privacidade.digital/software/comunicacao-tempo-real/">Comunicação em Tempo Real | Privacidade.Digital</a></li>
+  <li><a href="https://www.avg.com/en/signal/secure-message-apps">The Most Secure Messaging Apps for Android &amp; iOS 2021 | AVG</a></li>
+  <li><a href="https://itsfoss.com/private-whatsapp-alternatives/">5 Better Privacy Alternatives to Dump WhatsApp - It’s FOSS</a></li>
+  <li><a href="https://fossbytes.com/best-whatsapp-alternatives-privacy-focused-messaging-apps/">7 Best WhatsApp Alternatives In 2021: Privacy-Focused Messaging Apps - Fossbytes</a></li>
+  <li><a href="https://www.techradar.com/best/whatsapp-alternatives">WhatsApp alternatives: the best messaging apps for Android and iPhone | TechRadar</a></li>
+  <li><a href="https://www.vpnmentor.com/blog/best-secure-alternatives-whatsapp/">Top 5 WhatsApp Alternatives in 2021 [Best For Privacy &amp; Safety] - vpnMentor</a></li>
+  <li><a href="https://www.techspot.com/news/88291-5-alternatives-using-whatsapp-2021.html">5 alternatives to using WhatsApp in 2021 | TechSpot</a></li>
+  <li><a href="https://www.maketecheasier.com/alternatives-to-whatsapp/">5 of the Best Alternatives to WhatsApp that Actually Respect Your Privacy - Make Tech Easier</a></li>
+  <li><a href="https://protonmail.com/blog/whatsapp-alternatives/">Best WhatsApp alternatives that respect your privacy - ProtonMail Blog</a></li>
+</ul>
+
+
+        </div>
+
+        
+            <!-- AddThis Sharing Buttons -->
+            <div class="gap"></div>
+            <h2>
+                
+                    Gostou? Que tal compartilhar?
+                
+            </h2>
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter" data-via="LinuxKamarada"></a>
+                <a class="addthis_button_telegram"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_favorites"></a>
+                <a class="addthis addthis_button_print"></a>
+                <a class="addthis_button_pdfonline"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <!-- AddThis Sharing Buttons End -->
+        
+
+        <div class="media my-4">
+    <img class="mr-3" src="/assets/icons/other/coffee.svg" alt="Me paga um café?" style='max-width: 48px;'>
+    <div class="media-body">
+        Se você gostou muito, se foi muito útil pra você, será que vale um café? Se quiser, você pode "me pagar um café" pelo <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR" title="PayPal" target="_blank">PayPal</a> ou <a href="/pt/contribuir">contribuir com o projeto de outras formas</a>.
+    </div>
+</div>
+
+
+        
+            
+                <!-- Disqus -->
+                <div class="gap"></div>
+                <h2>
+                    
+                        Comentários
+                    
+                </h2>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        
+                            this.language = "pt";
+                        
+                        this.page.url = 'https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/';
+                    };
+
+                    (function() {
+                        var d = document, s = d.createElement('script');
+
+                        s.src = '//kamarada.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>
+                    <p>Please <a href="http://www.enable-javascript.com/" target="_blank">enable JavaScript</a> to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus</a>.</p>
+                </noscript>
+                <!-- Disqus End -->
+            
+        
+    </article>
+</div><!-- .blog-post -->
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-3" id="about">
+    <div class="card-header">
+      <h3>
+          <a name="about"></a>
+          
+              Sobre
+          
+      </h3>
+    </div>
+    <div class="card-body" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Linux Kamarada" />
+        <meta itemprop="url" content="https://linuxkamarada.com" />
+        <p class='text-center' itemprop='logo' itemscope itemtype='http://schema.org/ImageObject'>
+            <a href='https://linuxkamarada.com/assets/img/TuxKamarada.png' itemprop='url'>
+                <img src='https://linuxkamarada.com/assets/img/TuxKamarada.png' class='img-fluid rounded-circle'>
+            </a>
+            <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+            <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+        </p>
+        <p class="text" itemprop="description">
+            
+                O Projeto Linux Kamarada visa divulgar e promover o Linux como um sistema operacional robusto, seguro, versátil e fácil de usar, adequado para o uso diário seja em casa, no trabalho ou no servidor. Os focos do projeto são principalmente distribuição e documentação.
+
+            
+        </p>
+        
+            <!-- AddThis Follow Buttons -->
+            <div class="addthis_inline_follow_toolbox_6ft6 text-center"></div>
+            <!-- AddThis Follow Buttons End -->
+        
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3>Anúncios</h3>
+        </div>
+        <div class="card-body">
+            
+                
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="sidebar_ad_unit"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="7329324255"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+            
+
+            
+    <!-- A-ADS Begin -->
+    <iframe data-aa="1589157" src="//acceptable.a-ads.com/1589157" scrolling="no" style="border:0px; padding:0; width:100%; height:100%; overflow:hidden" allowtransparency="true"></iframe>
+    <!-- A-ADS End -->
+
+
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+<div class="card mb-3" id="donate">
+    <div class="card-header">
+      <h3>
+          <a name="donate"></a>
+          Doações
+      </h3>
+    </div>
+    <div class="card-body">
+        
+
+    <p>Você pode fazer uma doação única rapidamente usando o <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>PayPal</a>:</p>
+    <p class="text-center">
+        <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=J7F5GPWZX7CJA&no_shipping=1&currency_code=BRL&lc=BR' title='PayPal' target='_blank'>
+            <img src='https://linuxkamarada.com/assets/img/paypal-pt.gif' alt='PayPal'>
+        </a>
+    </p>
+    <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="8VDPEA3ADF222" />
+        <input type="hidden" name="business" value="linuxkamarada@gmail.com" />
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça doações com o botão do PayPal" />
+        <img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1" />
+    </form>-->
+
+    <!--<p>Ou fazer doações mensais por meio de um desses serviços:</p>
+    <div class="row text-center">
+        <div class="col">
+            <a href='' title='Padrim' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/padrim.jpg' alt='Padrim' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>Padrim</p>
+            </a>
+        </div>
+        <div class="col">
+            <a href='' title='APOIA.se' target='_blank'>
+                <p><img src='https://linuxkamarada.com/assets/img/apoiase.jpg' alt='APOIA.se' class='img-fluid img-thumbnail rounded-circle' style='width: 100px'></p>
+                <p>APOIA.se</p>
+            </a>
+        </div>
+    </div>-->
+
+    <a href="/pt/contribuir">Mais informações e outras formas de contribuir ›</a>
+
+
+
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+
+    <div class="card mb-3 d-none d-lg-block">
+        <div class="card-header">
+            <h3>
+                Facebook
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="facebook-page-plugin-wrapper">
+                <!-- Facebook Page Plugin -->
+                <div class="fb-page" data-href="https://www.facebook.com/LinuxKamarada/" data-tabs="timeline" data-width="" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/LinuxKamarada/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/LinuxKamarada/">Linux Kamarada</a></blockquote></div>
+            </div><!-- #facebook-page-plugin-wrapper -->
+        </div><!-- .card-body -->
+    </div><!-- .card -->
+
+
+
+    
+        <div class="card mb-3 d-none d-lg-block">
+            <div class="card-header">
+                <h3>
+                    Twitter
+                </h3>
+            </div>
+            <div class="card-body">
+                <!-- Twitter Embedded Timeline -->
+                <a class="twitter-timeline" data-height="450" data-theme="light" data-link-color="#4caf50" href="https://twitter.com/LinuxKamarada?ref_src=twsrc%5Etfw">Tweets by LinuxKamarada</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+    
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h3>
+            <a name="author"></a>
+            
+                Autor
+            
+        </h3>
+    </div>
+    <div class="card-body" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+            <p class="text-center">
+                <a href='/antonio.png' title='Antônio Medeiros'>
+                    <img src='/antonio.png' alt='Antônio Medeiros' class='img-fluid img-thumbnail rounded-circle'>
+                </a>
+            </p>
+        
+        
+            <p class="lead text-center" itemprop="name">
+                
+                    Antônio Medeiros
+                
+            </p>
+        
+        <ul class="contact-list list-unstyled">
+            
+                <li><a href="https://antoniomedeiros.dev" itemprop="url"><i class="fas fa-globe"></i> https://antoniomedeiros.dev</a></li>
+            
+        </ul>
+    </div><!-- .card-body -->
+</div><!-- .card -->
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+    <div class="container">
+        Copyleft 2021 <a href='#author'>Antônio Medeiros</a>. Todos os direitos liberados. Baseado no <a href='https://github.com/vinyanalista/material-jekyll-plus'>Material site template for Jekyll PLUS</a>.
+    </div>
+</footer>
+
+<meta itemprop="description" content="Nos últimos 20 anos, houve um aumento significativo no uso de mensageiros instantâneos, com os mais populares sendo usados ativamente por mais de 1 bilhão de pessoas cada. Hoje, o aplicativo de mensagens mais usado no mundo é o WhatsApp, que tem mais de 2 bilhões de usuários em mais de 180 países. O fato...">
+
+
+    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+        <meta itemprop="url" content="https://linuxkamarada.com/files/2021/05/messaging-apps.jpg"/>
+        <!--<meta itemprop="width" content=""/>--><!-- TODO Image width -->
+        <!--<meta itemprop="height" content=""/>--><!-- TODO Image height -->
+    </div>
+
+
+
+    <meta itemprop="inLanguage" content="pt"/>
+
+
+
+    
+        <!-- Disqus -->
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            
+                var disqus_config = function () {
+                    this.language = "pt";
+                };
+            
+            var disqus_shortname = 'kamarada';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+        </script>
+        <!-- Disqus End -->
+    
+
+
+
+    <!-- Google AdSense -->
+    
+        
+    <!-- Google AdSense -->
+    <ins class="adsbygoogle" id="content_ad_unit_2"
+        style="display:block"
+        data-ad-client="ca-pub-5193467168351289"
+        data-ad-slot="4375857858"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <!-- End Google AdSense -->
+    <div class="alert alert-danger please-allow-ads d-none" role="alert">
+        <div class="media">
+            <img class="mr-3" src="/assets/icons/other/detective_penguin.svg" alt="Detetive pinguim" style="max-width: 64px;">
+            <div class="media-body">
+                <h6 class="alert-heading mt-0">Cadê o anúncio que estava aqui?</h6>
+                Parece que você está usando um bloqueador de anúncios. Mas dependemos deles para continuar criando conteúdo gratuito e de qualidade para você. Se você gosta do nosso conteúdo, por favor apoie nosso <em>site</em> desativando seu bloqueador de anúncios. Alternativamente, se você vem aqui com frequência, por favor considere <a href='/pt/contribuir'>fazer uma doação</a>.
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script type="text/javascript">
+        adsbygoogle = window.adsbygoogle || [];
+
+        $(document).ready(function(){
+            
+                var $ad = $('#content_ad_unit_2');
+                var $please_allow_ads = $('#content_ad_unit_2 + .please-allow-ads');
+                var $posts = $('.blog-post');
+                if (($posts.length > 1) || ($('.blog-archive-title').length > 0)) {
+                    // Post listing
+                    var post;
+                    if ($posts.length > 2) {
+                        post = random_number(2, $posts.length);
+                    } else {
+                        post = 2;
+                    }
+                    $posts.eq(post - 1).find('.blog-post-content .row').after($ad);
+                    $('#content_ad_unit_2').after($please_allow_ads);
+                } else {
+                    // Page or post
+                    var $paragraphs = $('.blog-post-content p').filter(function() {
+                        return ($(this).closest('.no-ads-here').length == 0);
+                    });
+                    if ($paragraphs.length > 0) {
+                        var paragraph;
+                        if ($paragraphs.length > 1) {
+                            paragraph = random_number(1, $paragraphs.length);
+                        } else {
+                            paragraph = 1;
+                        }
+                        $paragraphs.eq(paragraph - 1).after($ad);
+                        $('#content_ad_unit_2').after($please_allow_ads);
+                    } else {
+                        $ad.remove();
+                        $please_allow_ads.remove();
+                    }
+                }
+            
+            if (window.canRunAds === undefined) {
+                // Ad blocker detected
+                $('.please-allow-ads').removeClass('d-none');
+            } else {
+                $('.adsbygoogle').each(function(index, element){
+                    adsbygoogle.push({});
+                });
+            }
+        });
+    </script>
+    <!-- Google AdSense End -->
+
+
+
+            
+        </main>
+    </div><!-- .bmd-layout-container -->
+
+    <div class="modal fade" id="language-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-globe-americas" aria-hidden="true"></i> Traduções</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="list-group list-group-flush bmd-list-group-sm">
+                    
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">English</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&tl=en&u=https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">This page in English</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/en/">English home page</a>
+                    
+                        <a href="#" class="list-group-item list-group-item-action disabled">Português</a>
+                        
+                        
+                            <a class="list-group-item list-group-item-action translation-pt" href="https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">Esta página em Português</a>
+                        
+                        <a class="list-group-item list-group-item-action" href="https://linuxkamarada.com/pt/">Página inicial em Português</a>
+                    
+                    <a href="#" class="list-group-item list-group-item-action disabled">Other languages (by Google Translate)</a>
+                    <a class="list-group-item list-group-item-action" href="http://translate.google.com/translate?js=n&sl=pt&u=https://linuxkamarada.com/pt/2021/05/08/aplicativos-de-mensagens-livres-e-focados-em-privacidade-alternativos-ao-whatsapp/">Translate this page</a>
+                </div>
+
+            </div><!--.modal-body-->
+        </div><!--.modal-content-->
+    </div><!--.modal-dialog-->
+</div><!--#language-modal-->
+
+</body>
+</html>
